@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.thron</groupId>
+    <version>5.0.2</version>
+    <artifactId>core-java-models</artifactId>
+    <packaging>pom</packaging>
+    <name>thron-java-models</name>
+
+    <properties>
+        <scala.version>2.10.0</scala.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+	<profiles>
+        <profile>
+            <id>modelOnly</id>
+            <properties>
+                <projectName>4me-java-models</projectName>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <artifactId>maven-assembly-plugin</artifactId>
+                            <configuration>
+                                <descriptors>
+                                    <descriptor>src/main/resources/assemblies/distribution.xml</descriptor>
+                                </descriptors>
+                                <finalName>4me-core-${project.version}</finalName>
+                            </configuration>
+                            <executions>
+                                <execution>
+                                    <id>my-assembly</id>
+                                    <phase>package</phase>
+                                    <goals>
+                                        <goal>assembly</goal>
+                                    </goals>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <configuration>
+                           <outputDirectory>${continuousIntegration.path}</outputDirectory>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
