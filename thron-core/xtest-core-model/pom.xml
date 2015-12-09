@@ -2,13 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>xtest-core-model_2.10.0</artifactId>
+    <artifactId>xtest-core-model_2.11.0</artifactId>
     <packaging>jar</packaging>
     <name>xtest-core-model</name>
     <parent>
-        <artifactId>thron-core_2.10.0</artifactId>
-        <groupId>com.thron.sdk.core</groupId>
-        <version>5.0.0</version>
+        <artifactId>thron-core</artifactId>
+        <groupId>com.thron</groupId>
+        <version>5.0.2</version>
     </parent>
     <dependencies>
         <dependency>
