@@ -7,6 +7,26 @@
     <artifactId>core-java-models</artifactId>
     <packaging>pom</packaging>
     <name>thron-java-models</name>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Flavio Alberti</name>
+            <email>flavio.alberti@thron.com</email>
+            <organization>Thron</organization>
+            <organizationUrl>http://www.thron.com</organizationUrl>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git@github.com/thron-com/clients.git</connection>
+        <developerConnection>scm:git:git@github.com/thron-com/clients.git</developerConnection>
+        <url>git@github.com/thron-com/clients.git</url>
+    </scm>
 
     <properties>
         <scala.version>2.10.0</scala.version>
