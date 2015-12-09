@@ -4,9 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thron</groupId>
     <version>5.0.2</version>
-    <artifactId>core-java-models</artifactId>
+    <artifactId>thron-java-models</artifactId>
     <packaging>pom</packaging>
     <name>thron-java-models</name>
+    <description>THRON SDK library</description>
+    <inceptionYear>2015</inceptionYear>
+    <url>http://developer.thron.com</url>
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -28,53 +31,29 @@
         <url>git@github.com/thron-com/clients.git</url>
     </scm>
 
-    <properties>
-        <scala.version>2.10.0</scala.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
-	<profiles>
-        <profile>
-            <id>modelOnly</id>
-            <properties>
-                <projectName>4me-java-models</projectName>
-            </properties>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <artifactId>maven-assembly-plugin</artifactId>
-                            <configuration>
-                                <descriptors>
-                                    <descriptor>src/main/resources/assemblies/distribution.xml</descriptor>
-                                </descriptors>
-                                <finalName>4me-core-${project.version}</finalName>
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <id>my-assembly</id>
-                                    <phase>package</phase>
-                                    <goals>
-                                        <goal>assembly</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-assembly-plugin</artifactId>
-                        <configuration>
-                           <outputDirectory>${continuousIntegration.path}</outputDirectory>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
+        <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <jvm-target.version>1.6</jvm-target.version>
+        <thron-core-lib.version>1.0</thron-core-lib.version>
+
+        <!--  LIBRARIES VERSIONS -->
+        <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
+        <maven-source-plugin.version>2.1.1</maven-source-plugin.version>
+        <maven-deploy-plugin.version>2.8.1</maven-deploy-plugin.version>
+        <scala.version>2.11.0</scala.version>
+        <scala.version.full>2.11.7</scala.version.full>
+        <jersey.version>1.10</jersey.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <commons-io.version>2.4</commons-io.version>
+        <commons-codec.version>1.9</commons-codec.version>
+
+    </properties>
+    <modules>
+        <module>thron-core</module>
+    </modules>
+
 </project>

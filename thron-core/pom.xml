@@ -3,45 +3,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thron</groupId>
-    <artifactId>thron-core_2.10.0</artifactId>
+    <artifactId>thron-core</artifactId>
     <packaging>pom</packaging>
     <version>5.0.2</version>
-    <inceptionYear>2015</inceptionYear>
-    <name>thron-core</name>
-    <description>THRON SDK library</description>
-    <url>http://developer.thron.com</url>
 
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
+    <name>thron-core-java-models</name>
+    <description>THRON Core library</description>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
-        <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
-        <jvm-target.version>1.6</jvm-target.version>
-        <thron-core-lib.version>1.2.2</thron-core-lib.version>
+    <parent>
+        <groupId>com.thron</groupId>
+        <artifactId>thron-java-models</artifactId>
+        <version>5.0.2</version>
+    </parent>
 
-        <!--  LIBRARIES VERSIONS -->
-        <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
-        <maven-source-plugin.version>2.1.1</maven-source-plugin.version>
-        <maven-deploy-plugin.version>2.8.1</maven-deploy-plugin.version>
-        <scala.version>2.10.0</scala.version>
-        <jersey.version>1.10</jersey.version>
-        <commons-lang.version>2.6</commons-lang.version>
-        <commons-io.version>2.4</commons-io.version>
-        <commons-codec.version>1.9</commons-codec.version>
-
-    </properties>
-
-    <distributionManagement>
-
-    </distributionManagement>
 
     <dependencies>
         <dependency>
@@ -157,53 +131,10 @@
     </build>
 
     <modules>
+        <module>core-lib</module>
         <module>xtest-core-model</module>
+
     </modules>
 
-    <profiles>
-        <profile>
-            <id>modelOnly</id>
-            <properties>
-                <projectName>4me-java-models</projectName>
-                <minorRelease></minorRelease>
-            </properties>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <artifactId>maven-assembly-plugin</artifactId>
-                            <configuration>
-                                <descriptors>
-                                    <descriptor>src/main/resources/assemblies/distribution.xml</descriptor>
-                                </descriptors>
-                                <finalName>4me-core-${project.version}</finalName>
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <id>my-assembly</id>
-                                    <phase>package</phase>
-                                    <goals>
-                                        <goal>assembly</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-assembly-plugin</artifactId>
-                        <configuration>
-                            <outputDirectory>${continuousIntegration.path}</outputDirectory>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>
