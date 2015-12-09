@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.thron.sdk.core</groupId>
+    <groupId>com.thron</groupId>
     <artifactId>thron-core_2.10.0</artifactId>
     <packaging>pom</packaging>
     <version>5.0.2</version>
@@ -26,10 +26,6 @@
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <jvm-target.version>1.6</jvm-target.version>
         <thron-core-lib.version>1.2.2</thron-core-lib.version>
-        <continuousIntegration.path>
-            \\pz-ci\ci_repository\java_repository\
-        </continuousIntegration.path>
-        <buildNumber>${maven.build.timestamp}</buildNumber>
 
         <!--  LIBRARIES VERSIONS -->
         <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
@@ -161,13 +157,7 @@
     </build>
 
     <modules>
-        <module>thron-core-lib</module>
-        <module>xsso-core-model</module>
-        <module>xpackager-core-model</module>
-        <module>xcontents-core-model</module>
-        <module>xintelligence-core-model</module>
         <module>xtest-core-model</module>
-        <module>xadmin-core-model</module>
     </modules>
 
     <profiles>
