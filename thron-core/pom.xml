@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.thron</groupId>
     <artifactId>thron-core</artifactId>
     <packaging>pom</packaging>
     <version>5.0.2</version>
@@ -21,32 +20,19 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>${scala.version}</version>
+            <version>${scala.version.full}</version>
         </dependency>
     </dependencies>
 
     <build>
         <pluginManagement>
             <plugins>
-
-
                 <plugin>
                     <groupId>org.scala-tools</groupId>
                     <artifactId>maven-scala-plugin</artifactId>
                     <version>${maven-scala-plugin.version}</version>
-                    <configuration>
-                        <launchers>
-                            <launcher>
-                                <id>wsdledit</id>
-                                <mainClass>it.newvision.nvp.commons.wsdl.script.nvpWsdlEdit</mainClass>
-                            </launcher>
-                            <launcher>
-                                <id>testClient</id>
-                                <mainClass>init.InitClient</mainClass>
-                            </launcher>
-                        </launchers>
-                    </configuration>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -79,24 +65,14 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <scalaVersion>${scala.version}</scalaVersion>
+                    <scalaVersion>${scala.version.full}</scalaVersion>
                     <args>
                         <arg>-g:notailcalls</arg>
                         <arg>-target:jvm-${jvm-target.version}</arg>
-                        <arg>-make:transitivenocp</arg>
                         <arg>-dependencyfile</arg>
                         <arg>${project.build.directory}/.scala_dependencies</arg>
                     </args>
 
-                    <excludes>
-                        <exclude>**/S*.scala</exclude>
-                    </excludes>
-                    <includes>
-                        <include>**/*.java</include>
-                        <include>**/J*Client.scala</include>
-                        <include>**/M*.scala</include>
-                        <include>**/P*.scala</include>
-                    </includes>
                 </configuration>
             </plugin>
 
