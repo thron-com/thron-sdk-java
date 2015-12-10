@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.thron</groupId>
         <artifactId>thron-core</artifactId>
-        <version>5.0.2</version>
+        <version>5.0.2-SNAPSHOT</version>
     </parent>
     <artifactId>thron-core-lib_2.11.0</artifactId>
     <name>thron-core-lib</name>
