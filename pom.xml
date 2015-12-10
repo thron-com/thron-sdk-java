@@ -24,6 +24,12 @@
             <organization>Thron</organization>
             <organizationUrl>http://www.thron.com</organizationUrl>
         </developer>
+        <developer>
+            <name>Alessandro Ferlin</name>
+            <email>alessandro.ferlin@thron.com</email>
+            <organization>Thron</organization>
+            <organizationUrl>http://www.thron.com</organizationUrl>
+        </developer>
     </developers>
     <scm>
         <connection>scm:git:git@github.com/thron-com/clients.git</connection>
