@@ -3,14 +3,14 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <version>1.0</version>
+    <artifactId>thron-core-lib</artifactId>
+
     <parent>
-        <groupId>com.thron</groupId>
+        <groupId>com.thron.sdk</groupId>
         <artifactId>thron-core</artifactId>
-        <version>5.0.2-SNAPSHOT</version>
+        <version>5.0.4-SNAPSHOT</version>
     </parent>
-    <artifactId>thron-core-lib_2.11.0</artifactId>
-    <name>thron-core-lib</name>
+
     <dependencies>
         <dependency>
             <groupId>com.sun.jersey</groupId>

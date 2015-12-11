@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.thron</groupId>
-    <version>1.0-SNAPSHOT</version>
-    <artifactId>thron-java-models</artifactId>
+    <groupId>com.thron.sdk</groupId>
+    <artifactId>thron-sdk-java</artifactId>
+    <version>5.0.4-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>thron-java-models</name>
+    <name>thron-sdk-java</name>
     <description>THRON SDK library</description>
     <inceptionYear>2015</inceptionYear>
     <url>http://developer.thron.com</url>
@@ -43,20 +43,22 @@
         <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <jvm-target.version>1.6</jvm-target.version>
-        <thron-core-lib.version>1.0</thron-core-lib.version>
+
+        <current.version>5.0.4-SNAPSHOT</current.version>
+
+        <scala.version>2.11.0</scala.version>
+        <scala.version.full>2.11.7</scala.version.full>
 
         <!--  LIBRARIES VERSIONS -->
         <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
         <maven-source-plugin.version>2.1.1</maven-source-plugin.version>
         <maven-deploy-plugin.version>2.8.1</maven-deploy-plugin.version>
-        <scala.version>2.11.0</scala.version>
-        <scala.version.full>2.11.7</scala.version.full>
         <jersey.version>1.10</jersey.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-io.version>2.4</commons-io.version>
         <commons-codec.version>1.9</commons-codec.version>
-
     </properties>
+
     <modules>
         <module>thron-core</module>
     </modules>

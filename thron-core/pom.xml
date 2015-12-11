@@ -4,15 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>thron-core</artifactId>
     <packaging>pom</packaging>
-    <version>5.0.2-SNAPSHOT</version>
 
     <name>thron-core-java-models</name>
     <description>THRON Core library</description>
 
     <parent>
-        <groupId>com.thron</groupId>
-        <artifactId>thron-java-models</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <groupId>com.thron.sdk</groupId>
+        <artifactId>thron-sdk-java</artifactId>
+        <version>5.0.4-SNAPSHOT</version>
     </parent>
 
 
