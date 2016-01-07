@@ -44,9 +44,8 @@
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <jvm-target.version>1.6</jvm-target.version>
 
-        <current.version>5.0.4-SNAPSHOT</current.version>
-
-        <scala.version>2.11.0</scala.version>
+        <!--  SCALA VERSIONS -->
+        <scala.version>2.11</scala.version>
         <scala.version.full>2.11.7</scala.version.full>
 
         <!--  LIBRARIES VERSIONS -->
@@ -60,8 +59,24 @@
     </properties>
 
     <modules>
-        <module>thron-core</module>
+        <module>thron-common-lib</module>
+        <module>thron-core-xadmin</module>
+        <module>thron-core-xcontents</module>
+        <module>thron-core-xintelligence</module>
+        <module>thron-core-xpackager</module>
+        <module>thron-core-xpublisher</module>
+        <module>thron-core-xsso</module>
+        <module>thron-core-xtest</module>
+        <module>thron-core-contact</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version.full}</version>
+        </dependency>
+    </dependencies>
 
     <distributionManagement>
         <snapshotRepository>
@@ -81,6 +96,12 @@
                     <nexusUrl>https://oss.sonatype.org/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                 </configuration>
+            </plugin>
+            <!-- Versions plugin -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.2</version>
             </plugin>
             <!-- GPG Signed Components -->
             <plugin>
@@ -124,7 +145,43 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--  -->
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>${maven-scala-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <scalaVersion>${scala.version.full}</scalaVersion>
+                    <args>
+                        <arg>-g:notailcalls</arg>
+                        <arg>-target:jvm-${jvm-target.version}</arg>
+                        <arg>-dependencyfile</arg>
+                        <arg>${project.build.directory}/.scala_dependencies</arg>
+                    </args>
+                </configuration>
+            </plugin>
         </plugins>
+        <!--  -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.scala-tools</groupId>
+                    <artifactId>maven-scala-plugin</artifactId>
+                    <version>${maven-scala-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
+
 
 </project>
