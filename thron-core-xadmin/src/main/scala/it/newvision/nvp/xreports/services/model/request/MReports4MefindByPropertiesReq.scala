@@ -1,0 +1,41 @@
+package it.newvision.nvp.xreports.services.model.request
+import _root_.java.util._ 
+import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}  
+//#SWG#import com.wordnik.swagger.annotations._ 
+import _root_.scala.beans.BeanProperty 
+import javax.xml.bind.annotation._ 
+import it.newvision.nvp.xreports.services.model.report.MCriteriaForReport
+
+/* ************************
+*  GENERATED CLASS
+*  DO NOT APPLY ANY CHANGES
+****************************/
+/**
+ * Request message for service JReports4Me.findByProperties
+ */
+@XmlRootElement(name="MReports4MefindByPropertiesReq")
+@XmlType(name="MReports4MefindByPropertiesReq")
+//#SWG#@ApiModel(description = "Request message for service JReports4Me.findByProperties")
+class MReports4MefindByPropertiesReq extends Serializable {
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var clientId: String =_
+	def withclientId(p:String):MReports4MefindByPropertiesReq ={ 	this.clientId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var criteria: MCriteriaForReport =_
+	def withcriteria(p:MCriteriaForReport):MReports4MefindByPropertiesReq ={ 	this.criteria = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var offset: Integer =_
+	def withoffset(p:Integer):MReports4MefindByPropertiesReq ={ 	this.offset = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var numberOfResults: Integer =_
+	def withnumberOfResults(p:Integer):MReports4MefindByPropertiesReq ={ 	this.numberOfResults = p; 	this }
+
+}
