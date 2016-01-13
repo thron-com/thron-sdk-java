@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thron.sdk</groupId>
     <artifactId>thron-sdk-java</artifactId>
-    <version>5.0.4</version>
+    <version>5.0.5-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>thron-sdk-java</name>
     <description>THRON SDK library</description>
