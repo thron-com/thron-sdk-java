@@ -1,4 +1,4 @@
-SDK Thron Platform [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.thron/thron-sdk-java/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.thron/thron-sdk-java)
+SDK Thron Platform [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.thron.sdk/thron-sdk-java/badge.svg)](http://search.maven.org/#search%7Cga%7C1%7Ccom.thron.sdk) [![Build Status](https://travis-ci.org/thron-com/thron-sdk-java.svg)](https://travis-ci.org/thron-com/thron-sdk-java)
 ==============
 
 This open-source library allows you to integrate Thron into your project
