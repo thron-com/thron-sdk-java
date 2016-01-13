@@ -11,7 +11,7 @@ after_success:
   -out $GPG_DIR/pubring.gpg -d
 - openssl aes-256-cbc -pass pass:$ENCRYPTION_PASSWORD -in $GPG_DIR/secring.gpg.enc
   -out $GPG_DIR/secring.gpg -d
-- "$GPG_DIR/publish.sh"
+- $GPG_DIR/publish
 env:
   global:
   - GPG_DIR="`pwd`/deploy"
