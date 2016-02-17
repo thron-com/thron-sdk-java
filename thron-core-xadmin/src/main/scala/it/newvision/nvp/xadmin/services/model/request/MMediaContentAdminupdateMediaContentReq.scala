@@ -21,11 +21,11 @@ class MMediaContentAdminupdateMediaContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MMediaContentAdminupdateMediaContentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var content: MMediaContent =_
-	def withcontent(p:MMediaContent):MMediaContentAdminupdateMediaContentReq ={ 	this.content = p; 	this }
+	def withcontent(p:MMediaContent):this.type ={ 	this.content = p; 	this }
 
 }

@@ -18,7 +18,7 @@ class MResponseSnippetLogin extends MResponseApp with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var snippet: MSnippet =_
-	def withsnippet(p:MSnippet):MResponseSnippetLogin ={ 	this.snippet = p; 	this }
+	def withsnippet(p:MSnippet):this.type ={ 	this.snippet = p; 	this }
 
 	/**
 	 * the identifier of the linked App
@@ -26,7 +26,7 @@ class MResponseSnippetLogin extends MResponseApp with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the identifier of the linked App""" ,required = true)
 	@BeanProperty 
 	var appId: String =_
-	def withappId(p:String):MResponseSnippetLogin ={ 	this.appId = p; 	this }
+	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
 
 	/**
 	 * the new 4me tokenId to use inside the snippet calls
@@ -34,7 +34,7 @@ class MResponseSnippetLogin extends MResponseApp with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the new 4me tokenId to use inside the snippet calls""")
 	@BeanProperty 
 	var appUserTokenId: String =_
-	def withappUserTokenId(p:String):MResponseSnippetLogin ={ 	this.appUserTokenId = p; 	this }
+	def withappUserTokenId(p:String):this.type ={ 	this.appUserTokenId = p; 	this }
 
 	/**
 	 * the root category Id for the App.
@@ -44,6 +44,6 @@ class MResponseSnippetLogin extends MResponseApp with Serializable  {
 	//#SWGNL#The App will use only the contents linked to the specified category tree.""")
 	@BeanProperty 
 	var rootCategoryId: String =_
-	def withrootCategoryId(p:String):MResponseSnippetLogin ={ 	this.rootCategoryId = p; 	this }
+	def withrootCategoryId(p:String):this.type ={ 	this.rootCategoryId = p; 	this }
 
 }

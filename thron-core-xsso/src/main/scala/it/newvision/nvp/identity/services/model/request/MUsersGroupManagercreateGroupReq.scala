@@ -21,11 +21,11 @@ class MUsersGroupManagercreateGroupReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MUsersGroupManagercreateGroupReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var usersGroup: MGroupInitData =_
-	def withusersGroup(p:MGroupInitData):MUsersGroupManagercreateGroupReq ={ 	this.usersGroup = p; 	this }
+	def withusersGroup(p:MGroupInitData):this.type ={ 	this.usersGroup = p; 	this }
 
 }

@@ -21,16 +21,16 @@ class MWeeboLiveEventupdatePublicHostnameEntriesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboLiveEventupdatePublicHostnameEntriesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var pcontentId: String =_
-	def withpcontentId(p:String):MWeeboLiveEventupdatePublicHostnameEntriesReq ={ 	this.pcontentId = p; 	this }
+	def withpcontentId(p:String):this.type ={ 	this.pcontentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var hdetails: MHostnameDetails =_
-	def withhdetails(p:MHostnameDetails):MWeeboLiveEventupdatePublicHostnameEntriesReq ={ 	this.hdetails = p; 	this }
+	def withhdetails(p:MHostnameDetails):this.type ={ 	this.hdetails = p; 	this }
 
 }

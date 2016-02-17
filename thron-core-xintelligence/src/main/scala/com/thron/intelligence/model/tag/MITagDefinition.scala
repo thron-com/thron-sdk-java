@@ -43,7 +43,7 @@ class MITagDefinition extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MITagDefinition ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * prettyId for the itagDefinition
@@ -69,7 +69,7 @@ class MITagDefinition extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var prettyId: String =_
-	def withprettyId(p:String):MITagDefinition ={ 	this.prettyId = p; 	this }
+	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	/**
 	 * userId of the owner or engineId
@@ -77,7 +77,7 @@ class MITagDefinition extends Serializable {
 	//#SWG#@ApiModelProperty(value = """userId of the owner or engineId""")
 	@BeanProperty 
 	var createdBy: MSourceIdentifier =_
-	def withcreatedBy(p:MSourceIdentifier):MITagDefinition ={ 	this.createdBy = p; 	this }
+	def withcreatedBy(p:MSourceIdentifier):this.type ={ 	this.createdBy = p; 	this }
 
 	/**
 	 * Optional. The creation date of the Tag
@@ -85,7 +85,7 @@ class MITagDefinition extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the Tag""")
 	@BeanProperty 
 	var createdDate: Date  = new Date()
-	def withcreatedDate(p:Date):MITagDefinition ={ 	this.createdDate = p; 	this }
+	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
 	/**
 	 * Last time this Tag was modified by anyone.
@@ -93,7 +93,7 @@ class MITagDefinition extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Last time this Tag was modified by anyone.""")
 	@BeanProperty 
 	var modifiedDate: Date =_
-	def withmodifiedDate(p:Date):MITagDefinition ={ 	this.modifiedDate = p; 	this }
+	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
 
 	/**
 	 * Optional. The time when this Tag has been moderated.
@@ -101,7 +101,7 @@ class MITagDefinition extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. The time when this Tag has been moderated.""")
 	@BeanProperty 
 	var moderatedDate: Date =_
-	def withmoderatedDate(p:Date):MITagDefinition ={ 	this.moderatedDate = p; 	this }
+	def withmoderatedDate(p:Date):this.type ={ 	this.moderatedDate = p; 	this }
 
 	/**
 	 * Identifier of the user that approved (or not) the Tag
@@ -109,7 +109,7 @@ class MITagDefinition extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Identifier of the user that approved (or not) the Tag""")
 	@BeanProperty 
 	var moderatedBy: MSourceIdentifier =_
-	def withmoderatedBy(p:MSourceIdentifier):MITagDefinition ={ 	this.moderatedBy = p; 	this }
+	def withmoderatedBy(p:MSourceIdentifier):this.type ={ 	this.moderatedBy = p; 	this }
 
 	/**
 	 * The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy
@@ -117,12 +117,15 @@ class MITagDefinition extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy""")
 	@BeanProperty 
 	var parentId: String =_
-	def withparentId(p:String):MITagDefinition ={ 	this.parentId = p; 	this }
+	def withparentId(p:String):this.type ={ 	this.parentId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * label and description values for the itagDefinition in multilocale
+	 */
+	//#SWG#@ApiModelProperty(value = """label and description values for the itagDefinition in multilocale""")
 	@BeanProperty 
 	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):MITagDefinition ={ 	this.names = p; 	this }
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * Used to mark the moderated Tags.
@@ -136,7 +139,7 @@ class MITagDefinition extends Serializable {
 	//#SWGNL#approved = false:  Tag moderated and rejected""")
 	@BeanProperty 
 	var approved: Boolean =_
-	def withapproved(p:Boolean):MITagDefinition ={ 	this.approved = p; 	this }
+	def withapproved(p:Boolean):this.type ={ 	this.approved = p; 	this }
 
 	/**
 	 * Used to split the tagdefinition in two macro categories (categorized and
@@ -146,7 +149,7 @@ class MITagDefinition extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to split the tagdefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new tagDefinition with the categorized attribute to false.""" ,required = true)
 	@BeanProperty 
 	var categorized: Boolean  = true
-	def withcategorized(p:Boolean):MITagDefinition ={ 	this.categorized = p; 	this }
+	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
 
 	/**
 	 * list of old merged Tags. When two tags are merged the target tags store the ids
@@ -155,7 +158,7 @@ class MITagDefinition extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of old merged Tags. When two tags are merged the target tags store the ids of the other tag.""")
 	@BeanProperty 
 	var oldIds: List[String] = new ArrayList[String]
-	def witholdIds(p:List[String]):MITagDefinition ={ 	this.oldIds = p; 	this }
+	def witholdIds(p:List[String]):this.type ={ 	this.oldIds = p; 	this }
 
 	/**
 	 * ordered list of ancestors ITagDefinition Ids. It's used to quickly create the
@@ -182,7 +185,7 @@ class MITagDefinition extends Serializable {
 	//#SWGNL#TagDefinition4.ancestorsIds = [TagDefinition1,TagDefinition2, TagDefinition3]""")
 	@BeanProperty 
 	var ancestorIds: List[String] = new ArrayList[String]
-	def withancestorIds(p:List[String]):MITagDefinition ={ 	this.ancestorIds = p; 	this }
+	def withancestorIds(p:List[String]):this.type ={ 	this.ancestorIds = p; 	this }
 
 	/**
 	 * @return Boolean

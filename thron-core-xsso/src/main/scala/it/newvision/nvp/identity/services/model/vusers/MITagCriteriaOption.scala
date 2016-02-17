@@ -18,7 +18,7 @@ class MITagCriteriaOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var itags: List[MITagCriteria] = new ArrayList[MITagCriteria]
-	def withitags(p:List[MITagCriteria]):MITagCriteriaOption ={ 	this.itags = p; 	this }
+	def withitags(p:List[MITagCriteria]):this.type ={ 	this.itags = p; 	this }
 
 	/**
 	 * applied to itags list
@@ -26,7 +26,7 @@ class MITagCriteriaOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """applied to itags list""" ,required = true)
 	@BeanProperty 
 	var operation: MEITagOperation  = MEITagOperation.OR
-	def withoperation(p:MEITagOperation):MITagCriteriaOption ={ 	this.operation = p; 	this }
+	def withoperation(p:MEITagOperation):this.type ={ 	this.operation = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -39,6 +39,11 @@ trait JContext extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Create a new context
+	 * 
+	 * <b>Role Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_MANAGE_CONTEXT</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MContextinsertReq
@@ -48,7 +53,12 @@ trait JContext extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/insert/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/insert", notes = """Create a new context""", response = classOf[MResponseContextDetail])
+	//#SWG#@ApiOperation(value = "/insert", notes = """Create a new context
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_MANAGE_CONTEXT</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContextDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -101,6 +111,11 @@ trait JContext extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Mark to removed the context
+	 * 
+	 * <b>Role Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_MANAGE_CONTEXT</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String
@@ -110,7 +125,12 @@ trait JContext extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/remove/{clientId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/remove", notes = """Mark to removed the context""", response = classOf[MResponseContext])
+	//#SWG#@ApiOperation(value = "/remove", notes = """Mark to removed the context
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_MANAGE_CONTEXT</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContext])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -170,6 +190,11 @@ trait JContext extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
 	 * the "update" attributes you want to change must be included in the body of the request, those not
 	 * included will not be updated.
+	 * 
+	 * <b>Role Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_MANAGE_CONTEXT</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String
@@ -181,7 +206,12 @@ trait JContext extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/update", notes = """update the context description in patch mode.
-	//#SWGNL#The "update" field of this web service works in “patch" mode: it means that each and everyone of the "update" attributes you want to change must be included in the body of the request, those not included will not be updated.""", response = classOf[MResponseContext])
+	//#SWGNL#The "update" field of this web service works in “patch" mode: it means that each and everyone of the "update" attributes you want to change must be included in the body of the request, those not included will not be updated.
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_MANAGE_CONTEXT</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContext])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

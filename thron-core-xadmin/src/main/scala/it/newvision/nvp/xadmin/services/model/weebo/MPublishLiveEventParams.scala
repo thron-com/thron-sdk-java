@@ -22,7 +22,7 @@ class MPublishLiveEventParams extends Serializable {
 	//#SWGNL#Only unicode letters or digits are allowed""" ,required = true)
 	@BeanProperty 
 	var streamName: String =_
-	def withstreamName(p:String):MPublishLiveEventParams ={ 	this.streamName = p; 	this }
+	def withstreamName(p:String):this.type ={ 	this.streamName = p; 	this }
 
 	/**
 	 * the content metadata, like name and description in the specified locale. If the
@@ -32,7 +32,7 @@ class MPublishLiveEventParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the content metadata, like name and description in the specified locale. If the ContentDescription is null, the platform create a content description for the default locale assigning as content title the source filename.""")
 	@BeanProperty 
 	var content: MContentDescription =_
-	def withcontent(p:MContentDescription):MPublishLiveEventParams ={ 	this.content = p; 	this }
+	def withcontent(p:MContentDescription):this.type ={ 	this.content = p; 	this }
 
 	/**
 	 * Optional. If start date could be set to "Now" or the event could not be
@@ -41,7 +41,7 @@ class MPublishLiveEventParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. If start date could be set to "Now" or the event could not be scheduled""")
 	@BeanProperty 
 	var startDate: Date =_
-	def withstartDate(p:Date):MPublishLiveEventParams ={ 	this.startDate = p; 	this }
+	def withstartDate(p:Date):this.type ={ 	this.startDate = p; 	this }
 
 	/**
 	 * Optional.
@@ -49,7 +49,7 @@ class MPublishLiveEventParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""")
 	@BeanProperty 
 	var endDate: Date =_
-	def withendDate(p:Date):MPublishLiveEventParams ={ 	this.endDate = p; 	this }
+	def withendDate(p:Date):this.type ={ 	this.endDate = p; 	this }
 
 	/**
 	 * used to distinguish h24 live events by the spot events.
@@ -57,17 +57,17 @@ class MPublishLiveEventParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to distinguish h24 live events by the spot events.""")
 	@BeanProperty 
 	var neverEndingLiveEvent: Boolean  = false
-	def withneverEndingLiveEvent(p:Boolean):MPublishLiveEventParams ={ 	this.neverEndingLiveEvent = p; 	this }
+	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var startNow: Boolean  = false
-	def withstartNow(p:Boolean):MPublishLiveEventParams ={ 	this.startNow = p; 	this }
+	def withstartNow(p:Boolean):this.type ={ 	this.startNow = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var recordEvent: Boolean =_
-	def withrecordEvent(p:Boolean):MPublishLiveEventParams ={ 	this.recordEvent = p; 	this }
+	def withrecordEvent(p:Boolean):this.type ={ 	this.recordEvent = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -21,17 +21,17 @@ class MContentupdatePlayerEmbedCodesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MContentupdatePlayerEmbedCodesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MContentupdatePlayerEmbedCodesReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var embedCodes: MPlayerEmbedCodes =_
-	def withembedCodes(p:MPlayerEmbedCodes):MContentupdatePlayerEmbedCodesReq ={ 	this.embedCodes = p; 	this }
+	def withembedCodes(p:MPlayerEmbedCodes):this.type ={ 	this.embedCodes = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -39,6 +39,6 @@ class MContentupdatePlayerEmbedCodesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MContentupdatePlayerEmbedCodesReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

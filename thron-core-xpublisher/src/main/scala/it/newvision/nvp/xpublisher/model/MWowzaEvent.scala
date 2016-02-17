@@ -37,12 +37,12 @@ class MWowzaEvent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the name of the event stream""" ,required = true)
 	@BeanProperty 
 	var streamName: String =_
-	def withstreamName(p:String):MWowzaEvent ={ 	this.streamName = p; 	this }
+	def withstreamName(p:String):this.type ={ 	this.streamName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var hostInfo: MHostInfo =_
-	def withhostInfo(p:MHostInfo):MWowzaEvent ={ 	this.hostInfo = p; 	this }
+	def withhostInfo(p:MHostInfo):this.type ={ 	this.hostInfo = p; 	this }
 
 	/**
 	 * the real stat time of the event
@@ -50,7 +50,7 @@ class MWowzaEvent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the real stat time of the event""")
 	@BeanProperty 
 	var validFrom: Date =_
-	def withvalidFrom(p:Date):MWowzaEvent ={ 	this.validFrom = p; 	this }
+	def withvalidFrom(p:Date):this.type ={ 	this.validFrom = p; 	this }
 
 	/**
 	 * the real / scheduled end time of the event
@@ -58,7 +58,7 @@ class MWowzaEvent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the real / scheduled end time of the event""")
 	@BeanProperty 
 	var validTo: Date =_
-	def withvalidTo(p:Date):MWowzaEvent ={ 	this.validTo = p; 	this }
+	def withvalidTo(p:Date):this.type ={ 	this.validTo = p; 	this }
 
 	/**
 	 * used to distinguish h24 live events by the spot events.
@@ -66,7 +66,7 @@ class MWowzaEvent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to distinguish h24 live events by the spot events.""" ,required = true)
 	@BeanProperty 
 	var neverEndingLiveEvent: Boolean  = false
-	def withneverEndingLiveEvent(p:Boolean):MWowzaEvent ={ 	this.neverEndingLiveEvent = p; 	this }
+	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
 
 	/**
 	 * the list of recorded video files of the event
@@ -74,12 +74,12 @@ class MWowzaEvent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of recorded video files of the event""")
 	@BeanProperty 
 	var recordedFileNames: List[String] = new ArrayList[String]
-	def withrecordedFileNames(p:List[String]):MWowzaEvent ={ 	this.recordedFileNames = p; 	this }
+	def withrecordedFileNames(p:List[String]):this.type ={ 	this.recordedFileNames = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var confData: MWowzaEventConfData  = new MWowzaEventConfData
-	def withconfData(p:MWowzaEventConfData):MWowzaEvent ={ 	this.confData = p; 	this }
+	def withconfData(p:MWowzaEventConfData):this.type ={ 	this.confData = p; 	this }
 
 	/**
 	 * @param streamName : String

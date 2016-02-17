@@ -22,7 +22,7 @@ class MTestServicepostReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MTestServicepostReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * Optional.false, return the response filled with the parameters values
@@ -30,7 +30,7 @@ class MTestServicepostReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.false, return the response filled with the parameters values""", required = true)
 	@BeanProperty
 	var fakeResponse: Boolean =_
-	def withfakeResponse(p:Boolean):MTestServicepostReq ={ 	this.fakeResponse = p; 	this }
+	def withfakeResponse(p:Boolean):this.type ={ 	this.fakeResponse = p; 	this }
 
 	/**
 	 * Optional.
@@ -38,7 +38,7 @@ class MTestServicepostReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
 	@BeanProperty
 	var pstring: String =_
-	def withpstring(p:String):MTestServicepostReq ={ 	this.pstring = p; 	this }
+	def withpstring(p:String):this.type ={ 	this.pstring = p; 	this }
 
 	/**
 	 * Optional.
@@ -46,7 +46,7 @@ class MTestServicepostReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
 	@BeanProperty
 	var pdate: Date =_
-	def withpdate(p:Date):MTestServicepostReq ={ 	this.pdate = p; 	this }
+	def withpdate(p:Date):this.type ={ 	this.pdate = p; 	this }
 
 	/**
 	 * Optional.
@@ -54,7 +54,7 @@ class MTestServicepostReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
 	@BeanProperty
 	var penum: METestEnum =_
-	def withpenum(p:METestEnum):MTestServicepostReq ={ 	this.penum = p; 	this }
+	def withpenum(p:METestEnum):this.type ={ 	this.penum = p; 	this }
 
 	/**
 	 * Optional.
@@ -62,7 +62,7 @@ class MTestServicepostReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
 	@BeanProperty
 	var plong: Long =_
-	def withplong(p:Long):MTestServicepostReq ={ 	this.plong = p; 	this }
+	def withplong(p:Long):this.type ={ 	this.plong = p; 	this }
 
 	/**
 	 * Optional.
@@ -70,7 +70,7 @@ class MTestServicepostReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
 	@BeanProperty
 	var pparams: MTestClass =_
-	def withpparams(p:MTestClass):MTestServicepostReq ={ 	this.pparams = p; 	this }
+	def withpparams(p:MTestClass):this.type ={ 	this.pparams = p; 	this }
 
 	/**
 	 * Optional.
@@ -78,7 +78,7 @@ class MTestServicepostReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
 	@BeanProperty
 	var pint: Integer =_
-	def withpint(p:Integer):MTestServicepostReq ={ 	this.pint = p; 	this }
+	def withpint(p:Integer):this.type ={ 	this.pint = p; 	this }
 
 	/**
 	 * Optional.
@@ -86,7 +86,7 @@ class MTestServicepostReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
 	@BeanProperty
 	var pbool: Boolean =_
-	def withpbool(p:Boolean):MTestServicepostReq ={ 	this.pbool = p; 	this }
+	def withpbool(p:Boolean):this.type ={ 	this.pbool = p; 	this }
 
 	/**
 	 * Optional.
@@ -94,7 +94,7 @@ class MTestServicepostReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
 	@BeanProperty
 	var pdouble: Double =_
-	def withpdouble(p:Double):MTestServicepostReq ={ 	this.pdouble = p; 	this }
+	def withpdouble(p:Double):this.type ={ 	this.pdouble = p; 	this }
 
 	/**
 	 * Optional.
@@ -102,6 +102,6 @@ class MTestServicepostReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
 	@BeanProperty
 	var pfloat: Float =_
-	def withpfloat(p:Float):MTestServicepostReq ={ 	this.pfloat = p; 	this }
+	def withpfloat(p:Float):this.type ={ 	this.pfloat = p; 	this }
 
 }

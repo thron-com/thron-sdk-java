@@ -21,11 +21,11 @@ class MWeeboPublishergetQuotaUsageByUserIdReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboPublishergetQuotaUsageByUserIdReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MQuotaCriteria =_
-	def withcriteria(p:MQuotaCriteria):MWeeboPublishergetQuotaUsageByUserIdReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MQuotaCriteria):this.type ={ 	this.criteria = p; 	this }
 
 }

@@ -17,11 +17,11 @@ class MResponseTestList extends MResponseTest with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MTestClass] = new ArrayList[MTestClass]
-	def withitems(p:List[MTestClass]):MResponseTestList ={ 	this.items = p; 	this }
+	def withitems(p:List[MTestClass]):this.type ={ 	this.items = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseTestList ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

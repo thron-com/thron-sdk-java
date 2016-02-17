@@ -23,6 +23,6 @@ class MIdentityAdmincleanupSessionsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to limit the scope. Value can be a csv of clientIds""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MIdentityAdmincleanupSessionsReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 }

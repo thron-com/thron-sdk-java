@@ -23,17 +23,17 @@ class MPlaylistdetailReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional, For ACL validation""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPlaylistdetailReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var xcontentId: String =_
-	def withxcontentId(p:String):MPlaylistdetailReq ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var locale: String =_
-	def withlocale(p:String):MPlaylistdetailReq ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -41,6 +41,6 @@ class MPlaylistdetailReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MPlaylistdetailReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

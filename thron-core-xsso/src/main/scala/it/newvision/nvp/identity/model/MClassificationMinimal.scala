@@ -17,16 +17,16 @@ class MClassificationMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MClassificationMinimal ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var active: Boolean =_
-	def withactive(p:Boolean):MClassificationMinimal ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var entities: List[MClassificationEntityMinimal] = new ArrayList[MClassificationEntityMinimal]
-	def withentities(p:List[MClassificationEntityMinimal]):MClassificationMinimal ={ 	this.entities = p; 	this }
+	def withentities(p:List[MClassificationEntityMinimal]):this.type ={ 	this.entities = p; 	this }
 
 }

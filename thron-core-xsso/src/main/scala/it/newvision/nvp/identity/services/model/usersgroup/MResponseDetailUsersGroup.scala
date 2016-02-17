@@ -19,16 +19,16 @@ class MResponseDetailUsersGroup extends MResponseUsersGroup with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var group: MUsersGroup =_
-	def withgroup(p:MUsersGroup):MResponseDetailUsersGroup ={ 	this.group = p; 	this }
+	def withgroup(p:MUsersGroup):this.type ={ 	this.group = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var linkedUsers: List[MVUser] = new ArrayList[MVUser]
-	def withlinkedUsers(p:List[MVUser]):MResponseDetailUsersGroup ={ 	this.linkedUsers = p; 	this }
+	def withlinkedUsers(p:List[MVUser]):this.type ={ 	this.linkedUsers = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseDetailUsersGroup ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

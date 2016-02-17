@@ -42,7 +42,7 @@ class MRatingCriteria extends Serializable {
 	//#SWGNL#(human readable) 2014-06-05T09:48:09.000Z""")
 	@BeanProperty 
 	var fromDate: Date =_
-	def withfromDate(p:Date):MRatingCriteria ={ 	this.fromDate = p; 	this }
+	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
 
 	/**
 	 * Epoc timestamp in milliseconds or human readable format (yyyy-MM-ddTHH:mm:ss.
@@ -63,11 +63,11 @@ class MRatingCriteria extends Serializable {
 	//#SWGNL#(human readable) 2014-06-05T09:48:09.000Z""")
 	@BeanProperty 
 	var toDate: Date =_
-	def withtoDate(p:Date):MRatingCriteria ={ 	this.toDate = p; 	this }
+	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MRatingCriteria ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 }

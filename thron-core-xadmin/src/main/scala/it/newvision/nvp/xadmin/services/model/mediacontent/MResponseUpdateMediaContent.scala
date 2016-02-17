@@ -18,6 +18,6 @@ class MResponseUpdateMediaContent extends MResponseMediaContent with Serializabl
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var mediaContent: MMediaContent =_
-	def withmediaContent(p:MMediaContent):MResponseUpdateMediaContent ={ 	this.mediaContent = p; 	this }
+	def withmediaContent(p:MMediaContent):this.type ={ 	this.mediaContent = p; 	this }
 
 }

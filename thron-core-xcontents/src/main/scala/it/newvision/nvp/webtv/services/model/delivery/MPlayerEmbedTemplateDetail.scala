@@ -24,7 +24,7 @@ class MPlayerEmbedTemplateDetail extends MPlayerEmbedTemplate with Serializable 
 	//#SWG#@ApiModelProperty(value = """Parameter available only for player 4x version.""")
 	@BeanProperty 
 	var noLogo: Boolean  = false
-	def withnoLogo(p:Boolean):MPlayerEmbedTemplateDetail ={ 	this.noLogo = p; 	this }
+	def withnoLogo(p:Boolean):this.type ={ 	this.noLogo = p; 	this }
 
 	/**
 	 * Define the player versions in use
@@ -32,7 +32,7 @@ class MPlayerEmbedTemplateDetail extends MPlayerEmbedTemplate with Serializable 
 	//#SWG#@ApiModelProperty(value = """Define the player versions in use""")
 	@BeanProperty 
 	var playerVersions: List[String] = new ArrayList[String]
-	def withplayerVersions(p:List[String]):MPlayerEmbedTemplateDetail ={ 	this.playerVersions = p; 	this }
+	def withplayerVersions(p:List[String]):this.type ={ 	this.playerVersions = p; 	this }
 
 	/**
 	 * Google Analytics ID. Used by the player for statistics and reports.
@@ -44,7 +44,7 @@ class MPlayerEmbedTemplateDetail extends MPlayerEmbedTemplate with Serializable 
 	@Deprecated
 	var trackerGA: String =_
 	@Deprecated
-	def withtrackerGA(p:String):MPlayerEmbedTemplateDetail ={ 	this.trackerGA = p; 	this }
+	def withtrackerGA(p:String):this.type ={ 	this.trackerGA = p; 	this }
 
 	/**
 	 * @param p : MPlayerEmbedTemplate

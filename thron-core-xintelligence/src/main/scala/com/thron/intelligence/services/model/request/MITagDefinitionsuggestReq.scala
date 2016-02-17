@@ -21,6 +21,6 @@ class MITagDefinitionsuggestReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var value: MITagDefinitionValue =_
-	def withvalue(p:MITagDefinitionValue):MITagDefinitionsuggestReq ={ 	this.value = p; 	this }
+	def withvalue(p:MITagDefinitionValue):this.type ={ 	this.value = p; 	this }
 
 }

@@ -17,6 +17,6 @@ class MResponseContactDetail extends MResponseContact with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var item: MContactDetail =_
-	def withitem(p:MContactDetail):MResponseContactDetail ={ 	this.item = p; 	this }
+	def withitem(p:MContactDetail):this.type ={ 	this.item = p; 	this }
 
 }

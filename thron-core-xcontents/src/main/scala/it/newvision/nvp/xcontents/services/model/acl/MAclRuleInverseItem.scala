@@ -14,21 +14,22 @@ import it.newvision.nvp.xcontents.model.MAclRuleInverse
 @XmlRootElement(name="MAclRuleInverseItem") 
 @XmlType(name="MAclRuleInverseItem")
 //#SWG#@ApiModel(description = """""")
+@Deprecated
 class MAclRuleInverseItem extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var targetObjId: String =_
-	def withtargetObjId(p:String):MAclRuleInverseItem ={ 	this.targetObjId = p; 	this }
+	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var targetObjClass: MEObjClass =_
-	def withtargetObjClass(p:MEObjClass):MAclRuleInverseItem ={ 	this.targetObjClass = p; 	this }
+	def withtargetObjClass(p:MEObjClass):this.type ={ 	this.targetObjClass = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var sourceAcl: MAclRuleInverse =_
-	def withsourceAcl(p:MAclRuleInverse):MAclRuleInverseItem ={ 	this.sourceAcl = p; 	this }
+	def withsourceAcl(p:MAclRuleInverse):this.type ={ 	this.sourceAcl = p; 	this }
 
 }

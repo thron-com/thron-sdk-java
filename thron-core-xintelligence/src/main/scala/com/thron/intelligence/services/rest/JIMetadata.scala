@@ -43,6 +43,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 
 	/**
 	 * Add an imetadata to an entity.
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -53,7 +60,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/insert/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/insert", notes = """Add an imetadata to an entity.""", response = classOf[MResponseIMetadata])
+	//#SWG#@ApiOperation(value = "/insert", notes = """Add an imetadata to an entity.
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseIMetadata])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -112,6 +125,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 
 	/**
 	 * Remove a given imetadata to an entity.
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -124,7 +144,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/remove/{clientId}/{classificationId}/{key}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/remove", notes = """Remove a given imetadata to an entity.""", response = classOf[MResponseIMetadata])
+	//#SWG#@ApiOperation(value = "/remove", notes = """Remove a given imetadata to an entity.
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseIMetadata])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -189,6 +215,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 
 	/**
 	 * Update a given metadata to a user or content or category....
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -199,7 +232,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/update/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/update", notes = """Update a given metadata to a user or content or category....""", response = classOf[MResponseIMetadata])
+	//#SWG#@ApiOperation(value = "/update", notes = """Update a given metadata to a user or content or category....
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseIMetadata])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -258,6 +297,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 
 	/**
 	 * Add a given list of metadata to a user or content
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -268,7 +314,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/bulkInsert/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkInsert", notes = """Add a given list of metadata to a user or content""", response = classOf[MResponseIMetadataBulk])
+	//#SWG#@ApiOperation(value = "/bulkInsert", notes = """Add a given list of metadata to a user or content
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseIMetadataBulk])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkInsert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -327,6 +379,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 
 	/**
 	 * Remove a given list of imetadata to a user or content
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -337,7 +396,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/bulkRemove/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkRemove", notes = """Remove a given list of imetadata to a user or content""", response = classOf[MResponseIMetadataBulk])
+	//#SWG#@ApiOperation(value = "/bulkRemove", notes = """Remove a given list of imetadata to a user or content
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseIMetadataBulk])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkRemove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -396,6 +461,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 
 	/**
 	 * Apply a single metadata to multiple targets (users or contents)
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -406,7 +478,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/bulkInsertMultiTargets/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkInsertMultiTargets", notes = """Apply a single metadata to multiple targets (users or contents)""", response = classOf[MResponseIMetadataBulk2])
+	//#SWG#@ApiOperation(value = "/bulkInsertMultiTargets", notes = """Apply a single metadata to multiple targets (users or contents)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseIMetadataBulk2])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkInsertMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -465,6 +543,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 
 	/**
 	 * Remove a given metadata from a list of users or contents
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -475,7 +560,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/bulkRemoveMultiTargets/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkRemoveMultiTargets", notes = """Remove a given metadata from a list of users or contents""", response = classOf[MResponseIMetadataBulk2])
+	//#SWG#@ApiOperation(value = "/bulkRemoveMultiTargets", notes = """Remove a given metadata from a list of users or contents
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Target Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseIMetadataBulk2])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkRemoveMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

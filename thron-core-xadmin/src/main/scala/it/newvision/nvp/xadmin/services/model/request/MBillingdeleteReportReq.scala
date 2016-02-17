@@ -20,6 +20,6 @@ class MBillingdeleteReportReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var reportId: String =_
-	def withreportId(p:String):MBillingdeleteReportReq ={ 	this.reportId = p; 	this }
+	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
 
 }

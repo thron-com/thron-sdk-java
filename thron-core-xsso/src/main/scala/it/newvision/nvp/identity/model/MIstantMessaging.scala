@@ -20,7 +20,7 @@ class MIstantMessaging extends Serializable {
 	//#SWG#@ApiModelProperty(value = """istant messaging id""" ,required = true)
 	@BeanProperty 
 	var imId: String =_
-	def withimId(p:String):MIstantMessaging ={ 	this.imId = p; 	this }
+	def withimId(p:String):this.type ={ 	this.imId = p; 	this }
 
 	/**
 	 * possible values:
@@ -44,6 +44,6 @@ class MIstantMessaging extends Serializable {
 	//#SWGNL#... custum value""")
 	@BeanProperty 
 	var imType: String =_
-	def withimType(p:String):MIstantMessaging ={ 	this.imType = p; 	this }
+	def withimType(p:String):this.type ={ 	this.imType = p; 	this }
 
 }

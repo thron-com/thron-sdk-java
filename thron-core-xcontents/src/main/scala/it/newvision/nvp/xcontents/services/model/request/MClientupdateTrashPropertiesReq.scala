@@ -21,11 +21,11 @@ class MClientupdateTrashPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MClientupdateTrashPropertiesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var properties: MTrashProperties =_
-	def withproperties(p:MTrashProperties):MClientupdateTrashPropertiesReq ={ 	this.properties = p; 	this }
+	def withproperties(p:MTrashProperties):this.type ={ 	this.properties = p; 	this }
 
 }

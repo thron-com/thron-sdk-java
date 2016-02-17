@@ -28,12 +28,8 @@ object JAppsUtilsClient {
  * <b>
  * </b><b>Web Service Endpoints</b>:
  * <ul>
- * 	<li>WADL REST service: http://clientId-view.4me.
- * it/api/adxadmin/resources/application.wadl  </li>
- * </ul>
- * <ul>
  * 	<li>REST service: http://clientId-view.4me.
- * it/api/adxadmin/resources/appsutils/  </li>
+ * it/api/adxadmin/resources/appsutils/ </li>
  * </ul>
  */
 class JAppsUtilsClient(val resourceEndpoint:String) {

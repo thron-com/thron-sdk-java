@@ -18,6 +18,6 @@ class MResponseRestartPackagingTask extends MResponsePackager with Serializable 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var content: MPackagedContent =_
-	def withcontent(p:MPackagedContent):MResponseRestartPackagingTask ={ 	this.content = p; 	this }
+	def withcontent(p:MPackagedContent):this.type ={ 	this.content = p; 	this }
 
 }

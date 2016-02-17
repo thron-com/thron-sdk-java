@@ -21,6 +21,6 @@ class MResponseITagBulk extends MResponseITag with Serializable  {
 	//#SWG#@ApiModelProperty(value = """list of itags not processed.""")
 	@BeanProperty 
 	var itagsInIssue: List[String] = new ArrayList[String]
-	def withitagsInIssue(p:List[String]):MResponseITagBulk ={ 	this.itagsInIssue = p; 	this }
+	def withitagsInIssue(p:List[String]):this.type ={ 	this.itagsInIssue = p; 	this }
 
 }

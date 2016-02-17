@@ -21,17 +21,17 @@ class MRatingFixedRangeremoveRatingsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MRatingFixedRangeremoveRatingsReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MRatingFixedRangeremoveRatingsReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MRatingCriteria =_
-	def withcriteria(p:MRatingCriteria):MRatingFixedRangeremoveRatingsReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MRatingCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -39,6 +39,6 @@ class MRatingFixedRangeremoveRatingsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MRatingFixedRangeremoveRatingsReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

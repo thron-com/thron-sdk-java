@@ -22,21 +22,21 @@ class MRepositoryAdminupdateFileStatusReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MRepositoryAdminupdateFileStatusReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var file: MFile =_
-	def withfile(p:MFile):MRepositoryAdminupdateFileStatusReq ={ 	this.file = p; 	this }
+	def withfile(p:MFile):this.type ={ 	this.file = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var siteName: String =_
-	def withsiteName(p:String):MRepositoryAdminupdateFileStatusReq ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var status: MEFileStatus =_
-	def withstatus(p:MEFileStatus):MRepositoryAdminupdateFileStatusReq ={ 	this.status = p; 	this }
+	def withstatus(p:MEFileStatus):this.type ={ 	this.status = p; 	this }
 
 }

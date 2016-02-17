@@ -23,12 +23,12 @@ class MVUserManagerfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MVUserManagerfindByPropertiesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MVUserCriteria =_
-	def withcriteria(p:MVUserCriteria):MVUserManagerfindByPropertiesReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MVUserCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * Optional
@@ -36,7 +36,7 @@ class MVUserManagerfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var orderBy: MEVuserOrderBy =_
-	def withorderBy(p:MEVuserOrderBy):MVUserManagerfindByPropertiesReq ={ 	this.orderBy = p; 	this }
+	def withorderBy(p:MEVuserOrderBy):this.type ={ 	this.orderBy = p; 	this }
 
 	/**
 	 * Optional
@@ -44,12 +44,12 @@ class MVUserManagerfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var fieldOptions: MVUserFieldsOption =_
-	def withfieldOptions(p:MVUserFieldsOption):MVUserManagerfindByPropertiesReq ={ 	this.fieldOptions = p; 	this }
+	def withfieldOptions(p:MVUserFieldsOption):this.type ={ 	this.fieldOptions = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MVUserManagerfindByPropertiesReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Default and maximum value is 50 items
@@ -57,6 +57,6 @@ class MVUserManagerfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default and maximum value is 50 items""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MVUserManagerfindByPropertiesReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

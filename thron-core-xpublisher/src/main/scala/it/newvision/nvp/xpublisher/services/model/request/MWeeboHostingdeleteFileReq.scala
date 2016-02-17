@@ -20,16 +20,16 @@ class MWeeboHostingdeleteFileReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboHostingdeleteFileReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var path: String =_
-	def withpath(p:String):MWeeboHostingdeleteFileReq ={ 	this.path = p; 	this }
+	def withpath(p:String):this.type ={ 	this.path = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var filename: String =_
-	def withfilename(p:String):MWeeboHostingdeleteFileReq ={ 	this.filename = p; 	this }
+	def withfilename(p:String):this.type ={ 	this.filename = p; 	this }
 
 }

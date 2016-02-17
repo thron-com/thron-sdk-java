@@ -30,6 +30,6 @@ class MContextUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """label and description values for the classification in multilocale""")
 	@BeanProperty 
 	var names: List[MLocalization] =_
-	def withnames(p:List[MLocalization]):MContextUpdate ={ 	this.names = p; 	this }
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 }

@@ -21,6 +21,6 @@ class MThumbnailUploaded extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the source File Descriptor.""")
 	@BeanProperty 
 	var file: MFile =_
-	def withfile(p:MFile):MThumbnailUploaded ={ 	this.file = p; 	this }
+	def withfile(p:MFile):this.type ={ 	this.file = p; 	this }
 
 }

@@ -17,7 +17,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MBillingItem ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * 3x or 4x or disabled
@@ -25,7 +25,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """3x or 4x or disabled""" ,required = true)
 	@BeanProperty 
 	var clientType: String =_
-	def withclientType(p:String):MBillingItem ={ 	this.clientType = p; 	this }
+	def withclientType(p:String):this.type ={ 	this.clientType = p; 	this }
 
 	/**
 	 * in Bytes
@@ -33,7 +33,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """in Bytes""" ,required = true)
 	@BeanProperty 
 	var totalTraffic: Long =_
-	def withtotalTraffic(p:Long):MBillingItem ={ 	this.totalTraffic = p; 	this }
+	def withtotalTraffic(p:Long):this.type ={ 	this.totalTraffic = p; 	this }
 
 	/**
 	 * from traffic report
@@ -41,7 +41,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """from traffic report""" ,required = true)
 	@BeanProperty 
 	var totalHits: Long =_
-	def withtotalHits(p:Long):MBillingItem ={ 	this.totalHits = p; 	this }
+	def withtotalHits(p:Long):this.type ={ 	this.totalHits = p; 	this }
 
 	/**
 	 * in Bytes (repository + CDN)
@@ -49,7 +49,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """in Bytes (repository + CDN)""" ,required = true)
 	@BeanProperty 
 	var maxStorage: Long =_
-	def withmaxStorage(p:Long):MBillingItem ={ 	this.maxStorage = p; 	this }
+	def withmaxStorage(p:Long):this.type ={ 	this.maxStorage = p; 	this }
 
 	/**
 	 * in Bytes (repository + cdn )
@@ -57,7 +57,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """in Bytes (repository + cdn )""" ,required = true)
 	@BeanProperty 
 	var totalStorage: Long =_
-	def withtotalStorage(p:Long):MBillingItem ={ 	this.totalStorage = p; 	this }
+	def withtotalStorage(p:Long):this.type ={ 	this.totalStorage = p; 	this }
 
 	/**
 	 * Not defined
@@ -65,7 +65,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Not defined""" ,required = true)
 	@BeanProperty 
 	var totalLiveTime: Long =_
-	def withtotalLiveTime(p:Long):MBillingItem ={ 	this.totalLiveTime = p; 	this }
+	def withtotalLiveTime(p:Long):this.type ={ 	this.totalLiveTime = p; 	this }
 
 	/**
 	 * total users
@@ -73,7 +73,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total users""" ,required = true)
 	@BeanProperty 
 	var totalUsers: Long =_
-	def withtotalUsers(p:Long):MBillingItem ={ 	this.totalUsers = p; 	this }
+	def withtotalUsers(p:Long):this.type ={ 	this.totalUsers = p; 	this }
 
 	/**
 	 * total number of Apps
@@ -81,7 +81,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total number of Apps""" ,required = true)
 	@BeanProperty 
 	var totalApps: Long =_
-	def withtotalApps(p:Long):MBillingItem ={ 	this.totalApps = p; 	this }
+	def withtotalApps(p:Long):this.type ={ 	this.totalApps = p; 	this }
 
 	/**
 	 * total number of users (Guest type)
@@ -89,7 +89,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total number of users (Guest type)""" ,required = true)
 	@BeanProperty 
 	var totalGuest: Long =_
-	def withtotalGuest(p:Long):MBillingItem ={ 	this.totalGuest = p; 	this }
+	def withtotalGuest(p:Long):this.type ={ 	this.totalGuest = p; 	this }
 
 	/**
 	 * max number of users in the time range.
@@ -97,7 +97,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """max number of users in the time range.""" ,required = true)
 	@BeanProperty 
 	var maxNumberOfUsers: Long =_
-	def withmaxNumberOfUsers(p:Long):MBillingItem ={ 	this.maxNumberOfUsers = p; 	this }
+	def withmaxNumberOfUsers(p:Long):this.type ={ 	this.maxNumberOfUsers = p; 	this }
 
 	/**
 	 * max number of users (guest) in the time range.
@@ -105,7 +105,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """max number of users (guest) in the time range.""" ,required = true)
 	@BeanProperty 
 	var maxNumberOfGuests: Long =_
-	def withmaxNumberOfGuests(p:Long):MBillingItem ={ 	this.maxNumberOfGuests = p; 	this }
+	def withmaxNumberOfGuests(p:Long):this.type ={ 	this.maxNumberOfGuests = p; 	this }
 
 	/**
 	 * max number of apps in the time range.
@@ -113,7 +113,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """max number of apps in the time range.""" ,required = true)
 	@BeanProperty 
 	var maxNumberOfApps: Long =_
-	def withmaxNumberOfApps(p:Long):MBillingItem ={ 	this.maxNumberOfApps = p; 	this }
+	def withmaxNumberOfApps(p:Long):this.type ={ 	this.maxNumberOfApps = p; 	this }
 
 	/**
 	 * total contacts
@@ -121,7 +121,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total contacts""" ,required = true)
 	@BeanProperty 
 	var totalContacts: Long =_
-	def withtotalContacts(p:Long):MBillingItem ={ 	this.totalContacts = p; 	this }
+	def withtotalContacts(p:Long):this.type ={ 	this.totalContacts = p; 	this }
 
 	/**
 	 * total contacts unmerged (number of unique anonymous contacts)
@@ -129,7 +129,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total contacts unmerged (number of unique anonymous contacts)""" ,required = true)
 	@BeanProperty 
 	var totalContactsUnmerged: Long =_
-	def withtotalContactsUnmerged(p:Long):MBillingItem ={ 	this.totalContactsUnmerged = p; 	this }
+	def withtotalContactsUnmerged(p:Long):this.type ={ 	this.totalContactsUnmerged = p; 	this }
 
 	/**
 	 * number of contacts active in the time range
@@ -137,7 +137,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """number of contacts active in the time range""" ,required = true)
 	@BeanProperty 
 	var totalContactsActive: Long =_
-	def withtotalContactsActive(p:Long):MBillingItem ={ 	this.totalContactsActive = p; 	this }
+	def withtotalContactsActive(p:Long):this.type ={ 	this.totalContactsActive = p; 	this }
 
 	/**
 	 * number of unmerged contacts in the time range
@@ -145,7 +145,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """number of unmerged contacts in the time range""" ,required = true)
 	@BeanProperty 
 	var totalContactsUnmergedActive: Long =_
-	def withtotalContactsUnmergedActive(p:Long):MBillingItem ={ 	this.totalContactsUnmergedActive = p; 	this }
+	def withtotalContactsUnmergedActive(p:Long):this.type ={ 	this.totalContactsUnmergedActive = p; 	this }
 
 	/**
 	 * additional info.
@@ -153,7 +153,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """additional info.""" ,required = true)
 	@BeanProperty 
 	var otherInfo: String =_
-	def withotherInfo(p:String):MBillingItem ={ 	this.otherInfo = p; 	this }
+	def withotherInfo(p:String):this.type ={ 	this.otherInfo = p; 	this }
 
 	/**
 	 * total number of contents not in trash (creation date based)
@@ -161,7 +161,7 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total number of contents not in trash (creation date based)""" ,required = true)
 	@BeanProperty 
 	var totalContents: Long =_
-	def withtotalContents(p:Long):MBillingItem ={ 	this.totalContents = p; 	this }
+	def withtotalContents(p:Long):this.type ={ 	this.totalContents = p; 	this }
 
 	/**
 	 * contents created in the month (based on creation date)
@@ -169,6 +169,6 @@ class MBillingItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """contents created in the month (based on creation date)""" ,required = true)
 	@BeanProperty 
 	var newContents: Long =_
-	def withnewContents(p:Long):MBillingItem ={ 	this.newContents = p; 	this }
+	def withnewContents(p:Long):this.type ={ 	this.newContents = p; 	this }
 
 }

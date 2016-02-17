@@ -18,11 +18,11 @@ class MLinkedContentRemoveCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var linkedContentsId: List[String] = new ArrayList[String]
-	def withlinkedContentsId(p:List[String]):MLinkedContentRemoveCriteria ={ 	this.linkedContentsId = p; 	this }
+	def withlinkedContentsId(p:List[String]):this.type ={ 	this.linkedContentsId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var linkType: MELinkType =_
-	def withlinkType(p:MELinkType):MLinkedContentRemoveCriteria ={ 	this.linkType = p; 	this }
+	def withlinkType(p:MELinkType):this.type ={ 	this.linkType = p; 	this }
 
 }

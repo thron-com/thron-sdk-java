@@ -21,21 +21,21 @@ class MReportsWeebofindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MReportsWeebofindByPropertiesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MCriteriaForReport =_
-	def withcriteria(p:MCriteriaForReport):MReportsWeebofindByPropertiesReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MCriteriaForReport):this.type ={ 	this.criteria = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MReportsWeebofindByPropertiesReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfResults: Integer =_
-	def withnumberOfResults(p:Integer):MReportsWeebofindByPropertiesReq ={ 	this.numberOfResults = p; 	this }
+	def withnumberOfResults(p:Integer):this.type ={ 	this.numberOfResults = p; 	this }
 
 }

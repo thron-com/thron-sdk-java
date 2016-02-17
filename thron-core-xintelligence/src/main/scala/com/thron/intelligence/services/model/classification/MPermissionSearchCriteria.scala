@@ -21,11 +21,11 @@ class MPermissionSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of MClassificationPermission.id""")
 	@BeanProperty 
 	var ids: List[String] = new ArrayList[String]
-	def withids(p:List[String]):MPermissionSearchCriteria ={ 	this.ids = p; 	this }
+	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var permission: List[MEPermission] = new ArrayList[MEPermission]
-	def withpermission(p:List[MEPermission]):MPermissionSearchCriteria ={ 	this.permission = p; 	this }
+	def withpermission(p:List[MEPermission]):this.type ={ 	this.permission = p; 	this }
 
 }

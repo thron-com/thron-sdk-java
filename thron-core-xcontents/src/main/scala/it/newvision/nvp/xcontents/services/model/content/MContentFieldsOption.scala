@@ -38,7 +38,7 @@ class MContentFieldsOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default false""")
 	@BeanProperty 
 	var returnLinkedContents: Boolean  = false
-	def withreturnLinkedContents(p:Boolean):MContentFieldsOption ={ 	this.returnLinkedContents = p; 	this }
+	def withreturnLinkedContents(p:Boolean):this.type ={ 	this.returnLinkedContents = p; 	this }
 
 	/**
 	 * Default  false
@@ -46,7 +46,7 @@ class MContentFieldsOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default  false""")
 	@BeanProperty 
 	var returnLinkedCategories: Boolean  = false
-	def withreturnLinkedCategories(p:Boolean):MContentFieldsOption ={ 	this.returnLinkedCategories = p; 	this }
+	def withreturnLinkedCategories(p:Boolean):this.type ={ 	this.returnLinkedCategories = p; 	this }
 
 	/**
 	 * Default true
@@ -54,7 +54,7 @@ class MContentFieldsOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default true""")
 	@BeanProperty 
 	var returnEmbedCodes: Boolean  = true
-	def withreturnEmbedCodes(p:Boolean):MContentFieldsOption ={ 	this.returnEmbedCodes = p; 	this }
+	def withreturnEmbedCodes(p:Boolean):this.type ={ 	this.returnEmbedCodes = p; 	this }
 
 	/**
 	 * Default false
@@ -62,7 +62,7 @@ class MContentFieldsOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default false""")
 	@BeanProperty 
 	var returnThumbnailUrl: Boolean  = false
-	def withreturnThumbnailUrl(p:Boolean):MContentFieldsOption ={ 	this.returnThumbnailUrl = p; 	this }
+	def withreturnThumbnailUrl(p:Boolean):this.type ={ 	this.returnThumbnailUrl = p; 	this }
 
 	/**
 	 * return the list of itags (intelligence tags)
@@ -72,7 +72,7 @@ class MContentFieldsOption extends Serializable {
 	//#SWGNL#Default false.""")
 	@BeanProperty 
 	var returnItags: Boolean  = false
-	def withreturnItags(p:Boolean):MContentFieldsOption ={ 	this.returnItags = p; 	this }
+	def withreturnItags(p:Boolean):this.type ={ 	this.returnItags = p; 	this }
 
 	/**
 	 * Return the list of custom metadata from intelligence
@@ -82,6 +82,6 @@ class MContentFieldsOption extends Serializable {
 	//#SWGNL#Default false.""")
 	@BeanProperty 
 	var returnImetadata: Boolean  = false
-	def withreturnImetadata(p:Boolean):MContentFieldsOption ={ 	this.returnImetadata = p; 	this }
+	def withreturnImetadata(p:Boolean):this.type ={ 	this.returnImetadata = p; 	this }
 
 }

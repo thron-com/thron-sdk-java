@@ -23,11 +23,11 @@ class MContactremoveKeyReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contactId: String =_
-	def withcontactId(p:String):MContactremoveKeyReq ={ 	this.contactId = p; 	this }
+	def withcontactId(p:String):this.type ={ 	this.contactId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var key: String =_
-	def withkey(p:String):MContactremoveKeyReq ={ 	this.key = p; 	this }
+	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
 }

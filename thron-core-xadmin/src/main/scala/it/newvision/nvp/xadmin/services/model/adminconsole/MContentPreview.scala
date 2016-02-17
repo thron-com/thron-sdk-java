@@ -17,7 +17,7 @@ class MContentPreview extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var filename: String =_
-	def withfilename(p:String):MContentPreview ={ 	this.filename = p; 	this }
+	def withfilename(p:String):this.type ={ 	this.filename = p; 	this }
 
 	/**
 	 * url of the webservice to get the content. Example: http//<client-
@@ -26,26 +26,26 @@ class MContentPreview extends Serializable {
 	//#SWG#@ApiModelProperty(value = """url of the webservice to get the content. Example: http//<client-hostname>/resources/getpreview?filename""" ,required = true)
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MContentPreview ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var siteName: String =_
-	def withsiteName(p:String):MContentPreview ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var size: Long =_
-	def withsize(p:Long):MContentPreview ={ 	this.size = p; 	this }
+	def withsize(p:Long):this.type ={ 	this.size = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var mimetype: String =_
-	def withmimetype(p:String):MContentPreview ={ 	this.mimetype = p; 	this }
+	def withmimetype(p:String):this.type ={ 	this.mimetype = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var path: String =_
-	def withpath(p:String):MContentPreview ={ 	this.path = p; 	this }
+	def withpath(p:String):this.type ={ 	this.path = p; 	this }
 
 }

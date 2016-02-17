@@ -21,7 +21,7 @@ class MResponseGetComments extends MResponseComment with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the lists of contents satisfy the search criteria. le content list has the comments collection filtered with only the elements matching the search.""")
 	@BeanProperty 
 	var comments: List[MCommentDetail] = new ArrayList[MCommentDetail]
-	def withcomments(p:List[MCommentDetail]):MResponseGetComments ={ 	this.comments = p; 	this }
+	def withcomments(p:List[MCommentDetail]):this.type ={ 	this.comments = p; 	this }
 
 	/**
 	 * total number of results
@@ -29,6 +29,6 @@ class MResponseGetComments extends MResponseComment with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseGetComments ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

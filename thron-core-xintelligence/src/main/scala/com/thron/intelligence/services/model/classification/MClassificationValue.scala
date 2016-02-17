@@ -23,7 +23,7 @@ class MClassificationValue extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var active: Boolean  = true
-	def withactive(p:Boolean):MClassificationValue ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * can be TARGET/TOPIC/CUSTOM
@@ -31,17 +31,17 @@ class MClassificationValue extends Serializable {
 	//#SWG#@ApiModelProperty(value = """can be TARGET/TOPIC/CUSTOM""" ,required = true)
 	@BeanProperty 
 	var classificationType: MEClassificationType =_
-	def withclassificationType(p:MEClassificationType):MClassificationValue ={ 	this.classificationType = p; 	this }
+	def withclassificationType(p:MEClassificationType):this.type ={ 	this.classificationType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var entities: List[MClassificationEntity] = new ArrayList[MClassificationEntity]
-	def withentities(p:List[MClassificationEntity]):MClassificationValue ={ 	this.entities = p; 	this }
+	def withentities(p:List[MClassificationEntity]):this.type ={ 	this.entities = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):MClassificationValue ={ 	this.names = p; 	this }
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * @return Boolean

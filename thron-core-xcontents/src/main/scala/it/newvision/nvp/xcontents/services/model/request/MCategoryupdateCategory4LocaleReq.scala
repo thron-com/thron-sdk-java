@@ -22,16 +22,16 @@ class MCategoryupdateCategory4LocaleReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MCategoryupdateCategory4LocaleReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var catId: String =_
-	def withcatId(p:String):MCategoryupdateCategory4LocaleReq ={ 	this.catId = p; 	this }
+	def withcatId(p:String):this.type ={ 	this.catId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var property: MCategory4Locale =_
-	def withproperty(p:MCategory4Locale):MCategoryupdateCategory4LocaleReq ={ 	this.property = p; 	this }
+	def withproperty(p:MCategory4Locale):this.type ={ 	this.property = p; 	this }
 
 }

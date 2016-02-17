@@ -24,7 +24,7 @@ class MContentfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MContentfindByPropertiesReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	/**
 	 * Optional
@@ -32,7 +32,7 @@ class MContentfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var criteria: MContentCriteria =_
-	def withcriteria(p:MContentCriteria):MContentfindByPropertiesReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MContentCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * Optional.If the client desires to have the content description for a specific
@@ -49,7 +49,7 @@ class MContentfindByPropertiesReq extends Serializable {
 	//#SWGNL#Locale code (ISO639-1)""", required = true)
 	@BeanProperty
 	var locale: String =_
-	def withlocale(p:String):MContentfindByPropertiesReq ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * Optional. Used to order the result set for a specific field
@@ -57,7 +57,7 @@ class MContentfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Used to order the result set for a specific field""", required = true)
 	@BeanProperty
 	var orderBy: MEContentOrderBy =_
-	def withorderBy(p:MEContentOrderBy):MContentfindByPropertiesReq ={ 	this.orderBy = p; 	this }
+	def withorderBy(p:MEContentOrderBy):this.type ={ 	this.orderBy = p; 	this }
 
 	/**
 	 * Optional. Used to specify if the service should return or not some additional
@@ -66,7 +66,7 @@ class MContentfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Used to specify if the service should return or not some additional information about the content""", required = true)
 	@BeanProperty
 	var contentFieldOption: MContentFieldsOption =_
-	def withcontentFieldOption(p:MContentFieldsOption):MContentfindByPropertiesReq ={ 	this.contentFieldOption = p; 	this }
+	def withcontentFieldOption(p:MContentFieldsOption):this.type ={ 	this.contentFieldOption = p; 	this }
 
 	/**
 	 * Optional. Define the area where the thumbnail should be displayed. Used to
@@ -81,7 +81,7 @@ class MContentfindByPropertiesReq extends Serializable {
 	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768u""", required = true)
 	@BeanProperty
 	var divArea: String =_
-	def withdivArea(p:String):MContentfindByPropertiesReq ={ 	this.divArea = p; 	this }
+	def withdivArea(p:String):this.type ={ 	this.divArea = p; 	this }
 
 	/**
 	 * Optional. default 0
@@ -89,7 +89,7 @@ class MContentfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. default 0""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MContentfindByPropertiesReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Default and maximum value is 50 items
@@ -97,6 +97,6 @@ class MContentfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default and maximum value is 50 items""", required = true)
 	@BeanProperty
 	var numberOfresults: Integer =_
-	def withnumberOfresults(p:Integer):MContentfindByPropertiesReq ={ 	this.numberOfresults = p; 	this }
+	def withnumberOfresults(p:Integer):this.type ={ 	this.numberOfresults = p; 	this }
 
 }

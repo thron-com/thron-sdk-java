@@ -26,7 +26,7 @@ class MLinkedContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """a contentId element""" ,required = true)
 	@BeanProperty 
 	var xcontentId: String =_
-	def withxcontentId(p:String):MLinkedContent ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * Used to specify the linkedContent Association
@@ -34,7 +34,7 @@ class MLinkedContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to specify the linkedContent Association""" ,required = true)
 	@BeanProperty 
 	var linkType: MELinkType =_
-	def withlinkType(p:MELinkType):MLinkedContent ={ 	this.linkType = p; 	this }
+	def withlinkType(p:MELinkType):this.type ={ 	this.linkType = p; 	this }
 
 	/**
 	 * NOT IMPLEMENTED.
@@ -85,7 +85,7 @@ class MLinkedContent extends Serializable {
 	@Deprecated
 	var selectedChannel: String =_
 	@Deprecated
-	def withselectedChannel(p:String):MLinkedContent ={ 	this.selectedChannel = p; 	this }
+	def withselectedChannel(p:String):this.type ={ 	this.selectedChannel = p; 	this }
 
 	/**
 	 * Desired position of the element inside the linkedContents list. If missing, the
@@ -94,7 +94,7 @@ class MLinkedContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Desired position of the element inside the linkedContents list. If missing, the element is enqueued.""")
 	@BeanProperty 
 	var position: Integer =_
-	def withposition(p:Integer):MLinkedContent ={ 	this.position = p; 	this }
+	def withposition(p:Integer):this.type ={ 	this.position = p; 	this }
 
 	/**
 	 * @return Boolean

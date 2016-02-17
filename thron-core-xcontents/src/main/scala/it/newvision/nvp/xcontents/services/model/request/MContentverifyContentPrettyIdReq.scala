@@ -21,6 +21,6 @@ class MContentverifyContentPrettyIdReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var prettyId: MPrettyId =_
-	def withprettyId(p:MPrettyId):MContentverifyContentPrettyIdReq ={ 	this.prettyId = p; 	this }
+	def withprettyId(p:MPrettyId):this.type ={ 	this.prettyId = p; 	this }
 
 }

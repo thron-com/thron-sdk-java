@@ -20,12 +20,12 @@ class MRating extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String  = java.util.UUID.randomUUID.toString
-	def withid(p:String):MRating ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var score: Double =_
-	def withscore(p:Double):MRating ={ 	this.score = p; 	this }
+	def withscore(p:Double):this.type ={ 	this.score = p; 	this }
 
 	/**
 	 * not required
@@ -33,16 +33,16 @@ class MRating extends Serializable {
 	//#SWG#@ApiModelProperty(value = """not required""" ,required = true)
 	@BeanProperty 
 	var ts: Date =_
-	def withts(p:Date):MRating ={ 	this.ts = p; 	this }
+	def withts(p:Date):this.type ={ 	this.ts = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MRating ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var content: MContent =_
-	  def withcontent(p:MContent):MRating ={ 	this.content = p; 	this }
+	  def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
 
 }

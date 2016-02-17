@@ -19,16 +19,16 @@ class MResponsePublishWeebo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MEPublishWeebo  = MEPublishWeebo.OK
-	def withresultCode(p:MEPublishWeebo):MResponsePublishWeebo ={ 	this.resultCode = p; 	this }
+	def withresultCode(p:MEPublishWeebo):this.type ={ 	this.resultCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var ssoCode: MESSO  = MESSO.OK
-	def withssoCode(p:MESSO):MResponsePublishWeebo ={ 	this.ssoCode = p; 	this }
+	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var errorDescription: String  = ""
-	def witherrorDescription(p:String):MResponsePublishWeebo ={ 	this.errorDescription = p; 	this }
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

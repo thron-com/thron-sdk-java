@@ -20,7 +20,7 @@ class MResponseGetQuota extends MResponseRepository with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total amount of space available in the working Area (in MegaBytes)""" ,required = true)
 	@BeanProperty 
 	var totalSpace: Long =_
-	def withtotalSpace(p:Long):MResponseGetQuota ={ 	this.totalSpace = p; 	this }
+	def withtotalSpace(p:Long):this.type ={ 	this.totalSpace = p; 	this }
 
 	/**
 	 * used space in the Working Area (in MegaBytes)
@@ -28,7 +28,7 @@ class MResponseGetQuota extends MResponseRepository with Serializable  {
 	//#SWG#@ApiModelProperty(value = """used space in the Working Area (in MegaBytes)""" ,required = true)
 	@BeanProperty 
 	var usedSpace: Long =_
-	def withusedSpace(p:Long):MResponseGetQuota ={ 	this.usedSpace = p; 	this }
+	def withusedSpace(p:Long):this.type ={ 	this.usedSpace = p; 	this }
 
 	/**
 	 * storage space in Safe Area used by the files (in MegaBytes)
@@ -41,7 +41,7 @@ class MResponseGetQuota extends MResponseRepository with Serializable  {
 	//#SWGNL#All removed repository files are saved in Safe Area with a retention time, before to be definitively removed. """ ,required = true)
 	@BeanProperty 
 	var usedSpaceFromSafeArea: Long =_
-	def withusedSpaceFromSafeArea(p:Long):MResponseGetQuota ={ 	this.usedSpaceFromSafeArea = p; 	this }
+	def withusedSpaceFromSafeArea(p:Long):this.type ={ 	this.usedSpaceFromSafeArea = p; 	this }
 
 	/**
 	 * @return Long

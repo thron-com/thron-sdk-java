@@ -17,7 +17,7 @@ class MRatingProperty extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var maxDailyVotesForUser: Integer =_
-	def withmaxDailyVotesForUser(p:Integer):MRatingProperty ={ 	this.maxDailyVotesForUser = p; 	this }
+	def withmaxDailyVotesForUser(p:Integer):this.type ={ 	this.maxDailyVotesForUser = p; 	this }
 
 	/**
 	 * The user can vote only once.
@@ -25,6 +25,6 @@ class MRatingProperty extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The user can vote only once.""" ,required = true)
 	@BeanProperty 
 	var onlyOneVote: Boolean  = true
-	def withonlyOneVote(p:Boolean):MRatingProperty ={ 	this.onlyOneVote = p; 	this }
+	def withonlyOneVote(p:Boolean):this.type ={ 	this.onlyOneVote = p; 	this }
 
 }

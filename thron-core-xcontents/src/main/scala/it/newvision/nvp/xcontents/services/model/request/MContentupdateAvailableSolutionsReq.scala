@@ -21,17 +21,17 @@ class MContentupdateAvailableSolutionsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MContentupdateAvailableSolutionsReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MContentupdateAvailableSolutionsReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentValues: MContentAvailableSolutionsUpdate =_
-	def withcontentValues(p:MContentAvailableSolutionsUpdate):MContentupdateAvailableSolutionsReq ={ 	this.contentValues = p; 	this }
+	def withcontentValues(p:MContentAvailableSolutionsUpdate):this.type ={ 	this.contentValues = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -39,6 +39,6 @@ class MContentupdateAvailableSolutionsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MContentupdateAvailableSolutionsReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

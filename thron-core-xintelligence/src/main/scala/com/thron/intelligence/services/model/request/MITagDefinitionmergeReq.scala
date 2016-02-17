@@ -20,11 +20,11 @@ class MITagDefinitionmergeReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var sourceITagId: String =_
-	def withsourceITagId(p:String):MITagDefinitionmergeReq ={ 	this.sourceITagId = p; 	this }
+	def withsourceITagId(p:String):this.type ={ 	this.sourceITagId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var targetITagId: String =_
-	def withtargetITagId(p:String):MITagDefinitionmergeReq ={ 	this.targetITagId = p; 	this }
+	def withtargetITagId(p:String):this.type ={ 	this.targetITagId = p; 	this }
 
 }

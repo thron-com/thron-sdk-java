@@ -19,11 +19,11 @@ class MResponseReportsWeeboFindByProperties extends MResponseReports with Serial
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var reports: List[MReportWeebo] = new ArrayList[MReportWeebo]
-	def withreports(p:List[MReportWeebo]):MResponseReportsWeeboFindByProperties ={ 	this.reports = p; 	this }
+	def withreports(p:List[MReportWeebo]):this.type ={ 	this.reports = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseReportsWeeboFindByProperties ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

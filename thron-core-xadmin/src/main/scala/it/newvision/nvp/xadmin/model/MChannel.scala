@@ -29,17 +29,17 @@ class MChannel extends Serializable {
 	//#SWGNL#Each publishing process is specific for a channel type""")
 	@BeanProperty 
 	var packagedId: String =_
-	def withpackagedId(p:String):MChannel ={ 	this.packagedId = p; 	this }
+	def withpackagedId(p:String):this.type ={ 	this.packagedId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var channelType: String =_
-	def withchannelType(p:String):MChannel ={ 	this.channelType = p; 	this }
+	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEPublishingStatus  = MEPublishingStatus.UPLOADED
-	def withstatus(p:MEPublishingStatus):MChannel ={ 	this.status = p; 	this }
+	def withstatus(p:MEPublishingStatus):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * Start Time of the publishing process for the current channel
@@ -47,7 +47,7 @@ class MChannel extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Start Time of the publishing process for the current channel""" ,required = true)
 	@BeanProperty 
 	var startTime: Date  = new Date
-	def withstartTime(p:Date):MChannel ={ 	this.startTime = p; 	this }
+	def withstartTime(p:Date):this.type ={ 	this.startTime = p; 	this }
 
 	/**
 	 * Finish Time of the publishing process for the current channel
@@ -55,7 +55,7 @@ class MChannel extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Finish Time of the publishing process for the current channel""")
 	@BeanProperty 
 	var finishTime: Date =_
-	def withfinishTime(p:Date):MChannel ={ 	this.finishTime = p; 	this }
+	def withfinishTime(p:Date):this.type ={ 	this.finishTime = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -69,7 +69,7 @@ class MChannel extends Serializable {
 	@Deprecated
 	var changethumbnailPkId: String =_
 	@Deprecated
-	def withchangethumbnailPkId(p:String):MChannel ={ 	this.changethumbnailPkId = p; 	this }
+	def withchangethumbnailPkId(p:String):this.type ={ 	this.changethumbnailPkId = p; 	this }
 
 	/**
 	 * Indicates the percentage of the conversion process. The value is automatically
@@ -79,6 +79,6 @@ class MChannel extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Indicates the percentage of the conversion process. The value is automatically calculated and never stored in the database. The value is calculated only for the detailMediaContent service.""")
 	@BeanProperty 
 	var stateOfProgress: Integer =_
-	def withstateOfProgress(p:Integer):MChannel ={ 	this.stateOfProgress = p; 	this }
+	def withstateOfProgress(p:Integer):this.type ={ 	this.stateOfProgress = p; 	this }
 
 }

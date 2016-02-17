@@ -25,7 +25,7 @@ class MSnippetUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the version id of the snippet""" ,required = true)
 	@BeanProperty 
 	var version: String =_
-	def withversion(p:String):MSnippetUpdateData ={ 	this.version = p; 	this }
+	def withversion(p:String):this.type ={ 	this.version = p; 	this }
 
 	/**
 	 * used to enable/disable a snippet
@@ -33,22 +33,22 @@ class MSnippetUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MESnippetStatus =_
-	def withstatus(p:MESnippetStatus):MSnippetUpdateData ={ 	this.status = p; 	this }
+	def withstatus(p:MESnippetStatus):this.type ={ 	this.status = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var snippetType: String =_
-	def withsnippetType(p:String):MSnippetUpdateData ={ 	this.snippetType = p; 	this }
+	def withsnippetType(p:String):this.type ={ 	this.snippetType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var templateId: String =_
-	def withtemplateId(p:String):MSnippetUpdateData ={ 	this.templateId = p; 	this }
+	def withtemplateId(p:String):this.type ={ 	this.templateId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var templateVersion: String =_
-	def withtemplateVersion(p:String):MSnippetUpdateData ={ 	this.templateVersion = p; 	this }
+	def withtemplateVersion(p:String):this.type ={ 	this.templateVersion = p; 	this }
 
 	/**
 	 * custom metadata (json format) used to store the configuration metadata of the
@@ -57,7 +57,7 @@ class MSnippetUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """custom metadata (json format) used to store the configuration metadata of the snippet.""")
 	@BeanProperty 
 	var configData: String =_
-	def withconfigData(p:String):MSnippetUpdateData ={ 	this.configData = p; 	this }
+	def withconfigData(p:String):this.type ={ 	this.configData = p; 	this }
 
 	/**
 	 * generic metadata linked to the snippet
@@ -65,12 +65,12 @@ class MSnippetUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """generic metadata linked to the snippet""")
 	@BeanProperty 
 	var metadata: List[MMetadata] =_
-	def withmetadata(p:List[MMetadata]):MSnippetUpdateData ={ 	this.metadata = p; 	this }
+	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var displayName: String =_
-	def withdisplayName(p:String):MSnippetUpdateData ={ 	this.displayName = p; 	this }
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
 	/**
 	 * custom description of the snippet
@@ -78,6 +78,6 @@ class MSnippetUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """custom description of the snippet""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MSnippetUpdateData ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 }

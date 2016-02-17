@@ -43,7 +43,7 @@ class MContentCriteria extends Serializable {
 	//#SWGNL#list of content ids or contents prettyIds""")
 	@BeanProperty 
 	var contentIds: List[String] = new ArrayList[String]
-	def withcontentIds(p:List[String]):MContentCriteria ={ 	this.contentIds = p; 	this }
+	def withcontentIds(p:List[String]):this.type ={ 	this.contentIds = p; 	this }
 
 	/**
 	 * Used to search the content published in Weebo having
@@ -53,7 +53,7 @@ class MContentCriteria extends Serializable {
 	//#SWGNL#id == Content.weebo.pContentId""")
 	@BeanProperty 
 	var xpublisherId: String =_
-	def withxpublisherId(p:String):MContentCriteria ={ 	this.xpublisherId = p; 	this }
+	def withxpublisherId(p:String):this.type ={ 	this.xpublisherId = p; 	this }
 
 	/**
 	 * Locale code (ISO639-1).
@@ -73,7 +73,7 @@ class MContentCriteria extends Serializable {
 	//#SWGNL#The fields works in combination with MContentCriteria.name and MContentCriteria.textSearch.searchKey""")
 	@BeanProperty 
 	var locale: String =_
-	def withlocale(p:String):MContentCriteria ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * used as text search on Content metadata and details and works over the
@@ -138,7 +138,7 @@ class MContentCriteria extends Serializable {
 	//#SWGNL#return all contents matching text like "Red ...", "red ... book ... Table"""")
 	@BeanProperty 
 	var textSearch: MTextSearchOptions  = new MTextSearchOptions()
-	def withtextSearch(p:MTextSearchOptions):MContentCriteria ={ 	this.textSearch = p; 	this }
+	def withtextSearch(p:MTextSearchOptions):this.type ={ 	this.textSearch = p; 	this }
 
 	/**
 	 * Filter all contents having contentType in the specified list.
@@ -146,7 +146,7 @@ class MContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Filter all contents having contentType in the specified list.""")
 	@BeanProperty 
 	var contentType: List[MEContentType] = new ArrayList[MEContentType]
-	def withcontentType(p:List[MEContentType]):MContentCriteria ={ 	this.contentType = p; 	this }
+	def withcontentType(p:List[MEContentType]):this.type ={ 	this.contentType = p; 	this }
 
 	/**
 	 * Filter contents having one of the specified properties
@@ -154,7 +154,7 @@ class MContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Filter contents having one of the specified properties""")
 	@BeanProperty 
 	var properties: List[MEContentPropertiesCriteria] = new ArrayList[MEContentPropertiesCriteria]
-	def withproperties(p:List[MEContentPropertiesCriteria]):MContentCriteria ={ 	this.properties = p; 	this }
+	def withproperties(p:List[MEContentPropertiesCriteria]):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * used to find only the contents created after the fromDate value.
@@ -177,7 +177,7 @@ class MContentCriteria extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var fromDate: Date =_
-	def withfromDate(p:Date):MContentCriteria ={ 	this.fromDate = p; 	this }
+	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
 
 	/**
 	 * used to find only the contents created before the toDate value.
@@ -200,7 +200,7 @@ class MContentCriteria extends Serializable {
 	//#SWGNL#(human readable) 2014-06-05T09:48:09.000Z""")
 	@BeanProperty 
 	var toDate: Date =_
-	def withtoDate(p:Date):MContentCriteria ={ 	this.toDate = p; 	this }
+	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 	/**
 	 * Used to filter the contents published in some channels on MContent.webo.
@@ -229,17 +229,19 @@ class MContentCriteria extends Serializable {
 	@Deprecated
 	var onlyPublishedInWeebo: Boolean =_
 	@Deprecated
-	def withonlyPublishedInWeebo(p:Boolean):MContentCriteria ={ 	this.onlyPublishedInWeebo = p; 	this }
+	def withonlyPublishedInWeebo(p:Boolean):this.type ={ 	this.onlyPublishedInWeebo = p; 	this }
 
 	/**
-	 * Deprecated by linkedCategoryOp
+	 * Deprecated.
+	 * Use the linkedCategoryOp field
 	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated by linkedCategoryOp""")
+	//#SWG#@ApiModelProperty(value = """Deprecated.
+	//#SWGNL#Use the linkedCategoryOp field""")
 	@BeanProperty 
 	@Deprecated
 	var linkedCategories: List[String] = new ArrayList[String]
 	@Deprecated
-	def withlinkedCategories(p:List[String]):MContentCriteria ={ 	this.linkedCategories = p; 	this }
+	def withlinkedCategories(p:List[String]):this.type ={ 	this.linkedCategories = p; 	this }
 
 	/**
 	 * used to filter the contents that links the given contentId. Commonly used to
@@ -248,7 +250,7 @@ class MContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to filter the contents that links the given contentId. Commonly used to know where the content is linked""")
 	@BeanProperty 
 	var linkedContentId: String =_
-	def withlinkedContentId(p:String):MContentCriteria ={ 	this.linkedContentId = p; 	this }
+	def withlinkedContentId(p:String):this.type ={ 	this.linkedContentId = p; 	this }
 
 	/**
 	 * filter the contents based on the GLOBAL status (Content.weebo.status):
@@ -257,17 +259,19 @@ class MContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """filter the contents based on the GLOBAL status (Content.weebo.status): PUBLISHED, INGESTION_INPROGRESS...""")
 	@BeanProperty 
 	var weeboStatus: MEWeeboProviderStatus =_
-	def withweeboStatus(p:MEWeeboProviderStatus):MContentCriteria ={ 	this.weeboStatus = p; 	this }
+	def withweeboStatus(p:MEWeeboProviderStatus):this.type ={ 	this.weeboStatus = p; 	this }
 
 	/**
+	 * DEPRECATED.
 	 * Only the contents having one of listed tags
 	 */
-	//#SWG#@ApiModelProperty(value = """Only the contents having one of listed tags""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.
+	//#SWGNL#Only the contents having one of listed tags""")
 	@BeanProperty 
 	@Deprecated
 	var tags: List[String] = new ArrayList[String]
 	@Deprecated
-	def withtags(p:List[String]):MContentCriteria ={ 	this.tags = p; 	this }
+	def withtags(p:List[String]):this.type ={ 	this.tags = p; 	this }
 
 	/**
 	 * used to find only the contents shared with specific policies
@@ -275,7 +279,7 @@ class MContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to find only the contents shared with specific policies""")
 	@BeanProperty 
 	var acl: MAclCriteria =_
-	def withacl(p:MAclCriteria):MContentCriteria ={ 	this.acl = p; 	this }
+	def withacl(p:MAclCriteria):this.type ={ 	this.acl = p; 	this }
 
 	/**
 	 * search contents with specific custom metadata.
@@ -333,7 +337,7 @@ class MContentCriteria extends Serializable {
 	//#SWGNL#This special metadata is used to drive the search engine,  specifying that all elements inside the ContentCriteria.metadatas collection should be searched using the AND instead of the default OR operator.""")
 	@BeanProperty 
 	var metadatas: List[MMetadata] = new ArrayList[MMetadata]
-	def withmetadatas(p:List[MMetadata]):MContentCriteria ={ 	this.metadatas = p; 	this }
+	def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
 
 	/**
 	 * search contents with specific intelligence tags. The list of elements use the
@@ -352,7 +356,7 @@ class MContentCriteria extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var itagOp: MITagCriteriaOption =_
-	def withitagOp(p:MITagCriteriaOption):MContentCriteria ={ 	this.itagOp = p; 	this }
+	def withitagOp(p:MITagCriteriaOption):this.type ={ 	this.itagOp = p; 	this }
 
 	/**
 	 * Search contents with specific intelligence imetadata key and value (only for
@@ -373,7 +377,7 @@ class MContentCriteria extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var imetadataKeyOp: MIMetadataKeyCriteriaOption =_
-	def withimetadataKeyOp(p:MIMetadataKeyCriteriaOption):MContentCriteria ={ 	this.imetadataKeyOp = p; 	this }
+	def withimetadataKeyOp(p:MIMetadataKeyCriteriaOption):this.type ={ 	this.imetadataKeyOp = p; 	this }
 
 	/**
 	 * Deprecated.
@@ -386,30 +390,29 @@ class MContentCriteria extends Serializable {
 	@Deprecated
 	var contentReadValue: List[MEContentReadValue] = new ArrayList[MEContentReadValue]
 	@Deprecated
-	def withcontentReadValue(p:List[MEContentReadValue]):MContentCriteria ={ 	this.contentReadValue = p; 	this }
+	def withcontentReadValue(p:List[MEContentReadValue]):this.type ={ 	this.contentReadValue = p; 	this }
 
 	/**
 	 * DEPRECATED.
-	 * Use this properties to filter the contents available in solutions (VIEW,PLAY,
-	 * CORE)
 	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#Use this properties to filter the contents available in solutions (VIEW,PLAY,CORE)""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.""")
 	@BeanProperty 
 	@Deprecated
 	var availableInSolutions: List[String] = new ArrayList[String]
 	@Deprecated
-	def withavailableInSolutions(p:List[String]):MContentCriteria ={ 	this.availableInSolutions = p; 	this }
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
 
 	/**
+	 * DEPRECATED.
 	 * filter contents on MContent.userId
 	 */
-	//#SWG#@ApiModelProperty(value = """filter contents on MContent.userId""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.
+	//#SWGNL#filter contents on MContent.userId""")
 	@BeanProperty 
 	@Deprecated
 	var userId: String =_
 	@Deprecated
-	def withuserId(p:String):MContentCriteria ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -422,22 +425,24 @@ class MContentCriteria extends Serializable {
 	@Deprecated
 	var solution: String =_
 	@Deprecated
-	def withsolution(p:String):MContentCriteria ={ 	this.solution = p; 	this }
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
+	 * DEPRECATED.
 	 * Used to filter the contents published in a given list of channels. The list of
 	 * values can be represented as comma separated values (csv).
 	 * Example:
 	 * weeboChannel = WEB,STREAMHTTPFLASH,STREAMHTTPIOS
 	 */
-	//#SWG#@ApiModelProperty(value = """Used to filter the contents published in a given list of channels. The list of values can be represented as comma separated values (csv).
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.
+	//#SWGNL#Used to filter the contents published in a given list of channels. The list of values can be represented as comma separated values (csv).
 	//#SWGNL#Example: 
 	//#SWGNL#weeboChannel = WEB,STREAMHTTPFLASH,STREAMHTTPIOS""")
 	@BeanProperty 
 	@Deprecated
 	var weeboChannel: String =_
 	@Deprecated
-	def withweeboChannel(p:String):MContentCriteria ={ 	this.weeboChannel = p; 	this }
+	def withweeboChannel(p:String):this.type ={ 	this.weeboChannel = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -449,7 +454,7 @@ class MContentCriteria extends Serializable {
 	@Deprecated
 	var fromInactiveDate: Date =_
 	@Deprecated
-	def withfromInactiveDate(p:Date):MContentCriteria ={ 	this.fromInactiveDate = p; 	this }
+	def withfromInactiveDate(p:Date):this.type ={ 	this.fromInactiveDate = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -462,7 +467,7 @@ class MContentCriteria extends Serializable {
 	@Deprecated
 	var toInactiveDate: Date =_
 	@Deprecated
-	def withtoInactiveDate(p:Date):MContentCriteria ={ 	this.toInactiveDate = p; 	this }
+	def withtoInactiveDate(p:Date):this.type ={ 	this.toInactiveDate = p; 	this }
 
 	/**
 	 * DEPRECATED
@@ -472,7 +477,7 @@ class MContentCriteria extends Serializable {
 	@Deprecated
 	var linkedCategoryTypes: List[String] = new ArrayList[String]
 	@Deprecated
-	def withlinkedCategoryTypes(p:List[String]):MContentCriteria ={ 	this.linkedCategoryTypes = p; 	this }
+	def withlinkedCategoryTypes(p:List[String]):this.type ={ 	this.linkedCategoryTypes = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -484,7 +489,7 @@ class MContentCriteria extends Serializable {
 	@Deprecated
 	var name: String =_
 	@Deprecated
-	def withname(p:String):MContentCriteria ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -496,12 +501,12 @@ class MContentCriteria extends Serializable {
 	@Deprecated
 	var ugc: Boolean =_
 	@Deprecated
-	def withugc(p:Boolean):MContentCriteria ={ 	this.ugc = p; 	this }
+	def withugc(p:Boolean):this.type ={ 	this.ugc = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var linkedCategoryOp: MLinkedCategorySearchOptions =_
-	def withlinkedCategoryOp(p:MLinkedCategorySearchOptions):MContentCriteria ={ 	this.linkedCategoryOp = p; 	this }
+	def withlinkedCategoryOp(p:MLinkedCategorySearchOptions):this.type ={ 	this.linkedCategoryOp = p; 	this }
 
 	/**
 	 * @return void

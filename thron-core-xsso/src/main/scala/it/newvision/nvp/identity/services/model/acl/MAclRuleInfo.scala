@@ -18,7 +18,7 @@ class MAclRuleInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var targetAcl: MAclRule =_
-	def withtargetAcl(p:MAclRule):MAclRuleInfo ={ 	this.targetAcl = p; 	this }
+	def withtargetAcl(p:MAclRule):this.type ={ 	this.targetAcl = p; 	this }
 
 	/**
 	 * used in presentation, Can be the user fullname or groupName
@@ -26,6 +26,6 @@ class MAclRuleInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used in presentation, Can be the user fullname or groupName""")
 	@BeanProperty 
 	var displayName: String =_
-	def withdisplayName(p:String):MAclRuleInfo ={ 	this.displayName = p; 	this }
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
 }

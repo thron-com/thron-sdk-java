@@ -23,12 +23,12 @@ class MContact extends Serializable {
 	//#SWGNL#An anonimous contanct has empty oldContactIds and the same id of the device.""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MContact ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var createdDate: Date  = new Date
-	def withcreatedDate(p:Date):MContact ={ 	this.createdDate = p; 	this }
+	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
 	/**
 	 * The last accessed Date for the device
@@ -36,7 +36,7 @@ class MContact extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The last accessed Date for the device""")
 	@BeanProperty 
 	var accessedDate: Date  = new Date
-	def withaccessedDate(p:Date):MContact ={ 	this.accessedDate = p; 	this }
+	def withaccessedDate(p:Date):this.type ={ 	this.accessedDate = p; 	this }
 
 	/**
 	 * Old anonimous contactId coming from merge operation.
@@ -47,7 +47,7 @@ class MContact extends Serializable {
 	//#SWGNL#When two contacts are merged the source (anonymous) contact id is saved in the oldIds attribute of the target contact.""")
 	@BeanProperty 
 	var oldIds: List[String] = new ArrayList[String]
-	def witholdIds(p:List[String]):MContact ={ 	this.oldIds = p; 	this }
+	def witholdIds(p:List[String]):this.type ={ 	this.oldIds = p; 	this }
 
 	/**
 	 * contact type
@@ -55,7 +55,7 @@ class MContact extends Serializable {
 	//#SWG#@ApiModelProperty(value = """contact type""" ,required = true)
 	@BeanProperty 
 	var contactType: MEContactType  = MEContactType.ANONYMOUS
-	def withcontactType(p:MEContactType):MContact ={ 	this.contactType = p; 	this }
+	def withcontactType(p:MEContactType):this.type ={ 	this.contactType = p; 	this }
 
 	/**
 	 * Used to label the contact
@@ -73,7 +73,7 @@ class MContact extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MContact ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * @param id : String

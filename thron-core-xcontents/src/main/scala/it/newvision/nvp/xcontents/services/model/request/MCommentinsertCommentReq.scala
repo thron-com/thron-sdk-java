@@ -21,17 +21,17 @@ class MCommentinsertCommentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MCommentinsertCommentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MCommentinsertCommentReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var comment: MCommentPub =_
-	def withcomment(p:MCommentPub):MCommentinsertCommentReq ={ 	this.comment = p; 	this }
+	def withcomment(p:MCommentPub):this.type ={ 	this.comment = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -39,6 +39,6 @@ class MCommentinsertCommentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MCommentinsertCommentReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

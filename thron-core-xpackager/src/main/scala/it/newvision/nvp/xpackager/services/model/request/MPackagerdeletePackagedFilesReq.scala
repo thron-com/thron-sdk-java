@@ -20,11 +20,11 @@ class MPackagerdeletePackagedFilesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPackagerdeletePackagedFilesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var packagedId: String =_
-	def withpackagedId(p:String):MPackagerdeletePackagedFilesReq ={ 	this.packagedId = p; 	this }
+	def withpackagedId(p:String):this.type ={ 	this.packagedId = p; 	this }
 
 }

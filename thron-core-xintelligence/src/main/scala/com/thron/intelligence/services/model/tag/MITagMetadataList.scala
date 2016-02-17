@@ -17,6 +17,6 @@ class MITagMetadataList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var metadata: List[MITagMetadataValue] = new ArrayList[MITagMetadataValue]
-	def withmetadata(p:List[MITagMetadataValue]):MITagMetadataList ={ 	this.metadata = p; 	this }
+	def withmetadata(p:List[MITagMetadataValue]):this.type ={ 	this.metadata = p; 	this }
 
 }

@@ -20,16 +20,16 @@ class MPackageraddIngestionToPackageReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPackageraddIngestionToPackageReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var packagedId: String =_
-	def withpackagedId(p:String):MPackageraddIngestionToPackageReq ={ 	this.packagedId = p; 	this }
+	def withpackagedId(p:String):this.type ={ 	this.packagedId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var ingestionContentDescriptor: String =_
-	def withingestionContentDescriptor(p:String):MPackageraddIngestionToPackageReq ={ 	this.ingestionContentDescriptor = p; 	this }
+	def withingestionContentDescriptor(p:String):this.type ={ 	this.ingestionContentDescriptor = p; 	this }
 
 }

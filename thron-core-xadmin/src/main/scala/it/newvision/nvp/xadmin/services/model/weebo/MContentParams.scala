@@ -22,7 +22,7 @@ class MContentParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the source files""")
 	@BeanProperty 
 	var sourcefiles: List[MFile] = new ArrayList[MFile]
-	def withsourcefiles(p:List[MFile]):MContentParams ={ 	this.sourcefiles = p; 	this }
+	def withsourcefiles(p:List[MFile]):this.type ={ 	this.sourcefiles = p; 	this }
 
 	/**
 	 * -> MContent.owner
@@ -30,7 +30,7 @@ class MContentParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """-> MContent.owner""")
 	@BeanProperty 
 	var owner: String =_
-	def withowner(p:String):MContentParams ={ 	this.owner = p; 	this }
+	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
 
 	/**
 	 * Optional. Default is the username of the user that invoke the service.
@@ -40,7 +40,7 @@ class MContentParams extends Serializable {
 	//#SWGNL#-> MContent.userId""")
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MContentParams ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * IMAGE/AUDIO/VIDEO/GENERIC ....
@@ -52,7 +52,7 @@ class MContentParams extends Serializable {
 	//#SWGNL#-> MediaContent.contentType""" ,required = true)
 	@BeanProperty 
 	var contentType: MEContentType =_
-	def withcontentType(p:MEContentType):MContentParams ={ 	this.contentType = p; 	this }
+	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
 
 	/**
 	 * Deprecated.
@@ -75,7 +75,7 @@ class MContentParams extends Serializable {
 	@Deprecated
 	var solution: String  = "VIEW"
 	@Deprecated
-	def withsolution(p:String):MContentParams ={ 	this.solution = p; 	this }
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * define if a content is User Generated. The UGC contents are not automatically
@@ -93,7 +93,7 @@ class MContentParams extends Serializable {
 	//#SWGNL#-> MMediaContent.contentUgc""")
 	@BeanProperty 
 	var contentUGC: Boolean =_
-	def withcontentUGC(p:Boolean):MContentParams ={ 	this.contentUGC = p; 	this }
+	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
 
 	/**
 	 * @return Boolean

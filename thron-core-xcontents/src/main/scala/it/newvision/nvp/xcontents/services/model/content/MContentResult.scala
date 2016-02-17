@@ -20,17 +20,17 @@ class MContentResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var content: MContent =_
-	def withcontent(p:MContent):MContentResult ={ 	this.content = p; 	this }
+	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
-	def withlinkedCategories(p:List[MCategory]):MContentResult ={ 	this.linkedCategories = p; 	this }
+	def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userSpecificValues: MContentUserSpecificProperties =_
-	def withuserSpecificValues(p:MContentUserSpecificProperties):MContentResult ={ 	this.userSpecificValues = p; 	this }
+	def withuserSpecificValues(p:MContentUserSpecificProperties):this.type ={ 	this.userSpecificValues = p; 	this }
 
 	/**
 	 * total number of "downloadable contents" (contents linked by the used as
@@ -40,7 +40,7 @@ class MContentResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total number of "downloadable contents" (contents linked by the used as "downloadable"). In order to obtain the list of DownloadableContents should be used the service JDelivery.getDownloadableContents""" ,required = true)
 	@BeanProperty 
 	var totalDownloadableContents: Integer =_
-	def withtotalDownloadableContents(p:Integer):MContentResult ={ 	this.totalDownloadableContents = p; 	this }
+	def withtotalDownloadableContents(p:Integer):this.type ={ 	this.totalDownloadableContents = p; 	this }
 
 	/**
 	 * total number of "suggested contents" (contents linked by the user). In order to
@@ -50,7 +50,7 @@ class MContentResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total number of "suggested contents" (contents linked by the user). In order to obtain the list of Recommended Contents should be used the service JDelivery.getRecommendedContents""" ,required = true)
 	@BeanProperty 
 	var totalRecommendedContents: Integer =_
-	def withtotalRecommendedContents(p:Integer):MContentResult ={ 	this.totalRecommendedContents = p; 	this }
+	def withtotalRecommendedContents(p:Integer):this.type ={ 	this.totalRecommendedContents = p; 	this }
 
 	/**
 	 * Deprecated by bestThumbUrl and divArea.
@@ -62,7 +62,7 @@ class MContentResult extends Serializable {
 	@Deprecated
 	var thumbUrls: List[String] = new ArrayList[String]
 	@Deprecated
-	def withthumbUrls(p:List[String]):MContentResult ={ 	this.thumbUrls = p; 	this }
+	def withthumbUrls(p:List[String]):this.type ={ 	this.thumbUrls = p; 	this }
 
 	/**
 	 * Defined if divArea parameter is specified on the request.
@@ -78,7 +78,7 @@ class MContentResult extends Serializable {
 	//#SWGNL#bestThumbUrl provides the static url of the thumbnail in 4me CDN (Content Delivery Network); the url is volatile and may change with time. In order to obtain a dynamic link to the best thumbnail (for the given content and div area) use the "dynThumbService" attribute (see reference for details)""")
 	@BeanProperty 
 	var bestThumbUrl: String =_
-	def withbestThumbUrl(p:String):MContentResult ={ 	this.bestThumbUrl = p; 	this }
+	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
 	/**
 	 * Returns a persistent link to the thumbnail for the given content and DivArea
@@ -90,7 +90,7 @@ class MContentResult extends Serializable {
 	//#SWGNL#Thumbnail resolution is the closes to fit the given DivArea (DivArea format: <widht>x<height>)""" ,required = true)
 	@BeanProperty 
 	var dynThumbService: String =_
-	def withdynThumbService(p:String):MContentResult ={ 	this.dynThumbService = p; 	this }
+	def withdynThumbService(p:String):this.type ={ 	this.dynThumbService = p; 	this }
 
 	/**
 	 * the fullname of the content's owner (based on acl)
@@ -98,6 +98,6 @@ class MContentResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the fullname of the content's owner (based on acl)""")
 	@BeanProperty 
 	var ownerFullname: String =_
-	def withownerFullname(p:String):MContentResult ={ 	this.ownerFullname = p; 	this }
+	def withownerFullname(p:String):this.type ={ 	this.ownerFullname = p; 	this }
 
 }

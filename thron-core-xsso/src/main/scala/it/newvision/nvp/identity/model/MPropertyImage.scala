@@ -20,7 +20,7 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var jpegQuality: Integer  = 90
-	def withjpegQuality(p:Integer):MPropertyImage ={ 	this.jpegQuality = p; 	this }
+	def withjpegQuality(p:Integer):this.type ={ 	this.jpegQuality = p; 	this }
 
 	/**
 	 * default. no resize
@@ -28,7 +28,7 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 	//#SWG#@ApiModelProperty(value = """default. no resize""" ,required = true)
 	@BeanProperty 
 	var resizeWidth: Integer  = 1024
-	def withresizeWidth(p:Integer):MPropertyImage ={ 	this.resizeWidth = p; 	this }
+	def withresizeWidth(p:Integer):this.type ={ 	this.resizeWidth = p; 	this }
 
 	/**
 	 * default no resize. 0 = keep aspect ration depending on the width size.
@@ -36,12 +36,12 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 	//#SWG#@ApiModelProperty(value = """default no resize. 0 = keep aspect ration depending on the width size.""" ,required = true)
 	@BeanProperty 
 	var resizeHeight: Integer  = 0
-	def withresizeHeight(p:Integer):MPropertyImage ={ 	this.resizeHeight = p; 	this }
+	def withresizeHeight(p:Integer):this.type ={ 	this.resizeHeight = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var stretch: Boolean  = false
-	def withstretch(p:Boolean):MPropertyImage ={ 	this.stretch = p; 	this }
+	def withstretch(p:Boolean):this.type ={ 	this.stretch = p; 	this }
 
 	/**
 	 * custom image parameter (imagemagic) to add to the ingestion process. 
@@ -49,7 +49,7 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 	//#SWG#@ApiModelProperty(value = """custom image parameter (imagemagic) to add to the ingestion process. """ ,required = true)
 	@BeanProperty 
 	var ingestionParameters: String  = ""
-	def withingestionParameters(p:String):MPropertyImage ={ 	this.ingestionParameters = p; 	this }
+	def withingestionParameters(p:String):this.type ={ 	this.ingestionParameters = p; 	this }
 
 	/**
 	 * @param clientId : String

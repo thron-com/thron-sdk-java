@@ -24,6 +24,6 @@ class MUpdater extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. the patch operator""")
 	@BeanProperty 
 	var patch: List[MPatch] =_
-	def withpatch(p:List[MPatch]):MUpdater ={ 	this.patch = p; 	this }
+	def withpatch(p:List[MPatch]):this.type ={ 	this.patch = p; 	this }
 
 }

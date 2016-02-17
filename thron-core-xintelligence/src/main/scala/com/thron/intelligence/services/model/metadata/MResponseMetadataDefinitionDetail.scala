@@ -17,6 +17,6 @@ class MResponseMetadataDefinitionDetail extends MResponseMetadataDefinition with
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var item: MMetadataDefinitionDetail =_
-	def withitem(p:MMetadataDefinitionDetail):MResponseMetadataDefinitionDetail ={ 	this.item = p; 	this }
+	def withitem(p:MMetadataDefinitionDetail):this.type ={ 	this.item = p; 	this }
 
 }

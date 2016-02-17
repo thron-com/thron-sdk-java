@@ -17,6 +17,6 @@ class MResponseUpdateContent extends MResponsePublisher with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty @org.codehaus.jackson.annotate.JsonProperty("PContentId") 
 	var pContentId: String =_
-	def withpContentId(p:String):MResponseUpdateContent ={ 	this.pContentId = p; 	this }
+	def withpContentId(p:String):this.type ={ 	this.pContentId = p; 	this }
 
 }

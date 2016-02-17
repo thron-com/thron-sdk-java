@@ -22,16 +22,16 @@ class MCategoryupdateCategoryReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MCategoryupdateCategoryReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var categoryId: String =_
-	def withcategoryId(p:String):MCategoryupdateCategoryReq ={ 	this.categoryId = p; 	this }
+	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var update: MCategoryUpdate =_
-	def withupdate(p:MCategoryUpdate):MCategoryupdateCategoryReq ={ 	this.update = p; 	this }
+	def withupdate(p:MCategoryUpdate):this.type ={ 	this.update = p; 	this }
 
 }

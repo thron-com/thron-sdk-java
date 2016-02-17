@@ -17,6 +17,6 @@ class MResponseTestPcontent extends MResponseTest with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var pcontentId: String =_
-	def withpcontentId(p:String):MResponseTestPcontent ={ 	this.pcontentId = p; 	this }
+	def withpcontentId(p:String):this.type ={ 	this.pcontentId = p; 	this }
 
 }

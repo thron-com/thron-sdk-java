@@ -17,6 +17,6 @@ class MSearchCriteriaExtended extends MSearchCriteria with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var clientIds: List[String] = new ArrayList[String]
-	def withclientIds(p:List[String]):MSearchCriteriaExtended ={ 	this.clientIds = p; 	this }
+	def withclientIds(p:List[String]):this.type ={ 	this.clientIds = p; 	this }
 
 }

@@ -21,6 +21,6 @@ class MResponseITagRemove extends MResponseITag with Serializable  {
 	//#SWG#@ApiModelProperty(value = """List of id of removed itags""")
 	@BeanProperty 
 	var items: List[String] = new ArrayList[String]
-	def withitems(p:List[String]):MResponseITagRemove ={ 	this.items = p; 	this }
+	def withitems(p:List[String]):this.type ={ 	this.items = p; 	this }
 
 }

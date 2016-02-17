@@ -24,7 +24,7 @@ class MHostInfo extends Serializable {
 	//#SWGNL#default  = System.currentTimeMillis()/1000""")
 	@BeanProperty 
 	var assignedId: Long  = System.currentTimeMillis()/1000
-	def withassignedId(p:Long):MHostInfo ={ 	this.assignedId = p; 	this }
+	def withassignedId(p:Long):this.type ={ 	this.assignedId = p; 	this }
 
 	/**
 	 * the ec2 instance ID
@@ -32,7 +32,7 @@ class MHostInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the ec2 instance ID""" ,required = true)
 	@BeanProperty 
 	var hostInstanceId: String =_
-	def withhostInstanceId(p:String):MHostInfo ={ 	this.hostInstanceId = p; 	this }
+	def withhostInstanceId(p:String):this.type ={ 	this.hostInstanceId = p; 	this }
 
 	/**
 	 * ec2 real hostname
@@ -40,7 +40,7 @@ class MHostInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """ec2 real hostname""")
 	@BeanProperty 
 	var hostname: String =_
-	def withhostname(p:String):MHostInfo ={ 	this.hostname = p; 	this }
+	def withhostname(p:String):this.type ={ 	this.hostname = p; 	this }
 
 	/**
 	 * the elastic IP assigned to the hostname
@@ -48,7 +48,7 @@ class MHostInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the elastic IP assigned to the hostname""")
 	@BeanProperty 
 	var hostStaticIP: String =_
-	def withhostStaticIP(p:String):MHostInfo ={ 	this.hostStaticIP = p; 	this }
+	def withhostStaticIP(p:String):this.type ={ 	this.hostStaticIP = p; 	this }
 
 	/**
 	 * the list of registered hostname for the live event.
@@ -66,7 +66,7 @@ class MHostInfo extends Serializable {
 	//#SWGNL#http://clientId-eventId-app.4mecloud.it""")
 	@BeanProperty 
 	var publicHostnames: List[MHostnameDetail] = new ArrayList[MHostnameDetail]
-	def withpublicHostnames(p:List[MHostnameDetail]):MHostInfo ={ 	this.publicHostnames = p; 	this }
+	def withpublicHostnames(p:List[MHostnameDetail]):this.type ={ 	this.publicHostnames = p; 	this }
 
 	/**
 	 * the site where the resources have been commissioned.
@@ -74,7 +74,7 @@ class MHostInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the site where the resources have been commissioned.""")
 	@BeanProperty 
 	var siteName: String =_
-	def withsiteName(p:String):MHostInfo ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	/**
 	 * used to know if the amazon EC2 host is active or not. Means the Event is ON_AIR
@@ -83,11 +83,11 @@ class MHostInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to know if the amazon EC2 host is active or not. Means the Event is ON_AIR or is CLOSED""" ,required = true)
 	@BeanProperty 
 	var hostIsActive: Boolean  = false
-	def withhostIsActive(p:Boolean):MHostInfo ={ 	this.hostIsActive = p; 	this }
+	def withhostIsActive(p:Boolean):this.type ={ 	this.hostIsActive = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var additionalProperties: MHostInfoExtra =_
-	def withadditionalProperties(p:MHostInfoExtra):MHostInfo ={ 	this.additionalProperties = p; 	this }
+	def withadditionalProperties(p:MHostInfoExtra):this.type ={ 	this.additionalProperties = p; 	this }
 
 }

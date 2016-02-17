@@ -21,7 +21,7 @@ class MContentaddContentPrettyIdReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MContentaddContentPrettyIdReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * no prettyId are allowed.
@@ -29,12 +29,12 @@ class MContentaddContentPrettyIdReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """no prettyId are allowed.""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MContentaddContentPrettyIdReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var prettyId: MPrettyId =_
-	def withprettyId(p:MPrettyId):MContentaddContentPrettyIdReq ={ 	this.prettyId = p; 	this }
+	def withprettyId(p:MPrettyId):this.type ={ 	this.prettyId = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -42,6 +42,6 @@ class MContentaddContentPrettyIdReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MContentaddContentPrettyIdReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

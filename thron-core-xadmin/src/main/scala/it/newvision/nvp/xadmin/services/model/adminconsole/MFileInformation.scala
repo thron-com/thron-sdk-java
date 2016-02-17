@@ -21,11 +21,11 @@ class MFileInformation extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var files: MFile =_
-	def withfiles(p:MFile):MFileInformation ={ 	this.files = p; 	this }
+	def withfiles(p:MFile):this.type ={ 	this.files = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MFileInformation ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 }

@@ -20,11 +20,11 @@ class MContentToTrash extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Required. The xcontent Id to remove""" ,required = true)
 	@BeanProperty 
 	var xcontentId: String =_
-	def withxcontentId(p:String):MContentToTrash ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var removeOptions: MMoveToTrashOptions =_
-	def withremoveOptions(p:MMoveToTrashOptions):MContentToTrash ={ 	this.removeOptions = p; 	this }
+	def withremoveOptions(p:MMoveToTrashOptions):this.type ={ 	this.removeOptions = p; 	this }
 
 }

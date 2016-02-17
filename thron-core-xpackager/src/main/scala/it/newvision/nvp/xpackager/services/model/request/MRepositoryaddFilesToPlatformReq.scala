@@ -21,11 +21,11 @@ class MRepositoryaddFilesToPlatformReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MRepositoryaddFilesToPlatformReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var files: MFileList =_
-	def withfiles(p:MFileList):MRepositoryaddFilesToPlatformReq ={ 	this.files = p; 	this }
+	def withfiles(p:MFileList):this.type ={ 	this.files = p; 	this }
 
 }

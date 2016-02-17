@@ -23,7 +23,7 @@ class MCategoryCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of category Ids or category PrettyIds""")
 	@BeanProperty 
 	var categoryIds: List[String] = new ArrayList[String]
-	def withcategoryIds(p:List[String]):MCategoryCriteria ={ 	this.categoryIds = p; 	this }
+	def withcategoryIds(p:List[String]):this.type ={ 	this.categoryIds = p; 	this }
 
 	/**
 	 * used to find only the categories having the specified "name" for a specific
@@ -34,7 +34,7 @@ class MCategoryCriteria extends Serializable {
 	//#SWGNL#The criteria works only if "locale" criteria is defined.""")
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MCategoryCriteria ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * used to search the categories having title like "name" for the defined locale.
@@ -46,7 +46,7 @@ class MCategoryCriteria extends Serializable {
 	//#SWGNL#Example: the user would like to find the categories with name "my house" for locale "EN". If the "name" is empty the service return all categories defined for the specified locale.""")
 	@BeanProperty 
 	var locale: String =_
-	def withlocale(p:String):MCategoryCriteria ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * Deprecated.
@@ -56,7 +56,7 @@ class MCategoryCriteria extends Serializable {
 	@Deprecated
 	var metadatas: List[MMetadata] = new ArrayList[MMetadata]
 	@Deprecated
-	def withmetadatas(p:List[MMetadata]):MCategoryCriteria ={ 	this.metadatas = p; 	this }
+	def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
 
 	/**
 	 * Deprecated.
@@ -66,7 +66,7 @@ class MCategoryCriteria extends Serializable {
 	@Deprecated
 	var solution: String =_
 	@Deprecated
-	def withsolution(p:String):MCategoryCriteria ={ 	this.solution = p; 	this }
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * Search text in name and description fields.
@@ -77,7 +77,7 @@ class MCategoryCriteria extends Serializable {
 	//#SWGNL#Example: "red apple" text search match labels like "Red Apple", "red Apple and ..."""")
 	@BeanProperty 
 	var textSearch: String =_
-	def withtextSearch(p:String):MCategoryCriteria ={ 	this.textSearch = p; 	this }
+	def withtextSearch(p:String):this.type ={ 	this.textSearch = p; 	this }
 
 	/**
 	 * filter the category by type: private, public or system.
@@ -85,7 +85,7 @@ class MCategoryCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """filter the category by type: private, public or system.""")
 	@BeanProperty 
 	var categoryTypes: List[MECategoryType] = new ArrayList[MECategoryType]
-	def withcategoryTypes(p:List[MECategoryType]):MCategoryCriteria ={ 	this.categoryTypes = p; 	this }
+	def withcategoryTypes(p:List[MECategoryType]):this.type ={ 	this.categoryTypes = p; 	this }
 
 	/**
 	 * return the categories having as ancestor the given categoryId
@@ -93,7 +93,7 @@ class MCategoryCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """return the categories having as ancestor the given categoryId""")
 	@BeanProperty 
 	var childOf: String =_
-	def withchildOf(p:String):MCategoryCriteria ={ 	this.childOf = p; 	this }
+	def withchildOf(p:String):this.type ={ 	this.childOf = p; 	this }
 
 	/**
 	 * exclude all categories with level position inside the category tree higher than
@@ -104,7 +104,7 @@ class MCategoryCriteria extends Serializable {
 	//#SWGNL#The root level is 1.""")
 	@BeanProperty 
 	var excludeLevelHigherThan: Integer =_
-	def withexcludeLevelHigherThan(p:Integer):MCategoryCriteria ={ 	this.excludeLevelHigherThan = p; 	this }
+	def withexcludeLevelHigherThan(p:Integer):this.type ={ 	this.excludeLevelHigherThan = p; 	this }
 
 	/**
 	 * filter only categories available in the given "availableInSolutions" list.
@@ -114,7 +114,7 @@ class MCategoryCriteria extends Serializable {
 	@Deprecated
 	var availableInSolutions: List[String] = new ArrayList[String]
 	@Deprecated
-	def withavailableInSolutions(p:List[String]):MCategoryCriteria ={ 	this.availableInSolutions = p; 	this }
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
 
 	/**
 	 * used to find only the categories with specific policies.
@@ -124,7 +124,7 @@ class MCategoryCriteria extends Serializable {
 	//#SWGNL#acl.context is not required.""")
 	@BeanProperty 
 	var acl: MAclCriteria =_
-	def withacl(p:MAclCriteria):MCategoryCriteria ={ 	this.acl = p; 	this }
+	def withacl(p:MAclCriteria):this.type ={ 	this.acl = p; 	this }
 
 	/**
 	 * @return void

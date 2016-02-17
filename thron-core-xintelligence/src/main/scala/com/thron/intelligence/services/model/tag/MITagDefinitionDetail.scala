@@ -22,12 +22,12 @@ class MITagDefinitionDetail extends MITagDefinition with Serializable  {
 	//#SWG#@ApiModelProperty(value = """list of linked metadata definition ordered by position""")
 	@BeanProperty 
 	var linkedMetadataDefinition: List[MMetadataDefinition] = new ArrayList[MMetadataDefinition]
-	def withlinkedMetadataDefinition(p:List[MMetadataDefinition]):MITagDefinitionDetail ={ 	this.linkedMetadataDefinition = p; 	this }
+	def withlinkedMetadataDefinition(p:List[MMetadataDefinition]):this.type ={ 	this.linkedMetadataDefinition = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEITagStatus =_
-	def withstatus(p:MEITagStatus):MITagDefinitionDetail ={ 	this.status = p; 	this }
+	def withstatus(p:MEITagStatus):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * number of sub tags (total number of nodes of the sub tree)
@@ -35,6 +35,6 @@ class MITagDefinitionDetail extends MITagDefinition with Serializable  {
 	//#SWG#@ApiModelProperty(value = """number of sub tags (total number of nodes of the sub tree)""")
 	@BeanProperty 
 	var subNodes: Integer  = 0
-	def withsubNodes(p:Integer):MITagDefinitionDetail ={ 	this.subNodes = p; 	this }
+	def withsubNodes(p:Integer):this.type ={ 	this.subNodes = p; 	this }
 
 }

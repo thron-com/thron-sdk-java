@@ -18,11 +18,11 @@ class MPlayerInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MPlayerInfo ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var playerProperties: MPropertyPlayer =_
-	def withplayerProperties(p:MPropertyPlayer):MPlayerInfo ={ 	this.playerProperties = p; 	this }
+	def withplayerProperties(p:MPropertyPlayer):this.type ={ 	this.playerProperties = p; 	this }
 
 }

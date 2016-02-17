@@ -20,11 +20,11 @@ class MReports4MedetailReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MReports4MedetailReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var reportId: String =_
-	def withreportId(p:String):MReports4MedetailReq ={ 	this.reportId = p; 	this }
+	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
 
 }

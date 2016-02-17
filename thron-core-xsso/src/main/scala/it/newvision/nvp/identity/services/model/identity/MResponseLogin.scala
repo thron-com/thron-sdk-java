@@ -19,7 +19,7 @@ class MResponseLogin extends MResponseIdentity with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var tokenId: String =_
-	def withtokenId(p:String):MResponseLogin ={ 	this.tokenId = p; 	this }
+	def withtokenId(p:String):this.type ={ 	this.tokenId = p; 	this }
 
 	/**
 	 * return the vuser detail without the password information, for security reason.
@@ -27,16 +27,16 @@ class MResponseLogin extends MResponseIdentity with Serializable  {
 	//#SWG#@ApiModelProperty(value = """return the vuser detail without the password information, for security reason.""")
 	@BeanProperty 
 	var user: MVUser =_
-	def withuser(p:MVUser):MResponseLogin ={ 	this.user = p; 	this }
+	def withuser(p:MVUser):this.type ={ 	this.user = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var linkedGroups: List[MUsersGroup] = new ArrayList[MUsersGroup]
-	def withlinkedGroups(p:List[MUsersGroup]):MResponseLogin ={ 	this.linkedGroups = p; 	this }
+	def withlinkedGroups(p:List[MUsersGroup]):this.type ={ 	this.linkedGroups = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseLogin ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

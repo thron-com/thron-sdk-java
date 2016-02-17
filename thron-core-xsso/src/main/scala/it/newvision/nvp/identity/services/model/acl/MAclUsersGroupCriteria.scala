@@ -36,7 +36,7 @@ class MAclUsersGroupCriteria extends Serializable {
 	//#SWGNL#By default the service looks in all contexts.""")
 	@BeanProperty 
 	var onContext: MEAclContext =_
-	def withonContext(p:MEAclContext):MAclUsersGroupCriteria ={ 	this.onContext = p; 	this }
+	def withonContext(p:MEAclContext):this.type ={ 	this.onContext = p; 	this }
 
 	/**
 	 * Filter all users or groups having all of the specified rules applied to the
@@ -49,6 +49,6 @@ class MAclUsersGroupCriteria extends Serializable {
 	//#SWGNL#If not specified, "SEEN_BY" is the rule applied.""")
 	@BeanProperty 
 	var rules: List[MEAclRuleInverse] = new ArrayList[MEAclRuleInverse]
-	def withrules(p:List[MEAclRuleInverse]):MAclUsersGroupCriteria ={ 	this.rules = p; 	this }
+	def withrules(p:List[MEAclRuleInverse]):this.type ={ 	this.rules = p; 	this }
 
 }

@@ -24,12 +24,12 @@ class MUsersGroup extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var groupType: MEGroupType  = MEGroupType.PLATFORM
-	def withgroupType(p:MEGroupType):MUsersGroup ={ 	this.groupType = p; 	this }
+	def withgroupType(p:MEGroupType):this.type ={ 	this.groupType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MUsersGroup ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * the name of the group
@@ -41,7 +41,7 @@ class MUsersGroup extends Serializable {
 	//#SWGNL#-) max length = 50""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MUsersGroup ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * Constraints:
@@ -51,7 +51,7 @@ class MUsersGroup extends Serializable {
 	//#SWGNL#-) max length = 200""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MUsersGroup ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * user creation date
@@ -59,7 +59,7 @@ class MUsersGroup extends Serializable {
 	//#SWG#@ApiModelProperty(value = """user creation date""" ,required = true)
 	@BeanProperty 
 	var creationDate: Date  = new Date()
-	def withcreationDate(p:Date):MUsersGroup ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * Specify if the user is enable or not to use the platform
@@ -67,7 +67,7 @@ class MUsersGroup extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Specify if the user is enable or not to use the platform""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
-	def withactive(p:Boolean):MUsersGroup ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * Used as roles template. It is possible to define the UserGroup roles that are
@@ -77,7 +77,7 @@ class MUsersGroup extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used as roles template. It is possible to define the UserGroup roles that are be applied to each user inside the group. The userRoles are derived from the list of groupRoles where the user are linked""" ,required = true)
 	@BeanProperty 
 	var groupCapabilities: MUserCapability  = new MUserCapability()
-	def withgroupCapabilities(p:MUserCapability):MUsersGroup ={ 	this.groupCapabilities = p; 	this }
+	def withgroupCapabilities(p:MUserCapability):this.type ={ 	this.groupCapabilities = p; 	this }
 
 	/**
 	 * the username of the group owner.
@@ -88,7 +88,7 @@ class MUsersGroup extends Serializable {
 	//#SWGNL#Only for PLATFORM_BLIND, SHARED_CONTACTS_PRIVATE groups type (not for PLATFORM groups type)""")
 	@BeanProperty 
 	var ownerUsername: String =_
-	def withownerUsername(p:String):MUsersGroup ={ 	this.ownerUsername = p; 	this }
+	def withownerUsername(p:String):this.type ={ 	this.ownerUsername = p; 	this }
 
 	/**
 	 * the acl rules  specific of the group
@@ -96,7 +96,7 @@ class MUsersGroup extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the acl rules  specific of the group""")
 	@BeanProperty 
 	var ownAclRules: List[MAclRule] = new ArrayList[MAclRule]
-	def withownAclRules(p:List[MAclRule]):MUsersGroup ={ 	this.ownAclRules = p; 	this }
+	def withownAclRules(p:List[MAclRule]):this.type ={ 	this.ownAclRules = p; 	this }
 
 	/**
 	 * list of imetadata (for intelligence)
@@ -104,7 +104,7 @@ class MUsersGroup extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of imetadata (for intelligence)""")
 	@BeanProperty 
 	var imetadata: List[MIMetadata] = new ArrayList[MIMetadata]
-	def withimetadata(p:List[MIMetadata]):MUsersGroup ={ 	this.imetadata = p; 	this }
+	def withimetadata(p:List[MIMetadata]):this.type ={ 	this.imetadata = p; 	this }
 
 	/**
 	 * list of itags (for intelligence)
@@ -112,7 +112,7 @@ class MUsersGroup extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of itags (for intelligence)""")
 	@BeanProperty 
 	var itags: List[MITag] = new ArrayList[MITag]
-	def withitags(p:List[MITag]):MUsersGroup ={ 	this.itags = p; 	this }
+	def withitags(p:List[MITag]):this.type ={ 	this.itags = p; 	this }
 
 	/**
 	 * external ids of the User Group.
@@ -120,7 +120,7 @@ class MUsersGroup extends Serializable {
 	//#SWG#@ApiModelProperty(value = """external ids of the User Group.""")
 	@BeanProperty 
 	var externalId: MIdExternal =_
-	def withexternalId(p:MIdExternal):MUsersGroup ={ 	this.externalId = p; 	this }
+	def withexternalId(p:MIdExternal):this.type ={ 	this.externalId = p; 	this }
 
 	/**
 	 * list of metadata
@@ -128,7 +128,7 @@ class MUsersGroup extends Serializable {
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """list of metadata""")
 	var metadata: List[MMetadata] = new ArrayList[MMetadata]
-	  def withmetadata(p:List[MMetadata]):MUsersGroup ={ 	this.metadata = p; 	this }
+	  def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 	/**
 	 * @return Boolean

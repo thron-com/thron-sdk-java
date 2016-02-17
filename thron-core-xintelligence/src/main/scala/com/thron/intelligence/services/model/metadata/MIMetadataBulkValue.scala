@@ -30,12 +30,12 @@ class MIMetadataBulkValue extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var imetadata: List[MIMetadata] = new ArrayList[MIMetadata]
-	def withimetadata(p:List[MIMetadata]):MIMetadataBulkValue ={ 	this.imetadata = p; 	this }
+	def withimetadata(p:List[MIMetadata]):this.type ={ 	this.imetadata = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var target: MTarget =_
-	def withtarget(p:MTarget):MIMetadataBulkValue ={ 	this.target = p; 	this }
+	def withtarget(p:MTarget):this.type ={ 	this.target = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -35,7 +35,7 @@ class MPropertyVideo extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var channelType: String  = "WEB"
-	def withchannelType(p:String):MPropertyVideo ={ 	this.channelType = p; 	this }
+	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	/**
 	 * FLV o MP4 per il multibitrate
@@ -43,7 +43,7 @@ class MPropertyVideo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """FLV o MP4 per il multibitrate""" ,required = true)
 	@BeanProperty 
 	var convertTo: String  = "MP4"
-	def withconvertTo(p:String):MPropertyVideo ={ 	this.convertTo = p; 	this }
+	def withconvertTo(p:String):this.type ={ 	this.convertTo = p; 	this }
 
 	/**
 	 * vp6, h264
@@ -51,7 +51,7 @@ class MPropertyVideo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """vp6, h264""" ,required = true)
 	@BeanProperty 
 	var codec: String  = "h264"
-	def withcodec(p:String):MPropertyVideo ={ 	this.codec = p; 	this }
+	def withcodec(p:String):this.type ={ 	this.codec = p; 	this }
 
 	/**
 	 * converti il video al bitrate approssimato più simile a videoBitrate
@@ -59,17 +59,17 @@ class MPropertyVideo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """converti il video al bitrate approssimato più simile a videoBitrate""" ,required = true)
 	@BeanProperty 
 	var videoBitRate: Integer  = 700
-	def withvideoBitRate(p:Integer):MPropertyVideo ={ 	this.videoBitRate = p; 	this }
+	def withvideoBitRate(p:Integer):this.type ={ 	this.videoBitRate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var audioBitRate: Integer  = 96
-	def withaudioBitRate(p:Integer):MPropertyVideo ={ 	this.audioBitRate = p; 	this }
+	def withaudioBitRate(p:Integer):this.type ={ 	this.audioBitRate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalBitRate: Integer  = 800
-	def withtotalBitRate(p:Integer):MPropertyVideo ={ 	this.totalBitRate = p; 	this }
+	def withtotalBitRate(p:Integer):this.type ={ 	this.totalBitRate = p; 	this }
 
 	/**
 	 * the audio hertz rates
@@ -77,17 +77,17 @@ class MPropertyVideo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the audio hertz rates""" ,required = true)
 	@BeanProperty 
 	var sampleRate: Integer  = 44100
-	def withsampleRate(p:Integer):MPropertyVideo ={ 	this.sampleRate = p; 	this }
+	def withsampleRate(p:Integer):this.type ={ 	this.sampleRate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var thumbsProperties: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsProperties(p:MPropertyThumbnail):MPropertyVideo ={ 	this.thumbsProperties = p; 	this }
+	def withthumbsProperties(p:MPropertyThumbnail):this.type ={ 	this.thumbsProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var defaultThumbnailFormat: String  = "L"
-	def withdefaultThumbnailFormat(p:String):MPropertyVideo ={ 	this.defaultThumbnailFormat = p; 	this }
+	def withdefaultThumbnailFormat(p:String):this.type ={ 	this.defaultThumbnailFormat = p; 	this }
 
 	/**
 	 * @return void

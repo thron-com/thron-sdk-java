@@ -17,7 +17,7 @@ class MResponseUserAllUsername extends MResponseUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var username: List[MUserSummary] = new ArrayList[MUserSummary]
-	def withusername(p:List[MUserSummary]):MResponseUserAllUsername ={ 	this.username = p; 	this }
+	def withusername(p:List[MUserSummary]):this.type ={ 	this.username = p; 	this }
 
 	/**
 	 * Removed users summary
@@ -25,6 +25,6 @@ class MResponseUserAllUsername extends MResponseUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Removed users summary""")
 	@BeanProperty 
 	var removedUsername: List[MUserSummary] = new ArrayList[MUserSummary]
-	def withremovedUsername(p:List[MUserSummary]):MResponseUserAllUsername ={ 	this.removedUsername = p; 	this }
+	def withremovedUsername(p:List[MUserSummary]):this.type ={ 	this.removedUsername = p; 	this }
 
 }

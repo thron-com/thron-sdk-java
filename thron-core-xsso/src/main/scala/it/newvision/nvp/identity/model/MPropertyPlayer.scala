@@ -23,7 +23,7 @@ class MPropertyPlayer extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the player url.""" ,required = true)
 	@BeanProperty 
 	var playerUrl: String  = "-4me.weebo.it/static/player/swf/player.swf"
-	def withplayerUrl(p:String):MPropertyPlayer ={ 	this.playerUrl = p; 	this }
+	def withplayerUrl(p:String):this.type ={ 	this.playerUrl = p; 	this }
 
 	/**
 	 * used to override the default player versions
@@ -34,7 +34,7 @@ class MPropertyPlayer extends Serializable {
 	//#SWGNL#Define all versions the client should be used. It's possible to override only major versions (4.x, 5.x ...)""")
 	@BeanProperty 
 	var fixedVersions: List[String] = new ArrayList[String]
-	def withfixedVersions(p:List[String]):MPropertyPlayer ={ 	this.fixedVersions = p; 	this }
+	def withfixedVersions(p:List[String]):this.type ={ 	this.fixedVersions = p; 	this }
 
 	/**
 	 * Optional parameter to use only with 4x version.
@@ -42,7 +42,7 @@ class MPropertyPlayer extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional parameter to use only with 4x version.""" ,required = true)
 	@BeanProperty 
 	var noLogo: Boolean  = false
-	def withnoLogo(p:Boolean):MPropertyPlayer ={ 	this.noLogo = p; 	this }
+	def withnoLogo(p:Boolean):this.type ={ 	this.noLogo = p; 	this }
 
 	/**
 	 * @param clientId : String

@@ -23,7 +23,7 @@ class MPackagercleanupOrphansPackagedFoldersReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """optional. if empty, the srvice run for all clientId""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPackagercleanupOrphansPackagedFoldersReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * optional. if empty, the srvice run for all sites
@@ -31,7 +31,7 @@ class MPackagercleanupOrphansPackagedFoldersReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """optional. if empty, the srvice run for all sites""", required = true)
 	@BeanProperty
 	var siteName: String =_
-	def withsiteName(p:String):MPackagercleanupOrphansPackagedFoldersReq ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	/**
 	 * if false, the service does not delete the folders but only verify the status
@@ -39,6 +39,6 @@ class MPackagercleanupOrphansPackagedFoldersReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if false, the service does not delete the folders but only verify the status""", required = true)
 	@BeanProperty
 	var remove: Boolean =_
-	def withremove(p:Boolean):MPackagercleanupOrphansPackagedFoldersReq ={ 	this.remove = p; 	this }
+	def withremove(p:Boolean):this.type ={ 	this.remove = p; 	this }
 
 }

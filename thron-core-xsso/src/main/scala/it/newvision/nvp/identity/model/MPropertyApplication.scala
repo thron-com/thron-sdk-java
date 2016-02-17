@@ -22,7 +22,7 @@ class MPropertyApplication extends Serializable {
 	//#SWGNL#<font color="#0000ff">clientId-view.4me.it</font>""" ,required = true)
 	@BeanProperty 
 	var applicationsServer: String  = "-view.4me.it/"
-	def withapplicationsServer(p:String):MPropertyApplication ={ 	this.applicationsServer = p; 	this }
+	def withapplicationsServer(p:String):this.type ={ 	this.applicationsServer = p; 	this }
 
 	/**
 	 * available protocols. list of comma separated values.
@@ -32,7 +32,7 @@ class MPropertyApplication extends Serializable {
 	//#SWGNL#"http://,https://"""" ,required = true)
 	@BeanProperty 
 	var webProtocols: String  = "http://"
-	def withwebProtocols(p:String):MPropertyApplication ={ 	this.webProtocols = p; 	this }
+	def withwebProtocols(p:String):this.type ={ 	this.webProtocols = p; 	this }
 
 	/**
 	 * @param clientId : String

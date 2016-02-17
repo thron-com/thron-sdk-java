@@ -21,6 +21,6 @@ class MVUsersToMerge extends Serializable {
 	//#SWG#@ApiModelProperty(value = """return the vuser detail without the password information, for security reason.""")
 	@BeanProperty 
 	var userDetails: List[MVUser] = new ArrayList[MVUser]
-	def withuserDetails(p:List[MVUser]):MVUsersToMerge ={ 	this.userDetails = p; 	this }
+	def withuserDetails(p:List[MVUser]):this.type ={ 	this.userDetails = p; 	this }
 
 }

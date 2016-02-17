@@ -23,11 +23,11 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var localPath: String =_
-	def withlocalPath(p:String):MFile ={ 	this.localPath = p; 	this }
+	def withlocalPath(p:String):this.type ={ 	this.localPath = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MFile ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 }

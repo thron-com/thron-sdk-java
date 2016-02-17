@@ -17,16 +17,16 @@ class MResponseLogAnalyzerBilling extends MResponseLogAnalyzer with Serializable
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MWeeboResult] = new ArrayList[MWeeboResult]
-	def withitems(p:List[MWeeboResult]):MResponseLogAnalyzerBilling ={ 	this.items = p; 	this }
+	def withitems(p:List[MWeeboResult]):this.type ={ 	this.items = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var fromDate: Date =_
-	def withfromDate(p:Date):MResponseLogAnalyzerBilling ={ 	this.fromDate = p; 	this }
+	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var toDate: Date =_
-	def withtoDate(p:Date):MResponseLogAnalyzerBilling ={ 	this.toDate = p; 	this }
+	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 }

@@ -17,6 +17,6 @@ class MResponseFilesToCleanUp extends MResponseRepository with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var filesToCleanUp: List[MFileToCleanUp] = new ArrayList[MFileToCleanUp]
-	def withfilesToCleanUp(p:List[MFileToCleanUp]):MResponseFilesToCleanUp ={ 	this.filesToCleanUp = p; 	this }
+	def withfilesToCleanUp(p:List[MFileToCleanUp]):this.type ={ 	this.filesToCleanUp = p; 	this }
 
 }

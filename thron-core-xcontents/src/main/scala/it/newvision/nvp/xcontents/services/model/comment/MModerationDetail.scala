@@ -18,6 +18,6 @@ class MModerationDetail extends MModeration with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var commentId: String =_
-	def withcommentId(p:String):MModerationDetail ={ 	this.commentId = p; 	this }
+	def withcommentId(p:String):this.type ={ 	this.commentId = p; 	this }
 
 }

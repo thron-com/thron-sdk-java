@@ -23,7 +23,7 @@ class MContent4Locale extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: length <= 150""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MContent4Locale ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * Constraints: length <= 10000
@@ -31,7 +31,7 @@ class MContent4Locale extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: length <= 10000""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MContent4Locale ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * Locale code (ISO639-1)
@@ -39,7 +39,7 @@ class MContent4Locale extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1)""" ,required = true)
 	@BeanProperty 
 	var locale: String =_
-	def withlocale(p:String):MContent4Locale ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -51,7 +51,7 @@ class MContent4Locale extends Serializable {
 	@Deprecated
 	var excerpt: String =_
 	@Deprecated
-	def withexcerpt(p:String):MContent4Locale ={ 	this.excerpt = p; 	this }
+	def withexcerpt(p:String):this.type ={ 	this.excerpt = p; 	this }
 
 	/**
 	 * @return Boolean

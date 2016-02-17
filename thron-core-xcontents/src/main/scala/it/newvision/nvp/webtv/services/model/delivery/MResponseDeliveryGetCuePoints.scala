@@ -21,7 +21,7 @@ class MResponseDeliveryGetCuePoints extends MResponseDelivery with Serializable 
 	//#SWG#@ApiModelProperty(value = """list of cue points""")
 	@BeanProperty 
 	var cuePoints: List[MCuePoint] = new ArrayList[MCuePoint]
-	def withcuePoints(p:List[MCuePoint]):MResponseDeliveryGetCuePoints ={ 	this.cuePoints = p; 	this }
+	def withcuePoints(p:List[MCuePoint]):this.type ={ 	this.cuePoints = p; 	this }
 
 	/**
 	 * total number of results
@@ -29,6 +29,6 @@ class MResponseDeliveryGetCuePoints extends MResponseDelivery with Serializable 
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseDeliveryGetCuePoints ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

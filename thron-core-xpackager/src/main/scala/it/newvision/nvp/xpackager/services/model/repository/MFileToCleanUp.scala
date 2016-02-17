@@ -30,7 +30,7 @@ class MFileToCleanUp extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the clientId""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MFileToCleanUp ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * the fileName
@@ -38,7 +38,7 @@ class MFileToCleanUp extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the fileName""" ,required = true)
 	@BeanProperty 
 	var file: MFile =_
-	def withfile(p:MFile):MFileToCleanUp ={ 	this.file = p; 	this }
+	def withfile(p:MFile):this.type ={ 	this.file = p; 	this }
 
 	/**
 	 * the siteName where the file should be cleanup.
@@ -46,6 +46,6 @@ class MFileToCleanUp extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the siteName where the file should be cleanup.""" ,required = true)
 	@BeanProperty 
 	var cacheSiteName: String =_
-	def withcacheSiteName(p:String):MFileToCleanUp ={ 	this.cacheSiteName = p; 	this }
+	def withcacheSiteName(p:String):this.type ={ 	this.cacheSiteName = p; 	this }
 
 }

@@ -22,6 +22,6 @@ class MQuotaCriteria extends Serializable {
 	//#SWGNL#@constraints: userIds.size() <= 1000 (max size of the collection)""")
 	@BeanProperty 
 	var userIds: List[String] = new ArrayList[String]
-	def withuserIds(p:List[String]):MQuotaCriteria ={ 	this.userIds = p; 	this }
+	def withuserIds(p:List[String]):this.type ={ 	this.userIds = p; 	this }
 
 }

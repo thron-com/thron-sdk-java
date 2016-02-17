@@ -17,7 +17,7 @@ class MResponseTags extends MResponseTag with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var tags: List[MTagDetail] = new ArrayList[MTagDetail]
-	def withtags(p:List[MTagDetail]):MResponseTags ={ 	this.tags = p; 	this }
+	def withtags(p:List[MTagDetail]):this.type ={ 	this.tags = p; 	this }
 
 	/**
 	 * total number of results
@@ -25,6 +25,6 @@ class MResponseTags extends MResponseTag with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseTags ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

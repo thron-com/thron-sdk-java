@@ -18,6 +18,6 @@ class MCriteria extends MCriteriaForReport with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var reportType: MEReportType =_
-	def withreportType(p:MEReportType):MCriteria ={ 	this.reportType = p; 	this }
+	def withreportType(p:MEReportType):this.type ={ 	this.reportType = p; 	this }
 
 }

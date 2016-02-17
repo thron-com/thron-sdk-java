@@ -24,6 +24,6 @@ class MITagremoveReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Required. """, required = true)
 	@BeanProperty
 	var target: MTarget =_
-	def withtarget(p:MTarget):MITagremoveReq ={ 	this.target = p; 	this }
+	def withtarget(p:MTarget):this.type ={ 	this.target = p; 	this }
 
 }

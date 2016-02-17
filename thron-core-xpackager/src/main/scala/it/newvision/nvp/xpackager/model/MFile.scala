@@ -20,7 +20,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the unique id of the object in the platform.""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MFile ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * limited to 64 characters.
@@ -30,12 +30,12 @@ class MFile extends Serializable {
 	//#SWGNL#filename with extension (example myimage.jpg)""" ,required = true)
 	@BeanProperty 
 	var fileName: String =_
-	def withfileName(p:String):MFile ={ 	this.fileName = p; 	this }
+	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var path: String =_
-	def withpath(p:String):MFile ={ 	this.path = p; 	this }
+	def withpath(p:String):this.type ={ 	this.path = p; 	this }
 
 	/**
 	 * Deprecated
@@ -43,7 +43,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@BeanProperty 
 	var host: String =_
-	def withhost(p:String):MFile ={ 	this.host = p; 	this }
+	def withhost(p:String):this.type ={ 	this.host = p; 	this }
 
 	/**
 	 * The site name where the file is stored. site_1, site_2...
@@ -51,7 +51,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var siteName: String =_
-	def withsiteName(p:String):MFile ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	/**
 	 * epoc format.
@@ -59,7 +59,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """epoc format.""")
 	@BeanProperty 
 	var modifiedDate: Long =_
-	def withmodifiedDate(p:Long):MFile ={ 	this.modifiedDate = p; 	this }
+	def withmodifiedDate(p:Long):this.type ={ 	this.modifiedDate = p; 	this }
 
 	/**
 	 * in bytes
@@ -67,12 +67,12 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """in bytes""")
 	@BeanProperty 
 	var totalSpace: Long =_
-	def withtotalSpace(p:Long):MFile ={ 	this.totalSpace = p; 	this }
+	def withtotalSpace(p:Long):this.type ={ 	this.totalSpace = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var mimetype: String  = ""
-	def withmimetype(p:String):MFile ={ 	this.mimetype = p; 	this }
+	def withmimetype(p:String):this.type ={ 	this.mimetype = p; 	this }
 
 	/**
 	 * used to specify where the file is ready for each single site.
@@ -80,7 +80,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to specify where the file is ready for each single site.""")
 	@BeanProperty 
 	var availableOnSites: List[MFileOnSite] = new ArrayList[MFileOnSite]
-	def withavailableOnSites(p:List[MFileOnSite]):MFile ={ 	this.availableOnSites = p; 	this }
+	def withavailableOnSites(p:List[MFileOnSite]):this.type ={ 	this.availableOnSites = p; 	this }
 
 	/**
 	 * used to mark if the file is in the platform or has been removed.
@@ -88,7 +88,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to mark if the file is in the platform or has been removed.""")
 	@BeanProperty 
 	var removed: Boolean =_
-	def withremoved(p:Boolean):MFile ={ 	this.removed = p; 	this }
+	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
 
 	/**
 	 * Used to save the time when the file is marked REMOVED
@@ -96,7 +96,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to save the time when the file is marked REMOVED""")
 	@BeanProperty 
 	var removeDate: Date =_
-	def withremoveDate(p:Date):MFile ={ 	this.removeDate = p; 	this }
+	def withremoveDate(p:Date):this.type ={ 	this.removeDate = p; 	this }
 
 	/**
 	 * Optional.
@@ -108,7 +108,7 @@ class MFile extends Serializable {
 	//#SWGNL#Saved by platform during the "addFileToPlatform" process.""")
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MFile ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * creation Date in the Platform
@@ -116,7 +116,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """creation Date in the Platform""")
 	@BeanProperty 
 	var creationDate: Date  = new Date()
-	def withcreationDate(p:Date):MFile ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * @param fileName : String

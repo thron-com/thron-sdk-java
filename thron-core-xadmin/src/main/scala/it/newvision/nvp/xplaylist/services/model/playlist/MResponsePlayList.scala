@@ -19,16 +19,16 @@ class MResponsePlayList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MEPlaylist =_
-	def withresultCode(p:MEPlaylist):MResponsePlayList ={ 	this.resultCode = p; 	this }
+	def withresultCode(p:MEPlaylist):this.type ={ 	this.resultCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var ssoCode: MESSO =_
-	def withssoCode(p:MESSO):MResponsePlayList ={ 	this.ssoCode = p; 	this }
+	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var errorDescription: String =_
-	def witherrorDescription(p:String):MResponsePlayList ={ 	this.errorDescription = p; 	this }
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

@@ -18,7 +18,7 @@ class MResponseShowContentByCategory extends MResponseContentCategory with Seria
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contents: List[MContent] = new ArrayList[MContent]
-	def withcontents(p:List[MContent]):MResponseShowContentByCategory ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MContent]):this.type ={ 	this.contents = p; 	this }
 
 	/**
 	 * total number of results
@@ -26,6 +26,6 @@ class MResponseShowContentByCategory extends MResponseContentCategory with Seria
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseShowContentByCategory ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

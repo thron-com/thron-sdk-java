@@ -73,7 +73,7 @@ class MLinkedCategorySearchOptions extends Serializable {
 	//#SWGNL#	"linkedCategories": ["a","b","!_c","!_d"]""")
 	@BeanProperty 
 	var linkedCategoryIds: List[String] = new ArrayList[String]
-	def withlinkedCategoryIds(p:List[String]):MLinkedCategorySearchOptions ={ 	this.linkedCategoryIds = p; 	this }
+	def withlinkedCategoryIds(p:List[String]):this.type ={ 	this.linkedCategoryIds = p; 	this }
 
 	/**
 	 * For all linkedCategoryIds search in subfolder.
@@ -81,7 +81,7 @@ class MLinkedCategorySearchOptions extends Serializable {
 	//#SWG#@ApiModelProperty(value = """For all linkedCategoryIds search in subfolder.""" ,required = true)
 	@BeanProperty 
 	var cascade: Boolean  = false
-	def withcascade(p:Boolean):MLinkedCategorySearchOptions ={ 	this.cascade = p; 	this }
+	def withcascade(p:Boolean):this.type ={ 	this.cascade = p; 	this }
 
 	/**
 	 * @return Boolean

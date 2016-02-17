@@ -18,11 +18,11 @@ class MResponseAddFilesToPlatform extends MResponseRepository with Serializable 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var filesImported: List[MFile] = new ArrayList[MFile]
-	def withfilesImported(p:List[MFile]):MResponseAddFilesToPlatform ={ 	this.filesImported = p; 	this }
+	def withfilesImported(p:List[MFile]):this.type ={ 	this.filesImported = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var filesNotImported: List[MFile] = new ArrayList[MFile]
-	def withfilesNotImported(p:List[MFile]):MResponseAddFilesToPlatform ={ 	this.filesNotImported = p; 	this }
+	def withfilesNotImported(p:List[MFile]):this.type ={ 	this.filesNotImported = p; 	this }
 
 }

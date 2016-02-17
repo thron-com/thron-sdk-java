@@ -17,11 +17,11 @@ class MPublisher extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MPublisher ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var contents: List[MContent] = new ArrayList[MContent]
-	  def withcontents(p:List[MContent]):MPublisher ={ 	this.contents = p; 	this }
+	  def withcontents(p:List[MContent]):this.type ={ 	this.contents = p; 	this }
 
 }

@@ -23,6 +23,8 @@ import it.newvision.nvp.identity.services.model.vusers.MResponseVUserFindByPrope
 import it.newvision.nvp.identity.services.model.request.MVUserManagerfindByPropertiesReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateImageReq
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUserVerifyUsername
+import it.newvision.nvp.identity.services.model.request.MVUserManagerlinkGroupsReq
+import it.newvision.nvp.identity.services.model.request.MVUserManagerunlinkGroupsReq
 
 /* ************************
 *  GENERATED CLASS
@@ -58,12 +60,6 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	 * <ul>
 	 * 	<li>PLATFORM_USER_GUEST: allowed to login in platform and use the services</li>
 	 * </ul>
-	 * <ul>
-	 * 	<li>EXTERNAL_USER: used to store external users used by apps.</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>GENERIC_CONTACT: used for personal address book.</li>
-	 * </ul>
 	 * 
 	 * Username and password are required for platform users (PLATFORM_USER, PLATFORM_USER_GUEST), and
 	 * username must be unique.
@@ -73,7 +69,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	 * <ol>
 	 * 	<li>can not contain §/$&#<>"?*:\|</li>
 	 * 	<li>can not contain spaces</li>
-	 * 	<li> can not start with _</li>
+	 * 	<li>can not start with _</li>
 	 * 	<li>can not start with !</li>
 	 * 	<li>max length = 50</li>
 	 * </ol>
@@ -181,7 +177,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * update the user detail.
+	 * Deprecated by JVUserManager.updateUser service
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupdateReq
 	 * @return MResponseVUser
@@ -227,7 +223,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * update the user detail.
+	 * update the user ExternalId
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -419,7 +415,8 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * DEPRECATED. Available only with 3.x release.
+	 * DEPRECATED.
+	 * Available only with 3.x release.
 	 * Use the service JDashBoard.migrateUserStuff (in xadmin) to correctly remove a user from the
 	 * platform.
 	 * @param tokenId : String
@@ -567,7 +564,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	/**
 	 * Used to activate/deactivate a user in the platform. When the user is not active he can not login
 	 * and use the platform's application and services.
-	 * Can be invoked only by users with role CORE_MANAGE_USERS
+	 * Can be invoked only by users Administrators with role CORE_MANAGE_USERS
 	 * @param tokenId : String
 	 * @param param : MVUserManagerchangeUserStatusReq
 	 * @return MResponseVUser
@@ -613,7 +610,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 
 	/**
 	 * The service UPDATE the user capabilities and roles for the given user.
-	 * Can be invoked only by users with role CORE_MANAGE_USERS
+	 * Can be invoked only by user Administrators with role CORE_MANAGE_USERS
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupdateCapabilitiesAndRolesReq
 	 * @return MResponseVUser
@@ -852,6 +849,104 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 				  throw e
 				}
 		  }
+	
+	}
+
+	/**
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param username : String
+	 * @param param : MVUserManagerlinkGroupsReq
+	 * @return MResponseVUser
+	*/
+	def linkGroups(tokenId: String, 
+			clientId: String, 
+			username: String, 
+			param: MVUserManagerlinkGroupsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUser ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseVUser = if(this.resourceEndpoint == ""){
+			
+				new MResponseVUser()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("vusermanager/linkGroups")
+					.path(clientId.toString)
+		.path(username.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseVUser],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseVUser])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param username : String
+	 * @param param : MVUserManagerunlinkGroupsReq
+	 * @return MResponseVUser
+	*/
+	def unlinkGroups(tokenId: String, 
+			clientId: String, 
+			username: String, 
+			param: MVUserManagerunlinkGroupsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUser ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseVUser = if(this.resourceEndpoint == ""){
+			
+				new MResponseVUser()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("vusermanager/unlinkGroups")
+					.path(clientId.toString)
+		.path(username.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseVUser],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseVUser])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
 	
 	}
 

@@ -19,16 +19,16 @@ class MResponseEventManager extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MEEventManager  = MEEventManager.OK
-	def withresultCode(p:MEEventManager):MResponseEventManager ={ 	this.resultCode = p; 	this }
+	def withresultCode(p:MEEventManager):this.type ={ 	this.resultCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var ssoCode: MESSO  = MESSO.OK
-	def withssoCode(p:MESSO):MResponseEventManager ={ 	this.ssoCode = p; 	this }
+	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var errorDescription: String  = ""
-	def witherrorDescription(p:String):MResponseEventManager ={ 	this.errorDescription = p; 	this }
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

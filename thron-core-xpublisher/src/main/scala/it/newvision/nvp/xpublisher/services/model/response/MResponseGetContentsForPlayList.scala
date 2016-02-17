@@ -19,16 +19,16 @@ class MResponseGetContentsForPlayList extends MResponsePublisher with Serializab
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contents: List[MPublishedContent] = new ArrayList[MPublishedContent]
-	def withcontents(p:List[MPublishedContent]):MResponseGetContentsForPlayList ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MPublishedContent]):this.type ={ 	this.contents = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var properties: MRestrictionProperties =_
-	def withproperties(p:MRestrictionProperties):MResponseGetContentsForPlayList ={ 	this.properties = p; 	this }
+	def withproperties(p:MRestrictionProperties):this.type ={ 	this.properties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseGetContentsForPlayList ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

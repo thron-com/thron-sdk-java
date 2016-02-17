@@ -28,8 +28,8 @@ object JIdentityAdminClient {
 /**
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.
- * it/api/adxsso/resources/identityadmin/</li>
+ * 	<li>REST service: http://clientId-view.thron.
+ * com/api/adxsso/resources/identityadmin/</li>
  * </ul>
  */
 class JIdentityAdminClient(val resourceEndpoint:String) {

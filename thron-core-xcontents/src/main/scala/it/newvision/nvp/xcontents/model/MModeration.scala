@@ -23,7 +23,7 @@ class MModeration extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEModerationStatus  = MEModerationStatus.PENDING
-	def withstatus(p:MEModerationStatus):MModeration ={ 	this.status = p; 	this }
+	def withstatus(p:MEModerationStatus):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * The userId of the moderator
@@ -31,7 +31,7 @@ class MModeration extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The userId of the moderator""")
 	@BeanProperty 
 	var moderatorId: String =_
-	def withmoderatorId(p:String):MModeration ={ 	this.moderatorId = p; 	this }
+	def withmoderatorId(p:String):this.type ={ 	this.moderatorId = p; 	this }
 
 	/**
 	 * Date of the last moderation update
@@ -39,7 +39,7 @@ class MModeration extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Date of the last moderation update""")
 	@BeanProperty 
 	var lastUpdate: Date =_
-	def withlastUpdate(p:Date):MModeration ={ 	this.lastUpdate = p; 	this }
+	def withlastUpdate(p:Date):this.type ={ 	this.lastUpdate = p; 	this }
 
 	/**
 	 * Some notes reported by the moderator
@@ -47,7 +47,7 @@ class MModeration extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Some notes reported by the moderator""" ,required = true)
 	@BeanProperty 
 	var moderatorNotes: String =_
-	def withmoderatorNotes(p:String):MModeration ={ 	this.moderatorNotes = p; 	this }
+	def withmoderatorNotes(p:String):this.type ={ 	this.moderatorNotes = p; 	this }
 
 	/**
 	 * the abuse report notified by a user.
@@ -55,7 +55,7 @@ class MModeration extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the abuse report notified by a user.""")
 	@BeanProperty 
 	var reportAbuse: MAbuseReport =_
-	def withreportAbuse(p:MAbuseReport):MModeration ={ 	this.reportAbuse = p; 	this }
+	def withreportAbuse(p:MAbuseReport):this.type ={ 	this.reportAbuse = p; 	this }
 
 	/**
 	 * Used to highlight a comment for the moderator
@@ -63,7 +63,7 @@ class MModeration extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to highlight a comment for the moderator""" ,required = true)
 	@BeanProperty 
 	var starred: Boolean  = false
-	def withstarred(p:Boolean):MModeration ={ 	this.starred = p; 	this }
+	def withstarred(p:Boolean):this.type ={ 	this.starred = p; 	this }
 
 	/**
 	 * @param status : MEModerationStatus

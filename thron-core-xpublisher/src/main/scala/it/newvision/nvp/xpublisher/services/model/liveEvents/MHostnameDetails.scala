@@ -31,6 +31,6 @@ class MHostnameDetails extends Serializable {
 	//#SWGNL#http://clientId-eventId-app.4mecloud.it""")
 	@BeanProperty 
 	var publicHostnames: List[MHostnameDetail] = new ArrayList[MHostnameDetail]
-	def withpublicHostnames(p:List[MHostnameDetail]):MHostnameDetails ={ 	this.publicHostnames = p; 	this }
+	def withpublicHostnames(p:List[MHostnameDetail]):this.type ={ 	this.publicHostnames = p; 	this }
 
 }

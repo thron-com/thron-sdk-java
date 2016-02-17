@@ -25,6 +25,6 @@ class MPolicies extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var policies: List[String] = new ArrayList[String]()
-	def withpolicies(p:List[String]):MPolicies ={ 	this.policies = p; 	this }
+	def withpolicies(p:List[String]):this.type ={ 	this.policies = p; 	this }
 
 }

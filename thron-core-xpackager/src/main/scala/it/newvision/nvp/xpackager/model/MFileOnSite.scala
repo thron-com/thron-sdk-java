@@ -17,17 +17,17 @@ class MFileOnSite extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var siteName: String =_
-	def withsiteName(p:String):MFileOnSite ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEFileStatus =_
-	def withstatus(p:MEFileStatus):MFileOnSite ={ 	this.status = p; 	this }
+	def withstatus(p:MEFileStatus):this.type ={ 	this.status = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lastUpdate: Date =_
-	def withlastUpdate(p:Date):MFileOnSite ={ 	this.lastUpdate = p; 	this }
+	def withlastUpdate(p:Date):this.type ={ 	this.lastUpdate = p; 	this }
 
 	/**
 	 * @param siteName : String

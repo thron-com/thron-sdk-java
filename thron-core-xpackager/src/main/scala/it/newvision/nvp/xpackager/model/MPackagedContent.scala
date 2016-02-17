@@ -22,52 +22,52 @@ class MPackagedContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var packagedId: String =_
-	def withpackagedId(p:String):MPackagedContent ={ 	this.packagedId = p; 	this }
+	def withpackagedId(p:String):this.type ={ 	this.packagedId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentId: String =_
-	def withcontentId(p:String):MPackagedContent ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var descriptor: String =_
-	def withdescriptor(p:String):MPackagedContent ={ 	this.descriptor = p; 	this }
+	def withdescriptor(p:String):this.type ={ 	this.descriptor = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEPackagedStatus =_
-	def withstatus(p:MEPackagedStatus):MPackagedContent ={ 	this.status = p; 	this }
+	def withstatus(p:MEPackagedStatus):this.type ={ 	this.status = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var creationDate: Date =_
-	def withcreationDate(p:Date):MPackagedContent ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var outputFolder: MFolder =_
-	def withoutputFolder(p:MFolder):MPackagedContent ={ 	this.outputFolder = p; 	this }
+	def withoutputFolder(p:MFolder):this.type ={ 	this.outputFolder = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var startTime: Date =_
-	def withstartTime(p:Date):MPackagedContent ={ 	this.startTime = p; 	this }
+	def withstartTime(p:Date):this.type ={ 	this.startTime = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var endTime: Date =_
-	def withendTime(p:Date):MPackagedContent ={ 	this.endTime = p; 	this }
+	def withendTime(p:Date):this.type ={ 	this.endTime = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var packagedHost: String =_
-	def withpackagedHost(p:String):MPackagedContent ={ 	this.packagedHost = p; 	this }
+	def withpackagedHost(p:String):this.type ={ 	this.packagedHost = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var isRemoved: Boolean  = false
-	def withisRemoved(p:Boolean):MPackagedContent ={ 	this.isRemoved = p; 	this }
+	def withisRemoved(p:Boolean):this.type ={ 	this.isRemoved = p; 	this }
 
 	/**
 	 * the list of linked ingestions ID used to remove the linked ingestion when
@@ -76,7 +76,7 @@ class MPackagedContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of linked ingestions ID used to remove the linked ingestion when necessary. """)
 	@BeanProperty 
 	var ingestionsId: List[String] = new ArrayList[String]
-	def withingestionsId(p:List[String]):MPackagedContent ={ 	this.ingestionsId = p; 	this }
+	def withingestionsId(p:List[String]):this.type ={ 	this.ingestionsId = p; 	this }
 
 	/**
 	 * The percentage of completion task.
@@ -84,6 +84,6 @@ class MPackagedContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The percentage of completion task.""" ,required = true)
 	@BeanProperty 
 	var stateOfProgress: Integer  = 0
-	def withstateOfProgress(p:Integer):MPackagedContent ={ 	this.stateOfProgress = p; 	this }
+	def withstateOfProgress(p:Integer):this.type ={ 	this.stateOfProgress = p; 	this }
 
 }

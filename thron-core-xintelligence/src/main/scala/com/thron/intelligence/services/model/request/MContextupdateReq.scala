@@ -21,6 +21,6 @@ class MContextupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var update: MContextUpdate =_
-	def withupdate(p:MContextUpdate):MContextupdateReq ={ 	this.update = p; 	this }
+	def withupdate(p:MContextUpdate):this.type ={ 	this.update = p; 	this }
 
 }

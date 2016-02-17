@@ -20,11 +20,11 @@ class MRepositoryAdmingetFilesToBackupReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var siteName: String =_
-	def withsiteName(p:String):MRepositoryAdmingetFilesToBackupReq ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfResults: Integer =_
-	def withnumberOfResults(p:Integer):MRepositoryAdmingetFilesToBackupReq ={ 	this.numberOfResults = p; 	this }
+	def withnumberOfResults(p:Integer):this.type ={ 	this.numberOfResults = p; 	this }
 
 }

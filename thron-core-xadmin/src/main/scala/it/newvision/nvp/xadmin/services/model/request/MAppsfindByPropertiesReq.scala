@@ -21,7 +21,7 @@ class MAppsfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAppsfindByPropertiesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * Optional. used as serach criteria for the Snippets.
@@ -29,6 +29,6 @@ class MAppsfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. used as serach criteria for the Snippets.""", required = true)
 	@BeanProperty
 	var criteria: MAppSnippetCriteria =_
-	def withcriteria(p:MAppSnippetCriteria):MAppsfindByPropertiesReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MAppSnippetCriteria):this.type ={ 	this.criteria = p; 	this }
 
 }

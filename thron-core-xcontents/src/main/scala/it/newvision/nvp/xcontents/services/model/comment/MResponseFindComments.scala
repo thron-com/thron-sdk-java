@@ -21,7 +21,7 @@ class MResponseFindComments extends MResponseComment with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the lists of contents satisfy the search criteria. le content list has the comments collection filtered with only the elements matching the search.""")
 	@BeanProperty 
 	var comments: List[MCommentDetail] = new ArrayList[MCommentDetail]
-	def withcomments(p:List[MCommentDetail]):MResponseFindComments ={ 	this.comments = p; 	this }
+	def withcomments(p:List[MCommentDetail]):this.type ={ 	this.comments = p; 	this }
 
 	/**
 	 * Total Number Of Comments with status Pending.
@@ -29,7 +29,7 @@ class MResponseFindComments extends MResponseComment with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Total Number Of Comments with status Pending.""" ,required = true)
 	@BeanProperty 
 	var totalCommentsToModerate: Integer =_
-	def withtotalCommentsToModerate(p:Integer):MResponseFindComments ={ 	this.totalCommentsToModerate = p; 	this }
+	def withtotalCommentsToModerate(p:Integer):this.type ={ 	this.totalCommentsToModerate = p; 	this }
 
 	/**
 	 * total number of results
@@ -37,6 +37,6 @@ class MResponseFindComments extends MResponseComment with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseFindComments ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

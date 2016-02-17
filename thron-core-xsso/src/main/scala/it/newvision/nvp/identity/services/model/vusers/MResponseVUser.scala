@@ -19,16 +19,16 @@ class MResponseVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MEClientResponse =_
-	def withresultCode(p:MEClientResponse):MResponseVUser ={ 	this.resultCode = p; 	this }
+	def withresultCode(p:MEClientResponse):this.type ={ 	this.resultCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var ssoCode: MESSO =_
-	def withssoCode(p:MESSO):MResponseVUser ={ 	this.ssoCode = p; 	this }
+	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var errorDescription: String =_
-	def witherrorDescription(p:String):MResponseVUser ={ 	this.errorDescription = p; 	this }
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

@@ -23,6 +23,6 @@ class MAdminAdmincheckAndFixContentsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if true the service execute without side effects.""", required = true)
 	@BeanProperty
 	var whatif: Boolean =_
-	def withwhatif(p:Boolean):MAdminAdmincheckAndFixContentsReq ={ 	this.whatif = p; 	this }
+	def withwhatif(p:Boolean):this.type ={ 	this.whatif = p; 	this }
 
 }

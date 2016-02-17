@@ -17,7 +17,7 @@ class MResponseLiveEventFindByProperties extends MResponseLiveEvent with Seriali
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var liveEvents: List[MLiveEventDetail] = new ArrayList[MLiveEventDetail]
-	def withliveEvents(p:List[MLiveEventDetail]):MResponseLiveEventFindByProperties ={ 	this.liveEvents = p; 	this }
+	def withliveEvents(p:List[MLiveEventDetail]):this.type ={ 	this.liveEvents = p; 	this }
 
 	/**
 	 * total number of results
@@ -25,6 +25,6 @@ class MResponseLiveEventFindByProperties extends MResponseLiveEvent with Seriali
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseLiveEventFindByProperties ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

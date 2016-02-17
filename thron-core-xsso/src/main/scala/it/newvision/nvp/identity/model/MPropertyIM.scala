@@ -17,17 +17,17 @@ class MPropertyIM extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var imType: MEExternalIdType =_
-	def withimType(p:MEExternalIdType):MPropertyIM ={ 	this.imType = p; 	this }
+	def withimType(p:MEExternalIdType):this.type ={ 	this.imType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MPropertyIM ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var secure: Boolean  = true
-	def withsecure(p:Boolean):MPropertyIM ={ 	this.secure = p; 	this }
+	def withsecure(p:Boolean):this.type ={ 	this.secure = p; 	this }
 
 	/**
 	 * @return void

@@ -37,7 +37,7 @@ class MSyncCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Filter all contents having contentType in the specified list.""")
 	@BeanProperty 
 	var contentType: List[MEContentType] = new ArrayList[MEContentType]
-	def withcontentType(p:List[MEContentType]):MSyncCriteria ={ 	this.contentType = p; 	this }
+	def withcontentType(p:List[MEContentType]):this.type ={ 	this.contentType = p; 	this }
 
 	/**
 	 * used to filter the contents linked (or previously linked) to the given
@@ -53,6 +53,6 @@ class MSyncCriteria extends Serializable {
 	//#SWGNL#* all contents were linked to specified categoryId (this is used to know when a content has been removed from a category)""")
 	@BeanProperty 
 	var linkedCategories: List[String] = new ArrayList[String]
-	def withlinkedCategories(p:List[String]):MSyncCriteria ={ 	this.linkedCategories = p; 	this }
+	def withlinkedCategories(p:List[String]):this.type ={ 	this.linkedCategories = p; 	this }
 
 }

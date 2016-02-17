@@ -22,12 +22,12 @@ class MChannel extends MAChannel with Serializable  {
 	//#SWGNL#In milliseconds""" ,required = true)
 	@BeanProperty 
 	var executionTime: Long =_
-	def withexecutionTime(p:Long):MChannel ={ 	this.executionTime = p; 	this }
+	def withexecutionTime(p:Long):this.type ={ 	this.executionTime = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var files: List[MFile] = new ArrayList[MFile]
-	  def withfiles(p:List[MFile]):MChannel ={ 	this.files = p; 	this }
+	  def withfiles(p:List[MFile]):this.type ={ 	this.files = p; 	this }
 
 	/**
 	 * @return Boolean

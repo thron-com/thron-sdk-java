@@ -20,7 +20,7 @@ class MMetadataDefinitionKeyOption extends MMetadataDefinitionOptionClass with S
 	//#SWG#@ApiModelProperty(value = """Used as layout directive, not for validation""")
 	@BeanProperty 
 	var fieldType: MEStringType =_
-	def withfieldType(p:MEStringType):MMetadataDefinitionKeyOption ={ 	this.fieldType = p; 	this }
+	def withfieldType(p:MEStringType):this.type ={ 	this.fieldType = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -20,6 +20,6 @@ class MITagDefinitionremoveReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var cascade: Boolean =_
-	def withcascade(p:Boolean):MITagDefinitionremoveReq ={ 	this.cascade = p; 	this }
+	def withcascade(p:Boolean):this.type ={ 	this.cascade = p; 	this }
 
 }

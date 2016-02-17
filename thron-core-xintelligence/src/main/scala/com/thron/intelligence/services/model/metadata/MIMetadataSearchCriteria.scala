@@ -22,6 +22,6 @@ class MIMetadataSearchCriteria extends Serializable {
 	//#SWGNL#<b>NOTAG </b>keyword is used to filter metadata definition not linked to tags.""")
 	@BeanProperty 
 	var tagIds: List[String] = new ArrayList[String]
-	def withtagIds(p:List[String]):MIMetadataSearchCriteria ={ 	this.tagIds = p; 	this }
+	def withtagIds(p:List[String]):this.type ={ 	this.tagIds = p; 	this }
 
 }

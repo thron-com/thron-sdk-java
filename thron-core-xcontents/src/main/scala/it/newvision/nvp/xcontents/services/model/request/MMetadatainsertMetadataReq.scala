@@ -22,17 +22,17 @@ class MMetadatainsertMetadataReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MMetadatainsertMetadataReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MMetadatainsertMetadataReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var metadata: MMetadata =_
-	def withmetadata(p:MMetadata):MMetadatainsertMetadataReq ={ 	this.metadata = p; 	this }
+	def withmetadata(p:MMetadata):this.type ={ 	this.metadata = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -40,6 +40,6 @@ class MMetadatainsertMetadataReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MMetadatainsertMetadataReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

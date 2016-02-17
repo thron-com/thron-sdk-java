@@ -21,6 +21,6 @@ class MITagDefinitionlinkMetadataDefinitionReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var items: MITagMetadataList =_
-	def withitems(p:MITagMetadataList):MITagDefinitionlinkMetadataDefinitionReq ={ 	this.items = p; 	this }
+	def withitems(p:MITagMetadataList):this.type ={ 	this.items = p; 	this }
 
 }

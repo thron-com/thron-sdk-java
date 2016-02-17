@@ -22,6 +22,6 @@ class MFileNameList extends Serializable {
 	//#SWGNL#filename with extension (example myimage.jpg)""")
 	@BeanProperty 
 	var fileNames: List[String] = new ArrayList[String]
-	def withfileNames(p:List[String]):MFileNameList ={ 	this.fileNames = p; 	this }
+	def withfileNames(p:List[String]):this.type ={ 	this.fileNames = p; 	this }
 
 }

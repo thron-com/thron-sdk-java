@@ -17,6 +17,6 @@ class MResponseAclUpdate extends MResponseAcl with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var rulesInIssue: List[MAclRuleItem] = new ArrayList[MAclRuleItem]
-	def withrulesInIssue(p:List[MAclRuleItem]):MResponseAclUpdate ={ 	this.rulesInIssue = p; 	this }
+	def withrulesInIssue(p:List[MAclRuleItem]):this.type ={ 	this.rulesInIssue = p; 	this }
 
 }

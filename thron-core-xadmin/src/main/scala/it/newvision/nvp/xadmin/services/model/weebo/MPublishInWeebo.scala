@@ -24,7 +24,7 @@ class MPublishInWeebo extends Serializable {
 	//#SWGNL#This value should be empty for MPublishPageletParams""")
 	@BeanProperty 
 	var file: List[MFile] = new ArrayList[MFile]
-	def withfile(p:List[MFile]):MPublishInWeebo ={ 	this.file = p; 	this }
+	def withfile(p:List[MFile]):this.type ={ 	this.file = p; 	this }
 
 	/**
 	 * If TRUE the source file is get from the FTP folder otherwise from the
@@ -36,7 +36,7 @@ class MPublishInWeebo extends Serializable {
 	//#SWGNL#This value should be empty for MPublishPageletParams""" ,required = true)
 	@BeanProperty 
 	var fileFromFTP: Boolean  = true
-	def withfileFromFTP(p:Boolean):MPublishInWeebo ={ 	this.fileFromFTP = p; 	this }
+	def withfileFromFTP(p:Boolean):this.type ={ 	this.fileFromFTP = p; 	this }
 
 	/**
 	 * Optional.
@@ -44,7 +44,7 @@ class MPublishInWeebo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""")
 	@BeanProperty 
 	var channel: String =_
-	def withchannel(p:String):MPublishInWeebo ={ 	this.channel = p; 	this }
+	def withchannel(p:String):this.type ={ 	this.channel = p; 	this }
 
 	/**
 	 * Optional.
@@ -56,7 +56,7 @@ class MPublishInWeebo extends Serializable {
 	//#SWGNL#The content metadata, like name and description in the specified locale. If the ContentDescription is empty, the platform create a content description for the default locale assigning as content title the source filename.""")
 	@BeanProperty 
 	var content: MContentDescription =_
-	def withcontent(p:MContentDescription):MPublishInWeebo ={ 	this.content = p; 	this }
+	def withcontent(p:MContentDescription):this.type ={ 	this.content = p; 	this }
 
 	/**
 	 * Deprecated
@@ -66,7 +66,7 @@ class MPublishInWeebo extends Serializable {
 	@Deprecated
 	var solution: String  = "VIEW"
 	@Deprecated
-	def withsolution(p:String):MPublishInWeebo ={ 	this.solution = p; 	this }
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * Optional.
@@ -80,7 +80,7 @@ class MPublishInWeebo extends Serializable {
 	//#SWGNL#This value should be empty for MPublishPageletParams""")
 	@BeanProperty 
 	var contentUGC: Boolean =_
-	def withcontentUGC(p:Boolean):MPublishInWeebo ={ 	this.contentUGC = p; 	this }
+	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
 
 	/**
 	 * Optional. The identifier for the publishing profile (used to derive the list of
@@ -91,7 +91,7 @@ class MPublishInWeebo extends Serializable {
 	//#SWGNL#If empty and channel not specified, will be used the default profile""")
 	@BeanProperty 
 	var profileId: String =_
-	def withprofileId(p:String):MPublishInWeebo ={ 	this.profileId = p; 	this }
+	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
 
 	/**
 	 * Optional.Used to specify if the publishing process should define a value for
@@ -106,7 +106,7 @@ class MPublishInWeebo extends Serializable {
 	//#SWGNL#If true the service apply the filename (as default value) for each single locale of the content (all available locale of the client)""")
 	@BeanProperty 
 	var initAllLocales: Boolean  = true
-	def withinitAllLocales(p:Boolean):MPublishInWeebo ={ 	this.initAllLocales = p; 	this }
+	def withinitAllLocales(p:Boolean):this.type ={ 	this.initAllLocales = p; 	this }
 
 	/**
 	 * @return Boolean

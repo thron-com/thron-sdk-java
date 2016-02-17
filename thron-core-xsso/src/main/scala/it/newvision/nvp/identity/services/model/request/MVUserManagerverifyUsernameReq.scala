@@ -20,6 +20,6 @@ class MVUserManagerverifyUsernameReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var username: String =_
-	def withusername(p:String):MVUserManagerverifyUsernameReq ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

@@ -27,7 +27,7 @@ class MFile extends Serializable {
 	//#SWGNL#MFile.id (xpackager component)""")
 	@BeanProperty 
 	var repositoryFileId: String =_
-	def withrepositoryFileId(p:String):MFile ={ 	this.repositoryFileId = p; 	this }
+	def withrepositoryFileId(p:String):this.type ={ 	this.repositoryFileId = p; 	this }
 
 	/**
 	 * Optional.
@@ -39,7 +39,7 @@ class MFile extends Serializable {
 	//#SWGNL#filename with extension (example myimage.jpg)""")
 	@BeanProperty 
 	var fileName: String =_
-	def withfileName(p:String):MFile ={ 	this.fileName = p; 	this }
+	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
 
 	/**
 	 * Deprecated
@@ -47,7 +47,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@BeanProperty 
 	var path: String =_
-	def withpath(p:String):MFile ={ 	this.path = p; 	this }
+	def withpath(p:String):this.type ={ 	this.path = p; 	this }
 
 	/**
 	 * Deprecated
@@ -55,7 +55,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@BeanProperty 
 	var host: String =_
-	def withhost(p:String):MFile ={ 	this.host = p; 	this }
+	def withhost(p:String):this.type ={ 	this.host = p; 	this }
 
 	/**
 	 * Deprecated
@@ -63,7 +63,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Deprecated""" ,required = true)
 	@BeanProperty 
 	var siteName: String =_
-	def withsiteName(p:String):MFile ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	/**
 	 * Optional. Epoc format.
@@ -71,7 +71,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Epoc format.""")
 	@BeanProperty 
 	var modifiedDate: Long =_
-	def withmodifiedDate(p:Long):MFile ={ 	this.modifiedDate = p; 	this }
+	def withmodifiedDate(p:Long):this.type ={ 	this.modifiedDate = p; 	this }
 
 	/**
 	 * Optional. In bytes
@@ -79,7 +79,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. In bytes""")
 	@BeanProperty 
 	var totalSpace: Long =_
-	def withtotalSpace(p:Long):MFile ={ 	this.totalSpace = p; 	this }
+	def withtotalSpace(p:Long):this.type ={ 	this.totalSpace = p; 	this }
 
 	/**
 	 * Optional
@@ -87,7 +87,7 @@ class MFile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""")
 	@BeanProperty 
 	var mimeType: String =_
-	def withmimeType(p:String):MFile ={ 	this.mimeType = p; 	this }
+	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
 
 	/**
 	 * Optional.
@@ -99,6 +99,6 @@ class MFile extends Serializable {
 	//#SWGNL#It is used to indicate that the original source file has been removed from the working area, and for this reason it is not possible anymore to use the file for a new publishing process.""")
 	@BeanProperty 
 	var removed: Boolean  = false
-	def withremoved(p:Boolean):MFile ={ 	this.removed = p; 	this }
+	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
 
 }

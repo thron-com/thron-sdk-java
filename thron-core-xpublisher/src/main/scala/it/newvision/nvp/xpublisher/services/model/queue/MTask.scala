@@ -19,31 +19,31 @@ class MTask extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MTask ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MTask ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var siteName: String =_
-	def withsiteName(p:String):MTask ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentId: String =_
-	def withcontentId(p:String):MTask ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var channel: MChannel =_
-	def withchannel(p:MChannel):MTask ={ 	this.channel = p; 	this }
+	def withchannel(p:MChannel):this.type ={ 	this.channel = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentType: MEContentType =_
-	def withcontentType(p:MEContentType):MTask ={ 	this.contentType = p; 	this }
+	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
 
 }

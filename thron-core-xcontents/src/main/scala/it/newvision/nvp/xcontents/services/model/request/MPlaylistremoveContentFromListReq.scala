@@ -20,7 +20,7 @@ class MPlaylistremoveContentFromListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPlaylistremoveContentFromListReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * xcontentId of playlist
@@ -28,7 +28,7 @@ class MPlaylistremoveContentFromListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """ xcontentId of playlist""", required = true)
 	@BeanProperty
 	var xcontentId: String =_
-	def withxcontentId(p:String):MPlaylistremoveContentFromListReq ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * remove the element in the given position
@@ -36,7 +36,7 @@ class MPlaylistremoveContentFromListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """remove the element in the given position""", required = true)
 	@BeanProperty
 	var contentPosition: Integer =_
-	def withcontentPosition(p:Integer):MPlaylistremoveContentFromListReq ={ 	this.contentPosition = p; 	this }
+	def withcontentPosition(p:Integer):this.type ={ 	this.contentPosition = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -44,6 +44,6 @@ class MPlaylistremoveContentFromListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MPlaylistremoveContentFromListReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

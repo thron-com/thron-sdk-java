@@ -17,11 +17,11 @@ class MRatingAverage extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var scoreAverage: Double =_
-	def withscoreAverage(p:Double):MRatingAverage ={ 	this.scoreAverage = p; 	this }
+	def withscoreAverage(p:Double):this.type ={ 	this.scoreAverage = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var numberOfVotes: Integer =_
-	def withnumberOfVotes(p:Integer):MRatingAverage ={ 	this.numberOfVotes = p; 	this }
+	def withnumberOfVotes(p:Integer):this.type ={ 	this.numberOfVotes = p; 	this }
 
 }

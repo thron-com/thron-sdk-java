@@ -20,21 +20,21 @@ class MWeeboPublisherAdminreplaceThumbnailsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboPublisherAdminreplaceThumbnailsReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var siteName: String =_
-	def withsiteName(p:String):MWeeboPublisherAdminreplaceThumbnailsReq ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var packageId: String =_
-	def withpackageId(p:String):MWeeboPublisherAdminreplaceThumbnailsReq ={ 	this.packageId = p; 	this }
+	def withpackageId(p:String):this.type ={ 	this.packageId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty @org.codehaus.jackson.annotate.JsonProperty("PContentId")
 	var pContentId: String =_
-	def withpContentId(p:String):MWeeboPublisherAdminreplaceThumbnailsReq ={ 	this.pContentId = p; 	this }
+	def withpContentId(p:String):this.type ={ 	this.pContentId = p; 	this }
 
 }

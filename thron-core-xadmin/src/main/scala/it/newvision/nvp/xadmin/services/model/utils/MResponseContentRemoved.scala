@@ -20,6 +20,6 @@ class MResponseContentRemoved extends MResponseDashboard with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the list of xcontentIds in issue during the operation.""")
 	@BeanProperty 
 	var contentsInIssue: List[String] = new ArrayList[String]
-	def withcontentsInIssue(p:List[String]):MResponseContentRemoved ={ 	this.contentsInIssue = p; 	this }
+	def withcontentsInIssue(p:List[String]):this.type ={ 	this.contentsInIssue = p; 	this }
 
 }

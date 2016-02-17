@@ -24,16 +24,9 @@ public enum MEUserType {
 	@XmlEnumValue("PLATFORM_USER_GUEST") PLATFORM_USER_GUEST,
 	/**
 	 * Deprecated.
-	 * generic user that can hase some permission to use platform contents.
+	 * generic user that can have some permission to use platform contents.
 	 */
 	//#SWG#@ApiModelProperty(value = """Deprecated.
-	//#SWGNL#generic user that can hase some permission to use platform contents.""")
-	@XmlEnumValue("EXTERNAL_USER") EXTERNAL_USER,
-	/**
-	 * Deprecated.
-	 * generic contact used only for notification.
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated.
-	//#SWGNL#generic contact used only for notification.""")
-	@XmlEnumValue("GENERIC_CONTACT") GENERIC_CONTACT
+	//#SWGNL#generic user that can have some permission to use platform contents.""")
+	@XmlEnumValue("EXTERNAL_USER") EXTERNAL_USER
 }

@@ -25,7 +25,7 @@ class MITagMetadataUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Desired metadata position among elements of a specific tree level.""")
 	@BeanProperty 
 	var pos: Integer =_
-	def withpos(p:Integer):MITagMetadataUpdate ={ 	this.pos = p; 	this }
+	def withpos(p:Integer):this.type ={ 	this.pos = p; 	this }
 
 	/**
 	 * @return Boolean

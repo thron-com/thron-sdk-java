@@ -31,7 +31,7 @@ class MPatch extends Serializable {
 	//#SWG#@ApiModelProperty(value = """operation type. Possible values is remove""")
 	@BeanProperty 
 	var op: String =_
-	def withop(p:String):MPatch ={ 	this.op = p; 	this }
+	def withop(p:String):this.type ={ 	this.op = p; 	this }
 
 	/**
 	 * field path
@@ -41,6 +41,6 @@ class MPatch extends Serializable {
 	//#SWGNL#example: "attribute1"""")
 	@BeanProperty 
 	var field: String =_
-	def withfield(p:String):MPatch ={ 	this.field = p; 	this }
+	def withfield(p:String):this.type ={ 	this.field = p; 	this }
 
 }

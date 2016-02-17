@@ -22,11 +22,11 @@ class MVUserProperties extends Serializable {
 	//#SWGNL#false  the user is not active""")
 	@BeanProperty 
 	var active: Boolean =_
-	def withactive(p:Boolean):MVUserProperties ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var expiryDate: Date =_
-	def withexpiryDate(p:Date):MVUserProperties ={ 	this.expiryDate = p; 	this }
+	def withexpiryDate(p:Date):this.type ={ 	this.expiryDate = p; 	this }
 
 }

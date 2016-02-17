@@ -34,7 +34,7 @@ class MVUserPreferences extends Serializable {
 	//#SWGNL#GMT+4""")
 	@BeanProperty 
 	var timeZoneId: String  = "GMT+0"
-	def withtimeZoneId(p:String):MVUserPreferences ={ 	this.timeZoneId = p; 	this }
+	def withtimeZoneId(p:String):this.type ={ 	this.timeZoneId = p; 	this }
 
 	/**
 	 * The preferred locale to use in the Console or for notifications.
@@ -44,12 +44,12 @@ class MVUserPreferences extends Serializable {
 	//#SWGNL#Like: IT, EN, FR...""")
 	@BeanProperty 
 	var locale: String  = "EN"
-	def withlocale(p:String):MVUserPreferences ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var notificationProperty: MVUserNotificationProperties  = new MVUserNotificationProperties()
-	def withnotificationProperty(p:MVUserNotificationProperties):MVUserPreferences ={ 	this.notificationProperty = p; 	this }
+	def withnotificationProperty(p:MVUserNotificationProperties):this.type ={ 	this.notificationProperty = p; 	this }
 
 	/**
 	 * the default category where the user create new contents
@@ -57,6 +57,6 @@ class MVUserPreferences extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the default category where the user create new contents""")
 	@BeanProperty 
 	var defaultCategoryId: String =_
-	def withdefaultCategoryId(p:String):MVUserPreferences ={ 	this.defaultCategoryId = p; 	this }
+	def withdefaultCategoryId(p:String):this.type ={ 	this.defaultCategoryId = p; 	this }
 
 }

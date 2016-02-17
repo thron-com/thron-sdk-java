@@ -20,17 +20,17 @@ class MVisitsresetVisitCounterReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MVisitsresetVisitCounterReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MVisitsresetVisitCounterReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var initialValue: Long =_
-	def withinitialValue(p:Long):MVisitsresetVisitCounterReq ={ 	this.initialValue = p; 	this }
+	def withinitialValue(p:Long):this.type ={ 	this.initialValue = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -38,6 +38,6 @@ class MVisitsresetVisitCounterReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MVisitsresetVisitCounterReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

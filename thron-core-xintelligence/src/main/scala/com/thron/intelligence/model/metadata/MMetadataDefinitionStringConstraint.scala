@@ -17,7 +17,7 @@ class MMetadataDefinitionStringConstraint extends MMetadataDefinitionGenericCons
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var regexp: String =_
-	def withregexp(p:String):MMetadataDefinitionStringConstraint ={ 	this.regexp = p; 	this }
+	def withregexp(p:String):this.type ={ 	this.regexp = p; 	this }
 
 	/**
 	 * Constraints:
@@ -33,7 +33,7 @@ class MMetadataDefinitionStringConstraint extends MMetadataDefinitionGenericCons
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var maxSize: Integer  = 2000000
-	def withmaxSize(p:Integer):MMetadataDefinitionStringConstraint ={ 	this.maxSize = p; 	this }
+	def withmaxSize(p:Integer):this.type ={ 	this.maxSize = p; 	this }
 
 	/**
 	 * @param value : String

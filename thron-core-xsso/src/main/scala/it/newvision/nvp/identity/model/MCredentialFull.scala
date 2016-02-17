@@ -38,7 +38,7 @@ class MCredentialFull extends MCredential with Serializable  {
 	//#SWGNL#-) max length = 50""" ,required = true)
 	@BeanProperty 
 	var username: String =_
-	def withusername(p:String):MCredentialFull ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	/**
 	 * Constraints for the password attribute:
@@ -48,7 +48,7 @@ class MCredentialFull extends MCredential with Serializable  {
 	//#SWGNL#-) max length = 100""" ,required = true)
 	@BeanProperty 
 	var password: String =_
-	def withpassword(p:String):MCredentialFull ={ 	this.password = p; 	this }
+	def withpassword(p:String):this.type ={ 	this.password = p; 	this }
 
 	/**
 	 * Optional. The last time password has been changed
@@ -56,7 +56,7 @@ class MCredentialFull extends MCredential with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Optional. The last time password has been changed""")
 	@BeanProperty 
 	var passwordUpdate: Date =_
-	def withpasswordUpdate(p:Date):MCredentialFull ={ 	this.passwordUpdate = p; 	this }
+	def withpasswordUpdate(p:Date):this.type ={ 	this.passwordUpdate = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -18,6 +18,6 @@ class MResponseSessionInfo extends MResponseIdentity with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var session: MSession =_
-	def withsession(p:MSession):MResponseSessionInfo ={ 	this.session = p; 	this }
+	def withsession(p:MSession):this.type ={ 	this.session = p; 	this }
 
 }

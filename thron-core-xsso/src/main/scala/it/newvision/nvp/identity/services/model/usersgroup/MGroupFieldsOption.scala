@@ -28,16 +28,16 @@ class MGroupFieldsOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var returnOwnAcl: Boolean  = false
-	def withreturnOwnAcl(p:Boolean):MGroupFieldsOption ={ 	this.returnOwnAcl = p; 	this }
+	def withreturnOwnAcl(p:Boolean):this.type ={ 	this.returnOwnAcl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var returnItags: Boolean  = false
-	def withreturnItags(p:Boolean):MGroupFieldsOption ={ 	this.returnItags = p; 	this }
+	def withreturnItags(p:Boolean):this.type ={ 	this.returnItags = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var returnImetadata: Boolean  = false
-	def withreturnImetadata(p:Boolean):MGroupFieldsOption ={ 	this.returnImetadata = p; 	this }
+	def withreturnImetadata(p:Boolean):this.type ={ 	this.returnImetadata = p; 	this }
 
 }

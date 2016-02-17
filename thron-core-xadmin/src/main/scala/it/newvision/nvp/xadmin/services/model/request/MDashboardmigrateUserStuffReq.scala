@@ -20,7 +20,7 @@ class MDashboardmigrateUserStuffReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MDashboardmigrateUserStuffReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * the source userId
@@ -28,7 +28,7 @@ class MDashboardmigrateUserStuffReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the source userId""", required = true)
 	@BeanProperty
 	var userId1: String =_
-	def withuserId1(p:String):MDashboardmigrateUserStuffReq ={ 	this.userId1 = p; 	this }
+	def withuserId1(p:String):this.type ={ 	this.userId1 = p; 	this }
 
 	/**
 	 * the target userId. 
@@ -36,7 +36,7 @@ class MDashboardmigrateUserStuffReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the target userId. """, required = true)
 	@BeanProperty
 	var userId2: String =_
-	def withuserId2(p:String):MDashboardmigrateUserStuffReq ={ 	this.userId2 = p; 	this }
+	def withuserId2(p:String):this.type ={ 	this.userId2 = p; 	this }
 
 	/**
 	 * if true, the userId1 will be removed
@@ -44,6 +44,6 @@ class MDashboardmigrateUserStuffReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if true, the userId1 will be removed""", required = true)
 	@BeanProperty
 	var removeUserId1: Boolean =_
-	def withremoveUserId1(p:Boolean):MDashboardmigrateUserStuffReq ={ 	this.removeUserId1 = p; 	this }
+	def withremoveUserId1(p:Boolean):this.type ={ 	this.removeUserId1 = p; 	this }
 
 }

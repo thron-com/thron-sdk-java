@@ -18,6 +18,6 @@ class MResponseDownloadSourceFile extends MResponseDashboard with Serializable  
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var file: MFile =_
-	def withfile(p:MFile):MResponseDownloadSourceFile ={ 	this.file = p; 	this }
+	def withfile(p:MFile):this.type ={ 	this.file = p; 	this }
 
 }

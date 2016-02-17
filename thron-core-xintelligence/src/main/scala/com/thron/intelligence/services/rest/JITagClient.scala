@@ -43,8 +43,21 @@ class JITagClient(val resourceEndpoint:String) {
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>100: max number of itags in each target</li>
+	 * 	<li>50: max number of itags in each target (created by users)</li>
+	 * 	<li>50: max number of itags in each target (created by engines)</li>
 	 * </ul>
+	 * <b>
+	 * </b><b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -100,6 +113,18 @@ class JITagClient(val resourceEndpoint:String) {
 
 	/**
 	 * Unlink a given itagId from a specific entity (Content, User, Contact).
+	 * 
+	 * <b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -272,6 +297,18 @@ class JITagClient(val resourceEndpoint:String) {
 	 * <ul>
 	 * 	<li>100: max number of itags for each target</li>
 	 * </ul>
+	 * 
+	 * <b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -322,6 +359,18 @@ class JITagClient(val resourceEndpoint:String) {
 
 	/**
 	 * Bulk remove service for itags
+	 * 
+	 * <b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -377,6 +426,18 @@ class JITagClient(val resourceEndpoint:String) {
 	 * <ul>
 	 * 	<li>100: max number of itags for each target</li>
 	 * </ul>
+	 * 
+	 * <b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -427,6 +488,18 @@ class JITagClient(val resourceEndpoint:String) {
 
 	/**
 	 * Remove a given itag from a list entities (Content, User, Contact).
+	 * 
+	 * <b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String

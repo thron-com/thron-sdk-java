@@ -35,7 +35,7 @@ class MContentUpdate extends MUpdater with Serializable  {
 	@Deprecated
 	var status: String =_
 	@Deprecated
-	def withstatus(p:String):MContentUpdate ={ 	this.status = p; 	this }
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * -> MContent.creationDate
@@ -43,7 +43,7 @@ class MContentUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """-> MContent.creationDate""")
 	@BeanProperty 
 	var creationDate: Date =_
-	def withcreationDate(p:Date):MContentUpdate ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * -> MContent.properties
@@ -51,7 +51,7 @@ class MContentUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """-> MContent.properties""")
 	@BeanProperty 
 	var properties: List[MEContentProperties] =_
-	def withproperties(p:List[MEContentProperties]):MContentUpdate ={ 	this.properties = p; 	this }
+	def withproperties(p:List[MEContentProperties]):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * The display name of the Author.
@@ -61,7 +61,7 @@ class MContentUpdate extends MUpdater with Serializable  {
 	//#SWGNL#-> MContent.owner""")
 	@BeanProperty 
 	var owner: String =_
-	def withowner(p:String):MContentUpdate ={ 	this.owner = p; 	this }
+	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
 
 	/**
 	 * date time when the content becomes inactive.
@@ -71,7 +71,7 @@ class MContentUpdate extends MUpdater with Serializable  {
 	//#SWGNL#-> MContent.inactiveDate""")
 	@BeanProperty 
 	var inactiveDate: Date =_
-	def withinactiveDate(p:Date):MContentUpdate ={ 	this.inactiveDate = p; 	this }
+	def withinactiveDate(p:Date):this.type ={ 	this.inactiveDate = p; 	this }
 
 	/**
 	 * used for custom lexicographical order of contents. The field is used in
@@ -83,7 +83,7 @@ class MContentUpdate extends MUpdater with Serializable  {
 	//#SWGNL#-> MContent.sortingField""")
 	@BeanProperty 
 	var sortingField: String =_
-	def withsortingField(p:String):MContentUpdate ={ 	this.sortingField = p; 	this }
+	def withsortingField(p:String):this.type ={ 	this.sortingField = p; 	this }
 
 	/**
 	 * @return void

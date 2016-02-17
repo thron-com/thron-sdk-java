@@ -20,12 +20,12 @@ class MWeeboPublisherAdminpublishTextFileReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboPublisherAdminpublishTextFileReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty @org.codehaus.jackson.annotate.JsonProperty("PContentId")
 	var pContentId: String =_
-	def withpContentId(p:String):MWeeboPublisherAdminpublishTextFileReq ={ 	this.pContentId = p; 	this }
+	def withpContentId(p:String):this.type ={ 	this.pContentId = p; 	this }
 
 	/**
 	 * desired fileName with extension.
@@ -33,11 +33,11 @@ class MWeeboPublisherAdminpublishTextFileReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """desired fileName with extension.""", required = true)
 	@BeanProperty
 	var fileName: String =_
-	def withfileName(p:String):MWeeboPublisherAdminpublishTextFileReq ={ 	this.fileName = p; 	this }
+	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var fileContent: String =_
-	def withfileContent(p:String):MWeeboPublisherAdminpublishTextFileReq ={ 	this.fileContent = p; 	this }
+	def withfileContent(p:String):this.type ={ 	this.fileContent = p; 	this }
 
 }

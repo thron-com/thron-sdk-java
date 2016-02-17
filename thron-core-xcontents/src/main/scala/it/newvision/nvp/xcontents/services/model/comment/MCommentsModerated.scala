@@ -17,6 +17,6 @@ class MCommentsModerated extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var values: List[MModerationDetail] = new ArrayList[MModerationDetail]
-	def withvalues(p:List[MModerationDetail]):MCommentsModerated ={ 	this.values = p; 	this }
+	def withvalues(p:List[MModerationDetail]):this.type ={ 	this.values = p; 	this }
 
 }

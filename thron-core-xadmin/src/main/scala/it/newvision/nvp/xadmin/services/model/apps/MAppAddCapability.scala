@@ -23,11 +23,11 @@ class MAppAddCapability extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of new capabilities""")
 	@BeanProperty 
 	var addCapabilities: List[String] = new ArrayList[String]
-	def withaddCapabilities(p:List[String]):MAppAddCapability ={ 	this.addCapabilities = p; 	this }
+	def withaddCapabilities(p:List[String]):this.type ={ 	this.addCapabilities = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var addUserRoles: List[String] = new ArrayList[String]
-	def withaddUserRoles(p:List[String]):MAppAddCapability ={ 	this.addUserRoles = p; 	this }
+	def withaddUserRoles(p:List[String]):this.type ={ 	this.addUserRoles = p; 	this }
 
 }

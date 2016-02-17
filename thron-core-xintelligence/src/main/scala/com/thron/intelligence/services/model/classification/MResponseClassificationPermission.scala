@@ -21,7 +21,7 @@ class MResponseClassificationPermission extends MResponseClassification with Ser
 	//#SWG#@ApiModelProperty(value = """permission inserted or updated correctly""")
 	@BeanProperty 
 	var items: List[MClassificationPermissionDetail] = new ArrayList[MClassificationPermissionDetail]
-	def withitems(p:List[MClassificationPermissionDetail]):MResponseClassificationPermission ={ 	this.items = p; 	this }
+	def withitems(p:List[MClassificationPermissionDetail]):this.type ={ 	this.items = p; 	this }
 
 	/**
 	 * permission in issues
@@ -29,6 +29,6 @@ class MResponseClassificationPermission extends MResponseClassification with Ser
 	//#SWG#@ApiModelProperty(value = """permission in issues""")
 	@BeanProperty 
 	var issues: List[MClassificationPermission] = new ArrayList[MClassificationPermission]
-	def withissues(p:List[MClassificationPermission]):MResponseClassificationPermission ={ 	this.issues = p; 	this }
+	def withissues(p:List[MClassificationPermission]):this.type ={ 	this.issues = p; 	this }
 
 }

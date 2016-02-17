@@ -22,16 +22,16 @@ class MWeeboLiveEventAdmincreateNewLiveEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboLiveEventAdmincreateNewLiveEventReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var liveProperties: MWowzaEvent =_
-	def withliveProperties(p:MWowzaEvent):MWeeboLiveEventAdmincreateNewLiveEventReq ={ 	this.liveProperties = p; 	this }
+	def withliveProperties(p:MWowzaEvent):this.type ={ 	this.liveProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var properties: MRestrictionProperties =_
-	def withproperties(p:MRestrictionProperties):MWeeboLiveEventAdmincreateNewLiveEventReq ={ 	this.properties = p; 	this }
+	def withproperties(p:MRestrictionProperties):this.type ={ 	this.properties = p; 	this }
 
 }

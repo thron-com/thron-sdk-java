@@ -20,6 +20,6 @@ class MImage extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var imageUrl: String =_
-	def withimageUrl(p:String):MImage ={ 	this.imageUrl = p; 	this }
+	def withimageUrl(p:String):this.type ={ 	this.imageUrl = p; 	this }
 
 }

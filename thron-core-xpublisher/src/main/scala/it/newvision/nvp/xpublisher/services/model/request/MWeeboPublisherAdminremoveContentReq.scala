@@ -20,7 +20,7 @@ class MWeeboPublisherAdminremoveContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboPublisherAdminremoveContentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * Required only the 1st time when the content is published in the platform. The
@@ -29,6 +29,6 @@ class MWeeboPublisherAdminremoveContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty @org.codehaus.jackson.annotate.JsonProperty("PContentId")
 	var pContentId: String =_
-	def withpContentId(p:String):MWeeboPublisherAdminremoveContentReq ={ 	this.pContentId = p; 	this }
+	def withpContentId(p:String):this.type ={ 	this.pContentId = p; 	this }
 
 }

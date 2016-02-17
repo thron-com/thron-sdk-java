@@ -38,7 +38,7 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of ITagDefinition.id or ITagDefinition.prettyId""")
 	@BeanProperty 
 	var ids: List[String] = new ArrayList[String]
-	def withids(p:List[String]):MITagDefinitionSearchCriteria ={ 	this.ids = p; 	this }
+	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
 
 	/**
 	 * Used as text search on MITagDefinition and works over the specified
@@ -112,7 +112,7 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	//#SWGNL#}""")
 	@BeanProperty 
 	var text: String =_
-	def withtext(p:String):MITagDefinitionSearchCriteria ={ 	this.text = p; 	this }
+	def withtext(p:String):this.type ={ 	this.text = p; 	this }
 
 	/**
 	 * return the tags having as ancestor the given ITagDefinition.id
@@ -120,7 +120,7 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """return the tags having as ancestor the given ITagDefinition.id""")
 	@BeanProperty 
 	var childOf: String =_
-	def withchildOf(p:String):MITagDefinitionSearchCriteria ={ 	this.childOf = p; 	this }
+	def withchildOf(p:String):this.type ={ 	this.childOf = p; 	this }
 
 	/**
 	 * Locale code (ISO639-1).
@@ -135,7 +135,7 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	//#SWGNL#Example: the user would like to find the tags with label "house" for lang "EN". If the "label" is empty the service return all tags defined for the specified lang.""")
 	@BeanProperty 
 	var lang: String =_
-	def withlang(p:String):MITagDefinitionSearchCriteria ={ 	this.lang = p; 	this }
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
 	 * exclude all tags with level position inside the tag tree higher than ...
@@ -145,17 +145,17 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	//#SWGNL#The root level is 1.""")
 	@BeanProperty 
 	var excludeLevelHigherThan: Integer =_
-	def withexcludeLevelHigherThan(p:Integer):MITagDefinitionSearchCriteria ={ 	this.excludeLevelHigherThan = p; 	this }
+	def withexcludeLevelHigherThan(p:Integer):this.type ={ 	this.excludeLevelHigherThan = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var status: MEITagStatus =_
-	def withstatus(p:MEITagStatus):MITagDefinitionSearchCriteria ={ 	this.status = p; 	this }
+	def withstatus(p:MEITagStatus):this.type ={ 	this.status = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var sourceType: List[MESourceType] = new ArrayList[MESourceType]
-	def withsourceType(p:List[MESourceType]):MITagDefinitionSearchCriteria ={ 	this.sourceType = p; 	this }
+	def withsourceType(p:List[MESourceType]):this.type ={ 	this.sourceType = p; 	this }
 
 	/**
 	 * Used to split the ITagdefinition in two macro categories (categorized and
@@ -165,7 +165,7 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to split the ITagdefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new ITagDefinition with the categorized attribute set to false.""")
 	@BeanProperty 
 	var categorized: Boolean =_
-	def withcategorized(p:Boolean):MITagDefinitionSearchCriteria ={ 	this.categorized = p; 	this }
+	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
 
 	/**
 	 * Deprecated by metadataDefinitionIds
@@ -175,7 +175,7 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	@Deprecated
 	var metadataDefinitionId: String =_
 	@Deprecated
-	def withmetadataDefinitionId(p:String):MITagDefinitionSearchCriteria ={ 	this.metadataDefinitionId = p; 	this }
+	def withmetadataDefinitionId(p:String):this.type ={ 	this.metadataDefinitionId = p; 	this }
 
 	/**
 	 * Used to define search option for the MITagDefinitionSearchCriteria.text
@@ -184,7 +184,7 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to define search option for the MITagDefinitionSearchCriteria.text attribute.""")
 	@BeanProperty 
 	var textSearchOptions: MTextSearchOptions  = new MTextSearchOptions()
-	def withtextSearchOptions(p:MTextSearchOptions):MITagDefinitionSearchCriteria ={ 	this.textSearchOptions = p; 	this }
+	def withtextSearchOptions(p:MTextSearchOptions):this.type ={ 	this.textSearchOptions = p; 	this }
 
 	/**
 	 * Filter all ITagDefinition linked to one of the metadataDefinition specified in
@@ -193,7 +193,7 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Filter all ITagDefinition linked to one of the metadataDefinition specified in the list.""")
 	@BeanProperty 
 	var metadataDefinitionIds: List[String] = new ArrayList[String]
-	def withmetadataDefinitionIds(p:List[String]):MITagDefinitionSearchCriteria ={ 	this.metadataDefinitionIds = p; 	this }
+	def withmetadataDefinitionIds(p:List[String]):this.type ={ 	this.metadataDefinitionIds = p; 	this }
 
 	/**
 	 * @return Boolean

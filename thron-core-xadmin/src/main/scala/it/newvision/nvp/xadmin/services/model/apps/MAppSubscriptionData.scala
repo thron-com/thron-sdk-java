@@ -21,7 +21,7 @@ class MAppSubscriptionData extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Whether or not the app can subscribe for notifications for actions on the platform""" ,required = true)
 	@BeanProperty 
 	var canSubscribeForNotifications: Boolean =_
-	def withcanSubscribeForNotifications(p:Boolean):MAppSubscriptionData ={ 	this.canSubscribeForNotifications = p; 	this }
+	def withcanSubscribeForNotifications(p:Boolean):this.type ={ 	this.canSubscribeForNotifications = p; 	this }
 
 	/**
 	 * List of notification actions the app is subscribed for.
@@ -38,6 +38,6 @@ class MAppSubscriptionData extends Serializable {
 	//#SWGNL#Refers to notifications sent via CHAT channel only""")
 	@BeanProperty 
 	var subscribedNotificationActions: List[String] = new ArrayList[String]
-	def withsubscribedNotificationActions(p:List[String]):MAppSubscriptionData ={ 	this.subscribedNotificationActions = p; 	this }
+	def withsubscribedNotificationActions(p:List[String]):this.type ={ 	this.subscribedNotificationActions = p; 	this }
 
 }

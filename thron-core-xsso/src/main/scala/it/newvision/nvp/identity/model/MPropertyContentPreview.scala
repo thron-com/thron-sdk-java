@@ -21,7 +21,7 @@ class MPropertyContentPreview extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The Id of the REST we service that return the content ready to publish but not yet published in the CDN""" ,required = true)
 	@BeanProperty 
 	var serviceName: String  = "preview"
-	def withserviceName(p:String):MPropertyContentPreview ={ 	this.serviceName = p; 	this }
+	def withserviceName(p:String):this.type ={ 	this.serviceName = p; 	this }
 
 	/**
 	 * @return void

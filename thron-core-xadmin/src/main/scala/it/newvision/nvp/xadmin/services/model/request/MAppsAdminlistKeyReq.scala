@@ -20,6 +20,6 @@ class MAppsAdminlistKeyReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var appId: String =_
-	def withappId(p:String):MAppsAdminlistKeyReq ={ 	this.appId = p; 	this }
+	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
 
 }

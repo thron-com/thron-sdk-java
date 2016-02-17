@@ -9,15 +9,18 @@ import javax.xml.bind.annotation._
 *  GENERATED CLASS
 *  DO NOT APPLY ANY CHANGES
 ****************************/
+/**
+ * List of usernames.
+ */
 @XmlRootElement(name="MUserList") 
 @XmlType(name="MUserList")
-//#SWG#@ApiModel(description = """""")
+//#SWG#@ApiModel(description = """List of usernames.""")
 class MUserList extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var usernames: List[String] = new ArrayList[String]
-	def withusernames(p:List[String]):MUserList ={ 	this.usernames = p; 	this }
+	def withusernames(p:List[String]):this.type ={ 	this.usernames = p; 	this }
 
 	/**
 	 * @return Boolean
@@ -25,7 +28,8 @@ class MUserList extends Serializable {
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def isValid():Boolean ={
-		Option(usernames).exists(_.size > 0)
+		import scala.collection.JavaConversions._
+		Option(usernames).exists(x=> x.nonEmpty)
 	}
 
 }

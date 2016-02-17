@@ -4,7 +4,6 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
-import it.newvision.nvp.xadmin.services.model.apps.MResponseSnippetLogin
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppDetail
 import it.newvision.nvp.xadmin.services.model.request.MAppsappDetailReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppList
@@ -12,6 +11,7 @@ import it.newvision.nvp.xadmin.services.model.request.MAppsfindByPropertiesReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppSummaryList
 import it.newvision.nvp.xadmin.services.model.request.MAppsappsListReq
 import it.newvision.nvp.xadmin.services.model.request.MAppssuReq
+import it.newvision.nvp.xadmin.services.model.apps.MResponseSnippetLogin
 
 /* ************************
 *  GENERATED CLASS
@@ -44,80 +44,9 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * used to authenticate a snippet.
-	 * Can be invoked without restrictions.
-	 * Provides:
-	 * <ul>
-	 * 	<li>all snippet detail (metadata) </li>
-	 * 	<li>the tokenId for the application, to use in the inside service call of the snippet </li>
-	 * 	<li>the rootCategory of the linked App. </li>
-	 * </ul>
+	 * Used to authenticate an App through the appId and appKey (optional) and return
 	 * 
-	 * Authentication token is not required (X-TOKENID).
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param appId : String
-	 * Optional
-	 * @param snippetId : String
-	 * Required
-	 * @return MResponseSnippetLogin
-	*/
-	@GET
-	@Path("/loginSnippet")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/loginSnippet", notes = """used to authenticate a snippet. 
-	//#SWGNL#Can be invoked without restrictions.
-	//#SWGNL#Provides:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>all snippet detail (metadata) </li>
-	//#SWGNL#	<li>the tokenId for the application, to use in the inside service call of the snippet </li>
-	//#SWGNL#	<li>the rootCategory of the linked App. </li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#Authentication token is not required (X-TOKENID).""", response = classOf[MResponseSnippetLogin])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def loginSnippet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@QueryParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """Optional""")
-	@QueryParam("appId")
-	appId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@QueryParam("snippetId")
-	snippetId: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseSnippetLogin*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("loginSnippet") 
-		try{	
-			val resp = this.__loginSnippet(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,appId,snippetId)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_loginSnippet)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_loginSnippet)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __loginSnippet(tokenId: String, clientId: String, appId: String, snippetId: String) :MResponseSnippetLogin
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_loginSnippet: String
-
-	/**
-	 * Used to authenticate an App through the appId and return all details.
+	 * 
 	 * Provides:
 	 * <ul>
 	 * 	<li>all app detail (metadata)</li>
@@ -135,10 +64,13 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * appkey
 	 * @return MResponseAppDetail
 	*/
-	@GET
-	@Path("/loginApp")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/loginApp", notes = """Used to authenticate an App through the appId and return all details.
+	@POST
+	@Path("/loginApp/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
+	//#SWG#@ApiOperation(value = "/loginApp", notes = """Used to authenticate an App through the appId and appKey (optional) and return 
+	//#SWGNL#
+	//#SWGNL#
 	//#SWGNL#Provides:
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>all app detail (metadata)</li>
@@ -152,14 +84,14 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
 			//#SWG#@ApiParam(value = """""")
-	@QueryParam("clientId")
+	@PathParam("clientId")
 	clientId: String, 
 			//#SWG#@ApiParam(value = """""")
-	@QueryParam("appId")
+	@FormParam("appId")
 	appId: String, 
 			//#SWG#@ApiParam(value = """Optional. 
 	//#SWGNL#The personal key used to authenticate the user. Some apps do not need secure authentication wih appkey""")
-	@QueryParam("appKey")
+	@FormParam("appKey")
 	appKey: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
@@ -197,7 +129,7 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * 	<li>the rootCategory of the linked App.</li>
 	 * </ul>
 	 * 
-	 * Can be invoked only by user with role [APPID]_MANAGER or CORE_MANAGE_APPS
+	 * Can be invoked only by user with role [APPID]_MANAGER or [APPID]_APP_EDITOR or CORE_MANAGE_APPS
 	 * @param tokenId : String
 	 * @param param : MAppsappDetailReq
 	 * @return MResponseAppDetail
@@ -213,7 +145,7 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#	<li>the rootCategory of the linked App.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#Can be invoked only by user with role [APPID]_MANAGER or CORE_MANAGE_APPS""", response = classOf[MResponseAppDetail])
+	//#SWGNL#Can be invoked only by user with role [APPID]_MANAGER or [APPID]_APP_EDITOR or CORE_MANAGE_APPS""", response = classOf[MResponseAppDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def appDetail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -261,7 +193,7 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	/**
 	 * returns a list of apps  matching the search criteria.
 	 * Can be invoked only by user with role CORE_MANAGE_APPS.
-	 * apps.disguiseDate is returned only if the user has role [APPID]_MANAGER for the app.
+	 * apps.disguiseData is returned only if the user has some role for the app.
 	 * @param tokenId : String
 	 * @param param : MAppsfindByPropertiesReq
 	 * @return MResponseAppList
@@ -272,7 +204,7 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/findByProperties", notes = """returns a list of apps  matching the search criteria.
 	//#SWGNL#Can be invoked only by user with role CORE_MANAGE_APPS.
-	//#SWGNL#apps.disguiseDate is returned only if the user has role [APPID]_MANAGER for the app.""", response = classOf[MResponseAppList])
+	//#SWGNL#apps.disguiseData is returned only if the user has some role for the app.""", response = classOf[MResponseAppList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def findByProperties(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -435,5 +367,80 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __su(tokenId: String, param: MAppssuReq) :String
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_su: String
+
+	/**
+	 * Deprecated.
+	 * Used to authenticate a snippet (4me widgets).
+	 * Can be invoked without restrictions.
+	 * Provides:
+	 * <ul>
+	 * 	<li>all snippet detail (metadata)</li>
+	 * 	<li>the tokenId for the application, to use in the inside service call of the snippet</li>
+	 * 	<li>the rootCategory of the linked App.</li>
+	 * </ul>
+	 * 
+	 * Authentication token is not required (X-TOKENID).
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param appId : String
+	 * Optional
+	 * @param snippetId : String
+	 * Required
+	 * @return MResponseSnippetLogin
+	*/
+	@GET
+	@Path("/loginSnippet")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
+	//#SWG#@ApiOperation(value = "/loginSnippet", notes = """Deprecated.
+	//#SWGNL#Used to authenticate a snippet (4me widgets). 
+	//#SWGNL#Can be invoked without restrictions.
+	//#SWGNL#Provides:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>all snippet detail (metadata)</li>
+	//#SWGNL#	<li>the tokenId for the application, to use in the inside service call of the snippet</li>
+	//#SWGNL#	<li>the rootCategory of the linked App.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#Authentication token is not required (X-TOKENID).""", response = classOf[MResponseSnippetLogin])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def loginSnippet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """Optional""")
+	@QueryParam("appId")
+	appId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("snippetId")
+	snippetId: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String
+			,
+			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseSnippetLogin*/= { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		//get the cache control specific for this service
+		val cc = this.cachemap("loginSnippet") 
+		try{	
+			val resp = this.__loginSnippet(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,appId,snippetId)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_loginSnippet)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_loginSnippet)
+	    }
+	}
+
+	 
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __loginSnippet(tokenId: String, clientId: String, appId: String, snippetId: String) :MResponseSnippetLogin
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_loginSnippet: String
 
 }

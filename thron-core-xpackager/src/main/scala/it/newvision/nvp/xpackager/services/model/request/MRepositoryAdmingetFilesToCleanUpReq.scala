@@ -20,11 +20,11 @@ class MRepositoryAdmingetFilesToCleanUpReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var siteName: String =_
-	def withsiteName(p:String):MRepositoryAdmingetFilesToCleanUpReq ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfResults: Integer =_
-	def withnumberOfResults(p:Integer):MRepositoryAdmingetFilesToCleanUpReq ={ 	this.numberOfResults = p; 	this }
+	def withnumberOfResults(p:Integer):this.type ={ 	this.numberOfResults = p; 	this }
 
 }

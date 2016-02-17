@@ -15,17 +15,18 @@ import javax.xml.bind.annotation._
 @XmlRootElement(name="MAclRuleInverse") 
 @XmlType(name="MAclRuleInverse")
 //#SWG#@ApiModel(description = """The Source Roule Object""")
+@Deprecated
 class MAclRuleInverse extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var sourceObjId: String =_
-	def withsourceObjId(p:String):MAclRuleInverse ={ 	this.sourceObjId = p; 	this }
+	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var sourceObjClass: MEObjClass =_
-	def withsourceObjClass(p:MEObjClass):MAclRuleInverse ={ 	this.sourceObjClass = p; 	this }
+	def withsourceObjClass(p:MEObjClass):this.type ={ 	this.sourceObjClass = p; 	this }
 
 	/**
 	 * The different type of active rules.
@@ -33,7 +34,7 @@ class MAclRuleInverse extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The different type of active rules.""")
 	@BeanProperty 
 	var rulesInverse: List[MEAclRuleInverse] = new ArrayList[MEAclRuleInverse]
-	def withrulesInverse(p:List[MEAclRuleInverse]):MAclRuleInverse ={ 	this.rulesInverse = p; 	this }
+	def withrulesInverse(p:List[MEAclRuleInverse]):this.type ={ 	this.rulesInverse = p; 	this }
 
 	/**
 	 * The list of disabled Rules
@@ -41,7 +42,7 @@ class MAclRuleInverse extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The list of disabled Rules""")
 	@BeanProperty 
 	var disabledRulesInverse: List[MEAclRuleInverse] = new ArrayList[MEAclRuleInverse]
-	def withdisabledRulesInverse(p:List[MEAclRuleInverse]):MAclRuleInverse ={ 	this.disabledRulesInverse = p; 	this }
+	def withdisabledRulesInverse(p:List[MEAclRuleInverse]):this.type ={ 	this.disabledRulesInverse = p; 	this }
 
 	/**
 	 * like: FACEBOOK, EMAIL, TWITTER, SMS,
@@ -49,7 +50,7 @@ class MAclRuleInverse extends Serializable {
 	//#SWG#@ApiModelProperty(value = """like: FACEBOOK, EMAIL, TWITTER, SMS,""")
 	@BeanProperty 
 	var customMetadata: List[MMetadata] = new ArrayList[MMetadata]
-	def withcustomMetadata(p:List[MMetadata]):MAclRuleInverse ={ 	this.customMetadata = p; 	this }
+	def withcustomMetadata(p:List[MMetadata]):this.type ={ 	this.customMetadata = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -25,6 +25,6 @@ class MLinkedContents extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of linked contents to add""")
 	@BeanProperty 
 	var contents: List[MLinkedContent] = new ArrayList[MLinkedContent]
-	def withcontents(p:List[MLinkedContent]):MLinkedContents ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MLinkedContent]):this.type ={ 	this.contents = p; 	this }
 
 }

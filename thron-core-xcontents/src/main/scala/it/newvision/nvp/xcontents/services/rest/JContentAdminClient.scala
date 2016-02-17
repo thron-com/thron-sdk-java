@@ -28,8 +28,8 @@ object JContentAdminClient {
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.
- * it/api/adxcontents/resources/contentadmin/</li>
+ * 	<li>REST service: http://clientId-view.thron.
+ * com/api/adxcontents/resources/contentadmin/</li>
  * </ul>
  */
 class JContentAdminClient(val resourceEndpoint:String) {

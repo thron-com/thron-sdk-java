@@ -30,7 +30,7 @@ class MIMetadataDefinitionValue extends Serializable {
 	//#SWGNL#-) only chars and digits""" ,required = true)
 	@BeanProperty 
 	var key: String =_
-	def withkey(p:String):MIMetadataDefinitionValue ={ 	this.key = p; 	this }
+	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
 	/**
 	 * label and description values for the metadata definition in multi locale
@@ -38,7 +38,7 @@ class MIMetadataDefinitionValue extends Serializable {
 	//#SWG#@ApiModelProperty(value = """label and description values for the metadata definition in multi locale""")
 	@BeanProperty 
 	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):MIMetadataDefinitionValue ={ 	this.names = p; 	this }
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * Used to identify metadata can be displayed to users.
@@ -49,7 +49,7 @@ class MIMetadataDefinitionValue extends Serializable {
 	//#SWGNL#Metadata definition set to invisibles are commonly used to store back end data not editable by users.""" ,required = true)
 	@BeanProperty 
 	var visible: Boolean  = false
-	def withvisible(p:Boolean):MIMetadataDefinitionValue ={ 	this.visible = p; 	this }
+	def withvisible(p:Boolean):this.type ={ 	this.visible = p; 	this }
 
 	/**
 	 * Optional description, used to define the goal of the Metadata definition
@@ -57,22 +57,22 @@ class MIMetadataDefinitionValue extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional description, used to define the goal of the Metadata definition""")
 	@BeanProperty 
 	var note: String =_
-	def withnote(p:String):MIMetadataDefinitionValue ={ 	this.note = p; 	this }
+	def withnote(p:String):this.type ={ 	this.note = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var metadataType: MEMetadataDefinitionDataType =_
-	def withmetadataType(p:MEMetadataDefinitionDataType):MIMetadataDefinitionValue ={ 	this.metadataType = p; 	this }
+	def withmetadataType(p:MEMetadataDefinitionDataType):this.type ={ 	this.metadataType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var constraints: MMetadataDefinitionConstraints  = new MMetadataDefinitionConstraints
-	def withconstraints(p:MMetadataDefinitionConstraints):MIMetadataDefinitionValue ={ 	this.constraints = p; 	this }
+	def withconstraints(p:MMetadataDefinitionConstraints):this.type ={ 	this.constraints = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var options: MMetadataDefinitionOptions  = new MMetadataDefinitionOptions
-	def withoptions(p:MMetadataDefinitionOptions):MIMetadataDefinitionValue ={ 	this.options = p; 	this }
+	def withoptions(p:MMetadataDefinitionOptions):this.type ={ 	this.options = p; 	this }
 
 	/**
 	 * @return Boolean

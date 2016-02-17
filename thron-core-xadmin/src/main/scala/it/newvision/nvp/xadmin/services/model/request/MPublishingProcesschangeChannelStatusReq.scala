@@ -20,7 +20,7 @@ class MPublishingProcesschangeChannelStatusReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPublishingProcesschangeChannelStatusReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * mediaContentId or xcontentId are required
@@ -28,7 +28,7 @@ class MPublishingProcesschangeChannelStatusReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
 	@BeanProperty
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MPublishingProcesschangeChannelStatusReq ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * mediaContentId or xcontentId are required
@@ -36,16 +36,16 @@ class MPublishingProcesschangeChannelStatusReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
 	@BeanProperty
 	var xcontentId: String =_
-	def withxcontentId(p:String):MPublishingProcesschangeChannelStatusReq ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var channel: String =_
-	def withchannel(p:String):MPublishingProcesschangeChannelStatusReq ={ 	this.channel = p; 	this }
+	def withchannel(p:String):this.type ={ 	this.channel = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var active: Boolean =_
-	def withactive(p:Boolean):MPublishingProcesschangeChannelStatusReq ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 }

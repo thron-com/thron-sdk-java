@@ -19,6 +19,6 @@ class MResponseEventDetail extends MResponsePublisher with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var content: MLiveEvent =_
-	def withcontent(p:MLiveEvent):MResponseEventDetail ={ 	this.content = p; 	this }
+	def withcontent(p:MLiveEvent):this.type ={ 	this.content = p; 	this }
 
 }

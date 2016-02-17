@@ -20,12 +20,12 @@ class MSubscriptionscontentSubscriptionReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MSubscriptionscontentSubscriptionReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MSubscriptionscontentSubscriptionReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	/**
 	 * revoke the subscription to the given content.
@@ -33,7 +33,7 @@ class MSubscriptionscontentSubscriptionReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """revoke the subscription to the given content.""", required = true)
 	@BeanProperty
 	var revokeSubscription: Boolean =_
-	def withrevokeSubscription(p:Boolean):MSubscriptionscontentSubscriptionReq ={ 	this.revokeSubscription = p; 	this }
+	def withrevokeSubscription(p:Boolean):this.type ={ 	this.revokeSubscription = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -41,6 +41,6 @@ class MSubscriptionscontentSubscriptionReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MSubscriptionscontentSubscriptionReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

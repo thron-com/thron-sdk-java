@@ -19,6 +19,6 @@ class MResponseITagBulk2 extends MResponseITag with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var targetsInIssue: List[MTarget] = new ArrayList[MTarget]
-	def withtargetsInIssue(p:List[MTarget]):MResponseITagBulk2 ={ 	this.targetsInIssue = p; 	this }
+	def withtargetsInIssue(p:List[MTarget]):this.type ={ 	this.targetsInIssue = p; 	this }
 
 }

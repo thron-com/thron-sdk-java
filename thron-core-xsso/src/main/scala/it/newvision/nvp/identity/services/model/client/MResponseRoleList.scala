@@ -17,6 +17,6 @@ class MResponseRoleList extends MResponseClient with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var roles: List[String] = new ArrayList[String]
-	def withroles(p:List[String]):MResponseRoleList ={ 	this.roles = p; 	this }
+	def withroles(p:List[String]):this.type ={ 	this.roles = p; 	this }
 
 }

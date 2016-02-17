@@ -21,11 +21,11 @@ class MVUserManagerremoveReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MVUserManagerremoveReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MVUserCriteria =_
-	def withcriteria(p:MVUserCriteria):MVUserManagerremoveReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MVUserCriteria):this.type ={ 	this.criteria = p; 	this }
 
 }

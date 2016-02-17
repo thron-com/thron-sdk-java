@@ -18,7 +18,7 @@ class MResponseFindClient extends MResponseClient with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var clients: List[MClient] = new ArrayList[MClient]
-	def withclients(p:List[MClient]):MResponseFindClient ={ 	this.clients = p; 	this }
+	def withclients(p:List[MClient]):this.type ={ 	this.clients = p; 	this }
 
 	/**
 	 * total number of results
@@ -26,6 +26,6 @@ class MResponseFindClient extends MResponseClient with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseFindClient ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

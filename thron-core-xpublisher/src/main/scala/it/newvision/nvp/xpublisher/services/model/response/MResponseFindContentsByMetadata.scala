@@ -17,11 +17,11 @@ class MResponseFindContentsByMetadata extends MResponsePublisher with Serializab
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseFindContentsByMetadata ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var contents: List[MPublishedContentExt] = new ArrayList[MPublishedContentExt]
-	  def withcontents(p:List[MPublishedContentExt]):MResponseFindContentsByMetadata ={ 	this.contents = p; 	this }
+	  def withcontents(p:List[MPublishedContentExt]):this.type ={ 	this.contents = p; 	this }
 
 }

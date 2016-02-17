@@ -17,11 +17,11 @@ class MResponseITagDefinitionList extends MResponseITag with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MITagDefinitionDetail] = new ArrayList[MITagDefinitionDetail]
-	def withitems(p:List[MITagDefinitionDetail]):MResponseITagDefinitionList ={ 	this.items = p; 	this }
+	def withitems(p:List[MITagDefinitionDetail]):this.type ={ 	this.items = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseITagDefinitionList ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

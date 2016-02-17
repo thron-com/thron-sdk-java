@@ -33,12 +33,12 @@ class MIdExternal extends Serializable {
 	//#SWGNL#-) max length = 500""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MIdExternal ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var externalType: MEExternalIdType =_
-	def withexternalType(p:MEExternalIdType):MIdExternal ={ 	this.externalType = p; 	this }
+	def withexternalType(p:MEExternalIdType):this.type ={ 	this.externalType = p; 	this }
 
 	/**
 	 * @return Boolean

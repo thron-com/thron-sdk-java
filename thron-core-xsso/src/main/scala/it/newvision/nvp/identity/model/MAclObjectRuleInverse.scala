@@ -33,7 +33,7 @@ class MAclObjectRuleInverse extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the identifier of the object where the ACL should be applied""" ,required = true)
 	@BeanProperty 
 	var targetObjId: String =_
-	def withtargetObjId(p:String):MAclObjectRuleInverse ={ 	this.targetObjId = p; 	this }
+	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
 
 	/**
 	 * the target class
@@ -41,11 +41,11 @@ class MAclObjectRuleInverse extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the target class""" ,required = true)
 	@BeanProperty 
 	var targetObjClass: MEObjClass =_
-	def withtargetObjClass(p:MEObjClass):MAclObjectRuleInverse ={ 	this.targetObjClass = p; 	this }
+	def withtargetObjClass(p:MEObjClass):this.type ={ 	this.targetObjClass = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var sourceAcl: List[MAclRuleInverse] = new ArrayList[MAclRuleInverse]
-	  def withsourceAcl(p:List[MAclRuleInverse]):MAclObjectRuleInverse ={ 	this.sourceAcl = p; 	this }
+	  def withsourceAcl(p:List[MAclRuleInverse]):this.type ={ 	this.sourceAcl = p; 	this }
 
 }

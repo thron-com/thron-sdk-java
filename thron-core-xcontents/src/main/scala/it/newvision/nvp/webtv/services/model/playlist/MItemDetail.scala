@@ -20,17 +20,17 @@ class MItemDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var position: Integer =_
-	def withposition(p:Integer):MItemDetail ={ 	this.position = p; 	this }
+	def withposition(p:Integer):this.type ={ 	this.position = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var xcontentId: String =_
-	def withxcontentId(p:String):MItemDetail ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var xpublisherId: String =_
-	def withxpublisherId(p:String):MItemDetail ={ 	this.xpublisherId = p; 	this }
+	def withxpublisherId(p:String):this.type ={ 	this.xpublisherId = p; 	this }
 
 	/**
 	 * match the EContentType in xcontent
@@ -38,7 +38,7 @@ class MItemDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """match the EContentType in xcontent""" ,required = true)
 	@BeanProperty 
 	var contentType: String =_
-	def withcontentType(p:String):MItemDetail ={ 	this.contentType = p; 	this }
+	def withcontentType(p:String):this.type ={ 	this.contentType = p; 	this }
 
 	/**
 	 * The creation date of the content.
@@ -46,17 +46,17 @@ class MItemDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The creation date of the content.""" ,required = true)
 	@BeanProperty 
 	var creationDate: Date =_
-	def withcreationDate(p:Date):MItemDetail ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MItemDetail ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MItemDetail ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * summary of the content
@@ -66,7 +66,7 @@ class MItemDetail extends Serializable {
 	@Deprecated
 	var excerpt: String =_
 	@Deprecated
-	def withexcerpt(p:String):MItemDetail ={ 	this.excerpt = p; 	this }
+	def withexcerpt(p:String):this.type ={ 	this.excerpt = p; 	this }
 
 	/**
 	 * The content url , or descriptor url.
@@ -74,7 +74,7 @@ class MItemDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The content url , or descriptor url.""")
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MItemDetail ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	/**
 	 * DEPRECATED
@@ -84,7 +84,7 @@ class MItemDetail extends Serializable {
 	@Deprecated
 	var thumbnails: MThumbnailDetail =_
 	@Deprecated
-	def withthumbnails(p:MThumbnailDetail):MItemDetail ={ 	this.thumbnails = p; 	this }
+	def withthumbnails(p:MThumbnailDetail):this.type ={ 	this.thumbnails = p; 	this }
 
 	/**
 	 * Defined if divArea parameter is specified on the request.
@@ -96,12 +96,12 @@ class MItemDetail extends Serializable {
 	//#SWGNL#Format: <widht>x<height>""")
 	@BeanProperty 
 	var bestThumbUrl: String =_
-	def withbestThumbUrl(p:String):MItemDetail ={ 	this.bestThumbUrl = p; 	this }
+	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var duration: Long =_
-	def withduration(p:Long):MItemDetail ={ 	this.duration = p; 	this }
+	def withduration(p:Long):this.type ={ 	this.duration = p; 	this }
 
 	/**
 	 * The list of Content.metadatas (xcontent).
@@ -109,7 +109,7 @@ class MItemDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The list of Content.metadatas (xcontent).""")
 	@BeanProperty 
 	var metadata: List[MMetadataDetail] = new ArrayList[MMetadataDetail]
-	def withmetadata(p:List[MMetadataDetail]):MItemDetail ={ 	this.metadata = p; 	this }
+	def withmetadata(p:List[MMetadataDetail]):this.type ={ 	this.metadata = p; 	this }
 
 	/**
 	 * The list of Channel.metadatas (xpublisher). These are the system metadata used
@@ -119,6 +119,6 @@ class MItemDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The list of Channel.metadatas (xpublisher). These are the system metadata used to define some specific properties of the elements in CDN in the specific channel.""")
 	@BeanProperty 
 	var sysMetadata: List[MMetadataDetail] = new ArrayList[MMetadataDetail]
-	def withsysMetadata(p:List[MMetadataDetail]):MItemDetail ={ 	this.sysMetadata = p; 	this }
+	def withsysMetadata(p:List[MMetadataDetail]):this.type ={ 	this.sysMetadata = p; 	this }
 
 }

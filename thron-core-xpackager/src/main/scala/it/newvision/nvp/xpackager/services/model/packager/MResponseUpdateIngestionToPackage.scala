@@ -21,6 +21,6 @@ class MResponseUpdateIngestionToPackage extends MResponsePackager with Serializa
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var content: MPackagedContent =_
-	def withcontent(p:MPackagedContent):MResponseUpdateIngestionToPackage ={ 	this.content = p; 	this }
+	def withcontent(p:MPackagedContent):this.type ={ 	this.content = p; 	this }
 
 }

@@ -17,47 +17,47 @@ class MMetadataDefinitionOptions extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var stringOption: MMetadataDefinitionStringOption =_
-	def withstringOption(p:MMetadataDefinitionStringOption):MMetadataDefinitionOptions ={ 	this.stringOption = p; 	this }
+	def withstringOption(p:MMetadataDefinitionStringOption):this.type ={ 	this.stringOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var alternativeSOption: MMetadataDefinitionAlternativeSOption =_
-	def withalternativeSOption(p:MMetadataDefinitionAlternativeSOption):MMetadataDefinitionOptions ={ 	this.alternativeSOption = p; 	this }
+	def withalternativeSOption(p:MMetadataDefinitionAlternativeSOption):this.type ={ 	this.alternativeSOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var alternativeMOption: MMetadataDefinitionAlternativeMOption =_
-	def withalternativeMOption(p:MMetadataDefinitionAlternativeMOption):MMetadataDefinitionOptions ={ 	this.alternativeMOption = p; 	this }
+	def withalternativeMOption(p:MMetadataDefinitionAlternativeMOption):this.type ={ 	this.alternativeMOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var temporalInstantOption: MMetadataDefinitionTemporalInstantOption =_
-	def withtemporalInstantOption(p:MMetadataDefinitionTemporalInstantOption):MMetadataDefinitionOptions ={ 	this.temporalInstantOption = p; 	this }
+	def withtemporalInstantOption(p:MMetadataDefinitionTemporalInstantOption):this.type ={ 	this.temporalInstantOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var numericIntegerOption: MMetadataDefinitionNumericIntegerOption =_
-	def withnumericIntegerOption(p:MMetadataDefinitionNumericIntegerOption):MMetadataDefinitionOptions ={ 	this.numericIntegerOption = p; 	this }
+	def withnumericIntegerOption(p:MMetadataDefinitionNumericIntegerOption):this.type ={ 	this.numericIntegerOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var numericDoubleOption: MMetadataDefinitionNumericDoubleOption =_
-	def withnumericDoubleOption(p:MMetadataDefinitionNumericDoubleOption):MMetadataDefinitionOptions ={ 	this.numericDoubleOption = p; 	this }
+	def withnumericDoubleOption(p:MMetadataDefinitionNumericDoubleOption):this.type ={ 	this.numericDoubleOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var colorOption: MMetadataDefinitionColorOption =_
-	def withcolorOption(p:MMetadataDefinitionColorOption):MMetadataDefinitionOptions ={ 	this.colorOption = p; 	this }
+	def withcolorOption(p:MMetadataDefinitionColorOption):this.type ={ 	this.colorOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var booleanOption: MMetadataDefinitionBooleanOption =_
-	def withbooleanOption(p:MMetadataDefinitionBooleanOption):MMetadataDefinitionOptions ={ 	this.booleanOption = p; 	this }
+	def withbooleanOption(p:MMetadataDefinitionBooleanOption):this.type ={ 	this.booleanOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var keyOption: MMetadataDefinitionKeyOption =_
-	def withkeyOption(p:MMetadataDefinitionKeyOption):MMetadataDefinitionOptions ={ 	this.keyOption = p; 	this }
+	def withkeyOption(p:MMetadataDefinitionKeyOption):this.type ={ 	this.keyOption = p; 	this }
 
 	/**
 	 * @param metadataType : MEMetadataDefinitionDataType

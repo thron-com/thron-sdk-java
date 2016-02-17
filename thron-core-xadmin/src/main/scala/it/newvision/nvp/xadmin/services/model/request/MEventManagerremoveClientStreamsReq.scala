@@ -21,16 +21,16 @@ class MEventManagerremoveClientStreamsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MEventManagerremoveClientStreamsReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MEventManagerremoveClientStreamsReq ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var eventParam: MUpdateClientStreamsParams =_
-	def witheventParam(p:MUpdateClientStreamsParams):MEventManagerremoveClientStreamsReq ={ 	this.eventParam = p; 	this }
+	def witheventParam(p:MUpdateClientStreamsParams):this.type ={ 	this.eventParam = p; 	this }
 
 }

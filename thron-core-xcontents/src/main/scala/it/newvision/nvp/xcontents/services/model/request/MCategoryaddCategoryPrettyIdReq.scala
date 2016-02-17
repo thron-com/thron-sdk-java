@@ -21,16 +21,16 @@ class MCategoryaddCategoryPrettyIdReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MCategoryaddCategoryPrettyIdReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var categoryId: String =_
-	def withcategoryId(p:String):MCategoryaddCategoryPrettyIdReq ={ 	this.categoryId = p; 	this }
+	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var prettyId: MPrettyId =_
-	def withprettyId(p:MPrettyId):MCategoryaddCategoryPrettyIdReq ={ 	this.prettyId = p; 	this }
+	def withprettyId(p:MPrettyId):this.type ={ 	this.prettyId = p; 	this }
 
 }

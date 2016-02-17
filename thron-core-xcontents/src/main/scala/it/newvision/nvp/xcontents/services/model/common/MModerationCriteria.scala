@@ -24,7 +24,7 @@ class MModerationCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """comments approved or not""")
 	@BeanProperty 
 	var moderationStatus: List[MEModerationStatus] = new ArrayList[MEModerationStatus]
-	def withmoderationStatus(p:List[MEModerationStatus]):MModerationCriteria ={ 	this.moderationStatus = p; 	this }
+	def withmoderationStatus(p:List[MEModerationStatus]):this.type ={ 	this.moderationStatus = p; 	this }
 
 	/**
 	 * filtered by moderatorId. Only the entries having the given moderatorId
@@ -32,7 +32,7 @@ class MModerationCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """filtered by moderatorId. Only the entries having the given moderatorId""")
 	@BeanProperty 
 	var moderatorId: String =_
-	def withmoderatorId(p:String):MModerationCriteria ={ 	this.moderatorId = p; 	this }
+	def withmoderatorId(p:String):this.type ={ 	this.moderatorId = p; 	this }
 
 	/**
 	 * comments marked by moderator as starred
@@ -40,6 +40,6 @@ class MModerationCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """comments marked by moderator as starred""")
 	@BeanProperty 
 	var starred: Boolean =_
-	def withstarred(p:Boolean):MModerationCriteria ={ 	this.starred = p; 	this }
+	def withstarred(p:Boolean):this.type ={ 	this.starred = p; 	this }
 
 }

@@ -24,7 +24,7 @@ class MIMetadataKeyCriteriaOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """constraints: max size 5""")
 	@BeanProperty 
 	var imetadata: List[MIMetadataCriteria] = new ArrayList[MIMetadataCriteria]
-	def withimetadata(p:List[MIMetadataCriteria]):MIMetadataKeyCriteriaOption ={ 	this.imetadata = p; 	this }
+	def withimetadata(p:List[MIMetadataCriteria]):this.type ={ 	this.imetadata = p; 	this }
 
 	/**
 	 * @return Boolean

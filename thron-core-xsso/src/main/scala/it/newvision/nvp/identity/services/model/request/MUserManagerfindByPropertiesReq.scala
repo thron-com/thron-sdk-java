@@ -21,21 +21,21 @@ class MUserManagerfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MUserManagerfindByPropertiesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MUserCriteria =_
-	def withcriteria(p:MUserCriteria):MUserManagerfindByPropertiesReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MUserCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MUserManagerfindByPropertiesReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MUserManagerfindByPropertiesReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

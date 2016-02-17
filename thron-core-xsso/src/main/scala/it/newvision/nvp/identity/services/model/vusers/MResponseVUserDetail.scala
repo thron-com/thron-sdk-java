@@ -22,12 +22,12 @@ class MResponseVUserDetail extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """return the vuser detail without the password information, for security reason.""")
 	@BeanProperty 
 	var user: MVUser =_
-	def withuser(p:MVUser):MResponseVUserDetail ={ 	this.user = p; 	this }
+	def withuser(p:MVUser):this.type ={ 	this.user = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var linkedGroups: List[MUsersGroup] = new ArrayList[MUsersGroup]
-	def withlinkedGroups(p:List[MUsersGroup]):MResponseVUserDetail ={ 	this.linkedGroups = p; 	this }
+	def withlinkedGroups(p:List[MUsersGroup]):this.type ={ 	this.linkedGroups = p; 	this }
 
 	/**
 	 * Total number of linkedGroups of the user.
@@ -35,6 +35,6 @@ class MResponseVUserDetail extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Total number of linkedGroups of the user.""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseVUserDetail ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

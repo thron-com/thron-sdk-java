@@ -17,7 +17,7 @@ class MResponseVUserVerifyUsername extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var bestUsername: String =_
-	def withbestUsername(p:String):MResponseVUserVerifyUsername ={ 	this.bestUsername = p; 	this }
+	def withbestUsername(p:String):this.type ={ 	this.bestUsername = p; 	this }
 
 	/**
 	 * List of alternative valid usernames
@@ -25,6 +25,6 @@ class MResponseVUserVerifyUsername extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """List of alternative valid usernames""")
 	@BeanProperty 
 	var suggestedUsernames: List[String] = new ArrayList[String]
-	def withsuggestedUsernames(p:List[String]):MResponseVUserVerifyUsername ={ 	this.suggestedUsernames = p; 	this }
+	def withsuggestedUsernames(p:List[String]):this.type ={ 	this.suggestedUsernames = p; 	this }
 
 }

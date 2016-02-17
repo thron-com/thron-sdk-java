@@ -17,6 +17,6 @@ class MTargetITagsListMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MTargetITagsMinimal] = new ArrayList[MTargetITagsMinimal]
-	def withitems(p:List[MTargetITagsMinimal]):MTargetITagsListMinimal ={ 	this.items = p; 	this }
+	def withitems(p:List[MTargetITagsMinimal]):this.type ={ 	this.items = p; 	this }
 
 }

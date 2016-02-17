@@ -22,7 +22,7 @@ class MITagDefinitionlistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MITagDefinitionSearchCriteria =_
-	def withcriteria(p:MITagDefinitionSearchCriteria):MITagDefinitionlistReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MITagDefinitionSearchCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * Optional. default is false
@@ -32,7 +32,7 @@ class MITagDefinitionlistReq extends Serializable {
 	//#SWGNL#Fill the list of linked metadata definition in items.linkedMetadataDefinition""", required = true)
 	@BeanProperty
 	var showLinkedMetadata: Boolean =_
-	def withshowLinkedMetadata(p:Boolean):MITagDefinitionlistReq ={ 	this.showLinkedMetadata = p; 	this }
+	def withshowLinkedMetadata(p:Boolean):this.type ={ 	this.showLinkedMetadata = p; 	this }
 
 	/**
 	 * Optional
@@ -40,7 +40,7 @@ class MITagDefinitionlistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var orderBy: MEITagDefinitionOrderBy =_
-	def withorderBy(p:MEITagDefinitionOrderBy):MITagDefinitionlistReq ={ 	this.orderBy = p; 	this }
+	def withorderBy(p:MEITagDefinitionOrderBy):this.type ={ 	this.orderBy = p; 	this }
 
 	/**
 	 * Optional.
@@ -50,7 +50,7 @@ class MITagDefinitionlistReq extends Serializable {
 	//#SWGNL#Default value is 0""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MITagDefinitionlistReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Optional. Default value is 50
@@ -58,6 +58,6 @@ class MITagDefinitionlistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Default value is 50""", required = true)
 	@BeanProperty
 	var limit: Integer =_
-	def withlimit(p:Integer):MITagDefinitionlistReq ={ 	this.limit = p; 	this }
+	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
 
 }

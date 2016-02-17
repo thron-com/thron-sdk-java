@@ -25,7 +25,7 @@ class MIMetadatainsertReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """An existing targetId for a specific classification""", required = true)
 	@BeanProperty
 	var imetadata: MIMetadata =_
-	def withimetadata(p:MIMetadata):MIMetadatainsertReq ={ 	this.imetadata = p; 	this }
+	def withimetadata(p:MIMetadata):this.type ={ 	this.imetadata = p; 	this }
 
 	/**
 	 * Required. 
@@ -33,6 +33,6 @@ class MIMetadatainsertReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Required. """, required = true)
 	@BeanProperty
 	var target: MTarget =_
-	def withtarget(p:MTarget):MIMetadatainsertReq ={ 	this.target = p; 	this }
+	def withtarget(p:MTarget):this.type ={ 	this.target = p; 	this }
 
 }

@@ -18,11 +18,11 @@ class MUsersGroupExt extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var groupDetail: MUsersGroup =_
-	def withgroupDetail(p:MUsersGroup):MUsersGroupExt ={ 	this.groupDetail = p; 	this }
+	def withgroupDetail(p:MUsersGroup):this.type ={ 	this.groupDetail = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalLinkedUsers: Integer  = 0
-	def withtotalLinkedUsers(p:Integer):MUsersGroupExt ={ 	this.totalLinkedUsers = p; 	this }
+	def withtotalLinkedUsers(p:Integer):this.type ={ 	this.totalLinkedUsers = p; 	this }
 
 }

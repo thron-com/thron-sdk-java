@@ -21,17 +21,17 @@ class MContentaddLinkedContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MContentaddLinkedContentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MContentaddLinkedContentReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var linkedContent: MLinkedContent =_
-	def withlinkedContent(p:MLinkedContent):MContentaddLinkedContentReq ={ 	this.linkedContent = p; 	this }
+	def withlinkedContent(p:MLinkedContent):this.type ={ 	this.linkedContent = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -39,6 +39,6 @@ class MContentaddLinkedContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MContentaddLinkedContentReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

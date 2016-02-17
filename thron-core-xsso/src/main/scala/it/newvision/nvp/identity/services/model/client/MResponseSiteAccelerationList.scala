@@ -20,6 +20,6 @@ class MResponseSiteAccelerationList extends MResponseClient with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var siteList: List[MClientSiteProperties] = new ArrayList[MClientSiteProperties]
-	def withsiteList(p:List[MClientSiteProperties]):MResponseSiteAccelerationList ={ 	this.siteList = p; 	this }
+	def withsiteList(p:List[MClientSiteProperties]):this.type ={ 	this.siteList = p; 	this }
 
 }

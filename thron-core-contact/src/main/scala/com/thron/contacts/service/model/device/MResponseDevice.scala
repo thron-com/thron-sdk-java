@@ -18,11 +18,11 @@ class MResponseDevice extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MEContact =_
-	def withresultCode(p:MEContact):MResponseDevice ={ 	this.resultCode = p; 	this }
+	def withresultCode(p:MEContact):this.type ={ 	this.resultCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var errorDescription: String =_
-	def witherrorDescription(p:String):MResponseDevice ={ 	this.errorDescription = p; 	this }
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

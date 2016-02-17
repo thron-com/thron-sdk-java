@@ -18,6 +18,6 @@ class MPlayerEmbedCodes extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var embedCodes: List[MPlayerEmbedCode] = new ArrayList[MPlayerEmbedCode]
-	def withembedCodes(p:List[MPlayerEmbedCode]):MPlayerEmbedCodes ={ 	this.embedCodes = p; 	this }
+	def withembedCodes(p:List[MPlayerEmbedCode]):this.type ={ 	this.embedCodes = p; 	this }
 
 }

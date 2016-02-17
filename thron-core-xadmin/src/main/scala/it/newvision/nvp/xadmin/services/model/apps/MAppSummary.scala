@@ -26,7 +26,7 @@ class MAppSummary extends Serializable {
 	//#SWGNL#Empty if the user has no roles for the App""")
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MAppSummary ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * App prettyId.
@@ -36,12 +36,12 @@ class MAppSummary extends Serializable {
 	//#SWGNL#Empty if the user has no roles for the App""")
 	@BeanProperty 
 	var prettyId: String =_
-	def withprettyId(p:String):MAppSummary ={ 	this.prettyId = p; 	this }
+	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
-	def withactive(p:Boolean):MAppSummary ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * used to define the subtype"class" (only with CUSTOM appType)
@@ -49,7 +49,7 @@ class MAppSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to define the subtype"class" (only with CUSTOM appType)""")
 	@BeanProperty 
 	var appSubType: String =_
-	def withappSubType(p:String):MAppSummary ={ 	this.appSubType = p; 	this }
+	def withappSubType(p:String):this.type ={ 	this.appSubType = p; 	this }
 
 	/**
 	 * used to define the application "class":
@@ -59,12 +59,12 @@ class MAppSummary extends Serializable {
 	//#SWGNL#PLAY,MOVE,CUSTOM...""" ,required = true)
 	@BeanProperty 
 	var appType: MEAppType =_
-	def withappType(p:MEAppType):MAppSummary ={ 	this.appType = p; 	this }
+	def withappType(p:MEAppType):this.type ={ 	this.appType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var creationDate: Date  = new Date()
-	def withcreationDate(p:Date):MAppSummary ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * custom description of the app
@@ -72,17 +72,17 @@ class MAppSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """custom description of the app""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MAppSummary ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var displayName: String =_
-	def withdisplayName(p:String):MAppSummary ={ 	this.displayName = p; 	this }
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lastUpdate: Date =_
-	def withlastUpdate(p:Date):MAppSummary ={ 	this.lastUpdate = p; 	this }
+	def withlastUpdate(p:Date):this.type ={ 	this.lastUpdate = p; 	this }
 
 	/**
 	 * username of the owner.
@@ -92,7 +92,7 @@ class MAppSummary extends Serializable {
 	//#SWGNL#The user who created the App instance.""" ,required = true)
 	@BeanProperty 
 	var ownerUsername: String =_
-	def withownerUsername(p:String):MAppSummary ={ 	this.ownerUsername = p; 	this }
+	def withownerUsername(p:String):this.type ={ 	this.ownerUsername = p; 	this }
 
 	/**
 	 * derived
@@ -100,7 +100,7 @@ class MAppSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """derived""" ,required = true)
 	@BeanProperty 
 	var ownerFullName: String =_
-	def withownerFullName(p:String):MAppSummary ={ 	this.ownerFullName = p; 	this }
+	def withownerFullName(p:String):this.type ={ 	this.ownerFullName = p; 	this }
 
 	/**
 	 * the root category Id for the App.
@@ -112,7 +112,7 @@ class MAppSummary extends Serializable {
 	//#SWGNL#Empty if the user has no roles for the App.""")
 	@BeanProperty 
 	var rootCategoryId: String =_
-	def withrootCategoryId(p:String):MAppSummary ={ 	this.rootCategoryId = p; 	this }
+	def withrootCategoryId(p:String):this.type ={ 	this.rootCategoryId = p; 	this }
 
 	/**
 	 * main url of the app
@@ -120,7 +120,7 @@ class MAppSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """main url of the app""")
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MAppSummary ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	/**
 	 * main url of the app
@@ -128,7 +128,7 @@ class MAppSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """main url of the app""")
 	@BeanProperty 
 	var urlThumbnail: String =_
-	def withurlThumbnail(p:String):MAppSummary ={ 	this.urlThumbnail = p; 	this }
+	def withurlThumbnail(p:String):this.type ={ 	this.urlThumbnail = p; 	this }
 
 	/**
 	 * If true the app can invoke the service JApps.su to impersonate a different
@@ -139,11 +139,11 @@ class MAppSummary extends Serializable {
 	//#SWGNL#Empty if the user has no roles for the App""")
 	@BeanProperty 
 	var canDisguise: Boolean =_
-	def withcanDisguise(p:Boolean):MAppSummary ={ 	this.canDisguise = p; 	this }
+	def withcanDisguise(p:Boolean):this.type ={ 	this.canDisguise = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var snippets: List[MSnippetSummary] = new ArrayList[MSnippetSummary]
-	def withsnippets(p:List[MSnippetSummary]):MAppSummary ={ 	this.snippets = p; 	this }
+	def withsnippets(p:List[MSnippetSummary]):this.type ={ 	this.snippets = p; 	this }
 
 }

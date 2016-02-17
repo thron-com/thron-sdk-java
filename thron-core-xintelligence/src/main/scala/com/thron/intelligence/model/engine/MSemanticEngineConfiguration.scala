@@ -23,12 +23,12 @@ class MSemanticEngineConfiguration extends MIEngineConfiguration with Serializab
 	//#SWG#@ApiModelProperty(value = """position inside the tree level. Used to define a custom order""")
 	@BeanProperty 
 	var thresholds: MSemanticThresholdConfiguration =_
-	def withthresholds(p:MSemanticThresholdConfiguration):MSemanticEngineConfiguration ={ 	this.thresholds = p; 	this }
+	def withthresholds(p:MSemanticThresholdConfiguration):this.type ={ 	this.thresholds = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contentConfiguration: MContentConf =_
-	def withcontentConfiguration(p:MContentConf):MSemanticEngineConfiguration ={ 	this.contentConfiguration = p; 	this }
+	def withcontentConfiguration(p:MContentConf):this.type ={ 	this.contentConfiguration = p; 	this }
 
 	/**
 	 * @return Boolean

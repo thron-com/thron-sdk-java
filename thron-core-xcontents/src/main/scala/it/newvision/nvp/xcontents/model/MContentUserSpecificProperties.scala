@@ -22,7 +22,7 @@ class MContentUserSpecificProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentReadValue: MEContentReadValue  = MEContentReadValue.UNREAD
-	def withcontentReadValue(p:MEContentReadValue):MContentUserSpecificProperties ={ 	this.contentReadValue = p; 	this }
+	def withcontentReadValue(p:MEContentReadValue):this.type ={ 	this.contentReadValue = p; 	this }
 
 	/**
 	 * used to indicate whether the user is registered or not to content notifications.
@@ -30,7 +30,7 @@ class MContentUserSpecificProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to indicate whether the user is registered or not to content notifications.""" ,required = true)
 	@BeanProperty 
 	var userSubscribedForNotification: Boolean  = false
-	def withuserSubscribedForNotification(p:Boolean):MContentUserSpecificProperties ={ 	this.userSubscribedForNotification = p; 	this }
+	def withuserSubscribedForNotification(p:Boolean):this.type ={ 	this.userSubscribedForNotification = p; 	this }
 
 	/**
 	 * used to mark if the content is starred or not for the user
@@ -38,7 +38,7 @@ class MContentUserSpecificProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to mark if the content is starred or not for the user""" ,required = true)
 	@BeanProperty 
 	var contentStarred: Boolean  = false
-	def withcontentStarred(p:Boolean):MContentUserSpecificProperties ={ 	this.contentStarred = p; 	this }
+	def withcontentStarred(p:Boolean):this.type ={ 	this.contentStarred = p; 	this }
 
 	/**
 	 * the date when the content has been marked as READ by the user.
@@ -46,6 +46,6 @@ class MContentUserSpecificProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the date when the content has been marked as READ by the user.""")
 	@BeanProperty 
 	var readDate: Date =_
-	def withreadDate(p:Date):MContentUserSpecificProperties ={ 	this.readDate = p; 	this }
+	def withreadDate(p:Date):this.type ={ 	this.readDate = p; 	this }
 
 }

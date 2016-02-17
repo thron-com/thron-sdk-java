@@ -20,7 +20,7 @@ class MPublishingProcessunpublishContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPublishingProcessunpublishContentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * mediaContentId or xcontentId are required
@@ -28,7 +28,7 @@ class MPublishingProcessunpublishContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
 	@BeanProperty
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MPublishingProcessunpublishContentReq ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * mediaContentId or xcontentId are required
@@ -36,7 +36,7 @@ class MPublishingProcessunpublishContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
 	@BeanProperty
 	var xcontentId: String =_
-	def withxcontentId(p:String):MPublishingProcessunpublishContentReq ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * used to force the unpublishing process, and discard the warning messaging about
@@ -45,7 +45,7 @@ class MPublishingProcessunpublishContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to force the unpublishing process, and discard the warning messaging about content linked by other contents.""", required = true)
 	@BeanProperty
 	var force: Boolean =_
-	def withforce(p:Boolean):MPublishingProcessunpublishContentReq ={ 	this.force = p; 	this }
+	def withforce(p:Boolean):this.type ={ 	this.force = p; 	this }
 
 	/**
 	 * Optional.
@@ -57,6 +57,6 @@ class MPublishingProcessunpublishContentReq extends Serializable {
 	//#SWGNL#If true the service try to remove the source files (in repository) used to publish the content and all previous versions (list of files in MMediaContent.sourcefiles and MMediaContent.sourceFilesOldVersions)""", required = true)
 	@BeanProperty
 	var removeSourceFiles: Boolean =_
-	def withremoveSourceFiles(p:Boolean):MPublishingProcessunpublishContentReq ={ 	this.removeSourceFiles = p; 	this }
+	def withremoveSourceFiles(p:Boolean):this.type ={ 	this.removeSourceFiles = p; 	this }
 
 }

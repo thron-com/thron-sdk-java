@@ -20,6 +20,6 @@ class MUpdateClientStreamsParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """ClientStreams can only contain [0-9a-zA-Z-_.] characters""")
 	@BeanProperty 
 	var clientStreams: List[String] = new ArrayList[String]
-	def withclientStreams(p:List[String]):MUpdateClientStreamsParams ={ 	this.clientStreams = p; 	this }
+	def withclientStreams(p:List[String]):this.type ={ 	this.clientStreams = p; 	this }
 
 }

@@ -20,17 +20,17 @@ class MResponseContentDetail extends MResponseContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var content: MContent =_
-	def withcontent(p:MContent):MResponseContentDetail ={ 	this.content = p; 	this }
+	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
-	def withlinkedCategories(p:List[MCategory]):MResponseContentDetail ={ 	this.linkedCategories = p; 	this }
+	def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userSpecificValues: MContentUserSpecificProperties =_
-	def withuserSpecificValues(p:MContentUserSpecificProperties):MResponseContentDetail ={ 	this.userSpecificValues = p; 	this }
+	def withuserSpecificValues(p:MContentUserSpecificProperties):this.type ={ 	this.userSpecificValues = p; 	this }
 
 	/**
 	 * total number of "downloadable contents" (contents linked by the used as
@@ -40,7 +40,7 @@ class MResponseContentDetail extends MResponseContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total number of "downloadable contents" (contents linked by the used as "downloadable"). In order to obtain the list of DownloadableContents should be used the service JDelivery.getDownloadableContents""" ,required = true)
 	@BeanProperty 
 	var totalDownloadableContents: Integer =_
-	def withtotalDownloadableContents(p:Integer):MResponseContentDetail ={ 	this.totalDownloadableContents = p; 	this }
+	def withtotalDownloadableContents(p:Integer):this.type ={ 	this.totalDownloadableContents = p; 	this }
 
 	/**
 	 * total number of "suggested contents" (contents linked by the user). In order to
@@ -50,7 +50,7 @@ class MResponseContentDetail extends MResponseContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total number of "suggested contents" (contents linked by the user). In order to obtain the list of Recommended Contents should be used the service JDelivery.getRecommendedContents""" ,required = true)
 	@BeanProperty 
 	var totalRecommendedContents: Integer =_
-	def withtotalRecommendedContents(p:Integer):MResponseContentDetail ={ 	this.totalRecommendedContents = p; 	this }
+	def withtotalRecommendedContents(p:Integer):this.type ={ 	this.totalRecommendedContents = p; 	this }
 
 	/**
 	 * Optional. The list of all available thumbnail URLs
@@ -58,6 +58,6 @@ class MResponseContentDetail extends MResponseContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Optional. The list of all available thumbnail URLs""")
 	@BeanProperty 
 	var thumbUrls: List[String] = new ArrayList[String]
-	def withthumbUrls(p:List[String]):MResponseContentDetail ={ 	this.thumbUrls = p; 	this }
+	def withthumbUrls(p:List[String]):this.type ={ 	this.thumbUrls = p; 	this }
 
 }

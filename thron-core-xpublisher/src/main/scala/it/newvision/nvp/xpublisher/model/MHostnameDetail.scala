@@ -17,12 +17,12 @@ class MHostnameDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var hostname: String =_
-	def withhostname(p:String):MHostnameDetail ={ 	this.hostname = p; 	this }
+	def withhostname(p:String):this.type ={ 	this.hostname = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var hostnameType: MEHostnameType =_
-	def withhostnameType(p:MEHostnameType):MHostnameDetail ={ 	this.hostnameType = p; 	this }
+	def withhostnameType(p:MEHostnameType):this.type ={ 	this.hostnameType = p; 	this }
 
 	/**
 	 * @param hostname : String

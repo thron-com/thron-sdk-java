@@ -25,17 +25,17 @@ class MSourceIdentifier extends Serializable {
 	//#SWG#@ApiModelProperty(value = """username or appId or engineId""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MSourceIdentifier ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var sourceType: MESourceType =_
-	def withsourceType(p:MESourceType):MSourceIdentifier ={ 	this.sourceType = p; 	this }
+	def withsourceType(p:MESourceType):this.type ={ 	this.sourceType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var displayName: String =_
-	def withdisplayName(p:String):MSourceIdentifier ={ 	this.displayName = p; 	this }
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
 	/**
 	 * @return Boolean

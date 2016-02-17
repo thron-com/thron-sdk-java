@@ -50,7 +50,7 @@ class MSemanticThresholdConfiguration extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var suggest: MThresholdValue =_
-	def withsuggest(p:MThresholdValue):MSemanticThresholdConfiguration ={ 	this.suggest = p; 	this }
+	def withsuggest(p:MThresholdValue):this.type ={ 	this.suggest = p; 	this }
 
 	/**
 	 * The minimum percentage value for approval.
@@ -74,7 +74,7 @@ class MSemanticThresholdConfiguration extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var approval: MThresholdValue =_
-	def withapproval(p:MThresholdValue):MSemanticThresholdConfiguration ={ 	this.approval = p; 	this }
+	def withapproval(p:MThresholdValue):this.type ={ 	this.approval = p; 	this }
 
 	/**
 	 * @return Boolean

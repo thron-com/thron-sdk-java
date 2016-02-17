@@ -21,7 +21,7 @@ class MITagBulkValue2 extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var tagId: MITagId =_
-	def withtagId(p:MITagId):MITagBulkValue2 ={ 	this.tagId = p; 	this }
+	def withtagId(p:MITagId):this.type ={ 	this.tagId = p; 	this }
 
 	/**
 	 * <b>Constraints:</b>
@@ -37,7 +37,7 @@ class MITagBulkValue2 extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var targets: List[MTarget] = new ArrayList[MTarget]
-	def withtargets(p:List[MTarget]):MITagBulkValue2 ={ 	this.targets = p; 	this }
+	def withtargets(p:List[MTarget]):this.type ={ 	this.targets = p; 	this }
 
 	/**
 	 * @return Boolean

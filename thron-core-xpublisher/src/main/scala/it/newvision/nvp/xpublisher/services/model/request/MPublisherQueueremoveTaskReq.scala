@@ -20,6 +20,6 @@ class MPublisherQueueremoveTaskReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var taskId: String =_
-	def withtaskId(p:String):MPublisherQueueremoveTaskReq ={ 	this.taskId = p; 	this }
+	def withtaskId(p:String):this.type ={ 	this.taskId = p; 	this }
 
 }

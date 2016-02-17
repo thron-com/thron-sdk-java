@@ -18,6 +18,6 @@ class MResponseCreateUsersGroup extends MResponseUsersGroup with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var group: MUsersGroup =_
-	def withgroup(p:MUsersGroup):MResponseCreateUsersGroup ={ 	this.group = p; 	this }
+	def withgroup(p:MUsersGroup):this.type ={ 	this.group = p; 	this }
 
 }

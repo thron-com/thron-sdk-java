@@ -17,6 +17,6 @@ class MReport4ME extends MReport with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var query: MQuery4ME =_
-	def withquery(p:MQuery4ME):MReport4ME ={ 	this.query = p; 	this }
+	def withquery(p:MQuery4ME):this.type ={ 	this.query = p; 	this }
 
 }

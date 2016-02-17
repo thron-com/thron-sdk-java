@@ -17,6 +17,6 @@ class MResponseContentReport extends MResponseContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MContentReport] = new ArrayList[MContentReport]
-	def withitems(p:List[MContentReport]):MResponseContentReport ={ 	this.items = p; 	this }
+	def withitems(p:List[MContentReport]):this.type ={ 	this.items = p; 	this }
 
 }

@@ -21,6 +21,6 @@ class MResponseVUserCreate extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """return the vuser detail without the password information, for security reason.""")
 	@BeanProperty 
 	var user: MVUser =_
-	def withuser(p:MVUser):MResponseVUserCreate ={ 	this.user = p; 	this }
+	def withuser(p:MVUser):this.type ={ 	this.user = p; 	this }
 
 }

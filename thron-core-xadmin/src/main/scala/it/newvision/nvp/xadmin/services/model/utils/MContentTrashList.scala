@@ -17,6 +17,6 @@ class MContentTrashList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contentsToTrash: List[MContentToTrash] = new ArrayList[MContentToTrash]
-	def withcontentsToTrash(p:List[MContentToTrash]):MContentTrashList ={ 	this.contentsToTrash = p; 	this }
+	def withcontentsToTrash(p:List[MContentToTrash]):this.type ={ 	this.contentsToTrash = p; 	this }
 
 }

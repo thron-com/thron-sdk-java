@@ -22,6 +22,6 @@ class MFileList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var files: List[MFile] = new ArrayList[MFile]
-	def withfiles(p:List[MFile]):MFileList ={ 	this.files = p; 	this }
+	def withfiles(p:List[MFile]):this.type ={ 	this.files = p; 	this }
 
 }

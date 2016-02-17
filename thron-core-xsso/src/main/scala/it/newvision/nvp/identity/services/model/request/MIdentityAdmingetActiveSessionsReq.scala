@@ -21,6 +21,6 @@ class MIdentityAdmingetActiveSessionsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MSessionCriteria =_
-	def withcriteria(p:MSessionCriteria):MIdentityAdmingetActiveSessionsReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MSessionCriteria):this.type ={ 	this.criteria = p; 	this }
 
 }

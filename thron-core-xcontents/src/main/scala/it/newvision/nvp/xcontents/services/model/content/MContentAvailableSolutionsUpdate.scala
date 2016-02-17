@@ -25,7 +25,7 @@ class MContentAvailableSolutionsUpdate extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Use this properties to set the available solutions (VIEW,PLAY,MOVE.TALK) for the specified content.""")
 	@BeanProperty 
 	var availableInSolutions: List[String] = new ArrayList[String]
-	def withavailableInSolutions(p:List[String]):MContentAvailableSolutionsUpdate ={ 	this.availableInSolutions = p; 	this }
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
 
 	/**
 	 * @return void

@@ -17,7 +17,7 @@ class MResponseGetS3UploadCredentials extends MResponseRepository with Serializa
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var credentials: MAwsCredentials =_
-	def withcredentials(p:MAwsCredentials):MResponseGetS3UploadCredentials ={ 	this.credentials = p; 	this }
+	def withcredentials(p:MAwsCredentials):this.type ={ 	this.credentials = p; 	this }
 
 	/**
 	 * S3 bucket name
@@ -25,7 +25,7 @@ class MResponseGetS3UploadCredentials extends MResponseRepository with Serializa
 	//#SWG#@ApiModelProperty(value = """S3 bucket name""" ,required = true)
 	@BeanProperty 
 	var bucketName: String =_
-	def withbucketName(p:String):MResponseGetS3UploadCredentials ={ 	this.bucketName = p; 	this }
+	def withbucketName(p:String):this.type ={ 	this.bucketName = p; 	this }
 
 	/**
 	 * S3 bucket path credentials are granted on
@@ -33,6 +33,6 @@ class MResponseGetS3UploadCredentials extends MResponseRepository with Serializa
 	//#SWG#@ApiModelProperty(value = """S3 bucket path credentials are granted on""" ,required = true)
 	@BeanProperty 
 	var path: String =_
-	def withpath(p:String):MResponseGetS3UploadCredentials ={ 	this.path = p; 	this }
+	def withpath(p:String):this.type ={ 	this.path = p; 	this }
 
 }

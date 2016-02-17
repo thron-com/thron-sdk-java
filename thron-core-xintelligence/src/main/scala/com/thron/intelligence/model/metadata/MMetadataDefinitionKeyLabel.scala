@@ -24,7 +24,7 @@ class MMetadataDefinitionKeyLabel extends Serializable {
 	//#SWG#@ApiModelProperty(value = """en/it/ ....""" ,required = true)
 	@BeanProperty 
 	var lang: String =_
-	def withlang(p:String):MMetadataDefinitionKeyLabel ={ 	this.lang = p; 	this }
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
 	 * Description in the specific locale. Used only for presentation
@@ -32,7 +32,7 @@ class MMetadataDefinitionKeyLabel extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Description in the specific locale. Used only for presentation""" ,required = true)
 	@BeanProperty 
 	var label: String  = ""
-	def withlabel(p:String):MMetadataDefinitionKeyLabel ={ 	this.label = p; 	this }
+	def withlabel(p:String):this.type ={ 	this.label = p; 	this }
 
 	/**
 	 * The help text in the specific locale. Used only for presentation
@@ -40,6 +40,6 @@ class MMetadataDefinitionKeyLabel extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The help text in the specific locale. Used only for presentation""" ,required = true)
 	@BeanProperty 
 	var hint: String =_
-	def withhint(p:String):MMetadataDefinitionKeyLabel ={ 	this.hint = p; 	this }
+	def withhint(p:String):this.type ={ 	this.hint = p; 	this }
 
 }

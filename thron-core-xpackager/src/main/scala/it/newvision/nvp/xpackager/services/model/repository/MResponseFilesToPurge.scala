@@ -17,6 +17,6 @@ class MResponseFilesToPurge extends MResponseRepository with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var filesToPurge: List[MFileToPurge] = new ArrayList[MFileToPurge]
-	def withfilesToPurge(p:List[MFileToPurge]):MResponseFilesToPurge ={ 	this.filesToPurge = p; 	this }
+	def withfilesToPurge(p:List[MFileToPurge]):this.type ={ 	this.filesToPurge = p; 	this }
 
 }

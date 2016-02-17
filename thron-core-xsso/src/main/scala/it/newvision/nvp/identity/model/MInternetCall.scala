@@ -20,11 +20,11 @@ class MInternetCall extends Serializable {
 	//#SWG#@ApiModelProperty(value = """HOME/WORK/...""")
 	@BeanProperty 
 	var inumberCategory: String =_
-	def withinumberCategory(p:String):MInternetCall ={ 	this.inumberCategory = p; 	this }
+	def withinumberCategory(p:String):this.type ={ 	this.inumberCategory = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var inumber: String =_
-	def withinumber(p:String):MInternetCall ={ 	this.inumber = p; 	this }
+	def withinumber(p:String):this.type ={ 	this.inumber = p; 	this }
 
 }

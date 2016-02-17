@@ -20,7 +20,7 @@ class MMetadataDefinitionNumericIntegerOption extends MMetadataDefinitionOptionC
 	//#SWG#@ApiModelProperty(value = """Used as layout directive, not for validation""")
 	@BeanProperty 
 	var defaultValue: Integer =_
-	def withdefaultValue(p:Integer):MMetadataDefinitionNumericIntegerOption ={ 	this.defaultValue = p; 	this }
+	def withdefaultValue(p:Integer):this.type ={ 	this.defaultValue = p; 	this }
 
 	/**
 	 * @param value : String

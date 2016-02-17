@@ -17,16 +17,16 @@ class MThumbnailDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var thumbnailUrl: String =_
-	def withthumbnailUrl(p:String):MThumbnailDetail ={ 	this.thumbnailUrl = p; 	this }
+	def withthumbnailUrl(p:String):this.type ={ 	this.thumbnailUrl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var thumbnailWidth: Integer =_
-	def withthumbnailWidth(p:Integer):MThumbnailDetail ={ 	this.thumbnailWidth = p; 	this }
+	def withthumbnailWidth(p:Integer):this.type ={ 	this.thumbnailWidth = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var thumbnailHeight: Integer =_
-	def withthumbnailHeight(p:Integer):MThumbnailDetail ={ 	this.thumbnailHeight = p; 	this }
+	def withthumbnailHeight(p:Integer):this.type ={ 	this.thumbnailHeight = p; 	this }
 
 }

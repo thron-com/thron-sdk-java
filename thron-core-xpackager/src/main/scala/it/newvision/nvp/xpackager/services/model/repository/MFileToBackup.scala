@@ -30,7 +30,7 @@ class MFileToBackup extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the clientId""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MFileToBackup ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * the repositoryFile
@@ -38,7 +38,7 @@ class MFileToBackup extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the repositoryFile""" ,required = true)
 	@BeanProperty 
 	var file: MFile =_
-	def withfile(p:MFile):MFileToBackup ={ 	this.file = p; 	this }
+	def withfile(p:MFile):this.type ={ 	this.file = p; 	this }
 
 	/**
 	 * the backupsite name where upload the specified file.
@@ -46,6 +46,6 @@ class MFileToBackup extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the backupsite name where upload the specified file.""" ,required = true)
 	@BeanProperty 
 	var backupSiteDestination: String =_
-	def withbackupSiteDestination(p:String):MFileToBackup ={ 	this.backupSiteDestination = p; 	this }
+	def withbackupSiteDestination(p:String):this.type ={ 	this.backupSiteDestination = p; 	this }
 
 }

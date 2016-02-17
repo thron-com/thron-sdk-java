@@ -17,12 +17,12 @@ class MGenericProvider extends MProvider with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var providerName: String =_
-	def withproviderName(p:String):MGenericProvider ={ 	this.providerName = p; 	this }
+	def withproviderName(p:String):this.type ={ 	this.providerName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MGenericProvider ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -17,12 +17,12 @@ class MContentDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MContentDetail ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MContentDetail ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * summary of the content
@@ -30,6 +30,6 @@ class MContentDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """summary of the content""" ,required = true)
 	@BeanProperty 
 	var excerpt: String =_
-	def withexcerpt(p:String):MContentDetail ={ 	this.excerpt = p; 	this }
+	def withexcerpt(p:String):this.type ={ 	this.excerpt = p; 	this }
 
 }

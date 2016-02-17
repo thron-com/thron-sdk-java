@@ -18,16 +18,16 @@ class MResponseMetadataDefinition extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MEMetadataDefinition =_
-	def withresultCode(p:MEMetadataDefinition):MResponseMetadataDefinition ={ 	this.resultCode = p; 	this }
+	def withresultCode(p:MEMetadataDefinition):this.type ={ 	this.resultCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var ssoCode: MESSO =_
-	def withssoCode(p:MESSO):MResponseMetadataDefinition ={ 	this.ssoCode = p; 	this }
+	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var errorDescription: String  = ""
-	def witherrorDescription(p:String):MResponseMetadataDefinition ={ 	this.errorDescription = p; 	this }
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

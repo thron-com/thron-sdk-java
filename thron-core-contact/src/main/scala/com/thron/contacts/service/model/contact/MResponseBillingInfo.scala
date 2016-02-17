@@ -17,6 +17,6 @@ class MResponseBillingInfo extends MResponseContact with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MBillingContactArchiveUnit] = new ArrayList[MBillingContactArchiveUnit]
-	def withitems(p:List[MBillingContactArchiveUnit]):MResponseBillingInfo ={ 	this.items = p; 	this }
+	def withitems(p:List[MBillingContactArchiveUnit]):this.type ={ 	this.items = p; 	this }
 
 }

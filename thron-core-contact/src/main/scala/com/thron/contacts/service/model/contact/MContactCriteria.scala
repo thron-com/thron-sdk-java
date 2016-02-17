@@ -22,7 +22,7 @@ class MContactCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """filter by accessed date.""")
 	@BeanProperty 
 	var accessedDateRange: MDateRange =_
-	def withaccessedDateRange(p:MDateRange):MContactCriteria ={ 	this.accessedDateRange = p; 	this }
+	def withaccessedDateRange(p:MDateRange):this.type ={ 	this.accessedDateRange = p; 	this }
 
 	/**
 	 * contact Ids or contact oldIds
@@ -30,7 +30,7 @@ class MContactCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """contact Ids or contact oldIds""")
 	@BeanProperty 
 	var ids: List[String] = new ArrayList[String]
-	def withids(p:List[String]):MContactCriteria ={ 	this.ids = p; 	this }
+	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
 
 	/**
 	 * list of identity keys:
@@ -40,7 +40,7 @@ class MContactCriteria extends Serializable {
 	//#SWGNL#iks.keys should be in lowercase.""")
 	@BeanProperty 
 	var iks: List[MIdentityKey] = new ArrayList[MIdentityKey]
-	def withiks(p:List[MIdentityKey]):MContactCriteria ={ 	this.iks = p; 	this }
+	def withiks(p:List[MIdentityKey]):this.type ={ 	this.iks = p; 	this }
 
 	/**
 	 * search contacts with specific intelligence tags. The list of elements use the
@@ -59,11 +59,11 @@ class MContactCriteria extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var itagOp: MITagCriteriaOption =_
-	def withitagOp(p:MITagCriteriaOption):MContactCriteria ={ 	this.itagOp = p; 	this }
+	def withitagOp(p:MITagCriteriaOption):this.type ={ 	this.itagOp = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contactType: MEContactType =_
-	def withcontactType(p:MEContactType):MContactCriteria ={ 	this.contactType = p; 	this }
+	def withcontactType(p:MEContactType):this.type ={ 	this.contactType = p; 	this }
 
 }

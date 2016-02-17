@@ -23,20 +23,5 @@ public enum MEGroupType {
 	 */
 	//#SWG#@ApiModelProperty(value = """The members of a BLIND group can not see each other. 
 	//#SWGNL#Only Platform and Platform_Guest users can be linked to a BLIND Group""")
-	@XmlEnumValue("PLATFORM_BLIND") PLATFORM_BLIND,
-	/**
-	 * Deprecated.
-	 * only for generic contact or external users shared between user in platform
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated.
-	//#SWGNL#only for generic contact or external users shared between user in platform""")
-	@XmlEnumValue("SHARED_CONTACTS") SHARED_CONTACTS,
-	/**
-	 * Deprecated.
-	 * a private group for the user, used to organize contacts. No Roles and
-	 * capabilities are specified.
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated.
-	//#SWGNL#a private group for the user, used to organize contacts. No Roles and capabilities are specified.""")
-	@XmlEnumValue("PRIVATE") PRIVATE
+	@XmlEnumValue("PLATFORM_BLIND") PLATFORM_BLIND
 }

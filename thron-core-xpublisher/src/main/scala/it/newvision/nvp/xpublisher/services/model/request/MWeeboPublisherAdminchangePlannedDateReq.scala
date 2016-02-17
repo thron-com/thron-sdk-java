@@ -20,17 +20,17 @@ class MWeeboPublisherAdminchangePlannedDateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboPublisherAdminchangePlannedDateReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty @org.codehaus.jackson.annotate.JsonProperty("PContentId")
 	var pContentId: String =_
-	def withpContentId(p:String):MWeeboPublisherAdminchangePlannedDateReq ={ 	this.pContentId = p; 	this }
+	def withpContentId(p:String):this.type ={ 	this.pContentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var channelType: String =_
-	def withchannelType(p:String):MWeeboPublisherAdminchangePlannedDateReq ={ 	this.channelType = p; 	this }
+	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	/**
 	 * planned publication date
@@ -38,6 +38,6 @@ class MWeeboPublisherAdminchangePlannedDateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """planned publication date""", required = true)
 	@BeanProperty
 	var plannedPublication: Date =_
-	def withplannedPublication(p:Date):MWeeboPublisherAdminchangePlannedDateReq ={ 	this.plannedPublication = p; 	this }
+	def withplannedPublication(p:Date):this.type ={ 	this.plannedPublication = p; 	this }
 
 }

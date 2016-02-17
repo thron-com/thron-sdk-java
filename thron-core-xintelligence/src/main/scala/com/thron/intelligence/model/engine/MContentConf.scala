@@ -20,7 +20,7 @@ class MContentConf extends Serializable {
 	//#SWG#@ApiModelProperty(value = """at most 100 categories""")
 	@BeanProperty 
 	var onlyForCategoryIds: List[String] = new ArrayList[String]
-	def withonlyForCategoryIds(p:List[String]):MContentConf ={ 	this.onlyForCategoryIds = p; 	this }
+	def withonlyForCategoryIds(p:List[String]):this.type ={ 	this.onlyForCategoryIds = p; 	this }
 
 	/**
 	 * possible values are VIDE/AUDIO/IMAGE/PLAYLIST/OTHER...
@@ -28,7 +28,7 @@ class MContentConf extends Serializable {
 	//#SWG#@ApiModelProperty(value = """possible values are VIDE/AUDIO/IMAGE/PLAYLIST/OTHER...""")
 	@BeanProperty 
 	var onlyForContentType: String =_
-	def withonlyForContentType(p:String):MContentConf ={ 	this.onlyForContentType = p; 	this }
+	def withonlyForContentType(p:String):this.type ={ 	this.onlyForContentType = p; 	this }
 
 	/**
 	 * @return Boolean

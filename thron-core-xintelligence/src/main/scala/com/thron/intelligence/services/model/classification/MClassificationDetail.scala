@@ -19,6 +19,6 @@ class MClassificationDetail extends MClassification with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var engineSummary: MIEngineSummary =_
-	def withengineSummary(p:MIEngineSummary):MClassificationDetail ={ 	this.engineSummary = p; 	this }
+	def withengineSummary(p:MIEngineSummary):this.type ={ 	this.engineSummary = p; 	this }
 
 }

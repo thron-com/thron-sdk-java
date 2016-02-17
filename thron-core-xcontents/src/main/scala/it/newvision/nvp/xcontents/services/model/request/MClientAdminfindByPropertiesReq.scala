@@ -21,16 +21,16 @@ class MClientAdminfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MClientCriteria =_
-	def withcriteria(p:MClientCriteria):MClientAdminfindByPropertiesReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MClientCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MClientAdminfindByPropertiesReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MClientAdminfindByPropertiesReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

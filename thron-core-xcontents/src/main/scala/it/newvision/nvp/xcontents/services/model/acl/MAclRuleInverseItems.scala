@@ -12,6 +12,7 @@ import javax.xml.bind.annotation._
 @XmlRootElement(name="MAclRuleInverseItems") 
 @XmlType(name="MAclRuleInverseItems")
 //#SWG#@ApiModel(description = """""")
+@Deprecated
 class MAclRuleInverseItems extends Serializable {
 
 	/**
@@ -20,6 +21,6 @@ class MAclRuleInverseItems extends Serializable {
 	//#SWG#@ApiModelProperty(value = """a list of rule items""")
 	@BeanProperty 
 	var rules: List[MAclRuleInverseItem] = new ArrayList[MAclRuleInverseItem]
-	def withrules(p:List[MAclRuleInverseItem]):MAclRuleInverseItems ={ 	this.rules = p; 	this }
+	def withrules(p:List[MAclRuleInverseItem]):this.type ={ 	this.rules = p; 	this }
 
 }

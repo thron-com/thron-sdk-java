@@ -21,6 +21,6 @@ class MITagbulkRemoveMultiTargetsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var value: MITagBulkValue2 =_
-	def withvalue(p:MITagBulkValue2):MITagbulkRemoveMultiTargetsReq ={ 	this.value = p; 	this }
+	def withvalue(p:MITagBulkValue2):this.type ={ 	this.value = p; 	this }
 
 }

@@ -19,12 +19,12 @@ class MCategoryResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var category: MCategory =_
-	def withcategory(p:MCategory):MCategoryResult ={ 	this.category = p; 	this }
+	def withcategory(p:MCategory):this.type ={ 	this.category = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userSpecificValues: MCategoryUserSpecificProperties =_
-	def withuserSpecificValues(p:MCategoryUserSpecificProperties):MCategoryResult ={ 	this.userSpecificValues = p; 	this }
+	def withuserSpecificValues(p:MCategoryUserSpecificProperties):this.type ={ 	this.userSpecificValues = p; 	this }
 
 	/**
 	 * total number of contents linked to the category (based on ACL rules)
@@ -32,7 +32,7 @@ class MCategoryResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total number of contents linked to the category (based on ACL rules)""")
 	@BeanProperty 
 	var numberOfContents: Integer =_
-	def withnumberOfContents(p:Integer):MCategoryResult ={ 	this.numberOfContents = p; 	this }
+	def withnumberOfContents(p:Integer):this.type ={ 	this.numberOfContents = p; 	this }
 
 	/**
 	 * number of contents not read by the user in the category
@@ -40,7 +40,7 @@ class MCategoryResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """number of contents not read by the user in the category""")
 	@BeanProperty 
 	var numberOfUnreadContents: Integer =_
-	def withnumberOfUnreadContents(p:Integer):MCategoryResult ={ 	this.numberOfUnreadContents = p; 	this }
+	def withnumberOfUnreadContents(p:Integer):this.type ={ 	this.numberOfUnreadContents = p; 	this }
 
 	/**
 	 * number of contents not read by the user in the sub-categories
@@ -48,7 +48,7 @@ class MCategoryResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """number of contents not read by the user in the sub-categories""")
 	@BeanProperty 
 	var numberOfUnreadContentsInSubCategories: Integer =_
-	def withnumberOfUnreadContentsInSubCategories(p:Integer):MCategoryResult ={ 	this.numberOfUnreadContentsInSubCategories = p; 	this }
+	def withnumberOfUnreadContentsInSubCategories(p:Integer):this.type ={ 	this.numberOfUnreadContentsInSubCategories = p; 	this }
 
 	/**
 	 * number of child Categories
@@ -56,7 +56,7 @@ class MCategoryResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """number of child Categories""")
 	@BeanProperty 
 	var numberOfSubCategories: Integer =_
-	def withnumberOfSubCategories(p:Integer):MCategoryResult ={ 	this.numberOfSubCategories = p; 	this }
+	def withnumberOfSubCategories(p:Integer):this.type ={ 	this.numberOfSubCategories = p; 	this }
 
 	/**
 	 * the fullname of the category's owner (based on acl)
@@ -64,6 +64,6 @@ class MCategoryResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the fullname of the category's owner (based on acl)""")
 	@BeanProperty 
 	var ownerFullname: String =_
-	def withownerFullname(p:String):MCategoryResult ={ 	this.ownerFullname = p; 	this }
+	def withownerFullname(p:String):this.type ={ 	this.ownerFullname = p; 	this }
 
 }

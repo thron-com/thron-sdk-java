@@ -30,7 +30,7 @@ class MFileToPurge extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the clientId""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MFileToPurge ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * the repositoryFile
@@ -38,6 +38,6 @@ class MFileToPurge extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the repositoryFile""" ,required = true)
 	@BeanProperty 
 	var file: MFile =_
-	def withfile(p:MFile):MFileToPurge ={ 	this.file = p; 	this }
+	def withfile(p:MFile):this.type ={ 	this.file = p; 	this }
 
 }

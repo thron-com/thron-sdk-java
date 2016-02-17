@@ -21,7 +21,7 @@ class MPlaylistaddContentsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPlaylistaddContentsReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * xcontentId of Playlist content
@@ -29,7 +29,7 @@ class MPlaylistaddContentsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """xcontentId of Playlist content""", required = true)
 	@BeanProperty
 	var xcontentId: String =_
-	def withxcontentId(p:String):MPlaylistaddContentsReq ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * the playlist elements to add
@@ -37,7 +37,7 @@ class MPlaylistaddContentsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the playlist elements to add""", required = true)
 	@BeanProperty
 	var contentList: MPlaylistItems =_
-	def withcontentList(p:MPlaylistItems):MPlaylistaddContentsReq ={ 	this.contentList = p; 	this }
+	def withcontentList(p:MPlaylistItems):this.type ={ 	this.contentList = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -45,6 +45,6 @@ class MPlaylistaddContentsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MPlaylistaddContentsReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

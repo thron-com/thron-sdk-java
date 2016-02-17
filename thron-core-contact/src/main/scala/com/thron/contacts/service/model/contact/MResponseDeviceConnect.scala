@@ -18,11 +18,11 @@ class MResponseDeviceConnect extends MResponseDevice with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contactId: String =_
-	def withcontactId(p:String):MResponseDeviceConnect ={ 	this.contactId = p; 	this }
+	def withcontactId(p:String):this.type ={ 	this.contactId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var deviceId: String =_
-	def withdeviceId(p:String):MResponseDeviceConnect ={ 	this.deviceId = p; 	this }
+	def withdeviceId(p:String):this.type ={ 	this.deviceId = p; 	this }
 
 }

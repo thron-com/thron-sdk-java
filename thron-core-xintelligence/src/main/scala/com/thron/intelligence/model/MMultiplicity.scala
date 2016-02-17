@@ -17,11 +17,11 @@ class MMultiplicity extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var minimumValue: Integer =_
-	def withminimumValue(p:Integer):MMultiplicity ={ 	this.minimumValue = p; 	this }
+	def withminimumValue(p:Integer):this.type ={ 	this.minimumValue = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var maximumValue: Integer =_
-	def withmaximumValue(p:Integer):MMultiplicity ={ 	this.maximumValue = p; 	this }
+	def withmaximumValue(p:Integer):this.type ={ 	this.maximumValue = p; 	this }
 
 }

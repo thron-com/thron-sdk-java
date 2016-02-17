@@ -17,21 +17,21 @@ class MClient extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MClient ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var packages: List[MPackagedContent] = new ArrayList[MPackagedContent]
-	def withpackages(p:List[MPackagedContent]):MClient ={ 	this.packages = p; 	this }
+	def withpackages(p:List[MPackagedContent]):this.type ={ 	this.packages = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var thumbnails: List[MThumbnail] = new ArrayList[MThumbnail]
-	  def withthumbnails(p:List[MThumbnail]):MClient ={ 	this.thumbnails = p; 	this }
+	  def withthumbnails(p:List[MThumbnail]):this.type ={ 	this.thumbnails = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var repositoryFiles: List[MFile] = new ArrayList[MFile]
-	  def withrepositoryFiles(p:List[MFile]):MClient ={ 	this.repositoryFiles = p; 	this }
+	  def withrepositoryFiles(p:List[MFile]):this.type ={ 	this.repositoryFiles = p; 	this }
 
 }

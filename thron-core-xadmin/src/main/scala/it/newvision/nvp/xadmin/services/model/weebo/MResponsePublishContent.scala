@@ -19,11 +19,11 @@ class MResponsePublishContent extends MResponsePublishWeebo with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var content: MMediaContent =_
-	def withcontent(p:MMediaContent):MResponsePublishContent ={ 	this.content = p; 	this }
+	def withcontent(p:MMediaContent):this.type ={ 	this.content = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var actionsInError: List[MEPublishWeeboAction] = new ArrayList[MEPublishWeeboAction]
-	def withactionsInError(p:List[MEPublishWeeboAction]):MResponsePublishContent ={ 	this.actionsInError = p; 	this }
+	def withactionsInError(p:List[MEPublishWeeboAction]):this.type ={ 	this.actionsInError = p; 	this }
 
 }

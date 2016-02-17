@@ -17,16 +17,16 @@ class MITagCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MITagCriteria ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var classificationId: String =_
-	def withclassificationId(p:String):MITagCriteria ={ 	this.classificationId = p; 	this }
+	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var stypes: List[String] = new ArrayList[String]
-	def withstypes(p:List[String]):MITagCriteria ={ 	this.stypes = p; 	this }
+	def withstypes(p:List[String]):this.type ={ 	this.stypes = p; 	this }
 
 }

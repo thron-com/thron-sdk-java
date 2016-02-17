@@ -21,7 +21,7 @@ class MContactValue extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The identity key""" ,required = true)
 	@BeanProperty 
 	var ik: MIdentityKey =_
-	def withik(p:MIdentityKey):MContactValue ={ 	this.ik = p; 	this }
+	def withik(p:MIdentityKey):this.type ={ 	this.ik = p; 	this }
 
 	/**
 	 * Optional label for the contact
@@ -29,7 +29,7 @@ class MContactValue extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional label for the contact""")
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MContactValue ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * @return Boolean

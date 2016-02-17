@@ -40,7 +40,7 @@ class MPrettyId extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MPrettyId ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * used to specify the locale where the prettyId should be used.
@@ -50,7 +50,7 @@ class MPrettyId extends Serializable {
 	//#SWGNL#primary key (unique).""" ,required = true)
 	@BeanProperty 
 	var locale: String =_
-	def withlocale(p:String):MPrettyId ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * @return Boolean

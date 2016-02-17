@@ -43,7 +43,7 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var userType: MEUserType  = MEUserType.PLATFORM_USER
-	def withuserType(p:MEUserType):MVUser ={ 	this.userType = p; 	this }
+	def withuserType(p:MEUserType):this.type ={ 	this.userType = p; 	this }
 
 	/**
 	 * Deprecated by credential.passwordUpdate
@@ -53,7 +53,7 @@ class MVUser extends Serializable {
 	@Deprecated
 	var passwordUpdate: Date =_
 	@Deprecated
-	def withpasswordUpdate(p:Date):MVUser ={ 	this.passwordUpdate = p; 	this }
+	def withpasswordUpdate(p:Date):this.type ={ 	this.passwordUpdate = p; 	this }
 
 	/**
 	 * User creation date
@@ -61,7 +61,7 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """User creation date""" ,required = true)
 	@BeanProperty 
 	var creationDate: Date  = new Date()
-	def withcreationDate(p:Date):MVUser ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * list the user roles and permission in platform.
@@ -69,7 +69,7 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list the user roles and permission in platform.""" ,required = true)
 	@BeanProperty 
 	var userCapabilities: MUserCapability  = new MUserCapability()
-	def withuserCapabilities(p:MUserCapability):MVUser ={ 	this.userCapabilities = p; 	this }
+	def withuserCapabilities(p:MUserCapability):this.type ={ 	this.userCapabilities = p; 	this }
 
 	/**
 	 * Specify if the user is enable or not to use the platform
@@ -77,7 +77,7 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Specify if the user is enable or not to use the platform""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
-	def withactive(p:Boolean):MVUser ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * After the expiry date the user can not access in the platform.
@@ -85,12 +85,12 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """After the expiry date the user can not access in the platform.""")
 	@BeanProperty 
 	var expiryDate: Date =_
-	def withexpiryDate(p:Date):MVUser ={ 	this.expiryDate = p; 	this }
+	def withexpiryDate(p:Date):this.type ={ 	this.expiryDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var userPreferences: MVUserPreferences  = new MVUserPreferences()
-	def withuserPreferences(p:MVUserPreferences):MVUser ={ 	this.userPreferences = p; 	this }
+	def withuserPreferences(p:MVUserPreferences):this.type ={ 	this.userPreferences = p; 	this }
 
 	/**
 	 * the username of the user who created the user
@@ -98,7 +98,7 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the username of the user who created the user""")
 	@BeanProperty 
 	var createdBy: String =_
-	def withcreatedBy(p:String):MVUser ={ 	this.createdBy = p; 	this }
+	def withcreatedBy(p:String):this.type ={ 	this.createdBy = p; 	this }
 
 	/**
 	 * the profile picture used by the user in 4me platform
@@ -106,7 +106,7 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the profile picture used by the user in 4me platform""")
 	@BeanProperty 
 	var profilePicture: MImage =_
-	def withprofilePicture(p:MImage):MVUser ={ 	this.profilePicture = p; 	this }
+	def withprofilePicture(p:MImage):this.type ={ 	this.profilePicture = p; 	this }
 
 	/**
 	 * the acl rules  specific of the user
@@ -114,18 +114,17 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the acl rules  specific of the user""")
 	@BeanProperty 
 	var ownAclRules: List[MAclRule] = new ArrayList[MAclRule]
-	def withownAclRules(p:List[MAclRule]):MVUser ={ 	this.ownAclRules = p; 	this }
+	def withownAclRules(p:List[MAclRule]):this.type ={ 	this.ownAclRules = p; 	this }
 
 	/**
-	 * Optional. the total amount of quota reserved to the user (in MB). If zero the
-	 * user have no quota restrictions
+	 * Deprecated
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. the total amount of quota reserved to the user (in MB). If zero the user have no quota restrictions""")
+	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@BeanProperty 
 	@Deprecated
 	var userQuota: Long =_
 	@Deprecated
-	def withuserQuota(p:Long):MVUser ={ 	this.userQuota = p; 	this }
+	def withuserQuota(p:Long):this.type ={ 	this.userQuota = p; 	this }
 
 	/**
 	 * Define the lock template id applied to the user.
@@ -133,15 +132,17 @@ class MVUser extends Serializable {
 	 * of the VUserDetail, like password, email address, user fullname or other
 	 * details.
 	 * 
+	 * 
 	 * The only allowed value is "DEFAULT".
 	 */
 	//#SWG#@ApiModelProperty(value = """Define the lock template id applied to the user.
 	//#SWGNL#Locking templates are used to restrict the user to change some specific fields of the VUserDetail, like password, email address, user fullname or other details.
 	//#SWGNL#
+	//#SWGNL#
 	//#SWGNL#The only allowed value is "DEFAULT".""")
 	@BeanProperty 
 	var userLockTemplate: String =_
-	def withuserLockTemplate(p:String):MVUser ={ 	this.userLockTemplate = p; 	this }
+	def withuserLockTemplate(p:String):this.type ={ 	this.userLockTemplate = p; 	this }
 
 	/**
 	 * list of imetadata (for intelligence)
@@ -149,7 +150,7 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of imetadata (for intelligence)""")
 	@BeanProperty 
 	var imetadata: List[MIMetadata] = new ArrayList[MIMetadata]
-	def withimetadata(p:List[MIMetadata]):MVUser ={ 	this.imetadata = p; 	this }
+	def withimetadata(p:List[MIMetadata]):this.type ={ 	this.imetadata = p; 	this }
 
 	/**
 	 * list of itags (for intelligence)
@@ -157,7 +158,7 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of itags (for intelligence)""")
 	@BeanProperty 
 	var itags: List[MITag] = new ArrayList[MITag]
-	def withitags(p:List[MITag]):MVUser ={ 	this.itags = p; 	this }
+	def withitags(p:List[MITag]):this.type ={ 	this.itags = p; 	this }
 
 	/**
 	 * external ids of the user
@@ -165,7 +166,7 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """external ids of the user""")
 	@BeanProperty 
 	var externalId: MIdExternal =_
-	def withexternalId(p:MIdExternal):MVUser ={ 	this.externalId = p; 	this }
+	def withexternalId(p:MIdExternal):this.type ={ 	this.externalId = p; 	this }
 
 	/**
 	 * external reference of contactId
@@ -173,17 +174,12 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """external reference of contactId""")
 	@BeanProperty 
 	var contactId: String =_
-	def withcontactId(p:String):MVUser ={ 	this.contactId = p; 	this }
+	def withcontactId(p:String):this.type ={ 	this.contactId = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var credential: MCredentialFull =_
-	  def withcredential(p:MCredentialFull):MVUser ={ 	this.credential = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var metadata: List[MMetadata] = new ArrayList[MMetadata]
-	  def withmetadata(p:List[MMetadata]):MVUser ={ 	this.metadata = p; 	this }
+	  def withcredential(p:MCredentialFull):this.type ={ 	this.credential = p; 	this }
 
 	/**
 	 * the user detail class, where are saved all informations about the user.
@@ -191,7 +187,12 @@ class MVUser extends Serializable {
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """the user detail class, where are saved all informations about the user.""")
 	var detail: MVUserDetail =_
-	  def withdetail(p:MVUserDetail):MVUser ={ 	this.detail = p; 	this }
+	  def withdetail(p:MVUserDetail):this.type ={ 	this.detail = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var metadata: List[MMetadata] = new ArrayList[MMetadata]
+	  def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 	/**
 	 * @return String

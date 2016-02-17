@@ -22,12 +22,12 @@ class MRepositorygetUploadedFileListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MRepositorygetUploadedFileListReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MSearchCriteria =_
-	def withcriteria(p:MSearchCriteria):MRepositorygetUploadedFileListReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MSearchCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * The parameter follows a specific schema:
@@ -50,12 +50,12 @@ class MRepositorygetUploadedFileListReq extends Serializable {
 	//#SWGNL#fileName_A, totalSpace_D...""", required = true)
 	@BeanProperty
 	var orderByField: MEFileOrderBy =_
-	def withorderByField(p:MEFileOrderBy):MRepositorygetUploadedFileListReq ={ 	this.orderByField = p; 	this }
+	def withorderByField(p:MEFileOrderBy):this.type ={ 	this.orderByField = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MRepositorygetUploadedFileListReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Default and maximum value is 50 items
@@ -63,6 +63,6 @@ class MRepositorygetUploadedFileListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default and maximum value is 50 items""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MRepositorygetUploadedFileListReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

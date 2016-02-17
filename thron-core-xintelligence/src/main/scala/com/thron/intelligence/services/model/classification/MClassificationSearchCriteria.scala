@@ -21,7 +21,7 @@ class MClassificationSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of Classification.id""")
 	@BeanProperty 
 	var ids: List[String] = new ArrayList[String]
-	def withids(p:List[String]):MClassificationSearchCriteria ={ 	this.ids = p; 	this }
+	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
 
 	/**
 	 * search text in label or description fields.
@@ -34,7 +34,7 @@ class MClassificationSearchCriteria extends Serializable {
 	//#SWGNL#Example: "red apple" text search match labels like "red", "apple", "red and Apple are..."""")
 	@BeanProperty 
 	var text: String =_
-	def withtext(p:String):MClassificationSearchCriteria ={ 	this.text = p; 	this }
+	def withtext(p:String):this.type ={ 	this.text = p; 	this }
 
 	/**
 	 * visibile in Reports
@@ -42,7 +42,7 @@ class MClassificationSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """visibile in Reports""")
 	@BeanProperty 
 	var active: Boolean =_
-	def withactive(p:Boolean):MClassificationSearchCriteria ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * used to search the classification having label like "text" for the defined
@@ -55,7 +55,7 @@ class MClassificationSearchCriteria extends Serializable {
 	//#SWGNL#Example: the user would like to find the Classification with label "house" for lang "EN". If "text" is empty the service return all classification defined for the specified lang.""")
 	@BeanProperty 
 	var lang: String =_
-	def withlang(p:String):MClassificationSearchCriteria ={ 	this.lang = p; 	this }
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
 	 * used to filter removed Classifications
@@ -63,7 +63,7 @@ class MClassificationSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to filter removed Classifications""")
 	@BeanProperty 
 	var removed: Boolean =_
-	def withremoved(p:Boolean):MClassificationSearchCriteria ={ 	this.removed = p; 	this }
+	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
 
 	/**
 	 * can be TARGET/TOPIC/CUSTOM
@@ -71,7 +71,7 @@ class MClassificationSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """can be TARGET/TOPIC/CUSTOM""")
 	@BeanProperty 
 	var classificationType: List[MEClassificationType] = new ArrayList[MEClassificationType]
-	def withclassificationType(p:List[MEClassificationType]):MClassificationSearchCriteria ={ 	this.classificationType = p; 	this }
+	def withclassificationType(p:List[MEClassificationType]):this.type ={ 	this.classificationType = p; 	this }
 
 	/**
 	 * @return Boolean

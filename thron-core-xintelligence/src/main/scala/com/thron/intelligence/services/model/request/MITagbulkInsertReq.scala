@@ -24,7 +24,7 @@ class MITagbulkInsertReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var value: MITagBulkValue =_
-	def withvalue(p:MITagBulkValue):MITagbulkInsertReq ={ 	this.value = p; 	this }
+	def withvalue(p:MITagBulkValue):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * Optional.
@@ -32,6 +32,6 @@ class MITagbulkInsertReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
 	@BeanProperty
 	var suggested: Boolean =_
-	def withsuggested(p:Boolean):MITagbulkInsertReq ={ 	this.suggested = p; 	this }
+	def withsuggested(p:Boolean):this.type ={ 	this.suggested = p; 	this }
 
 }

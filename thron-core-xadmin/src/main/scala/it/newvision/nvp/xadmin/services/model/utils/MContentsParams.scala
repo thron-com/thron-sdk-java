@@ -20,12 +20,12 @@ class MContentsParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""")
 	@BeanProperty 
 	var newUserId: String =_
-	def withnewUserId(p:String):MContentsParams ={ 	this.newUserId = p; 	this }
+	def withnewUserId(p:String):this.type ={ 	this.newUserId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var xcontentIds: List[String] = new ArrayList[String]
-	def withxcontentIds(p:List[String]):MContentsParams ={ 	this.xcontentIds = p; 	this }
+	def withxcontentIds(p:List[String]):this.type ={ 	this.xcontentIds = p; 	this }
 
 	/**
 	 * @return Boolean

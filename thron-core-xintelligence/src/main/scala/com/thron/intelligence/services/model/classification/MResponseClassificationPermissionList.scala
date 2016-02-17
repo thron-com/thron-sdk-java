@@ -17,11 +17,11 @@ class MResponseClassificationPermissionList extends MResponseClassification with
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MClassificationPermissionDetail] = new ArrayList[MClassificationPermissionDetail]
-	def withitems(p:List[MClassificationPermissionDetail]):MResponseClassificationPermissionList ={ 	this.items = p; 	this }
+	def withitems(p:List[MClassificationPermissionDetail]):this.type ={ 	this.items = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseClassificationPermissionList ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

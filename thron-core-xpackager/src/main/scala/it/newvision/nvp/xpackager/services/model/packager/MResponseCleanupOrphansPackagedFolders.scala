@@ -20,6 +20,6 @@ class MResponseCleanupOrphansPackagedFolders extends MResponsePackager with Seri
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var cleanupDetails: List[MCleanupDetail] = new ArrayList[MCleanupDetail]
-	def withcleanupDetails(p:List[MCleanupDetail]):MResponseCleanupOrphansPackagedFolders ={ 	this.cleanupDetails = p; 	this }
+	def withcleanupDetails(p:List[MCleanupDetail]):this.type ={ 	this.cleanupDetails = p; 	this }
 
 }

@@ -21,11 +21,11 @@ class MPublisherQueueshowQueueReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MTaskCriteria =_
-	def withcriteria(p:MTaskCriteria):MPublisherQueueshowQueueReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MTaskCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var limit: Integer =_
-	def withlimit(p:Integer):MPublisherQueueshowQueueReq ={ 	this.limit = p; 	this }
+	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
 
 }

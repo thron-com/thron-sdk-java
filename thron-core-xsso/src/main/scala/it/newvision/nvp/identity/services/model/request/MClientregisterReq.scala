@@ -21,6 +21,6 @@ class MClientregisterReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MClient =_
-	def withclient(p:MClient):MClientregisterReq ={ 	this.client = p; 	this }
+	def withclient(p:MClient):this.type ={ 	this.client = p; 	this }
 
 }

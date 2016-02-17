@@ -22,6 +22,6 @@ class MKeyCriteria extends Serializable {
 	//#SWGNL#Searches all words (separated by spaces and in exact order)""")
 	@BeanProperty 
 	var searchKey: String =_
-	def withsearchKey(p:String):MKeyCriteria ={ 	this.searchKey = p; 	this }
+	def withsearchKey(p:String):this.type ={ 	this.searchKey = p; 	this }
 
 }

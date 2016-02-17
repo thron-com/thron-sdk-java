@@ -21,7 +21,7 @@ class MDashboardpropagateAclToSubCategoriesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MDashboardpropagateAclToSubCategoriesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * if newUserId is empty the contents will be un trash to the original owner
@@ -29,7 +29,7 @@ class MDashboardpropagateAclToSubCategoriesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if newUserId is empty the contents will be un trash to the original owner""", required = true)
 	@BeanProperty
 	var categoryId: String =_
-	def withcategoryId(p:String):MDashboardpropagateAclToSubCategoriesReq ={ 	this.categoryId = p; 	this }
+	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
 
 	/**
 	 * Optional list of acl rules to add/remove to the specific category
@@ -37,7 +37,7 @@ class MDashboardpropagateAclToSubCategoriesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional list of acl rules to add/remove to the specific category""", required = true)
 	@BeanProperty
 	var acls: MAclInverseList =_
-	def withacls(p:MAclInverseList):MDashboardpropagateAclToSubCategoriesReq ={ 	this.acls = p; 	this }
+	def withacls(p:MAclInverseList):this.type ={ 	this.acls = p; 	this }
 
 	/**
 	 * Optional. Used to drive the service to apply the acls to subfolders and contents
@@ -45,6 +45,6 @@ class MDashboardpropagateAclToSubCategoriesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Used to drive the service to apply the acls to subfolders and contents""", required = true)
 	@BeanProperty
 	var force: Boolean =_
-	def withforce(p:Boolean):MDashboardpropagateAclToSubCategoriesReq ={ 	this.force = p; 	this }
+	def withforce(p:Boolean):this.type ={ 	this.force = p; 	this }
 
 }

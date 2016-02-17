@@ -17,7 +17,7 @@ class MSource extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var buffer: Array[Byte]= new Array[Byte](0)
-	def withbuffer(p:Array[Byte]):MSource ={ 	this.buffer = p; 	this }
+	def withbuffer(p:Array[Byte]):this.type ={ 	this.buffer = p; 	this }
 
 	/**
 	 * the optional crop Area
@@ -25,7 +25,7 @@ class MSource extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the optional crop Area""")
 	@BeanProperty 
 	var cropArea: MArea =_
-	def withcropArea(p:MArea):MSource ={ 	this.cropArea = p; 	this }
+	def withcropArea(p:MArea):this.type ={ 	this.cropArea = p; 	this }
 
 	/**
 	 * the mime type of the content
@@ -33,6 +33,6 @@ class MSource extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the mime type of the content""")
 	@BeanProperty 
 	var mimeType: String =_
-	def withmimeType(p:String):MSource ={ 	this.mimeType = p; 	this }
+	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
 
 }

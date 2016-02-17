@@ -26,7 +26,7 @@ class MMetadata extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: lenght <= 50 """ ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MMetadata ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * Constraints: lenght <= 500 
@@ -34,7 +34,7 @@ class MMetadata extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: lenght <= 500 """)
 	@BeanProperty 
 	var value: String =_
-	def withvalue(p:String):MMetadata ={ 	this.value = p; 	this }
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * @return Boolean

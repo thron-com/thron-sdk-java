@@ -21,6 +21,6 @@ class MResponsePreviewFile extends MResponsePackager with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var file: MFile =_
-	def withfile(p:MFile):MResponsePreviewFile ={ 	this.file = p; 	this }
+	def withfile(p:MFile):this.type ={ 	this.file = p; 	this }
 
 }

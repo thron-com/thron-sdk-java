@@ -24,12 +24,12 @@ class MBehaviorEngineConfiguration extends MIEngineConfiguration with Serializab
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var sourceType: MEEngineEntityType =_
-	def withsourceType(p:MEEngineEntityType):MBehaviorEngineConfiguration ={ 	this.sourceType = p; 	this }
+	def withsourceType(p:MEEngineEntityType):this.type ={ 	this.sourceType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var targetType: MEEngineEntityType =_
-	def withtargetType(p:MEEngineEntityType):MBehaviorEngineConfiguration ={ 	this.targetType = p; 	this }
+	def withtargetType(p:MEEngineEntityType):this.type ={ 	this.targetType = p; 	this }
 
 	/**
 	 * position inside the tree level. Used to define a custom order
@@ -37,7 +37,7 @@ class MBehaviorEngineConfiguration extends MIEngineConfiguration with Serializab
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var thresholds: MBehaviorThresholdConfiguration =_
-	def withthresholds(p:MBehaviorThresholdConfiguration):MBehaviorEngineConfiguration ={ 	this.thresholds = p; 	this }
+	def withthresholds(p:MBehaviorThresholdConfiguration):this.type ={ 	this.thresholds = p; 	this }
 
 	/**
 	 * Available only for contentTypes:
@@ -46,17 +46,17 @@ class MBehaviorEngineConfiguration extends MIEngineConfiguration with Serializab
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contentConfiguration: MContentConf =_
-	def withcontentConfiguration(p:MContentConf):MBehaviorEngineConfiguration ={ 	this.contentConfiguration = p; 	this }
+	def withcontentConfiguration(p:MContentConf):this.type ={ 	this.contentConfiguration = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userConfiguration: MUserConf =_
-	def withuserConfiguration(p:MUserConf):MBehaviorEngineConfiguration ={ 	this.userConfiguration = p; 	this }
+	def withuserConfiguration(p:MUserConf):this.type ={ 	this.userConfiguration = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var workingRange: MWorkingRange =_
-	def withworkingRange(p:MWorkingRange):MBehaviorEngineConfiguration ={ 	this.workingRange = p; 	this }
+	def withworkingRange(p:MWorkingRange):this.type ={ 	this.workingRange = p; 	this }
 
 	/**
 	 * works only on the given root itagIds.
@@ -64,7 +64,7 @@ class MBehaviorEngineConfiguration extends MIEngineConfiguration with Serializab
 	//#SWG#@ApiModelProperty(value = """works only on the given root itagIds.""")
 	@BeanProperty 
 	var itagsOnly: List[String] = new ArrayList[String]
-	def withitagsOnly(p:List[String]):MBehaviorEngineConfiguration ={ 	this.itagsOnly = p; 	this }
+	def withitagsOnly(p:List[String]):this.type ={ 	this.itagsOnly = p; 	this }
 
 	/**
 	 * @return Boolean

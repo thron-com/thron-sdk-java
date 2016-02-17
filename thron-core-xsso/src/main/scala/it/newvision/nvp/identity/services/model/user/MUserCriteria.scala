@@ -26,41 +26,41 @@ class MUserCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var usernames: List[String] = new ArrayList[String]
-	def withusernames(p:List[String]):MUserCriteria ={ 	this.usernames = p; 	this }
+	def withusernames(p:List[String]):this.type ={ 	this.usernames = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var solutions: List[String] = new ArrayList[String]
-	def withsolutions(p:List[String]):MUserCriteria ={ 	this.solutions = p; 	this }
+	def withsolutions(p:List[String]):this.type ={ 	this.solutions = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var active: Boolean =_
-	def withactive(p:Boolean):MUserCriteria ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userRole: List[String] = new ArrayList[String]
-	def withuserRole(p:List[String]):MUserCriteria ={ 	this.userRole = p; 	this }
+	def withuserRole(p:List[String]):this.type ={ 	this.userRole = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var email: String =_
-	def withemail(p:String):MUserCriteria ={ 	this.email = p; 	this }
+	def withemail(p:String):this.type ={ 	this.email = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lastname: String =_
-	def withlastname(p:String):MUserCriteria ={ 	this.lastname = p; 	this }
+	def withlastname(p:String):this.type ={ 	this.lastname = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var linkedGroupsIds: List[String] = new ArrayList[String]
-	def withlinkedGroupsIds(p:List[String]):MUserCriteria ={ 	this.linkedGroupsIds = p; 	this }
+	def withlinkedGroupsIds(p:List[String]):this.type ={ 	this.linkedGroupsIds = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var firstname: String =_
-	def withfirstname(p:String):MUserCriteria ={ 	this.firstname = p; 	this }
+	def withfirstname(p:String):this.type ={ 	this.firstname = p; 	this }
 
 }

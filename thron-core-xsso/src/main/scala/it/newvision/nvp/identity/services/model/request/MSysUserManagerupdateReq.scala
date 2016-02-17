@@ -21,12 +21,12 @@ class MSysUserManagerupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MSysUserManagerupdateReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var username: String =_
-	def withusername(p:String):MSysUserManagerupdateReq ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	/**
 	 * user information
@@ -34,6 +34,6 @@ class MSysUserManagerupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """user information""", required = true)
 	@BeanProperty
 	var detail: MUserDetail =_
-	def withdetail(p:MUserDetail):MSysUserManagerupdateReq ={ 	this.detail = p; 	this }
+	def withdetail(p:MUserDetail):this.type ={ 	this.detail = p; 	this }
 
 }

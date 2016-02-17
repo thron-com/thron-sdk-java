@@ -18,7 +18,7 @@ class MResponseFindContentByMetadata extends MResponseMetadata with Serializable
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contents: List[MContent] = new ArrayList[MContent]
-	def withcontents(p:List[MContent]):MResponseFindContentByMetadata ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MContent]):this.type ={ 	this.contents = p; 	this }
 
 	/**
 	 * total number of results
@@ -26,6 +26,6 @@ class MResponseFindContentByMetadata extends MResponseMetadata with Serializable
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseFindContentByMetadata ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

@@ -22,7 +22,7 @@ class MPublishExpressPlayListParams extends MPublishInWeebo with Serializable  {
 	//#SWG#@ApiModelProperty(value = """used to define the content template for the new Playlist. The content template is used to create audio or video playlist, or slideshow (image playlist).""" ,required = true)
 	@BeanProperty 
 	var contentsTemplate: MEContentType =_
-	def withcontentsTemplate(p:MEContentType):MPublishExpressPlayListParams ={ 	this.contentsTemplate = p; 	this }
+	def withcontentsTemplate(p:MEContentType):this.type ={ 	this.contentsTemplate = p; 	this }
 
 	/**
 	 * list of xcontent ids of the playlist elements.
@@ -30,6 +30,6 @@ class MPublishExpressPlayListParams extends MPublishInWeebo with Serializable  {
 	//#SWG#@ApiModelProperty(value = """list of xcontent ids of the playlist elements.""")
 	@BeanProperty 
 	var xcontentIds: List[String] = new ArrayList[String]
-	def withxcontentIds(p:List[String]):MPublishExpressPlayListParams ={ 	this.xcontentIds = p; 	this }
+	def withxcontentIds(p:List[String]):this.type ={ 	this.xcontentIds = p; 	this }
 
 }

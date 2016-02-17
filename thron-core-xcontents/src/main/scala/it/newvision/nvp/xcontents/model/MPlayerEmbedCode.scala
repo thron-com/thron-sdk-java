@@ -21,7 +21,7 @@ class MPlayerEmbedCode extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Attention, must be unique for each single content. It is used in conjunction with a custom acl linked to the content.""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MPlayerEmbedCode ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * short name or description of the embed code
@@ -29,7 +29,7 @@ class MPlayerEmbedCode extends Serializable {
 	//#SWG#@ApiModelProperty(value = """short name or description of the embed code""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MPlayerEmbedCode ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * the id of the template defined in Client.embedTemplates.id (JClient service)
@@ -37,22 +37,22 @@ class MPlayerEmbedCode extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the id of the template defined in Client.embedTemplates.id (JClient service)""" ,required = true)
 	@BeanProperty 
 	var useTemplateId: String =_
-	def withuseTemplateId(p:String):MPlayerEmbedCode ={ 	this.useTemplateId = p; 	this }
+	def withuseTemplateId(p:String):this.type ={ 	this.useTemplateId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var embedTarget: MEEmbedTargets  = MEEmbedTargets.GENERIC
-	def withembedTarget(p:MEEmbedTargets):MPlayerEmbedCode ={ 	this.embedTarget = p; 	this }
+	def withembedTarget(p:MEEmbedTargets):this.type ={ 	this.embedTarget = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var enabled: Boolean  = true
-	def withenabled(p:Boolean):MPlayerEmbedCode ={ 	this.enabled = p; 	this }
+	def withenabled(p:Boolean):this.type ={ 	this.enabled = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var values: List[MMetadata] = new ArrayList[MMetadata]
-	def withvalues(p:List[MMetadata]):MPlayerEmbedCode ={ 	this.values = p; 	this }
+	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
 
 	/**
 	 * Google Analytics ID. Used by the player for statistics and reports.
@@ -64,7 +64,7 @@ class MPlayerEmbedCode extends Serializable {
 	@Deprecated
 	var trackerGA: String =_
 	@Deprecated
-	def withtrackerGA(p:String):MPlayerEmbedCode ={ 	this.trackerGA = p; 	this }
+	def withtrackerGA(p:String):this.type ={ 	this.trackerGA = p; 	this }
 
 	/**
 	 * The contextId to use for traking.
@@ -72,6 +72,6 @@ class MPlayerEmbedCode extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The contextId to use for traking.""")
 	@BeanProperty 
 	var useContextId: String =_
-	def withuseContextId(p:String):MPlayerEmbedCode ={ 	this.useContextId = p; 	this }
+	def withuseContextId(p:String):this.type ={ 	this.useContextId = p; 	this }
 
 }

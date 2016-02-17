@@ -24,7 +24,7 @@ class MTag extends Serializable {
 	//#SWG#@ApiModelProperty(value = """value can not contains commas (",").""" ,required = true)
 	@BeanProperty 
 	var value: String =_
-	def withvalue(p:String):MTag ={ 	this.value = p; 	this }
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * the userId of the user who inserted the tag linked to the content
@@ -34,7 +34,7 @@ class MTag extends Serializable {
 	@Deprecated
 	var userId: String =_
 	@Deprecated
-	def withuserId(p:String):MTag ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -46,7 +46,7 @@ class MTag extends Serializable {
 	@Deprecated
 	var status: String =_
 	@Deprecated
-	def withstatus(p:String):MTag ={ 	this.status = p; 	this }
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * @return Boolean

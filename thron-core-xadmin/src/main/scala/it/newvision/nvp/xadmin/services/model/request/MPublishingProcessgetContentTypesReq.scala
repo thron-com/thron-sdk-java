@@ -21,7 +21,7 @@ class MPublishingProcessgetContentTypesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPublishingProcessgetContentTypesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * list of file names to extract the corresponding content type
@@ -30,6 +30,6 @@ class MPublishingProcessgetContentTypesReq extends Serializable {
 	//#SWGNL#""", required = true)
 	@BeanProperty
 	var files: MFileNameList =_
-	def withfiles(p:MFileNameList):MPublishingProcessgetContentTypesReq ={ 	this.files = p; 	this }
+	def withfiles(p:MFileNameList):this.type ={ 	this.files = p; 	this }
 
 }

@@ -17,22 +17,22 @@ class MPropertyEmail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var destinationErrorEmails: String  = "support@newvision.it"
-	def withdestinationErrorEmails(p:String):MPropertyEmail ={ 	this.destinationErrorEmails = p; 	this }
+	def withdestinationErrorEmails(p:String):this.type ={ 	this.destinationErrorEmails = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var defaultEmail: String  = ""
-	def withdefaultEmail(p:String):MPropertyEmail ={ 	this.defaultEmail = p; 	this }
+	def withdefaultEmail(p:String):this.type ={ 	this.defaultEmail = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var emailFW: String  = "support@newvision.it"
-	def withemailFW(p:String):MPropertyEmail ={ 	this.emailFW = p; 	this }
+	def withemailFW(p:String):this.type ={ 	this.emailFW = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var senderEmailFW: String  = "support@newvision.it"
-	def withsenderEmailFW(p:String):MPropertyEmail ={ 	this.senderEmailFW = p; 	this }
+	def withsenderEmailFW(p:String):this.type ={ 	this.senderEmailFW = p; 	this }
 
 	/**
 	 * mydomain.it
@@ -40,17 +40,17 @@ class MPropertyEmail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """mydomain.it""" ,required = true)
 	@BeanProperty 
 	var domainEmail: String =_
-	def withdomainEmail(p:String):MPropertyEmail ={ 	this.domainEmail = p; 	this }
+	def withdomainEmail(p:String):this.type ={ 	this.domainEmail = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var packagedNotificationEmail: String =_
-	def withpackagedNotificationEmail(p:String):MPropertyEmail ={ 	this.packagedNotificationEmail = p; 	this }
+	def withpackagedNotificationEmail(p:String):this.type ={ 	this.packagedNotificationEmail = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var publishedNotificationEmail: String =_
-	def withpublishedNotificationEmail(p:String):MPropertyEmail ={ 	this.publishedNotificationEmail = p; 	this }
+	def withpublishedNotificationEmail(p:String):this.type ={ 	this.publishedNotificationEmail = p; 	this }
 
 	/**
 	 * @return void

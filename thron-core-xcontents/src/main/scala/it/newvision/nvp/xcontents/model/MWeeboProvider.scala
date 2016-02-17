@@ -20,7 +20,7 @@ class MWeeboProvider extends MProvider with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the published Id of the content published in Weebo""" ,required = true)
 	@BeanProperty @org.codehaus.jackson.annotate.JsonProperty("PContentId") 
 	var pContentId: String =_
-	def withpContentId(p:String):MWeeboProvider ={ 	this.pContentId = p; 	this }
+	def withpContentId(p:String):this.type ={ 	this.pContentId = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -35,7 +35,7 @@ class MWeeboProvider extends MProvider with Serializable  {
 	@Deprecated
 	var channels: String =_
 	@Deprecated
-	def withchannels(p:String):MWeeboProvider ={ 	this.channels = p; 	this }
+	def withchannels(p:String):this.type ={ 	this.channels = p; 	this }
 
 	/**
 	 * the list of channels where the content is published
@@ -43,7 +43,7 @@ class MWeeboProvider extends MProvider with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the list of channels where the content is published""")
 	@BeanProperty 
 	var weeboChannels: List[MWeeboChannel] = new ArrayList[MWeeboChannel]
-	def withweeboChannels(p:List[MWeeboChannel]):MWeeboProvider ={ 	this.weeboChannels = p; 	this }
+	def withweeboChannels(p:List[MWeeboChannel]):this.type ={ 	this.weeboChannels = p; 	this }
 
 	/**
 	 * the thumbnail channel
@@ -51,7 +51,7 @@ class MWeeboProvider extends MProvider with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the thumbnail channel""")
 	@BeanProperty 
 	var weeboThumbChannel: MWeeboChannel =_
-	def withweeboThumbChannel(p:MWeeboChannel):MWeeboProvider ={ 	this.weeboThumbChannel = p; 	this }
+	def withweeboThumbChannel(p:MWeeboChannel):this.type ={ 	this.weeboThumbChannel = p; 	this }
 
 	/**
 	 * @return Boolean

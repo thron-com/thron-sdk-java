@@ -21,11 +21,11 @@ class MContactupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contactId: String =_
-	def withcontactId(p:String):MContactupdateReq ={ 	this.contactId = p; 	this }
+	def withcontactId(p:String):this.type ={ 	this.contactId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var update: MContactUpdate =_
-	def withupdate(p:MContactUpdate):MContactupdateReq ={ 	this.update = p; 	this }
+	def withupdate(p:MContactUpdate):this.type ={ 	this.update = p; 	this }
 
 }

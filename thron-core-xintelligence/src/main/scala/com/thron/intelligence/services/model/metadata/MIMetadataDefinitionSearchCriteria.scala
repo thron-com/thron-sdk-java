@@ -30,6 +30,6 @@ class MIMetadataDefinitionSearchCriteria extends MMetadataDefinitionSearchCriter
 	//#SWGNL#<b>NOTAG </b>keyword is used to filter IMetadataDefinition not linked to ITagDefinition.""")
 	@BeanProperty 
 	var itagId: String =_
-	def withitagId(p:String):MIMetadataDefinitionSearchCriteria ={ 	this.itagId = p; 	this }
+	def withitagId(p:String):this.type ={ 	this.itagId = p; 	this }
 
 }

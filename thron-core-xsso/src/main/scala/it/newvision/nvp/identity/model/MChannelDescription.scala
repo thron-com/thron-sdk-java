@@ -24,7 +24,7 @@ class MChannelDescription extends Serializable {
 	//#SWG#@ApiModelProperty(value = """en/it/ ....""" ,required = true)
 	@BeanProperty 
 	var locale: String =_
-	def withlocale(p:String):MChannelDescription ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * The channel fancy name used in the administration console, to show as label
@@ -32,7 +32,7 @@ class MChannelDescription extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The channel fancy name used in the administration console, to show as label""" ,required = true)
 	@BeanProperty 
 	var channelShortName: String  = ""
-	def withchannelShortName(p:String):MChannelDescription ={ 	this.channelShortName = p; 	this }
+	def withchannelShortName(p:String):this.type ={ 	this.channelShortName = p; 	this }
 
 	/**
 	 * The channel description, used in the administration console. 
@@ -40,6 +40,6 @@ class MChannelDescription extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The channel description, used in the administration console. """ ,required = true)
 	@BeanProperty 
 	var channelDescription: String  = ""
-	def withchannelDescription(p:String):MChannelDescription ={ 	this.channelDescription = p; 	this }
+	def withchannelDescription(p:String):this.type ={ 	this.channelDescription = p; 	this }
 
 }

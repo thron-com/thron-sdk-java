@@ -21,22 +21,22 @@ class MReportsWeebocreateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MReportsWeebocreateReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var query: MQueryWeebo =_
-	def withquery(p:MQueryWeebo):MReportsWeebocreateReq ={ 	this.query = p; 	this }
+	def withquery(p:MQueryWeebo):this.type ={ 	this.query = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var templateName: String =_
-	def withtemplateName(p:String):MReportsWeebocreateReq ={ 	this.templateName = p; 	this }
+	def withtemplateName(p:String):this.type ={ 	this.templateName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var description: String =_
-	def withdescription(p:String):MReportsWeebocreateReq ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * Optional
@@ -44,6 +44,6 @@ class MReportsWeebocreateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var owner: String =_
-	def withowner(p:String):MReportsWeebocreateReq ={ 	this.owner = p; 	this }
+	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
 
 }

@@ -20,11 +20,11 @@ class MPhoneAddress extends Serializable {
 	//#SWG#@ApiModelProperty(value = """HOME/WORK/PRIVATE...""")
 	@BeanProperty 
 	var phoneCategory: String =_
-	def withphoneCategory(p:String):MPhoneAddress ={ 	this.phoneCategory = p; 	this }
+	def withphoneCategory(p:String):this.type ={ 	this.phoneCategory = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var phoneNumber: String =_
-	def withphoneNumber(p:String):MPhoneAddress ={ 	this.phoneNumber = p; 	this }
+	def withphoneNumber(p:String):this.type ={ 	this.phoneNumber = p; 	this }
 
 }

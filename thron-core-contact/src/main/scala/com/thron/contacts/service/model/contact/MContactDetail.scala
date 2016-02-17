@@ -20,12 +20,12 @@ class MContactDetail extends MContact with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var itags: List[MITag] = new ArrayList[MITag]
-	def withitags(p:List[MITag]):MContactDetail ={ 	this.itags = p; 	this }
+	def withitags(p:List[MITag]):this.type ={ 	this.itags = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var keys: List[MIdentityKey] = new ArrayList[MIdentityKey]
-	def withkeys(p:List[MIdentityKey]):MContactDetail ={ 	this.keys = p; 	this }
+	def withkeys(p:List[MIdentityKey]):this.type ={ 	this.keys = p; 	this }
 
 	/**
 	 * @param contact : MContact

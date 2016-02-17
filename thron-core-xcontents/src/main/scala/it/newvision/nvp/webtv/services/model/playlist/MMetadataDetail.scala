@@ -17,11 +17,11 @@ class MMetadataDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var key: String =_
-	def withkey(p:String):MMetadataDetail ={ 	this.key = p; 	this }
+	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var value: String =_
-	def withvalue(p:String):MMetadataDetail ={ 	this.value = p; 	this }
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 }

@@ -17,12 +17,12 @@ class MPlayListDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MPlayListDetail ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MPlayListDetail ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -34,6 +34,6 @@ class MPlayListDetail extends Serializable {
 	@Deprecated
 	var excerpt: String =_
 	@Deprecated
-	def withexcerpt(p:String):MPlayListDetail ={ 	this.excerpt = p; 	this }
+	def withexcerpt(p:String):this.type ={ 	this.excerpt = p; 	this }
 
 }

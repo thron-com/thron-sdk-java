@@ -24,6 +24,6 @@ class MUsersGroupManagerupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to update the name and description attributes""", required = true)
 	@BeanProperty
 	var update: MUserGroupUpdate =_
-	def withupdate(p:MUserGroupUpdate):MUsersGroupManagerupdateReq ={ 	this.update = p; 	this }
+	def withupdate(p:MUserGroupUpdate):this.type ={ 	this.update = p; 	this }
 
 }

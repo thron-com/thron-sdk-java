@@ -24,21 +24,21 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """xpublisher contentId""" ,required = true)
 	@BeanProperty 
 	var pcontentId: String =_
-	def withpcontentId(p:String):MContent ={ 	this.pcontentId = p; 	this }
+	def withpcontentId(p:String):this.type ={ 	this.pcontentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentName: String =_
-	def withcontentName(p:String):MContent ={ 	this.contentName = p; 	this }
+	def withcontentName(p:String):this.type ={ 	this.contentName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var staticUrls: List[String] = new ArrayList[String]
-	def withstaticUrls(p:List[String]):MContent ={ 	this.staticUrls = p; 	this }
+	def withstaticUrls(p:List[String]):this.type ={ 	this.staticUrls = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var services: List[MServiceUrl] = new ArrayList[MServiceUrl]
-	  def withservices(p:List[MServiceUrl]):MContent ={ 	this.services = p; 	this }
+	  def withservices(p:List[MServiceUrl]):this.type ={ 	this.services = p; 	this }
 
 }

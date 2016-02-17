@@ -21,12 +21,12 @@ class MUsersGroupManagerdetailGroupReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MUsersGroupManagerdetailGroupReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var groupId: String =_
-	def withgroupId(p:String):MUsersGroupManagerdetailGroupReq ={ 	this.groupId = p; 	this }
+	def withgroupId(p:String):this.type ={ 	this.groupId = p; 	this }
 
 	/**
 	 * Optional
@@ -34,16 +34,16 @@ class MUsersGroupManagerdetailGroupReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var fieldsOption: MGroupFieldsOption =_
-	def withfieldsOption(p:MGroupFieldsOption):MUsersGroupManagerdetailGroupReq ={ 	this.fieldsOption = p; 	this }
+	def withfieldsOption(p:MGroupFieldsOption):this.type ={ 	this.fieldsOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MUsersGroupManagerdetailGroupReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MUsersGroupManagerdetailGroupReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

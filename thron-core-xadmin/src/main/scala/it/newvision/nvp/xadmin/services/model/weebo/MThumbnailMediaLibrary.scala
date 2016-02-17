@@ -20,6 +20,6 @@ class MThumbnailMediaLibrary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """thumbnail reference id""" ,required = true)
 	@BeanProperty 
 	var thumbnailId: String =_
-	def withthumbnailId(p:String):MThumbnailMediaLibrary ={ 	this.thumbnailId = p; 	this }
+	def withthumbnailId(p:String):this.type ={ 	this.thumbnailId = p; 	this }
 
 }

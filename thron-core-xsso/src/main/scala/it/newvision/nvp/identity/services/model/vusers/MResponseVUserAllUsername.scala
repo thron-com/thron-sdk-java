@@ -18,6 +18,6 @@ class MResponseVUserAllUsername extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var username: List[MUserSummary] = new ArrayList[MUserSummary]
-	def withusername(p:List[MUserSummary]):MResponseVUserAllUsername ={ 	this.username = p; 	this }
+	def withusername(p:List[MUserSummary]):this.type ={ 	this.username = p; 	this }
 
 }

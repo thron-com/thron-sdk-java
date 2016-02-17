@@ -35,7 +35,7 @@ class MUserGroupUpdate extends MUpdater with Serializable  {
 	@Deprecated
 	var metadata: List[MMetadata] =_
 	@Deprecated
-	def withmetadata(p:List[MMetadata]):MUserGroupUpdate ={ 	this.metadata = p; 	this }
+	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 	/**
 	 * the name of the group
@@ -43,12 +43,12 @@ class MUserGroupUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the name of the group""")
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MUserGroupUpdate ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MUserGroupUpdate ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * Specify if the user is enable or not to use the platform
@@ -56,7 +56,7 @@ class MUserGroupUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Specify if the user is enable or not to use the platform""")
 	@BeanProperty 
 	var active: Boolean =_
-	def withactive(p:Boolean):MUserGroupUpdate ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * Used as roles template. It is possible to define the UserGroup roles that are
@@ -75,6 +75,6 @@ class MUserGroupUpdate extends MUpdater with Serializable  {
 	//#SWGNL#groupCapabilities can be applied only to PLATFORM groups (no to private or blind groups)""")
 	@BeanProperty 
 	var groupCapabilities: MUserCapability =_
-	def withgroupCapabilities(p:MUserCapability):MUserGroupUpdate ={ 	this.groupCapabilities = p; 	this }
+	def withgroupCapabilities(p:MUserCapability):this.type ={ 	this.groupCapabilities = p; 	this }
 
 }

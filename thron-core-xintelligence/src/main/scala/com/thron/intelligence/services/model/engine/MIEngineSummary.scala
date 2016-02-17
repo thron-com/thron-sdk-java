@@ -17,11 +17,11 @@ class MIEngineSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var semanticActive: Boolean =_
-	def withsemanticActive(p:Boolean):MIEngineSummary ={ 	this.semanticActive = p; 	this }
+	def withsemanticActive(p:Boolean):this.type ={ 	this.semanticActive = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var behaviorActive: Boolean =_
-	def withbehaviorActive(p:Boolean):MIEngineSummary ={ 	this.behaviorActive = p; 	this }
+	def withbehaviorActive(p:Boolean):this.type ={ 	this.behaviorActive = p; 	this }
 
 }

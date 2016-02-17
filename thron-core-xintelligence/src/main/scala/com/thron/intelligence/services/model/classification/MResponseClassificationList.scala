@@ -17,11 +17,11 @@ class MResponseClassificationList extends MResponseClassification with Serializa
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MClassificationDetail] = new ArrayList[MClassificationDetail]
-	def withitems(p:List[MClassificationDetail]):MResponseClassificationList ={ 	this.items = p; 	this }
+	def withitems(p:List[MClassificationDetail]):this.type ={ 	this.items = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseClassificationList ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

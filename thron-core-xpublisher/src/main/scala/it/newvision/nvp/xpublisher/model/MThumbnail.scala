@@ -20,7 +20,7 @@ class MThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """identifier of the thumbnail, used client side.""" ,required = true)
 	@BeanProperty 
 	var tncode: String =_
-	def withtncode(p:String):MThumbnail ={ 	this.tncode = p; 	this }
+	def withtncode(p:String):this.type ={ 	this.tncode = p; 	this }
 
 	/**
 	 * thumbnail url
@@ -28,22 +28,22 @@ class MThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """thumbnail url""")
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MThumbnail ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var width: Integer =_
-	def withwidth(p:Integer):MThumbnail ={ 	this.width = p; 	this }
+	def withwidth(p:Integer):this.type ={ 	this.width = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var height: Integer =_
-	def withheight(p:Integer):MThumbnail ={ 	this.height = p; 	this }
+	def withheight(p:Integer):this.type ={ 	this.height = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var mimetype: String =_
-	def withmimetype(p:String):MThumbnail ={ 	this.mimetype = p; 	this }
+	def withmimetype(p:String):this.type ={ 	this.mimetype = p; 	this }
 
 	/**
 	 * @return Boolean

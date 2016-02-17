@@ -19,11 +19,11 @@ class MResponseReports4MeFindByProperties extends MResponseReports with Serializ
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var reports: List[MReport4ME] = new ArrayList[MReport4ME]
-	def withreports(p:List[MReport4ME]):MResponseReports4MeFindByProperties ={ 	this.reports = p; 	this }
+	def withreports(p:List[MReport4ME]):this.type ={ 	this.reports = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseReports4MeFindByProperties ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

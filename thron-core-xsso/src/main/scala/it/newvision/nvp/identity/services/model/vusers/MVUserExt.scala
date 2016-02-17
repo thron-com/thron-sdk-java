@@ -21,7 +21,7 @@ class MVUserExt extends Serializable {
 	//#SWG#@ApiModelProperty(value = """return the vuser detail without the password information, for security reason.""" ,required = true)
 	@BeanProperty 
 	var userDetail: MVUser =_
-	def withuserDetail(p:MVUser):MVUserExt ={ 	this.userDetail = p; 	this }
+	def withuserDetail(p:MVUser):this.type ={ 	this.userDetail = p; 	this }
 
 	/**
 	 * total number of linked groups for the specific user.
@@ -29,6 +29,6 @@ class MVUserExt extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total number of linked groups for the specific user.""" ,required = true)
 	@BeanProperty 
 	var totalLinkedGroups: Integer  = 0
-	def withtotalLinkedGroups(p:Integer):MVUserExt ={ 	this.totalLinkedGroups = p; 	this }
+	def withtotalLinkedGroups(p:Integer):this.type ={ 	this.totalLinkedGroups = p; 	this }
 
 }

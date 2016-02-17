@@ -33,11 +33,11 @@ class MMergeContactEvent extends MContactEvent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """source contact id (contact to remove)""" ,required = true)
 	@BeanProperty 
 	var oldId: String =_
-	def witholdId(p:String):MMergeContactEvent ={ 	this.oldId = p; 	this }
+	def witholdId(p:String):this.type ={ 	this.oldId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var oldContact: MContactDetail =_
-	def witholdContact(p:MContactDetail):MMergeContactEvent ={ 	this.oldContact = p; 	this }
+	def witholdContact(p:MContactDetail):this.type ={ 	this.oldContact = p; 	this }
 
 }

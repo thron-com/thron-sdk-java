@@ -21,6 +21,6 @@ class MClientAdminremoveClientReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MClientAdminremoveClientReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 }

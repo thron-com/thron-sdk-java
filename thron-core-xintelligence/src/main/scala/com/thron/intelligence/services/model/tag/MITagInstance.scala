@@ -19,12 +19,12 @@ class MITagInstance extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var classificationId: String =_
-	def withclassificationId(p:String):MITagInstance ={ 	this.classificationId = p; 	this }
+	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MITagInstance ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * prettyId of the Tag
@@ -32,22 +32,22 @@ class MITagInstance extends Serializable {
 	//#SWG#@ApiModelProperty(value = """prettyId of the Tag""" ,required = true)
 	@BeanProperty 
 	var prettyId: String =_
-	def withprettyId(p:String):MITagInstance ={ 	this.prettyId = p; 	this }
+	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):MITagInstance ={ 	this.names = p; 	this }
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEITagStatus =_
-	def withstatus(p:MEITagStatus):MITagInstance ={ 	this.status = p; 	this }
+	def withstatus(p:MEITagStatus):this.type ={ 	this.status = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var source: List[MSourceIdentifier] = new ArrayList[MSourceIdentifier]
-	def withsource(p:List[MSourceIdentifier]):MITagInstance ={ 	this.source = p; 	this }
+	def withsource(p:List[MSourceIdentifier]):this.type ={ 	this.source = p; 	this }
 
 	/**
 	 * @return Boolean

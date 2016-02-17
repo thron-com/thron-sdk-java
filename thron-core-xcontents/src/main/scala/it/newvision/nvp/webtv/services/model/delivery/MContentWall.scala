@@ -26,7 +26,7 @@ class MContentWall extends MContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """The content score. Rating value""")
 	@BeanProperty 
 	var score: MRatingAverage =_
-	def withscore(p:MRatingAverage):MContentWall ={ 	this.score = p; 	this }
+	def withscore(p:MRatingAverage):this.type ={ 	this.score = p; 	this }
 
 	/**
 	 * The deliveryInfo attribute has the delivery information (url descriptors,
@@ -35,7 +35,7 @@ class MContentWall extends MContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """The deliveryInfo attribute has the delivery information (url descriptors, thumbnails url, system metadata...) of the content PUBLISHED in a channel.  """)
 	@BeanProperty 
 	var deliveryInfo: List[MDeliveryInfo] = new ArrayList[MDeliveryInfo]
-	def withdeliveryInfo(p:List[MDeliveryInfo]):MContentWall ={ 	this.deliveryInfo = p; 	this }
+	def withdeliveryInfo(p:List[MDeliveryInfo]):this.type ={ 	this.deliveryInfo = p; 	this }
 
 	/**
 	 * Return the list of linked categories (only categoryId and PUBLIC categories).
@@ -43,7 +43,7 @@ class MContentWall extends MContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Return the list of linked categories (only categoryId and PUBLIC categories).""")
 	@BeanProperty 
 	var linkedCategories: List[MCategory] = new ArrayList[MCategory]()
-	def withlinkedCategories(p:List[MCategory]):MContentWall ={ 	this.linkedCategories = p; 	this }
+	def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
 
 	/**
 	 * the version number of the content in xpublisher. Used to track when the content
@@ -52,7 +52,7 @@ class MContentWall extends MContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the version number of the content in xpublisher. Used to track when the content file change.""")
 	@BeanProperty 
 	var pcontentVersion: Integer  = 0
-	def withpcontentVersion(p:Integer):MContentWall ={ 	this.pcontentVersion = p; 	this }
+	def withpcontentVersion(p:Integer):this.type ={ 	this.pcontentVersion = p; 	this }
 
 	/**
 	 * Returns a dynamic link to the best thumbnail for the given content and DivArea
@@ -64,7 +64,7 @@ class MContentWall extends MContent with Serializable  {
 	//#SWGNL#Thumbnail resolution is the closest to fit the given DivArea (DivArea format: <widht>x<height>)""" ,required = true)
 	@BeanProperty 
 	var dynThumbService: String =_
-	def withdynThumbService(p:String):MContentWall ={ 	this.dynThumbService = p; 	this }
+	def withdynThumbService(p:String):this.type ={ 	this.dynThumbService = p; 	this }
 
 	/**
 	 * @param c : MContent

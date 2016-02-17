@@ -21,6 +21,6 @@ class MResponseUserDetail extends MResponseUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """return the user credential without the password information, for securityreason.""")
 	@BeanProperty 
 	var userDetail: MUserCredential =_
-	def withuserDetail(p:MUserCredential):MResponseUserDetail ={ 	this.userDetail = p; 	this }
+	def withuserDetail(p:MUserCredential):this.type ={ 	this.userDetail = p; 	this }
 
 }

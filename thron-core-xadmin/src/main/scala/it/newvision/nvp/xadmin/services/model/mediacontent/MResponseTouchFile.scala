@@ -17,16 +17,16 @@ class MResponseTouchFile extends MResponseMediaContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var repositoryFileId: String =_
-	def withrepositoryFileId(p:String):MResponseTouchFile ={ 	this.repositoryFileId = p; 	this }
+	def withrepositoryFileId(p:String):this.type ={ 	this.repositoryFileId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var fileName: String =_
-	def withfileName(p:String):MResponseTouchFile ={ 	this.fileName = p; 	this }
+	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var siteName: String =_
-	def withsiteName(p:String):MResponseTouchFile ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 }

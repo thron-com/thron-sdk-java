@@ -20,7 +20,7 @@ class MContextCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """filter context ids""")
 	@BeanProperty 
 	var ids: List[String] = new ArrayList[String]
-	def withids(p:List[String]):MContextCriteria ={ 	this.ids = p; 	this }
+	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
 
 	/**
 	 * text search on names by token.
@@ -31,7 +31,7 @@ class MContextCriteria extends Serializable {
 	//#SWGNL#Example: "red apple" text search match labels like "red ...", "apple ...", "red and Apple are..."""")
 	@BeanProperty 
 	var text: String =_
-	def withtext(p:String):MContextCriteria ={ 	this.text = p; 	this }
+	def withtext(p:String):this.type ={ 	this.text = p; 	this }
 
 	/**
 	 * Locale code (ISO639-1).
@@ -42,7 +42,7 @@ class MContextCriteria extends Serializable {
 	//#SWGNL#used to search the context having title like "name" for the defined languages. Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)""")
 	@BeanProperty 
 	var lang: String =_
-	def withlang(p:String):MContextCriteria ={ 	this.lang = p; 	this }
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
 	 * filter removed context
@@ -50,6 +50,6 @@ class MContextCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """filter removed context""")
 	@BeanProperty 
 	var removed: Boolean =_
-	def withremoved(p:Boolean):MContextCriteria ={ 	this.removed = p; 	this }
+	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
 
 }

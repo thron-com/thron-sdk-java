@@ -17,16 +17,16 @@ class MStopRecordingParam extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var application: String =_
-	def withapplication(p:String):MStopRecordingParam ={ 	this.application = p; 	this }
+	def withapplication(p:String):this.type ={ 	this.application = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var appInstance: String  = "_definst_"
-	def withappInstance(p:String):MStopRecordingParam ={ 	this.appInstance = p; 	this }
+	def withappInstance(p:String):this.type ={ 	this.appInstance = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MStopRecordingParam ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 }

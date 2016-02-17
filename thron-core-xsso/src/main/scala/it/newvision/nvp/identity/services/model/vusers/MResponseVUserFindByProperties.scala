@@ -20,7 +20,7 @@ class MResponseVUserFindByProperties extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """return the vuser detail without the password information, for security reason.""")
 	@BeanProperty 
 	var users: List[MVUserExt] = new ArrayList[MVUserExt]
-	def withusers(p:List[MVUserExt]):MResponseVUserFindByProperties ={ 	this.users = p; 	this }
+	def withusers(p:List[MVUserExt]):this.type ={ 	this.users = p; 	this }
 
 	/**
 	 * total number of users.
@@ -28,6 +28,6 @@ class MResponseVUserFindByProperties extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total number of users.""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseVUserFindByProperties ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

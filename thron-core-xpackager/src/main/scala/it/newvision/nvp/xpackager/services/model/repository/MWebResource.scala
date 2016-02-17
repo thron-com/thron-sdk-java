@@ -28,7 +28,7 @@ class MWebResource extends Serializable {
 	//#SWGNL#ftp://username:password@hostname/path/file.mp4""" ,required = true)
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MWebResource ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	/**
 	 * the new filename to assign to the resource. The renameFileTo is used as
@@ -38,6 +38,6 @@ class MWebResource extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the new filename to assign to the resource. The renameFileTo is used as suggestion because the file can be renamed if not unique inside the platform. The attribute is optional""")
 	@BeanProperty 
 	var renameFileTo: String =_
-	def withrenameFileTo(p:String):MWebResource ={ 	this.renameFileTo = p; 	this }
+	def withrenameFileTo(p:String):this.type ={ 	this.renameFileTo = p; 	this }
 
 }

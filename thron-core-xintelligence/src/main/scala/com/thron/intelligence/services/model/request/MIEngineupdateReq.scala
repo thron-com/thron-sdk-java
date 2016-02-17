@@ -21,6 +21,6 @@ class MIEngineupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var update: MIEngineUpdate =_
-	def withupdate(p:MIEngineUpdate):MIEngineupdateReq ={ 	this.update = p; 	this }
+	def withupdate(p:MIEngineUpdate):this.type ={ 	this.update = p; 	this }
 
 }

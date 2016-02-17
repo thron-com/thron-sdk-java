@@ -21,17 +21,17 @@ class MRatinginsertRatingReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var credential: MCredential =_
-	def withcredential(p:MCredential):MRatinginsertRatingReq ={ 	this.credential = p; 	this }
+	def withcredential(p:MCredential):this.type ={ 	this.credential = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MRatinginsertRatingReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var score: Double =_
-	def withscore(p:Double):MRatinginsertRatingReq ={ 	this.score = p; 	this }
+	def withscore(p:Double):this.type ={ 	this.score = p; 	this }
 
 	/**
 	 * The userId who rated the content. The parameter is Optional
@@ -39,7 +39,7 @@ class MRatinginsertRatingReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The userId who rated the content. The parameter is Optional""", required = true)
 	@BeanProperty
 	var userId: String =_
-	def withuserId(p:String):MRatinginsertRatingReq ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -47,6 +47,6 @@ class MRatinginsertRatingReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MRatinginsertRatingReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

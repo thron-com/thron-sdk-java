@@ -141,7 +141,7 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Update the Group detail
+	 * Update the Group external Id
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param groupId : String
@@ -326,8 +326,8 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return the list of usersGroups matching the given criteria. The service return the list of groups
-	 * without the list of linked users
+	 * Return the list of groups matching the given criteria.
+	 * The service return the list of groups without the list of linked users
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerfindGroupsByPropertiesReq
 	 * @return MResponseFindGroupsByProperties
@@ -444,7 +444,7 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * the service unlinks a list of users from a specific usersGroup.
+	 * the service unlinks a list of users from a specific group.
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerunlinkUserToGroupReq
 	 * @return MResponseUsersGroup

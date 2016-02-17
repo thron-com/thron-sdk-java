@@ -21,6 +21,6 @@ class MResponseUnpublishContent extends MResponsePublisher with Serializable  {
 	//#SWG#@ApiModelProperty(value = """TRUE if the content is still published on other channels. FALSE if the content was completely unpublished from the CDN""" ,required = true)
 	@BeanProperty 
 	var publishedInOtherChannels: Boolean =_
-	def withpublishedInOtherChannels(p:Boolean):MResponseUnpublishContent ={ 	this.publishedInOtherChannels = p; 	this }
+	def withpublishedInOtherChannels(p:Boolean):this.type ={ 	this.publishedInOtherChannels = p; 	this }
 
 }

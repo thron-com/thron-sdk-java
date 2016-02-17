@@ -20,11 +20,11 @@ class MClientupdateSecureConnectionEnabledReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MClientupdateSecureConnectionEnabledReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var secureConnectionEnabled: Boolean =_
-	def withsecureConnectionEnabled(p:Boolean):MClientupdateSecureConnectionEnabledReq ={ 	this.secureConnectionEnabled = p; 	this }
+	def withsecureConnectionEnabled(p:Boolean):this.type ={ 	this.secureConnectionEnabled = p; 	this }
 
 }

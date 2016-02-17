@@ -17,12 +17,12 @@ class MWorkingRange extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var unit: MEEngineWorkingRange =_
-	def withunit(p:MEEngineWorkingRange):MWorkingRange ={ 	this.unit = p; 	this }
+	def withunit(p:MEEngineWorkingRange):this.type ={ 	this.unit = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var range: Integer =_
-	def withrange(p:Integer):MWorkingRange ={ 	this.range = p; 	this }
+	def withrange(p:Integer):this.type ={ 	this.range = p; 	this }
 
 	/**
 	 * @return Boolean

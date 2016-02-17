@@ -27,7 +27,7 @@ class MThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """thumbnailId of the source saved in xpackager or in other systems. it 's the primary key for this class.""" ,required = true)
 	@BeanProperty 
 	var referenceId: String =_
-	def withreferenceId(p:String):MThumbnail ={ 	this.referenceId = p; 	this }
+	def withreferenceId(p:String):this.type ={ 	this.referenceId = p; 	this }
 
 	/**
 	 * the filename (without extension), used in administration console to show as
@@ -36,7 +36,7 @@ class MThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the filename (without extension), used in administration console to show as fancy name.""")
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MThumbnail ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * used to organise the thumbnail library
@@ -44,7 +44,7 @@ class MThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to organise the thumbnail library""")
 	@BeanProperty 
 	var tags: List[String] = new ArrayList[String]
-	def withtags(p:List[String]):MThumbnail ={ 	this.tags = p; 	this }
+	def withtags(p:List[String]):this.type ={ 	this.tags = p; 	this }
 
 	/**
 	 * automatically extracted from the file source.
@@ -52,7 +52,7 @@ class MThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """automatically extracted from the file source.""")
 	@BeanProperty 
 	var width: Integer =_
-	def withwidth(p:Integer):MThumbnail ={ 	this.width = p; 	this }
+	def withwidth(p:Integer):this.type ={ 	this.width = p; 	this }
 
 	/**
 	 * automatically extracted from the file source
@@ -60,12 +60,12 @@ class MThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """automatically extracted from the file source""")
 	@BeanProperty 
 	var height: Integer =_
-	def withheight(p:Integer):MThumbnail ={ 	this.height = p; 	this }
+	def withheight(p:Integer):this.type ={ 	this.height = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var mimetype: String =_
-	def withmimetype(p:String):MThumbnail ={ 	this.mimetype = p; 	this }
+	def withmimetype(p:String):this.type ={ 	this.mimetype = p; 	this }
 
 	/**
 	 * the original filename, used to store the content in the file system.(filename
@@ -74,6 +74,6 @@ class MThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the original filename, used to store the content in the file system.(filename with extension)""" ,required = true)
 	@BeanProperty 
 	var fileNameOriginal: String =_
-	def withfileNameOriginal(p:String):MThumbnail ={ 	this.fileNameOriginal = p; 	this }
+	def withfileNameOriginal(p:String):this.type ={ 	this.fileNameOriginal = p; 	this }
 
 }

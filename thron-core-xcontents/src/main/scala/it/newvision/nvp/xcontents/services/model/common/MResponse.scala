@@ -18,6 +18,6 @@ class MResponse extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MECode =_
-	def withresultCode(p:MECode):MResponse ={ 	this.resultCode = p; 	this }
+	def withresultCode(p:MECode):this.type ={ 	this.resultCode = p; 	this }
 
 }

@@ -17,12 +17,12 @@ class MMetadataDefinitionDoubleConstraint extends MMetadataDefinitionGenericCons
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var minimumValue: Double =_
-	def withminimumValue(p:Double):MMetadataDefinitionDoubleConstraint ={ 	this.minimumValue = p; 	this }
+	def withminimumValue(p:Double):this.type ={ 	this.minimumValue = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var maximumValue: Double =_
-	def withmaximumValue(p:Double):MMetadataDefinitionDoubleConstraint ={ 	this.maximumValue = p; 	this }
+	def withmaximumValue(p:Double):this.type ={ 	this.maximumValue = p; 	this }
 
 	/**
 	 * @return Boolean

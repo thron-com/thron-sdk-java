@@ -18,6 +18,6 @@ class MResponseGetPackagedFilesForPreview extends MResponsePackager with Seriali
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var files: List[MFile] = new ArrayList[MFile]
-	def withfiles(p:List[MFile]):MResponseGetPackagedFilesForPreview ={ 	this.files = p; 	this }
+	def withfiles(p:List[MFile]):this.type ={ 	this.files = p; 	this }
 
 }

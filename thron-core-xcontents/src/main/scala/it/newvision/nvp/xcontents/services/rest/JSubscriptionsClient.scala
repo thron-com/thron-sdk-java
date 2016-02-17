@@ -27,8 +27,8 @@ object JSubscriptionsClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.
- * it/api/xcontents/resources/subscriptions/</li>
+ * 	<li>REST service: http://clientId-view.thron.
+ * com/api/xcontents/resources/subscriptions/</li>
  * </ul>
  */
 class JSubscriptionsClient(val resourceEndpoint:String) {

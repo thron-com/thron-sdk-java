@@ -21,6 +21,6 @@ class MLiveEventRecParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the mediacontentId of the liveEvent necessary to know where the recorded files and to start the special specific publishing process. Optional""")
 	@BeanProperty 
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MLiveEventRecParams ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 }

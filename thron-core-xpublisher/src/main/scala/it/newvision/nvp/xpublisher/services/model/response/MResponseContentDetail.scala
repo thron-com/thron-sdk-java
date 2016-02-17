@@ -18,6 +18,6 @@ class MResponseContentDetail extends MResponsePublisher with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var content: MContent =_
-	def withcontent(p:MContent):MResponseContentDetail ={ 	this.content = p; 	this }
+	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
 
 }

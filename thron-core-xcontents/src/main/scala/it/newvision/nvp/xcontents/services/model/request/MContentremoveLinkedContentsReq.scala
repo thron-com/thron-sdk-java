@@ -21,12 +21,12 @@ class MContentremoveLinkedContentsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MContentremoveLinkedContentsReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MContentremoveLinkedContentsReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	/**
 	 * search criteria
@@ -34,7 +34,7 @@ class MContentremoveLinkedContentsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """search criteria""", required = true)
 	@BeanProperty
 	var criteria: MLinkedContentRemoveCriteria =_
-	def withcriteria(p:MLinkedContentRemoveCriteria):MContentremoveLinkedContentsReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MLinkedContentRemoveCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -42,6 +42,6 @@ class MContentremoveLinkedContentsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MContentremoveLinkedContentsReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

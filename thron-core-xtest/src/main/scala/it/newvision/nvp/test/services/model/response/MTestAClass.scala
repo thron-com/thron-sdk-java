@@ -17,6 +17,6 @@ class MTestAClass extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attString: String =_
-	def withattString(p:String):MTestAClass ={ 	this.attString = p; 	this }
+	def withattString(p:String):this.type ={ 	this.attString = p; 	this }
 
 }

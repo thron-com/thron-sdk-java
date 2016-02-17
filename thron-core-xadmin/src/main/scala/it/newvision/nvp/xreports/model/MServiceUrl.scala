@@ -29,7 +29,7 @@ class MServiceUrl extends Serializable {
 	//#SWGNL#getContent""" ,required = true)
 	@BeanProperty 
 	var serviceUrl: String =_
-	def withserviceUrl(p:String):MServiceUrl ={ 	this.serviceUrl = p; 	this }
+	def withserviceUrl(p:String):this.type ={ 	this.serviceUrl = p; 	this }
 
 	/**
 	 * the query params are as AND clause
@@ -37,6 +37,6 @@ class MServiceUrl extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the query params are as AND clause""")
 	@BeanProperty 
 	var queryParams: List[String] = new ArrayList[String]
-	def withqueryParams(p:List[String]):MServiceUrl ={ 	this.queryParams = p; 	this }
+	def withqueryParams(p:List[String]):this.type ={ 	this.queryParams = p; 	this }
 
 }

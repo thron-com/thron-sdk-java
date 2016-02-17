@@ -20,6 +20,6 @@ class MMetadataDefinitionValue extends MIMetadataDefinitionValue with Serializab
 	//#SWG#@ApiModelProperty(value = """the position of metadata inside the list.""")
 	@BeanProperty 
 	var pos: Integer =_
-	def withpos(p:Integer):MMetadataDefinitionValue ={ 	this.pos = p; 	this }
+	def withpos(p:Integer):this.type ={ 	this.pos = p; 	this }
 
 }

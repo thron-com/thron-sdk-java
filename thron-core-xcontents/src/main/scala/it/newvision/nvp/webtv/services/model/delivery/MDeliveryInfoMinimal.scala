@@ -27,7 +27,7 @@ class MDeliveryInfoMinimal extends Serializable {
 	@Deprecated
 	var thumbsUrl: List[String] = new ArrayList[String]
 	@Deprecated
-	def withthumbsUrl(p:List[String]):MDeliveryInfoMinimal ={ 	this.thumbsUrl = p; 	this }
+	def withthumbsUrl(p:List[String]):this.type ={ 	this.thumbsUrl = p; 	this }
 
 	/**
 	 * DEPRECATED. Use bestThymbUrl or dynThumbService
@@ -35,7 +35,7 @@ class MDeliveryInfoMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use bestThymbUrl or dynThumbService""")
 	@BeanProperty 
 	var defaultThumbUrl: String =_
-	def withdefaultThumbUrl(p:String):MDeliveryInfoMinimal ={ 	this.defaultThumbUrl = p; 	this }
+	def withdefaultThumbUrl(p:String):this.type ={ 	this.defaultThumbUrl = p; 	this }
 
 	/**
 	 * Defined if divArea parameter is specified on the request.
@@ -51,7 +51,7 @@ class MDeliveryInfoMinimal extends Serializable {
 	//#SWGNL#bestThumbUrl provides the static url of the thumbnail in 4me CDN (Content Delivery Network); the url is volatile and may change with time. In order to obtain a dynamic link to the best thumbnail (for the given content and div area) use the "dynThumbService" attribute (see reference for details)""")
 	@BeanProperty 
 	var bestThumbUrl: String =_
-	def withbestThumbUrl(p:String):MDeliveryInfoMinimal ={ 	this.bestThumbUrl = p; 	this }
+	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
 	/**
 	 * Returns a dynamic link to the best thumbnail for the given content and DivArea
@@ -63,7 +63,7 @@ class MDeliveryInfoMinimal extends Serializable {
 	//#SWGNL#Thumbnail resolution is the closest to fit the given DivArea (DivArea format: <widht>x<height>)""" ,required = true)
 	@BeanProperty 
 	var dynThumbService: String =_
-	def withdynThumbService(p:String):MDeliveryInfoMinimal ={ 	this.dynThumbService = p; 	this }
+	def withdynThumbService(p:String):this.type ={ 	this.dynThumbService = p; 	this }
 
 	/**
 	 * used only with "downloadable contents"
@@ -71,7 +71,7 @@ class MDeliveryInfoMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used only with "downloadable contents"""")
 	@BeanProperty 
 	var contentUrl: String =_
-	def withcontentUrl(p:String):MDeliveryInfoMinimal ={ 	this.contentUrl = p; 	this }
+	def withcontentUrl(p:String):this.type ={ 	this.contentUrl = p; 	this }
 
 	/**
 	 * The list of all system metadata stored in xpublisher channel.sysMetadata. like
@@ -80,6 +80,6 @@ class MDeliveryInfoMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The list of all system metadata stored in xpublisher channel.sysMetadata. like video length, and size...""")
 	@BeanProperty 
 	var sysMetadata: List[MMetadata] = new ArrayList[MMetadata]
-	def withsysMetadata(p:List[MMetadata]):MDeliveryInfoMinimal ={ 	this.sysMetadata = p; 	this }
+	def withsysMetadata(p:List[MMetadata]):this.type ={ 	this.sysMetadata = p; 	this }
 
 }

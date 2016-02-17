@@ -17,6 +17,6 @@ class MResponseGetContentTypes extends MResponsePublishWeebo with Serializable  
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var fileContentTypes: List[MFileContentType] = new ArrayList[MFileContentType]
-	def withfileContentTypes(p:List[MFileContentType]):MResponseGetContentTypes ={ 	this.fileContentTypes = p; 	this }
+	def withfileContentTypes(p:List[MFileContentType]):this.type ={ 	this.fileContentTypes = p; 	this }
 
 }

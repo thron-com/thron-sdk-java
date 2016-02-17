@@ -34,12 +34,12 @@ class MAclRule extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var targetObjId: String =_
-	def withtargetObjId(p:String):MAclRule ={ 	this.targetObjId = p; 	this }
+	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var targetObjClass: MEObjClass =_
-	def withtargetObjClass(p:MEObjClass):MAclRule ={ 	this.targetObjClass = p; 	this }
+	def withtargetObjClass(p:MEObjClass):this.type ={ 	this.targetObjClass = p; 	this }
 
 	/**
 	 * The different type of active rules.
@@ -47,7 +47,7 @@ class MAclRule extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The different type of active rules.""")
 	@BeanProperty 
 	var rules: List[MEAclRule] = new ArrayList[MEAclRule]
-	def withrules(p:List[MEAclRule]):MAclRule ={ 	this.rules = p; 	this }
+	def withrules(p:List[MEAclRule]):this.type ={ 	this.rules = p; 	this }
 
 	/**
 	 * The list of not active rules
@@ -55,7 +55,7 @@ class MAclRule extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The list of not active rules""")
 	@BeanProperty 
 	var disabledRules: List[MEAclRule] = new ArrayList[MEAclRule]
-	def withdisabledRules(p:List[MEAclRule]):MAclRule ={ 	this.disabledRules = p; 	this }
+	def withdisabledRules(p:List[MEAclRule]):this.type ={ 	this.disabledRules = p; 	this }
 
 	/**
 	 * @return Boolean

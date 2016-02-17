@@ -20,22 +20,22 @@ class MArea extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var x: Integer =_
-	def withx(p:Integer):MArea ={ 	this.x = p; 	this }
+	def withx(p:Integer):this.type ={ 	this.x = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var y: Integer =_
-	def withy(p:Integer):MArea ={ 	this.y = p; 	this }
+	def withy(p:Integer):this.type ={ 	this.y = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var height: Integer =_
-	def withheight(p:Integer):MArea ={ 	this.height = p; 	this }
+	def withheight(p:Integer):this.type ={ 	this.height = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var width: Integer =_
-	def withwidth(p:Integer):MArea ={ 	this.width = p; 	this }
+	def withwidth(p:Integer):this.type ={ 	this.width = p; 	this }
 
 	/**
 	 * @return Boolean

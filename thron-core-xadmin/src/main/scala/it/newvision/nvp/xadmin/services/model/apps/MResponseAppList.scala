@@ -17,6 +17,6 @@ class MResponseAppList extends MResponseApp with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var apps: List[MAppDetail] = new ArrayList[MAppDetail]
-	def withapps(p:List[MAppDetail]):MResponseAppList ={ 	this.apps = p; 	this }
+	def withapps(p:List[MAppDetail]):this.type ={ 	this.apps = p; 	this }
 
 }

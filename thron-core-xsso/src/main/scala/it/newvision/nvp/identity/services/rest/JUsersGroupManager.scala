@@ -176,7 +176,7 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 	protected def capability_update: String
 
 	/**
-	 * Update the Group detail
+	 * Update the Group external Id
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param groupId : String
@@ -187,7 +187,7 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 	@Path("/updateExternalId/{clientId}/{groupId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateExternalId", notes = """Update the Group detail""", response = classOf[MResponseUsersGroup])
+	//#SWG#@ApiOperation(value = "/updateExternalId", notes = """Update the Group external Id""", response = classOf[MResponseUsersGroup])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -411,8 +411,8 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 	protected def capability_removeGroup: String
 
 	/**
-	 * Return the list of usersGroups matching the given criteria. The service return the list of groups
-	 * without the list of linked users
+	 * Return the list of groups matching the given criteria.
+	 * The service return the list of groups without the list of linked users
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerfindGroupsByPropertiesReq
 	 * @return MResponseFindGroupsByProperties
@@ -421,7 +421,8 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 	@Path("/findGroupsByProperties")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/findGroupsByProperties", notes = """Return the list of usersGroups matching the given criteria. The service return the list of groups without the list of linked users""", response = classOf[MResponseFindGroupsByProperties])
+	//#SWG#@ApiOperation(value = "/findGroupsByProperties", notes = """Return the list of groups matching the given criteria. 
+	//#SWGNL#The service return the list of groups without the list of linked users""", response = classOf[MResponseFindGroupsByProperties])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def findGroupsByProperties(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -576,7 +577,7 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 	protected def capability_linkUserToGroup: String
 
 	/**
-	 * the service unlinks a list of users from a specific usersGroup.
+	 * the service unlinks a list of users from a specific group.
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerunlinkUserToGroupReq
 	 * @return MResponseUsersGroup
@@ -585,7 +586,7 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 	@Path("/unlinkUserToGroup")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/unlinkUserToGroup", notes = """the service unlinks a list of users from a specific usersGroup.""", response = classOf[MResponseUsersGroup])
+	//#SWG#@ApiOperation(value = "/unlinkUserToGroup", notes = """the service unlinks a list of users from a specific group.""", response = classOf[MResponseUsersGroup])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def unlinkUserToGroup(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

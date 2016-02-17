@@ -49,7 +49,7 @@ class MClassification extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Automatically generated""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MClassification ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * can be TARGET/TOPIC/CUSTOM
@@ -57,7 +57,7 @@ class MClassification extends Serializable {
 	//#SWG#@ApiModelProperty(value = """can be TARGET/TOPIC/CUSTOM""" ,required = true)
 	@BeanProperty 
 	var classificationType: MEClassificationType =_
-	def withclassificationType(p:MEClassificationType):MClassification ={ 	this.classificationType = p; 	this }
+	def withclassificationType(p:MEClassificationType):this.type ={ 	this.classificationType = p; 	this }
 
 	/**
 	 * label and description values for the classification in multilocale
@@ -65,7 +65,7 @@ class MClassification extends Serializable {
 	//#SWG#@ApiModelProperty(value = """label and description values for the classification in multilocale""")
 	@BeanProperty 
 	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):MClassification ={ 	this.names = p; 	this }
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * visibile in Reports
@@ -73,7 +73,7 @@ class MClassification extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
-	def withactive(p:Boolean):MClassification ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * userId of the owner
@@ -81,27 +81,27 @@ class MClassification extends Serializable {
 	//#SWG#@ApiModelProperty(value = """userId of the owner""")
 	@BeanProperty 
 	var createdBy: MSourceIdentifier =_
-	def withcreatedBy(p:MSourceIdentifier):MClassification ={ 	this.createdBy = p; 	this }
+	def withcreatedBy(p:MSourceIdentifier):this.type ={ 	this.createdBy = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var createdDate: Date  = new Date()
-	def withcreatedDate(p:Date):MClassification ={ 	this.createdDate = p; 	this }
+	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var removed: Boolean  = false
-	def withremoved(p:Boolean):MClassification ={ 	this.removed = p; 	this }
+	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var modifiedDate: Date =_
-	def withmodifiedDate(p:Date):MClassification ={ 	this.modifiedDate = p; 	this }
+	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var entities: List[MClassificationEntity] = new ArrayList[MClassificationEntity]
-	  def withentities(p:List[MClassificationEntity]):MClassification ={ 	this.entities = p; 	this }
+	  def withentities(p:List[MClassificationEntity]):this.type ={ 	this.entities = p; 	this }
 
 	/**
 	 * CUSTOM classification can be like TOPIC or TARGET classes, based on the entities setup.

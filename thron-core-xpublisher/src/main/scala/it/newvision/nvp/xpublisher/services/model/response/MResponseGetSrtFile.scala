@@ -21,6 +21,6 @@ class MResponseGetSrtFile extends MResponsePublisher with Serializable  {
 	//#SWG#@ApiModelProperty(value = """The list of available srt files. """)
 	@BeanProperty 
 	var subTitles: List[MSubtitle] = new ArrayList[MSubtitle]
-	def withsubTitles(p:List[MSubtitle]):MResponseGetSrtFile ={ 	this.subTitles = p; 	this }
+	def withsubTitles(p:List[MSubtitle]):this.type ={ 	this.subTitles = p; 	this }
 
 }

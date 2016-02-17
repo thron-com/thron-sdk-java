@@ -21,11 +21,11 @@ class MPublishingProcessnewContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPublishingProcessnewContentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var param: MContentParams =_
-	def withparam(p:MContentParams):MPublishingProcessnewContentReq ={ 	this.param = p; 	this }
+	def withparam(p:MContentParams):this.type ={ 	this.param = p; 	this }
 
 }

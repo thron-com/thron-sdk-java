@@ -20,16 +20,16 @@ class MPackagerremoveIngestionToPackageReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPackagerremoveIngestionToPackageReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var packagedId: String =_
-	def withpackagedId(p:String):MPackagerremoveIngestionToPackageReq ={ 	this.packagedId = p; 	this }
+	def withpackagedId(p:String):this.type ={ 	this.packagedId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var ingestionId: String =_
-	def withingestionId(p:String):MPackagerremoveIngestionToPackageReq ={ 	this.ingestionId = p; 	this }
+	def withingestionId(p:String):this.type ={ 	this.ingestionId = p; 	this }
 
 }

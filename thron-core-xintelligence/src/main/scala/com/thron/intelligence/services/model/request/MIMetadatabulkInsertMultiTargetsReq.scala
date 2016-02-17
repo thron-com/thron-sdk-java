@@ -21,6 +21,6 @@ class MIMetadatabulkInsertMultiTargetsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var value: MIMetadataBulkValue2 =_
-	def withvalue(p:MIMetadataBulkValue2):MIMetadatabulkInsertMultiTargetsReq ={ 	this.value = p; 	this }
+	def withvalue(p:MIMetadataBulkValue2):this.type ={ 	this.value = p; 	this }
 
 }

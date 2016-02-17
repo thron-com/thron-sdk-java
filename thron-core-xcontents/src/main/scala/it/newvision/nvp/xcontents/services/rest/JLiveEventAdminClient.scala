@@ -27,8 +27,8 @@ object JLiveEventAdminClient {
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.
- * it/api/adxcontents/resources/liveevent/ </li>
+ * 	<li>REST service: http://clientId-view.thron.
+ * com/api/adxcontents/resources/liveevent/</li>
  * </ul>
  */
 class JLiveEventAdminClient(val resourceEndpoint:String) {

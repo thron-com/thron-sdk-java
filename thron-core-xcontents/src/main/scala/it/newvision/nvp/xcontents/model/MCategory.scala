@@ -61,7 +61,7 @@ class MCategory extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String  = java.util.UUID.randomUUID.toString
-	def withid(p:String):MCategory ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * Constraints:
@@ -85,12 +85,12 @@ class MCategory extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var prettyIds: List[MPrettyId] = new ArrayList[MPrettyId]
-	def withprettyIds(p:List[MPrettyId]):MCategory ={ 	this.prettyIds = p; 	this }
+	def withprettyIds(p:List[MPrettyId]):this.type ={ 	this.prettyIds = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var upCategoryId: String =_
-	def withupCategoryId(p:String):MCategory ={ 	this.upCategoryId = p; 	this }
+	def withupCategoryId(p:String):this.type ={ 	this.upCategoryId = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -100,7 +100,7 @@ class MCategory extends Serializable {
 	@Deprecated
 	var solution: String =_
 	@Deprecated
-	def withsolution(p:String):MCategory ={ 	this.solution = p; 	this }
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -119,12 +119,12 @@ class MCategory extends Serializable {
 	@Deprecated
 	var availableInSolutions: List[String] = new ArrayList[String]
 	@Deprecated
-	def withavailableInSolutions(p:List[String]):MCategory ={ 	this.availableInSolutions = p; 	this }
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
-	def withactive(p:Boolean):MCategory ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * ordered list of ancestors Category Ids. It's used to quickly create the
@@ -151,7 +151,7 @@ class MCategory extends Serializable {
 	//#SWGNL#Category4.ancestorsIds = [Category1,Category2, Category3]""")
 	@BeanProperty 
 	var ancestorIds: List[String] = new ArrayList[String]
-	def withancestorIds(p:List[String]):MCategory ={ 	this.ancestorIds = p; 	this }
+	def withancestorIds(p:List[String]):this.type ={ 	this.ancestorIds = p; 	this }
 
 	/**
 	 * the username of the owner of the category. It's used to define private
@@ -160,7 +160,7 @@ class MCategory extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the username of the owner of the category. It's used to define private categories and with categoryType=PRIVATE""")
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MCategory ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * used to categorize the different categories in 4ME Platform. Only categories
@@ -169,15 +169,15 @@ class MCategory extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to categorize the different categories in 4ME Platform. Only categories tree with the same categoryType are allowed.""" ,required = true)
 	@BeanProperty 
 	var categoryType: MECategoryType  = MECategoryType.PUBLIC
-	def withcategoryType(p:MECategoryType):MCategory ={ 	this.categoryType = p; 	this }
+	def withcategoryType(p:MECategoryType):this.type ={ 	this.categoryType = p; 	this }
 
 	/**
-	 * custom metadata information linked to a category
+	 * custom metadata linked to the category
 	 */
-	//#SWG#@ApiModelProperty(value = """custom metadata information linked to a category""")
+	//#SWG#@ApiModelProperty(value = """custom metadata linked to the category""")
 	@BeanProperty 
 	var metadatas: List[MMetadata] = new ArrayList[MMetadata]
-	def withmetadatas(p:List[MMetadata]):MCategory ={ 	this.metadatas = p; 	this }
+	def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
 
 	/**
 	 * Optional. The creation date of the category
@@ -185,7 +185,7 @@ class MCategory extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the category""")
 	@BeanProperty 
 	var creationDate: Date  = new Date()
-	def withcreationDate(p:Date):MCategory ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * used for custom lexicographical order of categories. The field in used in
@@ -195,21 +195,24 @@ class MCategory extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used for custom lexicographical order of categories. The field in used in JCategory.findByProperties (MECategoryOrderBy.sortingField_A/D) to sort the result set.""")
 	@BeanProperty 
 	var sortingField: String =_
-	def withsortingField(p:String):MCategory ={ 	this.sortingField = p; 	this }
+	def withsortingField(p:String):this.type ={ 	this.sortingField = p; 	this }
 
 	@BeanProperty 
 	var version: Long =_
-	def withversion(p:Long):MCategory ={ 	this.version = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var locales: List[MCategory4Locale] = new ArrayList[MCategory4Locale]
-	  def withlocales(p:List[MCategory4Locale]):MCategory ={ 	this.locales = p; 	this }
+	def withversion(p:Long):this.type ={ 	this.version = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
-	  def withlinkedCategories(p:List[MCategory]):MCategory ={ 	this.linkedCategories = p; 	this }
+	  def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
+
+	/**
+	 * name and description values for the category in multilocale
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """name and description values for the category in multilocale""")
+	var locales: List[MCategory4Locale] = new ArrayList[MCategory4Locale]
+	  def withlocales(p:List[MCategory4Locale]):this.type ={ 	this.locales = p; 	this }
 
 	/**
 	 * @return Boolean

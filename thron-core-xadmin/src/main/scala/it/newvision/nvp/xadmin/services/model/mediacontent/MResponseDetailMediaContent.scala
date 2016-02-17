@@ -18,7 +18,7 @@ class MResponseDetailMediaContent extends MResponseMediaContent with Serializabl
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var mediaContent: MMediaContent =_
-	def withmediaContent(p:MMediaContent):MResponseDetailMediaContent ={ 	this.mediaContent = p; 	this }
+	def withmediaContent(p:MMediaContent):this.type ={ 	this.mediaContent = p; 	this }
 
 	/**
 	 * total amount of space used by the content in CDN and in Repository (in Bytes)
@@ -26,6 +26,6 @@ class MResponseDetailMediaContent extends MResponseMediaContent with Serializabl
 	//#SWG#@ApiModelProperty(value = """total amount of space used by the content in CDN and in Repository (in Bytes)""")
 	@BeanProperty 
 	var mediaContentTotalSpace: Long  = 0L
-	def withmediaContentTotalSpace(p:Long):MResponseDetailMediaContent ={ 	this.mediaContentTotalSpace = p; 	this }
+	def withmediaContentTotalSpace(p:Long):this.type ={ 	this.mediaContentTotalSpace = p; 	this }
 
 }

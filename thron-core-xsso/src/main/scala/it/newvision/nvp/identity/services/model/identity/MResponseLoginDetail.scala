@@ -19,7 +19,7 @@ class MResponseLoginDetail extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var tokenId: String =_
-	def withtokenId(p:String):MResponseLoginDetail ={ 	this.tokenId = p; 	this }
+	def withtokenId(p:String):this.type ={ 	this.tokenId = p; 	this }
 
 	/**
 	 * return the vuser detail without the password information, for security reason.
@@ -27,6 +27,6 @@ class MResponseLoginDetail extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """return the vuser detail without the password information, for security reason.""")
 	@BeanProperty 
 	var userDetail: MVUserExt =_
-	def withuserDetail(p:MVUserExt):MResponseLoginDetail ={ 	this.userDetail = p; 	this }
+	def withuserDetail(p:MVUserExt):this.type ={ 	this.userDetail = p; 	this }
 
 }

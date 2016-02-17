@@ -24,12 +24,12 @@ class MMetadata extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MMetadata ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var value: String =_
-	def withvalue(p:String):MMetadata ={ 	this.value = p; 	this }
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * @param other : MMetadata

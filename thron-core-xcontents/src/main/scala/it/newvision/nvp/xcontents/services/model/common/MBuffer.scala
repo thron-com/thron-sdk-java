@@ -20,6 +20,6 @@ class MBuffer extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Data must be encoded in UTF-8 charset""")
 	@BeanProperty 
 	var buffer: Array[Byte]= new Array[Byte](0)
-	def withbuffer(p:Array[Byte]):MBuffer ={ 	this.buffer = p; 	this }
+	def withbuffer(p:Array[Byte]):this.type ={ 	this.buffer = p; 	this }
 
 }

@@ -20,7 +20,7 @@ class MPlaylistItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """a contentId element""" ,required = true)
 	@BeanProperty 
 	var xcontentId: String =_
-	def withxcontentId(p:String):MPlaylistItem ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * Desired position of the element in playlist. If empty the element is enqueued.
@@ -28,7 +28,7 @@ class MPlaylistItem extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Desired position of the element in playlist. If empty the element is enqueued.""")
 	@BeanProperty 
 	var position: Integer =_
-	def withposition(p:Integer):MPlaylistItem ={ 	this.position = p; 	this }
+	def withposition(p:Integer):this.type ={ 	this.position = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -35,6 +35,11 @@ class JContextClient(val resourceEndpoint:String) {
 
 	/**
 	 * Create a new context
+	 * 
+	 * <b>Role Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_MANAGE_CONTEXT</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MContextinsertReq
@@ -82,6 +87,11 @@ class JContextClient(val resourceEndpoint:String) {
 
 	/**
 	 * Mark to removed the context
+	 * 
+	 * <b>Role Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_MANAGE_CONTEXT</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String
@@ -132,6 +142,11 @@ class JContextClient(val resourceEndpoint:String) {
 	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
 	 * the "update" attributes you want to change must be included in the body of the request, those not
 	 * included will not be updated.
+	 * 
+	 * <b>Role Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_MANAGE_CONTEXT</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String

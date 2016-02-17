@@ -21,6 +21,6 @@ class MContextinsertReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var value: MContextValue =_
-	def withvalue(p:MContextValue):MContextinsertReq ={ 	this.value = p; 	this }
+	def withvalue(p:MContextValue):this.type ={ 	this.value = p; 	this }
 
 }

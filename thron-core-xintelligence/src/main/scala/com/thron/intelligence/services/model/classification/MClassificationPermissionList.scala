@@ -21,7 +21,7 @@ class MClassificationPermissionList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var permissions: List[MClassificationPermission] = new ArrayList[MClassificationPermission]
-	def withpermissions(p:List[MClassificationPermission]):MClassificationPermissionList ={ 	this.permissions = p; 	this }
+	def withpermissions(p:List[MClassificationPermission]):this.type ={ 	this.permissions = p; 	this }
 
 	/**
 	 * @return Boolean

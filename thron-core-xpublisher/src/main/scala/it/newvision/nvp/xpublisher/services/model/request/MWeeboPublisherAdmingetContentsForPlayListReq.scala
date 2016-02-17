@@ -21,26 +21,26 @@ class MWeeboPublisherAdmingetContentsForPlayListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboPublisherAdmingetContentsForPlayListReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentIds: MContentList =_
-	def withcontentIds(p:MContentList):MWeeboPublisherAdmingetContentsForPlayListReq ={ 	this.contentIds = p; 	this }
+	def withcontentIds(p:MContentList):this.type ={ 	this.contentIds = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var channelType: String =_
-	def withchannelType(p:String):MWeeboPublisherAdmingetContentsForPlayListReq ={ 	this.channelType = p; 	this }
+	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MWeeboPublisherAdmingetContentsForPlayListReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfReults: Integer =_
-	def withnumberOfReults(p:Integer):MWeeboPublisherAdmingetContentsForPlayListReq ={ 	this.numberOfReults = p; 	this }
+	def withnumberOfReults(p:Integer):this.type ={ 	this.numberOfReults = p; 	this }
 
 }

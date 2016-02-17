@@ -20,11 +20,11 @@ class MIdentityAdminwhoisReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MIdentityAdminwhoisReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var tokenId: String =_
-	def withtokenId(p:String):MIdentityAdminwhoisReq ={ 	this.tokenId = p; 	this }
+	def withtokenId(p:String):this.type ={ 	this.tokenId = p; 	this }
 
 }

@@ -25,7 +25,7 @@ class MContentSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """it's the unique reference ID for a given MediaContent task.""" ,required = true)
 	@BeanProperty 
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MContentSummary ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * it's the unique reference ID for a given MediaContent task.
@@ -33,7 +33,7 @@ class MContentSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """it's the unique reference ID for a given MediaContent task.""" ,required = true)
 	@BeanProperty 
 	var xcontentId: String =_
-	def withxcontentId(p:String):MContentSummary ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * it's the unique reference ID for a given MediaContent task.
@@ -41,17 +41,17 @@ class MContentSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """it's the unique reference ID for a given MediaContent task.""" ,required = true)
 	@BeanProperty 
 	var xpublishedId: String =_
-	def withxpublishedId(p:String):MContentSummary ={ 	this.xpublishedId = p; 	this }
+	def withxpublishedId(p:String):this.type ={ 	this.xpublishedId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEContentStatus =_
-	def withstatus(p:MEContentStatus):MContentSummary ={ 	this.status = p; 	this }
+	def withstatus(p:MEContentStatus):this.type ={ 	this.status = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var creationDate: Date =_
-	def withcreationDate(p:Date):MContentSummary ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * the list of published channels 
@@ -59,12 +59,12 @@ class MContentSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of published channels """)
 	@BeanProperty 
 	var channels: List[String] = new ArrayList[String]
-	def withchannels(p:List[String]):MContentSummary ={ 	this.channels = p; 	this }
+	def withchannels(p:List[String]):this.type ={ 	this.channels = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentType: String =_
-	def withcontentType(p:String):MContentSummary ={ 	this.contentType = p; 	this }
+	def withcontentType(p:String):this.type ={ 	this.contentType = p; 	this }
 
 	/**
 	 * The content name (in the default locale). The content name come from the
@@ -73,7 +73,7 @@ class MContentSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The content name (in the default locale). The content name come from the xcontent services.""" ,required = true)
 	@BeanProperty 
 	var contentname: String =_
-	def withcontentname(p:String):MContentSummary ={ 	this.contentname = p; 	this }
+	def withcontentname(p:String):this.type ={ 	this.contentname = p; 	this }
 
 	/**
 	 * The content owner
@@ -81,7 +81,7 @@ class MContentSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The content owner""" ,required = true)
 	@BeanProperty 
 	var owner: String =_
-	def withowner(p:String):MContentSummary ={ 	this.owner = p; 	this }
+	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
 
 	/**
 	 * The attribute shows from which solution the content has been created. This
@@ -92,7 +92,7 @@ class MContentSummary extends Serializable {
 	@Deprecated
 	var solution: String =_
 	@Deprecated
-	def withsolution(p:String):MContentSummary ={ 	this.solution = p; 	this }
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * used to flag the User Generated Contents.
@@ -100,7 +100,7 @@ class MContentSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to flag the User Generated Contents.""")
 	@BeanProperty 
 	var contentUGC: Boolean =_
-	def withcontentUGC(p:Boolean):MContentSummary ={ 	this.contentUGC = p; 	this }
+	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
 
 	/**
 	 * total amount of space used by the content in CDN and in Repository (in Bytes)
@@ -108,6 +108,6 @@ class MContentSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total amount of space used by the content in CDN and in Repository (in Bytes)""")
 	@BeanProperty 
 	var totalSpace: Long  = 0L
-	def withtotalSpace(p:Long):MContentSummary ={ 	this.totalSpace = p; 	this }
+	def withtotalSpace(p:Long):this.type ={ 	this.totalSpace = p; 	this }
 
 }

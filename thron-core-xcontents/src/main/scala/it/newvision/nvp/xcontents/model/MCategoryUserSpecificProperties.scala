@@ -25,6 +25,6 @@ class MCategoryUserSpecificProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to indicate whether the user is registered or not to a category for notifications.""" ,required = true)
 	@BeanProperty 
 	var userSubscribedForNotification: Boolean  = false
-	def withuserSubscribedForNotification(p:Boolean):MCategoryUserSpecificProperties ={ 	this.userSubscribedForNotification = p; 	this }
+	def withuserSubscribedForNotification(p:Boolean):this.type ={ 	this.userSubscribedForNotification = p; 	this }
 
 }

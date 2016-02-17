@@ -20,7 +20,7 @@ class MPlaylistmoveContentInListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPlaylistmoveContentInListReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * the playlist xcontentId
@@ -28,7 +28,7 @@ class MPlaylistmoveContentInListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the playlist xcontentId""", required = true)
 	@BeanProperty
 	var xcontentId: String =_
-	def withxcontentId(p:String):MPlaylistmoveContentInListReq ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * the content position in the playlist
@@ -36,7 +36,7 @@ class MPlaylistmoveContentInListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the content position in the playlist""", required = true)
 	@BeanProperty
 	var oldContentPosition: Integer =_
-	def witholdContentPosition(p:Integer):MPlaylistmoveContentInListReq ={ 	this.oldContentPosition = p; 	this }
+	def witholdContentPosition(p:Integer):this.type ={ 	this.oldContentPosition = p; 	this }
 
 	/**
 	 * the new position in the playlist
@@ -44,7 +44,7 @@ class MPlaylistmoveContentInListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the new position in the playlist""", required = true)
 	@BeanProperty
 	var newContentPosition: Integer =_
-	def withnewContentPosition(p:Integer):MPlaylistmoveContentInListReq ={ 	this.newContentPosition = p; 	this }
+	def withnewContentPosition(p:Integer):this.type ={ 	this.newContentPosition = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -52,6 +52,6 @@ class MPlaylistmoveContentInListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MPlaylistmoveContentInListReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

@@ -21,12 +21,12 @@ class MCuePointgetCuePointsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MCuePointgetCuePointsReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MCuePointgetCuePointsReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	/**
 	 * search criteria used to filter the cue points list of a content
@@ -34,7 +34,7 @@ class MCuePointgetCuePointsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """search criteria used to filter the cue points list of a content""", required = true)
 	@BeanProperty
 	var criteria: MCuePointCriteria =_
-	def withcriteria(p:MCuePointCriteria):MCuePointgetCuePointsReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MCuePointCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -42,16 +42,16 @@ class MCuePointgetCuePointsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MCuePointgetCuePointsReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MCuePointgetCuePointsReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MCuePointgetCuePointsReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

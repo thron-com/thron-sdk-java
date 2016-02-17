@@ -26,7 +26,7 @@ class MIMetadataremoveReq extends Serializable {
 	//#SWGNL#Only for multilocale metadata definitions.""", required = true)
 	@BeanProperty
 	var lang: String =_
-	def withlang(p:String):MIMetadataremoveReq ={ 	this.lang = p; 	this }
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
 	 * Required. 
@@ -34,6 +34,6 @@ class MIMetadataremoveReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Required. """, required = true)
 	@BeanProperty
 	var target: MTarget =_
-	def withtarget(p:MTarget):MIMetadataremoveReq ={ 	this.target = p; 	this }
+	def withtarget(p:MTarget):this.type ={ 	this.target = p; 	this }
 
 }

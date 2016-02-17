@@ -23,12 +23,12 @@ class MLiveEventfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MLiveEventfindByPropertiesReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MLiveEventCriteria =_
-	def withcriteria(p:MLiveEventCriteria):MLiveEventfindByPropertiesReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MLiveEventCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * Optional.If the client desires to have the content description for a specific
@@ -43,7 +43,7 @@ class MLiveEventfindByPropertiesReq extends Serializable {
 	//#SWGNL#The service always return all available locales for each liveEvent.""", required = true)
 	@BeanProperty
 	var locale: String =_
-	def withlocale(p:String):MLiveEventfindByPropertiesReq ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -51,17 +51,17 @@ class MLiveEventfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MLiveEventfindByPropertiesReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var orderBy: MELiveEventOrderBy =_
-	def withorderBy(p:MELiveEventOrderBy):MLiveEventfindByPropertiesReq ={ 	this.orderBy = p; 	this }
+	def withorderBy(p:MELiveEventOrderBy):this.type ={ 	this.orderBy = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MLiveEventfindByPropertiesReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Default and maximum value is 50 items
@@ -69,6 +69,6 @@ class MLiveEventfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default and maximum value is 50 items""", required = true)
 	@BeanProperty
 	var numberOfResults: Integer =_
-	def withnumberOfResults(p:Integer):MLiveEventfindByPropertiesReq ={ 	this.numberOfResults = p; 	this }
+	def withnumberOfResults(p:Integer):this.type ={ 	this.numberOfResults = p; 	this }
 
 }

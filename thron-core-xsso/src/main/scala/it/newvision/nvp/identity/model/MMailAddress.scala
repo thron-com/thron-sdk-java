@@ -20,7 +20,7 @@ class MMailAddress extends Serializable {
 	//#SWG#@ApiModelProperty(value = """HOME/WORK/PRIVATE...""")
 	@BeanProperty 
 	var emailCategory: String =_
-	def withemailCategory(p:String):MMailAddress ={ 	this.emailCategory = p; 	this }
+	def withemailCategory(p:String):this.type ={ 	this.emailCategory = p; 	this }
 
 	/**
 	 * A valid e-mail address
@@ -34,7 +34,7 @@ class MMailAddress extends Serializable {
 	//#SWGNL#-) valid email format""" ,required = true)
 	@BeanProperty 
 	var email: String =_
-	def withemail(p:String):MMailAddress ={ 	this.email = p; 	this }
+	def withemail(p:String):this.type ={ 	this.email = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -20,12 +20,12 @@ class MEventManagerstartEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MEventManagerstartEventReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MEventManagerstartEventReq ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * used to specify is the event should be recorded or not.
@@ -33,7 +33,7 @@ class MEventManagerstartEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to specify is the event should be recorded or not.""", required = true)
 	@BeanProperty
 	var recordEvent: Boolean =_
-	def withrecordEvent(p:Boolean):MEventManagerstartEventReq ={ 	this.recordEvent = p; 	this }
+	def withrecordEvent(p:Boolean):this.type ={ 	this.recordEvent = p; 	this }
 
 	/**
 	 * Optional. Used to specify a specific profile for the event.
@@ -41,6 +41,6 @@ class MEventManagerstartEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Used to specify a specific profile for the event.""", required = true)
 	@BeanProperty
 	var profileId: String =_
-	def withprofileId(p:String):MEventManagerstartEventReq ={ 	this.profileId = p; 	this }
+	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
 
 }

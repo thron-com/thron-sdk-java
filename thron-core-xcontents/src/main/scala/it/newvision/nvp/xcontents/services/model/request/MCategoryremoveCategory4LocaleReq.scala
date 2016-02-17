@@ -21,16 +21,16 @@ class MCategoryremoveCategory4LocaleReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MCategoryremoveCategory4LocaleReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var catId: String =_
-	def withcatId(p:String):MCategoryremoveCategory4LocaleReq ={ 	this.catId = p; 	this }
+	def withcatId(p:String):this.type ={ 	this.catId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var locale: String =_
-	def withlocale(p:String):MCategoryremoveCategory4LocaleReq ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 }

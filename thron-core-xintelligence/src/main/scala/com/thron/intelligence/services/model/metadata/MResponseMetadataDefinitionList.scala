@@ -17,11 +17,11 @@ class MResponseMetadataDefinitionList extends MResponseMetadataDefinition with S
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MMetadataDefinitionDetail] = new ArrayList[MMetadataDefinitionDetail]
-	def withitems(p:List[MMetadataDefinitionDetail]):MResponseMetadataDefinitionList ={ 	this.items = p; 	this }
+	def withitems(p:List[MMetadataDefinitionDetail]):this.type ={ 	this.items = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseMetadataDefinitionList ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

@@ -21,11 +21,11 @@ class MMediaContentUpdate extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var creationDate: Date =_
-	def withcreationDate(p:Date):MMediaContentUpdate ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var owner: String =_
-	def withowner(p:String):MMediaContentUpdate ={ 	this.owner = p; 	this }
+	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
 
 }

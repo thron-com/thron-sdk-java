@@ -20,7 +20,7 @@ class MMetadataDefinitionAlternativeMOption extends MMetadataDefinitionOptionCla
 	//#SWG#@ApiModelProperty(value = """Used as layout directive, not for validation""")
 	@BeanProperty 
 	var fieldType: MEAlternativeMType =_
-	def withfieldType(p:MEAlternativeMType):MMetadataDefinitionAlternativeMOption ={ 	this.fieldType = p; 	this }
+	def withfieldType(p:MEAlternativeMType):this.type ={ 	this.fieldType = p; 	this }
 
 	/**
 	 * Used for validation
@@ -28,7 +28,7 @@ class MMetadataDefinitionAlternativeMOption extends MMetadataDefinitionOptionCla
 	//#SWG#@ApiModelProperty(value = """Used for validation""")
 	@BeanProperty 
 	var values: List[MAlternativeValue] = new ArrayList[MAlternativeValue]
-	def withvalues(p:List[MAlternativeValue]):MMetadataDefinitionAlternativeMOption ={ 	this.values = p; 	this }
+	def withvalues(p:List[MAlternativeValue]):this.type ={ 	this.values = p; 	this }
 
 	/**
 	 * @return Boolean

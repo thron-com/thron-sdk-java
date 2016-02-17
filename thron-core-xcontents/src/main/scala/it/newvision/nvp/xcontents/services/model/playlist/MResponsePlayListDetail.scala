@@ -28,7 +28,7 @@ class MResponsePlayListDetail extends MResponsePlayList with Serializable  {
 	//#SWG#@ApiModelProperty(value = """specifies that the following playlist is based on a specific content type (all elements of the playlist have the same content type). match the EContentType in xcontents""")
 	@BeanProperty 
 	var playlistTemplate: String =_
-	def withplaylistTemplate(p:String):MResponsePlayListDetail ={ 	this.playlistTemplate = p; 	this }
+	def withplaylistTemplate(p:String):this.type ={ 	this.playlistTemplate = p; 	this }
 
 	/**
 	 * The playlist content information, with locale description, metadata and
@@ -37,6 +37,6 @@ class MResponsePlayListDetail extends MResponsePlayList with Serializable  {
 	//#SWG#@ApiModelProperty(value = """The playlist content information, with locale description, metadata and linkedcontents (playlist elements).""" ,required = true)
 	@BeanProperty 
 	var content: MContent =_
-	def withcontent(p:MContent):MResponsePlayListDetail ={ 	this.content = p; 	this }
+	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
 
 }

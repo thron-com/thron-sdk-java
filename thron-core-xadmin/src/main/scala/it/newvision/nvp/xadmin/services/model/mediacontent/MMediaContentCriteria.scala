@@ -31,7 +31,7 @@ class MMediaContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to get all contents having content Status in the given list. """)
 	@BeanProperty 
 	var status: List[MEContentStatus] = new ArrayList[MEContentStatus]
-	def withstatus(p:List[MEContentStatus]):MMediaContentCriteria ={ 	this.status = p; 	this }
+	def withstatus(p:List[MEContentStatus]):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * used to get all contents with contentType in the given list. 
@@ -39,7 +39,7 @@ class MMediaContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to get all contents with contentType in the given list. """)
 	@BeanProperty 
 	var contentType: List[MEContentType] = new ArrayList[MEContentType]
-	def withcontentType(p:List[MEContentType]):MMediaContentCriteria ={ 	this.contentType = p; 	this }
+	def withcontentType(p:List[MEContentType]):this.type ={ 	this.contentType = p; 	this }
 
 	/**
 	 * The attribute shows from which solution the content has been created. 
@@ -49,7 +49,7 @@ class MMediaContentCriteria extends Serializable {
 	@Deprecated
 	var solution: String =_
 	@Deprecated
-	def withsolution(p:String):MMediaContentCriteria ={ 	this.solution = p; 	this }
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * The attribute shows from which solution the content is available. This
@@ -60,7 +60,7 @@ class MMediaContentCriteria extends Serializable {
 	@Deprecated
 	var availableInSolutions: List[String] = new ArrayList[String]
 	@Deprecated
-	def withavailableInSolutions(p:List[String]):MMediaContentCriteria ={ 	this.availableInSolutions = p; 	this }
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
 
 	/**
 	 * Return all mediaContents having the xpublishedId in the list.
@@ -68,7 +68,7 @@ class MMediaContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Return all mediaContents having the xpublishedId in the list.""")
 	@BeanProperty 
 	var xpublishedId: List[String] = new ArrayList[String]
-	def withxpublishedId(p:List[String]):MMediaContentCriteria ={ 	this.xpublishedId = p; 	this }
+	def withxpublishedId(p:List[String]):this.type ={ 	this.xpublishedId = p; 	this }
 
 	/**
 	 * Return all mediaContents having the xcontentId in the list.
@@ -76,7 +76,7 @@ class MMediaContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Return all mediaContents having the xcontentId in the list.""")
 	@BeanProperty 
 	var xcontentId: List[String] = new ArrayList[String]
-	def withxcontentId(p:List[String]):MMediaContentCriteria ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:List[String]):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * Return all mediaContents having the mediaContentId in the list.
@@ -84,7 +84,7 @@ class MMediaContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Return all mediaContents having the mediaContentId in the list.""")
 	@BeanProperty 
 	var mediaContentId: List[String] = new ArrayList[String]
-	def withmediaContentId(p:List[String]):MMediaContentCriteria ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:List[String]):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * creation date range [fromDate - toDate]
@@ -92,7 +92,7 @@ class MMediaContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """creation date range [fromDate - toDate]""")
 	@BeanProperty 
 	var fromDate: Date =_
-	def withfromDate(p:Date):MMediaContentCriteria ={ 	this.fromDate = p; 	this }
+	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
 
 	/**
 	 * creation date range [fromDate - toDate]
@@ -100,7 +100,7 @@ class MMediaContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """creation date range [fromDate - toDate]""")
 	@BeanProperty 
 	var toDate: Date =_
-	def withtoDate(p:Date):MMediaContentCriteria ={ 	this.toDate = p; 	this }
+	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 	/**
 	 * if TRUE: returns only User Generated Contents
@@ -112,7 +112,7 @@ class MMediaContentCriteria extends Serializable {
 	//#SWGNL#if null: all contents""")
 	@BeanProperty 
 	var ugc: Boolean =_
-	def withugc(p:Boolean):MMediaContentCriteria ={ 	this.ugc = p; 	this }
+	def withugc(p:Boolean):this.type ={ 	this.ugc = p; 	this }
 
 	/**
 	 * Used to filter the content having source files of a specific mimeType.
@@ -120,7 +120,7 @@ class MMediaContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to filter the content having source files of a specific mimeType.""")
 	@BeanProperty 
 	var mimeType: String =_
-	def withmimeType(p:String):MMediaContentCriteria ={ 	this.mimeType = p; 	this }
+	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
 
 	/**
 	 * Used to filter the media contents created by specific userId.
@@ -128,6 +128,6 @@ class MMediaContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to filter the media contents created by specific userId.""")
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MMediaContentCriteria ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 }

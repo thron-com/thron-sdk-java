@@ -20,12 +20,12 @@ class MEventManagerchangeClientStreamPreviewReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MEventManagerchangeClientStreamPreviewReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MEventManagerchangeClientStreamPreviewReq ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * clientStreamInPreview can only contain [0-9a-zA-Z-_] characters
@@ -38,6 +38,6 @@ class MEventManagerchangeClientStreamPreviewReq extends Serializable {
 	//#SWGNL#Used to specify the name of the clientStream to push in preview. It is possibile to specify a clientStreamInPreview not present among the clientStreams of the event, so when a clientStream with the same name is added to the event will be published automatically.""", required = true)
 	@BeanProperty
 	var clientStreamInPreview: String =_
-	def withclientStreamInPreview(p:String):MEventManagerchangeClientStreamPreviewReq ={ 	this.clientStreamInPreview = p; 	this }
+	def withclientStreamInPreview(p:String):this.type ={ 	this.clientStreamInPreview = p; 	this }
 
 }

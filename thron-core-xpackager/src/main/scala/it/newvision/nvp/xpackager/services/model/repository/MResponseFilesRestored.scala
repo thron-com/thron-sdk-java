@@ -17,11 +17,11 @@ class MResponseFilesRestored extends MResponseRepository with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var filesRestored: List[MFileExtended] = new ArrayList[MFileExtended]
-	def withfilesRestored(p:List[MFileExtended]):MResponseFilesRestored ={ 	this.filesRestored = p; 	this }
+	def withfilesRestored(p:List[MFileExtended]):this.type ={ 	this.filesRestored = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var filesNotRestored: List[MFileExtended] = new ArrayList[MFileExtended]
-	def withfilesNotRestored(p:List[MFileExtended]):MResponseFilesRestored ={ 	this.filesNotRestored = p; 	this }
+	def withfilesNotRestored(p:List[MFileExtended]):this.type ={ 	this.filesNotRestored = p; 	this }
 
 }

@@ -22,7 +22,7 @@ class MLiveEventDetail extends MLiveEvent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the current status of the event""" ,required = true)
 	@BeanProperty 
 	var eventStatus: MELiveEventStatus =_
-	def witheventStatus(p:MELiveEventStatus):MLiveEventDetail ={ 	this.eventStatus = p; 	this }
+	def witheventStatus(p:MELiveEventStatus):this.type ={ 	this.eventStatus = p; 	this }
 
 	/**
 	 * @param c : MLiveEvent

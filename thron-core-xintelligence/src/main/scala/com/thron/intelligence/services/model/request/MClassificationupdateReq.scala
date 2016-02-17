@@ -21,6 +21,6 @@ class MClassificationupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var update: MClassificationUpdate =_
-	def withupdate(p:MClassificationUpdate):MClassificationupdateReq ={ 	this.update = p; 	this }
+	def withupdate(p:MClassificationUpdate):this.type ={ 	this.update = p; 	this }
 
 }

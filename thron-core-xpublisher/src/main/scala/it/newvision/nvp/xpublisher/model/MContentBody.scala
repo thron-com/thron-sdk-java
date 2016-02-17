@@ -20,11 +20,11 @@ class MContentBody extends Serializable {
 	//#SWG#@ApiModelProperty(value = """raw body source""")
 	@BeanProperty 
 	var body: String =_
-	def withbody(p:String):MContentBody ={ 	this.body = p; 	this }
+	def withbody(p:String):this.type ={ 	this.body = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var mimetype: String =_
-	def withmimetype(p:String):MContentBody ={ 	this.mimetype = p; 	this }
+	def withmimetype(p:String):this.type ={ 	this.mimetype = p; 	this }
 
 }

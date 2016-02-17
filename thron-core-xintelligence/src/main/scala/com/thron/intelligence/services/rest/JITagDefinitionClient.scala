@@ -109,7 +109,7 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * Suggest a new ITagDefinition for the given classification.
 	 * Used by users or engines to suggest new tags for a given classification.
 	 * 
-	 * Constraints:
+	 * <b>Constraints:</b>
 	 * <ul>
 	 * 	<li>it's not possible to suggest itagdefinition with a parentId in unapproved status (only
 	 * approved tag can have children) or uncategorized.</li>

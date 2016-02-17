@@ -17,6 +17,6 @@ class MResponseITagInstanceList extends MResponseITag with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MITagInstance] = new ArrayList[MITagInstance]
-	def withitems(p:List[MITagInstance]):MResponseITagInstanceList ={ 	this.items = p; 	this }
+	def withitems(p:List[MITagInstance]):this.type ={ 	this.items = p; 	this }
 
 }

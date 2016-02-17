@@ -21,6 +21,6 @@ class MMetadataDefinitionupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var update: MMetadataDefinitionUpdate =_
-	def withupdate(p:MMetadataDefinitionUpdate):MMetadataDefinitionupdateReq ={ 	this.update = p; 	this }
+	def withupdate(p:MMetadataDefinitionUpdate):this.type ={ 	this.update = p; 	this }
 
 }

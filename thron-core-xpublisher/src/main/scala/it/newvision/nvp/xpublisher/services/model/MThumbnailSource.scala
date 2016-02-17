@@ -24,11 +24,11 @@ class MThumbnailSource extends Serializable {
 	//#SWG#@ApiModelProperty(value = """byte[]""")
 	@BeanProperty 
 	var source: Array[Byte]= new Array[Byte](0)
-	def withsource(p:Array[Byte]):MThumbnailSource ={ 	this.source = p; 	this }
+	def withsource(p:Array[Byte]):this.type ={ 	this.source = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MThumbnailSource ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 }

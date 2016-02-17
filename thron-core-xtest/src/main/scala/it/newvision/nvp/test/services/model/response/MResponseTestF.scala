@@ -18,41 +18,41 @@ class MResponseTestF extends MResponseTest with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attString: String =_
-	def withattString(p:String):MResponseTestF ={ 	this.attString = p; 	this }
+	def withattString(p:String):this.type ={ 	this.attString = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attDate: Date =_
-	def withattDate(p:Date):MResponseTestF ={ 	this.attDate = p; 	this }
+	def withattDate(p:Date):this.type ={ 	this.attDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attenum: METestEnum =_
-	def withattenum(p:METestEnum):MResponseTestF ={ 	this.attenum = p; 	this }
+	def withattenum(p:METestEnum):this.type ={ 	this.attenum = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attlong: Long =_
-	def withattlong(p:Long):MResponseTestF ={ 	this.attlong = p; 	this }
+	def withattlong(p:Long):this.type ={ 	this.attlong = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attInt: Integer =_
-	def withattInt(p:Integer):MResponseTestF ={ 	this.attInt = p; 	this }
+	def withattInt(p:Integer):this.type ={ 	this.attInt = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attdouble: Double =_
-	def withattdouble(p:Double):MResponseTestF ={ 	this.attdouble = p; 	this }
+	def withattdouble(p:Double):this.type ={ 	this.attdouble = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attbool: Boolean =_
-	def withattbool(p:Boolean):MResponseTestF ={ 	this.attbool = p; 	this }
+	def withattbool(p:Boolean):this.type ={ 	this.attbool = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attfloat: Float =_
-	def withattfloat(p:Float):MResponseTestF ={ 	this.attfloat = p; 	this }
+	def withattfloat(p:Float):this.type ={ 	this.attfloat = p; 	this }
 
 }

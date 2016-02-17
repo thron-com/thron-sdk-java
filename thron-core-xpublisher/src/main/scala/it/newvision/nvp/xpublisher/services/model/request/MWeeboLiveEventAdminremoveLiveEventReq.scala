@@ -20,21 +20,21 @@ class MWeeboLiveEventAdminremoveLiveEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboLiveEventAdminremoveLiveEventReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty @org.codehaus.jackson.annotate.JsonProperty("PContentId")
 	var pContentId: String =_
-	def withpContentId(p:String):MWeeboLiveEventAdminremoveLiveEventReq ={ 	this.pContentId = p; 	this }
+	def withpContentId(p:String):this.type ={ 	this.pContentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var discardRecordedFiles: Boolean =_
-	def withdiscardRecordedFiles(p:Boolean):MWeeboLiveEventAdminremoveLiveEventReq ={ 	this.discardRecordedFiles = p; 	this }
+	def withdiscardRecordedFiles(p:Boolean):this.type ={ 	this.discardRecordedFiles = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var removeInstances: Boolean =_
-	def withremoveInstances(p:Boolean):MWeeboLiveEventAdminremoveLiveEventReq ={ 	this.removeInstances = p; 	this }
+	def withremoveInstances(p:Boolean):this.type ={ 	this.removeInstances = p; 	this }
 
 }

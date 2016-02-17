@@ -25,7 +25,7 @@ class MFileContentType extends Serializable {
 	//#SWG#@ApiModelProperty(value = """filename with extension (example myimage.jpg)""" ,required = true)
 	@BeanProperty 
 	var fileName: String =_
-	def withfileName(p:String):MFileContentType ={ 	this.fileName = p; 	this }
+	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
 
 	/**
 	 * The list of possible contentType the specific fileName can be published in
@@ -34,6 +34,6 @@ class MFileContentType extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The list of possible contentType the specific fileName can be published in platform. """)
 	@BeanProperty 
 	var contentType: List[MEContentType] = new ArrayList[MEContentType]
-	def withcontentType(p:List[MEContentType]):MFileContentType ={ 	this.contentType = p; 	this }
+	def withcontentType(p:List[MEContentType]):this.type ={ 	this.contentType = p; 	this }
 
 }

@@ -21,11 +21,11 @@ class MPublishInWeeboExpresspublishProgramReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPublishInWeeboExpresspublishProgramReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var param: MPublishExpressProgramParams =_
-	def withparam(p:MPublishExpressProgramParams):MPublishInWeeboExpresspublishProgramReq ={ 	this.param = p; 	this }
+	def withparam(p:MPublishExpressProgramParams):this.type ={ 	this.param = p; 	this }
 
 }

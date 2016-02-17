@@ -20,7 +20,7 @@ class MAdminConsoletouchFileInRepositoryReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAdminConsoletouchFileInRepositoryReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * if true it set to removed the data in the repository but it's possible to
@@ -32,11 +32,11 @@ class MAdminConsoletouchFileInRepositoryReq extends Serializable {
 	//#SWGNL#if false, all data are removed from the storage and it's not possible to restore the data in the platform.""", required = true)
 	@BeanProperty
 	var fileName: String =_
-	def withfileName(p:String):MAdminConsoletouchFileInRepositoryReq ={ 	this.fileName = p; 	this }
+	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var siteName: String =_
-	def withsiteName(p:String):MAdminConsoletouchFileInRepositoryReq ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 }

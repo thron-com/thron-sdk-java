@@ -20,7 +20,7 @@ class MIMetadataCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The classification Id""" ,required = true)
 	@BeanProperty 
 	var classificationId: String =_
-	def withclassificationId(p:String):MIMetadataCriteria ={ 	this.classificationId = p; 	this }
+	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
 
 	/**
 	 * The MetadataDefinition Key
@@ -28,7 +28,7 @@ class MIMetadataCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The MetadataDefinition Key""" ,required = true)
 	@BeanProperty 
 	var key: String =_
-	def withkey(p:String):MIMetadataCriteria ={ 	this.key = p; 	this }
+	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
 	/**
 	 * The metadata value (exact match, case sensitive)
@@ -36,6 +36,6 @@ class MIMetadataCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The metadata value (exact match, case sensitive)""" ,required = true)
 	@BeanProperty 
 	var value: String =_
-	def withvalue(p:String):MIMetadataCriteria ={ 	this.value = p; 	this }
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 }

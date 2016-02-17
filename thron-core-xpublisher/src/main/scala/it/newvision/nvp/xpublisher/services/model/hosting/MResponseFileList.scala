@@ -17,6 +17,6 @@ class MResponseFileList extends MResponseHosting with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var files: List[MResourceFile] = new ArrayList[MResourceFile]
-	def withfiles(p:List[MResourceFile]):MResponseFileList ={ 	this.files = p; 	this }
+	def withfiles(p:List[MResourceFile]):this.type ={ 	this.files = p; 	this }
 
 }

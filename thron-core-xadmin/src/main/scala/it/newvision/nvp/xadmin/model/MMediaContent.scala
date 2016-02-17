@@ -31,7 +31,7 @@ class MMediaContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """it's the unique reference ID for a given MediaContent object. It's the mediacontentId""" ,required = true)
 	@BeanProperty 
 	var id: String  = java.util.UUID.randomUUID.toString
-	def withid(p:String):MMediaContent ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * It is the content reference id of the xcontent component.
@@ -39,7 +39,7 @@ class MMediaContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """It is the content reference id of the xcontent component.""")
 	@BeanProperty 
 	var xcontentId: String =_
-	def withxcontentId(p:String):MMediaContent ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -49,7 +49,7 @@ class MMediaContent extends Serializable {
 	@Deprecated
 	var packagedId: List[String] = new ArrayList[String]
 	@Deprecated
-	def withpackagedId(p:List[String]):MMediaContent ={ 	this.packagedId = p; 	this }
+	def withpackagedId(p:List[String]):this.type ={ 	this.packagedId = p; 	this }
 
 	/**
 	 * It is the content reference id of the xpublisher component.
@@ -57,12 +57,12 @@ class MMediaContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """It is the content reference id of the xpublisher component.""")
 	@BeanProperty 
 	var xpublishedId: String =_
-	def withxpublishedId(p:String):MMediaContent ={ 	this.xpublishedId = p; 	this }
+	def withxpublishedId(p:String):this.type ={ 	this.xpublishedId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var creationDate: Date  = new Date
-	def withcreationDate(p:Date):MMediaContent ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * The userId of the user who created the content. Can be an internal userId or
@@ -71,12 +71,12 @@ class MMediaContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The userId of the user who created the content. Can be an internal userId or external depending where the user component is handled.""")
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MMediaContent ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentType: MEContentType  = MEContentType.OTHER
-	def withcontentType(p:MEContentType):MMediaContent ={ 	this.contentType = p; 	this }
+	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
 
 	/**
 	 * The display name of the Author.
@@ -88,7 +88,7 @@ class MMediaContent extends Serializable {
 	//#SWGNL#Constraints: max length = 50""" ,required = true)
 	@BeanProperty 
 	var owner: String  = ""
-	def withowner(p:String):MMediaContent ={ 	this.owner = p; 	this }
+	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -101,7 +101,7 @@ class MMediaContent extends Serializable {
 	@Deprecated
 	var solution: String =_
 	@Deprecated
-	def withsolution(p:String):MMediaContent ={ 	this.solution = p; 	this }
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -115,7 +115,7 @@ class MMediaContent extends Serializable {
 	@Deprecated
 	var availableInSolutions: List[String] = new ArrayList[String]
 	@Deprecated
-	def withavailableInSolutions(p:List[String]):MMediaContent ={ 	this.availableInSolutions = p; 	this }
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
 
 	/**
 	 * used to flag the User Generated Contents.
@@ -123,20 +123,7 @@ class MMediaContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to flag the User Generated Contents.""")
 	@BeanProperty 
 	var contentUGC: Boolean =_
-	def withcontentUGC(p:Boolean):MMediaContent ={ 	this.contentUGC = p; 	this }
-
-	/**
-	 * The specific channel for the thumbnails.
-	 */
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """The specific channel for the thumbnails.""")
-	var thumbChannel: MChannel =_
-	  def withthumbChannel(p:MChannel):MMediaContent ={ 	this.thumbChannel = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var channels: List[MChannel] = new ArrayList[MChannel]
-	  def withchannels(p:List[MChannel]):MMediaContent ={ 	this.channels = p; 	this }
+	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
 
 	/**
 	 * Used as link to the source files in repository used in past. The current source
@@ -146,7 +133,20 @@ class MMediaContent extends Serializable {
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """Used as link to the source files in repository used in past. The current source files is moved in this list when the user call the service JDashboard.replaceSourceFiles""")
 	var sourcefilesOldVersions: List[MFile] = new ArrayList[MFile]
-	  def withsourcefilesOldVersions(p:List[MFile]):MMediaContent ={ 	this.sourcefilesOldVersions = p; 	this }
+	  def withsourcefilesOldVersions(p:List[MFile]):this.type ={ 	this.sourcefilesOldVersions = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var channels: List[MChannel] = new ArrayList[MChannel]
+	  def withchannels(p:List[MChannel]):this.type ={ 	this.channels = p; 	this }
+
+	/**
+	 * The specific channel for the thumbnails.
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """The specific channel for the thumbnails.""")
+	var thumbChannel: MChannel =_
+	  def withthumbChannel(p:MChannel):this.type ={ 	this.thumbChannel = p; 	this }
 
 	/**
 	 * the original uploaded file properties. calculated using the Repository services.
@@ -154,7 +154,7 @@ class MMediaContent extends Serializable {
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """the original uploaded file properties. calculated using the Repository services.""")
 	var sourceFiles: List[MFile] = new ArrayList[MFile]
-	  def withsourceFiles(p:List[MFile]):MMediaContent ={ 	this.sourceFiles = p; 	this }
+	  def withsourceFiles(p:List[MFile]):this.type ={ 	this.sourceFiles = p; 	this }
 
 	/**
 	 * @return MEContentStatus

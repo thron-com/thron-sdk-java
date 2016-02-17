@@ -23,7 +23,7 @@ class MAppUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var active: Boolean =_
-	def withactive(p:Boolean):MAppUpdateData ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * prettyId for the APP
@@ -31,7 +31,7 @@ class MAppUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """prettyId for the APP""")
 	@BeanProperty 
 	var prettyId: String =_
-	def withprettyId(p:String):MAppUpdateData ={ 	this.prettyId = p; 	this }
+	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	/**
 	 * main url of the app
@@ -39,12 +39,12 @@ class MAppUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """main url of the app""")
 	@BeanProperty 
 	var urlThumbnail: String =_
-	def withurlThumbnail(p:String):MAppUpdateData ={ 	this.urlThumbnail = p; 	this }
+	def withurlThumbnail(p:String):this.type ={ 	this.urlThumbnail = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var displayName: String =_
-	def withdisplayName(p:String):MAppUpdateData ={ 	this.displayName = p; 	this }
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
 	/**
 	 * custom description of the app
@@ -52,7 +52,7 @@ class MAppUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """custom description of the app""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MAppUpdateData ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * the white list of the allowed domain where the app can run.
@@ -62,7 +62,7 @@ class MAppUpdateData extends MUpdater with Serializable  {
 	//#SWGNL#The domain check is applied on JApp.loginSnippet""")
 	@BeanProperty 
 	var domainsWhiteList: List[String] =_
-	def withdomainsWhiteList(p:List[String]):MAppUpdateData ={ 	this.domainsWhiteList = p; 	this }
+	def withdomainsWhiteList(p:List[String]):this.type ={ 	this.domainsWhiteList = p; 	this }
 
 	/**
 	 * generic metadata linked to the app
@@ -70,7 +70,7 @@ class MAppUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """generic metadata linked to the app""")
 	@BeanProperty 
 	var metadata: List[MMetadata] =_
-	def withmetadata(p:List[MMetadata]):MAppUpdateData ={ 	this.metadata = p; 	this }
+	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 	/**
 	 * main url of the app
@@ -78,17 +78,17 @@ class MAppUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """main url of the app""")
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MAppUpdateData ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var canDisguise: Boolean =_
-	def withcanDisguise(p:Boolean):MAppUpdateData ={ 	this.canDisguise = p; 	this }
+	def withcanDisguise(p:Boolean):this.type ={ 	this.canDisguise = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var disguiseData: MAppDisguiseData =_
-	def withdisguiseData(p:MAppDisguiseData):MAppUpdateData ={ 	this.disguiseData = p; 	this }
+	def withdisguiseData(p:MAppDisguiseData):this.type ={ 	this.disguiseData = p; 	this }
 
 	/**
 	 * @return Boolean

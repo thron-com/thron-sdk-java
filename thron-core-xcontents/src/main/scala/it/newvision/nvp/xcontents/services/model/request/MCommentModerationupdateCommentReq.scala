@@ -21,16 +21,16 @@ class MCommentModerationupdateCommentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MCommentModerationupdateCommentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var commentId: String =_
-	def withcommentId(p:String):MCommentModerationupdateCommentReq ={ 	this.commentId = p; 	this }
+	def withcommentId(p:String):this.type ={ 	this.commentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var comment: MCommentPub =_
-	def withcomment(p:MCommentPub):MCommentModerationupdateCommentReq ={ 	this.comment = p; 	this }
+	def withcomment(p:MCommentPub):this.type ={ 	this.comment = p; 	this }
 
 }

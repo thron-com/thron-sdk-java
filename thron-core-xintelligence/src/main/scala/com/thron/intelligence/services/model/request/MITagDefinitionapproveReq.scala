@@ -24,6 +24,6 @@ class MITagDefinitionapproveReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Update in "patch" mode the TagDefinition""", required = true)
 	@BeanProperty
 	var update: MITagDefinitionUpdate =_
-	def withupdate(p:MITagDefinitionUpdate):MITagDefinitionapproveReq ={ 	this.update = p; 	this }
+	def withupdate(p:MITagDefinitionUpdate):this.type ={ 	this.update = p; 	this }
 
 }

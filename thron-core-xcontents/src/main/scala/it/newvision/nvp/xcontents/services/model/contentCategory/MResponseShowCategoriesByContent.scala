@@ -18,7 +18,7 @@ class MResponseShowCategoriesByContent extends MResponseContentCategory with Ser
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var categories: List[MCategory] = new ArrayList[MCategory]
-	def withcategories(p:List[MCategory]):MResponseShowCategoriesByContent ={ 	this.categories = p; 	this }
+	def withcategories(p:List[MCategory]):this.type ={ 	this.categories = p; 	this }
 
 	/**
 	 * total number of results
@@ -26,6 +26,6 @@ class MResponseShowCategoriesByContent extends MResponseContentCategory with Ser
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseShowCategoriesByContent ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

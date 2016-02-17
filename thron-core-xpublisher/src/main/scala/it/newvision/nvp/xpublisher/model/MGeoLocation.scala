@@ -21,7 +21,7 @@ class MGeoLocation extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var enabled: Boolean  = false
-	def withenabled(p:Boolean):MGeoLocation ={ 	this.enabled = p; 	this }
+	def withenabled(p:Boolean):this.type ={ 	this.enabled = p; 	this }
 
 	/**
 	 * the list of country codes
@@ -29,7 +29,7 @@ class MGeoLocation extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of country codes""")
 	@BeanProperty 
 	var countries: List[String] = new ArrayList[String]
-	def withcountries(p:List[String]):MGeoLocation ={ 	this.countries = p; 	this }
+	def withcountries(p:List[String]):this.type ={ 	this.countries = p; 	this }
 
 	/**
 	 * if true the countries list is used as blacklist otherwise it is used as white
@@ -38,6 +38,6 @@ class MGeoLocation extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if true the countries list is used as blacklist otherwise it is used as white list.""" ,required = true)
 	@BeanProperty 
 	var asBlackList: Boolean  = true
-	def withasBlackList(p:Boolean):MGeoLocation ={ 	this.asBlackList = p; 	this }
+	def withasBlackList(p:Boolean):this.type ={ 	this.asBlackList = p; 	this }
 
 }

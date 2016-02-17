@@ -21,12 +21,12 @@ class MAppsAdminupdateKeyReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var appId: String =_
-	def withappId(p:String):MAppsAdminupdateKeyReq ={ 	this.appId = p; 	this }
+	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var key: String =_
-	def withkey(p:String):MAppsAdminupdateKeyReq ={ 	this.key = p; 	this }
+	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
 	/**
 	 * Optional. Additional capabilities to add to the snippet.
@@ -34,6 +34,6 @@ class MAppsAdminupdateKeyReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Additional capabilities to add to the snippet.""", required = true)
 	@BeanProperty
 	var value: MAppKeyUpdateData =_
-	def withvalue(p:MAppKeyUpdateData):MAppsAdminupdateKeyReq ={ 	this.value = p; 	this }
+	def withvalue(p:MAppKeyUpdateData):this.type ={ 	this.value = p; 	this }
 
 }

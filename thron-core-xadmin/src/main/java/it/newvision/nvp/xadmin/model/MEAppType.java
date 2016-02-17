@@ -33,5 +33,7 @@ public enum MEAppType {
 	 * for custom apps with snippets
 	 */
 	//#SWG#@ApiModelProperty(value = """for custom apps with snippets""")
-	@XmlEnumValue("CUSTOM") CUSTOM
+	@XmlEnumValue("CUSTOM") CUSTOM,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("RECOMMENDATION") RECOMMENDATION
 }

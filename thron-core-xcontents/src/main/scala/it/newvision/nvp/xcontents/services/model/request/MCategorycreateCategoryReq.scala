@@ -23,7 +23,7 @@ class MCategorycreateCategoryReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MCategorycreateCategoryReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	/**
 	 * Optional.
@@ -31,12 +31,12 @@ class MCategorycreateCategoryReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
 	@BeanProperty
 	var upCatId: String =_
-	def withupCatId(p:String):MCategorycreateCategoryReq ={ 	this.upCatId = p; 	this }
+	def withupCatId(p:String):this.type ={ 	this.upCatId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var catLocales: MCategory4Locale =_
-	def withcatLocales(p:MCategory4Locale):MCategorycreateCategoryReq ={ 	this.catLocales = p; 	this }
+	def withcatLocales(p:MCategory4Locale):this.type ={ 	this.catLocales = p; 	this }
 
 	/**
 	 * Deprecated. use solutions parameters
@@ -44,7 +44,7 @@ class MCategorycreateCategoryReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Deprecated. use solutions parameters""", required = true)
 	@BeanProperty
 	var solution: String =_
-	def withsolution(p:String):MCategorycreateCategoryReq ={ 	this.solution = p; 	this }
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * Optional.
@@ -57,7 +57,7 @@ class MCategorycreateCategoryReq extends Serializable {
 	//#SWGNL#Private categories can be created only on private categories tree, The upCatId (if present) must be private.""", required = true)
 	@BeanProperty
 	var isPrivate: Boolean =_
-	def withisPrivate(p:Boolean):MCategorycreateCategoryReq ={ 	this.isPrivate = p; 	this }
+	def withisPrivate(p:Boolean):this.type ={ 	this.isPrivate = p; 	this }
 
 	/**
 	 * Optional.
@@ -67,6 +67,6 @@ class MCategorycreateCategoryReq extends Serializable {
 	//#SWGNL#Init values for the category""", required = true)
 	@BeanProperty
 	var options: MCategoryUpdate =_
-	def withoptions(p:MCategoryUpdate):MCategorycreateCategoryReq ={ 	this.options = p; 	this }
+	def withoptions(p:MCategoryUpdate):this.type ={ 	this.options = p; 	this }
 
 }

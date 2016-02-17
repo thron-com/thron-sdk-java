@@ -18,11 +18,11 @@ class MResponseLogAnalyzer extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MELogAnalyzer =_
-	def withresultCode(p:MELogAnalyzer):MResponseLogAnalyzer ={ 	this.resultCode = p; 	this }
+	def withresultCode(p:MELogAnalyzer):this.type ={ 	this.resultCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var errorDescription: String  = ""
-	def witherrorDescription(p:String):MResponseLogAnalyzer ={ 	this.errorDescription = p; 	this }
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

@@ -20,6 +20,6 @@ class MAclRuleItems extends Serializable {
 	//#SWG#@ApiModelProperty(value = """a list of rule items""")
 	@BeanProperty 
 	var rules: List[MAclRuleItem] = new ArrayList[MAclRuleItem]
-	def withrules(p:List[MAclRuleItem]):MAclRuleItems ={ 	this.rules = p; 	this }
+	def withrules(p:List[MAclRuleItem]):this.type ={ 	this.rules = p; 	this }
 
 }

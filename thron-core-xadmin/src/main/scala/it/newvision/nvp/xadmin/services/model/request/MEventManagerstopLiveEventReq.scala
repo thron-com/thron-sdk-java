@@ -21,12 +21,12 @@ class MEventManagerstopLiveEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MEventManagerstopLiveEventReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MEventManagerstopLiveEventReq ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * Deprecated
@@ -34,7 +34,7 @@ class MEventManagerstopLiveEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Deprecated""", required = true)
 	@BeanProperty
 	var publishRecordedFiles: Boolean =_
-	def withpublishRecordedFiles(p:Boolean):MEventManagerstopLiveEventReq ={ 	this.publishRecordedFiles = p; 	this }
+	def withpublishRecordedFiles(p:Boolean):this.type ={ 	this.publishRecordedFiles = p; 	this }
 
 	/**
 	 * used to publish a new VIDEO Content fom the recorded files of the LIVE EVENT.
@@ -43,7 +43,7 @@ class MEventManagerstopLiveEventReq extends Serializable {
 	//#SWGNL#""", required = true)
 	@BeanProperty
 	var postEventAction: MEEventAction =_
-	def withpostEventAction(p:MEEventAction):MEventManagerstopLiveEventReq ={ 	this.postEventAction = p; 	this }
+	def withpostEventAction(p:MEEventAction):this.type ={ 	this.postEventAction = p; 	this }
 
 	/**
 	 * remove the instances linked to the event. Set to false only for debug or
@@ -52,6 +52,6 @@ class MEventManagerstopLiveEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """remove the instances linked to the event. Set to false only for debug or analysis""", required = true)
 	@BeanProperty
 	var removeInstances: Boolean =_
-	def withremoveInstances(p:Boolean):MEventManagerstopLiveEventReq ={ 	this.removeInstances = p; 	this }
+	def withremoveInstances(p:Boolean):this.type ={ 	this.removeInstances = p; 	this }
 
 }

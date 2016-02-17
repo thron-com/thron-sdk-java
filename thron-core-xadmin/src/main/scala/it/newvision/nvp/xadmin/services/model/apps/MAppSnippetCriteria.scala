@@ -21,27 +21,27 @@ class MAppSnippetCriteria extends MAppCriteria with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var snippetIds: List[String] = new ArrayList[String]
-	def withsnippetIds(p:List[String]):MAppSnippetCriteria ={ 	this.snippetIds = p; 	this }
+	def withsnippetIds(p:List[String]):this.type ={ 	this.snippetIds = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var snippetStatus: List[MESnippetStatus] = new ArrayList[MESnippetStatus]
-	def withsnippetStatus(p:List[MESnippetStatus]):MAppSnippetCriteria ={ 	this.snippetStatus = p; 	this }
+	def withsnippetStatus(p:List[MESnippetStatus]):this.type ={ 	this.snippetStatus = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var snippetDisplayName: String =_
-	def withsnippetDisplayName(p:String):MAppSnippetCriteria ={ 	this.snippetDisplayName = p; 	this }
+	def withsnippetDisplayName(p:String):this.type ={ 	this.snippetDisplayName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var snippetType: List[String] = new ArrayList[String]
-	def withsnippetType(p:List[String]):MAppSnippetCriteria ={ 	this.snippetType = p; 	this }
+	def withsnippetType(p:List[String]):this.type ={ 	this.snippetType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var snippetOwnerUsername: String =_
-	def withsnippetOwnerUsername(p:String):MAppSnippetCriteria ={ 	this.snippetOwnerUsername = p; 	this }
+	def withsnippetOwnerUsername(p:String):this.type ={ 	this.snippetOwnerUsername = p; 	this }
 
 	/**
 	 * @return Boolean

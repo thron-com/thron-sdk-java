@@ -143,7 +143,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * Suggest a new ITagDefinition for the given classification.
 	 * Used by users or engines to suggest new tags for a given classification.
 	 * 
-	 * Constraints:
+	 * <b>Constraints:</b>
 	 * <ul>
 	 * 	<li>it's not possible to suggest itagdefinition with a parentId in unapproved status (only
 	 * approved tag can have children) or uncategorized.</li>
@@ -167,7 +167,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	//#SWGNL#Suggest a new ITagDefinition for the given classification.
 	//#SWGNL#Used by users or engines to suggest new tags for a given classification.
 	//#SWGNL#
-	//#SWGNL#Constraints:
+	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>it's not possible to suggest itagdefinition with a parentId in unapproved status (only approved tag can have children) or uncategorized.</li>
 	//#SWGNL#	<li>it's not possible to linkMetadataDefinition to unapprovedTags</li>

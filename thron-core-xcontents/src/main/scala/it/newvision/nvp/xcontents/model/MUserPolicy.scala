@@ -17,6 +17,6 @@ class MUserPolicy extends MPolicy with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var username: String =_
-	def withusername(p:String):MUserPolicy ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

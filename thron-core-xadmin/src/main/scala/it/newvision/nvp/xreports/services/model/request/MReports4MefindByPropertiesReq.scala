@@ -21,21 +21,21 @@ class MReports4MefindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MReports4MefindByPropertiesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MCriteriaForReport =_
-	def withcriteria(p:MCriteriaForReport):MReports4MefindByPropertiesReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MCriteriaForReport):this.type ={ 	this.criteria = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MReports4MefindByPropertiesReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfResults: Integer =_
-	def withnumberOfResults(p:Integer):MReports4MefindByPropertiesReq ={ 	this.numberOfResults = p; 	this }
+	def withnumberOfResults(p:Integer):this.type ={ 	this.numberOfResults = p; 	this }
 
 }

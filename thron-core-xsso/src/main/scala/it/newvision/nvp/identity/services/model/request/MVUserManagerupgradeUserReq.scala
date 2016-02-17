@@ -22,12 +22,12 @@ class MVUserManagerupgradeUserReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MVUserManagerupgradeUserReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var username: String =_
-	def withusername(p:String):MVUserManagerupgradeUserReq ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	/**
 	 * Optional (the new password)
@@ -35,7 +35,7 @@ class MVUserManagerupgradeUserReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional (the new password)""", required = true)
 	@BeanProperty
 	var newPassword: String =_
-	def withnewPassword(p:String):MVUserManagerupgradeUserReq ={ 	this.newPassword = p; 	this }
+	def withnewPassword(p:String):this.type ={ 	this.newPassword = p; 	this }
 
 	/**
 	 * Optional. the User information
@@ -43,7 +43,7 @@ class MVUserManagerupgradeUserReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. the User information""", required = true)
 	@BeanProperty
 	var newUserDetail: MVUserDetail =_
-	def withnewUserDetail(p:MVUserDetail):MVUserManagerupgradeUserReq ={ 	this.newUserDetail = p; 	this }
+	def withnewUserDetail(p:MVUserDetail):this.type ={ 	this.newUserDetail = p; 	this }
 
 	/**
 	 * Optional
@@ -51,7 +51,7 @@ class MVUserManagerupgradeUserReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var newUserParams: MVUserParams =_
-	def withnewUserParams(p:MVUserParams):MVUserManagerupgradeUserReq ={ 	this.newUserParams = p; 	this }
+	def withnewUserParams(p:MVUserParams):this.type ={ 	this.newUserParams = p; 	this }
 
 	/**
 	 * Optional. Deprecated
@@ -59,6 +59,6 @@ class MVUserManagerupgradeUserReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Deprecated""", required = true)
 	@BeanProperty
 	var userQuota: Long =_
-	def withuserQuota(p:Long):MVUserManagerupgradeUserReq ={ 	this.userQuota = p; 	this }
+	def withuserQuota(p:Long):this.type ={ 	this.userQuota = p; 	this }
 
 }

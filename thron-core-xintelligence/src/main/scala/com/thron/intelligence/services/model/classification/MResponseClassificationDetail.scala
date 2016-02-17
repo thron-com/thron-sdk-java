@@ -17,6 +17,6 @@ class MResponseClassificationDetail extends MResponseClassification with Seriali
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var item: MClassificationDetail =_
-	def withitem(p:MClassificationDetail):MResponseClassificationDetail ={ 	this.item = p; 	this }
+	def withitem(p:MClassificationDetail):this.type ={ 	this.item = p; 	this }
 
 }

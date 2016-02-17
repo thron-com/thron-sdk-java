@@ -17,6 +17,6 @@ class MResponseFilesToBackup extends MResponseRepository with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var filesToBackup: List[MFileToBackup] = new ArrayList[MFileToBackup]
-	def withfilesToBackup(p:List[MFileToBackup]):MResponseFilesToBackup ={ 	this.filesToBackup = p; 	this }
+	def withfilesToBackup(p:List[MFileToBackup]):this.type ={ 	this.filesToBackup = p; 	this }
 
 }

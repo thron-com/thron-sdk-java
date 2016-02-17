@@ -25,6 +25,6 @@ class MTestServicelistReq extends Serializable {
 	//#SWGNL#Define the number of items returned by the service.""", required = true)
 	@BeanProperty
 	var numberOfResults: Integer =_
-	def withnumberOfResults(p:Integer):MTestServicelistReq ={ 	this.numberOfResults = p; 	this }
+	def withnumberOfResults(p:Integer):this.type ={ 	this.numberOfResults = p; 	this }
 
 }

@@ -24,7 +24,7 @@ class MAppDisguiseData extends Serializable {
 	//#SWG#@ApiModelProperty(value = """use "*" to enable all users. Empty list means no one.""")
 	@BeanProperty 
 	var usersWhiteList: List[String] = new ArrayList[String]
-	def withusersWhiteList(p:List[String]):MAppDisguiseData ={ 	this.usersWhiteList = p; 	this }
+	def withusersWhiteList(p:List[String]):this.type ={ 	this.usersWhiteList = p; 	this }
 
 	/**
 	 * use "*" to disable all users. Empty list means no one (is in blacklist).
@@ -32,7 +32,7 @@ class MAppDisguiseData extends Serializable {
 	//#SWG#@ApiModelProperty(value = """use "*" to disable all users. Empty list means no one (is in blacklist).""")
 	@BeanProperty 
 	var usersBlackList: List[String] = new ArrayList[String]
-	def withusersBlackList(p:List[String]):MAppDisguiseData ={ 	this.usersBlackList = p; 	this }
+	def withusersBlackList(p:List[String]):this.type ={ 	this.usersBlackList = p; 	this }
 
 	/**
 	 * use "*" to enable all groups. Empty list means no groups in whitelist.
@@ -40,7 +40,7 @@ class MAppDisguiseData extends Serializable {
 	//#SWG#@ApiModelProperty(value = """use "*" to enable all groups. Empty list means no groups in whitelist.""")
 	@BeanProperty 
 	var groupsWhiteList: List[String] = new ArrayList[String]
-	def withgroupsWhiteList(p:List[String]):MAppDisguiseData ={ 	this.groupsWhiteList = p; 	this }
+	def withgroupsWhiteList(p:List[String]):this.type ={ 	this.groupsWhiteList = p; 	this }
 
 	/**
 	 * use "*" to disable all groups. Empty list means no one (is in blacklist).
@@ -48,6 +48,6 @@ class MAppDisguiseData extends Serializable {
 	//#SWG#@ApiModelProperty(value = """use "*" to disable all groups. Empty list means no one (is in blacklist).""")
 	@BeanProperty 
 	var groupsBlackList: List[String] = new ArrayList[String]
-	def withgroupsBlackList(p:List[String]):MAppDisguiseData ={ 	this.groupsBlackList = p; 	this }
+	def withgroupsBlackList(p:List[String]):this.type ={ 	this.groupsBlackList = p; 	this }
 
 }

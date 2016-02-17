@@ -17,16 +17,16 @@ class MITag extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var classificationid: String =_
-	def withclassificationid(p:String):MITag ={ 	this.classificationid = p; 	this }
+	def withclassificationid(p:String):this.type ={ 	this.classificationid = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MITag ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var sources: List[MISourceIdentifier] = new ArrayList[MISourceIdentifier]
-	def withsources(p:List[MISourceIdentifier]):MITag ={ 	this.sources = p; 	this }
+	def withsources(p:List[MISourceIdentifier]):this.type ={ 	this.sources = p; 	this }
 
 }

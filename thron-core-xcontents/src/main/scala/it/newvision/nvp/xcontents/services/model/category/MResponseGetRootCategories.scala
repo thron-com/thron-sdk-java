@@ -18,7 +18,7 @@ class MResponseGetRootCategories extends MResponseCategory with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var categories: List[MCategory] = new ArrayList[MCategory]
-	def withcategories(p:List[MCategory]):MResponseGetRootCategories ={ 	this.categories = p; 	this }
+	def withcategories(p:List[MCategory]):this.type ={ 	this.categories = p; 	this }
 
 	/**
 	 * total number of results
@@ -26,6 +26,6 @@ class MResponseGetRootCategories extends MResponseCategory with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseGetRootCategories ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

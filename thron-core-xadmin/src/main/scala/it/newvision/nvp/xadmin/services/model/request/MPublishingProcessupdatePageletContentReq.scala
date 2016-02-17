@@ -20,7 +20,7 @@ class MPublishingProcessupdatePageletContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPublishingProcessupdatePageletContentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * mediaContentId or xcontentId are required
@@ -28,7 +28,7 @@ class MPublishingProcessupdatePageletContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
 	@BeanProperty
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MPublishingProcessupdatePageletContentReq ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * mediaContentId or xcontentId are required
@@ -36,7 +36,7 @@ class MPublishingProcessupdatePageletContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
 	@BeanProperty
 	var xcontentId: String =_
-	def withxcontentId(p:String):MPublishingProcessupdatePageletContentReq ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * raw body source (html or other formats).
@@ -46,7 +46,7 @@ class MPublishingProcessupdatePageletContentReq extends Serializable {
 	//#SWGNL#constraints: length < 10000000 chars (10.000.000 bytes)""", required = true)
 	@BeanProperty
 	var body: String =_
-	def withbody(p:String):MPublishingProcessupdatePageletContentReq ={ 	this.body = p; 	this }
+	def withbody(p:String):this.type ={ 	this.body = p; 	this }
 
 	/**
 	 * Optional. Used to specify the mime type of the body value.
@@ -57,6 +57,6 @@ class MPublishingProcessupdatePageletContentReq extends Serializable {
 	//#SWGNL#""", required = true)
 	@BeanProperty
 	var mimeType: String =_
-	def withmimeType(p:String):MPublishingProcessupdatePageletContentReq ={ 	this.mimeType = p; 	this }
+	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
 
 }

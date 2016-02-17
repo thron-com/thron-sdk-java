@@ -17,7 +17,8 @@ import it.newvision.nvp.xcontents.services.model.request.MAclInversedeleteAclRul
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * Service used to manage Contents and Categories Control List.
+ * Deprecated. Only for 4x version.
+ * Service used to manage Content/Categories ACL
  * <b>
  * </b><b>Web Service Endpoints</b>:
  * <ul>
@@ -26,7 +27,8 @@ import it.newvision.nvp.xcontents.services.model.request.MAclInversedeleteAclRul
  * </ul>
  */
 @Path("/aclinverse")
-//#SWG#@Api(value = "/aclinverse", description = """Service used to manage Contents and Categories Control List. 
+//#SWG#@Api(value = "/aclinverse", description = """Deprecated. Only for 4x version.
+//#SWGNL#Service used to manage Content/Categories ACL
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints</b>:
 //#SWGNL#<ul>

@@ -17,7 +17,7 @@ class MTagDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var value: String =_
-	def withvalue(p:String):MTagDetail ={ 	this.value = p; 	this }
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * Number of contents having the specified tag. This information is used to build
@@ -26,6 +26,6 @@ class MTagDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Number of contents having the specified tag. This information is used to build a Tag cloud.""")
 	@BeanProperty 
 	var weight: Integer =_
-	def withweight(p:Integer):MTagDetail ={ 	this.weight = p; 	this }
+	def withweight(p:Integer):this.type ={ 	this.weight = p; 	this }
 
 }

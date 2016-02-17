@@ -21,6 +21,6 @@ class MMetadataDefinitioninsertReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var value: MMetadataDefinitionValue =_
-	def withvalue(p:MMetadataDefinitionValue):MMetadataDefinitioninsertReq ={ 	this.value = p; 	this }
+	def withvalue(p:MMetadataDefinitionValue):this.type ={ 	this.value = p; 	this }
 
 }

@@ -17,22 +17,22 @@ class MQuery extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var fromDate: Date =_
-	def withfromDate(p:Date):MQuery ={ 	this.fromDate = p; 	this }
+	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var toDate: Date =_
-	def withtoDate(p:Date):MQuery ={ 	this.toDate = p; 	this }
+	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var timeUnit: METimeUnit =_
-	def withtimeUnit(p:METimeUnit):MQuery ={ 	this.timeUnit = p; 	this }
+	def withtimeUnit(p:METimeUnit):this.type ={ 	this.timeUnit = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var groupByCountryCode: Boolean  = false
-	def withgroupByCountryCode(p:Boolean):MQuery ={ 	this.groupByCountryCode = p; 	this }
+	def withgroupByCountryCode(p:Boolean):this.type ={ 	this.groupByCountryCode = p; 	this }
 
 	/**
 	 * @return Boolean

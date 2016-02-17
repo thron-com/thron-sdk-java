@@ -20,21 +20,21 @@ class MWeeboHostingrenameFileReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboHostingrenameFileReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var path: String =_
-	def withpath(p:String):MWeeboHostingrenameFileReq ={ 	this.path = p; 	this }
+	def withpath(p:String):this.type ={ 	this.path = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var filename: String =_
-	def withfilename(p:String):MWeeboHostingrenameFileReq ={ 	this.filename = p; 	this }
+	def withfilename(p:String):this.type ={ 	this.filename = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var newFilename: String =_
-	def withnewFilename(p:String):MWeeboHostingrenameFileReq ={ 	this.newFilename = p; 	this }
+	def withnewFilename(p:String):this.type ={ 	this.newFilename = p; 	this }
 
 }

@@ -17,7 +17,7 @@ class MResponseDeliveryGetSimilarContents extends MResponseDelivery with Seriali
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contents: List[MContentWallMinimal] = new ArrayList[MContentWallMinimal]
-	def withcontents(p:List[MContentWallMinimal]):MResponseDeliveryGetSimilarContents ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MContentWallMinimal]):this.type ={ 	this.contents = p; 	this }
 
 	/**
 	 * total number of results
@@ -25,6 +25,6 @@ class MResponseDeliveryGetSimilarContents extends MResponseDelivery with Seriali
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseDeliveryGetSimilarContents ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

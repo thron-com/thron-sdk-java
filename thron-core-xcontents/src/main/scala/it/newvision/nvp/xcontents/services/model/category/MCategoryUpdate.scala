@@ -34,7 +34,7 @@ class MCategoryUpdate extends MUpdater with Serializable  {
 	@Deprecated
 	var availableInSolutions: List[String] =_
 	@Deprecated
-	def withavailableInSolutions(p:List[String]):MCategoryUpdate ={ 	this.availableInSolutions = p; 	this }
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
 
 	/**
 	 * Deprecated.
@@ -44,7 +44,7 @@ class MCategoryUpdate extends MUpdater with Serializable  {
 	@Deprecated
 	var metadatas: List[MMetadata] =_
 	@Deprecated
-	def withmetadatas(p:List[MMetadata]):MCategoryUpdate ={ 	this.metadatas = p; 	this }
+	def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
 
 	/**
 	 * used for custom lexicographical order of categories. The field in used in
@@ -54,7 +54,7 @@ class MCategoryUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """used for custom lexicographical order of categories. The field in used in JCategory.findByProperties (MECategoryOrderBy.sortingField_A/D) to sort the result set.""")
 	@BeanProperty 
 	var sortingField: String =_
-	def withsortingField(p:String):MCategoryUpdate ={ 	this.sortingField = p; 	this }
+	def withsortingField(p:String):this.type ={ 	this.sortingField = p; 	this }
 
 	/**
 	 * @return void

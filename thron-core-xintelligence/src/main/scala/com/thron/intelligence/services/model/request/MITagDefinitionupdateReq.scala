@@ -21,6 +21,6 @@ class MITagDefinitionupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var update: MITagDefinitionUpdate =_
-	def withupdate(p:MITagDefinitionUpdate):MITagDefinitionupdateReq ={ 	this.update = p; 	this }
+	def withupdate(p:MITagDefinitionUpdate):this.type ={ 	this.update = p; 	this }
 
 }

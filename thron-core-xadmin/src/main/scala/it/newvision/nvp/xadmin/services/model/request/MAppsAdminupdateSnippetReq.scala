@@ -22,22 +22,22 @@ class MAppsAdminupdateSnippetReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAppsAdminupdateSnippetReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var appId: String =_
-	def withappId(p:String):MAppsAdminupdateSnippetReq ={ 	this.appId = p; 	this }
+	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var snippetId: String =_
-	def withsnippetId(p:String):MAppsAdminupdateSnippetReq ={ 	this.snippetId = p; 	this }
+	def withsnippetId(p:String):this.type ={ 	this.snippetId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var snippet: MSnippetUpdateData =_
-	def withsnippet(p:MSnippetUpdateData):MAppsAdminupdateSnippetReq ={ 	this.snippet = p; 	this }
+	def withsnippet(p:MSnippetUpdateData):this.type ={ 	this.snippet = p; 	this }
 
 	/**
 	 * Optional. Additional capabilities to add to the snippet.
@@ -45,6 +45,6 @@ class MAppsAdminupdateSnippetReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Additional capabilities to add to the snippet.""", required = true)
 	@BeanProperty
 	var caps: MAppAddCapability =_
-	def withcaps(p:MAppAddCapability):MAppsAdminupdateSnippetReq ={ 	this.caps = p; 	this }
+	def withcaps(p:MAppAddCapability):this.type ={ 	this.caps = p; 	this }
 
 }

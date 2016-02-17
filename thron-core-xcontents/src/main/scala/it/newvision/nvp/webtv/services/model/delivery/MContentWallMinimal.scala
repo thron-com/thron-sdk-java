@@ -24,7 +24,7 @@ class MContentWallMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var xcontentId: String =_
-	def withxcontentId(p:String):MContentWallMinimal ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * the content name in the specified locale
@@ -32,7 +32,7 @@ class MContentWallMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the content name in the specified locale""")
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MContentWallMinimal ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * the content description in the specified locale
@@ -40,7 +40,7 @@ class MContentWallMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the content description in the specified locale""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MContentWallMinimal ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * the locale of content name and description
@@ -48,7 +48,7 @@ class MContentWallMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the locale of content name and description""")
 	@BeanProperty 
 	var locale: String =_
-	def withlocale(p:String):MContentWallMinimal ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * VIDEO,AUDIO,IMAGE....
@@ -56,7 +56,7 @@ class MContentWallMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """VIDEO,AUDIO,IMAGE....""" ,required = true)
 	@BeanProperty 
 	var contentType: MEContentType =_
-	def withcontentType(p:MEContentType):MContentWallMinimal ={ 	this.contentType = p; 	this }
+	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
 
 	/**
 	 * list of content's available channels
@@ -64,7 +64,7 @@ class MContentWallMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of content's available channels""")
 	@BeanProperty 
 	var channels: List[String] = new ArrayList[String]
-	def withchannels(p:List[String]):MContentWallMinimal ={ 	this.channels = p; 	this }
+	def withchannels(p:List[String]):this.type ={ 	this.channels = p; 	this }
 
 	/**
 	 * List the properties of a content
@@ -72,7 +72,7 @@ class MContentWallMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """List the properties of a content""")
 	@BeanProperty 
 	var properties: List[MEContentProperties] = new ArrayList[MEContentProperties]
-	def withproperties(p:List[MEContentProperties]):MContentWallMinimal ={ 	this.properties = p; 	this }
+	def withproperties(p:List[MEContentProperties]):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -82,7 +82,7 @@ class MContentWallMinimal extends Serializable {
 	@Deprecated
 	var selectedChannel: String =_
 	@Deprecated
-	def withselectedChannel(p:String):MContentWallMinimal ={ 	this.selectedChannel = p; 	this }
+	def withselectedChannel(p:String):this.type ={ 	this.selectedChannel = p; 	this }
 
 	/**
 	 * The deliveryInfoMinimal attribute has some delivery information necessary to
@@ -100,7 +100,7 @@ class MContentWallMinimal extends Serializable {
 	//#SWGNL#channels = [WEB,WEBIPHONE]""")
 	@BeanProperty 
 	var deliveryInfoMinimal: MDeliveryInfoMinimal =_
-	def withdeliveryInfoMinimal(p:MDeliveryInfoMinimal):MContentWallMinimal ={ 	this.deliveryInfoMinimal = p; 	this }
+	def withdeliveryInfoMinimal(p:MDeliveryInfoMinimal):this.type ={ 	this.deliveryInfoMinimal = p; 	this }
 
 	/**
 	 * the version number of the content in xpublisher. Used to track when the content
@@ -109,7 +109,7 @@ class MContentWallMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the version number of the content in xpublisher. Used to track when the content file change.""")
 	@BeanProperty 
 	var pcontentVersion: Integer  = 0
-	def withpcontentVersion(p:Integer):MContentWallMinimal ={ 	this.pcontentVersion = p; 	this }
+	def withpcontentVersion(p:Integer):this.type ={ 	this.pcontentVersion = p; 	this }
 
 	/**
 	 * The creation date of the content.
@@ -117,7 +117,7 @@ class MContentWallMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The creation date of the content.""")
 	@BeanProperty 
 	var creationDate: Date =_
-	def withcreationDate(p:Date):MContentWallMinimal ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * the list of Content.metadatas
@@ -125,6 +125,6 @@ class MContentWallMinimal extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of Content.metadatas""")
 	@BeanProperty 
 	var metadata: List[MMetadata] = new ArrayList[MMetadata]
-	def withmetadata(p:List[MMetadata]):MContentWallMinimal ={ 	this.metadata = p; 	this }
+	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 }

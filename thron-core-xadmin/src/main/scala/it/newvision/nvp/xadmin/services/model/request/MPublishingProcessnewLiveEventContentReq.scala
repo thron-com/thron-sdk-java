@@ -21,11 +21,11 @@ class MPublishingProcessnewLiveEventContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPublishingProcessnewLiveEventContentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var param: MLiveEventParams =_
-	def withparam(p:MLiveEventParams):MPublishingProcessnewLiveEventContentReq ={ 	this.param = p; 	this }
+	def withparam(p:MLiveEventParams):this.type ={ 	this.param = p; 	this }
 
 }

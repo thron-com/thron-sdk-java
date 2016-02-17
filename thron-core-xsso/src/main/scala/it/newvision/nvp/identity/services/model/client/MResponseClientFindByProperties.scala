@@ -21,11 +21,11 @@ class MResponseClientFindByProperties extends MResponseClient with Serializable 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var client: List[MClient] = new ArrayList[MClient]
-	def withclient(p:List[MClient]):MResponseClientFindByProperties ={ 	this.client = p; 	this }
+	def withclient(p:List[MClient]):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseClientFindByProperties ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

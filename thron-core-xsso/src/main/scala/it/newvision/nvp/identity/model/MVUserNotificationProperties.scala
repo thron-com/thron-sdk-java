@@ -31,7 +31,7 @@ class MVUserNotificationProperties extends Serializable {
 	//#SWGNL#-) max length = 1000""" ,required = true)
 	@BeanProperty 
 	var email: String =_
-	def withemail(p:String):MVUserNotificationProperties ={ 	this.email = p; 	this }
+	def withemail(p:String):this.type ={ 	this.email = p; 	this }
 
 	/**
 	 * the default telephone number used for sms notifications.
@@ -39,12 +39,12 @@ class MVUserNotificationProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the default telephone number used for sms notifications.""")
 	@BeanProperty 
 	var phoneNumber: String =_
-	def withphoneNumber(p:String):MVUserNotificationProperties ={ 	this.phoneNumber = p; 	this }
+	def withphoneNumber(p:String):this.type ={ 	this.phoneNumber = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var notifyBy: List[MENotificationType] = new ArrayList[MENotificationType]
-	def withnotifyBy(p:List[MENotificationType]):MVUserNotificationProperties ={ 	this.notifyBy = p; 	this }
+	def withnotifyBy(p:List[MENotificationType]):this.type ={ 	this.notifyBy = p; 	this }
 
 	/**
 	 * Used to automatically subscribe the user for notification when linked to
@@ -53,7 +53,7 @@ class MVUserNotificationProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to automatically subscribe the user for notification when linked to categories""")
 	@BeanProperty 
 	var autoSubscribeToCategories: Boolean  = true
-	def withautoSubscribeToCategories(p:Boolean):MVUserNotificationProperties ={ 	this.autoSubscribeToCategories = p; 	this }
+	def withautoSubscribeToCategories(p:Boolean):this.type ={ 	this.autoSubscribeToCategories = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -22,21 +22,21 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var paidServices: List[String] = new ArrayList[String]
 	@Deprecated
-	def withpaidServices(p:List[String]):MPropertyWeebo ={ 	this.paidServices = p; 	this }
+	def withpaidServices(p:List[String]):this.type ={ 	this.paidServices = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	@Deprecated
 	var removeUploadedFilesAfterPublish: Boolean  = false
 	@Deprecated
-	def withremoveUploadedFilesAfterPublish(p:Boolean):MPropertyWeebo ={ 	this.removeUploadedFilesAfterPublish = p; 	this }
+	def withremoveUploadedFilesAfterPublish(p:Boolean):this.type ={ 	this.removeUploadedFilesAfterPublish = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	@Deprecated
 	var keepIngestedFilesAfterPublish: Boolean  = false
 	@Deprecated
-	def withkeepIngestedFilesAfterPublish(p:Boolean):MPropertyWeebo ={ 	this.keepIngestedFilesAfterPublish = p; 	this }
+	def withkeepIngestedFilesAfterPublish(p:Boolean):this.type ={ 	this.keepIngestedFilesAfterPublish = p; 	this }
 
 	/**
 	 * available channels for the Client. He can publish in web and stream channel.
@@ -54,7 +54,7 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var channels: List[String] = new ArrayList[String]
 	@Deprecated
-	def withchannels(p:List[String]):MPropertyWeebo ={ 	this.channels = p; 	this }
+	def withchannels(p:List[String]):this.type ={ 	this.channels = p; 	this }
 
 	/**
 	 * units (bytes) 
@@ -64,7 +64,7 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var quotaRepositoryLimit: Long  = 214748364800l
 	@Deprecated
-	def withquotaRepositoryLimit(p:Long):MPropertyWeebo ={ 	this.quotaRepositoryLimit = p; 	this }
+	def withquotaRepositoryLimit(p:Long):this.type ={ 	this.quotaRepositoryLimit = p; 	this }
 
 	/**
 	 * units (bytes)
@@ -74,7 +74,7 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var quotaCdnLimit: Long  = 429496729600l
 	@Deprecated
-	def withquotaCdnLimit(p:Long):MPropertyWeebo ={ 	this.quotaCdnLimit = p; 	this }
+	def withquotaCdnLimit(p:Long):this.type ={ 	this.quotaCdnLimit = p; 	this }
 
 	/**
 	 * define the priorityLevel of the client for the ingestion tasks. This is to use
@@ -85,7 +85,7 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var ingestionPriorityLevel: Integer  = 5
 	@Deprecated
-	def withingestionPriorityLevel(p:Integer):MPropertyWeebo ={ 	this.ingestionPriorityLevel = p; 	this }
+	def withingestionPriorityLevel(p:Integer):this.type ={ 	this.ingestionPriorityLevel = p; 	this }
 
 	/**
 	 * monthly traffic in MegaBytes.
@@ -97,7 +97,7 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var monthlyTrafficAmount: Long  = -1
 	@Deprecated
-	def withmonthlyTrafficAmount(p:Long):MPropertyWeebo ={ 	this.monthlyTrafficAmount = p; 	this }
+	def withmonthlyTrafficAmount(p:Long):this.type ={ 	this.monthlyTrafficAmount = p; 	this }
 
 	/**
 	 * monthly traffic in MegaBytes.
@@ -109,7 +109,7 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var annualTrafficAmount: Long  = -1
 	@Deprecated
-	def withannualTrafficAmount(p:Long):MPropertyWeebo ={ 	this.annualTrafficAmount = p; 	this }
+	def withannualTrafficAmount(p:Long):this.type ={ 	this.annualTrafficAmount = p; 	this }
 
 	/**
 	 * Deprecated
@@ -124,7 +124,7 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var maxNumberOfUsers: Integer  = 5
 	@Deprecated
-	def withmaxNumberOfUsers(p:Integer):MPropertyWeebo ={ 	this.maxNumberOfUsers = p; 	this }
+	def withmaxNumberOfUsers(p:Integer):this.type ={ 	this.maxNumberOfUsers = p; 	this }
 
 	/**
 	 * max number of email the client can send in a month (emails for notification)
@@ -134,7 +134,7 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var quotaMonthlyEmails: Long  = 0L
 	@Deprecated
-	def withquotaMonthlyEmails(p:Long):MPropertyWeebo ={ 	this.quotaMonthlyEmails = p; 	this }
+	def withquotaMonthlyEmails(p:Long):this.type ={ 	this.quotaMonthlyEmails = p; 	this }
 
 	/**
 	 * max number of email the client can send in a month (emails for notification)
@@ -144,7 +144,7 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var quotaMonthlySms: Long  = 0L
 	@Deprecated
-	def withquotaMonthlySms(p:Long):MPropertyWeebo ={ 	this.quotaMonthlySms = p; 	this }
+	def withquotaMonthlySms(p:Long):this.type ={ 	this.quotaMonthlySms = p; 	this }
 
 	/**
 	 * the list of site acceleration list, used to store the hostname Weebo is
@@ -155,7 +155,7 @@ class MPropertyWeebo extends Serializable {
 	//#SWGNL#Optional """)
 	@BeanProperty 
 	var siteAccelerationList: List[String] = new ArrayList[String]
-	def withsiteAccelerationList(p:List[String]):MPropertyWeebo ={ 	this.siteAccelerationList = p; 	this }
+	def withsiteAccelerationList(p:List[String]):this.type ={ 	this.siteAccelerationList = p; 	this }
 
 	/**
 	 * Analytics ID. Used by the player for statistics and reports
@@ -165,7 +165,7 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var trackerGA: String =_
 	@Deprecated
-	def withtrackerGA(p:String):MPropertyWeebo ={ 	this.trackerGA = p; 	this }
+	def withtrackerGA(p:String):this.type ={ 	this.trackerGA = p; 	this }
 
 	/**
 	 * the email linked to the trackerGA.
@@ -175,7 +175,7 @@ class MPropertyWeebo extends Serializable {
 	@Deprecated
 	var trackerAccount: String =_
 	@Deprecated
-	def withtrackerAccount(p:String):MPropertyWeebo ={ 	this.trackerAccount = p; 	this }
+	def withtrackerAccount(p:String):this.type ={ 	this.trackerAccount = p; 	this }
 
 	/**
 	 * maximum file size for UGC contents. Used in the webupload service. Units (bytes)
@@ -183,22 +183,22 @@ class MPropertyWeebo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """maximum file size for UGC contents. Used in the webupload service. Units (bytes)""" ,required = true)
 	@BeanProperty 
 	var maxWebUploadForUGC: Long  = 5242880l
-	def withmaxWebUploadForUGC(p:Long):MPropertyWeebo ={ 	this.maxWebUploadForUGC = p; 	this }
+	def withmaxWebUploadForUGC(p:Long):this.type ={ 	this.maxWebUploadForUGC = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var playerProperties: MPropertyPlayer  = new MPropertyPlayer
-	def withplayerProperties(p:MPropertyPlayer):MPropertyWeebo ={ 	this.playerProperties = p; 	this }
+	def withplayerProperties(p:MPropertyPlayer):this.type ={ 	this.playerProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var eventsProperties: MPropertyEvents  = new MPropertyEvents
-	def witheventsProperties(p:MPropertyEvents):MPropertyWeebo ={ 	this.eventsProperties = p; 	this }
+	def witheventsProperties(p:MPropertyEvents):this.type ={ 	this.eventsProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var cdnProperties: MPropertyCDNAws  = new MPropertyCDNAws()
-	def withcdnProperties(p:MPropertyCDNAws):MPropertyWeebo ={ 	this.cdnProperties = p; 	this }
+	def withcdnProperties(p:MPropertyCDNAws):this.type ={ 	this.cdnProperties = p; 	this }
 
 	/**
 	 * enable the remove protection of source files in repository. The removed source
@@ -207,7 +207,7 @@ class MPropertyWeebo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """enable the remove protection of source files in repository. The removed source files are stored in a safe area for retention time""" ,required = true)
 	@BeanProperty 
 	var safeRepository: Boolean  = true
-	def withsafeRepository(p:Boolean):MPropertyWeebo ={ 	this.safeRepository = p; 	this }
+	def withsafeRepository(p:Boolean):this.type ={ 	this.safeRepository = p; 	this }
 
 	/**
 	 * @param clientId : String

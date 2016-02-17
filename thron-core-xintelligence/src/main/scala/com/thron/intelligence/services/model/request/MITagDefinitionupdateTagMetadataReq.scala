@@ -24,6 +24,6 @@ class MITagDefinitionupdateTagMetadataReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The desired position in the list""", required = true)
 	@BeanProperty
 	var items: MITagMetadataList =_
-	def withitems(p:MITagMetadataList):MITagDefinitionupdateTagMetadataReq ={ 	this.items = p; 	this }
+	def withitems(p:MITagMetadataList):this.type ={ 	this.items = p; 	this }
 
 }

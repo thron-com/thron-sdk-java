@@ -21,7 +21,7 @@ class MThumbnailVideoSource extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the source File Descriptor. """)
 	@BeanProperty 
 	var file: MFile =_
-	def withfile(p:MFile):MThumbnailVideoSource ={ 	this.file = p; 	this }
+	def withfile(p:MFile):this.type ={ 	this.file = p; 	this }
 
 	/**
 	 * the frame time in seconds
@@ -29,6 +29,6 @@ class MThumbnailVideoSource extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the frame time in seconds""" ,required = true)
 	@BeanProperty 
 	var frameTime: Double =_
-	def withframeTime(p:Double):MThumbnailVideoSource ={ 	this.frameTime = p; 	this }
+	def withframeTime(p:Double):this.type ={ 	this.frameTime = p; 	this }
 
 }

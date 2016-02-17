@@ -18,11 +18,11 @@ class MResponseAppNewKey extends MResponseApp with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var app: MAppDetail =_
-	def withapp(p:MAppDetail):MResponseAppNewKey ={ 	this.app = p; 	this }
+	def withapp(p:MAppDetail):this.type ={ 	this.app = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var newKey: MAppKey =_
-	def withnewKey(p:MAppKey):MResponseAppNewKey ={ 	this.newKey = p; 	this }
+	def withnewKey(p:MAppKey):this.type ={ 	this.newKey = p; 	this }
 
 }

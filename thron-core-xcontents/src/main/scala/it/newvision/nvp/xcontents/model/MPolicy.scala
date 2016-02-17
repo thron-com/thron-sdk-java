@@ -17,11 +17,11 @@ class MPolicy extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var access: MEAccess =_
-	def withaccess(p:MEAccess):MPolicy ={ 	this.access = p; 	this }
+	def withaccess(p:MEAccess):this.type ={ 	this.access = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var canChangePolicy: Boolean  = false
-	def withcanChangePolicy(p:Boolean):MPolicy ={ 	this.canChangePolicy = p; 	this }
+	def withcanChangePolicy(p:Boolean):this.type ={ 	this.canChangePolicy = p; 	this }
 
 }

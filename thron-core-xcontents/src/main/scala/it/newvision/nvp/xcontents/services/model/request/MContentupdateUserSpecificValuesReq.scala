@@ -21,7 +21,7 @@ class MContentupdateUserSpecificValuesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MContentupdateUserSpecificValuesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * Optional: used to specify that a specific username read or not the content.
@@ -31,17 +31,17 @@ class MContentupdateUserSpecificValuesReq extends Serializable {
 	//#SWGNL#The default value if the username of the user that call the service.""", required = true)
 	@BeanProperty
 	var username: String =_
-	def withusername(p:String):MContentupdateUserSpecificValuesReq ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MContentupdateUserSpecificValuesReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentParams: MContentUserSpecificParams =_
-	def withcontentParams(p:MContentUserSpecificParams):MContentupdateUserSpecificValuesReq ={ 	this.contentParams = p; 	this }
+	def withcontentParams(p:MContentUserSpecificParams):this.type ={ 	this.contentParams = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -49,6 +49,6 @@ class MContentupdateUserSpecificValuesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MContentupdateUserSpecificValuesReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

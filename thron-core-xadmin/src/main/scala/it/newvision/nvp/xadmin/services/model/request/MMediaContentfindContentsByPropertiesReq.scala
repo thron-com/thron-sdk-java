@@ -21,12 +21,12 @@ class MMediaContentfindContentsByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MMediaContentfindContentsByPropertiesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MMediaContentCriteria =_
-	def withcriteria(p:MMediaContentCriteria):MMediaContentfindContentsByPropertiesReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MMediaContentCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * If the client desires to have the content description in a specific locale.
@@ -34,16 +34,16 @@ class MMediaContentfindContentsByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """If the client desires to have the content description in a specific locale.""", required = true)
 	@BeanProperty
 	var locale: String =_
-	def withlocale(p:String):MMediaContentfindContentsByPropertiesReq ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MMediaContentfindContentsByPropertiesReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MMediaContentfindContentsByPropertiesReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

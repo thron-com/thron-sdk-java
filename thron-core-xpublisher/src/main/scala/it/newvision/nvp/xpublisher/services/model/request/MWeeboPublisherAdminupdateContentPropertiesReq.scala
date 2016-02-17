@@ -21,17 +21,17 @@ class MWeeboPublisherAdminupdateContentPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboPublisherAdminupdateContentPropertiesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty @org.codehaus.jackson.annotate.JsonProperty("PContentId")
 	var pContentId: String =_
-	def withpContentId(p:String):MWeeboPublisherAdminupdateContentPropertiesReq ={ 	this.pContentId = p; 	this }
+	def withpContentId(p:String):this.type ={ 	this.pContentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var properties: MRestrictionProperties =_
-	def withproperties(p:MRestrictionProperties):MWeeboPublisherAdminupdateContentPropertiesReq ={ 	this.properties = p; 	this }
+	def withproperties(p:MRestrictionProperties):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * The content version to update.
@@ -44,6 +44,6 @@ class MWeeboPublisherAdminupdateContentPropertiesReq extends Serializable {
 	//#SWGNL#Change the content version only when content changed the source file and has been republished.""", required = true)
 	@BeanProperty
 	var version: Integer =_
-	def withversion(p:Integer):MWeeboPublisherAdminupdateContentPropertiesReq ={ 	this.version = p; 	this }
+	def withversion(p:Integer):this.type ={ 	this.version = p; 	this }
 
 }

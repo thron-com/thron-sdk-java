@@ -20,27 +20,27 @@ class MAddress extends Serializable {
 	//#SWG#@ApiModelProperty(value = """HOME/WORK/...""")
 	@BeanProperty 
 	var addressCategory: String =_
-	def withaddressCategory(p:String):MAddress ={ 	this.addressCategory = p; 	this }
+	def withaddressCategory(p:String):this.type ={ 	this.addressCategory = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var street: String =_
-	def withstreet(p:String):MAddress ={ 	this.street = p; 	this }
+	def withstreet(p:String):this.type ={ 	this.street = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var pobox: String =_
-	def withpobox(p:String):MAddress ={ 	this.pobox = p; 	this }
+	def withpobox(p:String):this.type ={ 	this.pobox = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var localArea: String =_
-	def withlocalArea(p:String):MAddress ={ 	this.localArea = p; 	this }
+	def withlocalArea(p:String):this.type ={ 	this.localArea = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var city: String =_
-	def withcity(p:String):MAddress ={ 	this.city = p; 	this }
+	def withcity(p:String):this.type ={ 	this.city = p; 	this }
 
 	/**
 	 * County / Area
@@ -48,12 +48,12 @@ class MAddress extends Serializable {
 	//#SWG#@ApiModelProperty(value = """County / Area""")
 	@BeanProperty 
 	var area: String =_
-	def witharea(p:String):MAddress ={ 	this.area = p; 	this }
+	def witharea(p:String):this.type ={ 	this.area = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var postcode: String =_
-	def withpostcode(p:String):MAddress ={ 	this.postcode = p; 	this }
+	def withpostcode(p:String):this.type ={ 	this.postcode = p; 	this }
 
 	/**
 	 * country / region
@@ -61,7 +61,7 @@ class MAddress extends Serializable {
 	//#SWG#@ApiModelProperty(value = """country / region""")
 	@BeanProperty 
 	var country: String =_
-	def withcountry(p:String):MAddress ={ 	this.country = p; 	this }
+	def withcountry(p:String):this.type ={ 	this.country = p; 	this }
 
 	/**
 	 * used to identify the primary address
@@ -69,6 +69,6 @@ class MAddress extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to identify the primary address""")
 	@BeanProperty 
 	var primary: Boolean  = false
-	def withprimary(p:Boolean):MAddress ={ 	this.primary = p; 	this }
+	def withprimary(p:Boolean):this.type ={ 	this.primary = p; 	this }
 
 }

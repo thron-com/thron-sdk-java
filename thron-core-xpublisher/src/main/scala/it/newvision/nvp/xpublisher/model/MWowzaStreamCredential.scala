@@ -17,12 +17,12 @@ class MWowzaStreamCredential extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var streamId: String =_
-	def withstreamId(p:String):MWowzaStreamCredential ={ 	this.streamId = p; 	this }
+	def withstreamId(p:String):this.type ={ 	this.streamId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var streamPassword: String =_
-	def withstreamPassword(p:String):MWowzaStreamCredential ={ 	this.streamPassword = p; 	this }
+	def withstreamPassword(p:String):this.type ={ 	this.streamPassword = p; 	this }
 
 	/**
 	 * @param streamId : String

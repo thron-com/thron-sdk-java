@@ -21,7 +21,7 @@ class MCuePointList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of cue points""")
 	@BeanProperty 
 	var cuePoints: List[MCuePoint] = new ArrayList[MCuePoint]
-	def withcuePoints(p:List[MCuePoint]):MCuePointList ={ 	this.cuePoints = p; 	this }
+	def withcuePoints(p:List[MCuePoint]):this.type ={ 	this.cuePoints = p; 	this }
 
 	/**
 	 * @return void

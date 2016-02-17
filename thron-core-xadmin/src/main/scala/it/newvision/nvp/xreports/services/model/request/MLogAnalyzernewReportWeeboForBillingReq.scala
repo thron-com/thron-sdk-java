@@ -23,7 +23,7 @@ class MLogAnalyzernewReportWeeboForBillingReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """csv list""", required = true)
 	@BeanProperty
 	var clientIds: String =_
-	def withclientIds(p:String):MLogAnalyzernewReportWeeboForBillingReq ={ 	this.clientIds = p; 	this }
+	def withclientIds(p:String):this.type ={ 	this.clientIds = p; 	this }
 
 	/**
 	 * Optional
@@ -31,7 +31,7 @@ class MLogAnalyzernewReportWeeboForBillingReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var fromDate: Date =_
-	def withfromDate(p:Date):MLogAnalyzernewReportWeeboForBillingReq ={ 	this.fromDate = p; 	this }
+	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
 
 	/**
 	 * Optional
@@ -39,6 +39,6 @@ class MLogAnalyzernewReportWeeboForBillingReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var toDate: Date =_
-	def withtoDate(p:Date):MLogAnalyzernewReportWeeboForBillingReq ={ 	this.toDate = p; 	this }
+	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 }

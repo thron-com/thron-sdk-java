@@ -22,6 +22,6 @@ class MContentPlaylistParam extends MContentParams with Serializable  {
 	//#SWG#@ApiModelProperty(value = """used to define the content template for the new Playlist. The content template is used to create audio or video playlist, or slideshow (image playlist).""" ,required = true)
 	@BeanProperty 
 	var contentsTemplate: MEContentType =_
-	def withcontentsTemplate(p:MEContentType):MContentPlaylistParam ={ 	this.contentsTemplate = p; 	this }
+	def withcontentsTemplate(p:MEContentType):this.type ={ 	this.contentsTemplate = p; 	this }
 
 }

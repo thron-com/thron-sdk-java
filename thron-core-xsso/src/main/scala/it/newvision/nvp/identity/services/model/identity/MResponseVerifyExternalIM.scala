@@ -18,26 +18,34 @@ class MResponseVerifyExternalIM extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEExternalIMResponse =_
-	def withstatus(p:MEExternalIMResponse):MResponseVerifyExternalIM ={ 	this.status = p; 	this }
+	def withstatus(p:MEExternalIMResponse):this.type ={ 	this.status = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * if 0 the password is expired
+	 */
+	//#SWG#@ApiModelProperty(value = """if 0 the password is expired""")
 	@BeanProperty 
-	var passwordLastUpdate: Date =_
-	def withpasswordLastUpdate(p:Date):MResponseVerifyExternalIM ={ 	this.passwordLastUpdate = p; 	this }
+	var passwordLastUpdate: Long =_
+	def withpasswordLastUpdate(p:Long):this.type ={ 	this.passwordLastUpdate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var passwordExpired: Boolean =_
-	def withpasswordExpired(p:Boolean):MResponseVerifyExternalIM ={ 	this.passwordExpired = p; 	this }
+	def withpasswordExpired(p:Boolean):this.type ={ 	this.passwordExpired = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var accountActive: Boolean =_
-	def withaccountActive(p:Boolean):MResponseVerifyExternalIM ={ 	this.accountActive = p; 	this }
+	def withaccountActive(p:Boolean):this.type ={ 	this.accountActive = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var accountExpired: Boolean =_
-	def withaccountExpired(p:Boolean):MResponseVerifyExternalIM ={ 	this.accountExpired = p; 	this }
+	def withaccountExpired(p:Boolean):this.type ={ 	this.accountExpired = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var accountLocked: Boolean =_
+	def withaccountLocked(p:Boolean):this.type ={ 	this.accountLocked = p; 	this }
 
 }

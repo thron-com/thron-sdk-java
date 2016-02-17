@@ -20,6 +20,6 @@ class MResponseGetPlayerInfo extends MResponseClient with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var playerInfo: List[MPlayerInfo] = new ArrayList[MPlayerInfo]
-	def withplayerInfo(p:List[MPlayerInfo]):MResponseGetPlayerInfo ={ 	this.playerInfo = p; 	this }
+	def withplayerInfo(p:List[MPlayerInfo]):this.type ={ 	this.playerInfo = p; 	this }
 
 }

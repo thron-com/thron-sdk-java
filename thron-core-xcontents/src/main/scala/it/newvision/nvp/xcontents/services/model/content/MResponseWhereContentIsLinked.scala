@@ -17,7 +17,7 @@ class MResponseWhereContentIsLinked extends MResponseContent with Serializable  
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contentIds: List[String] = new ArrayList[String]
-	def withcontentIds(p:List[String]):MResponseWhereContentIsLinked ={ 	this.contentIds = p; 	this }
+	def withcontentIds(p:List[String]):this.type ={ 	this.contentIds = p; 	this }
 
 	/**
 	 * total number of results
@@ -25,6 +25,6 @@ class MResponseWhereContentIsLinked extends MResponseContent with Serializable  
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseWhereContentIsLinked ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

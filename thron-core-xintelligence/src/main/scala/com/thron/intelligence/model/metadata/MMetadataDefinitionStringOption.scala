@@ -20,7 +20,7 @@ class MMetadataDefinitionStringOption extends MMetadataDefinitionOptionClass wit
 	//#SWG#@ApiModelProperty(value = """Used as layout directive, not for validation""")
 	@BeanProperty 
 	var fieldType: MEStringType =_
-	def withfieldType(p:MEStringType):MMetadataDefinitionStringOption ={ 	this.fieldType = p; 	this }
+	def withfieldType(p:MEStringType):this.type ={ 	this.fieldType = p; 	this }
 
 	/**
 	 * Used as layout directive, not for validation
@@ -28,7 +28,7 @@ class MMetadataDefinitionStringOption extends MMetadataDefinitionOptionClass wit
 	//#SWG#@ApiModelProperty(value = """Used as layout directive, not for validation""")
 	@BeanProperty 
 	var defaultValue: String =_
-	def withdefaultValue(p:String):MMetadataDefinitionStringOption ={ 	this.defaultValue = p; 	this }
+	def withdefaultValue(p:String):this.type ={ 	this.defaultValue = p; 	this }
 
 	/**
 	 * Used for validation.
@@ -36,7 +36,7 @@ class MMetadataDefinitionStringOption extends MMetadataDefinitionOptionClass wit
 	//#SWG#@ApiModelProperty(value = """Used for validation.""")
 	@BeanProperty 
 	var localized: Boolean  = false
-	def withlocalized(p:Boolean):MMetadataDefinitionStringOption ={ 	this.localized = p; 	this }
+	def withlocalized(p:Boolean):this.type ={ 	this.localized = p; 	this }
 
 	/**
 	 * @return Boolean

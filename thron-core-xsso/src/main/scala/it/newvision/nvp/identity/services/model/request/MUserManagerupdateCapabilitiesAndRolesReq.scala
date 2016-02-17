@@ -21,16 +21,16 @@ class MUserManagerupdateCapabilitiesAndRolesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MUserManagerupdateCapabilitiesAndRolesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var username: String =_
-	def withusername(p:String):MUserManagerupdateCapabilitiesAndRolesReq ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var userCapabilities: MUserCapability =_
-	def withuserCapabilities(p:MUserCapability):MUserManagerupdateCapabilitiesAndRolesReq ={ 	this.userCapabilities = p; 	this }
+	def withuserCapabilities(p:MUserCapability):this.type ={ 	this.userCapabilities = p; 	this }
 
 }

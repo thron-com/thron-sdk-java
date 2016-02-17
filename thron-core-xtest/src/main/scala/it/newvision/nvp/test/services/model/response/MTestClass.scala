@@ -18,82 +18,82 @@ class MTestClass extends MTestBaseClass with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attString: String =_
-	def withattString(p:String):MTestClass ={ 	this.attString = p; 	this }
+	def withattString(p:String):this.type ={ 	this.attString = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attDate: Date =_
-	def withattDate(p:Date):MTestClass ={ 	this.attDate = p; 	this }
+	def withattDate(p:Date):this.type ={ 	this.attDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attenum: METestEnum =_
-	def withattenum(p:METestEnum):MTestClass ={ 	this.attenum = p; 	this }
+	def withattenum(p:METestEnum):this.type ={ 	this.attenum = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attlong: Long =_
-	def withattlong(p:Long):MTestClass ={ 	this.attlong = p; 	this }
+	def withattlong(p:Long):this.type ={ 	this.attlong = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var classa: MTestAClass =_
-	def withclassa(p:MTestAClass):MTestClass ={ 	this.classa = p; 	this }
+	def withclassa(p:MTestAClass):this.type ={ 	this.classa = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attInt: Integer =_
-	def withattInt(p:Integer):MTestClass ={ 	this.attInt = p; 	this }
+	def withattInt(p:Integer):this.type ={ 	this.attInt = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attbool: Boolean =_
-	def withattbool(p:Boolean):MTestClass ={ 	this.attbool = p; 	this }
+	def withattbool(p:Boolean):this.type ={ 	this.attbool = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attdouble: Double =_
-	def withattdouble(p:Double):MTestClass ={ 	this.attdouble = p; 	this }
+	def withattdouble(p:Double):this.type ={ 	this.attdouble = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var buffer: Array[Byte]= new Array[Byte](0)
-	def withbuffer(p:Array[Byte]):MTestClass ={ 	this.buffer = p; 	this }
+	def withbuffer(p:Array[Byte]):this.type ={ 	this.buffer = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lstring: List[String] = new ArrayList[String]
-	def withlstring(p:List[String]):MTestClass ={ 	this.lstring = p; 	this }
+	def withlstring(p:List[String]):this.type ={ 	this.lstring = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attfloat: Float =_
-	def withattfloat(p:Float):MTestClass ={ 	this.attfloat = p; 	this }
+	def withattfloat(p:Float):this.type ={ 	this.attfloat = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lint: List[Integer] = new ArrayList[Integer]
-	def withlint(p:List[Integer]):MTestClass ={ 	this.lint = p; 	this }
+	def withlint(p:List[Integer]):this.type ={ 	this.lint = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var llong: List[Long] = new ArrayList[Long]
-	def withllong(p:List[Long]):MTestClass ={ 	this.llong = p; 	this }
+	def withllong(p:List[Long]):this.type ={ 	this.llong = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var ldate: List[Date] = new ArrayList[Date]
-	def withldate(p:List[Date]):MTestClass ={ 	this.ldate = p; 	this }
+	def withldate(p:List[Date]):this.type ={ 	this.ldate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lenum: List[METestEnum] = new ArrayList[METestEnum]
-	def withlenum(p:List[METestEnum]):MTestClass ={ 	this.lenum = p; 	this }
+	def withlenum(p:List[METestEnum]):this.type ={ 	this.lenum = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lbool: List[Boolean] = new ArrayList[Boolean]
-	def withlbool(p:List[Boolean]):MTestClass ={ 	this.lbool = p; 	this }
+	def withlbool(p:List[Boolean]):this.type ={ 	this.lbool = p; 	this }
 
 	/**
 	 * attribute note definition
@@ -101,20 +101,20 @@ class MTestClass extends MTestBaseClass with Serializable  {
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """attribute note definition""")
 	var attTestClass: MTestClass =_
-	  def withattTestClass(p:MTestClass):MTestClass ={ 	this.attTestClass = p; 	this }
+	  def withattTestClass(p:MTestClass):this.type ={ 	this.attTestClass = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var testaclasses: List[MTestAClass] = new ArrayList[MTestAClass]
-	  def withtestaclasses(p:List[MTestAClass]):MTestClass ={ 	this.testaclasses = p; 	this }
+	  def withtestaclasses(p:List[MTestAClass]):this.type ={ 	this.testaclasses = p; 	this }
 
 	/**
 	 * @return Boolean
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def isValid():Boolean ={
-		//TODO: to implement some validation
+	override def isValid():Boolean ={
+		//TODO: implement some validation!
 		true
 	}
 

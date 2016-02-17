@@ -12,11 +12,12 @@ import javax.xml.bind.annotation._
 @XmlRootElement(name="MResponseAclUpdate") 
 @XmlType(name="MResponseAclUpdate")
 //#SWG#@ApiModel(description = """""")
+@Deprecated
 class MResponseAclUpdate extends MResponseAcl with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var rulesInIssue: List[MAclRuleInverseItem] = new ArrayList[MAclRuleInverseItem]
-	def withrulesInIssue(p:List[MAclRuleInverseItem]):MResponseAclUpdate ={ 	this.rulesInIssue = p; 	this }
+	def withrulesInIssue(p:List[MAclRuleInverseItem]):this.type ={ 	this.rulesInIssue = p; 	this }
 
 }

@@ -30,7 +30,7 @@ object JRatingFixedRangeClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST: http://clientId-view.4me.it/api/xcontents/resources/application.
+ * 	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/application.
  * wadl</li>
  * </ul>
  */

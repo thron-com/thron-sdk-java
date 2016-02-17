@@ -20,12 +20,12 @@ class MSysUserManagerchangeUserStatusReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MSysUserManagerchangeUserStatusReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var username: String =_
-	def withusername(p:String):MSysUserManagerchangeUserStatusReq ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	/**
 	 * true = the user is active
@@ -35,11 +35,11 @@ class MSysUserManagerchangeUserStatusReq extends Serializable {
 	//#SWGNL#false  the user is not active""", required = true)
 	@BeanProperty
 	var userActive: Boolean =_
-	def withuserActive(p:Boolean):MSysUserManagerchangeUserStatusReq ={ 	this.userActive = p; 	this }
+	def withuserActive(p:Boolean):this.type ={ 	this.userActive = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var expiryDate: Date =_
-	def withexpiryDate(p:Date):MSysUserManagerchangeUserStatusReq ={ 	this.expiryDate = p; 	this }
+	def withexpiryDate(p:Date):this.type ={ 	this.expiryDate = p; 	this }
 
 }

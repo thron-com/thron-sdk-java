@@ -17,6 +17,6 @@ class MResponseNewCategory extends MResponseCategory with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var categoryID: String =_
-	def withcategoryID(p:String):MResponseNewCategory ={ 	this.categoryID = p; 	this }
+	def withcategoryID(p:String):this.type ={ 	this.categoryID = p; 	this }
 
 }

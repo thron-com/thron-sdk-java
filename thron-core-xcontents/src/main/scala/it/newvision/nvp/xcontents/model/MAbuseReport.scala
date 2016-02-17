@@ -23,7 +23,7 @@ class MAbuseReport extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MAbuseReport ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * The userId of the moderator
@@ -31,7 +31,7 @@ class MAbuseReport extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The userId of the moderator""" ,required = true)
 	@BeanProperty 
 	var reportDate: Date  = new Date
-	def withreportDate(p:Date):MAbuseReport ={ 	this.reportDate = p; 	this }
+	def withreportDate(p:Date):this.type ={ 	this.reportDate = p; 	this }
 
 	/**
 	 * @param userId : String

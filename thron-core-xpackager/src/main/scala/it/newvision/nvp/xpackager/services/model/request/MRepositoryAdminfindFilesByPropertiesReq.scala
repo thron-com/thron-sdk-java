@@ -22,7 +22,7 @@ class MRepositoryAdminfindFilesByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MSearchCriteriaExtended =_
-	def withcriteria(p:MSearchCriteriaExtended):MRepositoryAdminfindFilesByPropertiesReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MSearchCriteriaExtended):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * The parameter follows a specific schema:
@@ -45,16 +45,16 @@ class MRepositoryAdminfindFilesByPropertiesReq extends Serializable {
 	//#SWGNL#fileName_A, totalSpace_D...""", required = true)
 	@BeanProperty
 	var orderByField: MEFileOrderBy =_
-	def withorderByField(p:MEFileOrderBy):MRepositoryAdminfindFilesByPropertiesReq ={ 	this.orderByField = p; 	this }
+	def withorderByField(p:MEFileOrderBy):this.type ={ 	this.orderByField = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MRepositoryAdminfindFilesByPropertiesReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MRepositoryAdminfindFilesByPropertiesReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

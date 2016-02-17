@@ -20,7 +20,7 @@ class MUserConf extends Serializable {
 	//#SWG#@ApiModelProperty(value = """at most 100 groups""")
 	@BeanProperty 
 	var onlyForGroupIds: List[String] = new ArrayList[String]
-	def withonlyForGroupIds(p:List[String]):MUserConf ={ 	this.onlyForGroupIds = p; 	this }
+	def withonlyForGroupIds(p:List[String]):this.type ={ 	this.onlyForGroupIds = p; 	this }
 
 	/**
 	 * at most 100 users
@@ -28,7 +28,7 @@ class MUserConf extends Serializable {
 	//#SWG#@ApiModelProperty(value = """at most 100 users""")
 	@BeanProperty 
 	var onlyForUsernames: List[String] = new ArrayList[String]
-	def withonlyForUsernames(p:List[String]):MUserConf ={ 	this.onlyForUsernames = p; 	this }
+	def withonlyForUsernames(p:List[String]):this.type ={ 	this.onlyForUsernames = p; 	this }
 
 	/**
 	 * possible values are:
@@ -46,7 +46,7 @@ class MUserConf extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var onlyForUserType: String =_
-	def withonlyForUserType(p:String):MUserConf ={ 	this.onlyForUserType = p; 	this }
+	def withonlyForUserType(p:String):this.type ={ 	this.onlyForUserType = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -20,7 +20,7 @@ class MContentPageletParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """-> MContent.owner""")
 	@BeanProperty 
 	var owner: String =_
-	def withowner(p:String):MContentPageletParams ={ 	this.owner = p; 	this }
+	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
 
 	/**
 	 * Default empty. Used only for UGC Contents. This should be the username of owner.
@@ -31,7 +31,7 @@ class MContentPageletParams extends Serializable {
 	@Deprecated
 	var userId: String =_
 	@Deprecated
-	def withuserId(p:String):MContentPageletParams ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * raw body source (html or other formats).
@@ -41,7 +41,7 @@ class MContentPageletParams extends Serializable {
 	//#SWGNL#constraints: length < 2000000 chars (2.000.000 bytes)""" ,required = true)
 	@BeanProperty 
 	var body: String =_
-	def withbody(p:String):MContentPageletParams ={ 	this.body = p; 	this }
+	def withbody(p:String):this.type ={ 	this.body = p; 	this }
 
 	/**
 	 * Used to specify the mime type of the body value.
@@ -49,7 +49,7 @@ class MContentPageletParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to specify the mime type of the body value.""" ,required = true)
 	@BeanProperty 
 	var mimeType: String =_
-	def withmimeType(p:String):MContentPageletParams ={ 	this.mimeType = p; 	this }
+	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
 
 	/**
 	 * @return Boolean

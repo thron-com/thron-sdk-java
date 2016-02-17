@@ -20,7 +20,7 @@ class MLocalization extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1) """ ,required = true)
 	@BeanProperty 
 	var lang: String =_
-	def withlang(p:String):MLocalization ={ 	this.lang = p; 	this }
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
 	 * Constraints: length <= 150
@@ -28,7 +28,7 @@ class MLocalization extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: length <= 150""" ,required = true)
 	@BeanProperty 
 	var label: String =_
-	def withlabel(p:String):MLocalization ={ 	this.label = p; 	this }
+	def withlabel(p:String):this.type ={ 	this.label = p; 	this }
 
 	/**
 	 * Constraints: length <= 10000
@@ -36,7 +36,7 @@ class MLocalization extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: length <= 10000""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MLocalization ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * @return Boolean

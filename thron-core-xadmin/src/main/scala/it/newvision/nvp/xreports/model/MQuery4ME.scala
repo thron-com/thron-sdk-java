@@ -17,6 +17,6 @@ class MQuery4ME extends MQuery with Serializable  {
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var contents: List[MContent] = new ArrayList[MContent]
-	  def withcontents(p:List[MContent]):MQuery4ME ={ 	this.contents = p; 	this }
+	  def withcontents(p:List[MContent]):this.type ={ 	this.contents = p; 	this }
 
 }

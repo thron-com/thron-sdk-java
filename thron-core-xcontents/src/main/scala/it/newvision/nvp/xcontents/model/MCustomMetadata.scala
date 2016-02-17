@@ -17,16 +17,16 @@ class MCustomMetadata extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var key: String =_
-	def withkey(p:String):MCustomMetadata ={ 	this.key = p; 	this }
+	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var keyLabels: List[MCustomMetadataKeyLabel] = new ArrayList[MCustomMetadataKeyLabel]
-	def withkeyLabels(p:List[MCustomMetadataKeyLabel]):MCustomMetadata ={ 	this.keyLabels = p; 	this }
+	def withkeyLabels(p:List[MCustomMetadataKeyLabel]):this.type ={ 	this.keyLabels = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var properties: MCustomMetadataProperties  = new MCustomMetadataProperties
-	def withproperties(p:MCustomMetadataProperties):MCustomMetadata ={ 	this.properties = p; 	this }
+	def withproperties(p:MCustomMetadataProperties):this.type ={ 	this.properties = p; 	this }
 
 }

@@ -20,11 +20,11 @@ class MTestServicetestPcontent2Req extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MTestServicetestPcontent2Req ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var pcontentId: String =_
-	def withpcontentId(p:String):MTestServicetestPcontent2Req ={ 	this.pcontentId = p; 	this }
+	def withpcontentId(p:String):this.type ={ 	this.pcontentId = p; 	this }
 
 }

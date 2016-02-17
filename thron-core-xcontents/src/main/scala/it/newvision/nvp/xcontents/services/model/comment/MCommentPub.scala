@@ -21,12 +21,12 @@ class MCommentPub extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: length < 2000""" ,required = true)
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MCommentPub ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MCommentPub ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * used at client side, to handle the comment status.
@@ -34,7 +34,7 @@ class MCommentPub extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used at client side, to handle the comment status.""")
 	@BeanProperty 
 	var status: String =_
-	def withstatus(p:String):MCommentPub ={ 	this.status = p; 	this }
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * the commentId of the comment referenced to.
@@ -44,12 +44,12 @@ class MCommentPub extends Serializable {
 	//#SWGNL#Used to reply to a different comment.""")
 	@BeanProperty 
 	var replyTo: String =_
-	def withreplyTo(p:String):MCommentPub ={ 	this.replyTo = p; 	this }
+	def withreplyTo(p:String):this.type ={ 	this.replyTo = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var metadatas: List[MMetadata] = new ArrayList[MMetadata]
-	  def withmetadatas(p:List[MMetadata]):MCommentPub ={ 	this.metadatas = p; 	this }
+	  def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
 
 	/**
 	 * @return Boolean

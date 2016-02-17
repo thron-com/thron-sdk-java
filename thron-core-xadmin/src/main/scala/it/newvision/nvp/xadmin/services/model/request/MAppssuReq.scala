@@ -20,17 +20,17 @@ class MAppssuReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAppssuReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var appId: String =_
-	def withappId(p:String):MAppssuReq ={ 	this.appId = p; 	this }
+	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var username: String =_
-	def withusername(p:String):MAppssuReq ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	/**
 	 * Optional. 
@@ -38,6 +38,6 @@ class MAppssuReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. """, required = true)
 	@BeanProperty
 	var appKey: String =_
-	def withappKey(p:String):MAppssuReq ={ 	this.appKey = p; 	this }
+	def withappKey(p:String):this.type ={ 	this.appKey = p; 	this }
 
 }

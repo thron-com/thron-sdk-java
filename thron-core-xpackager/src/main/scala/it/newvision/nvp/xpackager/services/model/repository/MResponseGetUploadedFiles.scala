@@ -18,11 +18,11 @@ class MResponseGetUploadedFiles extends MResponseRepository with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var uploadedFiles: List[MFile] = new ArrayList[MFile]
-	def withuploadedFiles(p:List[MFile]):MResponseGetUploadedFiles ={ 	this.uploadedFiles = p; 	this }
+	def withuploadedFiles(p:List[MFile]):this.type ={ 	this.uploadedFiles = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseGetUploadedFiles ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

@@ -20,6 +20,6 @@ class MResponseChangeContentsOwner extends MResponseDashboard with Serializable 
 	//#SWG#@ApiModelProperty(value = """list of xcontentIds in issue during the changeContentOwner process.""")
 	@BeanProperty 
 	var contentsInIssue: List[String] = new ArrayList[String]
-	def withcontentsInIssue(p:List[String]):MResponseChangeContentsOwner ={ 	this.contentsInIssue = p; 	this }
+	def withcontentsInIssue(p:List[String]):this.type ={ 	this.contentsInIssue = p; 	this }
 
 }

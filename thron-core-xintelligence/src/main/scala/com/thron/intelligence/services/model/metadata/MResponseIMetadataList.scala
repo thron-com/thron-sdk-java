@@ -18,11 +18,11 @@ class MResponseIMetadataList extends MResponseMetadataDefinition with Serializab
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MIMetadataDetail] = new ArrayList[MIMetadataDetail]
-	def withitems(p:List[MIMetadataDetail]):MResponseIMetadataList ={ 	this.items = p; 	this }
+	def withitems(p:List[MIMetadataDetail]):this.type ={ 	this.items = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseIMetadataList ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

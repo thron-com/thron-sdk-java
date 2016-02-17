@@ -18,6 +18,6 @@ class MResponseActiveSessions extends MResponseIdentity with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var sessions: List[MSession] = new ArrayList[MSession]
-	def withsessions(p:List[MSession]):MResponseActiveSessions ={ 	this.sessions = p; 	this }
+	def withsessions(p:List[MSession]):this.type ={ 	this.sessions = p; 	this }
 
 }

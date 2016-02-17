@@ -20,7 +20,7 @@ class MMetadataDefinitionBooleanOption extends MMetadataDefinitionOptionClass wi
 	//#SWG#@ApiModelProperty(value = """Used as layout directive, not for validation""")
 	@BeanProperty 
 	var defaultValue: Boolean =_
-	def withdefaultValue(p:Boolean):MMetadataDefinitionBooleanOption ={ 	this.defaultValue = p; 	this }
+	def withdefaultValue(p:Boolean):this.type ={ 	this.defaultValue = p; 	this }
 
 	/**
 	 * @return Boolean

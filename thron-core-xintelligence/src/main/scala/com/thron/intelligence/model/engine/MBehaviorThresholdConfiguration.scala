@@ -45,7 +45,7 @@ class MBehaviorThresholdConfiguration extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var minimumValue: Integer =_
-	def withminimumValue(p:Integer):MBehaviorThresholdConfiguration ={ 	this.minimumValue = p; 	this }
+	def withminimumValue(p:Integer):this.type ={ 	this.minimumValue = p; 	this }
 
 	/**
 	 * The minimum percentage value for approval.
@@ -69,7 +69,7 @@ class MBehaviorThresholdConfiguration extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var approval: MThresholdValue =_
-	def withapproval(p:MThresholdValue):MBehaviorThresholdConfiguration ={ 	this.approval = p; 	this }
+	def withapproval(p:MThresholdValue):this.type ={ 	this.approval = p; 	this }
 
 	/**
 	 * The minimum percentage value for removal.
@@ -93,7 +93,7 @@ class MBehaviorThresholdConfiguration extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var removal: MThresholdValue =_
-	def withremoval(p:MThresholdValue):MBehaviorThresholdConfiguration ={ 	this.removal = p; 	this }
+	def withremoval(p:MThresholdValue):this.type ={ 	this.removal = p; 	this }
 
 	/**
 	 * @return Boolean

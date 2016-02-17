@@ -23,6 +23,6 @@ class MIMetadataDefinitionlinkITagReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. The desired position of the metadata inside the tag list.""", required = true)
 	@BeanProperty
 	var pos: Integer =_
-	def withpos(p:Integer):MIMetadataDefinitionlinkITagReq ={ 	this.pos = p; 	this }
+	def withpos(p:Integer):this.type ={ 	this.pos = p; 	this }
 
 }

@@ -24,6 +24,6 @@ class MPublishedContentExt extends MPublishedContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """used to store the version of the published content. The version number change when the content is republished using a different source file. The version doe not change id the content is published in a new channel or the user change the thumbnail.""")
 	@BeanProperty 
 	var pcontentVersion: Integer  = 0
-	def withpcontentVersion(p:Integer):MPublishedContentExt ={ 	this.pcontentVersion = p; 	this }
+	def withpcontentVersion(p:Integer):this.type ={ 	this.pcontentVersion = p; 	this }
 
 }

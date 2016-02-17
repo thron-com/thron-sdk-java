@@ -18,11 +18,11 @@ class MResponseContextList extends MResponseContext with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MContext] = new ArrayList[MContext]
-	def withitems(p:List[MContext]):MResponseContextList ={ 	this.items = p; 	this }
+	def withitems(p:List[MContext]):this.type ={ 	this.items = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseContextList ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

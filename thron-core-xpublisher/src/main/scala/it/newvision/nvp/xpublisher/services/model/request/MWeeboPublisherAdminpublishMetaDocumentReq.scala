@@ -21,7 +21,7 @@ class MWeeboPublisherAdminpublishMetaDocumentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MWeeboPublisherAdminpublishMetaDocumentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * optional. Used to publish thumbnail linked to the playlist.
@@ -29,26 +29,26 @@ class MWeeboPublisherAdminpublishMetaDocumentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """optional. Used to publish thumbnail linked to the playlist.""", required = true)
 	@BeanProperty
 	var siteName: String =_
-	def withsiteName(p:String):MWeeboPublisherAdminpublishMetaDocumentReq ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var packageId: String =_
-	def withpackageId(p:String):MWeeboPublisherAdminpublishMetaDocumentReq ={ 	this.packageId = p; 	this }
+	def withpackageId(p:String):this.type ={ 	this.packageId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty @org.codehaus.jackson.annotate.JsonProperty("PContentId")
 	var pContentId: String =_
-	def withpContentId(p:String):MWeeboPublisherAdminpublishMetaDocumentReq ={ 	this.pContentId = p; 	this }
+	def withpContentId(p:String):this.type ={ 	this.pContentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var channel: MChannel =_
-	def withchannel(p:MChannel):MWeeboPublisherAdminpublishMetaDocumentReq ={ 	this.channel = p; 	this }
+	def withchannel(p:MChannel):this.type ={ 	this.channel = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var plannedPublication: Date =_
-	def withplannedPublication(p:Date):MWeeboPublisherAdminpublishMetaDocumentReq ={ 	this.plannedPublication = p; 	this }
+	def withplannedPublication(p:Date):this.type ={ 	this.plannedPublication = p; 	this }
 
 }

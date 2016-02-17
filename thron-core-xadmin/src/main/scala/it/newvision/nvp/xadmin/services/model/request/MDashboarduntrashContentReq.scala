@@ -21,7 +21,7 @@ class MDashboarduntrashContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MDashboarduntrashContentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * if newUserId is empty the contents will be un trash to the original owner
@@ -29,6 +29,6 @@ class MDashboarduntrashContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if newUserId is empty the contents will be un trash to the original owner""", required = true)
 	@BeanProperty
 	var contentList: MContentsParams =_
-	def withcontentList(p:MContentsParams):MDashboarduntrashContentReq ={ 	this.contentList = p; 	this }
+	def withcontentList(p:MContentsParams):this.type ={ 	this.contentList = p; 	this }
 
 }

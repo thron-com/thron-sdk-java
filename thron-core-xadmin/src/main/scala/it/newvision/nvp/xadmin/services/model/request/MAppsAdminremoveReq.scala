@@ -20,7 +20,7 @@ class MAppsAdminremoveReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAppsAdminremoveReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * the application Id
@@ -28,6 +28,6 @@ class MAppsAdminremoveReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the application Id""", required = true)
 	@BeanProperty
 	var appId: String =_
-	def withappId(p:String):MAppsAdminremoveReq ={ 	this.appId = p; 	this }
+	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
 
 }

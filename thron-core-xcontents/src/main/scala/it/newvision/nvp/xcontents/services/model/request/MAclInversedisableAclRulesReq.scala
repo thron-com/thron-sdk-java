@@ -16,10 +16,10 @@ class MAclInversedisableAclRulesReq extends Serializable {
 
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MAclInversedisableAclRulesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	@BeanProperty 
 	var rules: MAclRuleInverseItems =_
-	def withrules(p:MAclRuleInverseItems):MAclInversedisableAclRulesReq ={ 	this.rules = p; 	this }
+	def withrules(p:MAclRuleInverseItems):this.type ={ 	this.rules = p; 	this }
 
 }

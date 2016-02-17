@@ -17,6 +17,6 @@ class MResponseContactITags extends MResponseContact with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var itagsInIssue: List[String] = new ArrayList[String]
-	def withitagsInIssue(p:List[String]):MResponseContactITags ={ 	this.itagsInIssue = p; 	this }
+	def withitagsInIssue(p:List[String]):this.type ={ 	this.itagsInIssue = p; 	this }
 
 }

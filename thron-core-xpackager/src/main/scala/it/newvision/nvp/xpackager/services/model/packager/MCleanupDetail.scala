@@ -17,16 +17,16 @@ class MCleanupDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MCleanupDetail ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var deletedIngestionsFolders: Integer =_
-	def withdeletedIngestionsFolders(p:Integer):MCleanupDetail ={ 	this.deletedIngestionsFolders = p; 	this }
+	def withdeletedIngestionsFolders(p:Integer):this.type ={ 	this.deletedIngestionsFolders = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var deletedPackagedFolders: Integer =_
-	def withdeletedPackagedFolders(p:Integer):MCleanupDetail ={ 	this.deletedPackagedFolders = p; 	this }
+	def withdeletedPackagedFolders(p:Integer):this.type ={ 	this.deletedPackagedFolders = p; 	this }
 
 }

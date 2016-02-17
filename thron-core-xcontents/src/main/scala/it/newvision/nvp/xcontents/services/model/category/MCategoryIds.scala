@@ -20,6 +20,6 @@ class MCategoryIds extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of category Ids""")
 	@BeanProperty 
 	var categoryIds: List[String] = new ArrayList[String]
-	def withcategoryIds(p:List[String]):MCategoryIds ={ 	this.categoryIds = p; 	this }
+	def withcategoryIds(p:List[String]):this.type ={ 	this.categoryIds = p; 	this }
 
 }

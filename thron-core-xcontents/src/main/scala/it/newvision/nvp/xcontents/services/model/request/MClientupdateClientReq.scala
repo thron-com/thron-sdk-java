@@ -22,11 +22,11 @@ class MClientupdateClientReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MClientupdateClientReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var properties: MClientProperties =_
-	def withproperties(p:MClientProperties):MClientupdateClientReq ={ 	this.properties = p; 	this }
+	def withproperties(p:MClientProperties):this.type ={ 	this.properties = p; 	this }
 
 }

@@ -18,11 +18,11 @@ class MResponseDownloaderQueue extends MResponsePackager with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var tasks: List[MDownloaderTask] = new ArrayList[MDownloaderTask]
-	def withtasks(p:List[MDownloaderTask]):MResponseDownloaderQueue ={ 	this.tasks = p; 	this }
+	def withtasks(p:List[MDownloaderTask]):this.type ={ 	this.tasks = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseDownloaderQueue ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

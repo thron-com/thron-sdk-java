@@ -19,6 +19,6 @@ class MResponseReports4meCreate extends MResponseReports with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var report: MReport4ME =_
-	def withreport(p:MReport4ME):MResponseReports4meCreate ={ 	this.report = p; 	this }
+	def withreport(p:MReport4ME):this.type ={ 	this.report = p; 	this }
 
 }

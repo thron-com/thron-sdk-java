@@ -21,6 +21,6 @@ class MAclInverseList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var rules: List[MAclInverse] = new ArrayList[MAclInverse]
-	def withrules(p:List[MAclInverse]):MAclInverseList ={ 	this.rules = p; 	this }
+	def withrules(p:List[MAclInverse]):this.type ={ 	this.rules = p; 	this }
 
 }

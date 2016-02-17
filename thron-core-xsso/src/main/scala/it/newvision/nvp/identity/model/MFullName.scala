@@ -20,27 +20,27 @@ class MFullName extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var prefix: String =_
-	def withprefix(p:String):MFullName ={ 	this.prefix = p; 	this }
+	def withprefix(p:String):this.type ={ 	this.prefix = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var firstName: String =_
-	def withfirstName(p:String):MFullName ={ 	this.firstName = p; 	this }
+	def withfirstName(p:String):this.type ={ 	this.firstName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var middleName: String =_
-	def withmiddleName(p:String):MFullName ={ 	this.middleName = p; 	this }
+	def withmiddleName(p:String):this.type ={ 	this.middleName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var lastName: String =_
-	def withlastName(p:String):MFullName ={ 	this.lastName = p; 	this }
+	def withlastName(p:String):this.type ={ 	this.lastName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var suffix: String =_
-	def withsuffix(p:String):MFullName ={ 	this.suffix = p; 	this }
+	def withsuffix(p:String):this.type ={ 	this.suffix = p; 	this }
 
 	/**
 	 * @return String

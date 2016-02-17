@@ -19,8 +19,8 @@ class MPropertyThumbnail extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var quality: Integer  = 75
-	def withquality(p:Integer):MPropertyThumbnail ={ 	this.quality = p; 	this }
+	var quality: Integer  = 90
+	def withquality(p:Integer):this.type ={ 	this.quality = p; 	this }
 
 	/**
 	 * the background color for thumbanils. Use the imagemagic parameters: xc:black,
@@ -29,7 +29,7 @@ class MPropertyThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the background color for thumbanils. Use the imagemagic parameters: xc:black, xc:white, xc:transparent""" ,required = true)
 	@BeanProperty 
 	var bkColor: String  = ""
-	def withbkColor(p:String):MPropertyThumbnail ={ 	this.bkColor = p; 	this }
+	def withbkColor(p:String):this.type ={ 	this.bkColor = p; 	this }
 
 	/**
 	 * default thumbs format
@@ -37,17 +37,17 @@ class MPropertyThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """default thumbs format""" ,required = true)
 	@BeanProperty 
 	var defaultFormat: String  = "L"
-	def withdefaultFormat(p:String):MPropertyThumbnail ={ 	this.defaultFormat = p; 	this }
+	def withdefaultFormat(p:String):this.type ={ 	this.defaultFormat = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var stretch: Boolean  = false
-	def withstretch(p:Boolean):MPropertyThumbnail ={ 	this.stretch = p; 	this }
+	def withstretch(p:Boolean):this.type ={ 	this.stretch = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var thumbs: List[MThumbnailDetail] = new ArrayList[MThumbnailDetail]
-	  def withthumbs(p:List[MThumbnailDetail]):MPropertyThumbnail ={ 	this.thumbs = p; 	this }
+	  def withthumbs(p:List[MThumbnailDetail]):this.type ={ 	this.thumbs = p; 	this }
 
 	/**
 	 * @return void
@@ -61,6 +61,14 @@ class MPropertyThumbnail extends Serializable {
 		val t4 = new MThumbnailDetail()
 		val t5 = new MThumbnailDetail()
 		val t6 = new MThumbnailDetail()
+		val t7 = new MThumbnailDetail()
+		val t8 = new MThumbnailDetail()
+	
+		t8.setWidth(1920)
+		t8.setFormat("L2")
+	
+		t7.setWidth(1024)
+		t7.setFormat("L1")
 	
 		t1.setWidth(720)
 		t1.setFormat("L")
@@ -81,7 +89,7 @@ class MPropertyThumbnail extends Serializable {
 		t6.setFormat("S")
 	
 	
-		this.thumbs = new ArrayList[MThumbnailDetail](Arrays.asList(t1, t2, t3,t4,t5,t6))
+		this.thumbs = new ArrayList[MThumbnailDetail](Arrays.asList(t1, t2, t3,t4,t5,t6,t7,t8))
 	}
 
 }

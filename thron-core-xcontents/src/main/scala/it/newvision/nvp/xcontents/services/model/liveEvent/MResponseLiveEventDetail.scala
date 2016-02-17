@@ -17,6 +17,6 @@ class MResponseLiveEventDetail extends MResponseLiveEvent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var liveEvent: MLiveEventDetail =_
-	def withliveEvent(p:MLiveEventDetail):MResponseLiveEventDetail ={ 	this.liveEvent = p; 	this }
+	def withliveEvent(p:MLiveEventDetail):this.type ={ 	this.liveEvent = p; 	this }
 
 }

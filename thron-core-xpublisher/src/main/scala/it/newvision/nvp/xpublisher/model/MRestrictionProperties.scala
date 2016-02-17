@@ -22,7 +22,7 @@ class MRestrictionProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if true, the delivery services verify the tokenId parameter, to restrict the access to only to the players (clients) that have been authenticated in the platform. """ ,required = true)
 	@BeanProperty 
 	var onlyCertifiedClients: Boolean  = false
-	def withonlyCertifiedClients(p:Boolean):MRestrictionProperties ={ 	this.onlyCertifiedClients = p; 	this }
+	def withonlyCertifiedClients(p:Boolean):this.type ={ 	this.onlyCertifiedClients = p; 	this }
 
 	/**
 	 * if true, the delivery services verifies the authentication using the callback
@@ -31,12 +31,12 @@ class MRestrictionProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if true, the delivery services verifies the authentication using the callback service sent as parameter.""" ,required = true)
 	@BeanProperty 
 	var useAuthenticationWebService: Boolean  = false
-	def withuseAuthenticationWebService(p:Boolean):MRestrictionProperties ={ 	this.useAuthenticationWebService = p; 	this }
+	def withuseAuthenticationWebService(p:Boolean):this.type ={ 	this.useAuthenticationWebService = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var geoBlocking: MGeoLocation =_
-	  def withgeoBlocking(p:MGeoLocation):MRestrictionProperties ={ 	this.geoBlocking = p; 	this }
+	  def withgeoBlocking(p:MGeoLocation):this.type ={ 	this.geoBlocking = p; 	this }
 
 	/**
 	 * return if the content is public or not. The system enables the cache procedure.

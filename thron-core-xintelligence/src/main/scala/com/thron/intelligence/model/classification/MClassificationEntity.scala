@@ -75,12 +75,12 @@ class MClassificationEntity extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
-	def withactive(p:Boolean):MClassificationEntity ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var applicableTo: MEClassificationEntityType =_
-	def withapplicableTo(p:MEClassificationEntityType):MClassificationEntity ={ 	this.applicableTo = p; 	this }
+	def withapplicableTo(p:MEClassificationEntityType):this.type ={ 	this.applicableTo = p; 	this }
 
 	/**
 	 * To better understand the goal of the classification, is possible to define a
@@ -89,7 +89,7 @@ class MClassificationEntity extends Serializable {
 	//#SWG#@ApiModelProperty(value = """To better understand the goal of the classification, is possible to define a question""")
 	@BeanProperty 
 	var question: List[MLocalization] = new ArrayList[MLocalization]
-	def withquestion(p:List[MLocalization]):MClassificationEntity ={ 	this.question = p; 	this }
+	def withquestion(p:List[MLocalization]):this.type ={ 	this.question = p; 	this }
 
 	/**
 	 * used to specify the Entity -> Tag relation type.
@@ -97,7 +97,7 @@ class MClassificationEntity extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to specify the Entity -> Tag relation type.""" ,required = true)
 	@BeanProperty 
 	var relationType: MEEntityTagRelationType =_
-	def withrelationType(p:MEEntityTagRelationType):MClassificationEntity ={ 	this.relationType = p; 	this }
+	def withrelationType(p:MEEntityTagRelationType):this.type ={ 	this.relationType = p; 	this }
 
 	/**
 	 * @return Boolean

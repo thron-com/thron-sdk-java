@@ -21,6 +21,6 @@ class MRepositoryAdminrestoreFilesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var fileList: MRepositoryFileList =_
-	def withfileList(p:MRepositoryFileList):MRepositoryAdminrestoreFilesReq ={ 	this.fileList = p; 	this }
+	def withfileList(p:MRepositoryFileList):this.type ={ 	this.fileList = p; 	this }
 
 }

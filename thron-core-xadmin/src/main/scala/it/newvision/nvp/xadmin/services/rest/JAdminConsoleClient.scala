@@ -32,8 +32,6 @@ object JAdminConsoleClient {
  * 
  * <b>Web Service Endpoints</b>:
  * <ul>
- * 	<li>WADL REST service: http://clientId-view.4me.
- * it/api/adxadmin/resources/application.wadl</li>
  * 	<li>REST service: http://clientId-view.4me.
  * it/api/adxadmin/resources/adminconsole/</li>
  * </ul>

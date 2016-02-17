@@ -23,16 +23,16 @@ class MContentAdminreportReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """comma separated value""", required = true)
 	@BeanProperty
 	var clientIds: String =_
-	def withclientIds(p:String):MContentAdminreportReq ={ 	this.clientIds = p; 	this }
+	def withclientIds(p:String):this.type ={ 	this.clientIds = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var fromDate: Date =_
-	def withfromDate(p:Date):MContentAdminreportReq ={ 	this.fromDate = p; 	this }
+	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var toDate: Date =_
-	def withtoDate(p:Date):MContentAdminreportReq ={ 	this.toDate = p; 	this }
+	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 }

@@ -20,6 +20,6 @@ class MResponseVUserResetPassword extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """temporary token that can be used with JVuserManager.login""")
 	@BeanProperty 
 	var tmpToken: String =_
-	def withtmpToken(p:String):MResponseVUserResetPassword ={ 	this.tmpToken = p; 	this }
+	def withtmpToken(p:String):this.type ={ 	this.tmpToken = p; 	this }
 
 }

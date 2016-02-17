@@ -20,6 +20,6 @@ class MResponseFilesLinkedToMediaContent extends MResponsePreview with Serializa
 	//#SWG#@ApiModelProperty(value = """list of mediacontentsId where the file is used.""")
 	@BeanProperty 
 	var mediaContentId: List[String] = new ArrayList[String]
-	def withmediaContentId(p:List[String]):MResponseFilesLinkedToMediaContent ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:List[String]):this.type ={ 	this.mediaContentId = p; 	this }
 
 }

@@ -22,11 +22,11 @@ class MLiveEventAdmincreateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MLiveEventAdmincreateReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var liveEvent: MLiveEvent =_
-	def withliveEvent(p:MLiveEvent):MLiveEventAdmincreateReq ={ 	this.liveEvent = p; 	this }
+	def withliveEvent(p:MLiveEvent):this.type ={ 	this.liveEvent = p; 	this }
 
 }

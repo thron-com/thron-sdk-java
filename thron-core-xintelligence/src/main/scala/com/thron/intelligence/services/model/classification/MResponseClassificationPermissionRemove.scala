@@ -21,6 +21,6 @@ class MResponseClassificationPermissionRemove extends MResponseClassification wi
 	//#SWG#@ApiModelProperty(value = """permission in issues""")
 	@BeanProperty 
 	var issues: List[MClassificationPermission] = new ArrayList[MClassificationPermission]
-	def withissues(p:List[MClassificationPermission]):MResponseClassificationPermissionRemove ={ 	this.issues = p; 	this }
+	def withissues(p:List[MClassificationPermission]):this.type ={ 	this.issues = p; 	this }
 
 }

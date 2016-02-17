@@ -52,26 +52,26 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWGNL#WEBFLV""" ,required = true)
 	@BeanProperty 
 	var channelType: String  = "WEB"
-	def withchannelType(p:String):MPropertyGenericDocument ={ 	this.channelType = p; 	this }
+	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	@Deprecated
 	var defaultThumbnailFormat: String  = "L"
 	@Deprecated
-	def withdefaultThumbnailFormat(p:String):MPropertyGenericDocument ={ 	this.defaultThumbnailFormat = p; 	this }
+	def withdefaultThumbnailFormat(p:String):this.type ={ 	this.defaultThumbnailFormat = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var channelDescriptions: List[MChannelDescription] = new ArrayList[MChannelDescription]
-	def withchannelDescriptions(p:List[MChannelDescription]):MPropertyGenericDocument ={ 	this.channelDescriptions = p; 	this }
+	def withchannelDescriptions(p:List[MChannelDescription]):this.type ={ 	this.channelDescriptions = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	@Deprecated
 	var thumbsProperties: MPropertyThumbnail  = new MPropertyThumbnail
 	@Deprecated
-	def withthumbsProperties(p:MPropertyThumbnail):MPropertyGenericDocument ={ 	this.thumbsProperties = p; 	this }
+	def withthumbsProperties(p:MPropertyThumbnail):this.type ={ 	this.thumbsProperties = p; 	this }
 
 	/**
 	 * <ul>
@@ -84,7 +84,7 @@ class MPropertyGenericDocument extends Serializable {
 	@Deprecated
 	var generateThumbnail: Boolean  = true
 	@Deprecated
-	def withgenerateThumbnail(p:Boolean):MPropertyGenericDocument ={ 	this.generateThumbnail = p; 	this }
+	def withgenerateThumbnail(p:Boolean):this.type ={ 	this.generateThumbnail = p; 	this }
 
 	/**
 	 * the application name:
@@ -94,7 +94,7 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWGNL#flash, http""" ,required = true)
 	@BeanProperty 
 	var appName: String  = ""
-	def withappName(p:String):MPropertyGenericDocument ={ 	this.appName = p; 	this }
+	def withappName(p:String):this.type ={ 	this.appName = p; 	this }
 
 	/**
 	 * notification to the client once the content is ready to be published (packaged
@@ -105,7 +105,7 @@ class MPropertyGenericDocument extends Serializable {
 	@Deprecated
 	var notifyOncePackaged: Boolean  = false
 	@Deprecated
-	def withnotifyOncePackaged(p:Boolean):MPropertyGenericDocument ={ 	this.notifyOncePackaged = p; 	this }
+	def withnotifyOncePackaged(p:Boolean):this.type ={ 	this.notifyOncePackaged = p; 	this }
 
 	/**
 	 * "<clientId>-4me.weebo.it/static/"
@@ -113,7 +113,7 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWG#@ApiModelProperty(value = """"<clientId>-4me.weebo.it/static/"""" ,required = true)
 	@BeanProperty 
 	var httpServer: String  = "-4me.weebo.it/static/"
-	def withhttpServer(p:String):MPropertyGenericDocument ={ 	this.httpServer = p; 	this }
+	def withhttpServer(p:String):this.type ={ 	this.httpServer = p; 	this }
 
 	/**
 	 * "<clientId>-stream.weebo.it/"
@@ -121,7 +121,7 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWG#@ApiModelProperty(value = """"<clientId>-stream.weebo.it/"""" ,required = true)
 	@BeanProperty 
 	var streamServer: String  = "-stream.weebo.it/"
-	def withstreamServer(p:String):MPropertyGenericDocument ={ 	this.streamServer = p; 	this }
+	def withstreamServer(p:String):this.type ={ 	this.streamServer = p; 	this }
 
 	/**
 	 * premiumvodservice/
@@ -129,7 +129,7 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWG#@ApiModelProperty(value = """premiumvodservice/""" ,required = true)
 	@BeanProperty 
 	var streamAppPremium: String  = ""
-	def withstreamAppPremium(p:String):MPropertyGenericDocument ={ 	this.streamAppPremium = p; 	this }
+	def withstreamAppPremium(p:String):this.type ={ 	this.streamAppPremium = p; 	this }
 
 	/**
 	 * available protocols. list of comma separated values.
@@ -139,7 +139,7 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWGNL#"http://,https://"""" ,required = true)
 	@BeanProperty 
 	var webProtocols: String  = "http://"
-	def withwebProtocols(p:String):MPropertyGenericDocument ={ 	this.webProtocols = p; 	this }
+	def withwebProtocols(p:String):this.type ={ 	this.webProtocols = p; 	this }
 
 	/**
 	 * rtmpe, rtmp, http. Are the different kind of streaming protocols.
@@ -147,7 +147,7 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWG#@ApiModelProperty(value = """rtmpe, rtmp, http. Are the different kind of streaming protocols.""" ,required = true)
 	@BeanProperty 
 	var streamProtocol: String  = ""
-	def withstreamProtocol(p:String):MPropertyGenericDocument ={ 	this.streamProtocol = p; 	this }
+	def withstreamProtocol(p:String):this.type ={ 	this.streamProtocol = p; 	this }
 
 	/**
 	 * DEPRECATED
@@ -155,7 +155,7 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWG#@ApiModelProperty(value = """DEPRECATED""" ,required = true)
 	@BeanProperty 
 	var compliantWithPLAY: Boolean  = false
-	def withcompliantWithPLAY(p:Boolean):MPropertyGenericDocument ={ 	this.compliantWithPLAY = p; 	this }
+	def withcompliantWithPLAY(p:Boolean):this.type ={ 	this.compliantWithPLAY = p; 	this }
 
 	/**
 	 * define if the channel is enabled or not. Used to keep the channel settings but
@@ -164,7 +164,7 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWG#@ApiModelProperty(value = """define if the channel is enabled or not. Used to keep the channel settings but disable the user to publish new contents in the current channel""" ,required = true)
 	@BeanProperty 
 	var channelEnabled: Boolean  = true
-	def withchannelEnabled(p:Boolean):MPropertyGenericDocument ={ 	this.channelEnabled = p; 	this }
+	def withchannelEnabled(p:Boolean):this.type ={ 	this.channelEnabled = p; 	this }
 
 	/**
 	 * this attribute specify that the channel is compliant with a specific 4me
@@ -176,7 +176,7 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWGNL#possibile entries:VIEW,PLAY,MOVE,TALK""" ,required = true)
 	@BeanProperty 
 	var compliantWith: String  = "VIEW"
-	def withcompliantWith(p:String):MPropertyGenericDocument ={ 	this.compliantWith = p; 	this }
+	def withcompliantWith(p:String):this.type ={ 	this.compliantWith = p; 	this }
 
 	/**
 	 * if true the channle type is used for the downloadadble contes. When the user
@@ -186,12 +186,12 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if true the channle type is used for the downloadadble contes. When the user linke the content for download the player will use only this specific channel. ONLY WEB* channels are availables""" ,required = true)
 	@BeanProperty 
 	var useForDownload: Boolean  = false
-	def withuseForDownload(p:Boolean):MPropertyGenericDocument ={ 	this.useForDownload = p; 	this }
+	def withuseForDownload(p:Boolean):this.type ={ 	this.useForDownload = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var withIngestion: Boolean  = false
-	def withwithIngestion(p:Boolean):MPropertyGenericDocument ={ 	this.withIngestion = p; 	this }
+	def withwithIngestion(p:Boolean):this.type ={ 	this.withIngestion = p; 	this }
 
 	/**
 	 * attualmente la conversione avviene solo in JPG con limitazione per i file di
@@ -200,7 +200,7 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWG#@ApiModelProperty(value = """attualmente la conversione avviene solo in JPG con limitazione per i file di input non superiori a 2048x2048""" ,required = true)
 	@BeanProperty 
 	var convertTo: String =_
-	def withconvertTo(p:String):MPropertyGenericDocument ={ 	this.convertTo = p; 	this }
+	def withconvertTo(p:String):this.type ={ 	this.convertTo = p; 	this }
 
 	/**
 	 * @param clientId : String

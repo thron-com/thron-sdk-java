@@ -18,6 +18,6 @@ class MGroupInitData extends MGroupUpdateData with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var groupType: MEGroupType  = MEGroupType.PLATFORM
-	def withgroupType(p:MEGroupType):MGroupInitData ={ 	this.groupType = p; 	this }
+	def withgroupType(p:MEGroupType):this.type ={ 	this.groupType = p; 	this }
 
 }

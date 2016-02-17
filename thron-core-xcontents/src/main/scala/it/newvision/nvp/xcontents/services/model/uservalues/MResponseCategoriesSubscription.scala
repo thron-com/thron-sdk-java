@@ -20,6 +20,6 @@ class MResponseCategoriesSubscription extends MResponseSubscription with Seriali
 	//#SWG#@ApiModelProperty(value = """list of category ids in issue after the categoriesSubscription process.""")
 	@BeanProperty 
 	var categoriesInIssue: List[String] = new ArrayList[String]
-	def withcategoriesInIssue(p:List[String]):MResponseCategoriesSubscription ={ 	this.categoriesInIssue = p; 	this }
+	def withcategoriesInIssue(p:List[String]):this.type ={ 	this.categoriesInIssue = p; 	this }
 
 }

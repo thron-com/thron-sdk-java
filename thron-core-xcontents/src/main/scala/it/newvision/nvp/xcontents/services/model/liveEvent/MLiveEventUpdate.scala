@@ -23,7 +23,7 @@ class MLiveEventUpdate extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the scheduled start date of the event in the calendar""")
 	@BeanProperty 
 	var startDate: Date =_
-	def withstartDate(p:Date):MLiveEventUpdate ={ 	this.startDate = p; 	this }
+	def withstartDate(p:Date):this.type ={ 	this.startDate = p; 	this }
 
 	/**
 	 * the scheduled end date of the event in the calendar
@@ -31,7 +31,7 @@ class MLiveEventUpdate extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the scheduled end date of the event in the calendar""")
 	@BeanProperty 
 	var endDate: Date =_
-	def withendDate(p:Date):MLiveEventUpdate ={ 	this.endDate = p; 	this }
+	def withendDate(p:Date):this.type ={ 	this.endDate = p; 	this }
 
 	/**
 	 * the scheduled length of the event
@@ -39,7 +39,7 @@ class MLiveEventUpdate extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the scheduled length of the event""")
 	@BeanProperty 
 	var length: Long =_
-	def withlength(p:Long):MLiveEventUpdate ={ 	this.length = p; 	this }
+	def withlength(p:Long):this.type ={ 	this.length = p; 	this }
 
 	/**
 	 * @return Boolean

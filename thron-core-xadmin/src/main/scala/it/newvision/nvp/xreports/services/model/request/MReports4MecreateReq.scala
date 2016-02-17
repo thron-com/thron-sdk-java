@@ -21,21 +21,21 @@ class MReports4MecreateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MReports4MecreateReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var query: MQuery4ME =_
-	def withquery(p:MQuery4ME):MReports4MecreateReq ={ 	this.query = p; 	this }
+	def withquery(p:MQuery4ME):this.type ={ 	this.query = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var templateName: String =_
-	def withtemplateName(p:String):MReports4MecreateReq ={ 	this.templateName = p; 	this }
+	def withtemplateName(p:String):this.type ={ 	this.templateName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var description: String =_
-	def withdescription(p:String):MReports4MecreateReq ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 }

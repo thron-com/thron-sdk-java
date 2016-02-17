@@ -17,7 +17,7 @@ class MResponseFindCategory2 extends MResponseCategory with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var categories: List[MCategoryResult] = new ArrayList[MCategoryResult]
-	def withcategories(p:List[MCategoryResult]):MResponseFindCategory2 ={ 	this.categories = p; 	this }
+	def withcategories(p:List[MCategoryResult]):this.type ={ 	this.categories = p; 	this }
 
 	/**
 	 * total number of results
@@ -25,6 +25,6 @@ class MResponseFindCategory2 extends MResponseCategory with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseFindCategory2 ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

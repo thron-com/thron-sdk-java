@@ -24,6 +24,6 @@ class MIMetadatabulkInsertReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """An existing targetId for a specific classification""", required = true)
 	@BeanProperty
 	var value: MIMetadataBulkValue =_
-	def withvalue(p:MIMetadataBulkValue):MIMetadatabulkInsertReq ={ 	this.value = p; 	this }
+	def withvalue(p:MIMetadataBulkValue):this.type ={ 	this.value = p; 	this }
 
 }

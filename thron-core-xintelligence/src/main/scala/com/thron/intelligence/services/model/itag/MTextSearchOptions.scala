@@ -46,7 +46,7 @@ class MTextSearchOptions extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var searchKeyOption: MESearchOption  = MESearchOption.BY_TOKEN
-	def withsearchKeyOption(p:MESearchOption):MTextSearchOptions ={ 	this.searchKeyOption = p; 	this }
+	def withsearchKeyOption(p:MESearchOption):this.type ={ 	this.searchKeyOption = p; 	this }
 
 	/**
 	 * Used to search on the given list of fields.
@@ -57,6 +57,6 @@ class MTextSearchOptions extends Serializable {
 	//#SWGNL#If searchOnFields is empty and "text" is defined, the service search on all available fields.""")
 	@BeanProperty 
 	var searchOnFields: List[MESearchField] = new ArrayList[MESearchField]
-	def withsearchOnFields(p:List[MESearchField]):MTextSearchOptions ={ 	this.searchOnFields = p; 	this }
+	def withsearchOnFields(p:List[MESearchField]):this.type ={ 	this.searchOnFields = p; 	this }
 
 }

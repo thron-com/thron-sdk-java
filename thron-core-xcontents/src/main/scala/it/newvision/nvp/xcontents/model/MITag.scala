@@ -17,12 +17,12 @@ class MITag extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MITag ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var classificationId: String =_
-	def withclassificationId(p:String):MITag ={ 	this.classificationId = p; 	this }
+	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
 
 	/**
 	 * The itag status:
@@ -40,11 +40,11 @@ class MITag extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var approved: Boolean =_
-	def withapproved(p:Boolean):MITag ={ 	this.approved = p; 	this }
+	def withapproved(p:Boolean):this.type ={ 	this.approved = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var sources: List[MISourceIdentifier] = new ArrayList[MISourceIdentifier]
-	def withsources(p:List[MISourceIdentifier]):MITag ={ 	this.sources = p; 	this }
+	def withsources(p:List[MISourceIdentifier]):this.type ={ 	this.sources = p; 	this }
 
 }

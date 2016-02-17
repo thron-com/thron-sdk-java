@@ -19,14 +19,14 @@ import it.newvision.nvp.identity.services.model.request.MIdentityAdmincleanupSes
 /**
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.
- * it/api/adxsso/resources/identityadmin/</li>
+ * 	<li>REST service: http://clientId-view.thron.
+ * com/api/adxsso/resources/identityadmin/</li>
  * </ul>
  */
 @Path("/identityadmin")
 //#SWG#@Api(value = "/identityadmin", description = """<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.4me.it/api/adxsso/resources/identityadmin/</li>
+//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/adxsso/resources/identityadmin/</li>
 //#SWGNL#</ul>""")
 trait JIdentityAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

@@ -22,7 +22,7 @@ class MPublishPageletParams extends MPublishInWeebo with Serializable  {
 	//#SWGNL#constraints: length < 2000000 chars (2.000.000 bytes)""" ,required = true)
 	@BeanProperty 
 	var body: String =_
-	def withbody(p:String):MPublishPageletParams ={ 	this.body = p; 	this }
+	def withbody(p:String):this.type ={ 	this.body = p; 	this }
 
 	/**
 	 * Used to specify the mime type of the body value.
@@ -30,6 +30,6 @@ class MPublishPageletParams extends MPublishInWeebo with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Used to specify the mime type of the body value.""" ,required = true)
 	@BeanProperty 
 	var mimeType: String =_
-	def withmimeType(p:String):MPublishPageletParams ={ 	this.mimeType = p; 	this }
+	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
 
 }

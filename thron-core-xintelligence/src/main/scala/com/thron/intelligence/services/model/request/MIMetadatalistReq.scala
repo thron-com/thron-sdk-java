@@ -21,6 +21,6 @@ class MIMetadatalistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MIMetadataSearchCriteria =_
-	def withcriteria(p:MIMetadataSearchCriteria):MIMetadatalistReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MIMetadataSearchCriteria):this.type ={ 	this.criteria = p; 	this }
 
 }

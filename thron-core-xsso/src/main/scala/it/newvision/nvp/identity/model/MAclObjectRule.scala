@@ -38,7 +38,7 @@ class MAclObjectRule extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the identifier of the object where the ACL should be applied""" ,required = true)
 	@BeanProperty 
 	var sourceObjId: String =_
-	def withsourceObjId(p:String):MAclObjectRule ={ 	this.sourceObjId = p; 	this }
+	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
 
 	/**
 	 * the subject class
@@ -46,7 +46,7 @@ class MAclObjectRule extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the subject class""" ,required = true)
 	@BeanProperty 
 	var sourceObjClass: MEObjClass =_
-	def withsourceObjClass(p:MEObjClass):MAclObjectRule ={ 	this.sourceObjClass = p; 	this }
+	def withsourceObjClass(p:MEObjClass):this.type ={ 	this.sourceObjClass = p; 	this }
 
 	/**
 	 * the acl rules defined for each target object
@@ -54,7 +54,7 @@ class MAclObjectRule extends Serializable {
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """the acl rules defined for each target object""")
 	var targetAcl: List[MAclRule] = new ArrayList[MAclRule]
-	  def withtargetAcl(p:List[MAclRule]):MAclObjectRule ={ 	this.targetAcl = p; 	this }
+	  def withtargetAcl(p:List[MAclRule]):this.type ={ 	this.targetAcl = p; 	this }
 
 	/**
 	 * @return Boolean

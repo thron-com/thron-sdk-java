@@ -18,6 +18,6 @@ class MResponseIMetadataBulk2 extends MResponseMetadataDefinition with Serializa
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var targetsInIssue: List[MTarget] = new ArrayList[MTarget]
-	def withtargetsInIssue(p:List[MTarget]):MResponseIMetadataBulk2 ={ 	this.targetsInIssue = p; 	this }
+	def withtargetsInIssue(p:List[MTarget]):this.type ={ 	this.targetsInIssue = p; 	this }
 
 }

@@ -23,12 +23,12 @@ class MHostInfoExtra extends Serializable {
 	//#SWG#@ApiModelProperty(value = """ec2 account number""")
 	@BeanProperty 
 	var awsAccountNumber: String =_
-	def withawsAccountNumber(p:String):MHostInfoExtra ={ 	this.awsAccountNumber = p; 	this }
+	def withawsAccountNumber(p:String):this.type ={ 	this.awsAccountNumber = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var awsRegion: String =_
-	def withawsRegion(p:String):MHostInfoExtra ={ 	this.awsRegion = p; 	this }
+	def withawsRegion(p:String):this.type ={ 	this.awsRegion = p; 	this }
 
 	/**
 	 * Syntax: formUrlEncoded, with ; separator.
@@ -46,7 +46,7 @@ class MHostInfoExtra extends Serializable {
 	//#SWGNL#ec2InstanceType=m1.micro;amiId=xxxy""")
 	@BeanProperty 
 	var awsCustomParameters: String =_
-	def withawsCustomParameters(p:String):MHostInfoExtra ={ 	this.awsCustomParameters = p; 	this }
+	def withawsCustomParameters(p:String):this.type ={ 	this.awsCustomParameters = p; 	this }
 
 	/**
 	 * aws account used for cloudfront. Usuallly should be the same of awsAccountnumber
@@ -54,7 +54,7 @@ class MHostInfoExtra extends Serializable {
 	//#SWG#@ApiModelProperty(value = """aws account used for cloudfront. Usuallly should be the same of awsAccountnumber""" ,required = true)
 	@BeanProperty 
 	var awsCfAccountNumber: String =_
-	def withawsCfAccountNumber(p:String):MHostInfoExtra ={ 	this.awsCfAccountNumber = p; 	this }
+	def withawsCfAccountNumber(p:String):this.type ={ 	this.awsCfAccountNumber = p; 	this }
 
 	/**
 	 * the CF distribution id
@@ -62,6 +62,6 @@ class MHostInfoExtra extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the CF distribution id""")
 	@BeanProperty 
 	var awsCfDistributionIds: List[String] = new ArrayList[String]
-	def withawsCfDistributionIds(p:List[String]):MHostInfoExtra ={ 	this.awsCfDistributionIds = p; 	this }
+	def withawsCfDistributionIds(p:List[String]):this.type ={ 	this.awsCfDistributionIds = p; 	this }
 
 }

@@ -17,6 +17,6 @@ class MCommentsList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var commentId: List[String] = new ArrayList[String]
-	def withcommentId(p:List[String]):MCommentsList ={ 	this.commentId = p; 	this }
+	def withcommentId(p:List[String]):this.type ={ 	this.commentId = p; 	this }
 
 }

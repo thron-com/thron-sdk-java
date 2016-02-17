@@ -19,12 +19,12 @@ class MResponseGetContent extends MResponsePublisher with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var content: MPublishedContent =_
-	def withcontent(p:MPublishedContent):MResponseGetContent ={ 	this.content = p; 	this }
+	def withcontent(p:MPublishedContent):this.type ={ 	this.content = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var properties: MRestrictionProperties =_
-	def withproperties(p:MRestrictionProperties):MResponseGetContent ={ 	this.properties = p; 	this }
+	def withproperties(p:MRestrictionProperties):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * used to store the version of the published content. The version number change
@@ -35,6 +35,6 @@ class MResponseGetContent extends MResponsePublisher with Serializable  {
 	//#SWG#@ApiModelProperty(value = """used to store the version of the published content. The version number change when the content is republished using a different source file. The version does not change if the content is published in a new channel or the user change the thumbnail.""")
 	@BeanProperty 
 	var pcontentVersion: Integer  = 0
-	def withpcontentVersion(p:Integer):MResponseGetContent ={ 	this.pcontentVersion = p; 	this }
+	def withpcontentVersion(p:Integer):this.type ={ 	this.pcontentVersion = p; 	this }
 
 }

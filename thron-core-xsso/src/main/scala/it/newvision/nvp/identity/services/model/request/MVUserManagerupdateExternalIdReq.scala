@@ -24,6 +24,6 @@ class MVUserManagerupdateExternalIdReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. User detail""", required = true)
 	@BeanProperty
 	var externalId: MIdExternal =_
-	def withexternalId(p:MIdExternal):MVUserManagerupdateExternalIdReq ={ 	this.externalId = p; 	this }
+	def withexternalId(p:MIdExternal):this.type ={ 	this.externalId = p; 	this }
 
 }

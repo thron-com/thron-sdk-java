@@ -47,8 +47,21 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>100: max number of itags in each target</li>
+	 * 	<li>50: max number of itags in each target (created by users)</li>
+	 * 	<li>50: max number of itags in each target (created by engines)</li>
 	 * </ul>
+	 * <b>
+	 * </b><b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -66,8 +79,19 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>100: max number of itags in each target</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseITag])
+	//#SWGNL#	<li>50: max number of itags in each target (created by users)</li>
+	//#SWGNL#	<li>50: max number of itags in each target (created by engines)</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Role Validation for Tagging Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
+	//#SWGNL#
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITag])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -134,6 +158,18 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Unlink a given itagId from a specific entity (Content, User, Contact).
+	 * 
+	 * <b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -147,7 +183,17 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/remove/{clientId}/{classificationId}/{itagId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/remove", notes = """Unlink a given itagId from a specific entity (Content, User, Contact).""", response = classOf[MResponseITag])
+	//#SWG#@ApiOperation(value = "/remove", notes = """Unlink a given itagId from a specific entity (Content, User, Contact).
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
+	//#SWGNL#
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITag])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -348,6 +394,18 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * <ul>
 	 * 	<li>100: max number of itags for each target</li>
 	 * </ul>
+	 * 
+	 * <b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -363,7 +421,17 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>100: max number of itags for each target</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseITagBulk])
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
+	//#SWGNL#
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITagBulk])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkInsert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -422,6 +490,18 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Bulk remove service for itags
+	 * 
+	 * <b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -432,7 +512,17 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/bulkRemove/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkRemove", notes = """Bulk remove service for itags""", response = classOf[MResponseITagBulk])
+	//#SWG#@ApiOperation(value = "/bulkRemove", notes = """Bulk remove service for itags
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
+	//#SWGNL#
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITagBulk])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkRemove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -496,6 +586,18 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * <ul>
 	 * 	<li>100: max number of itags for each target</li>
 	 * </ul>
+	 * 
+	 * <b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -511,7 +613,17 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>100: max number of itags for each target</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseITagBulk2])
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
+	//#SWGNL#
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITagBulk2])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkInsertMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -570,6 +682,18 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Remove a given itag from a list entities (Content, User, Contact).
+	 * 
+	 * <b>Role Validation for Tagging Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Tagging Contacts</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_MANAGE_CONTACTS)
+	 * 
+	 * 
+	 * <b>Role Validation for Tagging Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -580,7 +704,17 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/bulkRemoveMultiTargets/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkRemoveMultiTargets", notes = """Remove a given itag from a list entities (Content, User, Contact).""", response = classOf[MResponseITagBulk2])
+	//#SWG#@ApiOperation(value = "/bulkRemoveMultiTargets", notes = """Remove a given itag from a list entities (Content, User, Contact).
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Users:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
+	//#SWGNL#
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents</b>
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITagBulk2])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkRemoveMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

@@ -26,7 +26,7 @@ class MAppCriteria extends Serializable {
 	//#SWGNL#PLAY,MOVE,CUSTOM...""")
 	@BeanProperty 
 	var appType: List[MEAppType] = new ArrayList[MEAppType]
-	def withappType(p:List[MEAppType]):MAppCriteria ={ 	this.appType = p; 	this }
+	def withappType(p:List[MEAppType]):this.type ={ 	this.appType = p; 	this }
 
 	/**
 	 * used to define the subtype"class" (only with CUSTOM appType)
@@ -34,12 +34,12 @@ class MAppCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to define the subtype"class" (only with CUSTOM appType)""")
 	@BeanProperty 
 	var appSubType: String =_
-	def withappSubType(p:String):MAppCriteria ={ 	this.appSubType = p; 	this }
+	def withappSubType(p:String):this.type ={ 	this.appSubType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var appIds: List[String] = new ArrayList[String]
-	def withappIds(p:List[String]):MAppCriteria ={ 	this.appIds = p; 	this }
+	def withappIds(p:List[String]):this.type ={ 	this.appIds = p; 	this }
 
 	/**
 	 * prettyId for the APP
@@ -47,17 +47,17 @@ class MAppCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """prettyId for the APP""")
 	@BeanProperty 
 	var appPrettyIds: List[String] = new ArrayList[String]
-	def withappPrettyIds(p:List[String]):MAppCriteria ={ 	this.appPrettyIds = p; 	this }
+	def withappPrettyIds(p:List[String]):this.type ={ 	this.appPrettyIds = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var appActive: Boolean =_
-	def withappActive(p:Boolean):MAppCriteria ={ 	this.appActive = p; 	this }
+	def withappActive(p:Boolean):this.type ={ 	this.appActive = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var appDisplayName: String =_
-	def withappDisplayName(p:String):MAppCriteria ={ 	this.appDisplayName = p; 	this }
+	def withappDisplayName(p:String):this.type ={ 	this.appDisplayName = p; 	this }
 
 	/**
 	 * username of the owner of the App.
@@ -67,7 +67,7 @@ class MAppCriteria extends Serializable {
 	//#SWGNL#The user who created the app instance""")
 	@BeanProperty 
 	var appOwnerUsername: String =_
-	def withappOwnerUsername(p:String):MAppCriteria ={ 	this.appOwnerUsername = p; 	this }
+	def withappOwnerUsername(p:String):this.type ={ 	this.appOwnerUsername = p; 	this }
 
 	/**
 	 * If TRUE the service filters apps where the user has no roles
@@ -75,6 +75,6 @@ class MAppCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """If TRUE the service filters apps where the user has no roles""")
 	@BeanProperty 
 	var onlyMyApps: Boolean =_
-	def withonlyMyApps(p:Boolean):MAppCriteria ={ 	this.onlyMyApps = p; 	this }
+	def withonlyMyApps(p:Boolean):this.type ={ 	this.onlyMyApps = p; 	this }
 
 }

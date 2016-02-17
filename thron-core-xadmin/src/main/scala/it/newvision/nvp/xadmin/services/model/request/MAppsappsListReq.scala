@@ -21,11 +21,11 @@ class MAppsappsListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAppsappsListReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MAppCriteria =_
-	def withcriteria(p:MAppCriteria):MAppsappsListReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MAppCriteria):this.type ={ 	this.criteria = p; 	this }
 
 }

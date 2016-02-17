@@ -21,11 +21,11 @@ class MAclverifyAclRuleReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAclverifyAclRuleReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var rule: MAclRuleItem =_
-	def withrule(p:MAclRuleItem):MAclverifyAclRuleReq ={ 	this.rule = p; 	this }
+	def withrule(p:MAclRuleItem):this.type ={ 	this.rule = p; 	this }
 
 }

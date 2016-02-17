@@ -18,6 +18,6 @@ class MResponseInsertComment extends MResponseComment with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var comment: MComment =_
-	def withcomment(p:MComment):MResponseInsertComment ={ 	this.comment = p; 	this }
+	def withcomment(p:MComment):this.type ={ 	this.comment = p; 	this }
 
 }

@@ -23,8 +23,6 @@ import it.newvision.nvp.xadmin.services.model.request.MAdminConsoleupdateFileInR
  * 
  * <b>Web Service Endpoints</b>:
  * <ul>
- * 	<li>WADL REST service: http://clientId-view.4me.
- * it/api/adxadmin/resources/application.wadl</li>
  * 	<li>REST service: http://clientId-view.4me.
  * it/api/adxadmin/resources/adminconsole/</li>
  * </ul>
@@ -34,7 +32,6 @@ import it.newvision.nvp.xadmin.services.model.request.MAdminConsoleupdateFileInR
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints</b>:
 //#SWGNL#<ul>
-//#SWGNL#	<li>WADL REST service: http://clientId-view.4me.it/api/adxadmin/resources/application.wadl</li>
 //#SWGNL#	<li>REST service: http://clientId-view.4me.it/api/adxadmin/resources/adminconsole/</li>
 //#SWGNL#</ul>""")
 trait JAdminConsole extends it.newvision.nvp.core.libraries.restserver.BaseResource {

@@ -20,6 +20,6 @@ class MCapabilities extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of available/disabled capabilities""")
 	@BeanProperty 
 	var capabilities: List[String] = new ArrayList[String]()
-	def withcapabilities(p:List[String]):MCapabilities ={ 	this.capabilities = p; 	this }
+	def withcapabilities(p:List[String]):this.type ={ 	this.capabilities = p; 	this }
 
 }

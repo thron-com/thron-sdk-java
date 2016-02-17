@@ -25,12 +25,12 @@ class MClassificationPermission extends Serializable {
 	//#SWG#@ApiModelProperty(value = """username, appId or groupId""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MClassificationPermission ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var subjectType: MESubjectType =_
-	def withsubjectType(p:MESubjectType):MClassificationPermission ={ 	this.subjectType = p; 	this }
+	def withsubjectType(p:MESubjectType):this.type ={ 	this.subjectType = p; 	this }
 
 	/**
 	 * the list of different permission
@@ -38,12 +38,12 @@ class MClassificationPermission extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of different permission""" ,required = true)
 	@BeanProperty 
 	var permission: List[MEPermission] = new ArrayList[MEPermission]
-	def withpermission(p:List[MEPermission]):MClassificationPermission ={ 	this.permission = p; 	this }
+	def withpermission(p:List[MEPermission]):this.type ={ 	this.permission = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var createdDate: Date  = new Date()
-	def withcreatedDate(p:Date):MClassificationPermission ={ 	this.createdDate = p; 	this }
+	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
 	/**
 	 * @return Boolean

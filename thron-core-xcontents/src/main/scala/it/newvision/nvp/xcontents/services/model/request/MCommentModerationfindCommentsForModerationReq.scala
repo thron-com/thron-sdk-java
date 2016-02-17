@@ -23,7 +23,7 @@ class MCommentModerationfindCommentsForModerationReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MCommentModerationfindCommentsForModerationReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * Optional Parameter
@@ -31,7 +31,7 @@ class MCommentModerationfindCommentsForModerationReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional Parameter""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MCommentModerationfindCommentsForModerationReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	/**
 	 * Optional parameter
@@ -39,12 +39,12 @@ class MCommentModerationfindCommentsForModerationReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional parameter""", required = true)
 	@BeanProperty
 	var criteria: MCommentCriteria =_
-	def withcriteria(p:MCommentCriteria):MCommentModerationfindCommentsForModerationReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MCommentCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var moderationCriteria: MModerationCriteria =_
-	def withmoderationCriteria(p:MModerationCriteria):MCommentModerationfindCommentsForModerationReq ={ 	this.moderationCriteria = p; 	this }
+	def withmoderationCriteria(p:MModerationCriteria):this.type ={ 	this.moderationCriteria = p; 	this }
 
 	/**
 	 * The content Metadata is returned in the specified locale. Optional parameter
@@ -52,7 +52,7 @@ class MCommentModerationfindCommentsForModerationReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The content Metadata is returned in the specified locale. Optional parameter""", required = true)
 	@BeanProperty
 	var locale: String =_
-	def withlocale(p:String):MCommentModerationfindCommentsForModerationReq ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * Optional orderBy parameter. The default order is by creationDate
@@ -60,7 +60,7 @@ class MCommentModerationfindCommentsForModerationReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional orderBy parameter. The default order is by creationDate""", required = true)
 	@BeanProperty
 	var orderBy: MECommentOrderBy =_
-	def withorderBy(p:MECommentOrderBy):MCommentModerationfindCommentsForModerationReq ={ 	this.orderBy = p; 	this }
+	def withorderBy(p:MECommentOrderBy):this.type ={ 	this.orderBy = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -68,16 +68,16 @@ class MCommentModerationfindCommentsForModerationReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MCommentModerationfindCommentsForModerationReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MCommentModerationfindCommentsForModerationReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MCommentModerationfindCommentsForModerationReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

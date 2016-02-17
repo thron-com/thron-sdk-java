@@ -24,7 +24,7 @@ class MModerationPub extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var status: MEModerationStatus =_
-	def withstatus(p:MEModerationStatus):MModerationPub ={ 	this.status = p; 	this }
+	def withstatus(p:MEModerationStatus):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * The userId of the moderator
@@ -32,7 +32,7 @@ class MModerationPub extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The userId of the moderator""")
 	@BeanProperty 
 	var moderatorId: String =_
-	def withmoderatorId(p:String):MModerationPub ={ 	this.moderatorId = p; 	this }
+	def withmoderatorId(p:String):this.type ={ 	this.moderatorId = p; 	this }
 
 	/**
 	 * Some notes reported by the moderator
@@ -40,7 +40,7 @@ class MModerationPub extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Some notes reported by the moderator""" ,required = true)
 	@BeanProperty 
 	var moderatorNotes: String =_
-	def withmoderatorNotes(p:String):MModerationPub ={ 	this.moderatorNotes = p; 	this }
+	def withmoderatorNotes(p:String):this.type ={ 	this.moderatorNotes = p; 	this }
 
 	/**
 	 * the abuse report notified by a user.
@@ -48,6 +48,6 @@ class MModerationPub extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the abuse report notified by a user.""")
 	@BeanProperty 
 	var acceptReportAbuse: Boolean =_
-	def withacceptReportAbuse(p:Boolean):MModerationPub ={ 	this.acceptReportAbuse = p; 	this }
+	def withacceptReportAbuse(p:Boolean):this.type ={ 	this.acceptReportAbuse = p; 	this }
 
 }

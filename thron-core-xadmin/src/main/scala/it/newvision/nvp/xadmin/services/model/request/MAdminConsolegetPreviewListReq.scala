@@ -20,16 +20,16 @@ class MAdminConsolegetPreviewListReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAdminConsolegetPreviewListReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MAdminConsolegetPreviewListReq ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var tokenId: String =_
-	def withtokenId(p:String):MAdminConsolegetPreviewListReq ={ 	this.tokenId = p; 	this }
+	def withtokenId(p:String):this.type ={ 	this.tokenId = p; 	this }
 
 }

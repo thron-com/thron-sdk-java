@@ -20,11 +20,11 @@ class MViewDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """total number of views""")
 	@BeanProperty 
 	var counter: Long =_
-	def withcounter(p:Long):MViewDetail ={ 	this.counter = p; 	this }
+	def withcounter(p:Long):this.type ={ 	this.counter = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lastView: Date =_
-	def withlastView(p:Date):MViewDetail ={ 	this.lastView = p; 	this }
+	def withlastView(p:Date):this.type ={ 	this.lastView = p; 	this }
 
 }

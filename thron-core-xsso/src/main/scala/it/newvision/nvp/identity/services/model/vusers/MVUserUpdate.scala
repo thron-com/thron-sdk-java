@@ -36,16 +36,16 @@ class MVUserUpdate extends MUpdater with Serializable  {
 	@Deprecated
 	var metadata: List[MMetadata] =_
 	@Deprecated
-	def withmetadata(p:List[MMetadata]):MVUserUpdate ={ 	this.metadata = p; 	this }
+	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userPreferences: MVUserPreferences =_
-	def withuserPreferences(p:MVUserPreferences):MVUserUpdate ={ 	this.userPreferences = p; 	this }
+	def withuserPreferences(p:MVUserPreferences):this.type ={ 	this.userPreferences = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var detail: MVUserDetail =_
-	def withdetail(p:MVUserDetail):MVUserUpdate ={ 	this.detail = p; 	this }
+	def withdetail(p:MVUserDetail):this.type ={ 	this.detail = p; 	this }
 
 }

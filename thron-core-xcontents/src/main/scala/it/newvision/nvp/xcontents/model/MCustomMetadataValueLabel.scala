@@ -24,7 +24,7 @@ class MCustomMetadataValueLabel extends MCustomMetadataKeyLabel with Serializabl
 	//#SWG#@ApiModelProperty(value = """Metadata Value, as keyword""" ,required = true)
 	@BeanProperty 
 	var value: String =_
-	def withvalue(p:String):MCustomMetadataValueLabel ={ 	this.value = p; 	this }
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * used to identify the default value in the list
@@ -32,6 +32,6 @@ class MCustomMetadataValueLabel extends MCustomMetadataKeyLabel with Serializabl
 	//#SWG#@ApiModelProperty(value = """used to identify the default value in the list""" ,required = true)
 	@BeanProperty 
 	var markedAsDefaultValue: Boolean  = false
-	def withmarkedAsDefaultValue(p:Boolean):MCustomMetadataValueLabel ={ 	this.markedAsDefaultValue = p; 	this }
+	def withmarkedAsDefaultValue(p:Boolean):this.type ={ 	this.markedAsDefaultValue = p; 	this }
 
 }

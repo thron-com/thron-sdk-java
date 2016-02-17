@@ -20,12 +20,12 @@ class MEventManagerAdminstartEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MEventManagerAdminstartEventReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MEventManagerAdminstartEventReq ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * used to specify is the event should be recorded or not.
@@ -33,7 +33,7 @@ class MEventManagerAdminstartEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to specify is the event should be recorded or not.""", required = true)
 	@BeanProperty
 	var recordEvent: Boolean =_
-	def withrecordEvent(p:Boolean):MEventManagerAdminstartEventReq ={ 	this.recordEvent = p; 	this }
+	def withrecordEvent(p:Boolean):this.type ={ 	this.recordEvent = p; 	this }
 
 	/**
 	 * Optional. Used to specify a specific profile for the event.
@@ -41,12 +41,12 @@ class MEventManagerAdminstartEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Used to specify a specific profile for the event.""", required = true)
 	@BeanProperty
 	var profileId: String =_
-	def withprofileId(p:String):MEventManagerAdminstartEventReq ={ 	this.profileId = p; 	this }
+	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var awsAccountNumber: String =_
-	def withawsAccountNumber(p:String):MEventManagerAdminstartEventReq ={ 	this.awsAccountNumber = p; 	this }
+	def withawsAccountNumber(p:String):this.type ={ 	this.awsAccountNumber = p; 	this }
 
 	/**
 	 * where to deploy the live event instance
@@ -54,7 +54,7 @@ class MEventManagerAdminstartEventReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """where to deploy the live event instance""", required = true)
 	@BeanProperty
 	var targetRegion: String =_
-	def withtargetRegion(p:String):MEventManagerAdminstartEventReq ={ 	this.targetRegion = p; 	this }
+	def withtargetRegion(p:String):this.type ={ 	this.targetRegion = p; 	this }
 
 	/**
 	 * Syntax: formUrlEncoded, with ; as separator.
@@ -68,6 +68,6 @@ class MEventManagerAdminstartEventReq extends Serializable {
 	//#SWGNL#amiId=...""", required = true)
 	@BeanProperty
 	var customParameters: String =_
-	def withcustomParameters(p:String):MEventManagerAdminstartEventReq ={ 	this.customParameters = p; 	this }
+	def withcustomParameters(p:String):this.type ={ 	this.customParameters = p; 	this }
 
 }

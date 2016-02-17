@@ -17,7 +17,7 @@ class MMetadataDefinitionColorOption extends MMetadataDefinitionOptionClass with
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var defaultValue: String =_
-	def withdefaultValue(p:String):MMetadataDefinitionColorOption ={ 	this.defaultValue = p; 	this }
+	def withdefaultValue(p:String):this.type ={ 	this.defaultValue = p; 	this }
 
 	/**
 	 * @return Boolean

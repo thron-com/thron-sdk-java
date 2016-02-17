@@ -17,6 +17,6 @@ class MGroupPolicy extends MPolicy with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var groupId: String =_
-	def withgroupId(p:String):MGroupPolicy ={ 	this.groupId = p; 	this }
+	def withgroupId(p:String):this.type ={ 	this.groupId = p; 	this }
 
 }

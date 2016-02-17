@@ -39,12 +39,12 @@ class MIMetadataDefinitionUpdate extends MUpdater with Serializable  {
 	//#SWGNL#-) only chars and digits""")
 	@BeanProperty 
 	var key: String =_
-	def withkey(p:String):MIMetadataDefinitionUpdate ={ 	this.key = p; 	this }
+	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var names: List[MLocalization] =_
-	def withnames(p:List[MLocalization]):MIMetadataDefinitionUpdate ={ 	this.names = p; 	this }
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * Used to identify metadata can be displayed to users.
@@ -55,7 +55,7 @@ class MIMetadataDefinitionUpdate extends MUpdater with Serializable  {
 	//#SWGNL#Invisible Metadata are commonly used to store back-end data not editable by users.""")
 	@BeanProperty 
 	var visible: Boolean =_
-	def withvisible(p:Boolean):MIMetadataDefinitionUpdate ={ 	this.visible = p; 	this }
+	def withvisible(p:Boolean):this.type ={ 	this.visible = p; 	this }
 
 	/**
 	 * Optional description, used to define the goal of the Metadata definition
@@ -63,17 +63,17 @@ class MIMetadataDefinitionUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Optional description, used to define the goal of the Metadata definition""")
 	@BeanProperty 
 	var note: String =_
-	def withnote(p:String):MIMetadataDefinitionUpdate ={ 	this.note = p; 	this }
+	def withnote(p:String):this.type ={ 	this.note = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var constraints: MMetadataDefinitionConstraints =_
-	def withconstraints(p:MMetadataDefinitionConstraints):MIMetadataDefinitionUpdate ={ 	this.constraints = p; 	this }
+	def withconstraints(p:MMetadataDefinitionConstraints):this.type ={ 	this.constraints = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var options: MMetadataDefinitionOptions =_
-	def withoptions(p:MMetadataDefinitionOptions):MIMetadataDefinitionUpdate ={ 	this.options = p; 	this }
+	def withoptions(p:MMetadataDefinitionOptions):this.type ={ 	this.options = p; 	this }
 
 	/**
 	 * @param metadataType : MEMetadataDefinitionDataType

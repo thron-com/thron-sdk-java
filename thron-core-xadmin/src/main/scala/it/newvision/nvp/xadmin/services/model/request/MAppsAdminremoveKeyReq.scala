@@ -20,7 +20,7 @@ class MAppsAdminremoveKeyReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var appId: String =_
-	def withappId(p:String):MAppsAdminremoveKeyReq ={ 	this.appId = p; 	this }
+	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
 
 	/**
 	 * Optional. Additional capabilities to add to the snippet.
@@ -28,6 +28,6 @@ class MAppsAdminremoveKeyReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Additional capabilities to add to the snippet.""", required = true)
 	@BeanProperty
 	var key: String =_
-	def withkey(p:String):MAppsAdminremoveKeyReq ={ 	this.key = p; 	this }
+	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
 }

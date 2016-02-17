@@ -22,7 +22,7 @@ class MResponsePackager extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MEPackager =_
-	def withresultCode(p:MEPackager):MResponsePackager ={ 	this.resultCode = p; 	this }
+	def withresultCode(p:MEPackager):this.type ={ 	this.resultCode = p; 	this }
 
 	/**
 	 * single singn on response code.
@@ -30,7 +30,7 @@ class MResponsePackager extends Serializable {
 	//#SWG#@ApiModelProperty(value = """single singn on response code.""" ,required = true)
 	@BeanProperty 
 	var ssoCode: MESSO =_
-	def withssoCode(p:MESSO):MResponsePackager ={ 	this.ssoCode = p; 	this }
+	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
 
 	/**
 	 * error description detail when the resultCode is equals to ERROR
@@ -38,6 +38,6 @@ class MResponsePackager extends Serializable {
 	//#SWG#@ApiModelProperty(value = """error description detail when the resultCode is equals to ERROR""" ,required = true)
 	@BeanProperty 
 	var errorDescription: String =_
-	def witherrorDescription(p:String):MResponsePackager ={ 	this.errorDescription = p; 	this }
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

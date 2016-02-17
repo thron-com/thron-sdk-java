@@ -17,6 +17,6 @@ class MITagList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var tagIds: List[String] = new ArrayList[String]
-	def withtagIds(p:List[String]):MITagList ={ 	this.tagIds = p; 	this }
+	def withtagIds(p:List[String]):this.type ={ 	this.tagIds = p; 	this }
 
 }

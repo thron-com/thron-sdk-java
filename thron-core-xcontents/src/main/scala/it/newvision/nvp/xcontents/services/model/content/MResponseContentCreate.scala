@@ -17,6 +17,6 @@ class MResponseContentCreate extends MResponseContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentID: String =_
-	def withcontentID(p:String):MResponseContentCreate ={ 	this.contentID = p; 	this }
+	def withcontentID(p:String):this.type ={ 	this.contentID = p; 	this }
 
 }

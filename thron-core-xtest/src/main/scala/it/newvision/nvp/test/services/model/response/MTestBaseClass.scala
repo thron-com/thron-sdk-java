@@ -17,6 +17,15 @@ class MTestBaseClass extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MTestBaseClass ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
+	/**
+	 * @return Boolean
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def isValid():Boolean ={
+		true
+	}
 
 }

@@ -26,7 +26,8 @@ object JAclInverseClient {
 	
 }
 /**
- * Service used to manage Contents and Categories Control List.
+ * Deprecated. Only for 4x version.
+ * Service used to manage Content/Categories ACL
  * <b>
  * </b><b>Web Service Endpoints</b>:
  * <ul>

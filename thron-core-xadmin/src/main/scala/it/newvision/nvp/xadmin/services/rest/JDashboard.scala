@@ -83,7 +83,6 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 
 	/**
 	 * Deprecated.
-	 * returns the total space used by each userId (CDN + Repository total space)
 	 * @param tokenId : String
 	 * @param param : MDashboardgetQuotaUsageByUsersReq
 	 * @return MResponseGetQuotaUsage
@@ -92,8 +91,7 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/getQuotaUsageByUsers")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/getQuotaUsageByUsers", notes = """Deprecated.
-	//#SWGNL#returns the total space used by each userId (CDN + Repository total space)""", response = classOf[MResponseGetQuotaUsage])
+	//#SWG#@ApiOperation(value = "/getQuotaUsageByUsers", notes = """Deprecated.""", response = classOf[MResponseGetQuotaUsage])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getQuotaUsageByUsers(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -419,9 +417,7 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_resetUserPreferences: String
 
 	/**
-	 * setup all subcategories with the acl of the given category.
-	 * The service propagate also the availableInSolution value of the given category.
-	 * The service can be invoked only by administrator users
+	 * Deprecated by applyAcl service
 	 * @param tokenId : String
 	 * @param param : MDashboardpropagateAclToSubCategoriesReq
 	 * @return MResponseDashboard
@@ -430,9 +426,7 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/propagateAclToSubCategories")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/propagateAclToSubCategories", notes = """setup all subcategories with the acl of the given category.
-	//#SWGNL#The service propagate also the availableInSolution value of the given category.
-	//#SWGNL#The service can be invoked only by administrator users""", response = classOf[MResponseDashboard])
+	//#SWG#@ApiOperation(value = "/propagateAclToSubCategories", notes = """Deprecated by applyAcl service""", response = classOf[MResponseDashboard])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def propagateAclToSubCategories(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

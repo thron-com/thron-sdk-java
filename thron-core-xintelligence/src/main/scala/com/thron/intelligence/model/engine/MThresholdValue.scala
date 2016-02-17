@@ -17,11 +17,11 @@ class MThresholdValue extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var value: Integer =_
-	def withvalue(p:Integer):MThresholdValue ={ 	this.value = p; 	this }
+	def withvalue(p:Integer):this.type ={ 	this.value = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
-	def withactive(p:Boolean):MThresholdValue ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 }

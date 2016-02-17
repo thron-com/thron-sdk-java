@@ -12,6 +12,7 @@ import javax.xml.bind.annotation._
 @XmlRootElement(name="MResponseAclVerify") 
 @XmlType(name="MResponseAclVerify")
 //#SWG#@ApiModel(description = """""")
+@Deprecated
 class MResponseAclVerify extends MResponseAcl with Serializable  {
 
 	/**
@@ -20,7 +21,7 @@ class MResponseAclVerify extends MResponseAcl with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the list of rules that meet the platform ACL""")
 	@BeanProperty 
 	var allowedRules: List[MAclRuleInverseItem] = new ArrayList[MAclRuleInverseItem]
-	def withallowedRules(p:List[MAclRuleInverseItem]):MResponseAclVerify ={ 	this.allowedRules = p; 	this }
+	def withallowedRules(p:List[MAclRuleInverseItem]):this.type ={ 	this.allowedRules = p; 	this }
 
 	/**
 	 * the list of rules that do not meet the platform ACL
@@ -28,6 +29,6 @@ class MResponseAclVerify extends MResponseAcl with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the list of rules that do not meet the platform ACL""")
 	@BeanProperty 
 	var deniedRules: List[MAclRuleInverseItem] = new ArrayList[MAclRuleInverseItem]
-	def withdeniedRules(p:List[MAclRuleInverseItem]):MResponseAclVerify ={ 	this.deniedRules = p; 	this }
+	def withdeniedRules(p:List[MAclRuleInverseItem]):this.type ={ 	this.deniedRules = p; 	this }
 
 }

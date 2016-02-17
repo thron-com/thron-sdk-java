@@ -25,7 +25,7 @@ class MDeliveryInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """channel id: WEB, STTEAMHTTPFLASH, ....""" ,required = true)
 	@BeanProperty 
 	var channelType: String =_
-	def withchannelType(p:String):MDeliveryInfo ={ 	this.channelType = p; 	this }
+	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	/**
 	 * DEPRECATED. Use bestThymbUrl
@@ -35,7 +35,7 @@ class MDeliveryInfo extends Serializable {
 	@Deprecated
 	var thumbsUrl: List[String] = new ArrayList[String]
 	@Deprecated
-	def withthumbsUrl(p:List[String]):MDeliveryInfo ={ 	this.thumbsUrl = p; 	this }
+	def withthumbsUrl(p:List[String]):this.type ={ 	this.thumbsUrl = p; 	this }
 
 	/**
 	 * DEPRECATED. Use bestThymbUrl
@@ -45,7 +45,7 @@ class MDeliveryInfo extends Serializable {
 	@Deprecated
 	var defaultThumbUrl: String =_
 	@Deprecated
-	def withdefaultThumbUrl(p:String):MDeliveryInfo ={ 	this.defaultThumbUrl = p; 	this }
+	def withdefaultThumbUrl(p:String):this.type ={ 	this.defaultThumbUrl = p; 	this }
 
 	/**
 	 * Defined if divArea parameter is specified on the request.
@@ -59,17 +59,17 @@ class MDeliveryInfo extends Serializable {
 	//#SWGNL#bestThumbUrl provides the static url of the thumbnail in 4me CDN (Content Delivery Network); the url is volatile and may change with time.""")
 	@BeanProperty 
 	var bestThumbUrl: String =_
-	def withbestThumbUrl(p:String):MDeliveryInfo ={ 	this.bestThumbUrl = p; 	this }
+	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contentDescriptorUrl: String =_
-	def withcontentDescriptorUrl(p:String):MDeliveryInfo ={ 	this.contentDescriptorUrl = p; 	this }
+	def withcontentDescriptorUrl(p:String):this.type ={ 	this.contentDescriptorUrl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contentUrl: String =_
-	def withcontentUrl(p:String):MDeliveryInfo ={ 	this.contentUrl = p; 	this }
+	def withcontentUrl(p:String):this.type ={ 	this.contentUrl = p; 	this }
 
 	/**
 	 * The list of all system metadata stored in xpublisher  channel.sysMetadata. The
@@ -78,6 +78,6 @@ class MDeliveryInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The list of all system metadata stored in xpublisher  channel.sysMetadata. The list of srtFiles is saved as Metadata information.""")
 	@BeanProperty 
 	var sysMetadata: List[MMetadata] = new ArrayList[MMetadata]
-	def withsysMetadata(p:List[MMetadata]):MDeliveryInfo ={ 	this.sysMetadata = p; 	this }
+	def withsysMetadata(p:List[MMetadata]):this.type ={ 	this.sysMetadata = p; 	this }
 
 }

@@ -18,6 +18,6 @@ class MVUserParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userPreferences: MVUserPreferences =_
-	def withuserPreferences(p:MVUserPreferences):MVUserParams ={ 	this.userPreferences = p; 	this }
+	def withuserPreferences(p:MVUserPreferences):this.type ={ 	this.userPreferences = p; 	this }
 
 }

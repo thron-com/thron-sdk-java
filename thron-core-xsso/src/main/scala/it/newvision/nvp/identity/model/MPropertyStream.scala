@@ -25,22 +25,22 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 	//#SWG#@ApiModelProperty(value = """new java.util.ArrayList[Integer](java.util.Arrays.asList(<font color="#0000ff">700,400,150,48</font>))""")
 	@BeanProperty 
 	var videoBitRates: List[Integer] = new ArrayList[Integer]
-	def withvideoBitRates(p:List[Integer]):MPropertyStream ={ 	this.videoBitRates = p; 	this }
+	def withvideoBitRates(p:List[Integer]):this.type ={ 	this.videoBitRates = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var audioBitRates: List[Integer] = new ArrayList[Integer]
-	def withaudioBitRates(p:List[Integer]):MPropertyStream ={ 	this.audioBitRates = p; 	this }
+	def withaudioBitRates(p:List[Integer]):this.type ={ 	this.audioBitRates = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var totalBitRates: List[Integer] = new ArrayList[Integer]
-	def withtotalBitRates(p:List[Integer]):MPropertyStream ={ 	this.totalBitRates = p; 	this }
+	def withtotalBitRates(p:List[Integer]):this.type ={ 	this.totalBitRates = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var defaultBitRate: Integer  = 512
-	def withdefaultBitRate(p:Integer):MPropertyStream ={ 	this.defaultBitRate = p; 	this }
+	def withdefaultBitRate(p:Integer):this.type ={ 	this.defaultBitRate = p; 	this }
 
 	/**
 	 * new java.util.ArrayList[Integer](java.util.Arrays.asList(<font
@@ -49,7 +49,7 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var sampleRates: List[Integer] = new ArrayList[Integer]
-	def withsampleRates(p:List[Integer]):MPropertyStream ={ 	this.sampleRates = p; 	this }
+	def withsampleRates(p:List[Integer]):this.type ={ 	this.sampleRates = p; 	this }
 
 	/**
 	 * vp6, h264
@@ -57,7 +57,7 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 	//#SWG#@ApiModelProperty(value = """vp6, h264""" ,required = true)
 	@BeanProperty 
 	var codec: String  = "h264"
-	def withcodec(p:String):MPropertyStream ={ 	this.codec = p; 	this }
+	def withcodec(p:String):this.type ={ 	this.codec = p; 	this }
 
 	/**
 	 * in seconds
@@ -65,7 +65,7 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 	//#SWG#@ApiModelProperty(value = """in seconds""" ,required = true)
 	@BeanProperty 
 	var previewLength: Integer  = 15
-	def withpreviewLength(p:Integer):MPropertyStream ={ 	this.previewLength = p; 	this }
+	def withpreviewLength(p:Integer):this.type ={ 	this.previewLength = p; 	this }
 
 	/**
 	 * defined in seconds
@@ -75,7 +75,7 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 	@Deprecated
 	var thumbFrameTime: Integer  = 10
 	@Deprecated
-	def withthumbFrameTime(p:Integer):MPropertyStream ={ 	this.thumbFrameTime = p; 	this }
+	def withthumbFrameTime(p:Integer):this.type ={ 	this.thumbFrameTime = p; 	this }
 
 	/**
 	 * range value: [0..100]. Suggested value if present is 85.
@@ -85,7 +85,7 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 	//#SWGNL#Used to bring the average or peak amplitude to a target level. """ ,required = true)
 	@BeanProperty 
 	var normalization: Integer  = 0
-	def withnormalization(p:Integer):MPropertyStream ={ 	this.normalization = p; 	this }
+	def withnormalization(p:Integer):this.type ={ 	this.normalization = p; 	this }
 
 	/**
 	 * default init for STREAM channel

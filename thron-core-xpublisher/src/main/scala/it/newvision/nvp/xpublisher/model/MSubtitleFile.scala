@@ -17,6 +17,6 @@ class MSubtitleFile extends MSubtitle with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var localPath: String =_
-	def withlocalPath(p:String):MSubtitleFile ={ 	this.localPath = p; 	this }
+	def withlocalPath(p:String):this.type ={ 	this.localPath = p; 	this }
 
 }

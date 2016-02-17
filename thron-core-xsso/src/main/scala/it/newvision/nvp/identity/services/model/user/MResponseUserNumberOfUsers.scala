@@ -17,6 +17,6 @@ class MResponseUserNumberOfUsers extends MResponseUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var size: Integer =_
-	def withsize(p:Integer):MResponseUserNumberOfUsers ={ 	this.size = p; 	this }
+	def withsize(p:Integer):this.type ={ 	this.size = p; 	this }
 
 }

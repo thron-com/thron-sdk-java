@@ -29,7 +29,7 @@ class MCategory4Locale extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: length <= 150""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MCategory4Locale ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * Constraints: length <= 10000
@@ -37,7 +37,7 @@ class MCategory4Locale extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: length <= 10000""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MCategory4Locale ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * Locale code (ISO639-1) 
@@ -45,7 +45,7 @@ class MCategory4Locale extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1) """ ,required = true)
 	@BeanProperty 
 	var locale: String =_
-	def withlocale(p:String):MCategory4Locale ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * @return Boolean

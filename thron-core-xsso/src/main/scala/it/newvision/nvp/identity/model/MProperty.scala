@@ -17,7 +17,7 @@ class MProperty extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientName: String =_
-	def withclientName(p:String):MProperty ={ 	this.clientName = p; 	this }
+	def withclientName(p:String):this.type ={ 	this.clientName = p; 	this }
 
 	/**
 	 * the Organization name
@@ -25,12 +25,12 @@ class MProperty extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the Organization name""" ,required = true)
 	@BeanProperty 
 	var clientCompanyName: String =_
-	def withclientCompanyName(p:String):MProperty ={ 	this.clientCompanyName = p; 	this }
+	def withclientCompanyName(p:String):this.type ={ 	this.clientCompanyName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var silentMode: Boolean  = true
-	def withsilentMode(p:Boolean):MProperty ={ 	this.silentMode = p; 	this }
+	def withsilentMode(p:Boolean):this.type ={ 	this.silentMode = p; 	this }
 
 	/**
 	 * The cilent can have multiple profiles (ingestions) and use it during the
@@ -43,7 +43,7 @@ class MProperty extends Serializable {
 	//#SWGNL#The 1st profile in the list is the default profile for the clientId.""")
 	@BeanProperty 
 	var activeProfiles: List[String] = new ArrayList[String](Arrays.asList("STANDARD","HD"))
-	def withactiveProfiles(p:List[String]):MProperty ={ 	this.activeProfiles = p; 	this }
+	def withactiveProfiles(p:List[String]):this.type ={ 	this.activeProfiles = p; 	this }
 
 	/**
 	 * available locales code (ISO639-1)
@@ -53,17 +53,17 @@ class MProperty extends Serializable {
 	@Deprecated
 	var locales: List[String] = new ArrayList[String](Arrays.asList("IT","EN","DE","FR","ES","PT","NL","RU","KO","JA","AR","ZH"))
 	@Deprecated
-	def withlocales(p:List[String]):MProperty ={ 	this.locales = p; 	this }
+	def withlocales(p:List[String]):this.type ={ 	this.locales = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var defaultLocale: String  = "IT"
-	def withdefaultLocale(p:String):MProperty ={ 	this.defaultLocale = p; 	this }
+	def withdefaultLocale(p:String):this.type ={ 	this.defaultLocale = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var imageProperties: List[MPropertyImage] = new ArrayList[MPropertyImage]
-	def withimageProperties(p:List[MPropertyImage]):MProperty ={ 	this.imageProperties = p; 	this }
+	def withimageProperties(p:List[MPropertyImage]):this.type ={ 	this.imageProperties = p; 	this }
 
 	/**
 	 * the cilent can have one or more PropertiesStream profiles (defined as payed
@@ -75,12 +75,12 @@ class MProperty extends Serializable {
 	//#SWGNL#These properties are used for all publishing video processing.""")
 	@BeanProperty 
 	var streamProperties: List[MPropertyStream] = new ArrayList[MPropertyStream]
-	def withstreamProperties(p:List[MPropertyStream]):MProperty ={ 	this.streamProperties = p; 	this }
+	def withstreamProperties(p:List[MPropertyStream]):this.type ={ 	this.streamProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var audioProperties: List[MPropertyAudio] = new ArrayList[MPropertyAudio]
-	def withaudioProperties(p:List[MPropertyAudio]):MProperty ={ 	this.audioProperties = p; 	this }
+	def withaudioProperties(p:List[MPropertyAudio]):this.type ={ 	this.audioProperties = p; 	this }
 
 	/**
 	 * properties for the generic documents published in CDN
@@ -88,7 +88,7 @@ class MProperty extends Serializable {
 	//#SWG#@ApiModelProperty(value = """properties for the generic documents published in CDN""")
 	@BeanProperty 
 	var genericDocumentProperties: List[MPropertyGenericDocument] = new ArrayList[MPropertyGenericDocument]
-	def withgenericDocumentProperties(p:List[MPropertyGenericDocument]):MProperty ={ 	this.genericDocumentProperties = p; 	this }
+	def withgenericDocumentProperties(p:List[MPropertyGenericDocument]):this.type ={ 	this.genericDocumentProperties = p; 	this }
 
 	/**
 	 * properties for the pagelet documents published in platform
@@ -96,7 +96,7 @@ class MProperty extends Serializable {
 	//#SWG#@ApiModelProperty(value = """properties for the pagelet documents published in platform""")
 	@BeanProperty 
 	var pageletProperties: List[MPropertyPagelet] = new ArrayList[MPropertyPagelet]
-	def withpageletProperties(p:List[MPropertyPagelet]):MProperty ={ 	this.pageletProperties = p; 	this }
+	def withpageletProperties(p:List[MPropertyPagelet]):this.type ={ 	this.pageletProperties = p; 	this }
 
 	/**
 	 * properties for the 4ME Documents published in CDN
@@ -104,29 +104,29 @@ class MProperty extends Serializable {
 	//#SWG#@ApiModelProperty(value = """properties for the 4ME Documents published in CDN""")
 	@BeanProperty 
 	var ndocProperties: List[MProperty4MEDocument] = new ArrayList[MProperty4MEDocument]
-	def withndocProperties(p:List[MProperty4MEDocument]):MProperty ={ 	this.ndocProperties = p; 	this }
+	def withndocProperties(p:List[MProperty4MEDocument]):this.type ={ 	this.ndocProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var applicationProperties: MPropertyApplication  = new MPropertyApplication
-	def withapplicationProperties(p:MPropertyApplication):MProperty ={ 	this.applicationProperties = p; 	this }
+	def withapplicationProperties(p:MPropertyApplication):this.type ={ 	this.applicationProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var emailProperties: MPropertyEmail  = new MPropertyEmail
-	def withemailProperties(p:MPropertyEmail):MProperty ={ 	this.emailProperties = p; 	this }
+	def withemailProperties(p:MPropertyEmail):this.type ={ 	this.emailProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var weeboProperties: MPropertyWeebo  = new MPropertyWeebo
-	def withweeboProperties(p:MPropertyWeebo):MProperty ={ 	this.weeboProperties = p; 	this }
+	def withweeboProperties(p:MPropertyWeebo):this.type ={ 	this.weeboProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	@Deprecated
 	var mediaLibraryProperties: MPropertyMediaLibrary  = new MPropertyMediaLibrary
 	@Deprecated
-	def withmediaLibraryProperties(p:MPropertyMediaLibrary):MProperty ={ 	this.mediaLibraryProperties = p; 	this }
+	def withmediaLibraryProperties(p:MPropertyMediaLibrary):this.type ={ 	this.mediaLibraryProperties = p; 	this }
 
 	/**
 	 * live events properties
@@ -145,12 +145,12 @@ class MProperty extends Serializable {
 	new ArrayList[MPropertyLiveEvent](Arrays.asList(e1,e2,e3))
 	
 	}
-	def witheventsProperties(p:List[MPropertyLiveEvent]):MProperty ={ 	this.eventsProperties = p; 	this }
+	def witheventsProperties(p:List[MPropertyLiveEvent]):this.type ={ 	this.eventsProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var notifyOncePublished: Boolean =_
-	def withnotifyOncePublished(p:Boolean):MProperty ={ 	this.notifyOncePublished = p; 	this }
+	def withnotifyOncePublished(p:Boolean):this.type ={ 	this.notifyOncePublished = p; 	this }
 
 	/**
 	 * used to enable or disable the comunity services like comments and ratings.
@@ -158,17 +158,17 @@ class MProperty extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to enable or disable the comunity services like comments and ratings.""" ,required = true)
 	@BeanProperty 
 	var comunityServiceEnabled: Boolean  = true
-	def withcomunityServiceEnabled(p:Boolean):MProperty ={ 	this.comunityServiceEnabled = p; 	this }
+	def withcomunityServiceEnabled(p:Boolean):this.type ={ 	this.comunityServiceEnabled = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var customPages: MPropertyView  = new MPropertyView
-	def withcustomPages(p:MPropertyView):MProperty ={ 	this.customPages = p; 	this }
+	def withcustomPages(p:MPropertyView):this.type ={ 	this.customPages = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var runningMode: MEMode  = MEMode.LAST
-	def withrunningMode(p:MEMode):MProperty ={ 	this.runningMode = p; 	this }
+	def withrunningMode(p:MEMode):this.type ={ 	this.runningMode = p; 	this }
 
 	/**
 	 * property setting for generated thumbnails
@@ -176,7 +176,7 @@ class MProperty extends Serializable {
 	//#SWG#@ApiModelProperty(value = """property setting for generated thumbnails""" ,required = true)
 	@BeanProperty 
 	var thumbsProperties: MThumbsProperties  = new MThumbsProperties()
-	def withthumbsProperties(p:MThumbsProperties):MProperty ={ 	this.thumbsProperties = p; 	this }
+	def withthumbsProperties(p:MThumbsProperties):this.type ={ 	this.thumbsProperties = p; 	this }
 
 	/**
 	 * Identity Manager Properties
@@ -184,7 +184,17 @@ class MProperty extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Identity Manager Properties""")
 	@BeanProperty 
 	var imProperties: MPropertyIM =_
-	def withimProperties(p:MPropertyIM):MProperty ={ 	this.imProperties = p; 	this }
+	def withimProperties(p:MPropertyIM):this.type ={ 	this.imProperties = p; 	this }
+
+	/**
+	 * Preffered currency for billing.
+	 * Currency code ISO 4217
+	 */
+	//#SWG#@ApiModelProperty(value = """Preffered currency for billing.
+	//#SWGNL#Currency code ISO 4217""")
+	@BeanProperty 
+	var currency: String =_
+	def withcurrency(p:String):this.type ={ 	this.currency = p; 	this }
 
 	/**
 	 * @param clientId : String

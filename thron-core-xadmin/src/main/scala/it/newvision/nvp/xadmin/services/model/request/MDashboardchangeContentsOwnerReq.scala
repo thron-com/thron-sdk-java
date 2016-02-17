@@ -21,11 +21,11 @@ class MDashboardchangeContentsOwnerReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MDashboardchangeContentsOwnerReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contents: MContentsParams =_
-	def withcontents(p:MContentsParams):MDashboardchangeContentsOwnerReq ={ 	this.contents = p; 	this }
+	def withcontents(p:MContentsParams):this.type ={ 	this.contents = p; 	this }
 
 }

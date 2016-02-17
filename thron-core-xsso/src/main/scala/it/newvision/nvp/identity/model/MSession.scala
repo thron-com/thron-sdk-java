@@ -25,12 +25,12 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the token Id""")
 	@BeanProperty 
 	var token: String  = ""
-	def withtoken(p:String):MSession ={ 	this.token = p; 	this }
+	def withtoken(p:String):this.type ={ 	this.token = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String  = ""
-	def withclientId(p:String):MSession ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * could be:
@@ -48,7 +48,7 @@ class MSession extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var subjectId: String =_
-	def withsubjectId(p:String):MSession ={ 	this.subjectId = p; 	this }
+	def withsubjectId(p:String):this.type ={ 	this.subjectId = p; 	this }
 
 	/**
 	 * the aclSubjectClass:
@@ -66,7 +66,7 @@ class MSession extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var subjectClass: MEObjClass =_
-	def withsubjectClass(p:MEObjClass):MSession ={ 	this.subjectClass = p; 	this }
+	def withsubjectClass(p:MEObjClass):this.type ={ 	this.subjectClass = p; 	this }
 
 	/**
 	 * used to indicate that the user do not use the automatic acl validation in the
@@ -75,27 +75,27 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to indicate that the user do not use the automatic acl validation in the services (3.x mode)""" ,required = true)
 	@BeanProperty 
 	var aclDisabled: Boolean  = true
-	def withaclDisabled(p:Boolean):MSession ={ 	this.aclDisabled = p; 	this }
+	def withaclDisabled(p:Boolean):this.type ={ 	this.aclDisabled = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var username: String  = ""
-	def withusername(p:String):MSession ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userEmail: String  = ""
-	def withuserEmail(p:String):MSession ={ 	this.userEmail = p; 	this }
+	def withuserEmail(p:String):this.type ={ 	this.userEmail = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var userFullName: String  = ""
-	def withuserFullName(p:String):MSession ={ 	this.userFullName = p; 	this }
+	def withuserFullName(p:String):this.type ={ 	this.userFullName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userCompanyName: String  = ""
-	def withuserCompanyName(p:String):MSession ={ 	this.userCompanyName = p; 	this }
+	def withuserCompanyName(p:String):this.type ={ 	this.userCompanyName = p; 	this }
 
 	/**
 	 * bind MEUserType enumeration
@@ -103,7 +103,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """bind MEUserType enumeration""")
 	@BeanProperty 
 	var userType: String  = ""
-	def withuserType(p:String):MSession ={ 	this.userType = p; 	this }
+	def withuserType(p:String):this.type ={ 	this.userType = p; 	this }
 
 	/**
 	 * used to create session based on different context (the user is logged for a
@@ -112,7 +112,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to create session based on different context (the user is logged for a specific group). If empty the user is using the default session.""")
 	@BeanProperty 
 	var groupId: String =_
-	def withgroupId(p:String):MSession ={ 	this.groupId = p; 	this }
+	def withgroupId(p:String):this.type ={ 	this.groupId = p; 	this }
 
 	/**
 	 * the list of linked groups of user, used by acl services to verify and filter
@@ -121,7 +121,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of linked groups of user, used by acl services to verify and filter search results""")
 	@BeanProperty 
 	var linkedGroupIds: List[String] = new ArrayList[String]
-	def withlinkedGroupIds(p:List[String]):MSession ={ 	this.linkedGroupIds = p; 	this }
+	def withlinkedGroupIds(p:List[String]):this.type ={ 	this.linkedGroupIds = p; 	this }
 
 	/**
 	 * the acl rules specific of the user
@@ -129,12 +129,12 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the acl rules specific of the user""")
 	@BeanProperty 
 	var ownAclRules: List[MAclRule] = new ArrayList[MAclRule]
-	def withownAclRules(p:List[MAclRule]):MSession ={ 	this.ownAclRules = p; 	this }
+	def withownAclRules(p:List[MAclRule]):this.type ={ 	this.ownAclRules = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var expirationDate: Date =_
-	def withexpirationDate(p:Date):MSession ={ 	this.expirationDate = p; 	this }
+	def withexpirationDate(p:Date):this.type ={ 	this.expirationDate = p; 	this }
 
 	/**
 	 * the list of available capabilities and roles of the user and the capabilities
@@ -143,7 +143,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of available capabilities and roles of the user and the capabilities inherit by the groups.""")
 	@BeanProperty 
 	var userCapabilities: List[MUserCapabilitiesByContext] = new ArrayList[MUserCapabilitiesByContext]
-	def withuserCapabilities(p:List[MUserCapabilitiesByContext]):MSession ={ 	this.userCapabilities = p; 	this }
+	def withuserCapabilities(p:List[MUserCapabilitiesByContext]):this.type ={ 	this.userCapabilities = p; 	this }
 
 	/**
 	 * show thee running mode of the clientId:
@@ -163,7 +163,7 @@ class MSession extends Serializable {
 	//#SWGNL#Used to enable or disable the Audit""")
 	@BeanProperty 
 	var clientRunningMode: MEMode  = MEMode.OLD
-	def withclientRunningMode(p:MEMode):MSession ={ 	this.clientRunningMode = p; 	this }
+	def withclientRunningMode(p:MEMode):this.type ={ 	this.clientRunningMode = p; 	this }
 
 	/**
 	 * Optional. client IP address used for Audit.
@@ -171,7 +171,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. client IP address used for Audit.""")
 	@BeanProperty 
 	var clientIp: String =_
-	def withclientIp(p:String):MSession ={ 	this.clientIp = p; 	this }
+	def withclientIp(p:String):this.type ={ 	this.clientIp = p; 	this }
 
 	/**
 	 * Optional. Used for Audit
@@ -179,7 +179,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Used for Audit""")
 	@BeanProperty 
 	var userAgent: String =_
-	def withuserAgent(p:String):MSession ={ 	this.userAgent = p; 	this }
+	def withuserAgent(p:String):this.type ={ 	this.userAgent = p; 	this }
 
 	/**
 	 * Optional. Used for Audit to store the full user agent string coming from
@@ -188,7 +188,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Used for Audit to store the full user agent string coming from clients """)
 	@BeanProperty 
 	var fullUserAgent: String =_
-	def withfullUserAgent(p:String):MSession ={ 	this.fullUserAgent = p; 	this }
+	def withfullUserAgent(p:String):this.type ={ 	this.fullUserAgent = p; 	this }
 
 	/**
 	 * username of the user that impersonate the session.
@@ -196,7 +196,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """username of the user that impersonate the session.""" ,required = true)
 	@BeanProperty 
 	var disguiseUsername: String  = ""
-	def withdisguiseUsername(p:String):MSession ={ 	this.disguiseUsername = p; 	this }
+	def withdisguiseUsername(p:String):this.type ={ 	this.disguiseUsername = p; 	this }
 
 	/**
 	 * fullName of the user that impersonates the session
@@ -204,7 +204,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """fullName of the user that impersonates the session""" ,required = true)
 	@BeanProperty 
 	var disguiseUserFullName: String  = ""
-	def withdisguiseUserFullName(p:String):MSession ={ 	this.disguiseUserFullName = p; 	this }
+	def withdisguiseUserFullName(p:String):this.type ={ 	this.disguiseUserFullName = p; 	this }
 
 	/**
 	 * userType of the user that impersonates the session
@@ -212,7 +212,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """userType of the user that impersonates the session""")
 	@BeanProperty 
 	var disguiseUserType: String  = ""
-	def withdisguiseUserType(p:String):MSession ={ 	this.disguiseUserType = p; 	this }
+	def withdisguiseUserType(p:String):this.type ={ 	this.disguiseUserType = p; 	this }
 
 	/**
 	 * subjectClass of the user that impersonates the session
@@ -220,7 +220,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """subjectClass of the user that impersonates the session""" ,required = true)
 	@BeanProperty 
 	var disguiseUserSubjectClass: MEObjClass =_
-	def withdisguiseUserSubjectClass(p:MEObjClass):MSession ={ 	this.disguiseUserSubjectClass = p; 	this }
+	def withdisguiseUserSubjectClass(p:MEObjClass):this.type ={ 	this.disguiseUserSubjectClass = p; 	this }
 
 	/**
 	 * the list of classifications seen by the user or by one of its groups.
@@ -228,7 +228,7 @@ class MSession extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of classifications seen by the user or by one of its groups.""")
 	@BeanProperty 
 	var userClassifications: List[MClassificationMinimal] = new ArrayList[MClassificationMinimal]
-	def withuserClassifications(p:List[MClassificationMinimal]):MSession ={ 	this.userClassifications = p; 	this }
+	def withuserClassifications(p:List[MClassificationMinimal]):this.type ={ 	this.userClassifications = p; 	this }
 
 	/**
 	 * create a new session from an other

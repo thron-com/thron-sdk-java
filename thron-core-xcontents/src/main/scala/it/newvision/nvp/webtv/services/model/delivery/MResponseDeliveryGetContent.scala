@@ -23,7 +23,7 @@ class MResponseDeliveryGetContent extends MResponseDelivery with Serializable  {
 	//#SWGNL#The service doesn't return itags and imetadata value for each content.""")
 	@BeanProperty 
 	var content: MContentWall =_
-	def withcontent(p:MContentWall):MResponseDeliveryGetContent ={ 	this.content = p; 	this }
+	def withcontent(p:MContentWall):this.type ={ 	this.content = p; 	this }
 
 	/**
 	 * This information is used by the player to track in the reporting system where
@@ -34,7 +34,7 @@ class MResponseDeliveryGetContent extends MResponseDelivery with Serializable  {
 	//#SWG#@ApiModelProperty(value = """This information is used by the player to track in the reporting system where the content has been viewed. For this reason the attribute return the list of categoryIds hierarchy like "category1/subcategory1/subcategory2/..../subcategoryn"""")
 	@BeanProperty 
 	var contentCategoryFullPath: List[String] = new ArrayList[String]
-	def withcontentCategoryFullPath(p:List[String]):MResponseDeliveryGetContent ={ 	this.contentCategoryFullPath = p; 	this }
+	def withcontentCategoryFullPath(p:List[String]):this.type ={ 	this.contentCategoryFullPath = p; 	this }
 
 	/**
 	 * The list of templates used to customize the Player layout for the current
@@ -43,6 +43,6 @@ class MResponseDeliveryGetContent extends MResponseDelivery with Serializable  {
 	//#SWG#@ApiModelProperty(value = """The list of templates used to customize the Player layout for the current content.""")
 	@BeanProperty 
 	var embedTemplate: MPlayerEmbedTemplate =_
-	def withembedTemplate(p:MPlayerEmbedTemplate):MResponseDeliveryGetContent ={ 	this.embedTemplate = p; 	this }
+	def withembedTemplate(p:MPlayerEmbedTemplate):this.type ={ 	this.embedTemplate = p; 	this }
 
 }

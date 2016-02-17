@@ -22,7 +22,7 @@ class MResponseContentListResult extends MResponseContentList with Serializable 
 	//#SWGNL#The service doesn't return itags and imetadata value for each content.""")
 	@BeanProperty 
 	var contents: List[MContentWall] = new ArrayList[MContentWall]
-	def withcontents(p:List[MContentWall]):MResponseContentListResult ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MContentWall]):this.type ={ 	this.contents = p; 	this }
 
 	/**
 	 * total number of results
@@ -30,6 +30,6 @@ class MResponseContentListResult extends MResponseContentList with Serializable 
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseContentListResult ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

@@ -25,7 +25,7 @@ class MVUserSettings extends Serializable {
 	@Deprecated
 	var userQuota: Long =_
 	@Deprecated
-	def withuserQuota(p:Long):MVUserSettings ={ 	this.userQuota = p; 	this }
+	def withuserQuota(p:Long):this.type ={ 	this.userQuota = p; 	this }
 
 	/**
 	 * Define the lock template id applied to the user.
@@ -41,6 +41,6 @@ class MVUserSettings extends Serializable {
 	//#SWGNL#The only allowed value is "DEFAULT".""")
 	@BeanProperty 
 	var userLockTemplate: String =_
-	def withuserLockTemplate(p:String):MVUserSettings ={ 	this.userLockTemplate = p; 	this }
+	def withuserLockTemplate(p:String):this.type ={ 	this.userLockTemplate = p; 	this }
 
 }

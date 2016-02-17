@@ -17,46 +17,46 @@ class MDownloaderTask extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MDownloaderTask ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var enqueueDate: Date =_
-	def withenqueueDate(p:Date):MDownloaderTask ={ 	this.enqueueDate = p; 	this }
+	def withenqueueDate(p:Date):this.type ={ 	this.enqueueDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var fileName: String =_
-	def withfileName(p:String):MDownloaderTask ={ 	this.fileName = p; 	this }
+	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MDownloaderTask ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var host: String =_
-	def withhost(p:String):MDownloaderTask ={ 	this.host = p; 	this }
+	def withhost(p:String):this.type ={ 	this.host = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var siteName: String =_
-	def withsiteName(p:String):MDownloaderTask ={ 	this.siteName = p; 	this }
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var targetSiteName: String =_
-	def withtargetSiteName(p:String):MDownloaderTask ={ 	this.targetSiteName = p; 	this }
+	def withtargetSiteName(p:String):this.type ={ 	this.targetSiteName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: String =_
-	def withstatus(p:String):MDownloaderTask ={ 	this.status = p; 	this }
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var fileWaitingForBackup: Boolean  = false
-	def withfileWaitingForBackup(p:Boolean):MDownloaderTask ={ 	this.fileWaitingForBackup = p; 	this }
+	def withfileWaitingForBackup(p:Boolean):this.type ={ 	this.fileWaitingForBackup = p; 	this }
 
 }

@@ -21,17 +21,17 @@ class MThumbnailParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var thumbSource: MThumbnailSource =_
-	def withthumbSource(p:MThumbnailSource):MThumbnailParams ={ 	this.thumbSource = p; 	this }
+	def withthumbSource(p:MThumbnailSource):this.type ={ 	this.thumbSource = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var thumbUploaded: MThumbnailUploaded =_
-	def withthumbUploaded(p:MThumbnailUploaded):MThumbnailParams ={ 	this.thumbUploaded = p; 	this }
+	def withthumbUploaded(p:MThumbnailUploaded):this.type ={ 	this.thumbUploaded = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var thumbFromVideo: MThumbnailVideoSource =_
-	def withthumbFromVideo(p:MThumbnailVideoSource):MThumbnailParams ={ 	this.thumbFromVideo = p; 	this }
+	def withthumbFromVideo(p:MThumbnailVideoSource):this.type ={ 	this.thumbFromVideo = p; 	this }
 
 	/**
 	 * the content Id.
@@ -39,7 +39,7 @@ class MThumbnailParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the content Id.""")
 	@BeanProperty 
 	var xcontentId: String =_
-	def withxcontentId(p:String):MThumbnailParams ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * deprecated by xcontentId attribute
@@ -49,7 +49,7 @@ class MThumbnailParams extends Serializable {
 	@Deprecated
 	var mediaContentId: String =_
 	@Deprecated
-	def withmediaContentId(p:String):MThumbnailParams ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * Deprecated.
@@ -61,6 +61,6 @@ class MThumbnailParams extends Serializable {
 	@Deprecated
 	var channel: List[String] = new ArrayList[String]
 	@Deprecated
-	def withchannel(p:List[String]):MThumbnailParams ={ 	this.channel = p; 	this }
+	def withchannel(p:List[String]):this.type ={ 	this.channel = p; 	this }
 
 }

@@ -22,7 +22,7 @@ abstract class MProvider extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var publishedDate: Date =_
-	def withpublishedDate(p:Date):MProvider ={ 	this.publishedDate = p; 	this }
+	def withpublishedDate(p:Date):this.type ={ 	this.publishedDate = p; 	this }
 
 	/**
 	 * Calculated value (derived)!!!
@@ -34,6 +34,6 @@ abstract class MProvider extends Serializable {
 	//#SWGNL#MEWeeboProviderStatus like: DRAFT,PUBLISH_IN_PROGRESS,PUBLISHED,....""" ,required = true)
 	@BeanProperty 
 	var status: String =_
-	def withstatus(p:String):MProvider ={ 	this.status = p; 	this }
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 }

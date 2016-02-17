@@ -4,7 +4,6 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xadmin.services.model.apps.MResponseSnippetLogin
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppDetail
 import it.newvision.nvp.xadmin.services.model.request.MAppsappDetailReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppList
@@ -12,6 +11,7 @@ import it.newvision.nvp.xadmin.services.model.request.MAppsfindByPropertiesReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppSummaryList
 import it.newvision.nvp.xadmin.services.model.request.MAppsappsListReq
 import it.newvision.nvp.xadmin.services.model.request.MAppssuReq
+import it.newvision.nvp.xadmin.services.model.apps.MResponseSnippetLogin
 
 /* ************************
 *  GENERATED CLASS
@@ -38,66 +38,9 @@ object JAppsClient {
 class JAppsClient(val resourceEndpoint:String) {
 
 	/**
-	 * used to authenticate a snippet.
-	 * Can be invoked without restrictions.
-	 * Provides:
-	 * <ul>
-	 * 	<li>all snippet detail (metadata) </li>
-	 * 	<li>the tokenId for the application, to use in the inside service call of the snippet </li>
-	 * 	<li>the rootCategory of the linked App. </li>
-	 * </ul>
+	 * Used to authenticate an App through the appId and appKey (optional) and return
 	 * 
-	 * Authentication token is not required (X-TOKENID).
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param appId : String
-	 * Optional
-	 * @param snippetId : String
-	 * Required
-	 * @return MResponseSnippetLogin
-	*/
-	def loginSnippet(tokenId: String, 
-			clientId: String, 
-			appId: String, 
-			snippetId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseSnippetLogin ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JAppsClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(appId).foreach(s => params.add("appId", s))
-		Option(snippetId).foreach(s => params.add("snippetId", s))
-			val response : MResponseSnippetLogin = if(this.resourceEndpoint == ""){
-			
-				new MResponseSnippetLogin()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("apps/loginSnippet")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseSnippetLogin])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseSnippetLogin])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
-
-	/**
-	 * Used to authenticate an App through the appId and return all details.
+	 * 
 	 * Provides:
 	 * <ul>
 	 * 	<li>all app detail (metadata)</li>
@@ -124,21 +67,22 @@ class JAppsClient(val resourceEndpoint:String) {
 		  try{
 			val webResource = JAppsClient.client.resource(this.resourceEndpoint)
 			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(appId).foreach(s => params.add("appId", s))
-		Option(appKey).foreach(s => params.add("appKey", s))
+			Option(appId).foreach(s => params.add("appId", s))
+		Option(appKey).foreach(s => params.add("appKey", s))  
 			val response : MResponseAppDetail = if(this.resourceEndpoint == ""){
 			
 				new MResponseAppDetail()
 			
 			}else{
-				var wbuilder = webResource.queryParams(params)
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED	
+				var wbuilder = webResource
 					.path("apps/loginApp")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
+					.path(clientId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
 				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseAppDetail])
+				wbuilder.post(classOf[MResponseAppDetail],params)
 			}
 			response
 		  }catch{
@@ -148,9 +92,8 @@ class JAppsClient(val resourceEndpoint:String) {
 				  response.getEntity(classOf[MResponseAppDetail])
 				}
 				else {
-					throw e
+				  throw e
 				}
-			
 		  }
 	
 	}
@@ -163,7 +106,7 @@ class JAppsClient(val resourceEndpoint:String) {
 	 * 	<li>the rootCategory of the linked App.</li>
 	 * </ul>
 	 * 
-	 * Can be invoked only by user with role [APPID]_MANAGER or CORE_MANAGE_APPS
+	 * Can be invoked only by user with role [APPID]_MANAGER or [APPID]_APP_EDITOR or CORE_MANAGE_APPS
 	 * @param tokenId : String
 	 * @param param : MAppsappDetailReq
 	 * @return MResponseAppDetail
@@ -210,7 +153,7 @@ class JAppsClient(val resourceEndpoint:String) {
 	/**
 	 * returns a list of apps  matching the search criteria.
 	 * Can be invoked only by user with role CORE_MANAGE_APPS.
-	 * apps.disguiseDate is returned only if the user has role [APPID]_MANAGER for the app.
+	 * apps.disguiseData is returned only if the user has some role for the app.
 	 * @param tokenId : String
 	 * @param param : MAppsfindByPropertiesReq
 	 * @return MResponseAppList
@@ -346,6 +289,66 @@ class JAppsClient(val resourceEndpoint:String) {
 				}
 		  }
 		  
+	
+	}
+
+	/**
+	 * Deprecated.
+	 * Used to authenticate a snippet (4me widgets).
+	 * Can be invoked without restrictions.
+	 * Provides:
+	 * <ul>
+	 * 	<li>all snippet detail (metadata)</li>
+	 * 	<li>the tokenId for the application, to use in the inside service call of the snippet</li>
+	 * 	<li>the rootCategory of the linked App.</li>
+	 * </ul>
+	 * 
+	 * Authentication token is not required (X-TOKENID).
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param appId : String
+	 * Optional
+	 * @param snippetId : String
+	 * Required
+	 * @return MResponseSnippetLogin
+	*/
+	def loginSnippet(tokenId: String, 
+			clientId: String, 
+			appId: String, 
+			snippetId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseSnippetLogin ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JAppsClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(clientId).foreach(s => params.add("clientId", s))
+		Option(appId).foreach(s => params.add("appId", s))
+		Option(snippetId).foreach(s => params.add("snippetId", s))
+			val response : MResponseSnippetLogin = if(this.resourceEndpoint == ""){
+			
+				new MResponseSnippetLogin()
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("apps/loginSnippet")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[MResponseSnippetLogin])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseSnippetLogin])
+				}
+				else {
+					throw e
+				}
+			
+		  }
 	
 	}
 

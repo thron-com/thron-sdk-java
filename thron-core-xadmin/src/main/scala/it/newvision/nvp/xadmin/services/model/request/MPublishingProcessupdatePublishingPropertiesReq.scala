@@ -21,12 +21,12 @@ class MPublishingProcessupdatePublishingPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPublishingProcessupdatePublishingPropertiesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var mediaContentId: String =_
-	def withmediaContentId(p:String):MPublishingProcessupdatePublishingPropertiesReq ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * mediaContentId or xcontentId are required
@@ -34,11 +34,11 @@ class MPublishingProcessupdatePublishingPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
 	@BeanProperty
 	var xcontentId: String =_
-	def withxcontentId(p:String):MPublishingProcessupdatePublishingPropertiesReq ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var properties: MPublishedContentProperties =_
-	def withproperties(p:MPublishedContentProperties):MPublishingProcessupdatePublishingPropertiesReq ={ 	this.properties = p; 	this }
+	def withproperties(p:MPublishedContentProperties):this.type ={ 	this.properties = p; 	this }
 
 }

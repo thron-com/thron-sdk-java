@@ -18,7 +18,7 @@ class MResponseGetRatingByProperties extends MResponseRating with Serializable  
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var rates: List[MRating] = new ArrayList[MRating]
-	def withrates(p:List[MRating]):MResponseGetRatingByProperties ={ 	this.rates = p; 	this }
+	def withrates(p:List[MRating]):this.type ={ 	this.rates = p; 	this }
 
 	/**
 	 * total number of results
@@ -26,6 +26,6 @@ class MResponseGetRatingByProperties extends MResponseRating with Serializable  
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseGetRatingByProperties ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

@@ -20,27 +20,27 @@ class MPublishingProfileDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """like HD,STANDARD,MYSITE...""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MPublishingProfileDetail ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MPublishingProfileDetail ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var default: Boolean  = false
-	def withdefault(p:Boolean):MPublishingProfileDetail ={ 	this.default = p; 	this }
+	def withdefault(p:Boolean):this.type ={ 	this.default = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MPublishingProfileDetail ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = false
-	def withactive(p:Boolean):MPublishingProfileDetail ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * the list of channels where automatically publish the content.
@@ -48,7 +48,7 @@ class MPublishingProfileDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of channels where automatically publish the content.""")
 	@BeanProperty 
 	var channels: List[String] = new ArrayList[String]
-	def withchannels(p:List[String]):MPublishingProfileDetail ={ 	this.channels = p; 	this }
+	def withchannels(p:List[String]):this.type ={ 	this.channels = p; 	this }
 
 	/**
 	 * used to override the default properties of the platform profile.
@@ -58,7 +58,7 @@ class MPublishingProfileDetail extends Serializable {
 	//#SWGNL#If true the id value should be equal to a platform profile.""" ,required = true)
 	@BeanProperty 
 	var overridePlatformProfile: Boolean  = false
-	def withoverridePlatformProfile(p:Boolean):MPublishingProfileDetail ={ 	this.overridePlatformProfile = p; 	this }
+	def withoverridePlatformProfile(p:Boolean):this.type ={ 	this.overridePlatformProfile = p; 	this }
 
 	/**
 	 * @return void

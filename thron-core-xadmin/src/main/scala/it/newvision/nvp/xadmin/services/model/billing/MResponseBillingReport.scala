@@ -18,11 +18,11 @@ class MResponseBillingReport extends MResponseBilling with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var report: List[MBillingReport] = new ArrayList[MBillingReport]
-	def withreport(p:List[MBillingReport]):MResponseBillingReport ={ 	this.report = p; 	this }
+	def withreport(p:List[MBillingReport]):this.type ={ 	this.report = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseBillingReport ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

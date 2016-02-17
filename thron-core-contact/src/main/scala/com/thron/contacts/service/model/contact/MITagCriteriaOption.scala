@@ -21,12 +21,12 @@ class MITagCriteriaOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """constraints: max size 5""")
 	@BeanProperty 
 	var itags: List[MITagCriteria] = new ArrayList[MITagCriteria]
-	def withitags(p:List[MITagCriteria]):MITagCriteriaOption ={ 	this.itags = p; 	this }
+	def withitags(p:List[MITagCriteria]):this.type ={ 	this.itags = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var operation: MEOperation  = MEOperation.OR
-	def withoperation(p:MEOperation):MITagCriteriaOption ={ 	this.operation = p; 	this }
+	def withoperation(p:MEOperation):this.type ={ 	this.operation = p; 	this }
 
 	/**
 	 * @return Boolean

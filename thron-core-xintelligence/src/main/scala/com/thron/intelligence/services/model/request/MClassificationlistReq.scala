@@ -25,7 +25,7 @@ class MClassificationlistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var criteria: MClassificationSearchCriteria =_
-	def withcriteria(p:MClassificationSearchCriteria):MClassificationlistReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MClassificationSearchCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * Optional
@@ -33,7 +33,7 @@ class MClassificationlistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var orderBy: MEClassificationOrderBy =_
-	def withorderBy(p:MEClassificationOrderBy):MClassificationlistReq ={ 	this.orderBy = p; 	this }
+	def withorderBy(p:MEClassificationOrderBy):this.type ={ 	this.orderBy = p; 	this }
 
 	/**
 	 * Optional.
@@ -43,7 +43,7 @@ class MClassificationlistReq extends Serializable {
 	//#SWGNL#Default value is 0""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MClassificationlistReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Optional. Default value is 50
@@ -51,6 +51,6 @@ class MClassificationlistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Default value is 50""", required = true)
 	@BeanProperty
 	var limit: Integer =_
-	def withlimit(p:Integer):MClassificationlistReq ={ 	this.limit = p; 	this }
+	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
 
 }

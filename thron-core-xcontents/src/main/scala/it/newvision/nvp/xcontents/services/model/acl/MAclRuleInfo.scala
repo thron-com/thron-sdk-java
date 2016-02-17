@@ -13,12 +13,13 @@ import it.newvision.nvp.xcontents.model.MAclRule
 @XmlRootElement(name="MAclRuleInfo") 
 @XmlType(name="MAclRuleInfo")
 //#SWG#@ApiModel(description = """""")
+@Deprecated
 class MAclRuleInfo extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var targetAcl: MAclRule =_
-	def withtargetAcl(p:MAclRule):MAclRuleInfo ={ 	this.targetAcl = p; 	this }
+	def withtargetAcl(p:MAclRule):this.type ={ 	this.targetAcl = p; 	this }
 
 	/**
 	 * used in presentation, Can be the user full name or group Name
@@ -26,6 +27,6 @@ class MAclRuleInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used in presentation, Can be the user full name or group Name""")
 	@BeanProperty 
 	var displayName: String =_
-	def withdisplayName(p:String):MAclRuleInfo ={ 	this.displayName = p; 	this }
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
 }

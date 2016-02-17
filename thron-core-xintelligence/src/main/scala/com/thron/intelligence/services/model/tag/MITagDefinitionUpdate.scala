@@ -25,13 +25,25 @@ import com.thron.intelligence.services.model.common.MUpdater
 class MITagDefinitionUpdate extends MUpdater with Serializable  {
 
 	/**
-	 * it's possible to change the TagDefinition.parentId only for unapproved tags,
-	 * and can be done only by users with the right permission
+	 * Used to change the tagdefinition inside a tree structure.
+	 * This should be the parent tagdefinition id.
+	 * 
+	 * Constraints:
+	 * <ul>
+	 * 	<li>It's possible to change the position only for tagdefinitions leaf (without
+	 * sub nodes)</li>
+	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """""")
+	//#SWG#@ApiModelProperty(value = """Used to change the tagdefinition inside a tree structure. 
+	//#SWGNL#This should be the parent tagdefinition id. 
+	//#SWGNL#
+	//#SWGNL#Constraints:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>It's possible to change the position only for tagdefinitions leaf (without sub nodes)</li>
+	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var parentId: String =_
-	def withparentId(p:String):MITagDefinitionUpdate ={ 	this.parentId = p; 	this }
+	def withparentId(p:String):this.type ={ 	this.parentId = p; 	this }
 
 	/**
 	 * Desired tag position among elements of a specific tree level.
@@ -39,12 +51,12 @@ class MITagDefinitionUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Desired tag position among elements of a specific tree level.""")
 	@BeanProperty 
 	var pos: Integer =_
-	def withpos(p:Integer):MITagDefinitionUpdate ={ 	this.pos = p; 	this }
+	def withpos(p:Integer):this.type ={ 	this.pos = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var names: List[MLocalization] =_
-	def withnames(p:List[MLocalization]):MITagDefinitionUpdate ={ 	this.names = p; 	this }
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * prettyId for the itagDefinition
@@ -70,7 +82,7 @@ class MITagDefinitionUpdate extends MUpdater with Serializable  {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var prettyId: String =_
-	def withprettyId(p:String):MITagDefinitionUpdate ={ 	this.prettyId = p; 	this }
+	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	/**
 	 * Used to split the tagdefinition in two macro categories (categorized and
@@ -91,7 +103,7 @@ class MITagDefinitionUpdate extends MUpdater with Serializable  {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var categorized: Boolean =_
-	def withcategorized(p:Boolean):MITagDefinitionUpdate ={ 	this.categorized = p; 	this }
+	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
 
 	/**
 	 * @return Boolean

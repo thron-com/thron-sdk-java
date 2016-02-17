@@ -17,11 +17,11 @@ class MProfile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var clientId: List[String] = new ArrayList[String]
-	def withclientId(p:List[String]):MProfile ={ 	this.clientId = p; 	this }
+	def withclientId(p:List[String]):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var services: String =_
-	def withservices(p:String):MProfile ={ 	this.services = p; 	this }
+	def withservices(p:String):this.type ={ 	this.services = p; 	this }
 
 }

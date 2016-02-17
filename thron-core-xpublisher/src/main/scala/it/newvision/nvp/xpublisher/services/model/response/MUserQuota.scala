@@ -17,11 +17,11 @@ class MUserQuota extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MUserQuota ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var usedSpace: Long =_
-	def withusedSpace(p:Long):MUserQuota ={ 	this.usedSpace = p; 	this }
+	def withusedSpace(p:Long):this.type ={ 	this.usedSpace = p; 	this }
 
 }

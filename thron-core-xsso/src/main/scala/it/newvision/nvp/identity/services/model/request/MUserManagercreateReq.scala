@@ -22,12 +22,12 @@ class MUserManagercreateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MUserManagercreateReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var newUser: MCredentialFull =_
-	def withnewUser(p:MCredentialFull):MUserManagercreateReq ={ 	this.newUser = p; 	this }
+	def withnewUser(p:MCredentialFull):this.type ={ 	this.newUser = p; 	this }
 
 	/**
 	 * user information
@@ -35,6 +35,6 @@ class MUserManagercreateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """user information""", required = true)
 	@BeanProperty
 	var detail: MUserDetail =_
-	def withdetail(p:MUserDetail):MUserManagercreateReq ={ 	this.detail = p; 	this }
+	def withdetail(p:MUserDetail):this.type ={ 	this.detail = p; 	this }
 
 }

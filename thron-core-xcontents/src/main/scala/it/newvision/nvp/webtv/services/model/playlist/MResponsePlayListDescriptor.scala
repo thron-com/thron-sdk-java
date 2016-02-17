@@ -23,7 +23,7 @@ class MResponsePlayListDescriptor extends MResponsePlayList with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var content: MPlayListDetail =_
-	def withcontent(p:MPlayListDetail):MResponsePlayListDescriptor ={ 	this.content = p; 	this }
+	def withcontent(p:MPlayListDetail):this.type ={ 	this.content = p; 	this }
 
 	/**
 	 * The channel code used in xpublisher (WEB, STREAMRTMP, STREAMHTTPFLASH,...)
@@ -31,7 +31,7 @@ class MResponsePlayListDescriptor extends MResponsePlayList with Serializable  {
 	//#SWG#@ApiModelProperty(value = """The channel code used in xpublisher (WEB, STREAMRTMP, STREAMHTTPFLASH,...)""" ,required = true)
 	@BeanProperty 
 	var channelType: String =_
-	def withchannelType(p:String):MResponsePlayListDescriptor ={ 	this.channelType = p; 	this }
+	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	/**
 	 * the locale code
@@ -39,7 +39,7 @@ class MResponsePlayListDescriptor extends MResponsePlayList with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the locale code""" ,required = true)
 	@BeanProperty 
 	var locale: String =_
-	def withlocale(p:String):MResponsePlayListDescriptor ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * specifies that the following playlist is based on a specific content type (all
@@ -49,12 +49,12 @@ class MResponsePlayListDescriptor extends MResponsePlayList with Serializable  {
 	//#SWG#@ApiModelProperty(value = """specifies that the following playlist is based on a specific content type (all elements of the playlist have the same content type). match the EContentType in xcontents (VIDEO, AUDIO)""")
 	@BeanProperty 
 	var playlistTemplate: String =_
-	def withplaylistTemplate(p:String):MResponsePlayListDescriptor ={ 	this.playlistTemplate = p; 	this }
+	def withplaylistTemplate(p:String):this.type ={ 	this.playlistTemplate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var playlistThumbnails: MThumbnailDetail =_
-	def withplaylistThumbnails(p:MThumbnailDetail):MResponsePlayListDescriptor ={ 	this.playlistThumbnails = p; 	this }
+	def withplaylistThumbnails(p:MThumbnailDetail):this.type ={ 	this.playlistThumbnails = p; 	this }
 
 	/**
 	 * Defined if divArea parameter is specified on the request.
@@ -66,12 +66,12 @@ class MResponsePlayListDescriptor extends MResponsePlayList with Serializable  {
 	//#SWGNL#Format: <widht>x<height>""")
 	@BeanProperty 
 	var bestThumbUrl: String =_
-	def withbestThumbUrl(p:String):MResponsePlayListDescriptor ={ 	this.bestThumbUrl = p; 	this }
+	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var elements: List[MItemDetail] = new ArrayList[MItemDetail]
-	def withelements(p:List[MItemDetail]):MResponsePlayListDescriptor ={ 	this.elements = p; 	this }
+	def withelements(p:List[MItemDetail]):this.type ={ 	this.elements = p; 	this }
 
 	/**
 	 * the total number of playlist elements.
@@ -79,6 +79,6 @@ class MResponsePlayListDescriptor extends MResponsePlayList with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the total number of playlist elements.""" ,required = true)
 	@BeanProperty 
 	var totalNumberOfElements: Integer =_
-	def withtotalNumberOfElements(p:Integer):MResponsePlayListDescriptor ={ 	this.totalNumberOfElements = p; 	this }
+	def withtotalNumberOfElements(p:Integer):this.type ={ 	this.totalNumberOfElements = p; 	this }
 
 }

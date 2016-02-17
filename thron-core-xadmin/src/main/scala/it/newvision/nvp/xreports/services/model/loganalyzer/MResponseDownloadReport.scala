@@ -17,11 +17,11 @@ class MResponseDownloadReport extends MResponseLogAnalyzer with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var filePath: String =_
-	def withfilePath(p:String):MResponseDownloadReport ={ 	this.filePath = p; 	this }
+	def withfilePath(p:String):this.type ={ 	this.filePath = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var mimeType: String =_
-	def withmimeType(p:String):MResponseDownloadReport ={ 	this.mimeType = p; 	this }
+	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
 
 }

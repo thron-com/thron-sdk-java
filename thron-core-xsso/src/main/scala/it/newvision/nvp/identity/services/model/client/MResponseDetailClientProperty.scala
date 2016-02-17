@@ -18,6 +18,6 @@ class MResponseDetailClientProperty extends MResponseClient with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var properties: MProperty =_
-	def withproperties(p:MProperty):MResponseDetailClientProperty ={ 	this.properties = p; 	this }
+	def withproperties(p:MProperty):this.type ={ 	this.properties = p; 	this }
 
 }

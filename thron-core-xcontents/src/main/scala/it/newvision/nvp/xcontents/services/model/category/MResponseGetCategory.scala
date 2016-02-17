@@ -18,6 +18,6 @@ class MResponseGetCategory extends MResponseCategory with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var category: MCategory =_
-	def withcategory(p:MCategory):MResponseGetCategory ={ 	this.category = p; 	this }
+	def withcategory(p:MCategory):this.type ={ 	this.category = p; 	this }
 
 }

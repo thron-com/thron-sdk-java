@@ -23,7 +23,7 @@ class MProperty4MEDocument extends MPropertyGenericDocument with Serializable  {
 	//#SWG#@ApiModelProperty(value = """dpi quality""" ,required = true)
 	@BeanProperty 
 	var dpiQuality: Integer  = 96
-	def withdpiQuality(p:Integer):MProperty4MEDocument ={ 	this.dpiQuality = p; 	this }
+	def withdpiQuality(p:Integer):this.type ={ 	this.dpiQuality = p; 	this }
 
 	/**
 	 * create the thumbnail using the specified page.
@@ -33,7 +33,7 @@ class MProperty4MEDocument extends MPropertyGenericDocument with Serializable  {
 	@Deprecated
 	var thumbPageNumber: Integer  = 1
 	@Deprecated
-	def withthumbPageNumber(p:Integer):MProperty4MEDocument ={ 	this.thumbPageNumber = p; 	this }
+	def withthumbPageNumber(p:Integer):this.type ={ 	this.thumbPageNumber = p; 	this }
 
 	/**
 	 * @param clientId : String

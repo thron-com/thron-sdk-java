@@ -259,6 +259,7 @@ class JContactClient(val resourceEndpoint:String) {
 	 * Constraints:
 	 * <ul>
 	 * 	<li>Only to IDENTIFIED contacts</li>
+	 * 	<li>Max number of keys for contact = 50</li>
 	 * </ul>
 	 * 
 	 * RoleValidation:

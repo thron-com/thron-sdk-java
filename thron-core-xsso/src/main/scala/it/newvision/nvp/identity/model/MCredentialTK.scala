@@ -17,6 +17,6 @@ class MCredentialTK extends MCredential with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var token: String =_
-	def withtoken(p:String):MCredentialTK ={ 	this.token = p; 	this }
+	def withtoken(p:String):this.type ={ 	this.token = p; 	this }
 
 }

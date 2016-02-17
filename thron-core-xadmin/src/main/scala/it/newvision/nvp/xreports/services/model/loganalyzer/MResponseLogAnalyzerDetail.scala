@@ -18,6 +18,6 @@ class MResponseLogAnalyzerDetail extends MResponseLogAnalyzer with Serializable 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEReportStatus =_
-	def withstatus(p:MEReportStatus):MResponseLogAnalyzerDetail ={ 	this.status = p; 	this }
+	def withstatus(p:MEReportStatus):this.type ={ 	this.status = p; 	this }
 
 }

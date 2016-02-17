@@ -25,7 +25,7 @@ class MIMetadataDefinitionlistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var criteria: MIMetadataDefinitionSearchCriteria =_
-	def withcriteria(p:MIMetadataDefinitionSearchCriteria):MIMetadataDefinitionlistReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MIMetadataDefinitionSearchCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * Optional
@@ -33,7 +33,7 @@ class MIMetadataDefinitionlistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var orderBy: MEMetadataDefinitionOrderBy =_
-	def withorderBy(p:MEMetadataDefinitionOrderBy):MIMetadataDefinitionlistReq ={ 	this.orderBy = p; 	this }
+	def withorderBy(p:MEMetadataDefinitionOrderBy):this.type ={ 	this.orderBy = p; 	this }
 
 	/**
 	 * Optional.
@@ -43,7 +43,7 @@ class MIMetadataDefinitionlistReq extends Serializable {
 	//#SWGNL#Default value is 0""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MIMetadataDefinitionlistReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Optional. Default value is 50
@@ -51,6 +51,6 @@ class MIMetadataDefinitionlistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Default value is 50""", required = true)
 	@BeanProperty
 	var limit: Integer =_
-	def withlimit(p:Integer):MIMetadataDefinitionlistReq ={ 	this.limit = p; 	this }
+	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
 
 }

@@ -19,8 +19,8 @@ import it.newvision.nvp.xcontents.services.model.request.MContentAdminreportReq
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.
- * it/api/adxcontents/resources/contentadmin/</li>
+ * 	<li>REST service: http://clientId-view.thron.
+ * com/api/adxcontents/resources/contentadmin/</li>
  * </ul>
  */
 @Path("/contentadmin")
@@ -29,7 +29,7 @@ import it.newvision.nvp.xcontents.services.model.request.MContentAdminreportReq
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.4me.it/api/adxcontents/resources/contentadmin/</li>
+//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/adxcontents/resources/contentadmin/</li>
 //#SWGNL#</ul>""")
 trait JContentAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

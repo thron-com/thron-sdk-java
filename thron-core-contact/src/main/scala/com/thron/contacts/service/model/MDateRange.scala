@@ -36,7 +36,7 @@ class MDateRange extends Serializable {
 	//#SWGNL#(human readable) 2014-06-05T09:48:09.000Z""")
 	@BeanProperty 
 	var from: Date =_
-	def withfrom(p:Date):MDateRange ={ 	this.from = p; 	this }
+	def withfrom(p:Date):this.type ={ 	this.from = p; 	this }
 
 	/**
 	 * Epoc timestamp in milliseconds or human readable format (yyyy-MM-ddTHH:mm:ss.
@@ -57,6 +57,6 @@ class MDateRange extends Serializable {
 	//#SWGNL#(human readable) 2014-06-05T09:48:09.000Z""")
 	@BeanProperty 
 	var to: Date =_
-	def withto(p:Date):MDateRange ={ 	this.to = p; 	this }
+	def withto(p:Date):this.type ={ 	this.to = p; 	this }
 
 }

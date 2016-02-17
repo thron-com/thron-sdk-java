@@ -18,6 +18,6 @@ class MClassificationPermissionDetail extends MClassificationPermission with Ser
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var displayName: String =_
-	def withdisplayName(p:String):MClassificationPermissionDetail ={ 	this.displayName = p; 	this }
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
 }

@@ -42,7 +42,6 @@ class JDashboardClient(val resourceEndpoint:String) {
 
 	/**
 	 * Deprecated.
-	 * returns the total space used by each userId (CDN + Repository total space)
 	 * @param tokenId : String
 	 * @param param : MDashboardgetQuotaUsageByUsersReq
 	 * @return MResponseGetQuotaUsage
@@ -298,9 +297,7 @@ class JDashboardClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * setup all subcategories with the acl of the given category.
-	 * The service propagate also the availableInSolution value of the given category.
-	 * The service can be invoked only by administrator users
+	 * Deprecated by applyAcl service
 	 * @param tokenId : String
 	 * @param param : MDashboardpropagateAclToSubCategoriesReq
 	 * @return MResponseDashboard

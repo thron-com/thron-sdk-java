@@ -22,17 +22,17 @@ class MAppsAdminupdateAppReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAppsAdminupdateAppReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var appId: String =_
-	def withappId(p:String):MAppsAdminupdateAppReq ={ 	this.appId = p; 	this }
+	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var update: MAppUpdateData =_
-	def withupdate(p:MAppUpdateData):MAppsAdminupdateAppReq ={ 	this.update = p; 	this }
+	def withupdate(p:MAppUpdateData):this.type ={ 	this.update = p; 	this }
 
 	/**
 	 * Optional. Used to update all capabilities and roles of the application
@@ -40,6 +40,6 @@ class MAppsAdminupdateAppReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Used to update all capabilities and roles of the application""", required = true)
 	@BeanProperty
 	var caps: MAppCapabilities =_
-	def withcaps(p:MAppCapabilities):MAppsAdminupdateAppReq ={ 	this.caps = p; 	this }
+	def withcaps(p:MAppCapabilities):this.type ={ 	this.caps = p; 	this }
 
 }

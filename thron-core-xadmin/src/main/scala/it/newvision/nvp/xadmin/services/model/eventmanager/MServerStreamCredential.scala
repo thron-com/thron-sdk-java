@@ -17,12 +17,12 @@ class MServerStreamCredential extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var streamId: String =_
-	def withstreamId(p:String):MServerStreamCredential ={ 	this.streamId = p; 	this }
+	def withstreamId(p:String):this.type ={ 	this.streamId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var streamPassword: String =_
-	def withstreamPassword(p:String):MServerStreamCredential ={ 	this.streamPassword = p; 	this }
+	def withstreamPassword(p:String):this.type ={ 	this.streamPassword = p; 	this }
 
 	/**
 	 * the ingestion URL used to know where connect the input stream
@@ -30,6 +30,6 @@ class MServerStreamCredential extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the ingestion URL used to know where connect the input stream""" ,required = true)
 	@BeanProperty 
 	var clientStreamUrl: String =_
-	def withclientStreamUrl(p:String):MServerStreamCredential ={ 	this.clientStreamUrl = p; 	this }
+	def withclientStreamUrl(p:String):this.type ={ 	this.clientStreamUrl = p; 	this }
 
 }

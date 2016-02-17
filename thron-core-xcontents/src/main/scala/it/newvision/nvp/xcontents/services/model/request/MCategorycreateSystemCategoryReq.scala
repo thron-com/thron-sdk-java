@@ -23,7 +23,7 @@ class MCategorycreateSystemCategoryReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MCategorycreateSystemCategoryReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	/**
 	 * The preferred and unique categoryId to use. To the given categoryId will be
@@ -34,17 +34,17 @@ class MCategorycreateSystemCategoryReq extends Serializable {
 	//#SWGNL#<CLIENTID_>+<categoryId>""", required = true)
 	@BeanProperty
 	var newCategoryId: String =_
-	def withnewCategoryId(p:String):MCategorycreateSystemCategoryReq ={ 	this.newCategoryId = p; 	this }
+	def withnewCategoryId(p:String):this.type ={ 	this.newCategoryId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var upCatId: String =_
-	def withupCatId(p:String):MCategorycreateSystemCategoryReq ={ 	this.upCatId = p; 	this }
+	def withupCatId(p:String):this.type ={ 	this.upCatId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var catLocales: MCategory4Locale =_
-	def withcatLocales(p:MCategory4Locale):MCategorycreateSystemCategoryReq ={ 	this.catLocales = p; 	this }
+	def withcatLocales(p:MCategory4Locale):this.type ={ 	this.catLocales = p; 	this }
 
 	/**
 	 * Optional
@@ -52,6 +52,6 @@ class MCategorycreateSystemCategoryReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var options: MCategoryUpdate =_
-	def withoptions(p:MCategoryUpdate):MCategorycreateSystemCategoryReq ={ 	this.options = p; 	this }
+	def withoptions(p:MCategoryUpdate):this.type ={ 	this.options = p; 	this }
 
 }

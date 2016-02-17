@@ -23,11 +23,11 @@ class MWeeboChannel extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var channelType: String =_
-	def withchannelType(p:String):MWeeboChannel ={ 	this.channelType = p; 	this }
+	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEWeeboChannelStatus  = MEWeeboChannelStatus.UPLOADED
-	def withstatus(p:MEWeeboChannelStatus):MWeeboChannel ={ 	this.status = p; 	this }
+	def withstatus(p:MEWeeboChannelStatus):this.type ={ 	this.status = p; 	this }
 
 }

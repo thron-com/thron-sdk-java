@@ -18,49 +18,47 @@ class MResponseTestP extends MResponseTest with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attString: String =_
-	def withattString(p:String):MResponseTestP ={ 	this.attString = p; 	this }
+	def withattString(p:String):this.type ={ 	this.attString = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attDate: Date =_
-	def withattDate(p:Date):MResponseTestP ={ 	this.attDate = p; 	this }
+	def withattDate(p:Date):this.type ={ 	this.attDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attenum: METestEnum =_
-	def withattenum(p:METestEnum):MResponseTestP ={ 	this.attenum = p; 	this }
+	def withattenum(p:METestEnum):this.type ={ 	this.attenum = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attlong: Long =_
-	def withattlong(p:Long):MResponseTestP ={ 	this.attlong = p; 	this }
+	def withattlong(p:Long):this.type ={ 	this.attlong = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	@Deprecated
 	var attInt: Integer =_
-	@Deprecated
-	def withattInt(p:Integer):MResponseTestP ={ 	this.attInt = p; 	this }
+	def withattInt(p:Integer):this.type ={ 	this.attInt = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var testClass: MTestClass =_
-	def withtestClass(p:MTestClass):MResponseTestP ={ 	this.testClass = p; 	this }
+	def withtestClass(p:MTestClass):this.type ={ 	this.testClass = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attdouble: Double =_
-	def withattdouble(p:Double):MResponseTestP ={ 	this.attdouble = p; 	this }
+	def withattdouble(p:Double):this.type ={ 	this.attdouble = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attbool: Boolean =_
-	def withattbool(p:Boolean):MResponseTestP ={ 	this.attbool = p; 	this }
+	def withattbool(p:Boolean):this.type ={ 	this.attbool = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var attfloat: Float =_
-	def withattfloat(p:Float):MResponseTestP ={ 	this.attfloat = p; 	this }
+	def withattfloat(p:Float):this.type ={ 	this.attfloat = p; 	this }
 
 	/**
 	 * @param param1 : String

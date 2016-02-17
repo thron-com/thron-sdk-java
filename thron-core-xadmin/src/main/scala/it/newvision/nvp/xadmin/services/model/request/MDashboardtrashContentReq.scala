@@ -21,11 +21,11 @@ class MDashboardtrashContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MDashboardtrashContentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentList: MContentTrashList =_
-	def withcontentList(p:MContentTrashList):MDashboardtrashContentReq ={ 	this.contentList = p; 	this }
+	def withcontentList(p:MContentTrashList):this.type ={ 	this.contentList = p; 	this }
 
 }

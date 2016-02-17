@@ -17,18 +17,18 @@ class MTagfindContentByTagsReq extends Serializable {
 
 	@BeanProperty 
 	var client: MCredential =_
-	def withclient(p:MCredential):MTagfindContentByTagsReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	@BeanProperty 
 	var criteria: MTagCriteria =_
-	def withcriteria(p:MTagCriteria):MTagfindContentByTagsReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MTagCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	@BeanProperty 
 	var offset: Integer =_
-	def withoffset(p:Integer):MTagfindContentByTagsReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	@BeanProperty 
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MTagfindContentByTagsReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

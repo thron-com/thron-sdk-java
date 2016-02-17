@@ -21,7 +21,7 @@ class MContentmoveLinkedContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MContentmoveLinkedContentReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * The main content with the linked element to move in the list
@@ -29,7 +29,7 @@ class MContentmoveLinkedContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The main content with the linked element to move in the list""", required = true)
 	@BeanProperty
 	var xcontentId: String =_
-	def withxcontentId(p:String):MContentmoveLinkedContentReq ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * move the linkedContent in oldPosition to newPosition
@@ -37,7 +37,7 @@ class MContentmoveLinkedContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """move the linkedContent in oldPosition to newPosition""", required = true)
 	@BeanProperty
 	var oldPosition: Integer =_
-	def witholdPosition(p:Integer):MContentmoveLinkedContentReq ={ 	this.oldPosition = p; 	this }
+	def witholdPosition(p:Integer):this.type ={ 	this.oldPosition = p; 	this }
 
 	/**
 	 * move the linkedContent in oldPosition to newPosition
@@ -45,11 +45,11 @@ class MContentmoveLinkedContentReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """move the linkedContent in oldPosition to newPosition""", required = true)
 	@BeanProperty
 	var newPosition: Integer =_
-	def withnewPosition(p:Integer):MContentmoveLinkedContentReq ={ 	this.newPosition = p; 	this }
+	def withnewPosition(p:Integer):this.type ={ 	this.newPosition = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var linkType: MELinkType =_
-	def withlinkType(p:MELinkType):MContentmoveLinkedContentReq ={ 	this.linkType = p; 	this }
+	def withlinkType(p:MELinkType):this.type ={ 	this.linkType = p; 	this }
 
 }

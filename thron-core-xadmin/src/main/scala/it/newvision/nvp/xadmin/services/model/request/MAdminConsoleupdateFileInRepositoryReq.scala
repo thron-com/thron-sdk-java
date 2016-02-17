@@ -21,16 +21,16 @@ class MAdminConsoleupdateFileInRepositoryReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAdminConsoleupdateFileInRepositoryReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var file: MFile =_
-	def withfile(p:MFile):MAdminConsoleupdateFileInRepositoryReq ={ 	this.file = p; 	this }
+	def withfile(p:MFile):this.type ={ 	this.file = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var fileOnSiteStatus: String =_
-	def withfileOnSiteStatus(p:String):MAdminConsoleupdateFileInRepositoryReq ={ 	this.fileOnSiteStatus = p; 	this }
+	def withfileOnSiteStatus(p:String):this.type ={ 	this.fileOnSiteStatus = p; 	this }
 
 }

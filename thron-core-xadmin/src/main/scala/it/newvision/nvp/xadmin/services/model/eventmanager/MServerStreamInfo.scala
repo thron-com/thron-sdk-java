@@ -17,21 +17,21 @@ class MServerStreamInfo extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MServerStreamInfo ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var isRecording: Boolean =_
-	def withisRecording(p:Boolean):MServerStreamInfo ={ 	this.isRecording = p; 	this }
+	def withisRecording(p:Boolean):this.type ={ 	this.isRecording = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientStreamInMuxing: String =_
-	def withclientStreamInMuxing(p:String):MServerStreamInfo ={ 	this.clientStreamInMuxing = p; 	this }
+	def withclientStreamInMuxing(p:String):this.type ={ 	this.clientStreamInMuxing = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var beingPublished: Boolean =_
-	def withbeingPublished(p:Boolean):MServerStreamInfo ={ 	this.beingPublished = p; 	this }
+	def withbeingPublished(p:Boolean):this.type ={ 	this.beingPublished = p; 	this }
 
 }

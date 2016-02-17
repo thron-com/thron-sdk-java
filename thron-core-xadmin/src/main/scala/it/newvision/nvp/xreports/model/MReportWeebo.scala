@@ -20,6 +20,6 @@ class MReportWeebo extends MReport with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var query: MQueryWeebo =_
-	def withquery(p:MQueryWeebo):MReportWeebo ={ 	this.query = p; 	this }
+	def withquery(p:MQueryWeebo):this.type ={ 	this.query = p; 	this }
 
 }

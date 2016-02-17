@@ -23,7 +23,7 @@ class MClientProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var ratingProperty: MRatingProperty =_
-	def withratingProperty(p:MRatingProperty):MClientProperties ={ 	this.ratingProperty = p; 	this }
+	def withratingProperty(p:MRatingProperty):this.type ={ 	this.ratingProperty = p; 	this }
 
 	/**
 	 * if true the each new comment need to be moderated before to be visible,
@@ -32,7 +32,7 @@ class MClientProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if true the each new comment need to be moderated before to be visible, otherwise each new comment is automatically published.""")
 	@BeanProperty 
 	var commentsModerationEnabled: Boolean =_
-	def withcommentsModerationEnabled(p:Boolean):MClientProperties ={ 	this.commentsModerationEnabled = p; 	this }
+	def withcommentsModerationEnabled(p:Boolean):this.type ={ 	this.commentsModerationEnabled = p; 	this }
 
 	/**
 	 * if true the each new ugc content need to be moderated before to be visible,
@@ -41,27 +41,27 @@ class MClientProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if true the each new ugc content need to be moderated before to be visible, otherwise each new ugc is automatically published.""")
 	@BeanProperty 
 	var ugcModerationEnabled: Boolean =_
-	def withugcModerationEnabled(p:Boolean):MClientProperties ={ 	this.ugcModerationEnabled = p; 	this }
+	def withugcModerationEnabled(p:Boolean):this.type ={ 	this.ugcModerationEnabled = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var customMetadatas: List[MCustomMetadata] = new ArrayList[MCustomMetadata]
-	def withcustomMetadatas(p:List[MCustomMetadata]):MClientProperties ={ 	this.customMetadatas = p; 	this }
+	def withcustomMetadatas(p:List[MCustomMetadata]):this.type ={ 	this.customMetadatas = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var embedTemplates: List[MPlayerEmbedTemplate] = new ArrayList[MPlayerEmbedTemplate]
-	def withembedTemplates(p:List[MPlayerEmbedTemplate]):MClientProperties ={ 	this.embedTemplates = p; 	this }
+	def withembedTemplates(p:List[MPlayerEmbedTemplate]):this.type ={ 	this.embedTemplates = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var publishingProfiles: MPublishingProfile =_
-	def withpublishingProfiles(p:MPublishingProfile):MClientProperties ={ 	this.publishingProfiles = p; 	this }
+	def withpublishingProfiles(p:MPublishingProfile):this.type ={ 	this.publishingProfiles = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var trashProperties: MTrashProperties =_
-	def withtrashProperties(p:MTrashProperties):MClientProperties ={ 	this.trashProperties = p; 	this }
+	def withtrashProperties(p:MTrashProperties):this.type ={ 	this.trashProperties = p; 	this }
 
 	/**
 	 * list of custom metadata used by client to store additional information of
@@ -70,7 +70,7 @@ class MClientProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of custom metadata used by client to store additional information of clientProperties""")
 	@BeanProperty 
 	var customProperties: List[MMetadata] = new ArrayList[MMetadata]
-	def withcustomProperties(p:List[MMetadata]):MClientProperties ={ 	this.customProperties = p; 	this }
+	def withcustomProperties(p:List[MMetadata]):this.type ={ 	this.customProperties = p; 	this }
 
 	/**
 	 * lifetime of the Functional Audit entries in the platform as number od days. The
@@ -88,7 +88,7 @@ class MClientProperties extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var auditDurationDays: Integer =_
-	def withauditDurationDays(p:Integer):MClientProperties ={ 	this.auditDurationDays = p; 	this }
+	def withauditDurationDays(p:Integer):this.type ={ 	this.auditDurationDays = p; 	this }
 
 	/**
 	 * if true secure connection is enforced
@@ -96,7 +96,7 @@ class MClientProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if true secure connection is enforced""")
 	@BeanProperty 
 	var secureConnectionEnabled: Boolean =_
-	def withsecureConnectionEnabled(p:Boolean):MClientProperties ={ 	this.secureConnectionEnabled = p; 	this }
+	def withsecureConnectionEnabled(p:Boolean):this.type ={ 	this.secureConnectionEnabled = p; 	this }
 
 	/**
 	 * @return void

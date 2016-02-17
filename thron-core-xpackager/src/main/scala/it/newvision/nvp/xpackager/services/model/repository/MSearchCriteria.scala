@@ -30,7 +30,7 @@ class MSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Filter all files in the ids list.""")
 	@BeanProperty 
 	var ids: List[String] = new ArrayList[String]
-	def withids(p:List[String]):MSearchCriteria ={ 	this.ids = p; 	this }
+	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
 
 	/**
 	 * filename with extension (example myimage.jpg)
@@ -38,7 +38,7 @@ class MSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """filename with extension (example myimage.jpg)""")
 	@BeanProperty 
 	var fileName: String =_
-	def withfileName(p:String):MSearchCriteria ={ 	this.fileName = p; 	this }
+	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
 
 	/**
 	 * like: image, video, audio, application...
@@ -48,7 +48,7 @@ class MSearchCriteria extends Serializable {
 	//#SWGNL#Could be a comma separated list to filter files having a specific mimeType.""")
 	@BeanProperty 
 	var mimetype: String =_
-	def withmimetype(p:String):MSearchCriteria ={ 	this.mimetype = p; 	this }
+	def withmimetype(p:String):this.type ={ 	this.mimetype = p; 	this }
 
 	/**
 	 * Used to filter the list of files having creation date inside the range of
@@ -57,7 +57,7 @@ class MSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to filter the list of files having creation date inside the range of "startDate" and "endDate"""")
 	@BeanProperty 
 	var startDate: Date =_
-	def withstartDate(p:Date):MSearchCriteria ={ 	this.startDate = p; 	this }
+	def withstartDate(p:Date):this.type ={ 	this.startDate = p; 	this }
 
 	/**
 	 * Used to filter the list of files having creation date inside the range of
@@ -66,7 +66,7 @@ class MSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to filter the list of files having creation date inside the range of "startDate" and "endDate"""")
 	@BeanProperty 
 	var endDate: Date =_
-	def withendDate(p:Date):MSearchCriteria ={ 	this.endDate = p; 	this }
+	def withendDate(p:Date):this.type ={ 	this.endDate = p; 	this }
 
 	/**
 	 * filter only "removed" Files.
@@ -78,7 +78,7 @@ class MSearchCriteria extends Serializable {
 	//#SWGNL#if null or false then the service return only the available files in repository""")
 	@BeanProperty 
 	var withRemovedFiles: Boolean =_
-	def withwithRemovedFiles(p:Boolean):MSearchCriteria ={ 	this.withRemovedFiles = p; 	this }
+	def withwithRemovedFiles(p:Boolean):this.type ={ 	this.withRemovedFiles = p; 	this }
 
 	/**
 	 * used to filter the files in a site with a give status.
@@ -86,7 +86,7 @@ class MSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to filter the files in a site with a give status.""")
 	@BeanProperty 
 	var availableOnSites: List[MFileOnSite] = new ArrayList[MFileOnSite]
-	def withavailableOnSites(p:List[MFileOnSite]):MSearchCriteria ={ 	this.availableOnSites = p; 	this }
+	def withavailableOnSites(p:List[MFileOnSite]):this.type ={ 	this.availableOnSites = p; 	this }
 
 	/**
 	 * Used to filter files having removeDate in range with "removeDateFrom" and
@@ -95,7 +95,7 @@ class MSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to filter files having removeDate in range with "removeDateFrom" and "removeDateTo"""")
 	@BeanProperty 
 	var removeDateFrom: Date =_
-	def withremoveDateFrom(p:Date):MSearchCriteria ={ 	this.removeDateFrom = p; 	this }
+	def withremoveDateFrom(p:Date):this.type ={ 	this.removeDateFrom = p; 	this }
 
 	/**
 	 * Used to filter the list of files having removeDate in range with
@@ -104,7 +104,7 @@ class MSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to filter the list of files having removeDate in range with "removeDateFrom" and "removeDateTo"""")
 	@BeanProperty 
 	var removeDateTo: Date =_
-	def withremoveDateTo(p:Date):MSearchCriteria ={ 	this.removeDateTo = p; 	this }
+	def withremoveDateTo(p:Date):this.type ={ 	this.removeDateTo = p; 	this }
 
 	/**
 	 * default = false
@@ -112,6 +112,6 @@ class MSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """default = false""")
 	@BeanProperty 
 	var purged: Boolean =_
-	def withpurged(p:Boolean):MSearchCriteria ={ 	this.purged = p; 	this }
+	def withpurged(p:Boolean):this.type ={ 	this.purged = p; 	this }
 
 }

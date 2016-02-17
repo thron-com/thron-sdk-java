@@ -28,7 +28,7 @@ class MMetadataDefinitionSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """search by MetadataDefinition.ids""")
 	@BeanProperty 
 	var ids: List[String] = new ArrayList[String]
-	def withids(p:List[String]):MMetadataDefinitionSearchCriteria ={ 	this.ids = p; 	this }
+	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
 
 	/**
 	 * search by MetadataDefinition.keys
@@ -36,7 +36,7 @@ class MMetadataDefinitionSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """search by MetadataDefinition.keys""")
 	@BeanProperty 
 	var keys: List[String] = new ArrayList[String]
-	def withkeys(p:List[String]):MMetadataDefinitionSearchCriteria ={ 	this.keys = p; 	this }
+	def withkeys(p:List[String]):this.type ={ 	this.keys = p; 	this }
 
 	/**
 	 * Search text in label, description, key and note fields of MetadataDefinition.
@@ -64,7 +64,7 @@ class MMetadataDefinitionSearchCriteria extends Serializable {
 	//#SWGNL#}""")
 	@BeanProperty 
 	var text: String =_
-	def withtext(p:String):MMetadataDefinitionSearchCriteria ={ 	this.text = p; 	this }
+	def withtext(p:String):this.type ={ 	this.text = p; 	this }
 
 	/**
 	 * Locale code (ISO639-1).
@@ -79,7 +79,7 @@ class MMetadataDefinitionSearchCriteria extends Serializable {
 	//#SWGNL#Example: the user would like to find the metadata definition with label "house" for lang "EN". If the "label" is empty the service return all metadata definition defined for the specified lang.""")
 	@BeanProperty 
 	var lang: String =_
-	def withlang(p:String):MMetadataDefinitionSearchCriteria ={ 	this.lang = p; 	this }
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
 	 * used to search all MetadataDefinition in Trash
@@ -87,12 +87,12 @@ class MMetadataDefinitionSearchCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to search all MetadataDefinition in Trash""")
 	@BeanProperty 
 	var removed: Boolean =_
-	def withremoved(p:Boolean):MMetadataDefinitionSearchCriteria ={ 	this.removed = p; 	this }
+	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var metadataType: List[MEMetadataDefinitionDataType] = new ArrayList[MEMetadataDefinitionDataType]
-	def withmetadataType(p:List[MEMetadataDefinitionDataType]):MMetadataDefinitionSearchCriteria ={ 	this.metadataType = p; 	this }
+	def withmetadataType(p:List[MEMetadataDefinitionDataType]):this.type ={ 	this.metadataType = p; 	this }
 
 	/**
 	 * @return Boolean

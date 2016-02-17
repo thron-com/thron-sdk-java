@@ -20,7 +20,7 @@ class MChangedContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var content: MContent =_
-	def withcontent(p:MContent):MChangedContent ={ 	this.content = p; 	this }
+	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
 
 	/**
 	 * the list of categories where the content is linked
@@ -28,7 +28,7 @@ class MChangedContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of categories where the content is linked""")
 	@BeanProperty 
 	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
-	def withlinkedCategories(p:List[MCategory]):MChangedContent ={ 	this.linkedCategories = p; 	this }
+	def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
 
 	/**
 	 * used to show whether the content has been removed
@@ -36,7 +36,7 @@ class MChangedContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to show whether the content has been removed""")
 	@BeanProperty 
 	var removed: Boolean =_
-	def withremoved(p:Boolean):MChangedContent ={ 	this.removed = p; 	this }
+	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
 
 	/**
 	 * The delivery information of the content, with the detail where the content is
@@ -45,6 +45,6 @@ class MChangedContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The delivery information of the content, with the detail where the content is published.""")
 	@BeanProperty 
 	var deliveryInfo: List[MDeliveryInfo] = new ArrayList[MDeliveryInfo]
-	def withdeliveryInfo(p:List[MDeliveryInfo]):MChangedContent ={ 	this.deliveryInfo = p; 	this }
+	def withdeliveryInfo(p:List[MDeliveryInfo]):this.type ={ 	this.deliveryInfo = p; 	this }
 
 }

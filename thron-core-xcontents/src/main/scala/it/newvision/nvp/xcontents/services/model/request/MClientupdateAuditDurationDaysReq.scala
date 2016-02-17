@@ -20,11 +20,11 @@ class MClientupdateAuditDurationDaysReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MClientupdateAuditDurationDaysReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var auditDurationDays: Integer =_
-	def withauditDurationDays(p:Integer):MClientupdateAuditDurationDaysReq ={ 	this.auditDurationDays = p; 	this }
+	def withauditDurationDays(p:Integer):this.type ={ 	this.auditDurationDays = p; 	this }
 
 }

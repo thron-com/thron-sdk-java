@@ -20,32 +20,32 @@ class MThumbsProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var thumbsPropertiesVideo: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesVideo(p:MPropertyThumbnail):MThumbsProperties ={ 	this.thumbsPropertiesVideo = p; 	this }
+	def withthumbsPropertiesVideo(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesVideo = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var thumbsPropertiesImage: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesImage(p:MPropertyThumbnail):MThumbsProperties ={ 	this.thumbsPropertiesImage = p; 	this }
+	def withthumbsPropertiesImage(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesImage = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var thumbsPropertiesLive: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesLive(p:MPropertyThumbnail):MThumbsProperties ={ 	this.thumbsPropertiesLive = p; 	this }
+	def withthumbsPropertiesLive(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesLive = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var thumbsPropertiesNdoc: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesNdoc(p:MPropertyThumbnail):MThumbsProperties ={ 	this.thumbsPropertiesNdoc = p; 	this }
+	def withthumbsPropertiesNdoc(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesNdoc = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var thumbsPropertiesAudio: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesAudio(p:MPropertyThumbnail):MThumbsProperties ={ 	this.thumbsPropertiesAudio = p; 	this }
+	def withthumbsPropertiesAudio(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesAudio = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var thumbsPropertiesDocument: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesDocument(p:MPropertyThumbnail):MThumbsProperties ={ 	this.thumbsPropertiesDocument = p; 	this }
+	def withthumbsPropertiesDocument(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesDocument = p; 	this }
 
 	/**
 	 * thumbs properties for pagelet contents
@@ -53,7 +53,7 @@ class MThumbsProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """thumbs properties for pagelet contents""" ,required = true)
 	@BeanProperty 
 	var thumbsPropertiesPagelet: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesPagelet(p:MPropertyThumbnail):MThumbsProperties ={ 	this.thumbsPropertiesPagelet = p; 	this }
+	def withthumbsPropertiesPagelet(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesPagelet = p; 	this }
 
 	/**
 	 * ONLY FOR VIDEO: defined in seconds
@@ -61,7 +61,7 @@ class MThumbsProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """ONLY FOR VIDEO: defined in seconds""" ,required = true)
 	@BeanProperty 
 	var thumbVideoFrameTime: Integer  = 10
-	def withthumbVideoFrameTime(p:Integer):MThumbsProperties ={ 	this.thumbVideoFrameTime = p; 	this }
+	def withthumbVideoFrameTime(p:Integer):this.type ={ 	this.thumbVideoFrameTime = p; 	this }
 
 	/**
 	 * Only for NDoc documents: create the thumbnail using the specified page.
@@ -69,7 +69,7 @@ class MThumbsProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Only for NDoc documents: create the thumbnail using the specified page.""" ,required = true)
 	@BeanProperty 
 	var thumbNdocPageNumber: Integer  = 1
-	def withthumbNdocPageNumber(p:Integer):MThumbsProperties ={ 	this.thumbNdocPageNumber = p; 	this }
+	def withthumbNdocPageNumber(p:Integer):this.type ={ 	this.thumbNdocPageNumber = p; 	this }
 
 	/**
 	 * @return void

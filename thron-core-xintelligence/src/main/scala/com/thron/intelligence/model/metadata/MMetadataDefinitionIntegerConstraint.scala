@@ -17,12 +17,12 @@ class MMetadataDefinitionIntegerConstraint extends MMetadataDefinitionGenericCon
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var minimumValue: Integer =_
-	def withminimumValue(p:Integer):MMetadataDefinitionIntegerConstraint ={ 	this.minimumValue = p; 	this }
+	def withminimumValue(p:Integer):this.type ={ 	this.minimumValue = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var maximumValue: Integer =_
-	def withmaximumValue(p:Integer):MMetadataDefinitionIntegerConstraint ={ 	this.maximumValue = p; 	this }
+	def withmaximumValue(p:Integer):this.type ={ 	this.maximumValue = p; 	this }
 
 	/**
 	 * @return Boolean

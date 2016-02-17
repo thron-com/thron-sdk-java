@@ -26,7 +26,7 @@ class MPropertyLiveEvent extends Serializable {
 	//#SWGNL#LIVESTREAMRTMP""" ,required = true)
 	@BeanProperty 
 	var channelType: String  = "STREAM"
-	def withchannelType(p:String):MPropertyLiveEvent ={ 	this.channelType = p; 	this }
+	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	/**
 	 * http://<mydomain>/liveservice/....
@@ -34,12 +34,12 @@ class MPropertyLiveEvent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """http://<mydomain>/liveservice/....""" ,required = true)
 	@BeanProperty 
 	var liveEventApp: String  = "live/"
-	def withliveEventApp(p:String):MPropertyLiveEvent ={ 	this.liveEventApp = p; 	this }
+	def withliveEventApp(p:String):this.type ={ 	this.liveEventApp = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var channelDescriptions: List[MChannelDescription] = new ArrayList[MChannelDescription]
-	def withchannelDescriptions(p:List[MChannelDescription]):MPropertyLiveEvent ={ 	this.channelDescriptions = p; 	this }
+	def withchannelDescriptions(p:List[MChannelDescription]):this.type ={ 	this.channelDescriptions = p; 	this }
 
 	/**
 	 * rtmpe, rtmp, http
@@ -47,14 +47,14 @@ class MPropertyLiveEvent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """rtmpe, rtmp, http""" ,required = true)
 	@BeanProperty 
 	var protocol: String  = "rtmpe"
-	def withprotocol(p:String):MPropertyLiveEvent ={ 	this.protocol = p; 	this }
+	def withprotocol(p:String):this.type ={ 	this.protocol = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	@Deprecated
 	var thumbsProperties: MPropertyThumbnail  = new MPropertyThumbnail
 	@Deprecated
-	def withthumbsProperties(p:MPropertyThumbnail):MPropertyLiveEvent ={ 	this.thumbsProperties = p; 	this }
+	def withthumbsProperties(p:MPropertyThumbnail):this.type ={ 	this.thumbsProperties = p; 	this }
 
 	/**
 	 * define if the channel is enabled or not. Used to keep the channel settings but
@@ -63,7 +63,7 @@ class MPropertyLiveEvent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """define if the channel is enabled or not. Used to keep the channel settings but disable the user to publish new contents in the current channel""" ,required = true)
 	@BeanProperty 
 	var channelEnabled: Boolean  = true
-	def withchannelEnabled(p:Boolean):MPropertyLiveEvent ={ 	this.channelEnabled = p; 	this }
+	def withchannelEnabled(p:Boolean):this.type ={ 	this.channelEnabled = p; 	this }
 
 	/**
 	 * this attribute specify that the channel is compliant with a specific 4me
@@ -75,7 +75,7 @@ class MPropertyLiveEvent extends Serializable {
 	//#SWGNL#possibile entries:VIEW,PLAY,MOVE,TALK""" ,required = true)
 	@BeanProperty 
 	var compliantWith: String  = "VIEW"
-	def withcompliantWith(p:String):MPropertyLiveEvent ={ 	this.compliantWith = p; 	this }
+	def withcompliantWith(p:String):this.type ={ 	this.compliantWith = p; 	this }
 
 	/**
 	 * @param clientId : String

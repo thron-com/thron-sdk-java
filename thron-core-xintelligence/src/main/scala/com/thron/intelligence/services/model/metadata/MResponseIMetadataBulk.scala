@@ -17,6 +17,6 @@ class MResponseIMetadataBulk extends MResponseMetadataDefinition with Serializab
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var imetadataInIssue: List[MIMetadata] = new ArrayList[MIMetadata]
-	def withimetadataInIssue(p:List[MIMetadata]):MResponseIMetadataBulk ={ 	this.imetadataInIssue = p; 	this }
+	def withimetadataInIssue(p:List[MIMetadata]):this.type ={ 	this.imetadataInIssue = p; 	this }
 
 }

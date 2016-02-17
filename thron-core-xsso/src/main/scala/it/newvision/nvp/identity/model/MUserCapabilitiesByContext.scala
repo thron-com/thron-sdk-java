@@ -20,16 +20,16 @@ class MUserCapabilitiesByContext extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the groupId or "owned"""" ,required = true)
 	@BeanProperty 
 	var context: String  = "owned"
-	def withcontext(p:String):MUserCapabilitiesByContext ={ 	this.context = p; 	this }
+	def withcontext(p:String):this.type ={ 	this.context = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var capability: MUserCapability =_
-	def withcapability(p:MUserCapability):MUserCapabilitiesByContext ={ 	this.capability = p; 	this }
+	def withcapability(p:MUserCapability):this.type ={ 	this.capability = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var classificationIds: List[String] = new ArrayList[String]
-	def withclassificationIds(p:List[String]):MUserCapabilitiesByContext ={ 	this.classificationIds = p; 	this }
+	def withclassificationIds(p:List[String]):this.type ={ 	this.classificationIds = p; 	this }
 
 }

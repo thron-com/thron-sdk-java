@@ -28,7 +28,7 @@ class MPropertyView extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var customAdminPages: String  = ""
-	def withcustomAdminPages(p:String):MPropertyView ={ 	this.customAdminPages = p; 	this }
+	def withcustomAdminPages(p:String):this.type ={ 	this.customAdminPages = p; 	this }
 
 	/**
 	 * used to enable or disable the comunity services like comments and ratings.
@@ -36,6 +36,6 @@ class MPropertyView extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to enable or disable the comunity services like comments and ratings.""" ,required = true)
 	@BeanProperty 
 	var comunityServiceEnabled: Boolean  = false
-	def withcomunityServiceEnabled(p:Boolean):MPropertyView ={ 	this.comunityServiceEnabled = p; 	this }
+	def withcomunityServiceEnabled(p:Boolean):this.type ={ 	this.comunityServiceEnabled = p; 	this }
 
 }

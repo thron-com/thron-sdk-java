@@ -18,7 +18,7 @@ class MContentUserSpecificParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentReadValue: MEContentReadValue  = MEContentReadValue.READ
-	def withcontentReadValue(p:MEContentReadValue):MContentUserSpecificParams ={ 	this.contentReadValue = p; 	this }
+	def withcontentReadValue(p:MEContentReadValue):this.type ={ 	this.contentReadValue = p; 	this }
 
 	/**
 	 * used to mark if the content is starred or not for the user
@@ -28,6 +28,6 @@ class MContentUserSpecificParams extends Serializable {
 	@Deprecated
 	var contentStarred: Boolean  = false
 	@Deprecated
-	def withcontentStarred(p:Boolean):MContentUserSpecificParams ={ 	this.contentStarred = p; 	this }
+	def withcontentStarred(p:Boolean):this.type ={ 	this.contentStarred = p; 	this }
 
 }

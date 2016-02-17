@@ -21,11 +21,11 @@ class MResponseUserFindByProperties extends MResponseUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """return the user credential without the password information, for securityreason.""")
 	@BeanProperty 
 	var userDetails: List[MUserCredential] = new ArrayList[MUserCredential]
-	def withuserDetails(p:List[MUserCredential]):MResponseUserFindByProperties ={ 	this.userDetails = p; 	this }
+	def withuserDetails(p:List[MUserCredential]):this.type ={ 	this.userDetails = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseUserFindByProperties ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

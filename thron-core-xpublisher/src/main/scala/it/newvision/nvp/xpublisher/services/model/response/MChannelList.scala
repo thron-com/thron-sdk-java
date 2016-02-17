@@ -20,6 +20,6 @@ class MChannelList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The list of Channels where the thumbnails should be replaced.""")
 	@BeanProperty 
 	var channels: List[String] = new ArrayList[String]
-	def withchannels(p:List[String]):MChannelList ={ 	this.channels = p; 	this }
+	def withchannels(p:List[String]):this.type ={ 	this.channels = p; 	this }
 
 }

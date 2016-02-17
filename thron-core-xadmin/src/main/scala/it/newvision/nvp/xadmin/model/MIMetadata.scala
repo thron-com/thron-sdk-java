@@ -17,21 +17,21 @@ class MIMetadata extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var classificationId: String =_
-	def withclassificationId(p:String):MIMetadata ={ 	this.classificationId = p; 	this }
+	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var key: Integer =_
-	def withkey(p:Integer):MIMetadata ={ 	this.key = p; 	this }
+	def withkey(p:Integer):this.type ={ 	this.key = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var value: Integer =_
-	def withvalue(p:Integer):MIMetadata ={ 	this.value = p; 	this }
+	def withvalue(p:Integer):this.type ={ 	this.value = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var lang: Integer =_
-	def withlang(p:Integer):MIMetadata ={ 	this.lang = p; 	this }
+	def withlang(p:Integer):this.type ={ 	this.lang = p; 	this }
 
 }

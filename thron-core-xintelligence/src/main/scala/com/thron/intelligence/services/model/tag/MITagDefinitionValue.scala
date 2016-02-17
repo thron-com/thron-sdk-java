@@ -15,15 +15,20 @@ import com.thron.intelligence.model.MLocalization
 //#SWG#@ApiModel(description = """""")
 class MITagDefinitionValue extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Optional. Used to add new tagdefinition inside a tree structure.
+	 * This should be the parent tagdefinition id 
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Used to add new tagdefinition inside a tree structure. 
+	//#SWGNL#This should be the parent tagdefinition id """)
 	@BeanProperty 
 	var parentId: String =_
-	def withparentId(p:String):MITagDefinitionValue ={ 	this.parentId = p; 	this }
+	def withparentId(p:String):this.type ={ 	this.parentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):MITagDefinitionValue ={ 	this.names = p; 	this }
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * Desired tag position among elements of a specific tree level.
@@ -31,7 +36,7 @@ class MITagDefinitionValue extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Desired tag position among elements of a specific tree level.""")
 	@BeanProperty 
 	var pos: Integer =_
-	def withpos(p:Integer):MITagDefinitionValue ={ 	this.pos = p; 	this }
+	def withpos(p:Integer):this.type ={ 	this.pos = p; 	this }
 
 	/**
 	 * prettyId for itags. Used to easily identify itagDefinitions
@@ -57,7 +62,7 @@ class MITagDefinitionValue extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var prettyId: String =_
-	def withprettyId(p:String):MITagDefinitionValue ={ 	this.prettyId = p; 	this }
+	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	/**
 	 * Used to split the tagdefinition in two macro categories (categorized and
@@ -78,7 +83,7 @@ class MITagDefinitionValue extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var categorized: Boolean  = true
-	def withcategorized(p:Boolean):MITagDefinitionValue ={ 	this.categorized = p; 	this }
+	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
 
 	/**
 	 * @return Boolean

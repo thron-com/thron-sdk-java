@@ -21,6 +21,6 @@ class MResponseContentRemove extends MResponseContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the content removed""")
 	@BeanProperty 
 	var content: MContent =_
-	def withcontent(p:MContent):MResponseContentRemove ={ 	this.content = p; 	this }
+	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
 
 }

@@ -24,12 +24,12 @@ class MCategoryfindByProperties2Req extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MCategoryfindByProperties2Req ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var properties: MCategoryCriteria =_
-	def withproperties(p:MCategoryCriteria):MCategoryfindByProperties2Req ={ 	this.properties = p; 	this }
+	def withproperties(p:MCategoryCriteria):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * Optional.If the client desires to have the category description for a specific
@@ -44,7 +44,7 @@ class MCategoryfindByProperties2Req extends Serializable {
 	//#SWGNL#The service always return all available locales for each category.""", required = true)
 	@BeanProperty
 	var locale: String =_
-	def withlocale(p:String):MCategoryfindByProperties2Req ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * Optional. Used to order the result set for a specific field
@@ -52,7 +52,7 @@ class MCategoryfindByProperties2Req extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Used to order the result set for a specific field""", required = true)
 	@BeanProperty
 	var orderBy: MECategoryOrderBy =_
-	def withorderBy(p:MECategoryOrderBy):MCategoryfindByProperties2Req ={ 	this.orderBy = p; 	this }
+	def withorderBy(p:MECategoryOrderBy):this.type ={ 	this.orderBy = p; 	this }
 
 	/**
 	 * Optional
@@ -60,12 +60,12 @@ class MCategoryfindByProperties2Req extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var categoryFieldOption: MCategoryFieldsOption =_
-	def withcategoryFieldOption(p:MCategoryFieldsOption):MCategoryfindByProperties2Req ={ 	this.categoryFieldOption = p; 	this }
+	def withcategoryFieldOption(p:MCategoryFieldsOption):this.type ={ 	this.categoryFieldOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MCategoryfindByProperties2Req ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * default value= 50
@@ -75,6 +75,6 @@ class MCategoryfindByProperties2Req extends Serializable {
 	//#SWGNL#value -1, return all result not paginated""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MCategoryfindByProperties2Req ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

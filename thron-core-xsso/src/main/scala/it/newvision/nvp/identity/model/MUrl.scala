@@ -34,11 +34,11 @@ class MUrl extends Serializable {
 	//#SWGNL#... (custom values)""")
 	@BeanProperty 
 	var urlCategory: String =_
-	def withurlCategory(p:String):MUrl ={ 	this.urlCategory = p; 	this }
+	def withurlCategory(p:String):this.type ={ 	this.urlCategory = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MUrl ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 }

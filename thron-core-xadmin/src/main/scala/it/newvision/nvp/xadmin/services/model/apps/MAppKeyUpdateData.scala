@@ -21,12 +21,12 @@ class MAppKeyUpdateData extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var active: Boolean =_
-	def withactive(p:Boolean):MAppKeyUpdateData ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var note: String =_
-	def withnote(p:String):MAppKeyUpdateData ={ 	this.note = p; 	this }
+	def withnote(p:String):this.type ={ 	this.note = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -21,12 +21,12 @@ class MGroupUpdateData extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the name of the group""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MGroupUpdateData ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MGroupUpdateData ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * Specify if the user is enable or not to use the platform
@@ -34,7 +34,7 @@ class MGroupUpdateData extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Specify if the user is enable or not to use the platform""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
-	def withactive(p:Boolean):MGroupUpdateData ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * Used as roles template. It is possible to define the UserGroup roles that are
@@ -53,7 +53,7 @@ class MGroupUpdateData extends Serializable {
 	//#SWGNL#groupCapabilities can be applied only to PLATFORM groups (no to private or blind groups)""" ,required = true)
 	@BeanProperty 
 	var groupCapabilities: MUserCapability  = new MUserCapability()
-	def withgroupCapabilities(p:MUserCapability):MGroupUpdateData ={ 	this.groupCapabilities = p; 	this }
+	def withgroupCapabilities(p:MUserCapability):this.type ={ 	this.groupCapabilities = p; 	this }
 
 	/**
 	 * @return Boolean

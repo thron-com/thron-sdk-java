@@ -18,21 +18,21 @@ class MResponseAccessLogin extends MResponseIdentity with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var tokenId: String =_
-	def withtokenId(p:String):MResponseAccessLogin ={ 	this.tokenId = p; 	this }
+	def withtokenId(p:String):this.type ={ 	this.tokenId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var username: String =_
-	def withusername(p:String):MResponseAccessLogin ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userFullName: String =_
-	def withuserFullName(p:String):MResponseAccessLogin ={ 	this.userFullName = p; 	this }
+	def withuserFullName(p:String):this.type ={ 	this.userFullName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userType: MEUserType =_
-	def withuserType(p:MEUserType):MResponseAccessLogin ={ 	this.userType = p; 	this }
+	def withuserType(p:MEUserType):this.type ={ 	this.userType = p; 	this }
 
 }

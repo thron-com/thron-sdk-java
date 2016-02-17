@@ -20,11 +20,11 @@ class MResponseDetailClient extends MResponseClient with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Nome Client""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MResponseDetailClient ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var properties: MClientProperties =_
-	def withproperties(p:MClientProperties):MResponseDetailClient ={ 	this.properties = p; 	this }
+	def withproperties(p:MClientProperties):this.type ={ 	this.properties = p; 	this }
 
 }

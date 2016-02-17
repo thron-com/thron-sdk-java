@@ -18,6 +18,6 @@ class MResponseSnippetDetail extends MResponseApp with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var snippet: MSnippet =_
-	def withsnippet(p:MSnippet):MResponseSnippetDetail ={ 	this.snippet = p; 	this }
+	def withsnippet(p:MSnippet):this.type ={ 	this.snippet = p; 	this }
 
 }

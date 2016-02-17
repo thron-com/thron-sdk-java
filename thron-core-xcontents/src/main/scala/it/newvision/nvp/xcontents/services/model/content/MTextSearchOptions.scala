@@ -37,7 +37,7 @@ class MTextSearchOptions extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var searchKey: String =_
-	def withsearchKey(p:String):MTextSearchOptions ={ 	this.searchKey = p; 	this }
+	def withsearchKey(p:String):this.type ={ 	this.searchKey = p; 	this }
 
 	/**
 	 * Used to drive the text search. (EXACT_MATCH is the default value)
@@ -61,7 +61,7 @@ class MTextSearchOptions extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var searchKeyOption: MESearchKeyOption  = MESearchKeyOption.EXACT_MATCH
-	def withsearchKeyOption(p:MESearchKeyOption):MTextSearchOptions ={ 	this.searchKeyOption = p; 	this }
+	def withsearchKeyOption(p:MESearchKeyOption):this.type ={ 	this.searchKeyOption = p; 	this }
 
 	/**
 	 * Used to search on the given list of fields. If searchOnFields is empty and
@@ -70,7 +70,7 @@ class MTextSearchOptions extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used to search on the given list of fields. If searchOnFields is empty and searchKey is defined, the service search on all available fields.""")
 	@BeanProperty 
 	var searchOnFields: List[MESearchField] = new ArrayList[MESearchField]
-	def withsearchOnFields(p:List[MESearchField]):MTextSearchOptions ={ 	this.searchOnFields = p; 	this }
+	def withsearchOnFields(p:List[MESearchField]):this.type ={ 	this.searchOnFields = p; 	this }
 
 	/**
 	 * @return Boolean

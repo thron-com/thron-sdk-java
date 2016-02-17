@@ -21,6 +21,6 @@ class MPermissionsinsertReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var value: MClassificationPermissionList =_
-	def withvalue(p:MClassificationPermissionList):MPermissionsinsertReq ={ 	this.value = p; 	this }
+	def withvalue(p:MClassificationPermissionList):this.type ={ 	this.value = p; 	this }
 
 }

@@ -21,11 +21,11 @@ class MAcldeleteAclRulesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAcldeleteAclRulesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var rules: MAclRuleItems =_
-	def withrules(p:MAclRuleItems):MAcldeleteAclRulesReq ={ 	this.rules = p; 	this }
+	def withrules(p:MAclRuleItems):this.type ={ 	this.rules = p; 	this }
 
 }

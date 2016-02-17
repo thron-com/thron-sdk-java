@@ -81,7 +81,7 @@ class MVUserCriteria extends Serializable {
 	//#SWGNL#	"usernames": ["a","b","!_c","!_d"]""")
 	@BeanProperty 
 	var usernames: List[String] = new ArrayList[String]
-	def withusernames(p:List[String]):MVUserCriteria ={ 	this.usernames = p; 	this }
+	def withusernames(p:List[String]):this.type ={ 	this.usernames = p; 	this }
 
 	/**
 	 * search by userType
@@ -89,7 +89,7 @@ class MVUserCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """search by userType""")
 	@BeanProperty 
 	var userTypes: List[MEUserType] = new ArrayList[MEUserType]
-	def withuserTypes(p:List[MEUserType]):MVUserCriteria ={ 	this.userTypes = p; 	this }
+	def withuserTypes(p:List[MEUserType]):this.type ={ 	this.userTypes = p; 	this }
 
 	/**
 	 * used to filter the users linked to the given groups. Commonly used to have the
@@ -147,7 +147,7 @@ class MVUserCriteria extends Serializable {
 	//#SWGNL#	"linkedGroupsIds": ["a","b","!_c","!_d"]""")
 	@BeanProperty 
 	var linkedGroupsIds: List[String] = new ArrayList[String]
-	def withlinkedGroupsIds(p:List[String]):MVUserCriteria ={ 	this.linkedGroupsIds = p; 	this }
+	def withlinkedGroupsIds(p:List[String]):this.type ={ 	this.linkedGroupsIds = p; 	this }
 
 	/**
 	 * search by AppId in MVuser.usercapabilities.enabledSolutions
@@ -155,12 +155,12 @@ class MVUserCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """search by AppId in MVuser.usercapabilities.enabledSolutions""")
 	@BeanProperty 
 	var solutions: List[String] = new ArrayList[String]
-	def withsolutions(p:List[String]):MVUserCriteria ={ 	this.solutions = p; 	this }
+	def withsolutions(p:List[String]):this.type ={ 	this.solutions = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var active: Boolean =_
-	def withactive(p:Boolean):MVUserCriteria ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * filter the users matching one of the specified roles
@@ -168,7 +168,7 @@ class MVUserCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """filter the users matching one of the specified roles""")
 	@BeanProperty 
 	var userRoles: List[String] = new ArrayList[String]
-	def withuserRoles(p:List[String]):MVUserCriteria ={ 	this.userRoles = p; 	this }
+	def withuserRoles(p:List[String]):this.type ={ 	this.userRoles = p; 	this }
 
 	/**
 	 * text search works over username,firstName, lastName username and email
@@ -185,17 +185,17 @@ class MVUserCriteria extends Serializable {
 	//#SWGNL#or detail.emails.email: search text in field""")
 	@BeanProperty 
 	var textSearch: String =_
-	def withtextSearch(p:String):MVUserCriteria ={ 	this.textSearch = p; 	this }
+	def withtextSearch(p:String):this.type ={ 	this.textSearch = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lastname: String =_
-	def withlastname(p:String):MVUserCriteria ={ 	this.lastname = p; 	this }
+	def withlastname(p:String):this.type ={ 	this.lastname = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var firstname: String =_
-	def withfirstname(p:String):MVUserCriteria ={ 	this.firstname = p; 	this }
+	def withfirstname(p:String):this.type ={ 	this.firstname = p; 	this }
 
 	/**
 	 * used to find only the users shared with specific rules
@@ -203,7 +203,7 @@ class MVUserCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to find only the users shared with specific rules""")
 	@BeanProperty 
 	var acl: MAclUsersGroupCriteria =_
-	def withacl(p:MAclUsersGroupCriteria):MVUserCriteria ={ 	this.acl = p; 	this }
+	def withacl(p:MAclUsersGroupCriteria):this.type ={ 	this.acl = p; 	this }
 
 	/**
 	 * used to search on a specific intelligence tag
@@ -221,7 +221,7 @@ class MVUserCriteria extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var itagOp: MITagCriteriaOption =_
-	def withitagOp(p:MITagCriteriaOption):MVUserCriteria ={ 	this.itagOp = p; 	this }
+	def withitagOp(p:MITagCriteriaOption):this.type ={ 	this.itagOp = p; 	this }
 
 	/**
 	 * filter the users matching the phone number.
@@ -234,7 +234,7 @@ class MVUserCriteria extends Serializable {
 	//#SWGNL#detail.phoneNumbers.phoneNumber: search text as regexp (use \Q<text to search>\E for simple text search)""")
 	@BeanProperty 
 	var phoneNumber: String =_
-	def withphoneNumber(p:String):MVUserCriteria ={ 	this.phoneNumber = p; 	this }
+	def withphoneNumber(p:String):this.type ={ 	this.phoneNumber = p; 	this }
 
 	/**
 	 * filter the users matching the email address (as regex)
@@ -247,7 +247,7 @@ class MVUserCriteria extends Serializable {
 	//#SWGNL#detail.emails.email: search text as regexp (use \Q<text to search>\E for simple text search)""")
 	@BeanProperty 
 	var email: String =_
-	def withemail(p:String):MVUserCriteria ={ 	this.email = p; 	this }
+	def withemail(p:String):this.type ={ 	this.email = p; 	this }
 
 	/**
 	 * search by usernames of who created the user (the owner)
@@ -255,7 +255,7 @@ class MVUserCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """search by usernames of who created the user (the owner)""")
 	@BeanProperty 
 	var createdBy: List[String] = new ArrayList[String]
-	def withcreatedBy(p:List[String]):MVUserCriteria ={ 	this.createdBy = p; 	this }
+	def withcreatedBy(p:List[String]):this.type ={ 	this.createdBy = p; 	this }
 
 	/**
 	 * external ids of the user
@@ -263,6 +263,6 @@ class MVUserCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """external ids of the user""")
 	@BeanProperty 
 	var externalId: String =_
-	def withexternalId(p:String):MVUserCriteria ={ 	this.externalId = p; 	this }
+	def withexternalId(p:String):this.type ={ 	this.externalId = p; 	this }
 
 }

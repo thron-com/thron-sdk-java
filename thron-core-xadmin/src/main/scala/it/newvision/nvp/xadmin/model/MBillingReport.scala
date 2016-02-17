@@ -17,27 +17,27 @@ class MBillingReport extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var reportId: String =_
-	def withreportId(p:String):MBillingReport ={ 	this.reportId = p; 	this }
+	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var creationDate: Date =_
-	def withcreationDate(p:Date):MBillingReport ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var reportFromDate: Date =_
-	def withreportFromDate(p:Date):MBillingReport ={ 	this.reportFromDate = p; 	this }
+	def withreportFromDate(p:Date):this.type ={ 	this.reportFromDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var reportToDate: Date =_
-	def withreportToDate(p:Date):MBillingReport ={ 	this.reportToDate = p; 	this }
+	def withreportToDate(p:Date):this.type ={ 	this.reportToDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MBillingItem] = new ArrayList[MBillingItem]
-	def withitems(p:List[MBillingItem]):MBillingReport ={ 	this.items = p; 	this }
+	def withitems(p:List[MBillingItem]):this.type ={ 	this.items = p; 	this }
 
 	/**
 	 * Additional information that can be added to the report
@@ -45,6 +45,6 @@ class MBillingReport extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Additional information that can be added to the report""")
 	@BeanProperty 
 	var note: String =_
-	def withnote(p:String):MBillingReport ={ 	this.note = p; 	this }
+	def withnote(p:String):this.type ={ 	this.note = p; 	this }
 
 }

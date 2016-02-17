@@ -17,6 +17,6 @@ class MResponseGenerateMetainfo extends MResponseRepository with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var metainfo: List[MMetaInfo] = new ArrayList[MMetaInfo]
-	def withmetainfo(p:List[MMetaInfo]):MResponseGenerateMetainfo ={ 	this.metainfo = p; 	this }
+	def withmetainfo(p:List[MMetaInfo]):this.type ={ 	this.metainfo = p; 	this }
 
 }

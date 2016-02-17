@@ -21,16 +21,16 @@ class MReportsCallbackcallbackReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MReportsCallbackcallbackReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var reportId: String =_
-	def withreportId(p:String):MReportsCallbackcallbackReq ={ 	this.reportId = p; 	this }
+	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var status: MEReportStatus =_
-	def withstatus(p:MEReportStatus):MReportsCallbackcallbackReq ={ 	this.status = p; 	this }
+	def withstatus(p:MEReportStatus):this.type ={ 	this.status = p; 	this }
 
 }

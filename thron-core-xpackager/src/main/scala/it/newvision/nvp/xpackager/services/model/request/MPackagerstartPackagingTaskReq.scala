@@ -20,11 +20,11 @@ class MPackagerstartPackagingTaskReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MPackagerstartPackagingTaskReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var packagingContentDescriptor: String =_
-	def withpackagingContentDescriptor(p:String):MPackagerstartPackagingTaskReq ={ 	this.packagingContentDescriptor = p; 	this }
+	def withpackagingContentDescriptor(p:String):this.type ={ 	this.packagingContentDescriptor = p; 	this }
 
 }

@@ -21,12 +21,12 @@ class MCommentDetail extends MComment with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentId: String =_
-	def withcontentId(p:String):MCommentDetail ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentName: String =_
-	def withcontentName(p:String):MCommentDetail ={ 	this.contentName = p; 	this }
+	def withcontentName(p:String):this.type ={ 	this.contentName = p; 	this }
 
 	/**
 	 * @param c : MComment

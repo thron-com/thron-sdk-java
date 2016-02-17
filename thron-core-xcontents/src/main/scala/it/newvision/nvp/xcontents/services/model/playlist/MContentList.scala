@@ -24,6 +24,6 @@ class MContentList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of xcontent ids""")
 	@BeanProperty 
 	var xcontentIds: List[String] = new ArrayList[String]
-	def withxcontentIds(p:List[String]):MContentList ={ 	this.xcontentIds = p; 	this }
+	def withxcontentIds(p:List[String]):this.type ={ 	this.xcontentIds = p; 	this }
 
 }

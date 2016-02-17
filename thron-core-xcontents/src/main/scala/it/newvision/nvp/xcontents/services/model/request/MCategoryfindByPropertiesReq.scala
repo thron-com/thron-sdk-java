@@ -22,12 +22,12 @@ class MCategoryfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MCategoryfindByPropertiesReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var properties: MCategoryCriteria =_
-	def withproperties(p:MCategoryCriteria):MCategoryfindByPropertiesReq ={ 	this.properties = p; 	this }
+	def withproperties(p:MCategoryCriteria):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * Optional.If the client desires to have the category description for a specific
@@ -36,12 +36,12 @@ class MCategoryfindByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional.If the client desires to have the category description for a specific locale. If empty the service return all available locales for each categories.""", required = true)
 	@BeanProperty
 	var locale: String =_
-	def withlocale(p:String):MCategoryfindByPropertiesReq ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MCategoryfindByPropertiesReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Default is 50 items.
@@ -51,6 +51,6 @@ class MCategoryfindByPropertiesReq extends Serializable {
 	//#SWGNL#value -1, return all result not paginated""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MCategoryfindByPropertiesReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

@@ -27,12 +27,12 @@ class MSnippetSummary extends Serializable {
 	//#SWGNL#Empty if the user has no roles for the Snippet""")
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MSnippetSummary ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var status: MESnippetStatus =_
-	def withstatus(p:MESnippetStatus):MSnippetSummary ={ 	this.status = p; 	this }
+	def withstatus(p:MESnippetStatus):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * the version id of the snippet
@@ -40,7 +40,7 @@ class MSnippetSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the version id of the snippet""")
 	@BeanProperty 
 	var version: String =_
-	def withversion(p:String):MSnippetSummary ={ 	this.version = p; 	this }
+	def withversion(p:String):this.type ={ 	this.version = p; 	this }
 
 	/**
 	 * used to define the snippet "class"
@@ -48,7 +48,7 @@ class MSnippetSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to define the snippet "class"""")
 	@BeanProperty 
 	var snippetType: String =_
-	def withsnippetType(p:String):MSnippetSummary ={ 	this.snippetType = p; 	this }
+	def withsnippetType(p:String):this.type ={ 	this.snippetType = p; 	this }
 
 	/**
 	 * username of the owner of the snippet.
@@ -58,7 +58,7 @@ class MSnippetSummary extends Serializable {
 	//#SWGNL#The user who created the snippet instance""")
 	@BeanProperty 
 	var ownerUsername: String =_
-	def withownerUsername(p:String):MSnippetSummary ={ 	this.ownerUsername = p; 	this }
+	def withownerUsername(p:String):this.type ={ 	this.ownerUsername = p; 	this }
 
 	/**
 	 * derived at runtime.
@@ -66,12 +66,12 @@ class MSnippetSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """derived at runtime.""")
 	@BeanProperty 
 	var ownerFullName: String =_
-	def withownerFullName(p:String):MSnippetSummary ={ 	this.ownerFullName = p; 	this }
+	def withownerFullName(p:String):this.type ={ 	this.ownerFullName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lastUpdate: Date =_
-	def withlastUpdate(p:Date):MSnippetSummary ={ 	this.lastUpdate = p; 	this }
+	def withlastUpdate(p:Date):this.type ={ 	this.lastUpdate = p; 	this }
 
 	/**
 	 * the display name of the snippet
@@ -79,7 +79,7 @@ class MSnippetSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the display name of the snippet""")
 	@BeanProperty 
 	var displayName: String =_
-	def withdisplayName(p:String):MSnippetSummary ={ 	this.displayName = p; 	this }
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
 	/**
 	 * custom description of the snippet
@@ -87,6 +87,6 @@ class MSnippetSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """custom description of the snippet""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MSnippetSummary ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 }

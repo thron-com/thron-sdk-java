@@ -340,6 +340,7 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * Constraints:
 	 * <ul>
 	 * 	<li>Only to IDENTIFIED contacts</li>
+	 * 	<li>Max number of keys for contact = 50</li>
 	 * </ul>
 	 * 
 	 * RoleValidation:
@@ -360,6 +361,7 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#Constraints: 
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>Only to IDENTIFIED contacts</li>
+	//#SWGNL#	<li>Max number of keys for contact = 50</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
 	//#SWGNL#RoleValidation:

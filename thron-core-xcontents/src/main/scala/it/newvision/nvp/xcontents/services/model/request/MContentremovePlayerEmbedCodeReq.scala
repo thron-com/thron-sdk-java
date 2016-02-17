@@ -20,16 +20,16 @@ class MContentremovePlayerEmbedCodeReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MContentremovePlayerEmbedCodeReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MContentremovePlayerEmbedCodeReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var embedCodeId: String =_
-	def withembedCodeId(p:String):MContentremovePlayerEmbedCodeReq ={ 	this.embedCodeId = p; 	this }
+	def withembedCodeId(p:String):this.type ={ 	this.embedCodeId = p; 	this }
 
 }

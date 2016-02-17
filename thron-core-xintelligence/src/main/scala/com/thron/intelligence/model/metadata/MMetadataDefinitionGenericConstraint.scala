@@ -23,7 +23,7 @@ class MMetadataDefinitionGenericConstraint extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to specify that the metadata is required or not, and can not be empty""" ,required = true)
 	@BeanProperty 
 	var mandatory: Boolean  = false
-	def withmandatory(p:Boolean):MMetadataDefinitionGenericConstraint ={ 	this.mandatory = p; 	this }
+	def withmandatory(p:Boolean):this.type ={ 	this.mandatory = p; 	this }
 
 	/**
 	 * @return Boolean

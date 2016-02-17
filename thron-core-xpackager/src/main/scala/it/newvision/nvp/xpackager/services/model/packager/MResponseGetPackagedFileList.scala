@@ -18,11 +18,11 @@ class MResponseGetPackagedFileList extends MResponsePackager with Serializable  
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contents: List[MPackagedContent] = new ArrayList[MPackagedContent]
-	def withcontents(p:List[MPackagedContent]):MResponseGetPackagedFileList ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MPackagedContent]):this.type ={ 	this.contents = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseGetPackagedFileList ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

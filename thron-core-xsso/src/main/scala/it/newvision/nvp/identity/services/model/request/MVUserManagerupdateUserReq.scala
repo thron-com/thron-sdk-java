@@ -24,6 +24,6 @@ class MVUserManagerupdateUserReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. User detail""", required = true)
 	@BeanProperty
 	var update: MVUserUpdate =_
-	def withupdate(p:MVUserUpdate):MVUserManagerupdateUserReq ={ 	this.update = p; 	this }
+	def withupdate(p:MVUserUpdate):this.type ={ 	this.update = p; 	this }
 
 }

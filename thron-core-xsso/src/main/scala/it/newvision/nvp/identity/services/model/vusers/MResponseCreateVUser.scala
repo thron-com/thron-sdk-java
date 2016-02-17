@@ -18,6 +18,6 @@ class MResponseCreateVUser extends MResponseVUser with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var user: List[MVUser] = new ArrayList[MVUser]
-	def withuser(p:List[MVUser]):MResponseCreateVUser ={ 	this.user = p; 	this }
+	def withuser(p:List[MVUser]):this.type ={ 	this.user = p; 	this }
 
 }

@@ -17,11 +17,11 @@ class MResponseFindContents extends MResponseMediaContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contents: List[MContentSummary] = new ArrayList[MContentSummary]
-	def withcontents(p:List[MContentSummary]):MResponseFindContents ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MContentSummary]):this.type ={ 	this.contents = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseFindContents ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

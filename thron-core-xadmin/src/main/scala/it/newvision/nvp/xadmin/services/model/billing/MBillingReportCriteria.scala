@@ -20,7 +20,7 @@ class MBillingReportCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """date rage for MBillingReport.reportFromDate""")
 	@BeanProperty 
 	var fromDate: Date =_
-	def withfromDate(p:Date):MBillingReportCriteria ={ 	this.fromDate = p; 	this }
+	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
 
 	/**
 	 * date rage for MBillingReport.reportFromDate
@@ -28,6 +28,6 @@ class MBillingReportCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """date rage for MBillingReport.reportFromDate""")
 	@BeanProperty 
 	var toDate: Date =_
-	def withtoDate(p:Date):MBillingReportCriteria ={ 	this.toDate = p; 	this }
+	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 }

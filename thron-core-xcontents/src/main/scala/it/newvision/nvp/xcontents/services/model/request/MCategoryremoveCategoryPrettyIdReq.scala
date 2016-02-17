@@ -20,16 +20,16 @@ class MCategoryremoveCategoryPrettyIdReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MCategoryremoveCategoryPrettyIdReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var categoryId: String =_
-	def withcategoryId(p:String):MCategoryremoveCategoryPrettyIdReq ={ 	this.categoryId = p; 	this }
+	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var locale: String =_
-	def withlocale(p:String):MCategoryremoveCategoryPrettyIdReq ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 }

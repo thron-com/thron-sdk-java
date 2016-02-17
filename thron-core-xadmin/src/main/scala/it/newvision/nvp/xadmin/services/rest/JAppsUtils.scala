@@ -19,12 +19,8 @@ import it.newvision.nvp.xadmin.services.model.request.MAppsUtilswhoisReq
  * <b>
  * </b><b>Web Service Endpoints</b>:
  * <ul>
- * 	<li>WADL REST service: http://clientId-view.4me.
- * it/api/adxadmin/resources/application.wadl  </li>
- * </ul>
- * <ul>
  * 	<li>REST service: http://clientId-view.4me.
- * it/api/adxadmin/resources/appsutils/  </li>
+ * it/api/adxadmin/resources/appsutils/ </li>
  * </ul>
  */
 @Path("/appsutils")
@@ -32,10 +28,7 @@ import it.newvision.nvp.xadmin.services.model.request.MAppsUtilswhoisReq
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints</b>:
 //#SWGNL#<ul>
-//#SWGNL#	<li>WADL REST service: http://clientId-view.4me.it/api/adxadmin/resources/application.wadl  </li>
-//#SWGNL#</ul>
-//#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.4me.it/api/adxadmin/resources/appsutils/  </li>
+//#SWGNL#	<li>REST service: http://clientId-view.4me.it/api/adxadmin/resources/appsutils/ </li>
 //#SWGNL#</ul>""")
 trait JAppsUtils extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

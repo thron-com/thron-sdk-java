@@ -18,8 +18,8 @@ import it.newvision.nvp.xcontents.services.model.request.MLiveEventAdminupdateRe
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.
- * it/api/adxcontents/resources/liveevent/ </li>
+ * 	<li>REST service: http://clientId-view.thron.
+ * com/api/adxcontents/resources/liveevent/</li>
  * </ul>
  */
 @Path("/liveeventadmin")
@@ -27,7 +27,7 @@ import it.newvision.nvp.xcontents.services.model.request.MLiveEventAdminupdateRe
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.4me.it/api/adxcontents/resources/liveevent/ </li>
+//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/adxcontents/resources/liveevent/</li>
 //#SWGNL#</ul>""")
 trait JLiveEventAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

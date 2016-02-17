@@ -20,7 +20,7 @@ class MAdminAdminremoveClientInComponentsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAdminAdminremoveClientInComponentsReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * if true it set to removed the data in the repository but it's possible to
@@ -32,6 +32,6 @@ class MAdminAdminremoveClientInComponentsReq extends Serializable {
 	//#SWGNL#if false, all data are removed from the storage and it's not possible to restore the data in the platform.""", required = true)
 	@BeanProperty
 	var safe: Boolean =_
-	def withsafe(p:Boolean):MAdminAdminremoveClientInComponentsReq ={ 	this.safe = p; 	this }
+	def withsafe(p:Boolean):this.type ={ 	this.safe = p; 	this }
 
 }

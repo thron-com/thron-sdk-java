@@ -34,7 +34,7 @@ class MMetadataDefinitionConstraints extends Serializable {
 	//#SWGNL#Not be visible means that the user can not insert the metadata X to a user tagged business. """)
 	@BeanProperty 
 	var applicableTo: List[MEEntityType] = new ArrayList[MEEntityType]
-	def withapplicableTo(p:List[MEEntityType]):MMetadataDefinitionConstraints ={ 	this.applicableTo = p; 	this }
+	def withapplicableTo(p:List[MEEntityType]):this.type ={ 	this.applicableTo = p; 	this }
 
 	/**
 	 * if empty means for all contentTypes (VIDEO/AUDIO/IMAGE/PLAYLIST/OTHER...)
@@ -42,12 +42,12 @@ class MMetadataDefinitionConstraints extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if empty means for all contentTypes (VIDEO/AUDIO/IMAGE/PLAYLIST/OTHER...)""")
 	@BeanProperty 
 	var applicableToContentTypes: List[String] = new ArrayList[String]
-	def withapplicableToContentTypes(p:List[String]):MMetadataDefinitionConstraints ={ 	this.applicableToContentTypes = p; 	this }
+	def withapplicableToContentTypes(p:List[String]):this.type ={ 	this.applicableToContentTypes = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var stringConstraint: MMetadataDefinitionStringConstraint =_
-	def withstringConstraint(p:MMetadataDefinitionStringConstraint):MMetadataDefinitionConstraints ={ 	this.stringConstraint = p; 	this }
+	def withstringConstraint(p:MMetadataDefinitionStringConstraint):this.type ={ 	this.stringConstraint = p; 	this }
 
 	/**
 	 * Constraints:
@@ -67,42 +67,42 @@ class MMetadataDefinitionConstraints extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var keyConstraint: MMetadataDefinitionStringConstraint =_
-	def withkeyConstraint(p:MMetadataDefinitionStringConstraint):MMetadataDefinitionConstraints ={ 	this.keyConstraint = p; 	this }
+	def withkeyConstraint(p:MMetadataDefinitionStringConstraint):this.type ={ 	this.keyConstraint = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var numericDoubleConstraint: MMetadataDefinitionDoubleConstraint =_
-	def withnumericDoubleConstraint(p:MMetadataDefinitionDoubleConstraint):MMetadataDefinitionConstraints ={ 	this.numericDoubleConstraint = p; 	this }
+	def withnumericDoubleConstraint(p:MMetadataDefinitionDoubleConstraint):this.type ={ 	this.numericDoubleConstraint = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var numericIntegerConstraint: MMetadataDefinitionIntegerConstraint =_
-	def withnumericIntegerConstraint(p:MMetadataDefinitionIntegerConstraint):MMetadataDefinitionConstraints ={ 	this.numericIntegerConstraint = p; 	this }
+	def withnumericIntegerConstraint(p:MMetadataDefinitionIntegerConstraint):this.type ={ 	this.numericIntegerConstraint = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var booleanConstraint: MMetadataDefinitionGenericConstraint =_
-	def withbooleanConstraint(p:MMetadataDefinitionGenericConstraint):MMetadataDefinitionConstraints ={ 	this.booleanConstraint = p; 	this }
+	def withbooleanConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.booleanConstraint = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var colorConstraint: MMetadataDefinitionGenericConstraint =_
-	def withcolorConstraint(p:MMetadataDefinitionGenericConstraint):MMetadataDefinitionConstraints ={ 	this.colorConstraint = p; 	this }
+	def withcolorConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.colorConstraint = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var alternativeSConstraint: MMetadataDefinitionGenericConstraint =_
-	def withalternativeSConstraint(p:MMetadataDefinitionGenericConstraint):MMetadataDefinitionConstraints ={ 	this.alternativeSConstraint = p; 	this }
+	def withalternativeSConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.alternativeSConstraint = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var alternativeMConstraint: MMetadataDefinitionGenericConstraint =_
-	def withalternativeMConstraint(p:MMetadataDefinitionGenericConstraint):MMetadataDefinitionConstraints ={ 	this.alternativeMConstraint = p; 	this }
+	def withalternativeMConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.alternativeMConstraint = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var temporalInstantConstraint: MMetadataDefinitionGenericConstraint =_
-	def withtemporalInstantConstraint(p:MMetadataDefinitionGenericConstraint):MMetadataDefinitionConstraints ={ 	this.temporalInstantConstraint = p; 	this }
+	def withtemporalInstantConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.temporalInstantConstraint = p; 	this }
 
 	/**
 	 * @param metadataType : MEMetadataDefinitionDataType

@@ -21,12 +21,12 @@ class MDeviceconnectReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MDeviceconnectReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var deviceId: String =_
-	def withdeviceId(p:String):MDeviceconnectReq ={ 	this.deviceId = p; 	this }
+	def withdeviceId(p:String):this.type ={ 	this.deviceId = p; 	this }
 
 	/**
 	 * Optional
@@ -34,7 +34,7 @@ class MDeviceconnectReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var ik: MIdentityKey =_
-	def withik(p:MIdentityKey):MDeviceconnectReq ={ 	this.ik = p; 	this }
+	def withik(p:MIdentityKey):this.type ={ 	this.ik = p; 	this }
 
 	/**
 	 * Optional
@@ -42,6 +42,6 @@ class MDeviceconnectReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var contactName: String =_
-	def withcontactName(p:String):MDeviceconnectReq ={ 	this.contactName = p; 	this }
+	def withcontactName(p:String):this.type ={ 	this.contactName = p; 	this }
 
 }

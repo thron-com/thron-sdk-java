@@ -21,11 +21,11 @@ class MCommentModerationmoderateCommentsReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MCommentModerationmoderateCommentsReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var comments: MCommentsModerated =_
-	def withcomments(p:MCommentsModerated):MCommentModerationmoderateCommentsReq ={ 	this.comments = p; 	this }
+	def withcomments(p:MCommentsModerated):this.type ={ 	this.comments = p; 	this }
 
 }

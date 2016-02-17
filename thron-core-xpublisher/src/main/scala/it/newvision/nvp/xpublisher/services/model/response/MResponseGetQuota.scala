@@ -20,7 +20,7 @@ class MResponseGetQuota extends MResponsePublisher with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total amount of space available in the working Area (in Bytes)""")
 	@BeanProperty 
 	var totalSpace: Long =_
-	def withtotalSpace(p:Long):MResponseGetQuota ={ 	this.totalSpace = p; 	this }
+	def withtotalSpace(p:Long):this.type ={ 	this.totalSpace = p; 	this }
 
 	/**
 	 * total amount of space used in the working Area (in Bytes)
@@ -28,6 +28,6 @@ class MResponseGetQuota extends MResponsePublisher with Serializable  {
 	//#SWG#@ApiModelProperty(value = """total amount of space used in the working Area (in Bytes)""")
 	@BeanProperty 
 	var usedSpace: Long =_
-	def withusedSpace(p:Long):MResponseGetQuota ={ 	this.usedSpace = p; 	this }
+	def withusedSpace(p:Long):this.type ={ 	this.usedSpace = p; 	this }
 
 }

@@ -23,6 +23,8 @@ import it.newvision.nvp.identity.services.model.vusers.MResponseVUserFindByPrope
 import it.newvision.nvp.identity.services.model.request.MVUserManagerfindByPropertiesReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateImageReq
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUserVerifyUsername
+import it.newvision.nvp.identity.services.model.request.MVUserManagerlinkGroupsReq
+import it.newvision.nvp.identity.services.model.request.MVUserManagerunlinkGroupsReq
 
 /* ************************
 *  GENERATED CLASS
@@ -64,12 +66,6 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	 * <ul>
 	 * 	<li>PLATFORM_USER_GUEST: allowed to login in platform and use the services</li>
 	 * </ul>
-	 * <ul>
-	 * 	<li>EXTERNAL_USER: used to store external users used by apps.</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>GENERIC_CONTACT: used for personal address book.</li>
-	 * </ul>
 	 * 
 	 * Username and password are required for platform users (PLATFORM_USER, PLATFORM_USER_GUEST), and
 	 * username must be unique.
@@ -79,7 +75,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	 * <ol>
 	 * 	<li>can not contain §/$&#<>"?*:\|</li>
 	 * 	<li>can not contain spaces</li>
-	 * 	<li> can not start with _</li>
+	 * 	<li>can not start with _</li>
 	 * 	<li>can not start with !</li>
 	 * 	<li>max length = 50</li>
 	 * </ol>
@@ -103,12 +99,6 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>PLATFORM_USER_GUEST: allowed to login in platform and use the services</li>
 	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>EXTERNAL_USER: used to store external users used by apps.</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>GENERIC_CONTACT: used for personal address book.</li>
-	//#SWGNL#</ul>
 	//#SWGNL#
 	//#SWGNL#Username and password are required for platform users (PLATFORM_USER, PLATFORM_USER_GUEST), and username must be unique.
 	//#SWGNL#The service convert the given username to lower case.
@@ -117,7 +107,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	//#SWGNL#<ol>
 	//#SWGNL#	<li>can not contain §/$&#<>"?*:\|</li>
 	//#SWGNL#	<li>can not contain spaces</li>
-	//#SWGNL#	<li> can not start with _</li>
+	//#SWGNL#	<li>can not start with _</li>
 	//#SWGNL#	<li>can not start with !</li>
 	//#SWGNL#	<li>max length = 50</li>
 	//#SWGNL#</ol>
@@ -245,7 +235,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	protected def capability_login: String
 
 	/**
-	 * update the user detail.
+	 * Deprecated by JVUserManager.updateUser service
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupdateReq
 	 * @return MResponseVUser
@@ -254,7 +244,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Path("/update")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/update", notes = """update the user detail.""", response = classOf[MResponseVUser])
+	//#SWG#@ApiOperation(value = "/update", notes = """Deprecated by JVUserManager.updateUser service""", response = classOf[MResponseVUser])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	@Deprecated
 	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -302,7 +292,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	protected def capability_update: String
 
 	/**
-	 * update the user detail.
+	 * update the user ExternalId
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -313,7 +303,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Path("/updateExternalId/{clientId}/{username}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateExternalId", notes = """update the user detail.""", response = classOf[MResponseVUser])
+	//#SWG#@ApiOperation(value = "/updateExternalId", notes = """update the user ExternalId""", response = classOf[MResponseVUser])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -553,7 +543,8 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	protected def capability_updateSettings: String
 
 	/**
-	 * DEPRECATED. Available only with 3.x release.
+	 * DEPRECATED.
+	 * Available only with 3.x release.
 	 * Use the service JDashBoard.migrateUserStuff (in xadmin) to correctly remove a user from the
 	 * platform.
 	 * @param tokenId : String
@@ -564,7 +555,8 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Path("/remove")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/remove", notes = """DEPRECATED. Available only with 3.x release.
+	//#SWG#@ApiOperation(value = "/remove", notes = """DEPRECATED. 
+	//#SWGNL#Available only with 3.x release.
 	//#SWGNL#Use the service JDashBoard.migrateUserStuff (in xadmin) to correctly remove a user from the platform.""", response = classOf[MResponseVUserRemove])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	@Deprecated
@@ -741,7 +733,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	/**
 	 * Used to activate/deactivate a user in the platform. When the user is not active he can not login
 	 * and use the platform's application and services.
-	 * Can be invoked only by users with role CORE_MANAGE_USERS
+	 * Can be invoked only by users Administrators with role CORE_MANAGE_USERS
 	 * @param tokenId : String
 	 * @param param : MVUserManagerchangeUserStatusReq
 	 * @return MResponseVUser
@@ -751,7 +743,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/changeUserStatus", notes = """Used to activate/deactivate a user in the platform. When the user is not active he can not login and use the platform's application and services.
-	//#SWGNL#Can be invoked only by users with role CORE_MANAGE_USERS""", response = classOf[MResponseVUser])
+	//#SWGNL#Can be invoked only by users Administrators with role CORE_MANAGE_USERS""", response = classOf[MResponseVUser])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def changeUserStatus(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -798,7 +790,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 
 	/**
 	 * The service UPDATE the user capabilities and roles for the given user.
-	 * Can be invoked only by users with role CORE_MANAGE_USERS
+	 * Can be invoked only by user Administrators with role CORE_MANAGE_USERS
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupdateCapabilitiesAndRolesReq
 	 * @return MResponseVUser
@@ -808,7 +800,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/updateCapabilitiesAndRoles", notes = """The service UPDATE the user capabilities and roles for the given user.
-	//#SWGNL#Can be invoked only by users with role CORE_MANAGE_USERS""", response = classOf[MResponseVUser])
+	//#SWGNL#Can be invoked only by user Administrators with role CORE_MANAGE_USERS""", response = classOf[MResponseVUser])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateCapabilitiesAndRoles(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -1096,5 +1088,141 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	 protected def __verifyUsername(tokenId: String, clientId: String, username: String) :MResponseVUserVerifyUsername
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_verifyUsername: String
+
+	/**
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param username : String
+	 * @param param : MVUserManagerlinkGroupsReq
+	 * @return MResponseVUser
+	*/
+	@POST
+	@Path("/linkGroups/{clientId}/{username}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/linkGroups", notes = """""", response = classOf[MResponseVUser])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def linkGroups(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("username")
+	username: String, 
+			param: MVUserManagerlinkGroupsReq):Response /*returnType = MResponseVUser*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__linkGroups(tokenId,clientId,username,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_linkGroups)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_linkGroups)
+	    }
+	} 
+
+	@GET
+	@Path("/linkGroups/{clientId}/{username}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def linkGroups_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("username")
+	username: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseVUser*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__linkGroups(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,username,PRestHelper.bindRequest[MVUserManagerlinkGroupsReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_linkGroups)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_linkGroups)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __linkGroups(tokenId: String, clientId: String, username: String, param: MVUserManagerlinkGroupsReq) :MResponseVUser
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_linkGroups: String
+
+	/**
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param username : String
+	 * @param param : MVUserManagerunlinkGroupsReq
+	 * @return MResponseVUser
+	*/
+	@POST
+	@Path("/unlinkGroups/{clientId}/{username}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/unlinkGroups", notes = """""", response = classOf[MResponseVUser])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def unlinkGroups(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("username")
+	username: String, 
+			param: MVUserManagerunlinkGroupsReq):Response /*returnType = MResponseVUser*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__unlinkGroups(tokenId,clientId,username,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_unlinkGroups)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_unlinkGroups)
+	    }
+	} 
+
+	@GET
+	@Path("/unlinkGroups/{clientId}/{username}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def unlinkGroups_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("username")
+	username: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseVUser*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__unlinkGroups(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,username,PRestHelper.bindRequest[MVUserManagerunlinkGroupsReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_unlinkGroups)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_unlinkGroups)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __unlinkGroups(tokenId: String, clientId: String, username: String, param: MVUserManagerunlinkGroupsReq) :MResponseVUser
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_unlinkGroups: String
 
 }

@@ -24,7 +24,7 @@ class MPropertyEventsAws extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the default region where the should be active the live instances.""")
 	@BeanProperty 
 	var defaultRegion: String =_
-	def withdefaultRegion(p:String):MPropertyEventsAws ={ 	this.defaultRegion = p; 	this }
+	def withdefaultRegion(p:String):this.type ={ 	this.defaultRegion = p; 	this }
 
 	/**
 	 * Syntax: formUrlEncoded, with ; separator.
@@ -42,7 +42,7 @@ class MPropertyEventsAws extends Serializable {
 	//#SWGNL#ec2InstanceType=m1.micro;amiId=xxxy""")
 	@BeanProperty 
 	var customParameters: String =_
-	def withcustomParameters(p:String):MPropertyEventsAws ={ 	this.customParameters = p; 	this }
+	def withcustomParameters(p:String):this.type ={ 	this.customParameters = p; 	this }
 
 	/**
 	 * CloudFontPriceClass
@@ -56,6 +56,6 @@ class MPropertyEventsAws extends Serializable {
 	//#SWGNL#3) World (best Performance)""")
 	@BeanProperty 
 	var cdnPriceClass: String =_
-	def withcdnPriceClass(p:String):MPropertyEventsAws ={ 	this.cdnPriceClass = p; 	this }
+	def withcdnPriceClass(p:String):this.type ={ 	this.cdnPriceClass = p; 	this }
 
 }

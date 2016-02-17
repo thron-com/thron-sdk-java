@@ -24,7 +24,7 @@ class MMetadataUpdate extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var metadata: List[MMetadata] = new ArrayList[MMetadata]
-	def withmetadata(p:List[MMetadata]):MMetadataUpdate ={ 	this.metadata = p; 	this }
+	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 	/**
 	 * @return void

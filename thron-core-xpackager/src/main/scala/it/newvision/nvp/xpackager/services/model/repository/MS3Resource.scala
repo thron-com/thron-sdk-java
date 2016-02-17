@@ -24,7 +24,7 @@ class MS3Resource extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the s3 bucket Id""" ,required = true)
 	@BeanProperty 
 	var bucket: String =_
-	def withbucket(p:String):MS3Resource ={ 	this.bucket = p; 	this }
+	def withbucket(p:String):this.type ={ 	this.bucket = p; 	this }
 
 	/**
 	 * the absolute path of the file inside the s3 bucket
@@ -32,7 +32,7 @@ class MS3Resource extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the absolute path of the file inside the s3 bucket""" ,required = true)
 	@BeanProperty 
 	var filePath: String =_
-	def withfilePath(p:String):MS3Resource ={ 	this.filePath = p; 	this }
+	def withfilePath(p:String):this.type ={ 	this.filePath = p; 	this }
 
 	/**
 	 * the new filename to assign to the resource. The renameFileTo is used as
@@ -42,6 +42,6 @@ class MS3Resource extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the new filename to assign to the resource. The renameFileTo is used as suggestion because the file can be renamed if not unique inside the platform. The attribute is optional""")
 	@BeanProperty 
 	var renameFileTo: String =_
-	def withrenameFileTo(p:String):MS3Resource ={ 	this.renameFileTo = p; 	this }
+	def withrenameFileTo(p:String):this.type ={ 	this.renameFileTo = p; 	this }
 
 }

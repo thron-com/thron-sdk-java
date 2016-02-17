@@ -24,6 +24,6 @@ class MITagbulkRemoveReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var value: MITagBulkValue =_
-	def withvalue(p:MITagBulkValue):MITagbulkRemoveReq ={ 	this.value = p; 	this }
+	def withvalue(p:MITagBulkValue):this.type ={ 	this.value = p; 	this }
 
 }

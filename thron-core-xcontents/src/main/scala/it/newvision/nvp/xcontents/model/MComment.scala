@@ -20,17 +20,17 @@ class MComment extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: length <= 2000""" ,required = true)
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MComment ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String  = java.util.UUID.randomUUID.toString
-	def withid(p:String):MComment ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MComment ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * used at client side, to handle the comment status.
@@ -38,7 +38,7 @@ class MComment extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used at client side, to handle the comment status.""")
 	@BeanProperty 
 	var status: String =_
-	def withstatus(p:String):MComment ={ 	this.status = p; 	this }
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * the commentId of the comment refenrenced to.
@@ -48,7 +48,7 @@ class MComment extends Serializable {
 	//#SWGNL#Used to reply to a different comment.""")
 	@BeanProperty 
 	var replyTo: String =_
-	def withreplyTo(p:String):MComment ={ 	this.replyTo = p; 	this }
+	def withreplyTo(p:String):this.type ={ 	this.replyTo = p; 	this }
 
 	/**
 	 * comment creation date.
@@ -56,7 +56,7 @@ class MComment extends Serializable {
 	//#SWG#@ApiModelProperty(value = """comment creation date.""")
 	@BeanProperty 
 	var creationDate: Date =_
-	def withcreationDate(p:Date):MComment ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * the field indicates that the comment should be moderated or not.
@@ -64,15 +64,15 @@ class MComment extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the field indicates that the comment should be moderated or not.""")
 	@BeanProperty 
 	var moderationDetail: MModeration  = new MModeration
-	def withmoderationDetail(p:MModeration):MComment ={ 	this.moderationDetail = p; 	this }
+	def withmoderationDetail(p:MModeration):this.type ={ 	this.moderationDetail = p; 	this }
 
 	/**
-	 * custom asdditional information linked to a comment
+	 * custom additional information linked to a comment
 	 */
 	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """custom asdditional information linked to a comment""")
+	//#SWG#@ApiModelProperty(value = """custom additional information linked to a comment""")
 	var metadatas: List[MMetadata] = new ArrayList[MMetadata]
-	  def withmetadatas(p:List[MMetadata]):MComment ={ 	this.metadatas = p; 	this }
+	  def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
 
 	/**
 	 * @return Boolean

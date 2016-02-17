@@ -18,11 +18,11 @@ class MClientCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MClientCriteria ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var ratingProperty: MRatingProperty =_
-	def withratingProperty(p:MRatingProperty):MClientCriteria ={ 	this.ratingProperty = p; 	this }
+	def withratingProperty(p:MRatingProperty):this.type ={ 	this.ratingProperty = p; 	this }
 
 }

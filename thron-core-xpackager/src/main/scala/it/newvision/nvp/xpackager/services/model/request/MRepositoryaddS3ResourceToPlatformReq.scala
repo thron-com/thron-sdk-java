@@ -21,7 +21,7 @@ class MRepositoryaddS3ResourceToPlatformReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MRepositoryaddS3ResourceToPlatformReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * source file in S3 storage
@@ -29,7 +29,7 @@ class MRepositoryaddS3ResourceToPlatformReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """source file in S3 storage""", required = true)
 	@BeanProperty
 	var resource: MS3Resource =_
-	def withresource(p:MS3Resource):MRepositoryaddS3ResourceToPlatformReq ={ 	this.resource = p; 	this }
+	def withresource(p:MS3Resource):this.type ={ 	this.resource = p; 	this }
 
 	/**
 	 * remove the source file once imported in 4me Platform (if possible). Default
@@ -38,6 +38,6 @@ class MRepositoryaddS3ResourceToPlatformReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """remove the source file once imported in 4me Platform (if possible). Default value is false""", required = true)
 	@BeanProperty
 	var removeResourceIfPossible: Boolean =_
-	def withremoveResourceIfPossible(p:Boolean):MRepositoryaddS3ResourceToPlatformReq ={ 	this.removeResourceIfPossible = p; 	this }
+	def withremoveResourceIfPossible(p:Boolean):this.type ={ 	this.removeResourceIfPossible = p; 	this }
 
 }

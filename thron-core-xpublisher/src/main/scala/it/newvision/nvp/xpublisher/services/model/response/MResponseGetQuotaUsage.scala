@@ -17,6 +17,6 @@ class MResponseGetQuotaUsage extends MResponsePublisher with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userQuota: List[MUserQuota] = new ArrayList[MUserQuota]
-	def withuserQuota(p:List[MUserQuota]):MResponseGetQuotaUsage ={ 	this.userQuota = p; 	this }
+	def withuserQuota(p:List[MUserQuota]):this.type ={ 	this.userQuota = p; 	this }
 
 }

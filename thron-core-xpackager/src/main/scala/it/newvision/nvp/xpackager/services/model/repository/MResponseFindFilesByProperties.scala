@@ -17,11 +17,11 @@ class MResponseFindFilesByProperties extends MResponseRepository with Serializab
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var files: List[MFileExtended] = new ArrayList[MFileExtended]
-	def withfiles(p:List[MFileExtended]):MResponseFindFilesByProperties ={ 	this.files = p; 	this }
+	def withfiles(p:List[MFileExtended]):this.type ={ 	this.files = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseFindFilesByProperties ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

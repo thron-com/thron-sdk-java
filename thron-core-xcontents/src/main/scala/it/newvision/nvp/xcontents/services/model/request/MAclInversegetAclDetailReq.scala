@@ -21,16 +21,16 @@ class MAclInversegetAclDetailReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAclInversegetAclDetailReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var targetObjId: String =_
-	def withtargetObjId(p:String):MAclInversegetAclDetailReq ={ 	this.targetObjId = p; 	this }
+	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var targetObjClass: MEObjClass =_
-	def withtargetObjClass(p:MEObjClass):MAclInversegetAclDetailReq ={ 	this.targetObjClass = p; 	this }
+	def withtargetObjClass(p:MEObjClass):this.type ={ 	this.targetObjClass = p; 	this }
 
 }

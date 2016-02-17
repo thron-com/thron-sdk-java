@@ -17,11 +17,11 @@ class MResponseFindGroupsByProperties extends MResponseUsersGroup with Serializa
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var groups: List[MUsersGroupExt] = new ArrayList[MUsersGroupExt]
-	def withgroups(p:List[MUsersGroupExt]):MResponseFindGroupsByProperties ={ 	this.groups = p; 	this }
+	def withgroups(p:List[MUsersGroupExt]):this.type ={ 	this.groups = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseFindGroupsByProperties ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

@@ -20,12 +20,12 @@ class MIdentityManagerloginWithDetailReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MIdentityManagerloginWithDetailReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var username: String =_
-	def withusername(p:String):MIdentityManagerloginWithDetailReq ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	/**
 	 * Optional if tmpTokenId is defined
@@ -33,7 +33,7 @@ class MIdentityManagerloginWithDetailReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional if tmpTokenId is defined""", required = true)
 	@BeanProperty
 	var password: String =_
-	def withpassword(p:String):MIdentityManagerloginWithDetailReq ={ 	this.password = p; 	this }
+	def withpassword(p:String):this.type ={ 	this.password = p; 	this }
 
 	/**
 	 * Optional.
@@ -43,7 +43,7 @@ class MIdentityManagerloginWithDetailReq extends Serializable {
 	//#SWGNL#Temporary token used when the user requested a reset password""", required = true)
 	@BeanProperty
 	var tmpTokenId: String =_
-	def withtmpTokenId(p:String):MIdentityManagerloginWithDetailReq ={ 	this.tmpTokenId = p; 	this }
+	def withtmpTokenId(p:String):this.type ={ 	this.tmpTokenId = p; 	this }
 
 	/**
 	 * Optional.
@@ -55,6 +55,6 @@ class MIdentityManagerloginWithDetailReq extends Serializable {
 	//#SWGNL#csv of group ids used to load the user Roles/capabilities only for the given groups. If empty the user session load all roles and capabilities of the user and of the linked userGroups""", required = true)
 	@BeanProperty
 	var groupId: String =_
-	def withgroupId(p:String):MIdentityManagerloginWithDetailReq ={ 	this.groupId = p; 	this }
+	def withgroupId(p:String):this.type ={ 	this.groupId = p; 	this }
 
 }

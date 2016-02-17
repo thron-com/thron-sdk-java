@@ -18,6 +18,6 @@ class MResponseReportsCheckStatus extends MResponseReports with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var report: MReport =_
-	def withreport(p:MReport):MResponseReportsCheckStatus ={ 	this.report = p; 	this }
+	def withreport(p:MReport):this.type ={ 	this.report = p; 	this }
 
 }

@@ -17,7 +17,7 @@ class MUserSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var username: String =_
-	def withusername(p:String):MUserSummary ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	/**
 	 * user firstname and surname. Used in presentation
@@ -25,6 +25,6 @@ class MUserSummary extends Serializable {
 	//#SWG#@ApiModelProperty(value = """user firstname and surname. Used in presentation""" ,required = true)
 	@BeanProperty 
 	var fullname: String =_
-	def withfullname(p:String):MUserSummary ={ 	this.fullname = p; 	this }
+	def withfullname(p:String):this.type ={ 	this.fullname = p; 	this }
 
 }

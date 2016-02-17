@@ -20,12 +20,12 @@ class MUserDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var firstname: String =_
-	def withfirstname(p:String):MUserDetail ={ 	this.firstname = p; 	this }
+	def withfirstname(p:String):this.type ={ 	this.firstname = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lastname: String =_
-	def withlastname(p:String):MUserDetail ={ 	this.lastname = p; 	this }
+	def withlastname(p:String):this.type ={ 	this.lastname = p; 	this }
 
 	/**
 	 * A valid e-mail address
@@ -39,22 +39,22 @@ class MUserDetail extends Serializable {
 	//#SWGNL#-) valid email format""")
 	@BeanProperty 
 	var email: String =_
-	def withemail(p:String):MUserDetail ={ 	this.email = p; 	this }
+	def withemail(p:String):this.type ={ 	this.email = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var phoneNumber: String =_
-	def withphoneNumber(p:String):MUserDetail ={ 	this.phoneNumber = p; 	this }
+	def withphoneNumber(p:String):this.type ={ 	this.phoneNumber = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var image: MImage =_
-	def withimage(p:MImage):MUserDetail ={ 	this.image = p; 	this }
+	def withimage(p:MImage):this.type ={ 	this.image = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var metadatas: List[MMetadata] = new ArrayList[MMetadata]
-	  def withmetadatas(p:List[MMetadata]):MUserDetail ={ 	this.metadatas = p; 	this }
+	  def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
 
 	/**
 	 * @return Boolean

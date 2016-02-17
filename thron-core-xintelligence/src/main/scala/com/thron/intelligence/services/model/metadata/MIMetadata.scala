@@ -23,7 +23,7 @@ class MIMetadata extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: max length = 50""" ,required = true)
 	@BeanProperty 
 	var key: String =_
-	def withkey(p:String):MIMetadata ={ 	this.key = p; 	this }
+	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
 	/**
 	 * Optional for bulkRemove service.
@@ -49,12 +49,12 @@ class MIMetadata extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var value: String =_
-	def withvalue(p:String):MIMetadata ={ 	this.value = p; 	this }
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lang: String =_
-	def withlang(p:String):MIMetadata ={ 	this.lang = p; 	this }
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
 	 * @param forRemove : Boolean

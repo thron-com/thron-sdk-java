@@ -17,7 +17,7 @@ class MResponseDeliveryGetRecommendedContents extends MResponseDelivery with Ser
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contents: List[MContentWallMinimal] = new ArrayList[MContentWallMinimal]
-	def withcontents(p:List[MContentWallMinimal]):MResponseDeliveryGetRecommendedContents ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MContentWallMinimal]):this.type ={ 	this.contents = p; 	this }
 
 	/**
 	 * total number of results
@@ -25,6 +25,6 @@ class MResponseDeliveryGetRecommendedContents extends MResponseDelivery with Ser
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseDeliveryGetRecommendedContents ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

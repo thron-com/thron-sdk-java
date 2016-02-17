@@ -24,6 +24,6 @@ class MUsersGroupManagerupdateExternalIdReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to update the name and description attributes""", required = true)
 	@BeanProperty
 	var externalId: MIdExternal =_
-	def withexternalId(p:MIdExternal):MUsersGroupManagerupdateExternalIdReq ={ 	this.externalId = p; 	this }
+	def withexternalId(p:MIdExternal):this.type ={ 	this.externalId = p; 	this }
 
 }

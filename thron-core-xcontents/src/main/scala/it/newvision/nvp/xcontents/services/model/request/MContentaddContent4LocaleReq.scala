@@ -22,17 +22,17 @@ class MContentaddContent4LocaleReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MContentaddContent4LocaleReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MContentaddContent4LocaleReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var detail: MContent4Locale =_
-	def withdetail(p:MContent4Locale):MContentaddContent4LocaleReq ={ 	this.detail = p; 	this }
+	def withdetail(p:MContent4Locale):this.type ={ 	this.detail = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -40,6 +40,6 @@ class MContentaddContent4LocaleReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MContentaddContent4LocaleReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

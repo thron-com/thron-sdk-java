@@ -25,7 +25,7 @@ class MLiveEvent extends MContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the scheduled start time of the event in the calendar""")
 	@BeanProperty 
 	var startDate: Date =_
-	def withstartDate(p:Date):MLiveEvent ={ 	this.startDate = p; 	this }
+	def withstartDate(p:Date):this.type ={ 	this.startDate = p; 	this }
 
 	/**
 	 * the scheduled finish time of the event.
@@ -35,7 +35,7 @@ class MLiveEvent extends MContent with Serializable  {
 	//#SWGNL#The attribute is linked to the MContent.inactiveDate field""")
 	@BeanProperty 
 	var endDate: Date =_
-	def withendDate(p:Date):MLiveEvent ={ 	this.endDate = p; 	this }
+	def withendDate(p:Date):this.type ={ 	this.endDate = p; 	this }
 
 	/**
 	 * The scheduled length of the event
@@ -43,7 +43,7 @@ class MLiveEvent extends MContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """The scheduled length of the event""")
 	@BeanProperty 
 	var eventLength: Long =_
-	def witheventLength(p:Long):MLiveEvent ={ 	this.eventLength = p; 	this }
+	def witheventLength(p:Long):this.type ={ 	this.eventLength = p; 	this }
 
 	/**
 	 * used to distinguish h24 live events by the spot events.
@@ -51,7 +51,7 @@ class MLiveEvent extends MContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """used to distinguish h24 live events by the spot events.""" ,required = true)
 	@BeanProperty 
 	var neverEndingLiveEvent: Boolean  = false
-	def withneverEndingLiveEvent(p:Boolean):MLiveEvent ={ 	this.neverEndingLiveEvent = p; 	this }
+	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
 
 	/**
 	 * the real start time of the event
@@ -59,7 +59,7 @@ class MLiveEvent extends MContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the real start time of the event""")
 	@BeanProperty 
 	var eventStarted: Date =_
-	def witheventStarted(p:Date):MLiveEvent ={ 	this.eventStarted = p; 	this }
+	def witheventStarted(p:Date):this.type ={ 	this.eventStarted = p; 	this }
 
 	/**
 	 * the real or scheduled end time of the event
@@ -67,7 +67,7 @@ class MLiveEvent extends MContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the real or scheduled end time of the event""")
 	@BeanProperty 
 	var eventEnded: Date =_
-	def witheventEnded(p:Date):MLiveEvent ={ 	this.eventEnded = p; 	this }
+	def witheventEnded(p:Date):this.type ={ 	this.eventEnded = p; 	this }
 
 	/**
 	 * @return Boolean

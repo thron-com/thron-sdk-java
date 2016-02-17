@@ -18,7 +18,7 @@ class MResponseContactDeviceDetail extends MResponseContact with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var item: MContactDetail =_
-	def withitem(p:MContactDetail):MResponseContactDeviceDetail ={ 	this.item = p; 	this }
+	def withitem(p:MContactDetail):this.type ={ 	this.item = p; 	this }
 
 	/**
 	 * only the 1st 50 devices linked to the contact.
@@ -26,6 +26,6 @@ class MResponseContactDeviceDetail extends MResponseContact with Serializable  {
 	//#SWG#@ApiModelProperty(value = """only the 1st 50 devices linked to the contact.""")
 	@BeanProperty 
 	var devices: List[MDevice] = new ArrayList[MDevice]
-	def withdevices(p:List[MDevice]):MResponseContactDeviceDetail ={ 	this.devices = p; 	this }
+	def withdevices(p:List[MDevice]):this.type ={ 	this.devices = p; 	this }
 
 }

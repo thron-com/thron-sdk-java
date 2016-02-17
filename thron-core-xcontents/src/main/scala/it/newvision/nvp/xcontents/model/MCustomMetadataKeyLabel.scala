@@ -24,7 +24,7 @@ class MCustomMetadataKeyLabel extends Serializable {
 	//#SWG#@ApiModelProperty(value = """en/it/ ....""" ,required = true)
 	@BeanProperty 
 	var locale: String =_
-	def withlocale(p:String):MCustomMetadataKeyLabel ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * Description in the specific locale. Used only for presentation
@@ -32,7 +32,7 @@ class MCustomMetadataKeyLabel extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Description in the specific locale. Used only for presentation""" ,required = true)
 	@BeanProperty 
 	var label: String  = ""
-	def withlabel(p:String):MCustomMetadataKeyLabel ={ 	this.label = p; 	this }
+	def withlabel(p:String):this.type ={ 	this.label = p; 	this }
 
 	/**
 	 * The help text in the specific locale. Used only for presentation
@@ -40,6 +40,6 @@ class MCustomMetadataKeyLabel extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The help text in the specific locale. Used only for presentation""" ,required = true)
 	@BeanProperty 
 	var hint: String =_
-	def withhint(p:String):MCustomMetadataKeyLabel ={ 	this.hint = p; 	this }
+	def withhint(p:String):this.type ={ 	this.hint = p; 	this }
 
 }

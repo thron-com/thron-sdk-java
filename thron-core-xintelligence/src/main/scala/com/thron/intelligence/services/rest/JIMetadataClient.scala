@@ -39,6 +39,13 @@ class JIMetadataClient(val resourceEndpoint:String) {
 
 	/**
 	 * Add an imetadata to an entity.
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -89,6 +96,13 @@ class JIMetadataClient(val resourceEndpoint:String) {
 
 	/**
 	 * Remove a given imetadata to an entity.
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -143,6 +157,13 @@ class JIMetadataClient(val resourceEndpoint:String) {
 
 	/**
 	 * Update a given metadata to a user or content or category....
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -193,6 +214,13 @@ class JIMetadataClient(val resourceEndpoint:String) {
 
 	/**
 	 * Add a given list of metadata to a user or content
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -243,6 +271,13 @@ class JIMetadataClient(val resourceEndpoint:String) {
 
 	/**
 	 * Remove a given list of imetadata to a user or content
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -293,6 +328,13 @@ class JIMetadataClient(val resourceEndpoint:String) {
 
 	/**
 	 * Apply a single metadata to multiple targets (users or contents)
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -343,6 +385,13 @@ class JIMetadataClient(val resourceEndpoint:String) {
 
 	/**
 	 * Remove a given metadata from a list of users or contents
+	 * 
+	 * <b>Role Validation for Target Users:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_VIEWER and
+	 * CORE_MANAGE_USERS)
+	 * 
+	 * <b>Role Validation for Target Contents</b>
+	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String

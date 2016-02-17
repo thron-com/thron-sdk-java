@@ -21,6 +21,6 @@ class MClassificationinsertReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var value: MClassificationValue =_
-	def withvalue(p:MClassificationValue):MClassificationinsertReq ={ 	this.value = p; 	this }
+	def withvalue(p:MClassificationValue):this.type ={ 	this.value = p; 	this }
 
 }

@@ -20,7 +20,7 @@ class MPublishInChannelsParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the content Id.""" ,required = true)
 	@BeanProperty 
 	var xcontentId: String =_
-	def withxcontentId(p:String):MPublishInChannelsParams ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * Deprecated. use xcontentId parameter
@@ -30,7 +30,7 @@ class MPublishInChannelsParams extends Serializable {
 	@Deprecated
 	var mediaContentId: String =_
 	@Deprecated
-	def withmediaContentId(p:String):MPublishInChannelsParams ={ 	this.mediaContentId = p; 	this }
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * List of Channels where the content should be published.
@@ -38,7 +38,7 @@ class MPublishInChannelsParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """List of Channels where the content should be published.""")
 	@BeanProperty 
 	var channels: List[String] = new ArrayList[String]
-	def withchannels(p:List[String]):MPublishInChannelsParams ={ 	this.channels = p; 	this }
+	def withchannels(p:List[String]):this.type ={ 	this.channels = p; 	this }
 
 	/**
 	 * Optional. The identifier for the publishing profile (used to derive the list of
@@ -49,7 +49,7 @@ class MPublishInChannelsParams extends Serializable {
 	//#SWGNL#If empty and channels not specified, will be used the default profile""")
 	@BeanProperty 
 	var profileId: String =_
-	def withprofileId(p:String):MPublishInChannelsParams ={ 	this.profileId = p; 	this }
+	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
 
 	/**
 	 * Deprecated.
@@ -59,6 +59,6 @@ class MPublishInChannelsParams extends Serializable {
 	@Deprecated
 	var stopForPreview: Boolean  = false
 	@Deprecated
-	def withstopForPreview(p:Boolean):MPublishInChannelsParams ={ 	this.stopForPreview = p; 	this }
+	def withstopForPreview(p:Boolean):this.type ={ 	this.stopForPreview = p; 	this }
 
 }

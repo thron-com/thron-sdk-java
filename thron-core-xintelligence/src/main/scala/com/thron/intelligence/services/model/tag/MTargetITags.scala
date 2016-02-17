@@ -22,11 +22,11 @@ class MTargetITags extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var target: MTarget =_
-	def withtarget(p:MTarget):MTargetITags ={ 	this.target = p; 	this }
+	def withtarget(p:MTarget):this.type ={ 	this.target = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var itags: List[MITagDefinition] = new ArrayList[MITagDefinition]
-	def withitags(p:List[MITagDefinition]):MTargetITags ={ 	this.itags = p; 	this }
+	def withitags(p:List[MITagDefinition]):this.type ={ 	this.itags = p; 	this }
 
 }

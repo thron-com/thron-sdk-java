@@ -20,6 +20,6 @@ class MQuotaCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """userId search criteria.""")
 	@BeanProperty 
 	var userIds: List[String] = new ArrayList[String]
-	def withuserIds(p:List[String]):MQuotaCriteria ={ 	this.userIds = p; 	this }
+	def withuserIds(p:List[String]):this.type ={ 	this.userIds = p; 	this }
 
 }

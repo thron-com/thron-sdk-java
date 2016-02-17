@@ -23,7 +23,7 @@ class MSubtitle extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var locale: String =_
-	def withlocale(p:String):MSubtitle ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * the http url where the cue point file is saved. This information is necessary
@@ -32,6 +32,6 @@ class MSubtitle extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the http url where the cue point file is saved. This information is necessary for a player that should play the specific content.""" ,required = true)
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MSubtitle ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 }

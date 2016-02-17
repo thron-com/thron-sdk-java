@@ -18,16 +18,16 @@ class MResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var resultsUrl4CountryCode: List[String] = new ArrayList[String]
-	def withresultsUrl4CountryCode(p:List[String]):MResult ={ 	this.resultsUrl4CountryCode = p; 	this }
+	def withresultsUrl4CountryCode(p:List[String]):this.type ={ 	this.resultsUrl4CountryCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var resultsUrl4TimeUnit: List[String] = new ArrayList[String]
-	def withresultsUrl4TimeUnit(p:List[String]):MResult ={ 	this.resultsUrl4TimeUnit = p; 	this }
+	def withresultsUrl4TimeUnit(p:List[String]):this.type ={ 	this.resultsUrl4TimeUnit = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEReportStatus =_
-	def withstatus(p:MEReportStatus):MResult ={ 	this.status = p; 	this }
+	def withstatus(p:MEReportStatus):this.type ={ 	this.status = p; 	this }
 
 }

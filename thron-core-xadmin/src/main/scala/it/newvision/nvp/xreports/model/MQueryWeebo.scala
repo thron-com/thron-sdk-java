@@ -17,7 +17,7 @@ class MQueryWeebo extends MQuery with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var queryType: MEQueryType =_
-	def withqueryType(p:MEQueryType):MQueryWeebo ={ 	this.queryType = p; 	this }
+	def withqueryType(p:MEQueryType):this.type ={ 	this.queryType = p; 	this }
 
 	/**
 	 * @return Boolean

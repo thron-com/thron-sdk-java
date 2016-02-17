@@ -20,16 +20,16 @@ class MAppUserDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var username: String =_
-	def withusername(p:String):MAppUserDetail ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var fullName: String =_
-	def withfullName(p:String):MAppUserDetail ={ 	this.fullName = p; 	this }
+	def withfullName(p:String):this.type ={ 	this.fullName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userCaps: MAppCapabilities =_
-	def withuserCaps(p:MAppCapabilities):MAppUserDetail ={ 	this.userCaps = p; 	this }
+	def withuserCaps(p:MAppCapabilities):this.type ={ 	this.userCaps = p; 	this }
 
 }

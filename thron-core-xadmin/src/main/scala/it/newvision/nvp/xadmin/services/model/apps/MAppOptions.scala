@@ -22,12 +22,12 @@ class MAppOptions extends Serializable {
 	//#SWGNL#Each App should be linked to a root category.""")
 	@BeanProperty 
 	var rootCategoryId: String =_
-	def withrootCategoryId(p:String):MAppOptions ={ 	this.rootCategoryId = p; 	this }
+	def withrootCategoryId(p:String):this.type ={ 	this.rootCategoryId = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var caps: MAppAddCapability =_
-	  def withcaps(p:MAppAddCapability):MAppOptions ={ 	this.caps = p; 	this }
+	  def withcaps(p:MAppAddCapability):this.type ={ 	this.caps = p; 	this }
 
 	/**
 	 * @return Boolean

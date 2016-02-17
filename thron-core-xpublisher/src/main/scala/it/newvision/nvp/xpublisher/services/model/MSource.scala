@@ -17,6 +17,6 @@ class MSource extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var buffer: Array[Byte]= new Array[Byte](0)
-	def withbuffer(p:Array[Byte]):MSource ={ 	this.buffer = p; 	this }
+	def withbuffer(p:Array[Byte]):this.type ={ 	this.buffer = p; 	this }
 
 }

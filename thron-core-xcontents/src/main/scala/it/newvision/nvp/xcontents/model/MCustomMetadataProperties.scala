@@ -17,7 +17,7 @@ class MCustomMetadataProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var dataType: MECustomMetadataDataType =_
-	def withdataType(p:MECustomMetadataDataType):MCustomMetadataProperties ={ 	this.dataType = p; 	this }
+	def withdataType(p:MECustomMetadataDataType):this.type ={ 	this.dataType = p; 	this }
 
 	/**
 	 * used to specify if it is possible to define different values for different
@@ -26,7 +26,7 @@ class MCustomMetadataProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to specify if it is possible to define different values for different locale.""" ,required = true)
 	@BeanProperty 
 	var multilocale: Boolean  = false
-	def withmultilocale(p:Boolean):MCustomMetadataProperties ={ 	this.multilocale = p; 	this }
+	def withmultilocale(p:Boolean):this.type ={ 	this.multilocale = p; 	this }
 
 	/**
 	 * if empty the user can insert free text (string Values)
@@ -34,7 +34,7 @@ class MCustomMetadataProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if empty the user can insert free text (string Values)""")
 	@BeanProperty 
 	var possibileValues: List[MCustomMetadataValueLabel] = new ArrayList[MCustomMetadataValueLabel]
-	def withpossibileValues(p:List[MCustomMetadataValueLabel]):MCustomMetadataProperties ={ 	this.possibileValues = p; 	this }
+	def withpossibileValues(p:List[MCustomMetadataValueLabel]):this.type ={ 	this.possibileValues = p; 	this }
 
 	/**
 	 * if empty means for all contentTypes
@@ -42,7 +42,7 @@ class MCustomMetadataProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """if empty means for all contentTypes""")
 	@BeanProperty 
 	var onlyForContentTypes: List[MEContentType] = new ArrayList[MEContentType]
-	def withonlyForContentTypes(p:List[MEContentType]):MCustomMetadataProperties ={ 	this.onlyForContentTypes = p; 	this }
+	def withonlyForContentTypes(p:List[MEContentType]):this.type ={ 	this.onlyForContentTypes = p; 	this }
 
 	/**
 	 * The metadata is available only in the specified solutions (VIEW.PLAY.MOVE,TALK).
@@ -51,7 +51,7 @@ class MCustomMetadataProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The metadata is available only in the specified solutions (VIEW.PLAY.MOVE,TALK). If empty the metadata is available in each single solution""")
 	@BeanProperty 
 	var onlyForSolutions: List[String] = new ArrayList[String]
-	def withonlyForSolutions(p:List[String]):MCustomMetadataProperties ={ 	this.onlyForSolutions = p; 	this }
+	def withonlyForSolutions(p:List[String]):this.type ={ 	this.onlyForSolutions = p; 	this }
 
 	/**
 	 * used to specify that the metadata is required or not, and can not be empty
@@ -59,7 +59,7 @@ class MCustomMetadataProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to specify that the metadata is required or not, and can not be empty""" ,required = true)
 	@BeanProperty 
 	var required: Boolean  = false
-	def withrequired(p:Boolean):MCustomMetadataProperties ={ 	this.required = p; 	this }
+	def withrequired(p:Boolean):this.type ={ 	this.required = p; 	this }
 
 	/**
 	 * Only active custom metadata are used in the publication process.
@@ -67,6 +67,6 @@ class MCustomMetadataProperties extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Only active custom metadata are used in the publication process.""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = false
-	def withactive(p:Boolean):MCustomMetadataProperties ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 }

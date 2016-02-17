@@ -24,7 +24,7 @@ class MPermissionslistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var criteria: MPermissionSearchCriteria =_
-	def withcriteria(p:MPermissionSearchCriteria):MPermissionslistReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MPermissionSearchCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * Optional.
@@ -34,7 +34,7 @@ class MPermissionslistReq extends Serializable {
 	//#SWGNL#Default value is 0""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MPermissionslistReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Optional. Default value is 50
@@ -42,6 +42,6 @@ class MPermissionslistReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. Default value is 50""", required = true)
 	@BeanProperty
 	var limit: Integer =_
-	def withlimit(p:Integer):MPermissionslistReq ={ 	this.limit = p; 	this }
+	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
 
 }

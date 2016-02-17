@@ -20,7 +20,7 @@ class MContactUpdate extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional label for the contact""")
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MContactUpdate ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * @return Boolean

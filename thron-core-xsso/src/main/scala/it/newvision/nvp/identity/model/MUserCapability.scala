@@ -50,7 +50,7 @@ class MUserCapability extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of available/disabled capabilities""")
 	@BeanProperty 
 	var capabilities: List[String] = new ArrayList[String]
-	def withcapabilities(p:List[String]):MUserCapability ={ 	this.capabilities = p; 	this }
+	def withcapabilities(p:List[String]):this.type ={ 	this.capabilities = p; 	this }
 
 	/**
 	 * The userRoles are derived from the list of groupRoles where the user are linked,
@@ -60,7 +60,7 @@ class MUserCapability extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The userRoles are derived from the list of groupRoles where the user are linked, only if the userRoles list is empty. The role CORE_NO_ROLES is used to specify no Roles""")
 	@BeanProperty 
 	var userRoles: List[String] = new ArrayList[String]
-	def withuserRoles(p:List[String]):MUserCapability ={ 	this.userRoles = p; 	this }
+	def withuserRoles(p:List[String]):this.type ={ 	this.userRoles = p; 	this }
 
 	/**
 	 * this attribute specify that the user can enter in one of the listed 4ME
@@ -69,7 +69,7 @@ class MUserCapability extends Serializable {
 	//#SWG#@ApiModelProperty(value = """this attribute specify that the user can enter in one of the listed 4ME solutions (App).""")
 	@BeanProperty 
 	var enabledSolutions: List[String] = new ArrayList[String]
-	def withenabledSolutions(p:List[String]):MUserCapability ={ 	this.enabledSolutions = p; 	this }
+	def withenabledSolutions(p:List[String]):this.type ={ 	this.enabledSolutions = p; 	this }
 
 	/**
 	 * Check if the give capability is active or not in the current UserCapability object

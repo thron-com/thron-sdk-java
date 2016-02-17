@@ -17,21 +17,21 @@ class MContentByChannelPreview extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var channelType: String =_
-	def withchannelType(p:String):MContentByChannelPreview ={ 	this.channelType = p; 	this }
+	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var pakageId: String =_
-	def withpakageId(p:String):MContentByChannelPreview ={ 	this.pakageId = p; 	this }
+	def withpakageId(p:String):this.type ={ 	this.pakageId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contents: List[MContentPreview] = new ArrayList[MContentPreview]
-	def withcontents(p:List[MContentPreview]):MContentByChannelPreview ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MContentPreview]):this.type ={ 	this.contents = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var thumbnails: List[MContentPreview] = new ArrayList[MContentPreview]
-	def withthumbnails(p:List[MContentPreview]):MContentByChannelPreview ={ 	this.thumbnails = p; 	this }
+	def withthumbnails(p:List[MContentPreview]):this.type ={ 	this.thumbnails = p; 	this }
 
 }

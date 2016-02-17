@@ -21,6 +21,6 @@ class MContactinsertReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var value: MContactValue =_
-	def withvalue(p:MContactValue):MContactinsertReq ={ 	this.value = p; 	this }
+	def withvalue(p:MContactValue):this.type ={ 	this.value = p; 	this }
 
 }

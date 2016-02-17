@@ -24,7 +24,7 @@ class MThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MThumbnail ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * byte[]
@@ -32,21 +32,21 @@ class MThumbnail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """byte[]""")
 	@BeanProperty 
 	var source: Array[Byte]= new Array[Byte](0)
-	def withsource(p:Array[Byte]):MThumbnail ={ 	this.source = p; 	this }
+	def withsource(p:Array[Byte]):this.type ={ 	this.source = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var width: Integer =_
-	def withwidth(p:Integer):MThumbnail ={ 	this.width = p; 	this }
+	def withwidth(p:Integer):this.type ={ 	this.width = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var height: Integer =_
-	def withheight(p:Integer):MThumbnail ={ 	this.height = p; 	this }
+	def withheight(p:Integer):this.type ={ 	this.height = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var mimetype: String =_
-	def withmimetype(p:String):MThumbnail ={ 	this.mimetype = p; 	this }
+	def withmimetype(p:String):this.type ={ 	this.mimetype = p; 	this }
 
 }

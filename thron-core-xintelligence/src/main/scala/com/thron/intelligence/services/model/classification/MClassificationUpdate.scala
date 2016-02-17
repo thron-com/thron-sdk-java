@@ -28,7 +28,7 @@ class MClassificationUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var names: List[MLocalization] =_
-	def withnames(p:List[MLocalization]):MClassificationUpdate ={ 	this.names = p; 	this }
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * v
@@ -36,12 +36,12 @@ class MClassificationUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """v""")
 	@BeanProperty 
 	var active: Boolean =_
-	def withactive(p:Boolean):MClassificationUpdate ={ 	this.active = p; 	this }
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var entities: List[MClassificationEntity] =_
-	def withentities(p:List[MClassificationEntity]):MClassificationUpdate ={ 	this.entities = p; 	this }
+	def withentities(p:List[MClassificationEntity]):this.type ={ 	this.entities = p; 	this }
 
 	/**
 	 * @return Boolean

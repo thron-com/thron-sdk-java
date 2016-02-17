@@ -18,7 +18,7 @@ class MBillingContactArchiveUnit extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MBillingContactArchiveUnit ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * created Date
@@ -26,31 +26,31 @@ class MBillingContactArchiveUnit extends Serializable {
 	//#SWG#@ApiModelProperty(value = """created Date""")
 	@BeanProperty 
 	var createdDate: Date  = new Date
-	def withcreatedDate(p:Date):MBillingContactArchiveUnit ={ 	this.createdDate = p; 	this }
+	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var timeRange: MDateRange =_
-	def withtimeRange(p:MDateRange):MBillingContactArchiveUnit ={ 	this.timeRange = p; 	this }
+	def withtimeRange(p:MDateRange):this.type ={ 	this.timeRange = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalContacts: Long =_
-	def withtotalContacts(p:Long):MBillingContactArchiveUnit ={ 	this.totalContacts = p; 	this }
+	def withtotalContacts(p:Long):this.type ={ 	this.totalContacts = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalContactsUnmerged: Long =_
-	def withtotalContactsUnmerged(p:Long):MBillingContactArchiveUnit ={ 	this.totalContactsUnmerged = p; 	this }
+	def withtotalContactsUnmerged(p:Long):this.type ={ 	this.totalContactsUnmerged = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalActiveContacts: Long =_
-	def withtotalActiveContacts(p:Long):MBillingContactArchiveUnit ={ 	this.totalActiveContacts = p; 	this }
+	def withtotalActiveContacts(p:Long):this.type ={ 	this.totalActiveContacts = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalActiveContactsUnmerged: Long =_
-	def withtotalActiveContactsUnmerged(p:Long):MBillingContactArchiveUnit ={ 	this.totalActiveContactsUnmerged = p; 	this }
+	def withtotalActiveContactsUnmerged(p:Long):this.type ={ 	this.totalActiveContactsUnmerged = p; 	this }
 
 }

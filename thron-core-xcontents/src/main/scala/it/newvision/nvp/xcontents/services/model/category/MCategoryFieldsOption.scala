@@ -36,7 +36,7 @@ class MCategoryFieldsOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default = true""")
 	@BeanProperty 
 	var returnNumberOfContents: Boolean  = true
-	def withreturnNumberOfContents(p:Boolean):MCategoryFieldsOption ={ 	this.returnNumberOfContents = p; 	this }
+	def withreturnNumberOfContents(p:Boolean):this.type ={ 	this.returnNumberOfContents = p; 	this }
 
 	/**
 	 * Default = true
@@ -44,7 +44,7 @@ class MCategoryFieldsOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default = true""")
 	@BeanProperty 
 	var returnNumberOfUnreadContents: Boolean  = true
-	def withreturnNumberOfUnreadContents(p:Boolean):MCategoryFieldsOption ={ 	this.returnNumberOfUnreadContents = p; 	this }
+	def withreturnNumberOfUnreadContents(p:Boolean):this.type ={ 	this.returnNumberOfUnreadContents = p; 	this }
 
 	/**
 	 * Default = true
@@ -52,7 +52,7 @@ class MCategoryFieldsOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default = true""")
 	@BeanProperty 
 	var returnNumberOfUnreadContentsInSubCategories: Boolean  = true
-	def withreturnNumberOfUnreadContentsInSubCategories(p:Boolean):MCategoryFieldsOption ={ 	this.returnNumberOfUnreadContentsInSubCategories = p; 	this }
+	def withreturnNumberOfUnreadContentsInSubCategories(p:Boolean):this.type ={ 	this.returnNumberOfUnreadContentsInSubCategories = p; 	this }
 
 	/**
 	 * Default = true
@@ -60,7 +60,7 @@ class MCategoryFieldsOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default = true""")
 	@BeanProperty 
 	var returnNumberOfSubCategories: Boolean  = true
-	def withreturnNumberOfSubCategories(p:Boolean):MCategoryFieldsOption ={ 	this.returnNumberOfSubCategories = p; 	this }
+	def withreturnNumberOfSubCategories(p:Boolean):this.type ={ 	this.returnNumberOfSubCategories = p; 	this }
 
 	/**
 	 * @return MCategoryFieldsOption

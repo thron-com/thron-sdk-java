@@ -18,16 +18,16 @@ class MContentReport extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MContentReport ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentType: MEContentType =_
-	def withcontentType(p:MEContentType):MContentReport ={ 	this.contentType = p; 	this }
+	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var total: Long =_
-	def withtotal(p:Long):MContentReport ={ 	this.total = p; 	this }
+	def withtotal(p:Long):this.type ={ 	this.total = p; 	this }
 
 }

@@ -26,7 +26,7 @@ class MContentMetadata extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: length < 50""" ,required = true)
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MContentMetadata ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * Constraints: length < 2000000
@@ -34,7 +34,7 @@ class MContentMetadata extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Constraints: length < 2000000""")
 	@BeanProperty 
 	var value: String =_
-	def withvalue(p:String):MContentMetadata ={ 	this.value = p; 	this }
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * Locale code (ISO639-1)
@@ -42,7 +42,7 @@ class MContentMetadata extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1)""")
 	@BeanProperty 
 	var locale: String =_
-	def withlocale(p:String):MContentMetadata ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * @param other : MContentMetadata

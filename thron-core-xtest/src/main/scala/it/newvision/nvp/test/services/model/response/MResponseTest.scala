@@ -19,16 +19,16 @@ class MResponseTest extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: METestResponse =_
-	def withresultCode(p:METestResponse):MResponseTest ={ 	this.resultCode = p; 	this }
+	def withresultCode(p:METestResponse):this.type ={ 	this.resultCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var ssoCode: MESSO =_
-	def withssoCode(p:MESSO):MResponseTest ={ 	this.ssoCode = p; 	this }
+	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultDescription: String =_
-	def withresultDescription(p:String):MResponseTest ={ 	this.resultDescription = p; 	this }
+	def withresultDescription(p:String):this.type ={ 	this.resultDescription = p; 	this }
 
 }

@@ -21,11 +21,11 @@ class MAclInverseaddAclRulesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MAclInverseaddAclRulesReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var rules: MAclRuleInverseItems =_
-	def withrules(p:MAclRuleInverseItems):MAclInverseaddAclRulesReq ={ 	this.rules = p; 	this }
+	def withrules(p:MAclRuleInverseItems):this.type ={ 	this.rules = p; 	this }
 
 }

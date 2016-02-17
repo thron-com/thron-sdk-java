@@ -23,7 +23,7 @@ class MLiveEventUpdateAdmin extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to distinguish h24 live events by the spot events.""")
 	@BeanProperty 
 	var neverEndingLiveEvent: Boolean =_
-	def withneverEndingLiveEvent(p:Boolean):MLiveEventUpdateAdmin ={ 	this.neverEndingLiveEvent = p; 	this }
+	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
 
 	/**
 	 * the scheduled start date of the event in the calendar
@@ -31,7 +31,7 @@ class MLiveEventUpdateAdmin extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the scheduled start date of the event in the calendar""")
 	@BeanProperty 
 	var eventStarted: Date =_
-	def witheventStarted(p:Date):MLiveEventUpdateAdmin ={ 	this.eventStarted = p; 	this }
+	def witheventStarted(p:Date):this.type ={ 	this.eventStarted = p; 	this }
 
 	/**
 	 * the scheduled end date of the event in the calendar
@@ -39,6 +39,6 @@ class MLiveEventUpdateAdmin extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the scheduled end date of the event in the calendar""")
 	@BeanProperty 
 	var eventEnded: Date =_
-	def witheventEnded(p:Date):MLiveEventUpdateAdmin ={ 	this.eventEnded = p; 	this }
+	def witheventEnded(p:Date):this.type ={ 	this.eventEnded = p; 	this }
 
 }

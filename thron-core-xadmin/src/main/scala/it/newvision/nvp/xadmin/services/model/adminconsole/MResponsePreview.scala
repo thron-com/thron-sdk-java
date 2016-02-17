@@ -19,16 +19,16 @@ class MResponsePreview extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MEPublishWeebo  = MEPublishWeebo.OK
-	def withresultCode(p:MEPublishWeebo):MResponsePreview ={ 	this.resultCode = p; 	this }
+	def withresultCode(p:MEPublishWeebo):this.type ={ 	this.resultCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var ssoCode: MESSO  = MESSO.OK
-	def withssoCode(p:MESSO):MResponsePreview ={ 	this.ssoCode = p; 	this }
+	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var errorDescription: String  = ""
-	def witherrorDescription(p:String):MResponsePreview ={ 	this.errorDescription = p; 	this }
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

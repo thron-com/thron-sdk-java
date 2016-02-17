@@ -22,17 +22,17 @@ class MLiveEventupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MLiveEventupdateReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MLiveEventupdateReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentValues: MLiveEventUpdate =_
-	def withcontentValues(p:MLiveEventUpdate):MLiveEventupdateReq ={ 	this.contentValues = p; 	this }
+	def withcontentValues(p:MLiveEventUpdate):this.type ={ 	this.contentValues = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -40,6 +40,6 @@ class MLiveEventupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MLiveEventupdateReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

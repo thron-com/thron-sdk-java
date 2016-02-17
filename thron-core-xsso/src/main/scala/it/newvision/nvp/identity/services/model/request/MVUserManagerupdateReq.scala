@@ -22,12 +22,12 @@ class MVUserManagerupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MVUserManagerupdateReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var username: String =_
-	def withusername(p:String):MVUserManagerupdateReq ={ 	this.username = p; 	this }
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	/**
 	 * Optional. User detail
@@ -35,7 +35,7 @@ class MVUserManagerupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. User detail""", required = true)
 	@BeanProperty
 	var detail: MVUserDetail =_
-	def withdetail(p:MVUserDetail):MVUserManagerupdateReq ={ 	this.detail = p; 	this }
+	def withdetail(p:MVUserDetail):this.type ={ 	this.detail = p; 	this }
 
 	/**
 	 * Optional
@@ -43,6 +43,6 @@ class MVUserManagerupdateReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
 	var userParams: MVUserParams =_
-	def withuserParams(p:MVUserParams):MVUserManagerupdateReq ={ 	this.userParams = p; 	this }
+	def withuserParams(p:MVUserParams):this.type ={ 	this.userParams = p; 	this }
 
 }

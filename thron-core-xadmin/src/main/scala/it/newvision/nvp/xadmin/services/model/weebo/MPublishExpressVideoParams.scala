@@ -21,6 +21,6 @@ class MPublishExpressVideoParams extends MPublishInWeebo with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Optional. Used to publish a new video from the recorded video file of a live Event. It's necessary to know the liveEvent xcontentId.""")
 	@BeanProperty 
 	var liveEventRec: MLiveEventRecParams =_
-	def withliveEventRec(p:MLiveEventRecParams):MPublishExpressVideoParams ={ 	this.liveEventRec = p; 	this }
+	def withliveEventRec(p:MLiveEventRecParams):this.type ={ 	this.liveEventRec = p; 	this }
 
 }

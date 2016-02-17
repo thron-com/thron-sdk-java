@@ -23,7 +23,7 @@ class MMetadatafindContentsByMetadataReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MMetadatafindContentsByMetadataReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	/**
 	 * deprecated
@@ -31,17 +31,17 @@ class MMetadatafindContentsByMetadataReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """deprecated""", required = true)
 	@BeanProperty
 	var criteria: MMetadata =_
-	def withcriteria(p:MMetadata):MMetadatafindContentsByMetadataReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MMetadata):this.type ={ 	this.criteria = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentCriteria: MContentCriteria =_
-	def withcontentCriteria(p:MContentCriteria):MMetadatafindContentsByMetadataReq ={ 	this.contentCriteria = p; 	this }
+	def withcontentCriteria(p:MContentCriteria):this.type ={ 	this.contentCriteria = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var locale: String =_
-	def withlocale(p:String):MMetadatafindContentsByMetadataReq ={ 	this.locale = p; 	this }
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -49,16 +49,16 @@ class MMetadatafindContentsByMetadataReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MMetadatafindContentsByMetadataReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MMetadatafindContentsByMetadataReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var numResult: Integer =_
-	def withnumResult(p:Integer):MMetadatafindContentsByMetadataReq ={ 	this.numResult = p; 	this }
+	def withnumResult(p:Integer):this.type ={ 	this.numResult = p; 	this }
 
 }

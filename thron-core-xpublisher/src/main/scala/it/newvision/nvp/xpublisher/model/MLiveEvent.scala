@@ -17,6 +17,6 @@ class MLiveEvent extends MContent with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var event: MWowzaEvent =_
-	def withevent(p:MWowzaEvent):MLiveEvent ={ 	this.event = p; 	this }
+	def withevent(p:MWowzaEvent):this.type ={ 	this.event = p; 	this }
 
 }

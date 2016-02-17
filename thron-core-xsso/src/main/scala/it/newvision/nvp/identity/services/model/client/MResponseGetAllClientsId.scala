@@ -20,6 +20,6 @@ class MResponseGetAllClientsId extends MResponseClient with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var clientsId: List[String] = new ArrayList[String]
-	def withclientsId(p:List[String]):MResponseGetAllClientsId ={ 	this.clientsId = p; 	this }
+	def withclientsId(p:List[String]):this.type ={ 	this.clientsId = p; 	this }
 
 }

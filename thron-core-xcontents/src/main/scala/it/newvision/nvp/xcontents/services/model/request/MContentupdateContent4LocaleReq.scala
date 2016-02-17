@@ -22,12 +22,12 @@ class MContentupdateContent4LocaleReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
-	def withclient(p:MCredential):MContentupdateContent4LocaleReq ={ 	this.client = p; 	this }
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MContentupdateContent4LocaleReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	/**
 	 * Be aware that each information (i.e., name or description) already defined for
@@ -39,7 +39,7 @@ class MContentupdateContent4LocaleReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Be aware that each information (i.e., name or description) already defined for the specific contentId will be overwritten by those defined in the body of the request; therefore, if specific value is omitted, related information will be deleted; on the other hand, if an empty value is included in the request, its information value will be set to null.""", required = true)
 	@BeanProperty
 	var detail: MContent4Locale =_
-	def withdetail(p:MContent4Locale):MContentupdateContent4LocaleReq ={ 	this.detail = p; 	this }
+	def withdetail(p:MContent4Locale):this.type ={ 	this.detail = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -47,6 +47,6 @@ class MContentupdateContent4LocaleReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MContentupdateContent4LocaleReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

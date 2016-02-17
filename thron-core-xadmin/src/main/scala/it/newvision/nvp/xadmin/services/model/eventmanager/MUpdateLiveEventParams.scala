@@ -20,7 +20,7 @@ class MUpdateLiveEventParams extends Serializable {
 	//#SWG#@ApiModelProperty(value = """epoc date in milliseconds. Validto can be an epoc date of the past.""")
 	@BeanProperty 
 	var validTo: Long =_
-	def withvalidTo(p:Long):MUpdateLiveEventParams ={ 	this.validTo = p; 	this }
+	def withvalidTo(p:Long):this.type ={ 	this.validTo = p; 	this }
 
 	/**
 	 * @return Boolean

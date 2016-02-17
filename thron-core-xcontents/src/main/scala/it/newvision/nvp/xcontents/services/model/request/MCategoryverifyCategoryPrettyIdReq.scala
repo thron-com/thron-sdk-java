@@ -21,6 +21,6 @@ class MCategoryverifyCategoryPrettyIdReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var prettyId: MPrettyId =_
-	def withprettyId(p:MPrettyId):MCategoryverifyCategoryPrettyIdReq ={ 	this.prettyId = p; 	this }
+	def withprettyId(p:MPrettyId):this.type ={ 	this.prettyId = p; 	this }
 
 }

@@ -20,7 +20,7 @@ class MMetadataDefinitionNumericDoubleOption extends MMetadataDefinitionOptionCl
 	//#SWG#@ApiModelProperty(value = """Used as layout directive, not for validation""")
 	@BeanProperty 
 	var defaultValue: Double =_
-	def withdefaultValue(p:Double):MMetadataDefinitionNumericDoubleOption ={ 	this.defaultValue = p; 	this }
+	def withdefaultValue(p:Double):this.type ={ 	this.defaultValue = p; 	this }
 
 	/**
 	 * @param value : String

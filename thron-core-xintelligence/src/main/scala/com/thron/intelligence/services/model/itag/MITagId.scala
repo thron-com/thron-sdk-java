@@ -14,10 +14,13 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MITagId extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * ITagDefinition.id or ITagDefinition.prettyId.
+	 */
+	//#SWG#@ApiModelProperty(value = """ITagDefinition.id or ITagDefinition.prettyId.""" ,required = true)
 	@BeanProperty 
 	var id: String =_
-	def withid(p:String):MITagId ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * @return Boolean

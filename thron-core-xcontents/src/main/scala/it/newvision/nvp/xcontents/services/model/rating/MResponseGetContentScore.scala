@@ -17,6 +17,6 @@ class MResponseGetContentScore extends MResponseRating with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var score: MRatingAverage =_
-	def withscore(p:MRatingAverage):MResponseGetContentScore ={ 	this.score = p; 	this }
+	def withscore(p:MRatingAverage):this.type ={ 	this.score = p; 	this }
 
 }

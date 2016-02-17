@@ -20,17 +20,17 @@ class MElementDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var position: Integer =_
-	def withposition(p:Integer):MElementDetail ={ 	this.position = p; 	this }
+	def withposition(p:Integer):this.type ={ 	this.position = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var xcontentId: String =_
-	def withxcontentId(p:String):MElementDetail ={ 	this.xcontentId = p; 	this }
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var xpublisherId: String =_
-	def withxpublisherId(p:String):MElementDetail ={ 	this.xpublisherId = p; 	this }
+	def withxpublisherId(p:String):this.type ={ 	this.xpublisherId = p; 	this }
 
 	/**
 	 * match the EContentType in xcontent
@@ -38,17 +38,17 @@ class MElementDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """match the EContentType in xcontent""" ,required = true)
 	@BeanProperty 
 	var contentType: String =_
-	def withcontentType(p:String):MElementDetail ={ 	this.contentType = p; 	this }
+	def withcontentType(p:String):this.type ={ 	this.contentType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var name: String =_
-	def withname(p:String):MElementDetail ={ 	this.name = p; 	this }
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var description: String =_
-	def withdescription(p:String):MElementDetail ={ 	this.description = p; 	this }
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * summary of the content
@@ -56,7 +56,7 @@ class MElementDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """summary of the content""")
 	@BeanProperty 
 	var excerpt: String =_
-	def withexcerpt(p:String):MElementDetail ={ 	this.excerpt = p; 	this }
+	def withexcerpt(p:String):this.type ={ 	this.excerpt = p; 	this }
 
 	/**
 	 * The content url , or descriptor url.
@@ -64,21 +64,21 @@ class MElementDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The content url , or descriptor url.""")
 	@BeanProperty 
 	var url: String =_
-	def withurl(p:String):MElementDetail ={ 	this.url = p; 	this }
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var thumbnails: MThumbnailDetail =_
-	def withthumbnails(p:MThumbnailDetail):MElementDetail ={ 	this.thumbnails = p; 	this }
+	def withthumbnails(p:MThumbnailDetail):this.type ={ 	this.thumbnails = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var duration: Long =_
-	def withduration(p:Long):MElementDetail ={ 	this.duration = p; 	this }
+	def withduration(p:Long):this.type ={ 	this.duration = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var metadata: List[MMetadataDetail] = new ArrayList[MMetadataDetail]
-	def withmetadata(p:List[MMetadataDetail]):MElementDetail ={ 	this.metadata = p; 	this }
+	def withmetadata(p:List[MMetadataDetail]):this.type ={ 	this.metadata = p; 	this }
 
 }

@@ -20,6 +20,6 @@ class MPlaylistItems extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of items to add to the playlist""")
 	@BeanProperty 
 	var contents: List[MPlaylistItem] = new ArrayList[MPlaylistItem]
-	def withcontents(p:List[MPlaylistItem]):MPlaylistItems ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MPlaylistItem]):this.type ={ 	this.contents = p; 	this }
 
 }

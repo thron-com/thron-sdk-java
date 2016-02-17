@@ -23,12 +23,12 @@ class MPropertyCDNAws extends Serializable {
 	//#SWG#@ApiModelProperty(value = """enable or not the acceleration for the live events. This is a paid service""" ,required = true)
 	@BeanProperty 
 	var cdnAccelerationEnabled: Boolean  = false
-	def withcdnAccelerationEnabled(p:Boolean):MPropertyCDNAws ={ 	this.cdnAccelerationEnabled = p; 	this }
+	def withcdnAccelerationEnabled(p:Boolean):this.type ={ 	this.cdnAccelerationEnabled = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var accountNumber: String =_
-	def withaccountNumber(p:String):MPropertyCDNAws ={ 	this.accountNumber = p; 	this }
+	def withaccountNumber(p:String):this.type ={ 	this.accountNumber = p; 	this }
 
 	/**
 	 * CloudFontPriceClass
@@ -42,7 +42,7 @@ class MPropertyCDNAws extends Serializable {
 	//#SWGNL#3) World (best Performance)""" ,required = true)
 	@BeanProperty 
 	var cdnPriceClass: String =_
-	def withcdnPriceClass(p:String):MPropertyCDNAws ={ 	this.cdnPriceClass = p; 	this }
+	def withcdnPriceClass(p:String):this.type ={ 	this.cdnPriceClass = p; 	this }
 
 	/**
 	 * the list of CF distributions.
@@ -50,6 +50,6 @@ class MPropertyCDNAws extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the list of CF distributions.""")
 	@BeanProperty 
 	var awsCfDistributionIds: List[String] = new ArrayList[String]
-	def withawsCfDistributionIds(p:List[String]):MPropertyCDNAws ={ 	this.awsCfDistributionIds = p; 	this }
+	def withawsCfDistributionIds(p:List[String]):this.type ={ 	this.awsCfDistributionIds = p; 	this }
 
 }

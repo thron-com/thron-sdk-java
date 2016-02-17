@@ -20,12 +20,12 @@ class MBusinnessDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var companyName: String =_
-	def withcompanyName(p:String):MBusinnessDetail ={ 	this.companyName = p; 	this }
+	def withcompanyName(p:String):this.type ={ 	this.companyName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var city: String =_
-	def withcity(p:String):MBusinnessDetail ={ 	this.city = p; 	this }
+	def withcity(p:String):this.type ={ 	this.city = p; 	this }
 
 	/**
 	 * country / region
@@ -33,6 +33,6 @@ class MBusinnessDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """country / region""")
 	@BeanProperty 
 	var country: String =_
-	def withcountry(p:String):MBusinnessDetail ={ 	this.country = p; 	this }
+	def withcountry(p:String):this.type ={ 	this.country = p; 	this }
 
 }

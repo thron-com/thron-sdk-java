@@ -17,7 +17,7 @@ class MWeeboResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
-	def withclientId(p:String):MWeeboResult ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * in Bytes
@@ -25,11 +25,11 @@ class MWeeboResult extends Serializable {
 	//#SWG#@ApiModelProperty(value = """in Bytes""" ,required = true)
 	@BeanProperty 
 	var traffic: Long =_
-	def withtraffic(p:Long):MWeeboResult ={ 	this.traffic = p; 	this }
+	def withtraffic(p:Long):this.type ={ 	this.traffic = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var hits: Long =_
-	def withhits(p:Long):MWeeboResult ={ 	this.hits = p; 	this }
+	def withhits(p:Long):this.type ={ 	this.hits = p; 	this }
 
 }

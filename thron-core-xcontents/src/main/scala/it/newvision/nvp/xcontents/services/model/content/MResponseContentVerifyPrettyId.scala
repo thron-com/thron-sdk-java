@@ -18,7 +18,7 @@ class MResponseContentVerifyPrettyId extends MResponseContent with Serializable 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var bestPrettyId: MPrettyId =_
-	def withbestPrettyId(p:MPrettyId):MResponseContentVerifyPrettyId ={ 	this.bestPrettyId = p; 	this }
+	def withbestPrettyId(p:MPrettyId):this.type ={ 	this.bestPrettyId = p; 	this }
 
 	/**
 	 * List of alternative valid content prettyIds
@@ -26,6 +26,6 @@ class MResponseContentVerifyPrettyId extends MResponseContent with Serializable 
 	//#SWG#@ApiModelProperty(value = """List of alternative valid content prettyIds""")
 	@BeanProperty 
 	var suggestedPrettyIds: List[MPrettyId] = new ArrayList[MPrettyId]
-	def withsuggestedPrettyIds(p:List[MPrettyId]):MResponseContentVerifyPrettyId ={ 	this.suggestedPrettyIds = p; 	this }
+	def withsuggestedPrettyIds(p:List[MPrettyId]):this.type ={ 	this.suggestedPrettyIds = p; 	this }
 
 }

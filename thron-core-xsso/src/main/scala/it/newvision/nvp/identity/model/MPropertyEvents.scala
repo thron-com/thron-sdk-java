@@ -20,12 +20,12 @@ class MPropertyEvents extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Max number of Active Live Events""" ,required = true)
 	@BeanProperty 
 	var maxNumberActiveSpotLiveEvents: Integer  = 5
-	def withmaxNumberActiveSpotLiveEvents(p:Integer):MPropertyEvents ={ 	this.maxNumberActiveSpotLiveEvents = p; 	this }
+	def withmaxNumberActiveSpotLiveEvents(p:Integer):this.type ={ 	this.maxNumberActiveSpotLiveEvents = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var maxNumberActiveNeverEndingLiveEvents: Integer  = 0
-	def withmaxNumberActiveNeverEndingLiveEvents(p:Integer):MPropertyEvents ={ 	this.maxNumberActiveNeverEndingLiveEvents = p; 	this }
+	def withmaxNumberActiveNeverEndingLiveEvents(p:Integer):this.type ={ 	this.maxNumberActiveNeverEndingLiveEvents = p; 	this }
 
 	/**
 	 * Maximum duration (in hours) for the Spot Live Events
@@ -33,7 +33,7 @@ class MPropertyEvents extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Maximum duration (in hours) for the Spot Live Events""" ,required = true)
 	@BeanProperty 
 	var maxDurationLiveEventsSpot: Integer  = 12
-	def withmaxDurationLiveEventsSpot(p:Integer):MPropertyEvents ={ 	this.maxDurationLiveEventsSpot = p; 	this }
+	def withmaxDurationLiveEventsSpot(p:Integer):this.type ={ 	this.maxDurationLiveEventsSpot = p; 	this }
 
 	/**
 	 * the name of the config file to use as profile. 
@@ -41,7 +41,7 @@ class MPropertyEvents extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the name of the config file to use as profile. """)
 	@BeanProperty 
 	var serverProfileName: String =_
-	def withserverProfileName(p:String):MPropertyEvents ={ 	this.serverProfileName = p; 	this }
+	def withserverProfileName(p:String):this.type ={ 	this.serverProfileName = p; 	this }
 
 	/**
 	 * enable or not the acceleration for the live events. This is a paid service
@@ -49,11 +49,11 @@ class MPropertyEvents extends Serializable {
 	//#SWG#@ApiModelProperty(value = """enable or not the acceleration for the live events. This is a paid service""" ,required = true)
 	@BeanProperty 
 	var cdnAccelletationEnabled: Boolean  = true
-	def withcdnAccelletationEnabled(p:Boolean):MPropertyEvents ={ 	this.cdnAccelletationEnabled = p; 	this }
+	def withcdnAccelletationEnabled(p:Boolean):this.type ={ 	this.cdnAccelletationEnabled = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var awsProperties: MPropertyEventsAws  = new MPropertyEventsAws
-	def withawsProperties(p:MPropertyEventsAws):MPropertyEvents ={ 	this.awsProperties = p; 	this }
+	def withawsProperties(p:MPropertyEventsAws):this.type ={ 	this.awsProperties = p; 	this }
 
 }

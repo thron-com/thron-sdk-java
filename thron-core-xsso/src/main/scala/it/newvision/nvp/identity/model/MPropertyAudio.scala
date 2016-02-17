@@ -27,17 +27,17 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Control the volume for your audio output as a percentage of source video: 1-100.""" ,required = true)
 	@BeanProperty 
 	var audioOutputPercentage: Integer  = 100
-	def withaudioOutputPercentage(p:Integer):MPropertyAudio ={ 	this.audioOutputPercentage = p; 	this }
+	def withaudioOutputPercentage(p:Integer):this.type ={ 	this.audioOutputPercentage = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var bitRate: Integer  = 128
-	def withbitRate(p:Integer):MPropertyAudio ={ 	this.bitRate = p; 	this }
+	def withbitRate(p:Integer):this.type ={ 	this.bitRate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var codec: String  = "MP3"
-	def withcodec(p:String):MPropertyAudio ={ 	this.codec = p; 	this }
+	def withcodec(p:String):this.type ={ 	this.codec = p; 	this }
 
 	/**
 	 * Control the audio sampling frequency in (Hz) for your audio output.
@@ -45,7 +45,7 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Control the audio sampling frequency in (Hz) for your audio output.""" ,required = true)
 	@BeanProperty 
 	var sampleRate: Integer  = 44100
-	def withsampleRate(p:Integer):MPropertyAudio ={ 	this.sampleRate = p; 	this }
+	def withsampleRate(p:Integer):this.type ={ 	this.sampleRate = p; 	this }
 
 	/**
 	 * range value: [0..100]. Suggested value if present is 85.
@@ -55,7 +55,7 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 	//#SWGNL#Used to bring the average or peak amplitude to a target level. """ ,required = true)
 	@BeanProperty 
 	var normalization: Integer  = 0
-	def withnormalization(p:Integer):MPropertyAudio ={ 	this.normalization = p; 	this }
+	def withnormalization(p:Integer):this.type ={ 	this.normalization = p; 	this }
 
 	/**
 	 * default init for STREAM channel

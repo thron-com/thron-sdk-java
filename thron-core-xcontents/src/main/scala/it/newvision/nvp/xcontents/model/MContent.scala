@@ -26,7 +26,7 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the content identifier """ ,required = true)
 	@BeanProperty 
 	var id: String  = java.util.UUID.randomUUID.toString
-	def withid(p:String):MContent ={ 	this.id = p; 	this }
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * Constraints:
@@ -50,7 +50,7 @@ class MContent extends Serializable {
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var prettyIds: List[MPrettyId] = new ArrayList[MPrettyId]
-	def withprettyIds(p:List[MPrettyId]):MContent ={ 	this.prettyIds = p; 	this }
+	def withprettyIds(p:List[MPrettyId]):this.type ={ 	this.prettyIds = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -65,12 +65,12 @@ class MContent extends Serializable {
 	@Deprecated
 	var status: String =_
 	@Deprecated
-	def withstatus(p:String):MContent ={ 	this.status = p; 	this }
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentType: MEContentType =_
-	def withcontentType(p:MEContentType):MContent ={ 	this.contentType = p; 	this }
+	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
 
 	/**
 	 * The creation date of the content.
@@ -78,7 +78,7 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The creation date of the content.""" ,required = true)
 	@BeanProperty 
 	var creationDate: Date =_
-	def withcreationDate(p:Date):MContent ={ 	this.creationDate = p; 	this }
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * Can be the username of the owner or an external userId (only for UGC contents)
@@ -88,7 +88,7 @@ class MContent extends Serializable {
 	//#SWGNL#Constraints: max length = 50""")
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MContent ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * List the properties of a content
@@ -96,7 +96,7 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """List the properties of a content""")
 	@BeanProperty 
 	var properties: List[MEContentProperties] = new ArrayList[MEContentProperties]
-	def withproperties(p:List[MEContentProperties]):MContent ={ 	this.properties = p; 	this }
+	def withproperties(p:List[MEContentProperties]):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * The display name of the Author.
@@ -108,7 +108,7 @@ class MContent extends Serializable {
 	//#SWGNL#Constraints: max length = 50""")
 	@BeanProperty 
 	var owner: String =_
-	def withowner(p:String):MContent ={ 	this.owner = p; 	this }
+	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
 
 	/**
 	 * the date of the last updated/new comment. Only approved comments
@@ -116,7 +116,7 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the date of the last updated/new comment. Only approved comments""")
 	@BeanProperty 
 	var lastUpdatedComment: Date =_
-	def withlastUpdatedComment(p:Date):MContent ={ 	this.lastUpdatedComment = p; 	this }
+	def withlastUpdatedComment(p:Date):this.type ={ 	this.lastUpdatedComment = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -128,7 +128,7 @@ class MContent extends Serializable {
 	@Deprecated
 	var solution: String =_
 	@Deprecated
-	def withsolution(p:String):MContent ={ 	this.solution = p; 	this }
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -142,7 +142,7 @@ class MContent extends Serializable {
 	@Deprecated
 	var availableInSolutions: List[String] = new ArrayList[String]
 	@Deprecated
-	def withavailableInSolutions(p:List[String]):MContent ={ 	this.availableInSolutions = p; 	this }
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
 
 	/**
 	 * used to flag the User Generated Contents.
@@ -150,7 +150,7 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used to flag the User Generated Contents.""")
 	@BeanProperty 
 	var contentUGC: Boolean =_
-	def withcontentUGC(p:Boolean):MContent ={ 	this.contentUGC = p; 	this }
+	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
 
 	/**
 	 * save the view count information. The total number of views set for the content
@@ -158,7 +158,7 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """save the view count information. The total number of views set for the content""")
 	@BeanProperty 
 	var viewCounter: MViewDetail =_
-	def withviewCounter(p:MViewDetail):MContent ={ 	this.viewCounter = p; 	this }
+	def withviewCounter(p:MViewDetail):this.type ={ 	this.viewCounter = p; 	this }
 
 	/**
 	 * save the rating counter information. The total number of votes for the content
@@ -166,7 +166,7 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """save the rating counter information. The total number of votes for the content""")
 	@BeanProperty 
 	var ratingCounter: Long =_
-	def withratingCounter(p:Long):MContent ={ 	this.ratingCounter = p; 	this }
+	def withratingCounter(p:Long):this.type ={ 	this.ratingCounter = p; 	this }
 
 	/**
 	 * The total number of comments  for the content
@@ -174,7 +174,7 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The total number of comments  for the content""")
 	@BeanProperty 
 	var commentsCounter: Long =_
-	def withcommentsCounter(p:Long):MContent ={ 	this.commentsCounter = p; 	this }
+	def withcommentsCounter(p:Long):this.type ={ 	this.commentsCounter = p; 	this }
 
 	/**
 	 * The total number of approved comments  for the content
@@ -182,7 +182,7 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The total number of approved comments  for the content""")
 	@BeanProperty 
 	var commentsApprovedCounter: Long =_
-	def withcommentsApprovedCounter(p:Long):MContent ={ 	this.commentsApprovedCounter = p; 	this }
+	def withcommentsApprovedCounter(p:Long):this.type ={ 	this.commentsApprovedCounter = p; 	this }
 
 	/**
 	 * the last metadata update date for the current content. Used to know content
@@ -191,7 +191,7 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the last metadata update date for the current content. Used to know content recently updated.""")
 	@BeanProperty 
 	var lastUpdate: Date =_
-	def withlastUpdate(p:Date):MContent ={ 	this.lastUpdate = p; 	this }
+	def withlastUpdate(p:Date):this.type ={ 	this.lastUpdate = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -201,7 +201,7 @@ class MContent extends Serializable {
 	//#SWGNL#date time when the content becomes inactive""")
 	@BeanProperty 
 	var inactiveDate: Date =_
-	def withinactiveDate(p:Date):MContent ={ 	this.inactiveDate = p; 	this }
+	def withinactiveDate(p:Date):this.type ={ 	this.inactiveDate = p; 	this }
 
 	/**
 	 * used for custom lexicographical order of contents. The field in used in
@@ -211,64 +211,11 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """used for custom lexicographical order of contents. The field in used in JContent.findByProperties (MEContentOrderBy.sortingField_A/D) to sort the result set.""")
 	@BeanProperty 
 	var sortingField: String =_
-	def withsortingField(p:String):MContent ={ 	this.sortingField = p; 	this }
+	def withsortingField(p:String):this.type ={ 	this.sortingField = p; 	this }
 
 	@BeanProperty 
 	var version: Long =_
-	def withversion(p:Long):MContent ={ 	this.version = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var weebo: MWeeboProvider =_
-	  def withweebo(p:MWeeboProvider):MContent ={ 	this.weebo = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var tags: List[MTag] = new ArrayList[MTag]
-	  def withtags(p:List[MTag]):MContent ={ 	this.tags = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var providers: List[MGenericProvider] = new ArrayList[MGenericProvider]
-	  def withproviders(p:List[MGenericProvider]):MContent ={ 	this.providers = p; 	this }
-
-	/**
-	 * the list of custom player parameters
-	 */
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """the list of custom player parameters""")
-	var embedCodes: List[MPlayerEmbedCode] = new ArrayList[MPlayerEmbedCode]
-	  def withembedCodes(p:List[MPlayerEmbedCode]):MContent ={ 	this.embedCodes = p; 	this }
-
-	/**
-	 * list of the multilocale data of the content
-	 */
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """list of the multilocale data of the content""")
-	var locales: List[MContent4Locale] = new ArrayList[MContent4Locale]
-	  def withlocales(p:List[MContent4Locale]):MContent ={ 	this.locales = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var imetadata: List[MIMetadata] = new ArrayList[MIMetadata]
-	  def withimetadata(p:List[MIMetadata]):MContent ={ 	this.imetadata = p; 	this }
-
-	/**
-	 * The linkedContents collection is used to store the connection between two
-	 * contents. the linkedContents is particularly used to record:
-	 * 1) the list of contents belongs to a playlist
-	 * 2) the list of contents recommended by a user
-	 * 3) the list of downloadable content specified by a user.
-	 */
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """The linkedContents collection is used to store the connection between two contents. the linkedContents is particularly used to record://#SWGNL#1) the list of contents belongs to a playlist//#SWGNL#2) the list of contents recommended by a user//#SWGNL#3) the list of downloadable content specified by a user.""")
-	var linkedContents: List[MContent] = new ArrayList[MContent]
-	  def withlinkedContents(p:List[MContent]):MContent ={ 	this.linkedContents = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var itags: List[MITag] = new ArrayList[MITag]
-	  def withitags(p:List[MITag]):MContent ={ 	this.itags = p; 	this }
+	def withversion(p:Long):this.type ={ 	this.version = p; 	this }
 
 	/**
 	 * The metadata's collection can be used to add custom information to any contents.
@@ -280,14 +227,76 @@ class MContent extends Serializable {
 	 * the content. In the admin console the user can decide to show or not the
 	 * recommended, similar or downloadable contents (NONE,SIMILAR,RECOMMENDED are the
 	 * possible values)
-	 * 3) _<SOLUTION><KEY>_ -> naming convention for custom metadata used by 4me
-	 * Solutions/Apps to store special custom metadata.
+	 * 3) _<SOLUTION><KEY>_ -> naming convention for custom metadata used by
+	 * Platform/Apps to store special custom metadata.
 	 * 
 	 */
 	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """The metadata's collection can be used to add custom information to any contents. The collection is used also to store some special information and for this reason the platform use some special metadata.name keywords://#SWGNL#1) _PLAYLISTTEMPLATE_  -> used with playlist contents to know the type of playlist (VIDEO/IMAGE/AUDIO..)//#SWGNL#2) _CONTENTVIEWPREFERENCES_ -> used to store the visualisation preference of the content. In the admin console the user can decide to show or not the recommended, similar or downloadable contents (NONE,SIMILAR,RECOMMENDED are the possible values)//#SWGNL#3) _<SOLUTION><KEY>_ -> naming convention for custom metadata used by 4me Solutions/Apps to store special custom metadata.//#SWGNL#""")
+	//#SWG#@ApiModelProperty(value = """The metadata's collection can be used to add custom information to any contents. The collection is used also to store some special information and for this reason the platform use some special metadata.name keywords://#SWGNL#1) _PLAYLISTTEMPLATE_  -> used with playlist contents to know the type of playlist (VIDEO/IMAGE/AUDIO..)//#SWGNL#2) _CONTENTVIEWPREFERENCES_ -> used to store the visualisation preference of the content. In the admin console the user can decide to show or not the recommended, similar or downloadable contents (NONE,SIMILAR,RECOMMENDED are the possible values)//#SWGNL#3) _<SOLUTION><KEY>_ -> naming convention for custom metadata used by Platform/Apps to store special custom metadata.//#SWGNL#""")
 	var metadatas: List[MMetadata] = new ArrayList[MMetadata]
-	  def withmetadatas(p:List[MMetadata]):MContent ={ 	this.metadatas = p; 	this }
+	  def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
+
+	/**
+	 * imetadata are now returned in the response if the token used to perform the
+	 * request is related to a user with the proper permission to see the
+	 * classifications and itags
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """imetadata are now returned in the response if the token used to perform the request is related to a user with the proper permission to see the classifications and itags""")
+	var imetadata: List[MIMetadata] = new ArrayList[MIMetadata]
+	  def withimetadata(p:List[MIMetadata]):this.type ={ 	this.imetadata = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var providers: List[MGenericProvider] = new ArrayList[MGenericProvider]
+	  def withproviders(p:List[MGenericProvider]):this.type ={ 	this.providers = p; 	this }
+
+	/**
+	 * the list of custom player parameters
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """the list of custom player parameters""")
+	var embedCodes: List[MPlayerEmbedCode] = new ArrayList[MPlayerEmbedCode]
+	  def withembedCodes(p:List[MPlayerEmbedCode]):this.type ={ 	this.embedCodes = p; 	this }
+
+	/**
+	 * name and description values for the content in multilocale
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """name and description values for the content in multilocale""")
+	var locales: List[MContent4Locale] = new ArrayList[MContent4Locale]
+	  def withlocales(p:List[MContent4Locale]):this.type ={ 	this.locales = p; 	this }
+
+	/**
+	 * itags are now returned in the response if the token used to perform the request
+	 * is related to a user with the proper permission to see the classifications.
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """itags are now returned in the response if the token used to perform the request is related to a user with the proper permission to see the classifications.""")
+	var itags: List[MITag] = new ArrayList[MITag]
+	  def withitags(p:List[MITag]):this.type ={ 	this.itags = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var weebo: MWeeboProvider =_
+	  def withweebo(p:MWeeboProvider):this.type ={ 	this.weebo = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var tags: List[MTag] = new ArrayList[MTag]
+	  def withtags(p:List[MTag]):this.type ={ 	this.tags = p; 	this }
+
+	/**
+	 * The linkedContents collection is used to store the connection between two
+	 * contents. the linkedContents is particularly used to record:
+	 * 1) the list of contents belongs to a playlist
+	 * 2) the list of contents recommended by a user
+	 * 3) the list of downloadable content specified by a user.
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """The linkedContents collection is used to store the connection between two contents. the linkedContents is particularly used to record://#SWGNL#1) the list of contents belongs to a playlist//#SWGNL#2) the list of contents recommended by a user//#SWGNL#3) the list of downloadable content specified by a user.""")
+	var linkedContents: List[MContent] = new ArrayList[MContent]
+	  def withlinkedContents(p:List[MContent]):this.type ={ 	this.linkedContents = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -117,7 +117,7 @@ class MAclCriteria extends Serializable {
 	//#SWGNL#By default the service looks in contexts DIRECT and DERIVED.""")
 	@BeanProperty 
 	var onContext: MEAclContextCriteria =_
-	def withonContext(p:MEAclContextCriteria):MAclCriteria ={ 	this.onContext = p; 	this }
+	def withonContext(p:MEAclContextCriteria):this.type ={ 	this.onContext = p; 	this }
 
 	/**
 	 * filter all elements having all of the specified rules applied to the user or to
@@ -179,7 +179,7 @@ class MAclCriteria extends Serializable {
 	//#SWGNL#	"rules": ["MODIFIED_BY","SHARED_BY","!_BELONGS_TO"]""")
 	@BeanProperty 
 	var rules: List[String] = new ArrayList[String]
-	def withrules(p:List[String]):MAclCriteria ={ 	this.rules = p; 	this }
+	def withrules(p:List[String]):this.type ={ 	this.rules = p; 	this }
 
 	/**
 	 * @return Boolean

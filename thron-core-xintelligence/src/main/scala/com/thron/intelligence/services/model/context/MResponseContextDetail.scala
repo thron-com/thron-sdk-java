@@ -18,6 +18,6 @@ class MResponseContextDetail extends MResponseContext with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var item: MContext =_
-	def withitem(p:MContext):MResponseContextDetail ={ 	this.item = p; 	this }
+	def withitem(p:MContext):this.type ={ 	this.item = p; 	this }
 
 }

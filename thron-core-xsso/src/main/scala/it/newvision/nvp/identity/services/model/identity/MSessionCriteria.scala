@@ -17,16 +17,16 @@ class MSessionCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var clientIds: List[String] = new ArrayList[String]
-	def withclientIds(p:List[String]):MSessionCriteria ={ 	this.clientIds = p; 	this }
+	def withclientIds(p:List[String]):this.type ={ 	this.clientIds = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var onlySuperSessions: Boolean  = false
-	def withonlySuperSessions(p:Boolean):MSessionCriteria ={ 	this.onlySuperSessions = p; 	this }
+	def withonlySuperSessions(p:Boolean):this.type ={ 	this.onlySuperSessions = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var tokenIds: List[String] = new ArrayList[String]
-	def withtokenIds(p:List[String]):MSessionCriteria ={ 	this.tokenIds = p; 	this }
+	def withtokenIds(p:List[String]):this.type ={ 	this.tokenIds = p; 	this }
 
 }

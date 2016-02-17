@@ -20,7 +20,7 @@ class MPublishingProfile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var audio: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
-	def withaudio(p:List[MPublishingProfileDetail]):MPublishingProfile ={ 	this.audio = p; 	this }
+	def withaudio(p:List[MPublishingProfileDetail]):this.type ={ 	this.audio = p; 	this }
 
 	/**
 	 * video document
@@ -28,7 +28,7 @@ class MPublishingProfile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """video document""")
 	@BeanProperty 
 	var stream: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
-	def withstream(p:List[MPublishingProfileDetail]):MPublishingProfile ={ 	this.stream = p; 	this }
+	def withstream(p:List[MPublishingProfileDetail]):this.type ={ 	this.stream = p; 	this }
 
 	/**
 	 * like 
@@ -36,7 +36,7 @@ class MPublishingProfile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var image: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
-	def withimage(p:List[MPublishingProfileDetail]):MPublishingProfile ={ 	this.image = p; 	this }
+	def withimage(p:List[MPublishingProfileDetail]):this.type ={ 	this.image = p; 	this }
 
 	/**
 	 * generic document
@@ -44,7 +44,7 @@ class MPublishingProfile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """generic document""")
 	@BeanProperty 
 	var genericDocument: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
-	def withgenericDocument(p:List[MPublishingProfileDetail]):MPublishingProfile ={ 	this.genericDocument = p; 	this }
+	def withgenericDocument(p:List[MPublishingProfileDetail]):this.type ={ 	this.genericDocument = p; 	this }
 
 	/**
 	 * 4me document
@@ -52,7 +52,7 @@ class MPublishingProfile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """4me document""")
 	@BeanProperty 
 	var ndoc: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
-	def withndoc(p:List[MPublishingProfileDetail]):MPublishingProfile ={ 	this.ndoc = p; 	this }
+	def withndoc(p:List[MPublishingProfileDetail]):this.type ={ 	this.ndoc = p; 	this }
 
 	/**
 	 * pagelet document
@@ -60,7 +60,7 @@ class MPublishingProfile extends Serializable {
 	//#SWG#@ApiModelProperty(value = """pagelet document""")
 	@BeanProperty 
 	var pagelet: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
-	def withpagelet(p:List[MPublishingProfileDetail]):MPublishingProfile ={ 	this.pagelet = p; 	this }
+	def withpagelet(p:List[MPublishingProfileDetail]):this.type ={ 	this.pagelet = p; 	this }
 
 	/**
 	 * @return void

@@ -21,6 +21,6 @@ class MResponseGetPublishedContents extends MResponsePublisher with Serializable
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contents: List[MContent] = new ArrayList[MContent]
-	def withcontents(p:List[MContent]):MResponseGetPublishedContents ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MContent]):this.type ={ 	this.contents = p; 	this }
 
 }

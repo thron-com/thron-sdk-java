@@ -22,17 +22,17 @@ class MRatingfindRatingByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var credential: MCredential =_
-	def withcredential(p:MCredential):MRatingfindRatingByPropertiesReq ={ 	this.credential = p; 	this }
+	def withcredential(p:MCredential):this.type ={ 	this.credential = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MRatingfindRatingByPropertiesReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MRatingCriteria =_
-	def withcriteria(p:MRatingCriteria):MRatingfindRatingByPropertiesReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MRatingCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
 	 * Optional. For Acl validation
@@ -40,12 +40,12 @@ class MRatingfindRatingByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
 	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):MRatingfindRatingByPropertiesReq ={ 	this.categoryIdForAcl = p; 	this }
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MRatingfindRatingByPropertiesReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Default and maximum value is 50 items
@@ -53,6 +53,6 @@ class MRatingfindRatingByPropertiesReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Default and maximum value is 50 items""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):MRatingfindRatingByPropertiesReq ={ 	this.numberOfResult = p; 	this }
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

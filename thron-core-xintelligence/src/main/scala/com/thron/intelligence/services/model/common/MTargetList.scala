@@ -20,6 +20,6 @@ class MTargetList extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var targets: List[MTarget] = new ArrayList[MTarget]
-	def withtargets(p:List[MTarget]):MTargetList ={ 	this.targets = p; 	this }
+	def withtargets(p:List[MTarget]):this.type ={ 	this.targets = p; 	this }
 
 }

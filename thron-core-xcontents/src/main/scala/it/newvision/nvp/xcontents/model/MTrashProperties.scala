@@ -22,6 +22,6 @@ class MTrashProperties extends Serializable {
 	//#SWGNL#0 or null means no scheduled service.""" ,required = true)
 	@BeanProperty 
 	var removeContentsOlderThan: Integer  = 0
-	def withremoveContentsOlderThan(p:Integer):MTrashProperties ={ 	this.removeContentsOlderThan = p; 	this }
+	def withremoveContentsOlderThan(p:Integer):this.type ={ 	this.removeContentsOlderThan = p; 	this }
 
 }

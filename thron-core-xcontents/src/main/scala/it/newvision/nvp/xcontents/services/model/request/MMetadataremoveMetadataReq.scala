@@ -21,12 +21,12 @@ class MMetadataremoveMetadataReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
-	def withclientId(p:String):MMetadataremoveMetadataReq ={ 	this.clientId = p; 	this }
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
-	def withcontentId(p:String):MMetadataremoveMetadataReq ={ 	this.contentId = p; 	this }
+	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
 
 	/**
 	 * only name and locale (both optional) are considered
@@ -34,6 +34,6 @@ class MMetadataremoveMetadataReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """only name and locale (both optional) are considered""", required = true)
 	@BeanProperty
 	var metadata: MMetadata =_
-	def withmetadata(p:MMetadata):MMetadataremoveMetadataReq ={ 	this.metadata = p; 	this }
+	def withmetadata(p:MMetadata):this.type ={ 	this.metadata = p; 	this }
 
 }

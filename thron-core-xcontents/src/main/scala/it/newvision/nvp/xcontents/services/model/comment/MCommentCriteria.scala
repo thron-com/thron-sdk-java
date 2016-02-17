@@ -26,17 +26,17 @@ class MCommentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var keyword: String =_
-	def withkeyword(p:String):MCommentCriteria ={ 	this.keyword = p; 	this }
+	def withkeyword(p:String):this.type ={ 	this.keyword = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var status: String =_
-	def withstatus(p:String):MCommentCriteria ={ 	this.status = p; 	this }
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userId: String =_
-	def withuserId(p:String):MCommentCriteria ={ 	this.userId = p; 	this }
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * list of comments Id
@@ -44,6 +44,6 @@ class MCommentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """list of comments Id""")
 	@BeanProperty 
 	var commentIds: List[String] = new ArrayList[String]
-	def withcommentIds(p:List[String]):MCommentCriteria ={ 	this.commentIds = p; 	this }
+	def withcommentIds(p:List[String]):this.type ={ 	this.commentIds = p; 	this }
 
 }

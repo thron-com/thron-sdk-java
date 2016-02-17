@@ -23,7 +23,7 @@ class MMetadataDefinitionTemporalInstantOption extends MMetadataDefinitionOption
 	//#SWG#@ApiModelProperty(value = """Used as layout directive, not for validation""")
 	@BeanProperty 
 	var dateFormat: String =_
-	def withdateFormat(p:String):MMetadataDefinitionTemporalInstantOption ={ 	this.dateFormat = p; 	this }
+	def withdateFormat(p:String):this.type ={ 	this.dateFormat = p; 	this }
 
 	/**
 	 * Used as layout directive, not for validation
@@ -31,7 +31,7 @@ class MMetadataDefinitionTemporalInstantOption extends MMetadataDefinitionOption
 	//#SWG#@ApiModelProperty(value = """Used as layout directive, not for validation""")
 	@BeanProperty 
 	var defaultValue: Date =_
-	def withdefaultValue(p:Date):MMetadataDefinitionTemporalInstantOption ={ 	this.defaultValue = p; 	this }
+	def withdefaultValue(p:Date):this.type ={ 	this.defaultValue = p; 	this }
 
 	/**
 	 * @return Boolean

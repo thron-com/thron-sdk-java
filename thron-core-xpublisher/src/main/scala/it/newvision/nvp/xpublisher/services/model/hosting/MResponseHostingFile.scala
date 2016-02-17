@@ -17,6 +17,6 @@ class MResponseHostingFile extends MResponseHosting with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var file: MResourceFile =_
-	def withfile(p:MResourceFile):MResponseHostingFile ={ 	this.file = p; 	this }
+	def withfile(p:MResourceFile):this.type ={ 	this.file = p; 	this }
 
 }

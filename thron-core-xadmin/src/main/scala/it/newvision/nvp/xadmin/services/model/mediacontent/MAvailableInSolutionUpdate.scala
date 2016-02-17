@@ -17,6 +17,6 @@ class MAvailableInSolutionUpdate extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var availableInSolutions: List[String] = new ArrayList[String]
-	def withavailableInSolutions(p:List[String]):MAvailableInSolutionUpdate ={ 	this.availableInSolutions = p; 	this }
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
 
 }

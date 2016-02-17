@@ -25,7 +25,7 @@ class MAlternativeValue extends MLocalization with Serializable  {
 	//#SWG#@ApiModelProperty(value = """Metadata Value, as keyword""" ,required = true)
 	@BeanProperty 
 	var value: String =_
-	def withvalue(p:String):MAlternativeValue ={ 	this.value = p; 	this }
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * used to identify the default value in the list
@@ -33,7 +33,7 @@ class MAlternativeValue extends MLocalization with Serializable  {
 	//#SWG#@ApiModelProperty(value = """used to identify the default value in the list""" ,required = true)
 	@BeanProperty 
 	var selected: Boolean  = false
-	def withselected(p:Boolean):MAlternativeValue ={ 	this.selected = p; 	this }
+	def withselected(p:Boolean):this.type ={ 	this.selected = p; 	this }
 
 	/**
 	 * @return Boolean

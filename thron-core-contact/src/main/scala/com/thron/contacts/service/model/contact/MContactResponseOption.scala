@@ -20,7 +20,7 @@ class MContactResponseOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """return list of itags for each contact""" ,required = true)
 	@BeanProperty 
 	var itags: Boolean  = false
-	def withitags(p:Boolean):MContactResponseOption ={ 	this.itags = p; 	this }
+	def withitags(p:Boolean):this.type ={ 	this.itags = p; 	this }
 
 	/**
 	 * return the key information for each contact
@@ -28,11 +28,11 @@ class MContactResponseOption extends Serializable {
 	//#SWG#@ApiModelProperty(value = """return the key information for each contact""" ,required = true)
 	@BeanProperty 
 	var keys: Boolean  = false
-	def withkeys(p:Boolean):MContactResponseOption ={ 	this.keys = p; 	this }
+	def withkeys(p:Boolean):this.type ={ 	this.keys = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var oldIds: Boolean  = false
-	def witholdIds(p:Boolean):MContactResponseOption ={ 	this.oldIds = p; 	this }
+	def witholdIds(p:Boolean):this.type ={ 	this.oldIds = p; 	this }
 
 }

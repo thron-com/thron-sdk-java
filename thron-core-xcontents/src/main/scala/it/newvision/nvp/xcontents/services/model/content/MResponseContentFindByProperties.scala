@@ -17,7 +17,7 @@ class MResponseContentFindByProperties extends MResponseContent with Serializabl
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var contents: List[MContentResult] = new ArrayList[MContentResult]
-	def withcontents(p:List[MContentResult]):MResponseContentFindByProperties ={ 	this.contents = p; 	this }
+	def withcontents(p:List[MContentResult]):this.type ={ 	this.contents = p; 	this }
 
 	/**
 	 * total number of results
@@ -25,6 +25,6 @@ class MResponseContentFindByProperties extends MResponseContent with Serializabl
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
-	def withtotalResults(p:Integer):MResponseContentFindByProperties ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

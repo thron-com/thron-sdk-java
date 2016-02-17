@@ -56,7 +56,7 @@ class MIdentityKey extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var key: String =_
-	def withkey(p:String):MIdentityKey ={ 	this.key = p; 	this }
+	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
 	/**
 	 * the id for the given key
@@ -86,7 +86,7 @@ class MIdentityKey extends Serializable {
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var value: String =_
-	def withvalue(p:String):MIdentityKey ={ 	this.value = p; 	this }
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * @return Boolean

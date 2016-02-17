@@ -21,6 +21,6 @@ class MContextValue extends Serializable {
 	//#SWG#@ApiModelProperty(value = """label and description values for the classification in multilocale""")
 	@BeanProperty 
 	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):MContextValue ={ 	this.names = p; 	this }
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 }

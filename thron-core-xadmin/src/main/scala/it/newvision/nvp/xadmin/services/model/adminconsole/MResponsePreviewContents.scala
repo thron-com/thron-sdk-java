@@ -17,6 +17,6 @@ class MResponsePreviewContents extends MResponsePreview with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var detail: List[MContentByChannelPreview] = new ArrayList[MContentByChannelPreview]
-	def withdetail(p:List[MContentByChannelPreview]):MResponsePreviewContents ={ 	this.detail = p; 	this }
+	def withdetail(p:List[MContentByChannelPreview]):this.type ={ 	this.detail = p; 	this }
 
 }

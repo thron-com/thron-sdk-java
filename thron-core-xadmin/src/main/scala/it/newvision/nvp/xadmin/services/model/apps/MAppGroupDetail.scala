@@ -20,16 +20,16 @@ class MAppGroupDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var groupId: String =_
-	def withgroupId(p:String):MAppGroupDetail ={ 	this.groupId = p; 	this }
+	def withgroupId(p:String):this.type ={ 	this.groupId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var groupName: String =_
-	def withgroupName(p:String):MAppGroupDetail ={ 	this.groupName = p; 	this }
+	def withgroupName(p:String):this.type ={ 	this.groupName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var groupCaps: MAppCapabilities =_
-	def withgroupCaps(p:MAppCapabilities):MAppGroupDetail ={ 	this.groupCaps = p; 	this }
+	def withgroupCaps(p:MAppCapabilities):this.type ={ 	this.groupCaps = p; 	this }
 
 }

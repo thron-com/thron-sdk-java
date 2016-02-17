@@ -17,7 +17,7 @@ class MResponseContactList extends MResponseContact with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var items: List[MContactDetail] = new ArrayList[MContactDetail]
-	def withitems(p:List[MContactDetail]):MResponseContactList ={ 	this.items = p; 	this }
+	def withitems(p:List[MContactDetail]):this.type ={ 	this.items = p; 	this }
 
 	/**
 	 * Used to indicate if there are other results in the result set.
@@ -29,6 +29,6 @@ class MResponseContactList extends MResponseContact with Serializable  {
 	//#SWGNL#Increment the offset parameter to get more values.""")
 	@BeanProperty 
 	var otherResults: Boolean =_
-	def withotherResults(p:Boolean):MResponseContactList ={ 	this.otherResults = p; 	this }
+	def withotherResults(p:Boolean):this.type ={ 	this.otherResults = p; 	this }
 
 }

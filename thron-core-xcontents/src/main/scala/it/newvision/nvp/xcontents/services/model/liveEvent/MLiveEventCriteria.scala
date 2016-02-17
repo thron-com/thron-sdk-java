@@ -23,12 +23,12 @@ class MLiveEventCriteria extends MContentCriteria with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lowerBoundDate: Date =_
-	def withlowerBoundDate(p:Date):MLiveEventCriteria ={ 	this.lowerBoundDate = p; 	this }
+	def withlowerBoundDate(p:Date):this.type ={ 	this.lowerBoundDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var upperBoundDate: Date =_
-	def withupperBoundDate(p:Date):MLiveEventCriteria ={ 	this.upperBoundDate = p; 	this }
+	def withupperBoundDate(p:Date):this.type ={ 	this.upperBoundDate = p; 	this }
 
 	/**
 	 * used to distinguish h24 live events by the spot events.
@@ -36,7 +36,7 @@ class MLiveEventCriteria extends MContentCriteria with Serializable  {
 	//#SWG#@ApiModelProperty(value = """used to distinguish h24 live events by the spot events.""")
 	@BeanProperty 
 	var neverEndingLiveEvent: Boolean =_
-	def withneverEndingLiveEvent(p:Boolean):MLiveEventCriteria ={ 	this.neverEndingLiveEvent = p; 	this }
+	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
 
 	/**
 	 * the current status of the event
@@ -44,6 +44,6 @@ class MLiveEventCriteria extends MContentCriteria with Serializable  {
 	//#SWG#@ApiModelProperty(value = """the current status of the event""")
 	@BeanProperty 
 	var eventStatus: MELiveEventStatus =_
-	def witheventStatus(p:MELiveEventStatus):MLiveEventCriteria ={ 	this.eventStatus = p; 	this }
+	def witheventStatus(p:MELiveEventStatus):this.type ={ 	this.eventStatus = p; 	this }
 
 }

@@ -20,11 +20,11 @@ class MResponseContactListKey extends MResponseContact with Serializable  {
 	//#SWG#@ApiModelProperty(value = """key values""")
 	@BeanProperty 
 	var items: List[String] = new ArrayList[String]
-	def withitems(p:List[String]):MResponseContactListKey ={ 	this.items = p; 	this }
+	def withitems(p:List[String]):this.type ={ 	this.items = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseContactListKey ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

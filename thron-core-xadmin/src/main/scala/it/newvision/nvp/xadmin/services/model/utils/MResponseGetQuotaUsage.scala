@@ -17,11 +17,11 @@ class MResponseGetQuotaUsage extends MResponseDashboard with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var users: List[MUserQuota] = new ArrayList[MUserQuota]
-	def withusers(p:List[MUserQuota]):MResponseGetQuotaUsage ={ 	this.users = p; 	this }
+	def withusers(p:List[MUserQuota]):this.type ={ 	this.users = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
-	def withtotalResults(p:Integer):MResponseGetQuotaUsage ={ 	this.totalResults = p; 	this }
+	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
 
 }

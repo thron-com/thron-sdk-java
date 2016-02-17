@@ -24,12 +24,12 @@ class MContactlistKeyReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """filter keys by name""", required = true)
 	@BeanProperty
 	var criteria: MKeyCriteria =_
-	def withcriteria(p:MKeyCriteria):MContactlistKeyReq ={ 	this.criteria = p; 	this }
+	def withcriteria(p:MKeyCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var offset: Integer =_
-	def withoffset(p:Integer):MContactlistKeyReq ={ 	this.offset = p; 	this }
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Max and default value is 50
@@ -37,6 +37,6 @@ class MContactlistKeyReq extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Max and default value is 50""", required = true)
 	@BeanProperty
 	var limit: Integer =_
-	def withlimit(p:Integer):MContactlistKeyReq ={ 	this.limit = p; 	this }
+	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
 
 }

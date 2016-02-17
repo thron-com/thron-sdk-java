@@ -18,6 +18,6 @@ class MResponseEngineDetail extends MResponseEngine with Serializable  {
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var item: MIEngine =_
-	def withitem(p:MIEngine):MResponseEngineDetail ={ 	this.item = p; 	this }
+	def withitem(p:MIEngine):this.type ={ 	this.item = p; 	this }
 
 }
