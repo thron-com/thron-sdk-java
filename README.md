@@ -83,7 +83,7 @@ This component manages the content publication process, thanks to its interactio
     <dependency>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-core-xadmin_2.11</artifactId>
-        <version>5.0.4</version>
+        <version>5.0.5</version>
     </dependency>
 </dependencies>
 ```
@@ -107,7 +107,7 @@ This component manages the content intelligence tools, allowing the user to defi
 ```
 #####Sbt
 ```scala
-libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xintelligence_2.11"    % "5.0.4")
+libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xintelligence_2.11"    % "5.0.5")
 ```
 
 
