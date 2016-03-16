@@ -181,6 +181,11 @@ class MVUser extends Serializable {
 	var credential: MCredentialFull =_
 	  def withcredential(p:MCredentialFull):this.type ={ 	this.credential = p; 	this }
 
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var metadata: List[MMetadata] = new ArrayList[MMetadata]
+	  def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
+
 	/**
 	 * the user detail class, where are saved all informations about the user.
 	 */
@@ -188,11 +193,6 @@ class MVUser extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the user detail class, where are saved all informations about the user.""")
 	var detail: MVUserDetail =_
 	  def withdetail(p:MVUserDetail):this.type ={ 	this.detail = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var metadata: List[MMetadata] = new ArrayList[MMetadata]
-	  def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 	/**
 	 * @return String

@@ -35,6 +35,11 @@ class JTagClient(val resourceEndpoint:String) {
 	/**
 	 * Add a new tag to the specified content. If the tag is already present in the content, it will be
 	 * ignored
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MTagaddTagReq
 	 * @return MResponseTag
@@ -80,6 +85,11 @@ class JTagClient(val resourceEndpoint:String) {
 
 	/**
 	 * Remove a tag to the specified content.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String

@@ -8,7 +8,6 @@ import it.newvision.nvp.xcontents.services.model.client.MResponseUpdateClient
 import it.newvision.nvp.xcontents.services.model.request.MClientupdateAuditDurationDaysReq
 import it.newvision.nvp.xcontents.services.model.request.MClientupdateSecureConnectionEnabledReq
 import it.newvision.nvp.xcontents.services.model.request.MClientupdateTrashPropertiesReq
-import it.newvision.nvp.xcontents.services.model.request.MClientupdateClientReq
 import it.newvision.nvp.xcontents.services.model.client.MResponseDetailClient
 
 /* ************************
@@ -145,53 +144,6 @@ class JClientClient(val resourceEndpoint:String) {
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
 					.path("client/updateTrashProperties")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseUpdateClient],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseUpdateClient])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * DEPRECATED.
-	 * update all client properties.
-	 * @param tokenId : String
-	 * @param param : MClientupdateClientReq
-	 * @return MResponseUpdateClient
-	*/
-	@Deprecated
-	def updateClient(tokenId: String, 
-			param: MClientupdateClientReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUpdateClient ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JClientClient.client.resource(this.resourceEndpoint)
-			val response : MResponseUpdateClient = if(this.resourceEndpoint == ""){
-			
-				new MResponseUpdateClient()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("client/updateClient")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)

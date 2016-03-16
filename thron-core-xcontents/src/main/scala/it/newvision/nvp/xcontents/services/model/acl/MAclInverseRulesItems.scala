@@ -14,9 +14,28 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MAclInverseRulesItems extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Constraints:
+	 * <ul>
+	 * 	<li>maximum 50 items</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """Constraints:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>maximum 50 items</li>
+	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var items: List[MAclInverseRulesItem2] = new ArrayList[MAclInverseRulesItem2]
 	def withitems(p:List[MAclInverseRulesItem2]):this.type ={ 	this.items = p; 	this }
+
+	/**
+	 * @return Boolean
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def isValid():Boolean ={
+		import collection.JavaConversions._
+		Option(items).exists(l => l.nonEmpty && l.length <= 50)
+	}
 
 }

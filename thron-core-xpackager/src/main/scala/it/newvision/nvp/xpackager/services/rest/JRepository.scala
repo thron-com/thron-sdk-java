@@ -11,7 +11,6 @@ import it.newvision.nvp.xpackager.services.model.request.MRepositoryaddWebResour
 import it.newvision.nvp.xpackager.services.model.repository.MResponseUploadFile
 import it.newvision.nvp.xpackager.services.model.repository.MResponseDeleteUploadedFiles
 import it.newvision.nvp.xpackager.services.model.request.MRepositorydeleteFtpFileReq
-import it.newvision.nvp.xpackager.services.model.request.MRepositorydeleteUploadedFileReq
 import it.newvision.nvp.xpackager.services.model.repository.MResponseGetUploadedFiles
 import it.newvision.nvp.xpackager.services.model.request.MRepositorygetUploadedFileListReq
 import it.newvision.nvp.xpackager.services.model.request.MRepositorygetFtpFileListReq
@@ -328,63 +327,6 @@ trait JRepository extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 	 protected def __deleteFtpFile(tokenId: String, param: MRepositorydeleteFtpFileReq) :MResponseDeleteUploadedFiles
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_deleteFtpFile: String
-
-	/**
-	 * Deprecated. Only for 3x version
-	 * Delete the selected file from the working area
-	 * @param tokenId : String
-	 * @param param : MRepositorydeleteUploadedFileReq
-	 * @return MResponseDeleteUploadedFiles
-	*/
-	@POST
-	@Path("/deleteUploadedFile")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/deleteUploadedFile", notes = """Deprecated. Only for 3x version
-	//#SWGNL#Delete the selected file from the working area""", response = classOf[MResponseDeleteUploadedFiles])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def deleteUploadedFile(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MRepositorydeleteUploadedFileReq):Response /*returnType = MResponseDeleteUploadedFiles*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__deleteUploadedFile(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_deleteUploadedFile)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_deleteUploadedFile)
-	    }
-	} 
-
-	@GET
-	@Path("/deleteUploadedFile")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def deleteUploadedFile_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseDeleteUploadedFiles*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__deleteUploadedFile(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MRepositorydeleteUploadedFileReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_deleteUploadedFile)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_deleteUploadedFile)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __deleteUploadedFile(tokenId: String, param: MRepositorydeleteUploadedFileReq) :MResponseDeleteUploadedFiles
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_deleteUploadedFile: String
 
 	/**
 	 * Return the list of all uploaded Files from the Working Area, using specific search criteria. The

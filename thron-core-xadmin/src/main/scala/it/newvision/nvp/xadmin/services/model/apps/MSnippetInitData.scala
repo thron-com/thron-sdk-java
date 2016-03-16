@@ -16,6 +16,7 @@ import it.newvision.nvp.xadmin.model.MMetadata
 @XmlRootElement(name="MSnippetInitData") 
 @XmlType(name="MSnippetInitData")
 //#SWG#@ApiModel(description = """Snippet init class""")
+@Deprecated
 class MSnippetInitData extends Serializable {
 
 	/**

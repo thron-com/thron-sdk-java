@@ -11,7 +11,6 @@ import it.newvision.nvp.xpackager.services.model.request.MRepositoryaddWebResour
 import it.newvision.nvp.xpackager.services.model.repository.MResponseUploadFile
 import it.newvision.nvp.xpackager.services.model.repository.MResponseDeleteUploadedFiles
 import it.newvision.nvp.xpackager.services.model.request.MRepositorydeleteFtpFileReq
-import it.newvision.nvp.xpackager.services.model.request.MRepositorydeleteUploadedFileReq
 import it.newvision.nvp.xpackager.services.model.repository.MResponseGetUploadedFiles
 import it.newvision.nvp.xpackager.services.model.request.MRepositorygetUploadedFileListReq
 import it.newvision.nvp.xpackager.services.model.request.MRepositorygetFtpFileListReq
@@ -267,52 +266,6 @@ class JRepositoryClient(val resourceEndpoint:String) {
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
 					.path("repository/deleteFtpFile")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseDeleteUploadedFiles],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseDeleteUploadedFiles])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Deprecated. Only for 3x version
-	 * Delete the selected file from the working area
-	 * @param tokenId : String
-	 * @param param : MRepositorydeleteUploadedFileReq
-	 * @return MResponseDeleteUploadedFiles
-	*/
-	def deleteUploadedFile(tokenId: String, 
-			param: MRepositorydeleteUploadedFileReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeleteUploadedFiles ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JRepositoryClient.client.resource(this.resourceEndpoint)
-			val response : MResponseDeleteUploadedFiles = if(this.resourceEndpoint == ""){
-			
-				new MResponseDeleteUploadedFiles()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("repository/deleteUploadedFile")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)

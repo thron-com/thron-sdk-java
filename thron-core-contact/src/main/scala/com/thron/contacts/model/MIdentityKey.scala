@@ -63,24 +63,12 @@ class MIdentityKey extends Serializable {
 	 * 
 	 * Constraints:
 	 * <ul>
-	 * 	<li>can not contain §/$&#<>"?*:\|</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>can not contain spaces</li>
-	 * </ul>
-	 * <ul>
 	 * 	<li> max length = 100</li>
 	 * </ul>
 	 */
 	//#SWG#@ApiModelProperty(value = """the id for the given key
 	//#SWGNL#
 	//#SWGNL#Constraints:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>can not contain §/$&#<>"?*:\|</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>can not contain spaces</li>
-	//#SWGNL#</ul>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li> max length = 100</li>
 	//#SWGNL#</ul>""" ,required = true)
@@ -94,23 +82,21 @@ class MIdentityKey extends Serializable {
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def isValid():Boolean ={
+		import org.apache.commons.lang.StringUtils
+
 		Option(key).exists{k=> 
-			k.nonEmpty &&
+			StringUtils.isNotBlank(k) &&
 			// String length restriction
 			k.length<=50 &&
-			// MongoDB reserved chars, reserved placeholders for internal usage, Windows file name restrictions or URI-reserved chars		
+			// MongoDB reserved chars, reserved placeholders for internal usage, Windows file name restrictions or URI-reserved chars			
 			k.find(Seq('$','§','\\','/',':','*','?','"','<','>','|','#','&').contains).isEmpty &&
 			// No space allowed
 			k.matches("""[^\s]+""") 
 		} && 
 		Option(value).exists{v=>
-			v.nonEmpty &&
+			StringUtils.isNotBlank(v) &&
 			// String length restriction
-			v.length<=100 &&
-			// MongoDB reserved chars, reserved placeholders for internal usage, Windows file name restrictions or URI-reserved chars		
-			v.find(Seq('$','§','\\','/',':','*','?','"','<','>','|','#','&').contains).isEmpty &&
-			// No space allowed
-			v.matches("""[^\s]+""") 
+			v.length<=100
 		}
 	}
 
@@ -132,11 +118,6 @@ class MIdentityKey extends Serializable {
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def this(key: String, 
 			value: String){
-		//this()
-		//this.key = org.apache.commons.lang.
-		//StringUtils.lowerCase(key)
-		//this.value = value
-
 		this()
 		this.key = key
 		this.value = value

@@ -41,6 +41,7 @@ trait JDevice extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	/**
 	 * Connect a Device to a Contact with the given identityKey.
 	 * If there are no contacts matching the identityKey, a new contact is created.
+	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
 	 * @param param : MDeviceconnectReq
 	 * @return MResponseDeviceConnect
@@ -50,7 +51,8 @@ trait JDevice extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/connect", notes = """Connect a Device to a Contact with the given identityKey. 
-	//#SWGNL#If there are no contacts matching the identityKey, a new contact is created.""", response = classOf[MResponseDeviceConnect])
+	//#SWGNL#If there are no contacts matching the identityKey, a new contact is created.
+	//#SWGNL#Authentication token is not required (X-TOKENID).""", response = classOf[MResponseDeviceConnect])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def connect(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -99,6 +101,7 @@ trait JDevice extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * Called by a client to disconnect a device from a given contact. The service return the Contact
 	 * information identified in the platform.
 	 * If the device was connected to an IDENTIFIED Contact, an ANONYMOUS Contact will be created.
+	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
 	 * @param param : MDevicedisconnectReq
 	 * @return MResponseDeviceConnect
@@ -108,7 +111,8 @@ trait JDevice extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/disconnect", notes = """Called by a client to disconnect a device from a given contact. The service return the Contact information identified in the platform.
-	//#SWGNL#If the device was connected to an IDENTIFIED Contact, an ANONYMOUS Contact will be created.""", response = classOf[MResponseDeviceConnect])
+	//#SWGNL#If the device was connected to an IDENTIFIED Contact, an ANONYMOUS Contact will be created.
+	//#SWGNL#Authentication token is not required (X-TOKENID).""", response = classOf[MResponseDeviceConnect])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def disconnect(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -156,6 +160,7 @@ trait JDevice extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	/**
 	 * Called by a client to get a unique contact Id. The service returns the deviceId and the contactId
 	 * used by tracker.
+	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param deviceId : String
@@ -165,7 +170,8 @@ trait JDevice extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@GET
 	@Path("/get/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/get", notes = """Called by a client to get a unique contact Id. The service returns the deviceId and the contactId used by tracker.""", response = classOf[MResponseDeviceConnect])
+	//#SWG#@ApiOperation(value = "/get", notes = """Called by a client to get a unique contact Id. The service returns the deviceId and the contactId used by tracker.
+	//#SWGNL#Authentication token is not required (X-TOKENID).""", response = classOf[MResponseDeviceConnect])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def get(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

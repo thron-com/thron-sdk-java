@@ -19,7 +19,7 @@ class MPropertyThumbnail extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var quality: Integer  = 90
+	var quality: Integer  = 95
 	def withquality(p:Integer):this.type ={ 	this.quality = p; 	this }
 
 	/**

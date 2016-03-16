@@ -81,7 +81,6 @@ class MAclObjectRule extends Serializable {
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def isValid():Boolean ={
-		//TODO: 
 		true
 	}
 

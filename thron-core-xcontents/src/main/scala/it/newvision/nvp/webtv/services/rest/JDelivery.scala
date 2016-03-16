@@ -4,13 +4,11 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
-import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetContent
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetContentDetail
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetCuePoints
 import it.newvision.nvp.webtv.services.model.playlist.MResponsePlayListDescriptor
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetDownloadableContents
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetRecommendedContents
-import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetSimilarContents
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetPlaylistContents
 
 /* ************************
@@ -43,90 +41,6 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	import scala.collection.immutable.Map
 
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
-
-	/**
-	 * Deprecated by "getContentDetail" service.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param xcontentId : String
-	 * Optional
-	 * @param xpublisherId : String
-	 * Optional
-	 * @param locale : String
-	 * Optional.If the user desires to have the content description for a specific locale.
-	 * The desired locale is return as first element of the array (if exists).
-	 * The service always return all available locales of the content.
-	 * @param channelType : String
-	 * Optional
-	 * @param userAgent : String
-	 * Possible values are: mobile/desktop/other. If channelType and userAgent are empty, the default
-	 * userAgent is desktop
-	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
-	 * @return MResponseDeliveryGetContent
-	*/
-	@GET
-	@Path("/getContent")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getContent", notes = """Deprecated by "getContentDetail" service.""", response = classOf[MResponseDeliveryGetContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	@Deprecated
-	def getContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@QueryParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """Optional""")
-	@QueryParam("xcontentId")
-	xcontentId: String, 
-			//#SWG#@ApiParam(value = """Optional""")
-	@QueryParam("xpublisherId")
-	xpublisherId: String, 
-			//#SWG#@ApiParam(value = """Optional.If the user desires to have the content description for a specific locale. 
-	//#SWGNL#The desired locale is return as first element of the array (if exists).
-	//#SWGNL#The service always return all available locales of the content.""")
-	@QueryParam("locale")
-	locale: String, 
-			//#SWG#@ApiParam(value = """Optional""")
-	@QueryParam("channelType")
-	channelType: String, 
-			//#SWG#@ApiParam(value = """Possible values are: mobile/desktop/other. If channelType and userAgent are empty, the default userAgent is desktop""")
-	@QueryParam("userAgent")
-	userAgent: String, 
-			//#SWG#@ApiParam(value = """Optional, the access key for the content. Can be the tokenId for a logged user or the access key for the content.
-	//#SWGNL#It's not required for public contents""")
-	@QueryParam("pkey")
-	pkey: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseDeliveryGetContent*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("getContent") 
-		try{	
-			val resp = this.__getContent(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,xcontentId,xpublisherId,locale,channelType,userAgent,pkey)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getContent)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_getContent)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getContent(tokenId: String, clientId: String, xcontentId: String, xpublisherId: String, locale: String, channelType: String, userAgent: String, pkey: String) :MResponseDeliveryGetContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_getContent: String
 
 	/**
 	 * The service is used to return all content's metadata, aggregated with the specific channel details
@@ -190,8 +104,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
-	 * Append u/l to get the thumbnail just above/below the limits specified.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
+	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768
 	 * @param pkey : String
 	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
@@ -265,8 +178,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@QueryParam("linkedUserAgent")
 	linkedUserAgent: String, 
 			//#SWG#@ApiParam(value = """Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail that best suits.
-	//#SWGNL#Append u/l to get the thumbnail just above/below the limits specified.
-	//#SWGNL#Format: <widht>x<height>[u/l] (u is the default value)
+	//#SWGNL#Format: <widht>x<height>
 	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768""")
 	@QueryParam("divArea")
 	divArea: String, 
@@ -307,64 +219,130 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_getContentDetail: String
 
 	/**
-	 * The service is used to return the thumbnail for a specific content fitting a given area (display
-	 * area). Authentication token is not required (X-TOKENID).
-	 * The service return HTTP status:
-	 * * 400: in case of invalid arguments
-	 * * 404: in case of content
-	 * * 500: in case of generic errors
-	 * * 307: redirect to the resource.
+	 * This service provides the thumbnail of a given content with the desired resolution and quality:
+	 * THRON will automatically process the highest available quality image to apply cropping and resize
+	 * algorithms that match your request, as specified by URL parameters expressed after ContentID.
+	 * For backward compatibility, if no additional query param is provided, the service will return the
+	 * image of the exact width of the divArea while height will respect the aspect ratio.
+	 * HTTP status codes:
+	 * <ul>
+	 * 	<li>400: invalid arguments, </li>
+	 * 	<li>404: content not found, </li>
+	 * 	<li>500: generic error , </li>
+	 * 	<li>307: redirects to resulting image, </li>
+	 * 	<li>200: ok. </li>
+	 * </ul>
 	 * 
-	 * The service returns a default thumbnail for contents without specific thumbnails. 
+	 * If no thumbnail is available, a default fallback image will be provided.
+	 * This service is public: authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
 	 * @param clientId : String
+	 * Domain name used to access THRON
 	 * @param divArea : String
-	 * Define the area where the thumbnail should be displayed. The service will return the thumbnail
-	 * whose size will be the closest to the div area, choosing it among those available within the
-	 * platform, priority is set to the biggest thumbnail available. Nonetheless, there is a method to
-	 * force the lower or the upper thumbnail closest to your <div> size, among those available: you just
-	 * have to append "u" (upper) or "l" (lower) next to your divArea.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
-	 * Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768
-	 * DivArea format 0x0 means the thumbs in the smallest format.
-
+	 * The desired WidthxHeight of the resulting image. If higher than the original thumbnail resolution,
+	 * no processing will be performed
+	 * Format: <widht>x<height>
+	 * Example: 1280x1024, 768x0 (zero means no coinstraints, keeping the aspet ration)
 	 * @param id : String
-	 * The service accept the xpublisherId or xcontentId of the content. One of these parameters is
-	 * required and shold end with ".jpg" label
-	 * Example: .../219f61ee-72b6-476a-be17-5cd4f9fa94f1.jpg
+	 * The xcontentId of the content. File extension is optional.
+	 * Example:
+	 * 219f61ee-72b6-476a-be17-5cd4f9fa94f1.jpg
+	 * 219f61ee-72b6-476a-be17-5cd4f9fa94f1
+	 * 
 
+	 * @param scalemode : String
+	 * Optional. It represents the method used by the service to crop and resize the image. Available
+	 * values are:
+	 * * manual (default value): is used to specify crop parameters, if no cropmode is provided image will
+	 * be scaled to divArea;
+	 * * centered scales the image to fit the divArea cropping borders if desired aspect ratio is
+	 * different from source image;
+	 * * auto (available only if Real Time Image Editor application is active) smart cropping of image by
+	 * preserving  the image's main subject.
+	 * @param cropmode : String
+	 * Optional. Define if cropping will be performed with absolute coordinates or relative ones.
+	 * Available values are: pixel; percent (default).
+	 * Percent values always refer to the original size of the image.
+	 * @param cropx : Double
+	 * Optional. Starting point (distance from left border)  of the cropping function. Default value is 0
+	 * (top left corner of the image).
+	 * @param cropy : Double
+	 * Optional. Starting point (distance from left border)  of the cropping function. Default value is 0
+	 * (top left corner of the image).
+	 * @param cropw : Double
+	 * Optional. The width of the resulting cropped image before resize. The default value is the width of
+	 * the image minus cropx. If this value is higher than the Width of the divArea, no resize will be
+	 * performed.
+	 * @param croph : Double
+	 * Optional. The height of the resulting cropped image before resize. The default value is the height
+	 * of the image minus cropy. If this value is higher than the Height of the divArea, no resize will be
+	 * performed.
+	 * @param quality : Integer
+	 * Optional. The quality of the resulting image. Available values are: [0-100]. Default value is 90
 	 * @return java.io.File
 	*/
 	@GET
 	@Path("/getThumbnail/{clientId}/{divArea}/{id}")
 	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getThumbnail", notes = """The service is used to return the thumbnail for a specific content fitting a given area (display area). Authentication token is not required (X-TOKENID).
-	//#SWGNL#The service return HTTP status:
-	//#SWGNL#* 400: in case of invalid arguments
-	//#SWGNL#* 404: in case of content
-	//#SWGNL#* 500: in case of generic errors
-	//#SWGNL#* 307: redirect to the resource.
+	//#SWG#@ApiOperation(value = "/getThumbnail", notes = """This service provides the thumbnail of a given content with the desired resolution and quality: THRON will automatically process the highest available quality image to apply cropping and resize algorithms that match your request, as specified by URL parameters expressed after ContentID. 
+	//#SWGNL#For backward compatibility, if no additional query param is provided, the service will return the image of the exact width of the divArea while height will respect the aspect ratio.
+	//#SWGNL#HTTP status codes: 
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>400: invalid arguments, </li>
+	//#SWGNL#	<li>404: content not found, </li>
+	//#SWGNL#	<li>500: generic error , </li>
+	//#SWGNL#	<li>307: redirects to resulting image, </li>
+	//#SWGNL#	<li>200: ok. </li>
+	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#The service returns a default thumbnail for contents without specific thumbnails. """, response = classOf[java.io.File])
+	//#SWGNL#If no thumbnail is available, a default fallback image will be provided. 
+	//#SWGNL#This service is public: authentication token is not required (X-TOKENID).""", response = classOf[java.io.File])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getThumbnail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
+			//#SWG#@ApiParam(value = """Domain name used to access THRON""")
 	@PathParam("clientId")
 	clientId: String, 
-			//#SWG#@ApiParam(value = """Define the area where the thumbnail should be displayed. The service will return the thumbnail whose size will be the closest to the div area, choosing it among those available within the platform, priority is set to the biggest thumbnail available. Nonetheless, there is a method to force the lower or the upper thumbnail closest to your <div> size, among those available: you just have to append "u" (upper) or "l" (lower) next to your divArea.
-	//#SWGNL#Format: <widht>x<height>[u/l] (u is the default value)
-	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768
-	//#SWGNL#DivArea format 0x0 means the thumbs in the smallest format.
-	//#SWGNL#""")
+			//#SWG#@ApiParam(value = """The desired WidthxHeight of the resulting image. If higher than the original thumbnail resolution, no processing will be performed
+	//#SWGNL#Format: <widht>x<height>
+	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints, keeping the aspet ration)""")
 	@PathParam("divArea")
 	divArea: String, 
-			//#SWG#@ApiParam(value = """The service accept the xpublisherId or xcontentId of the content. One of these parameters is required and shold end with ".jpg" label
-	//#SWGNL#Example: .../219f61ee-72b6-476a-be17-5cd4f9fa94f1.jpg
+			//#SWG#@ApiParam(value = """The xcontentId of the content. File extension is optional.
+	//#SWGNL#Example: 
+	//#SWGNL# 219f61ee-72b6-476a-be17-5cd4f9fa94f1.jpg 
+	//#SWGNL# 219f61ee-72b6-476a-be17-5cd4f9fa94f1
+	//#SWGNL#
 	//#SWGNL#""")
 	@PathParam("id")
-	id: String,
+	id: String, 
+			//#SWG#@ApiParam(value = """Optional. It represents the method used by the service to crop and resize the image. Available values are: 
+	//#SWGNL#* manual (default value): is used to specify crop parameters, if no cropmode is provided image will be scaled to divArea; 
+	//#SWGNL#* centered scales the image to fit the divArea cropping borders if desired aspect ratio is different from source image;
+	//#SWGNL#* auto (available only if Real Time Image Editor application is active) smart cropping of image by preserving  the image's main subject.""")
+	@QueryParam("scalemode")
+	scalemode: String, 
+			//#SWG#@ApiParam(value = """Optional. Define if cropping will be performed with absolute coordinates or relative ones. 
+	//#SWGNL#Available values are: pixel; percent (default). 
+	//#SWGNL#Percent values always refer to the original size of the image.""")
+	@QueryParam("cropmode")
+	cropmode: String, 
+			//#SWG#@ApiParam(value = """Optional. Starting point (distance from left border)  of the cropping function. Default value is 0 (top left corner of the image).""")
+	@QueryParam("cropx")
+	cropx: Double, 
+			//#SWG#@ApiParam(value = """Optional. Starting point (distance from left border)  of the cropping function. Default value is 0 (top left corner of the image).""")
+	@QueryParam("cropy")
+	cropy: Double, 
+			//#SWG#@ApiParam(value = """Optional. The width of the resulting cropped image before resize. The default value is the width of the image minus cropx. If this value is higher than the Width of the divArea, no resize will be performed.""")
+	@QueryParam("cropw")
+	cropw: Double, 
+			//#SWG#@ApiParam(value = """Optional. The height of the resulting cropped image before resize. The default value is the height of the image minus cropy. If this value is higher than the Height of the divArea, no resize will be performed.""")
+	@QueryParam("croph")
+	croph: Double, 
+			//#SWG#@ApiParam(value = """Optional. The quality of the resulting image. Available values are: [0-100]. Default value is 90""")
+	@QueryParam("quality")
+	quality: Integer,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
@@ -376,7 +354,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		//get the cache control specific for this service
 		val cc = this.cachemap("getThumbnail") 
 		try{	
-			val resp = this.__getThumbnail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,divArea,id)
+			val resp = this.__getThumbnail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,divArea,id,scalemode,cropmode,cropx,cropy,cropw,croph,quality)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getThumbnail)
 	    }catch{
@@ -389,7 +367,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getThumbnail(tokenId: String, clientId: String, divArea: String, id: String) :java.io.File
+	 protected def __getThumbnail(tokenId: String, clientId: String, divArea: String, id: String, scalemode: String, cropmode: String, cropx: Double, cropy: Double, cropw: Double, croph: Double, quality: Integer) :java.io.File
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_getThumbnail: String
 
@@ -764,8 +742,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
-	 * Append u/l to get the thumbnail just above/below the limits specified.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
+	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
 	 * @param offset : Integer
 	 * Optional
@@ -834,8 +811,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@QueryParam("lcid")
 	lcid: String, 
 			//#SWG#@ApiParam(value = """Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail that best suits.
-	//#SWGNL#Append u/l to get the thumbnail just above/below the limits specified.
-	//#SWGNL#Format: <widht>x<height>[u/l] (u is the default value)
+	//#SWGNL#Format: <widht>x<height>
 	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints)""")
 	@QueryParam("divArea")
 	divArea: String, 
@@ -922,8 +898,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
-	 * Append u/l to get the thumbnail just above/below the limits specified.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
+	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
 	 * @param offset : Integer
 	 * Optional
@@ -986,8 +961,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@QueryParam("admin")
 	admin: Boolean, 
 			//#SWG#@ApiParam(value = """Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail that best suits.
-	//#SWGNL#Append u/l to get the thumbnail just above/below the limits specified.
-	//#SWGNL#Format: <widht>x<height>[u/l] (u is the default value)
+	//#SWGNL#Format: <widht>x<height>
 	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints)""")
 	@QueryParam("divArea")
 	divArea: String, 
@@ -1024,118 +998,6 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 protected def __getRecommendedContents(tokenId: String, clientId: String, xcontentId: String, xpublisherId: String, locale: String, linkedChannelType: String, linkedUserAgent: String, pkey: String, admin: Boolean, divArea: String, offset: Integer, numberOfResult: Integer) :MResponseDeliveryGetRecommendedContents
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_getRecommendedContents: String
-
-	/**
-	 * DEPRECATED. Only for clients with 3.x release.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param xcontentId : String
-	 * Optional
-	 * @param xpublisherId : String
-	 * Optional
-	 * @param locale : String
-	 * Optional. Used as preferred local for the content results.
-	 * Locale fallback logic used in MContentWallMinimal:
-	 * 1) content has locale == locale (the parameter)
-	 * 2) content has locale == EN
-	 * @param linkedChannelType : String
-	 * Optional. Used to filter the linekdcontents available on some channels.The list of values is
-	 * represented as comma separated value, and the attribute is optional.
-	 * Example: linkedChannelTypes = WEB,STREAMHTTPFLASH,STREAMHTTPIOS
-	 * @param linkedUserAgent : String
-	 * Optional. Used to filter the linekdcontents available/compliant with a specific userAgent.The
-	 * attribute is optional.
-	 * Possible values are: mobile/desktop/other
-	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
-	 * @param divArea : String
-	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
-	 * that best suits.
-	 * Append u/l to get the thumbnail just above/below the limits specified.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
-	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
-	 * @param offset : Integer
-	 * Optional
-	 * @param numberOfResult : Integer
-	 * Optional. Default and maximum value is 50 items
-	 * @return MResponseDeliveryGetSimilarContents
-	*/
-	@GET
-	@Path("/getSimilarContents")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getSimilarContents", notes = """DEPRECATED. Only for clients with 3.x release.""", response = classOf[MResponseDeliveryGetSimilarContents])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def getSimilarContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@QueryParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """Optional""")
-	@QueryParam("xcontentId")
-	xcontentId: String, 
-			//#SWG#@ApiParam(value = """Optional""")
-	@QueryParam("xpublisherId")
-	xpublisherId: String, 
-			//#SWG#@ApiParam(value = """Optional. Used as preferred local for the content results. 
-	//#SWGNL#Locale fallback logic used in MContentWallMinimal:
-	//#SWGNL#1) content has locale == locale (the parameter)
-	//#SWGNL#2) content has locale == EN""")
-	@QueryParam("locale")
-	locale: String, 
-			//#SWG#@ApiParam(value = """Optional. Used to filter the linekdcontents available on some channels.The list of values is represented as comma separated value, and the attribute is optional.
-	//#SWGNL#Example: linkedChannelTypes = WEB,STREAMHTTPFLASH,STREAMHTTPIOS""")
-	@QueryParam("linkedChannelType")
-	linkedChannelType: String, 
-			//#SWG#@ApiParam(value = """Optional. Used to filter the linekdcontents available/compliant with a specific userAgent.The attribute is optional.
-	//#SWGNL#Possible values are: mobile/desktop/other""")
-	@QueryParam("linkedUserAgent")
-	linkedUserAgent: String, 
-			//#SWG#@ApiParam(value = """Optional, the access key for the content. Can be the tokenId for a logged user or the access key for the content.
-	//#SWGNL#It's not required for public contents""")
-	@QueryParam("pkey")
-	pkey: String, 
-			//#SWG#@ApiParam(value = """Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail that best suits.
-	//#SWGNL#Append u/l to get the thumbnail just above/below the limits specified.
-	//#SWGNL#Format: <widht>x<height>[u/l] (u is the default value)
-	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints)""")
-	@QueryParam("divArea")
-	divArea: String, 
-			//#SWG#@ApiParam(value = """Optional""")
-	@QueryParam("offset")
-	offset: Integer, 
-			//#SWG#@ApiParam(value = """Optional. Default and maximum value is 50 items""")
-	@QueryParam("numberOfResult")
-	numberOfResult: Integer,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseDeliveryGetSimilarContents*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("getSimilarContents") 
-		try{	
-			val resp = this.__getSimilarContents(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,xcontentId,xpublisherId,locale,linkedChannelType,linkedUserAgent,pkey,divArea,offset,numberOfResult)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getSimilarContents)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_getSimilarContents)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getSimilarContents(tokenId: String, clientId: String, xcontentId: String, xpublisherId: String, locale: String, linkedChannelType: String, linkedUserAgent: String, pkey: String, divArea: String, offset: Integer, numberOfResult: Integer) :MResponseDeliveryGetSimilarContents
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_getSimilarContents: String
 
 	/**
 	 * The service is used to return the list of "Playlist items" linked to a specified Playlist. The REST
@@ -1187,8 +1049,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
-	 * Append u/l to get the thumbnail just above/below the limits specified.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
+	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
 	 * @param offset : Integer
 	 * Optional
@@ -1251,8 +1112,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@QueryParam("admin")
 	admin: Boolean, 
 			//#SWG#@ApiParam(value = """Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail that best suits.
-	//#SWGNL#Append u/l to get the thumbnail just above/below the limits specified.
-	//#SWGNL#Format: <widht>x<height>[u/l] (u is the default value)
+	//#SWGNL#Format: <widht>x<height>
 	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints)""")
 	@QueryParam("divArea")
 	divArea: String, 

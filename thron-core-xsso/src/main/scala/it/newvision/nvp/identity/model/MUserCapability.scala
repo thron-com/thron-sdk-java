@@ -10,36 +10,13 @@ import javax.xml.bind.annotation._
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * The UserCapabilities object can be used as capability white list or black list,
- * specifying which capabilities are active for the user, or only the capabilities
- * not active ("allow" attribute equals false)
- * 
- * Naming Convetion Capability: <SOLUTION>_<capabilityName>
- * Naming Convetion Roles: <SOLUTION>_<roleName>
- * Solutions: VIEW,PLAY,CORE
- * Example:
- * roles: VIEW_ADMIN, VIEW_AUTHOR, VIEW_EDITOR,
- * PLAY_ADMIN, PLAY_DEVICEMANAGER
- * 
- * capabilities:  VIEW_createuser, VIEW_createcontent, VIEW_publishcontent,
- * PLAY_adddevice
  * 
  * 
  *  
  */
 @XmlRootElement(name="MUserCapability") 
 @XmlType(name="MUserCapability")
-//#SWG#@ApiModel(description = """The UserCapabilities object can be used as capability white list or black list, specifying which capabilities are active for the user, or only the capabilities not active ("allow" attribute equals false)
-//#SWGNL#
-//#SWGNL#Naming Convetion Capability: <SOLUTION>_<capabilityName>
-//#SWGNL#Naming Convetion Roles: <SOLUTION>_<roleName>
-//#SWGNL#Solutions: VIEW,PLAY,CORE
-//#SWGNL#Example:
-//#SWGNL#roles: VIEW_ADMIN, VIEW_AUTHOR, VIEW_EDITOR,
-//#SWGNL#PLAY_ADMIN, PLAY_DEVICEMANAGER
-//#SWGNL#
-//#SWGNL#capabilities:  VIEW_createuser, VIEW_createcontent, VIEW_publishcontent, PLAY_adddevice
-//#SWGNL#
+//#SWG#@ApiModel(description = """
 //#SWGNL#
 //#SWGNL#  """)
 class MUserCapability extends Serializable {
@@ -63,12 +40,13 @@ class MUserCapability extends Serializable {
 	def withuserRoles(p:List[String]):this.type ={ 	this.userRoles = p; 	this }
 
 	/**
-	 * this attribute specify that the user can enter in one of the listed 4ME
-	 * solutions (App).
+	 * List of enabled Apps
 	 */
-	//#SWG#@ApiModelProperty(value = """this attribute specify that the user can enter in one of the listed 4ME solutions (App).""")
+	//#SWG#@ApiModelProperty(value = """List of enabled Apps""")
 	@BeanProperty 
+	@Deprecated
 	var enabledSolutions: List[String] = new ArrayList[String]
+	@Deprecated
 	def withenabledSolutions(p:List[String]):this.type ={ 	this.enabledSolutions = p; 	this }
 
 	/**

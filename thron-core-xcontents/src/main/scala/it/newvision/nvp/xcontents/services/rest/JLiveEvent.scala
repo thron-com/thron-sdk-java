@@ -101,8 +101,6 @@ trait JLiveEvent extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	 * @param clientId : String
 	 * @param contentId : String
 	 * @param locale : String
-	 * @param categoryIdForAcl : String
-	 * Optional. For Acl validation
 	 * @return MResponseLiveEventDetail
 	*/
 	@GET
@@ -121,10 +119,7 @@ trait JLiveEvent extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	contentId: String, 
 			//#SWG#@ApiParam(value = """""")
 	@QueryParam("locale")
-	locale: String, 
-			//#SWG#@ApiParam(value = """Optional. For Acl validation""")
-	@QueryParam("categoryIdForAcl")
-	categoryIdForAcl: String,
+	locale: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
@@ -136,7 +131,7 @@ trait JLiveEvent extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		//get the cache control specific for this service
 		val cc = this.cachemap("detail") 
 		try{	
-			val resp = this.__detail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,locale,categoryIdForAcl)
+			val resp = this.__detail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,locale)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
 	    }catch{
@@ -149,7 +144,7 @@ trait JLiveEvent extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __detail(tokenId: String, clientId: String, contentId: String, locale: String, categoryIdForAcl: String) :MResponseLiveEventDetail
+	 protected def __detail(tokenId: String, clientId: String, contentId: String, locale: String) :MResponseLiveEventDetail
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_detail: String
 

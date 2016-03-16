@@ -11,12 +11,10 @@ import it.newvision.nvp.xcontents.services.model.content.MResponseContentFindByP
 import it.newvision.nvp.xcontents.services.model.request.MContentfindByPropertiesReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentRemoveLocale
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdate
-import it.newvision.nvp.xcontents.services.model.request.MContentupdateAvailableSolutionsReq
 import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentReq
 import it.newvision.nvp.xcontents.services.model.request.MContentaddPlayerEmbedCodeReq
 import it.newvision.nvp.xcontents.services.model.request.MContentremovePlayerEmbedCodeReq
 import it.newvision.nvp.xcontents.services.model.request.MContentupdatePlayerEmbedCodeReq
-import it.newvision.nvp.xcontents.services.model.request.MContentupdatePlayerEmbedCodesReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdateLocale
 import it.newvision.nvp.xcontents.services.model.request.MContentupdateContent4LocaleReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentPrettyId
@@ -68,6 +66,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Used to add the content's name,except and description in a specific locale (lang)
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddContent4LocaleReq
 	 * @return MResponseContentAddLocale
@@ -76,7 +79,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/addContent4Locale")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addContent4Locale", notes = """Used to add the content's name,except and description in a specific locale (lang)""", response = classOf[MResponseContentAddLocale])
+	//#SWG#@ApiOperation(value = "/addContent4Locale", notes = """Used to add the content's name,except and description in a specific locale (lang)
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentAddLocale])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addContent4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -285,6 +293,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Used to remove the content's name,except and description for a specific locale (lang)
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
@@ -297,7 +310,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/removeContent4Locale")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/removeContent4Locale", notes = """Used to remove the content's name,except and description for a specific locale (lang)""", response = classOf[MResponseContentRemoveLocale])
+	//#SWG#@ApiOperation(value = "/removeContent4Locale", notes = """Used to remove the content's name,except and description for a specific locale (lang)
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentRemoveLocale])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeContent4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -356,65 +374,15 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_removeContent4Locale: String
 
 	/**
-	 * Deprecated.
-	 * @param tokenId : String
-	 * @param param : MContentupdateAvailableSolutionsReq
-	 * @return MResponseContentUpdate
-	*/
-	@POST
-	@Path("/updateAvailableSolutions")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateAvailableSolutions", notes = """Deprecated.""", response = classOf[MResponseContentUpdate])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updateAvailableSolutions(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentupdateAvailableSolutionsReq):Response /*returnType = MResponseContentUpdate*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__updateAvailableSolutions(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateAvailableSolutions)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateAvailableSolutions)
-	    }
-	} 
-
-	@GET
-	@Path("/updateAvailableSolutions")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updateAvailableSolutions_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentUpdate*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__updateAvailableSolutions(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentupdateAvailableSolutionsReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateAvailableSolutions)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateAvailableSolutions)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateAvailableSolutions(tokenId: String, param: MContentupdateAvailableSolutionsReq) :MResponseContentUpdate
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateAvailableSolutions: String
-
-	/**
 	 * Update content parameters.
 	 * The " "contentValues" field of this web service works in “patch" mode: it means that each and
 	 * everyone of the "contentValues" attributes you want to change must be included in the body of the
 	 * request, those not included will not be updated.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContentReq
 	 * @return MResponseContentUpdate
@@ -424,7 +392,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/updateContent", notes = """Update content parameters.
-	//#SWGNL#The " "contentValues" field of this web service works in “patch" mode: it means that each and everyone of the "contentValues" attributes you want to change must be included in the body of the request, those not included will not be updated.""", response = classOf[MResponseContentUpdate])
+	//#SWGNL#The " "contentValues" field of this web service works in “patch" mode: it means that each and everyone of the "contentValues" attributes you want to change must be included in the body of the request, those not included will not be updated.
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -471,6 +444,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Used to add a custom Player Embed Code for a specific content.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>SHARE is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddPlayerEmbedCodeReq
 	 * @return MResponseContentUpdate
@@ -479,7 +457,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/addPlayerEmbedCode")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addPlayerEmbedCode", notes = """Used to add a custom Player Embed Code for a specific content.""", response = classOf[MResponseContentUpdate])
+	//#SWG#@ApiOperation(value = "/addPlayerEmbedCode", notes = """Used to add a custom Player Embed Code for a specific content.
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>SHARE is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addPlayerEmbedCode(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -526,6 +509,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Used to remove the custom Player Embed Code for a specific content.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>SHARE is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentremovePlayerEmbedCodeReq
 	 * @return MResponseContentUpdate
@@ -534,7 +522,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/removePlayerEmbedCode")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removePlayerEmbedCode", notes = """Used to remove the custom Player Embed Code for a specific content.""", response = classOf[MResponseContentUpdate])
+	//#SWG#@ApiOperation(value = "/removePlayerEmbedCode", notes = """Used to remove the custom Player Embed Code for a specific content.
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>SHARE is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removePlayerEmbedCode(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -582,6 +575,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	/**
 	 * Used to update the custom Player Embed Code for a specific content. These information are used by
 	 * the 4me Player for the content presentation.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>SHARE is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdatePlayerEmbedCodeReq
 	 * @return MResponseContentUpdate
@@ -590,7 +588,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updatePlayerEmbedCode")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updatePlayerEmbedCode", notes = """Used to update the custom Player Embed Code for a specific content. These information are used by the 4me Player for the content presentation.""", response = classOf[MResponseContentUpdate])
+	//#SWG#@ApiOperation(value = "/updatePlayerEmbedCode", notes = """Used to update the custom Player Embed Code for a specific content. These information are used by the 4me Player for the content presentation.
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>SHARE is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updatePlayerEmbedCode(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -636,62 +639,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updatePlayerEmbedCode: String
 
 	/**
-	 * DEPRECATED
-	 * @param tokenId : String
-	 * @param param : MContentupdatePlayerEmbedCodesReq
-	 * @return MResponseContentUpdate
-	*/
-	@POST
-	@Path("/updatePlayerEmbedCodes")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updatePlayerEmbedCodes", notes = """DEPRECATED""", response = classOf[MResponseContentUpdate])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updatePlayerEmbedCodes(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentupdatePlayerEmbedCodesReq):Response /*returnType = MResponseContentUpdate*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__updatePlayerEmbedCodes(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updatePlayerEmbedCodes)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updatePlayerEmbedCodes)
-	    }
-	} 
-
-	@GET
-	@Path("/updatePlayerEmbedCodes")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updatePlayerEmbedCodes_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentUpdate*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__updatePlayerEmbedCodes(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentupdatePlayerEmbedCodesReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updatePlayerEmbedCodes)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updatePlayerEmbedCodes)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updatePlayerEmbedCodes(tokenId: String, param: MContentupdatePlayerEmbedCodesReq) :MResponseContentUpdate
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updatePlayerEmbedCodes: String
-
-	/**
 	 * Used to update the content's name,except and description for a specific locale (lang)
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContent4LocaleReq
 	 * @return MResponseContentUpdateLocale
@@ -700,7 +653,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateContent4Locale")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateContent4Locale", notes = """Used to update the content's name,except and description for a specific locale (lang)""", response = classOf[MResponseContentUpdateLocale])
+	//#SWG#@ApiOperation(value = "/updateContent4Locale", notes = """Used to update the content's name,except and description for a specific locale (lang)
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdateLocale])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateContent4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -746,6 +704,10 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateContent4Locale: String
 
 	/**
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContentPrettyIdReq
 	 * @return MResponseContentPrettyId
@@ -754,7 +716,10 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateContentPrettyId")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateContentPrettyId", notes = """""", response = classOf[MResponseContentPrettyId])
+	//#SWG#@ApiOperation(value = "/updateContentPrettyId", notes = """<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentPrettyId])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateContentPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -801,6 +766,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * remove the prettyId for the given locale
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentremoveContentPrettyIdReq
 	 * @return MResponseContentPrettyId
@@ -809,7 +779,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/removeContentPrettyId")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeContentPrettyId", notes = """remove the prettyId for the given locale""", response = classOf[MResponseContentPrettyId])
+	//#SWG#@ApiOperation(value = "/removeContentPrettyId", notes = """remove the prettyId for the given locale
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentPrettyId])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeContentPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -856,6 +831,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * add a new prettyId to the content for the given locale.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddContentPrettyIdReq
 	 * @return MResponseContentPrettyId
@@ -864,7 +844,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/addContentPrettyId")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addContentPrettyId", notes = """add a new prettyId to the content for the given locale.""", response = classOf[MResponseContentPrettyId])
+	//#SWG#@ApiOperation(value = "/addContentPrettyId", notes = """add a new prettyId to the content for the given locale.
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentPrettyId])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addContentPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -983,7 +968,10 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * * DOWNLOADABLE link is available only for VIDEO/AUDIO/IMAGE/OTHER contents
 	 * * Only linkable contents can be added to another content (contens without property UNLINKABLE)
 	 * 
-	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * 
 	 * 
 	 * @param tokenId : String
@@ -1002,7 +990,10 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#* DOWNLOADABLE link is available only for VIDEO/AUDIO/IMAGE/OTHER contents
 	//#SWGNL#* Only linkable contents can be added to another content (contens without property UNLINKABLE)
 	//#SWGNL#
-	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>
 	//#SWGNL#
 	//#SWGNL#	""", response = classOf[MResponseContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
@@ -1055,6 +1046,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * items, recommended contents or downloadable contents). For this reason it is necessary to specify
 	 * the relation linkType.
 	 * Only linkable contents can be added to another content (contens without property UNLINKABLE)
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddLinkedContentsReq
 	 * @return MResponseContent
@@ -1065,7 +1061,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/addLinkedContents", notes = """Add a list of new element to the list of linkedContents. 
 	//#SWGNL#The linkedContens list is used to store the full list of links between contents (like playlist items, recommended contents or downloadable contents). For this reason it is necessary to specify the relation linkType.
-	//#SWGNL#Only linkable contents can be added to another content (contens without property UNLINKABLE)""", response = classOf[MResponseContent])
+	//#SWGNL#Only linkable contents can be added to another content (contens without property UNLINKABLE)
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addLinkedContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -1112,6 +1113,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * this service move a content in the linkedContents list from position "oldPosition" to "newPosition".
+	 * 
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentmoveLinkedContentReq
 	 * @return MResponseContent
@@ -1120,7 +1127,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/moveLinkedContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/moveLinkedContent", notes = """this service move a content in the linkedContents list from position "oldPosition" to "newPosition".""", response = classOf[MResponseContent])
+	//#SWG#@ApiOperation(value = "/moveLinkedContent", notes = """this service move a content in the linkedContents list from position "oldPosition" to "newPosition".
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def moveLinkedContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -1167,6 +1179,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * the function removes from the list of linked Contents the elements matching the criteria
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentremoveLinkedContentsReq
 	 * @return MResponseContent
@@ -1175,7 +1192,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/removeLinkedContents")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeLinkedContents", notes = """the function removes from the list of linked Contents the elements matching the criteria""", response = classOf[MResponseContent])
+	//#SWG#@ApiOperation(value = "/removeLinkedContents", notes = """the function removes from the list of linked Contents the elements matching the criteria
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeLinkedContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -1222,6 +1244,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * used to mark if a content has been read or not by a user (the user who call the service)
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>SEEN is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateUserSpecificValuesReq
 	 * @return MResponseContent
@@ -1230,7 +1257,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateUserSpecificValues")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateUserSpecificValues", notes = """used to mark if a content has been read or not by a user (the user who call the service)""", response = classOf[MResponseContent])
+	//#SWG#@ApiOperation(value = "/updateUserSpecificValues", notes = """used to mark if a content has been read or not by a user (the user who call the service)
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>SEEN is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateUserSpecificValues(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

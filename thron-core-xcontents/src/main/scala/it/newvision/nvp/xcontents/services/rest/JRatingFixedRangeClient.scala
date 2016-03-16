@@ -38,6 +38,12 @@ class JRatingFixedRangeClient(val resourceEndpoint:String) {
 
 	/**
 	 * Insert a new vote for the specific content with fixed Range between 0 and 1
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>SEEN ACL is required on the specific content</li>
+	 * 	<li>RATINGALLOWED properties is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MRatingFixedRangeinsertRatingReq
 	 * @return MResponseRating
@@ -91,16 +97,13 @@ class JRatingFixedRangeClient(val resourceEndpoint:String) {
 	 * Optional
 	 * @param toDate : Date
 	 * Optional
-	 * @param categoryIdForAcl : String
-	 * Optional. For Acl validation
 	 * @return MResponseGetContentScore
 	*/
 	def getContentScore(tokenId: String, 
 			clientId: String, 
 			contentId: String, 
 			fromDate: it.newvision.nvp.core.libraries.rs.DateType, 
-			toDate: it.newvision.nvp.core.libraries.rs.DateType, 
-			categoryIdForAcl: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetContentScore ={
+			toDate: it.newvision.nvp.core.libraries.rs.DateType)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetContentScore ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -110,7 +113,6 @@ class JRatingFixedRangeClient(val resourceEndpoint:String) {
 		Option(contentId).foreach(s => params.add("contentId", s))
 		Option(fromDate).foreach(s => params.add("fromDate", s))
 		Option(toDate).foreach(s => params.add("toDate", s))
-		Option(categoryIdForAcl).foreach(s => params.add("categoryIdForAcl", s))
 			val response : MResponseGetContentScore = if(this.resourceEndpoint == ""){
 			
 				new MResponseGetContentScore()
@@ -186,6 +188,14 @@ class JRatingFixedRangeClient(val resourceEndpoint:String) {
 	/**
 	 * Remote all votes for a given contentId using the specified search criteria. It's possible to remove
 	 * all ratings added by a specific userId or in a specific time range.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>SEEN ACL is required on the specific content</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>RATINGALLOWED properties is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MRatingFixedRangeremoveRatingsReq
 	 * @return MResponseRating

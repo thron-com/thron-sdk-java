@@ -44,6 +44,12 @@ trait JRatingFixedRange extends it.newvision.nvp.core.libraries.restserver.BaseR
 
 	/**
 	 * Insert a new vote for the specific content with fixed Range between 0 and 1
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>SEEN ACL is required on the specific content</li>
+	 * 	<li>RATINGALLOWED properties is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MRatingFixedRangeinsertRatingReq
 	 * @return MResponseRating
@@ -52,7 +58,13 @@ trait JRatingFixedRange extends it.newvision.nvp.core.libraries.restserver.BaseR
 	@Path("/insertRating")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/insertRating", notes = """Insert a new vote for the specific content with fixed Range between 0 and 1""", response = classOf[MResponseRating])
+	//#SWG#@ApiOperation(value = "/insertRating", notes = """Insert a new vote for the specific content with fixed Range between 0 and 1
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>SEEN ACL is required on the specific content</li>
+	//#SWGNL#	<li>RATINGALLOWED properties is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseRating])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insertRating(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -107,8 +119,6 @@ trait JRatingFixedRange extends it.newvision.nvp.core.libraries.restserver.BaseR
 	 * Optional
 	 * @param toDate : Date
 	 * Optional
-	 * @param categoryIdForAcl : String
-	 * Optional. For Acl validation
 	 * @return MResponseGetContentScore
 	*/
 	@GET
@@ -130,10 +140,7 @@ trait JRatingFixedRange extends it.newvision.nvp.core.libraries.restserver.BaseR
 	fromDate: it.newvision.nvp.core.libraries.rs.DateType, 
 			//#SWG#@ApiParam(value = """Optional""")
 	@QueryParam("toDate")
-	toDate: it.newvision.nvp.core.libraries.rs.DateType, 
-			//#SWG#@ApiParam(value = """Optional. For Acl validation""")
-	@QueryParam("categoryIdForAcl")
-	categoryIdForAcl: String,
+	toDate: it.newvision.nvp.core.libraries.rs.DateType,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
@@ -145,7 +152,7 @@ trait JRatingFixedRange extends it.newvision.nvp.core.libraries.restserver.BaseR
 		//get the cache control specific for this service
 		val cc = this.cachemap("getContentScore") 
 		try{	
-			val resp = this.__getContentScore(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,fromDate,toDate,categoryIdForAcl)
+			val resp = this.__getContentScore(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,fromDate,toDate)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getContentScore)
 	    }catch{
@@ -158,7 +165,7 @@ trait JRatingFixedRange extends it.newvision.nvp.core.libraries.restserver.BaseR
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getContentScore(tokenId: String, clientId: String, contentId: String, fromDate: it.newvision.nvp.core.libraries.rs.DateType, toDate: it.newvision.nvp.core.libraries.rs.DateType, categoryIdForAcl: String) :MResponseGetContentScore
+	 protected def __getContentScore(tokenId: String, clientId: String, contentId: String, fromDate: it.newvision.nvp.core.libraries.rs.DateType, toDate: it.newvision.nvp.core.libraries.rs.DateType) :MResponseGetContentScore
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_getContentScore: String
 
@@ -219,6 +226,14 @@ trait JRatingFixedRange extends it.newvision.nvp.core.libraries.restserver.BaseR
 	/**
 	 * Remote all votes for a given contentId using the specified search criteria. It's possible to remove
 	 * all ratings added by a specific userId or in a specific time range.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>SEEN ACL is required on the specific content</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>RATINGALLOWED properties is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MRatingFixedRangeremoveRatingsReq
 	 * @return MResponseRating
@@ -227,7 +242,15 @@ trait JRatingFixedRange extends it.newvision.nvp.core.libraries.restserver.BaseR
 	@Path("/removeRatings")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeRatings", notes = """Remote all votes for a given contentId using the specified search criteria. It's possible to remove all ratings added by a specific userId or in a specific time range.""", response = classOf[MResponseRating])
+	//#SWG#@ApiOperation(value = "/removeRatings", notes = """Remote all votes for a given contentId using the specified search criteria. It's possible to remove all ratings added by a specific userId or in a specific time range.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>SEEN ACL is required on the specific content</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>RATINGALLOWED properties is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseRating])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeRatings(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

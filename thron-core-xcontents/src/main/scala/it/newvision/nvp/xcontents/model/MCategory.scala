@@ -188,13 +188,17 @@ class MCategory extends Serializable {
 	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
+	 * Deprecated.
 	 * used for custom lexicographical order of categories. The field in used in
 	 * JCategory.findByProperties (MECategoryOrderBy.sortingField_A/D) to sort the
 	 * result set.
 	 */
-	//#SWG#@ApiModelProperty(value = """used for custom lexicographical order of categories. The field in used in JCategory.findByProperties (MECategoryOrderBy.sortingField_A/D) to sort the result set.""")
+	//#SWG#@ApiModelProperty(value = """Deprecated.
+	//#SWGNL#used for custom lexicographical order of categories. The field in used in JCategory.findByProperties (MECategoryOrderBy.sortingField_A/D) to sort the result set.""")
 	@BeanProperty 
+	@Deprecated
 	var sortingField: String =_
+	@Deprecated
 	def withsortingField(p:String):this.type ={ 	this.sortingField = p; 	this }
 
 	@BeanProperty 

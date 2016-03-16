@@ -6,19 +6,16 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUserCreate
 import it.newvision.nvp.identity.services.model.request.MVUserManagercreateReq
-import it.newvision.nvp.identity.services.model.vusers.MResponseVUserDetail
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUser
-import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateExternalIdReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateUserReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupgradeUserReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateSettingsReq
-import it.newvision.nvp.identity.services.model.vusers.MResponseVUserRemove
-import it.newvision.nvp.identity.services.model.request.MVUserManagerremoveReq
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUserResetPassword
 import it.newvision.nvp.identity.services.model.request.MVUserManagerresetPasswordReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerchangeUserStatusReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateCapabilitiesAndRolesReq
+import it.newvision.nvp.identity.services.model.vusers.MResponseVUserDetail
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUserFindByProperties
 import it.newvision.nvp.identity.services.model.request.MVUserManagerfindByPropertiesReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateImageReq
@@ -112,107 +109,6 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseVUserCreate])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * This webservice is used with external Apps to verify if the given username and password are valid
-	 * or not.
-	 * Check the authentication for a given clientId, using the username and password of a registered user.
-	 * 
-	 * The function return the user details. The platform does not keep the user session. The user session
-	 * is handled by the proper apps.The service verifies the credentials also for the platform users. The
-	 * service return only the first 50 groups linked to the user.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param username : String
-	 * @param password : String
-	 * @return MResponseVUserDetail
-	*/
-	def login(tokenId: String, 
-			clientId: String, 
-			username: String, 
-			password: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUserDetail ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(username).foreach(s => params.add("username", s))
-		Option(password).foreach(s => params.add("password", s))  
-			val response : MResponseVUserDetail = if(this.resourceEndpoint == ""){
-			
-				new MResponseVUserDetail()
-			
-			}else{
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED	
-				var wbuilder = webResource
-					.path("vusermanager/login")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.post(classOf[MResponseVUserDetail],params)
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVUserDetail])
-				}
-				else {
-				  throw e
-				}
-		  }
-	
-	}
-
-	/**
-	 * Deprecated by JVUserManager.updateUser service
-	 * @param tokenId : String
-	 * @param param : MVUserManagerupdateReq
-	 * @return MResponseVUser
-	*/
-	@Deprecated
-	def update(tokenId: String, 
-			param: MVUserManagerupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUser ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseVUser = if(this.resourceEndpoint == ""){
-			
-				new MResponseVUser()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("vusermanager/update")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseVUser],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVUser])
 				}
 				else {
 				  throw e
@@ -405,55 +301,6 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseVUser])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * DEPRECATED.
-	 * Available only with 3.x release.
-	 * Use the service JDashBoard.migrateUserStuff (in xadmin) to correctly remove a user from the
-	 * platform.
-	 * @param tokenId : String
-	 * @param param : MVUserManagerremoveReq
-	 * @return MResponseVUserRemove
-	*/
-	@Deprecated
-	def remove(tokenId: String, 
-			param: MVUserManagerremoveReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUserRemove ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseVUserRemove = if(this.resourceEndpoint == ""){
-			
-				new MResponseVUserRemove()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("vusermanager/remove")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseVUserRemove],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVUserRemove])
 				}
 				else {
 				  throw e

@@ -10,8 +10,6 @@ import it.newvision.nvp.xcontents.services.model.metadata.MResponseMetadata
 import it.newvision.nvp.xcontents.services.model.request.MMetadataremoveMetadataReq
 import it.newvision.nvp.xcontents.services.model.request.MMetadataupdateMetadataReq
 import it.newvision.nvp.xcontents.services.model.request.MMetadataupdateSingleMetadataReq
-import it.newvision.nvp.xcontents.services.model.metadata.MResponseFindContentByMetadata
-import it.newvision.nvp.xcontents.services.model.request.MMetadatafindContentsByMetadataReq
 import it.newvision.nvp.xcontents.services.model.metadata.MResponseRemoveAllMetadata
 
 /* ************************
@@ -19,20 +17,20 @@ import it.newvision.nvp.xcontents.services.model.metadata.MResponseRemoveAllMeta
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * Used to handle custom metadata in contents.
+ * Used to handle custom generic metadata in Contents.
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/metadata       </li>
+ * com/api/xcontents/resources/metadata     </li>
  * </ul>
  */
 @Path("/metadata")
-//#SWG#@Api(value = "/metadata", description = """Used to handle custom metadata in contents.
+//#SWG#@Api(value = "/metadata", description = """Used to handle custom generic metadata in Contents.
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/metadata       </li>
+//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/metadata     </li>
 //#SWGNL#</ul>""")
 trait JMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
@@ -46,6 +44,11 @@ trait JMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 
 	/**
 	 * insert one single entry to list of metadata linked to the content
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MMetadatainsertMetadataReq
 	 * @return MResponseInsertMetadata
@@ -54,7 +57,12 @@ trait JMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Path("/insertMetadata")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/insertMetadata", notes = """insert one single entry to list of metadata linked to the content""", response = classOf[MResponseInsertMetadata])
+	//#SWG#@ApiOperation(value = "/insertMetadata", notes = """insert one single entry to list of metadata linked to the content
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseInsertMetadata])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insertMetadata(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -101,6 +109,11 @@ trait JMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 
 	/**
 	 * Remove one single metadata entry linked to a content
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MMetadataremoveMetadataReq
 	 * @return MResponseMetadata
@@ -109,7 +122,12 @@ trait JMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Path("/removeMetadata")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeMetadata", notes = """Remove one single metadata entry linked to a content""", response = classOf[MResponseMetadata])
+	//#SWG#@ApiOperation(value = "/removeMetadata", notes = """Remove one single metadata entry linked to a content
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadata])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeMetadata(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -156,6 +174,11 @@ trait JMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 
 	/**
 	 * Update all content metadata list with the new given list.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MMetadataupdateMetadataReq
 	 * @return MResponseMetadata
@@ -164,7 +187,12 @@ trait JMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Path("/updateMetadata")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateMetadata", notes = """Update all content metadata list with the new given list.""", response = classOf[MResponseMetadata])
+	//#SWG#@ApiOperation(value = "/updateMetadata", notes = """Update all content metadata list with the new given list.
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadata])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateMetadata(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -211,6 +239,11 @@ trait JMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 
 	/**
 	 * Update one single content metadata in the list.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MMetadataupdateSingleMetadataReq
 	 * @return MResponseMetadata
@@ -219,7 +252,12 @@ trait JMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Path("/updateSingleMetadata")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateSingleMetadata", notes = """Update one single content metadata in the list.""", response = classOf[MResponseMetadata])
+	//#SWG#@ApiOperation(value = "/updateSingleMetadata", notes = """Update one single content metadata in the list.
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadata])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateSingleMetadata(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -265,64 +303,12 @@ trait JMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_updateSingleMetadata: String
 
 	/**
-	 * Deprecated by JContent.findByProperties
-	 * @param tokenId : String
-	 * @param param : MMetadatafindContentsByMetadataReq
-	 * @return MResponseFindContentByMetadata
-	*/
-	@POST
-	@Path("/findContentsByMetadata")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/findContentsByMetadata", notes = """Deprecated by JContent.findByProperties""", response = classOf[MResponseFindContentByMetadata])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	@Deprecated
-	def findContentsByMetadata(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MMetadatafindContentsByMetadataReq):Response /*returnType = MResponseFindContentByMetadata*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__findContentsByMetadata(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_findContentsByMetadata)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_findContentsByMetadata)
-	    }
-	} 
-
-	@GET
-	@Path("/findContentsByMetadata")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	@Deprecated
-	def findContentsByMetadata_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseFindContentByMetadata*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__findContentsByMetadata(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MMetadatafindContentsByMetadataReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_findContentsByMetadata)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_findContentsByMetadata)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __findContentsByMetadata(tokenId: String, param: MMetadatafindContentsByMetadataReq) :MResponseFindContentByMetadata
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_findContentsByMetadata: String
-
-	/**
 	 * remove all Metadata entries linked to the content
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
@@ -334,7 +320,12 @@ trait JMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Path("/removeAllMetadata")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/removeAllMetadata", notes = """remove all Metadata entries linked to the content""", response = classOf[MResponseRemoveAllMetadata])
+	//#SWG#@ApiOperation(value = "/removeAllMetadata", notes = """remove all Metadata entries linked to the content
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseRemoveAllMetadata])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeAllMetadata(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

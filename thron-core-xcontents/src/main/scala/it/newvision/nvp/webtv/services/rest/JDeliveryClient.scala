@@ -4,13 +4,11 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetContent
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetContentDetail
 import it.newvision.nvp.webtv.services.model.playlist.MResponsePlayListDescriptor
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetCuePoints
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetDownloadableContents
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetRecommendedContents
-import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetSimilarContents
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetPlaylistContents
 
 /* ************************
@@ -37,78 +35,6 @@ object JDeliveryClient {
  * </ul>
  */
 class JDeliveryClient(val resourceEndpoint:String) {
-
-	/**
-	 * Deprecated by "getContentDetail" service.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param xcontentId : String
-	 * Optional
-	 * @param xpublisherId : String
-	 * Optional
-	 * @param locale : String
-	 * Optional.If the user desires to have the content description for a specific locale.
-	 * The desired locale is return as first element of the array (if exists).
-	 * The service always return all available locales of the content.
-	 * @param channelType : String
-	 * Optional
-	 * @param userAgent : String
-	 * Possible values are: mobile/desktop/other. If channelType and userAgent are empty, the default
-	 * userAgent is desktop
-	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
-	 * @return MResponseDeliveryGetContent
-	*/
-	@Deprecated
-	def getContent(tokenId: String, 
-			clientId: String, 
-			xcontentId: String, 
-			xpublisherId: String, 
-			locale: String, 
-			channelType: String, 
-			userAgent: String, 
-			pkey: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetContent ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(xcontentId).foreach(s => params.add("xcontentId", s))
-		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
-		Option(locale).foreach(s => params.add("locale", s))
-		Option(channelType).foreach(s => params.add("channelType", s))
-		Option(userAgent).foreach(s => params.add("userAgent", s))
-		Option(pkey).foreach(s => params.add("pkey", s))
-			val response : MResponseDeliveryGetContent = if(this.resourceEndpoint == ""){
-			
-				new MResponseDeliveryGetContent()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("delivery/getContent")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseDeliveryGetContent])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseDeliveryGetContent])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
 
 	/**
 	 * The service is used to return all content's metadata, aggregated with the specific channel details
@@ -172,8 +98,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
-	 * Append u/l to get the thumbnail just above/below the limits specified.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
+	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768
 	 * @param pkey : String
 	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
@@ -298,44 +223,91 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * The service is used to return the thumbnail for a specific content fitting a given area (display
-	 * area). Authentication token is not required (X-TOKENID).
-	 * The service return HTTP status:
-	 * * 400: in case of invalid arguments
-	 * * 404: in case of content
-	 * * 500: in case of generic errors
-	 * * 307: redirect to the resource.
+	 * This service provides the thumbnail of a given content with the desired resolution and quality:
+	 * THRON will automatically process the highest available quality image to apply cropping and resize
+	 * algorithms that match your request, as specified by URL parameters expressed after ContentID.
+	 * For backward compatibility, if no additional query param is provided, the service will return the
+	 * image of the exact width of the divArea while height will respect the aspect ratio.
+	 * HTTP status codes:
+	 * <ul>
+	 * 	<li>400: invalid arguments, </li>
+	 * 	<li>404: content not found, </li>
+	 * 	<li>500: generic error , </li>
+	 * 	<li>307: redirects to resulting image, </li>
+	 * 	<li>200: ok. </li>
+	 * </ul>
 	 * 
-	 * The service returns a default thumbnail for contents without specific thumbnails. 
+	 * If no thumbnail is available, a default fallback image will be provided.
+	 * This service is public: authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
 	 * @param clientId : String
+	 * Domain name used to access THRON
 	 * @param divArea : String
-	 * Define the area where the thumbnail should be displayed. The service will return the thumbnail
-	 * whose size will be the closest to the div area, choosing it among those available within the
-	 * platform, priority is set to the biggest thumbnail available. Nonetheless, there is a method to
-	 * force the lower or the upper thumbnail closest to your <div> size, among those available: you just
-	 * have to append "u" (upper) or "l" (lower) next to your divArea.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
-	 * Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768
-	 * DivArea format 0x0 means the thumbs in the smallest format.
-
+	 * The desired WidthxHeight of the resulting image. If higher than the original thumbnail resolution,
+	 * no processing will be performed
+	 * Format: <widht>x<height>
+	 * Example: 1280x1024, 768x0 (zero means no coinstraints, keeping the aspet ration)
 	 * @param id : String
-	 * The service accept the xpublisherId or xcontentId of the content. One of these parameters is
-	 * required and shold end with ".jpg" label
-	 * Example: .../219f61ee-72b6-476a-be17-5cd4f9fa94f1.jpg
+	 * The xcontentId of the content. File extension is optional.
+	 * Example:
+	 * 219f61ee-72b6-476a-be17-5cd4f9fa94f1.jpg
+	 * 219f61ee-72b6-476a-be17-5cd4f9fa94f1
+	 * 
 
+	 * @param scalemode : String
+	 * Optional. It represents the method used by the service to crop and resize the image. Available
+	 * values are:
+	 * * manual (default value): is used to specify crop parameters, if no cropmode is provided image will
+	 * be scaled to divArea;
+	 * * centered scales the image to fit the divArea cropping borders if desired aspect ratio is
+	 * different from source image;
+	 * * auto (available only if Real Time Image Editor application is active) smart cropping of image by
+	 * preserving  the image's main subject.
+	 * @param cropmode : String
+	 * Optional. Define if cropping will be performed with absolute coordinates or relative ones.
+	 * Available values are: pixel; percent (default).
+	 * Percent values always refer to the original size of the image.
+	 * @param cropx : Double
+	 * Optional. Starting point (distance from left border)  of the cropping function. Default value is 0
+	 * (top left corner of the image).
+	 * @param cropy : Double
+	 * Optional. Starting point (distance from left border)  of the cropping function. Default value is 0
+	 * (top left corner of the image).
+	 * @param cropw : Double
+	 * Optional. The width of the resulting cropped image before resize. The default value is the width of
+	 * the image minus cropx. If this value is higher than the Width of the divArea, no resize will be
+	 * performed.
+	 * @param croph : Double
+	 * Optional. The height of the resulting cropped image before resize. The default value is the height
+	 * of the image minus cropy. If this value is higher than the Height of the divArea, no resize will be
+	 * performed.
+	 * @param quality : Integer
+	 * Optional. The quality of the resulting image. Available values are: [0-100]. Default value is 90
 	 * @return java.io.File
 	*/
 	def getThumbnail(tokenId: String, 
 			clientId: String, 
 			divArea: String, 
-			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):java.io.File ={
+			id: String, 
+			scalemode: String, 
+			cropmode: String, 
+			cropx: Double, 
+			cropy: Double, 
+			cropw: Double, 
+			croph: Double, 
+			quality: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):java.io.File ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
 			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
 			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-		
+			Option(scalemode).foreach(s => params.add("scalemode", s))
+		Option(cropmode).foreach(s => params.add("cropmode", s))
+		Option(cropx).foreach(s => params.add("cropx", s))
+		Option(cropy).foreach(s => params.add("cropy", s))
+		Option(cropw).foreach(s => params.add("cropw", s))
+		Option(croph).foreach(s => params.add("croph", s))
+		Option(quality).foreach(s => params.add("quality", s))
 			val response : java.io.File = if(this.resourceEndpoint == ""){
 			
 				null
@@ -616,8 +588,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
-	 * Append u/l to get the thumbnail just above/below the limits specified.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
+	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
 	 * @param offset : Integer
 	 * Optional
@@ -728,8 +699,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
-	 * Append u/l to get the thumbnail just above/below the limits specified.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
+	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
 	 * @param offset : Integer
 	 * Optional
@@ -794,97 +764,6 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * DEPRECATED. Only for clients with 3.x release.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param xcontentId : String
-	 * Optional
-	 * @param xpublisherId : String
-	 * Optional
-	 * @param locale : String
-	 * Optional. Used as preferred local for the content results.
-	 * Locale fallback logic used in MContentWallMinimal:
-	 * 1) content has locale == locale (the parameter)
-	 * 2) content has locale == EN
-	 * @param linkedChannelType : String
-	 * Optional. Used to filter the linekdcontents available on some channels.The list of values is
-	 * represented as comma separated value, and the attribute is optional.
-	 * Example: linkedChannelTypes = WEB,STREAMHTTPFLASH,STREAMHTTPIOS
-	 * @param linkedUserAgent : String
-	 * Optional. Used to filter the linekdcontents available/compliant with a specific userAgent.The
-	 * attribute is optional.
-	 * Possible values are: mobile/desktop/other
-	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
-	 * @param divArea : String
-	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
-	 * that best suits.
-	 * Append u/l to get the thumbnail just above/below the limits specified.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
-	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
-	 * @param offset : Integer
-	 * Optional
-	 * @param numberOfResult : Integer
-	 * Optional. Default and maximum value is 50 items
-	 * @return MResponseDeliveryGetSimilarContents
-	*/
-	def getSimilarContents(tokenId: String, 
-			clientId: String, 
-			xcontentId: String, 
-			xpublisherId: String, 
-			locale: String, 
-			linkedChannelType: String, 
-			linkedUserAgent: String, 
-			pkey: String, 
-			divArea: String, 
-			offset: Integer, 
-			numberOfResult: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetSimilarContents ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(xcontentId).foreach(s => params.add("xcontentId", s))
-		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
-		Option(locale).foreach(s => params.add("locale", s))
-		Option(linkedChannelType).foreach(s => params.add("linkedChannelType", s))
-		Option(linkedUserAgent).foreach(s => params.add("linkedUserAgent", s))
-		Option(pkey).foreach(s => params.add("pkey", s))
-		Option(divArea).foreach(s => params.add("divArea", s))
-		Option(offset).foreach(s => params.add("offset", s))
-		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))
-			val response : MResponseDeliveryGetSimilarContents = if(this.resourceEndpoint == ""){
-			
-				new MResponseDeliveryGetSimilarContents()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("delivery/getSimilarContents")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseDeliveryGetSimilarContents])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseDeliveryGetSimilarContents])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
-
-	/**
 	 * The service is used to return the list of "Playlist items" linked to a specified Playlist. The REST
 	 * webservice is enabled for jsonp callback using the callback queryparam
 	 * 
@@ -934,8 +813,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
-	 * Append u/l to get the thumbnail just above/below the limits specified.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
+	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
 	 * @param offset : Integer
 	 * Optional

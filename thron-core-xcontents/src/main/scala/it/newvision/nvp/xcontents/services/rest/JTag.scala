@@ -41,6 +41,11 @@ trait JTag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	/**
 	 * Add a new tag to the specified content. If the tag is already present in the content, it will be
 	 * ignored
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MTagaddTagReq
 	 * @return MResponseTag
@@ -49,7 +54,12 @@ trait JTag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/addTag")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addTag", notes = """Add a new tag to the specified content. If the tag is already present in the content, it will be ignored""", response = classOf[MResponseTag])
+	//#SWG#@ApiOperation(value = "/addTag", notes = """Add a new tag to the specified content. If the tag is already present in the content, it will be ignored
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseTag])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addTag(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -96,6 +106,11 @@ trait JTag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Remove a tag to the specified content.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
@@ -108,7 +123,12 @@ trait JTag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/removeTag")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/removeTag", notes = """Remove a tag to the specified content.""", response = classOf[MResponseTag])
+	//#SWG#@ApiOperation(value = "/removeTag", notes = """Remove a tag to the specified content.
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseTag])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeTag(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

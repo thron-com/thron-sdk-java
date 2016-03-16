@@ -6,17 +6,13 @@ import javax.ws.rs._
 import javax.ws.rs.core._ 
 import it.newvision.nvp.xadmin.services.model.apps.MResponseApp
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminaddGroupAppReq
-import it.newvision.nvp.xadmin.services.model.apps.MResponseSnippetDetail
-import it.newvision.nvp.xadmin.services.model.request.MAppsAdminaddSnippetReq
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminaddUserAppReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppDetail
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdmincreateReq
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminremoveReq
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminremoveGroupAppReq
-import it.newvision.nvp.xadmin.services.model.request.MAppsAdminremoveSnippetReq
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminupdateAppReq
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminremoveUserAppReq
-import it.newvision.nvp.xadmin.services.model.request.MAppsAdminupdateSnippetReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppNewKey
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdmingenerateKeyReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppKeyDetail
@@ -110,62 +106,6 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	 protected def __addGroupApp(tokenId: String, param: MAppsAdminaddGroupAppReq) :MResponseApp
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_addGroupApp: String
-
-	/**
-	 * can be invoked only by user with role [APPID]_SNIPPET_MANAGER and for apps of type CUSTOM and
-	 * subtype 4ME-WIDGET
-	 * @param tokenId : String
-	 * @param param : MAppsAdminaddSnippetReq
-	 * @return MResponseSnippetDetail
-	*/
-	@POST
-	@Path("/addSnippet")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addSnippet", notes = """can be invoked only by user with role [APPID]_SNIPPET_MANAGER and for apps of type CUSTOM and subtype 4ME-WIDGET""", response = classOf[MResponseSnippetDetail])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def addSnippet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MAppsAdminaddSnippetReq):Response /*returnType = MResponseSnippetDetail*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__addSnippet(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addSnippet)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_addSnippet)
-	    }
-	} 
-
-	@GET
-	@Path("/addSnippet")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def addSnippet_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseSnippetDetail*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__addSnippet(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MAppsAdminaddSnippetReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addSnippet)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addSnippet)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __addSnippet(tokenId: String, param: MAppsAdminaddSnippetReq) :MResponseSnippetDetail
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_addSnippet: String
 
 	/**
 	 * add the user to access the app.
@@ -412,71 +352,6 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_removeGroupApp: String
 
 	/**
-	 * remove a snippet linked to the app.
-	 * <b>
-	 * </b><b>Role valdation:</b>
-	 * <ul>
-	 * 	<li>Can be invoked only by users with role [APPID]_SNIPPET_MANAGER</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MAppsAdminremoveSnippetReq
-	 * @return MResponseApp
-	*/
-	@POST
-	@Path("/removeSnippet")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeSnippet", notes = """remove a snippet linked to the app.
-	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role valdation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>Can be invoked only by users with role [APPID]_SNIPPET_MANAGER</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseApp])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def removeSnippet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MAppsAdminremoveSnippetReq):Response /*returnType = MResponseApp*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__removeSnippet(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeSnippet)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_removeSnippet)
-	    }
-	} 
-
-	@GET
-	@Path("/removeSnippet")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def removeSnippet_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseApp*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__removeSnippet(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MAppsAdminremoveSnippetReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeSnippet)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeSnippet)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __removeSnippet(tokenId: String, param: MAppsAdminremoveSnippetReq) :MResponseApp
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_removeSnippet: String
-
-	/**
 	 * update the App parameters
 	 * 
 	 * <b>Role valdation:</b>
@@ -605,63 +480,6 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	 protected def __removeUserApp(tokenId: String, param: MAppsAdminremoveUserAppReq) :MResponseApp
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_removeUserApp: String
-
-	/**
-	 * update the snippet parameters.
-	 * Can be invoked only by users with role [APPID]_SNIPPET_MANAGER
-	 * @param tokenId : String
-	 * @param param : MAppsAdminupdateSnippetReq
-	 * @return MResponseSnippetDetail
-	*/
-	@POST
-	@Path("/updateSnippet")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateSnippet", notes = """update the snippet parameters.
-	//#SWGNL#Can be invoked only by users with role [APPID]_SNIPPET_MANAGER""", response = classOf[MResponseSnippetDetail])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updateSnippet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MAppsAdminupdateSnippetReq):Response /*returnType = MResponseSnippetDetail*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__updateSnippet(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateSnippet)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateSnippet)
-	    }
-	} 
-
-	@GET
-	@Path("/updateSnippet")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updateSnippet_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseSnippetDetail*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__updateSnippet(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MAppsAdminupdateSnippetReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateSnippet)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateSnippet)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateSnippet(tokenId: String, param: MAppsAdminupdateSnippetReq) :MResponseSnippetDetail
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateSnippet: String
 
 	/**
 	 * Generate a new appKey for the specified app.

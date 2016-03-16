@@ -35,7 +35,16 @@ class MRating extends Serializable {
 	var ts: Date =_
 	def withts(p:Date):this.type ={ 	this.ts = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Could be:
+	 * * paltform username
+	 * * external id
+	 * * contactId
+	 */
+	//#SWG#@ApiModelProperty(value = """Could be:
+	//#SWGNL#* paltform username
+	//#SWGNL#* external id
+	//#SWGNL#* contactId""")
 	@BeanProperty 
 	var userId: String =_
 	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }

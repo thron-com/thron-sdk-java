@@ -43,12 +43,4 @@ class MRatingFixedRangeinsertRatingReq extends Serializable {
 	var userId: String =_
 	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
-
 }

@@ -84,13 +84,13 @@ class MClient extends Serializable {
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
-	var properties: MProperty =_
-	  def withproperties(p:MProperty):this.type ={ 	this.properties = p; 	this }
+	var credentials: List[MUserCredential] = new ArrayList[MUserCredential]
+	  def withcredentials(p:List[MUserCredential]):this.type ={ 	this.credentials = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
-	var credentials: List[MUserCredential] = new ArrayList[MUserCredential]
-	  def withcredentials(p:List[MUserCredential]):this.type ={ 	this.credentials = p; 	this }
+	var properties: MProperty =_
+	  def withproperties(p:MProperty):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * @return Boolean
@@ -98,7 +98,7 @@ class MClient extends Serializable {
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def isValid():Boolean ={
-		clientId != null && this.getCredentialOS != null
+		Option(clientId).isDefined && Option(this.getCredentialOS).isDefined && Option(properties).exists(_.isValid)
 	}
 
 	/**

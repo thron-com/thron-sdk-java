@@ -85,15 +85,12 @@ class JLiveEventClient(val resourceEndpoint:String) {
 	 * @param clientId : String
 	 * @param contentId : String
 	 * @param locale : String
-	 * @param categoryIdForAcl : String
-	 * Optional. For Acl validation
 	 * @return MResponseLiveEventDetail
 	*/
 	def detail(tokenId: String, 
 			clientId: String, 
 			contentId: String, 
-			locale: String, 
-			categoryIdForAcl: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseLiveEventDetail ={
+			locale: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseLiveEventDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -102,7 +99,6 @@ class JLiveEventClient(val resourceEndpoint:String) {
 			Option(clientId).foreach(s => params.add("clientId", s))
 		Option(contentId).foreach(s => params.add("contentId", s))
 		Option(locale).foreach(s => params.add("locale", s))
-		Option(categoryIdForAcl).foreach(s => params.add("categoryIdForAcl", s))
 			val response : MResponseLiveEventDetail = if(this.resourceEndpoint == ""){
 			
 				new MResponseLiveEventDetail()

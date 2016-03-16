@@ -11,7 +11,6 @@ import it.newvision.nvp.xadmin.services.model.request.MAppsfindByPropertiesReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppSummaryList
 import it.newvision.nvp.xadmin.services.model.request.MAppsappsListReq
 import it.newvision.nvp.xadmin.services.model.request.MAppssuReq
-import it.newvision.nvp.xadmin.services.model.apps.MResponseSnippetLogin
 
 /* ************************
 *  GENERATED CLASS
@@ -367,80 +366,5 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __su(tokenId: String, param: MAppssuReq) :String
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_su: String
-
-	/**
-	 * Deprecated.
-	 * Used to authenticate a snippet (4me widgets).
-	 * Can be invoked without restrictions.
-	 * Provides:
-	 * <ul>
-	 * 	<li>all snippet detail (metadata)</li>
-	 * 	<li>the tokenId for the application, to use in the inside service call of the snippet</li>
-	 * 	<li>the rootCategory of the linked App.</li>
-	 * </ul>
-	 * 
-	 * Authentication token is not required (X-TOKENID).
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param appId : String
-	 * Optional
-	 * @param snippetId : String
-	 * Required
-	 * @return MResponseSnippetLogin
-	*/
-	@GET
-	@Path("/loginSnippet")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/loginSnippet", notes = """Deprecated.
-	//#SWGNL#Used to authenticate a snippet (4me widgets). 
-	//#SWGNL#Can be invoked without restrictions.
-	//#SWGNL#Provides:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>all snippet detail (metadata)</li>
-	//#SWGNL#	<li>the tokenId for the application, to use in the inside service call of the snippet</li>
-	//#SWGNL#	<li>the rootCategory of the linked App.</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#Authentication token is not required (X-TOKENID).""", response = classOf[MResponseSnippetLogin])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def loginSnippet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@QueryParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """Optional""")
-	@QueryParam("appId")
-	appId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@QueryParam("snippetId")
-	snippetId: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseSnippetLogin*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("loginSnippet") 
-		try{	
-			val resp = this.__loginSnippet(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,appId,snippetId)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_loginSnippet)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_loginSnippet)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __loginSnippet(tokenId: String, clientId: String, appId: String, snippetId: String) :MResponseSnippetLogin
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_loginSnippet: String
 
 }

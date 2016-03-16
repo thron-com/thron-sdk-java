@@ -6,19 +6,16 @@ import javax.ws.rs._
 import javax.ws.rs.core._ 
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUserCreate
 import it.newvision.nvp.identity.services.model.request.MVUserManagercreateReq
-import it.newvision.nvp.identity.services.model.vusers.MResponseVUserDetail
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUser
-import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateExternalIdReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateUserReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupgradeUserReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateSettingsReq
-import it.newvision.nvp.identity.services.model.vusers.MResponseVUserRemove
-import it.newvision.nvp.identity.services.model.request.MVUserManagerremoveReq
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUserResetPassword
 import it.newvision.nvp.identity.services.model.request.MVUserManagerresetPasswordReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerchangeUserStatusReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateCapabilitiesAndRolesReq
+import it.newvision.nvp.identity.services.model.vusers.MResponseVUserDetail
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUserFindByProperties
 import it.newvision.nvp.identity.services.model.request.MVUserManagerfindByPropertiesReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateImageReq
@@ -159,137 +156,6 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	 protected def __create(tokenId: String, param: MVUserManagercreateReq) :MResponseVUserCreate
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_create: String
-
-	/**
-	 * This webservice is used with external Apps to verify if the given username and password are valid
-	 * or not.
-	 * Check the authentication for a given clientId, using the username and password of a registered user.
-	 * 
-	 * The function return the user details. The platform does not keep the user session. The user session
-	 * is handled by the proper apps.The service verifies the credentials also for the platform users. The
-	 * service return only the first 50 groups linked to the user.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param username : String
-	 * @param password : String
-	 * @return MResponseVUserDetail
-	*/
-	@POST
-	@Path("/login")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/login", notes = """This webservice is used with external Apps to verify if the given username and password are valid or not.
-	//#SWGNL#Check the authentication for a given clientId, using the username and password of a registered user. 
-	//#SWGNL#The function return the user details. The platform does not keep the user session. The user session is handled by the proper apps.The service verifies the credentials also for the platform users. The service return only the first 50 groups linked to the user.""", response = classOf[MResponseVUserDetail])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def login(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@FormParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@FormParam("username")
-	username: String, 
-			//#SWG#@ApiParam(value = """""")
-	@FormParam("password")
-	password: String):Response /*returnType = MResponseVUserDetail*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__login(tokenId,clientId,username,password)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_login)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_login)
-	    }
-	} 
-
-	@GET
-	@Path("/login")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def login_2(@QueryParam("tokenId")tokenId_q: String, 
-			@QueryParam("clientId")clientId_q: String, 
-			@QueryParam("username")username_q: String, 
-			@QueryParam("password")password_q: String,
-			@HeaderParam("X-TOKENID") tokenId_h: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseVUserDetail*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{	
-			val resp = this.__login(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,username_q,password_q)
-		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_login)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_login)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __login(tokenId: String, clientId: String, username: String, password: String) :MResponseVUserDetail
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_login: String
-
-	/**
-	 * Deprecated by JVUserManager.updateUser service
-	 * @param tokenId : String
-	 * @param param : MVUserManagerupdateReq
-	 * @return MResponseVUser
-	*/
-	@POST
-	@Path("/update")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/update", notes = """Deprecated by JVUserManager.updateUser service""", response = classOf[MResponseVUser])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	@Deprecated
-	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MVUserManagerupdateReq):Response /*returnType = MResponseVUser*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__update(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_update)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_update)
-	    }
-	} 
-
-	@GET
-	@Path("/update")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	@Deprecated
-	def update_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseVUser*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__update(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MVUserManagerupdateReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_update)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_update)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __update(tokenId: String, param: MVUserManagerupdateReq) :MResponseVUser
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_update: String
 
 	/**
 	 * update the user ExternalId
@@ -541,68 +407,6 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	 protected def __updateSettings(tokenId: String, param: MVUserManagerupdateSettingsReq) :MResponseVUser
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_updateSettings: String
-
-	/**
-	 * DEPRECATED.
-	 * Available only with 3.x release.
-	 * Use the service JDashBoard.migrateUserStuff (in xadmin) to correctly remove a user from the
-	 * platform.
-	 * @param tokenId : String
-	 * @param param : MVUserManagerremoveReq
-	 * @return MResponseVUserRemove
-	*/
-	@POST
-	@Path("/remove")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/remove", notes = """DEPRECATED. 
-	//#SWGNL#Available only with 3.x release.
-	//#SWGNL#Use the service JDashBoard.migrateUserStuff (in xadmin) to correctly remove a user from the platform.""", response = classOf[MResponseVUserRemove])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	@Deprecated
-	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MVUserManagerremoveReq):Response /*returnType = MResponseVUserRemove*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__remove(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_remove)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_remove)
-	    }
-	} 
-
-	@GET
-	@Path("/remove")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	@Deprecated
-	def remove_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseVUserRemove*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__remove(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MVUserManagerremoveReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_remove)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_remove)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __remove(tokenId: String, param: MVUserManagerremoveReq) :MResponseVUserRemove
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_remove: String
 
 	/**
 	 * Change the user password.

@@ -66,7 +66,9 @@ class MAclInverseRuleGeneric extends Serializable {
 	def isValid():Boolean ={
 		Option(rule).isDefined && 
 		Option(enabled).isDefined && 
-		Option(applyToSpreadTargets).isDefined
+		Option(applyToSpreadTargets).isDefined &&
+		// metadata are allowed only on SEEN_BY rules without applyToSpreadTargets
+		(Option(metadata).forall(_.isEmpty) || (rule == MEAclRuleInverse.SEEN_BY && !applyToSpreadTargets))
 	}
 
 }

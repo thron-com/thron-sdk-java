@@ -23,6 +23,7 @@ object NvpJacksonConfigurator {
     //SERIALISATION CONFIG
     val sc = m.getSerializationConfig.withDateFormat(new SimpleDateFormat(df))
     sc.set(SerializationConfig.Feature.WRITE_DATES_AS_TIMESTAMPS, false)
+    //sc.set(SerializationConfig.Feature.SORT_PROPERTIES_ALPHABETICALLY, true)
     sc.setSerializationInclusion(Inclusion.NON_NULL)
     m.setSerializationConfig(sc)
 

@@ -35,6 +35,7 @@ class JDeviceClient(val resourceEndpoint:String) {
 	/**
 	 * Connect a Device to a Contact with the given identityKey.
 	 * If there are no contacts matching the identityKey, a new contact is created.
+	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
 	 * @param param : MDeviceconnectReq
 	 * @return MResponseDeviceConnect
@@ -82,6 +83,7 @@ class JDeviceClient(val resourceEndpoint:String) {
 	 * Called by a client to disconnect a device from a given contact. The service return the Contact
 	 * information identified in the platform.
 	 * If the device was connected to an IDENTIFIED Contact, an ANONYMOUS Contact will be created.
+	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
 	 * @param param : MDevicedisconnectReq
 	 * @return MResponseDeviceConnect
@@ -128,6 +130,7 @@ class JDeviceClient(val resourceEndpoint:String) {
 	/**
 	 * Called by a client to get a unique contact Id. The service returns the deviceId and the contactId
 	 * used by tracker.
+	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param deviceId : String

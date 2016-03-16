@@ -34,6 +34,19 @@ public enum MEAppType {
 	 */
 	//#SWG#@ApiModelProperty(value = """for custom apps with snippets""")
 	@XmlEnumValue("CUSTOM") CUSTOM,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("RECOMMENDATION") RECOMMENDATION
+	/**
+	 * Master Recommendation App
+	 */
+	//#SWG#@ApiModelProperty(value = """Master Recommendation App""")
+	@XmlEnumValue("REC_MASTER") REC_MASTER,
+	/**
+	 * Slave Recommendation App
+	 */
+	//#SWG#@ApiModelProperty(value = """Slave Recommendation App""")
+	@XmlEnumValue("REC_SLAVE") REC_SLAVE,
+	/**
+	 * Real Time Image Editor
+	 */
+	//#SWG#@ApiModelProperty(value = """Real Time Image Editor""")
+	@XmlEnumValue("RTIE") RTIE
 }

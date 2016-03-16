@@ -23,15 +23,20 @@ class MGroupUpdateData extends Serializable {
 	var name: String =_
 	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * short description
+	 */
+	//#SWG#@ApiModelProperty(value = """short description""")
 	@BeanProperty 
 	var description: String =_
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
-	 * Specify if the user is enable or not to use the platform
+	 * Specify if the group is enable or not to in the platform.
+	 * Users inherit roles and acl only from active linked groups.
 	 */
-	//#SWG#@ApiModelProperty(value = """Specify if the user is enable or not to use the platform""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """Specify if the group is enable or not to in the platform.
+	//#SWGNL#Users inherit roles and acl only from active linked groups.""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
 	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
@@ -42,15 +47,17 @@ class MGroupUpdateData extends Serializable {
 	 * list of groupRoles where the user are linked.
 	 * 
 	 * Constraints:
-	 * 
-	 * groupCapabilities can be applied only to PLATFORM groups (no to private or
-	 * blind groups)
+	 * <ul>
+	 * 	<li>groupCapabilities can be applied only to PLATFORM groups (no for blind
+	 * groups)</li>
+	 * </ul>
 	 */
 	//#SWG#@ApiModelProperty(value = """Used as roles template. It is possible to define the UserGroup roles that are be applied to each user inside the group. The userRoles are derived from the list of groupRoles where the user are linked.
 	//#SWGNL#
 	//#SWGNL#Constraints:
-	//#SWGNL#
-	//#SWGNL#groupCapabilities can be applied only to PLATFORM groups (no to private or blind groups)""" ,required = true)
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>groupCapabilities can be applied only to PLATFORM groups (no for blind groups)</li>
+	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var groupCapabilities: MUserCapability  = new MUserCapability()
 	def withgroupCapabilities(p:MUserCapability):this.type ={ 	this.groupCapabilities = p; 	this }

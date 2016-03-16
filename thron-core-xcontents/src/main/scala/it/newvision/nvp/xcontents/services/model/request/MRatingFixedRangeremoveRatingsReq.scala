@@ -33,12 +33,4 @@ class MRatingFixedRangeremoveRatingsReq extends Serializable {
 	var criteria: MRatingCriteria =_
 	def withcriteria(p:MRatingCriteria):this.type ={ 	this.criteria = p; 	this }
 
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
-
 }

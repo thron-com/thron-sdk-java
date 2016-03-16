@@ -16,6 +16,7 @@ import javax.xml.bind.annotation._
 @XmlRootElement(name="MAppSnippetCriteria") 
 @XmlType(name="MAppSnippetCriteria")
 //#SWG#@ApiModel(description = """App and snippet search criteria. Used to filter the result in JApps.findByProperties service""")
+@Deprecated
 class MAppSnippetCriteria extends MAppCriteria with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""")

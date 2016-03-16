@@ -71,14 +71,12 @@ class MContentfindByPropertiesReq extends Serializable {
 	/**
 	 * Optional. Define the area where the thumbnail should be displayed. Used to
 	 * return the thumbnail that best suits.
-	 * Append u/l to get the thumbnail just above/below the limits specified.
-	 * Format: <widht>x<height>[u/l] (u is the default value)
-	 * Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768u
+	 * Format: <widht>x<height>
+	 * Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768
 	 */
 	//#SWG#@ApiModelProperty(value = """Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail that best suits.
-	//#SWGNL#Append u/l to get the thumbnail just above/below the limits specified.
-	//#SWGNL#Format: <widht>x<height>[u/l] (u is the default value)
-	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768u""", required = true)
+	//#SWGNL#Format: <widht>x<height>
+	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768""", required = true)
 	@BeanProperty
 	var divArea: String =_
 	def withdivArea(p:String):this.type ={ 	this.divArea = p; 	this }

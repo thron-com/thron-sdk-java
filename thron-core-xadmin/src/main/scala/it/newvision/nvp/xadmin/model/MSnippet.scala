@@ -18,6 +18,7 @@ import it.newvision.nvp.xadmin.services.model.apps.MESnippetStatus
 @XmlType(name="MSnippet")
 //#SWG#@ApiModel(description = """A snippet is a pice of code used to solve a specific use case. 
 //#SWGNL#The snippet class is used to store the configuration data of a snippet.""")
+@Deprecated
 class MSnippet extends Serializable {
 
 	/**

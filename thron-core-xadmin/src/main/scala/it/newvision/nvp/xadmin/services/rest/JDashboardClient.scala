@@ -4,14 +4,11 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xadmin.services.model.utils.MResponseGetQuotaUsage
-import it.newvision.nvp.xadmin.services.model.request.MDashboardgetQuotaUsageByUsersReq
 import it.newvision.nvp.xadmin.services.model.utils.MResponseDashboard
 import it.newvision.nvp.xadmin.services.model.request.MDashboardchangeContentsOwnerReq
 import it.newvision.nvp.xadmin.services.model.request.MDashboardmigrateUserStuffReq
 import it.newvision.nvp.xadmin.services.model.request.MDashboardreplaceSourceFilesReq
 import it.newvision.nvp.xadmin.services.model.request.MDashboardresetUserPreferencesReq
-import it.newvision.nvp.xadmin.services.model.request.MDashboardpropagateAclToSubCategoriesReq
 import it.newvision.nvp.xadmin.services.model.utils.MResponseContentRemoved
 import it.newvision.nvp.xadmin.services.model.request.MDashboardtrashContentReq
 import it.newvision.nvp.xadmin.services.model.request.MDashboarduntrashContentReq
@@ -39,51 +36,6 @@ object JDashboardClient {
  * </ul>
  */
 class JDashboardClient(val resourceEndpoint:String) {
-
-	/**
-	 * Deprecated.
-	 * @param tokenId : String
-	 * @param param : MDashboardgetQuotaUsageByUsersReq
-	 * @return MResponseGetQuotaUsage
-	*/
-	def getQuotaUsageByUsers(tokenId: String, 
-			param: MDashboardgetQuotaUsageByUsersReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetQuotaUsage ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JDashboardClient.client.resource(this.resourceEndpoint)
-			val response : MResponseGetQuotaUsage = if(this.resourceEndpoint == ""){
-			
-				new MResponseGetQuotaUsage()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("dashboard/getQuotaUsageByUsers")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseGetQuotaUsage],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseGetQuotaUsage])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
 
 	/**
 	 * The service change the owner for a given list of contents.
@@ -271,51 +223,6 @@ class JDashboardClient(val resourceEndpoint:String) {
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
 					.path("dashboard/resetUserPreferences")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseDashboard],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseDashboard])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Deprecated by applyAcl service
-	 * @param tokenId : String
-	 * @param param : MDashboardpropagateAclToSubCategoriesReq
-	 * @return MResponseDashboard
-	*/
-	def propagateAclToSubCategories(tokenId: String, 
-			param: MDashboardpropagateAclToSubCategoriesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDashboard ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JDashboardClient.client.resource(this.resourceEndpoint)
-			val response : MResponseDashboard = if(this.resourceEndpoint == ""){
-			
-				new MResponseDashboard()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("dashboard/propagateAclToSubCategories")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)

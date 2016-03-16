@@ -193,7 +193,7 @@ class MProperty extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Preffered currency for billing.
 	//#SWGNL#Currency code ISO 4217""")
 	@BeanProperty 
-	var currency: String =_
+	var currency: String  = "EUR"
 	def withcurrency(p:String):this.type ={ 	this.currency = p; 	this }
 
 	/**
@@ -332,6 +332,23 @@ class MProperty extends Serializable {
 		 result = this.applicationProperties.webProtocols.split(",").headOption.getOrElse("http://")
 		 result += this.applicationProperties.applicationsServer
 		 result
+	}
+
+	/**
+	 * @return Boolean
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def isValid():Boolean ={
+		import org.apache.commons.lang.StringUtils
+	
+		StringUtils.isBlank(currency) || {
+			try {
+				Option(java.util.Currency.getInstance(currency)).isDefined
+			} catch {
+				case e: IllegalArgumentException => false
+			}
+		}
 	}
 
 }

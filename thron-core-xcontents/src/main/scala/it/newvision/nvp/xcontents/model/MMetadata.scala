@@ -32,10 +32,8 @@ class MMetadata extends Serializable {
 
 	/**
 	 * Constraints: length <= 2000000
-	 * Case sensitive value
 	 */
-	//#SWG#@ApiModelProperty(value = """Constraints: length <= 2000000
-	//#SWGNL#Case sensitive value""")
+	//#SWG#@ApiModelProperty(value = """Constraints: length <= 2000000""")
 	@BeanProperty 
 	var value: String =_
 	def withvalue(p:String):this.type ={ 	this.value = p; 	this }

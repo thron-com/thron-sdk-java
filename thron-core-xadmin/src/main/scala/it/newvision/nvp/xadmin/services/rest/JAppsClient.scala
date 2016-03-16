@@ -11,7 +11,6 @@ import it.newvision.nvp.xadmin.services.model.request.MAppsfindByPropertiesReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppSummaryList
 import it.newvision.nvp.xadmin.services.model.request.MAppsappsListReq
 import it.newvision.nvp.xadmin.services.model.request.MAppssuReq
-import it.newvision.nvp.xadmin.services.model.apps.MResponseSnippetLogin
 
 /* ************************
 *  GENERATED CLASS
@@ -289,66 +288,6 @@ class JAppsClient(val resourceEndpoint:String) {
 				}
 		  }
 		  
-	
-	}
-
-	/**
-	 * Deprecated.
-	 * Used to authenticate a snippet (4me widgets).
-	 * Can be invoked without restrictions.
-	 * Provides:
-	 * <ul>
-	 * 	<li>all snippet detail (metadata)</li>
-	 * 	<li>the tokenId for the application, to use in the inside service call of the snippet</li>
-	 * 	<li>the rootCategory of the linked App.</li>
-	 * </ul>
-	 * 
-	 * Authentication token is not required (X-TOKENID).
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param appId : String
-	 * Optional
-	 * @param snippetId : String
-	 * Required
-	 * @return MResponseSnippetLogin
-	*/
-	def loginSnippet(tokenId: String, 
-			clientId: String, 
-			appId: String, 
-			snippetId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseSnippetLogin ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JAppsClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(appId).foreach(s => params.add("appId", s))
-		Option(snippetId).foreach(s => params.add("snippetId", s))
-			val response : MResponseSnippetLogin = if(this.resourceEndpoint == ""){
-			
-				new MResponseSnippetLogin()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("apps/loginSnippet")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseSnippetLogin])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseSnippetLogin])
-				}
-				else {
-					throw e
-				}
-			
-		  }
 	
 	}
 

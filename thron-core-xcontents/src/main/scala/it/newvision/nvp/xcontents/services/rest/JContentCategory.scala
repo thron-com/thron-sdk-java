@@ -5,10 +5,6 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
 import it.newvision.nvp.xcontents.services.model.contentCategory.MResponseLinkCategoryToContent
-import it.newvision.nvp.xcontents.services.model.contentCategory.MResponseShowContentByCategory
-import it.newvision.nvp.xcontents.services.model.request.MContentCategoryshowContentsByCategoryReq
-import it.newvision.nvp.xcontents.services.model.contentCategory.MResponseShowCategoriesByContent
-import it.newvision.nvp.xcontents.services.model.request.MContentCategoryshowCategoriesByContentReq
 
 /* ************************
 *  GENERATED CLASS
@@ -42,8 +38,18 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Used to add a content to a specific category.
-	 * Roles restrictions: 4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES
+	 * Used to link a content to a specific category.
+	 * 
+	 * <b>Roles restrictions:</b>
+	 * <ul>
+	 * 	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
+	 * </ul>
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>SHARE is required on the specific content</li>
+	 * 	<li>MODIFY is required on the specific category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param categoryId : String
@@ -57,8 +63,18 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	@Path("/linkCategoryToContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/linkCategoryToContent", notes = """Used to add a content to a specific category.
-	//#SWGNL#Roles restrictions: 4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES""", response = classOf[MResponseLinkCategoryToContent])
+	//#SWG#@ApiOperation(value = "/linkCategoryToContent", notes = """Used to link a content to a specific category.
+	//#SWGNL#
+	//#SWGNL#<b>Roles restrictions:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>SHARE is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY is required on the specific category</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseLinkCategoryToContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def linkCategoryToContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -119,7 +135,19 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 
 	/**
 	 * Used to remove a content from a specific category.
-	 * Roles restrictions: 4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES
+	 * 
+	 * <b>Roles restrictions:</b>
+	 * <ul>
+	 * 	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
+	 * </ul>
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>SHARE is required on the specific content</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param categoryId : String
@@ -134,7 +162,19 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
 	//#SWG#@ApiOperation(value = "/removeCategoryToContent", notes = """Used to remove a content from a specific category.
-	//#SWGNL#Roles restrictions: 4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES""", response = classOf[MResponseLinkCategoryToContent])
+	//#SWGNL#
+	//#SWGNL#<b>Roles restrictions:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>SHARE is required on the specific content</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific category</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseLinkCategoryToContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeCategoryToContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -192,127 +232,5 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	 protected def __removeCategoryToContent(tokenId: String, clientId: String, categoryId: String, contentId: String, applyAcl: Boolean) :MResponseLinkCategoryToContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_removeCategoryToContent: String
-
-	/**
-	 * Deprecated with Use JContent.findByProperties
-	 * 
-	 * Return the list contents linked to a category.
-	 * if categoryId is empty find all contents without categories
-	 * @param tokenId : String
-	 * @param param : MContentCategoryshowContentsByCategoryReq
-	 * @return MResponseShowContentByCategory
-	*/
-	@POST
-	@Path("/showContentsByCategory")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/showContentsByCategory", notes = """Deprecated with Use JContent.findByProperties
-	//#SWGNL#
-	//#SWGNL#Return the list contents linked to a category.
-	//#SWGNL#if categoryId is empty find all contents without categories""", response = classOf[MResponseShowContentByCategory])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	@Deprecated
-	def showContentsByCategory(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentCategoryshowContentsByCategoryReq):Response /*returnType = MResponseShowContentByCategory*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__showContentsByCategory(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_showContentsByCategory)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_showContentsByCategory)
-	    }
-	} 
-
-	@GET
-	@Path("/showContentsByCategory")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	@Deprecated
-	def showContentsByCategory_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseShowContentByCategory*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__showContentsByCategory(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentCategoryshowContentsByCategoryReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_showContentsByCategory)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_showContentsByCategory)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __showContentsByCategory(tokenId: String, param: MContentCategoryshowContentsByCategoryReq) :MResponseShowContentByCategory
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_showContentsByCategory: String
-
-	/**
-	 * Deprecated by JContent.detail
-	 * Return the list of categories where the content is linked.
-	 * @param tokenId : String
-	 * @param param : MContentCategoryshowCategoriesByContentReq
-	 * @return MResponseShowCategoriesByContent
-	*/
-	@POST
-	@Path("/showCategoriesByContent")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/showCategoriesByContent", notes = """Deprecated by JContent.detail
-	//#SWGNL#Return the list of categories where the content is linked.""", response = classOf[MResponseShowCategoriesByContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	@Deprecated
-	def showCategoriesByContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentCategoryshowCategoriesByContentReq):Response /*returnType = MResponseShowCategoriesByContent*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__showCategoriesByContent(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_showCategoriesByContent)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_showCategoriesByContent)
-	    }
-	} 
-
-	@GET
-	@Path("/showCategoriesByContent")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	@Deprecated
-	def showCategoriesByContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseShowCategoriesByContent*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__showCategoriesByContent(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentCategoryshowCategoriesByContentReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_showCategoriesByContent)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_showCategoriesByContent)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __showCategoriesByContent(tokenId: String, param: MContentCategoryshowCategoriesByContentReq) :MResponseShowCategoriesByContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_showCategoriesByContent: String
 
 }

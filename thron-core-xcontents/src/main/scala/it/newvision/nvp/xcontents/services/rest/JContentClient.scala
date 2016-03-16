@@ -11,12 +11,10 @@ import it.newvision.nvp.xcontents.services.model.content.MResponseContentFindByP
 import it.newvision.nvp.xcontents.services.model.request.MContentfindByPropertiesReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentRemoveLocale
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdate
-import it.newvision.nvp.xcontents.services.model.request.MContentupdateAvailableSolutionsReq
 import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentReq
 import it.newvision.nvp.xcontents.services.model.request.MContentaddPlayerEmbedCodeReq
 import it.newvision.nvp.xcontents.services.model.request.MContentremovePlayerEmbedCodeReq
 import it.newvision.nvp.xcontents.services.model.request.MContentupdatePlayerEmbedCodeReq
-import it.newvision.nvp.xcontents.services.model.request.MContentupdatePlayerEmbedCodesReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdateLocale
 import it.newvision.nvp.xcontents.services.model.request.MContentupdateContent4LocaleReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentPrettyId
@@ -62,6 +60,11 @@ class JContentClient(val resourceEndpoint:String) {
 
 	/**
 	 * Used to add the content's name,except and description in a specific locale (lang)
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddContent4LocaleReq
 	 * @return MResponseContentAddLocale
@@ -238,6 +241,11 @@ class JContentClient(val resourceEndpoint:String) {
 
 	/**
 	 * Used to remove the content's name,except and description for a specific locale (lang)
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
@@ -290,55 +298,15 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Deprecated.
-	 * @param tokenId : String
-	 * @param param : MContentupdateAvailableSolutionsReq
-	 * @return MResponseContentUpdate
-	*/
-	def updateAvailableSolutions(tokenId: String, 
-			param: MContentupdateAvailableSolutionsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentUpdate ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContentUpdate = if(this.resourceEndpoint == ""){
-			
-				new MResponseContentUpdate()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/updateAvailableSolutions")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContentUpdate],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContentUpdate])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * Update content parameters.
 	 * The " "contentValues" field of this web service works in “patch" mode: it means that each and
 	 * everyone of the "contentValues" attributes you want to change must be included in the body of the
 	 * request, those not included will not be updated.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContentReq
 	 * @return MResponseContentUpdate
@@ -384,6 +352,11 @@ class JContentClient(val resourceEndpoint:String) {
 
 	/**
 	 * Used to add a custom Player Embed Code for a specific content.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>SHARE is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddPlayerEmbedCodeReq
 	 * @return MResponseContentUpdate
@@ -429,6 +402,11 @@ class JContentClient(val resourceEndpoint:String) {
 
 	/**
 	 * Used to remove the custom Player Embed Code for a specific content.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>SHARE is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentremovePlayerEmbedCodeReq
 	 * @return MResponseContentUpdate
@@ -475,6 +453,11 @@ class JContentClient(val resourceEndpoint:String) {
 	/**
 	 * Used to update the custom Player Embed Code for a specific content. These information are used by
 	 * the 4me Player for the content presentation.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>SHARE is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdatePlayerEmbedCodeReq
 	 * @return MResponseContentUpdate
@@ -519,52 +502,12 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * DEPRECATED
-	 * @param tokenId : String
-	 * @param param : MContentupdatePlayerEmbedCodesReq
-	 * @return MResponseContentUpdate
-	*/
-	def updatePlayerEmbedCodes(tokenId: String, 
-			param: MContentupdatePlayerEmbedCodesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentUpdate ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContentUpdate = if(this.resourceEndpoint == ""){
-			
-				new MResponseContentUpdate()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/updatePlayerEmbedCodes")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContentUpdate],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContentUpdate])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * Used to update the content's name,except and description for a specific locale (lang)
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContent4LocaleReq
 	 * @return MResponseContentUpdateLocale
@@ -609,6 +552,10 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContentPrettyIdReq
 	 * @return MResponseContentPrettyId
@@ -654,6 +601,11 @@ class JContentClient(val resourceEndpoint:String) {
 
 	/**
 	 * remove the prettyId for the given locale
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentremoveContentPrettyIdReq
 	 * @return MResponseContentPrettyId
@@ -699,6 +651,11 @@ class JContentClient(val resourceEndpoint:String) {
 
 	/**
 	 * add a new prettyId to the content for the given locale.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddContentPrettyIdReq
 	 * @return MResponseContentPrettyId
@@ -801,7 +758,10 @@ class JContentClient(val resourceEndpoint:String) {
 	 * * DOWNLOADABLE link is available only for VIDEO/AUDIO/IMAGE/OTHER contents
 	 * * Only linkable contents can be added to another content (contens without property UNLINKABLE)
 	 * 
-	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * 
 	 * 
 	 * @param tokenId : String
@@ -853,6 +813,11 @@ class JContentClient(val resourceEndpoint:String) {
 	 * items, recommended contents or downloadable contents). For this reason it is necessary to specify
 	 * the relation linkType.
 	 * Only linkable contents can be added to another content (contens without property UNLINKABLE)
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddLinkedContentsReq
 	 * @return MResponseContent
@@ -898,6 +863,12 @@ class JContentClient(val resourceEndpoint:String) {
 
 	/**
 	 * this service move a content in the linkedContents list from position "oldPosition" to "newPosition".
+	 * 
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentmoveLinkedContentReq
 	 * @return MResponseContent
@@ -943,6 +914,11 @@ class JContentClient(val resourceEndpoint:String) {
 
 	/**
 	 * the function removes from the list of linked Contents the elements matching the criteria
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentremoveLinkedContentsReq
 	 * @return MResponseContent
@@ -988,6 +964,11 @@ class JContentClient(val resourceEndpoint:String) {
 
 	/**
 	 * used to mark if a content has been read or not by a user (the user who call the service)
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>SEEN is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateUserSpecificValuesReq
 	 * @return MResponseContent

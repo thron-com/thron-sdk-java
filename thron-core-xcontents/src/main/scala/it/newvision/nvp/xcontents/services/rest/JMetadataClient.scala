@@ -10,8 +10,6 @@ import it.newvision.nvp.xcontents.services.model.metadata.MResponseMetadata
 import it.newvision.nvp.xcontents.services.model.request.MMetadataremoveMetadataReq
 import it.newvision.nvp.xcontents.services.model.request.MMetadataupdateMetadataReq
 import it.newvision.nvp.xcontents.services.model.request.MMetadataupdateSingleMetadataReq
-import it.newvision.nvp.xcontents.services.model.metadata.MResponseFindContentByMetadata
-import it.newvision.nvp.xcontents.services.model.request.MMetadatafindContentsByMetadataReq
 import it.newvision.nvp.xcontents.services.model.metadata.MResponseRemoveAllMetadata
 
 /* ************************
@@ -28,18 +26,23 @@ object JMetadataClient {
 	
 }
 /**
- * Used to handle custom metadata in contents.
+ * Used to handle custom generic metadata in Contents.
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/metadata       </li>
+ * com/api/xcontents/resources/metadata     </li>
  * </ul>
  */
 class JMetadataClient(val resourceEndpoint:String) {
 
 	/**
 	 * insert one single entry to list of metadata linked to the content
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MMetadatainsertMetadataReq
 	 * @return MResponseInsertMetadata
@@ -85,6 +88,11 @@ class JMetadataClient(val resourceEndpoint:String) {
 
 	/**
 	 * Remove one single metadata entry linked to a content
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MMetadataremoveMetadataReq
 	 * @return MResponseMetadata
@@ -130,6 +138,11 @@ class JMetadataClient(val resourceEndpoint:String) {
 
 	/**
 	 * Update all content metadata list with the new given list.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MMetadataupdateMetadataReq
 	 * @return MResponseMetadata
@@ -175,6 +188,11 @@ class JMetadataClient(val resourceEndpoint:String) {
 
 	/**
 	 * Update one single content metadata in the list.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MMetadataupdateSingleMetadataReq
 	 * @return MResponseMetadata
@@ -219,53 +237,12 @@ class JMetadataClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Deprecated by JContent.findByProperties
-	 * @param tokenId : String
-	 * @param param : MMetadatafindContentsByMetadataReq
-	 * @return MResponseFindContentByMetadata
-	*/
-	@Deprecated
-	def findContentsByMetadata(tokenId: String, 
-			param: MMetadatafindContentsByMetadataReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseFindContentByMetadata ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JMetadataClient.client.resource(this.resourceEndpoint)
-			val response : MResponseFindContentByMetadata = if(this.resourceEndpoint == ""){
-			
-				new MResponseFindContentByMetadata()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("metadata/findContentsByMetadata")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseFindContentByMetadata],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseFindContentByMetadata])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * remove all Metadata entries linked to the content
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String

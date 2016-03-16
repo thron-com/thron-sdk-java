@@ -48,12 +48,12 @@ class MPublishingProcessunpublishContentReq extends Serializable {
 	def withforce(p:Boolean):this.type ={ 	this.force = p; 	this }
 
 	/**
-	 * Optional.
+	 * Optional (default true).
 	 * If true the service try to remove the source files (in repository) used to
 	 * publish the content and all previous versions (list of files in MMediaContent.
 	 * sourcefiles and MMediaContent.sourceFilesOldVersions)
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. 
+	//#SWG#@ApiModelProperty(value = """Optional (default true).
 	//#SWGNL#If true the service try to remove the source files (in repository) used to publish the content and all previous versions (list of files in MMediaContent.sourcefiles and MMediaContent.sourceFilesOldVersions)""", required = true)
 	@BeanProperty
 	var removeSourceFiles: Boolean =_

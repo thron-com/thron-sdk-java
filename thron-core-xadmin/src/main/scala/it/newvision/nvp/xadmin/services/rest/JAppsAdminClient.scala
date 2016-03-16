@@ -6,17 +6,13 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xadmin.services.model.apps.MResponseApp
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminaddGroupAppReq
-import it.newvision.nvp.xadmin.services.model.apps.MResponseSnippetDetail
-import it.newvision.nvp.xadmin.services.model.request.MAppsAdminaddSnippetReq
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminaddUserAppReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppDetail
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdmincreateReq
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminremoveReq
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminremoveGroupAppReq
-import it.newvision.nvp.xadmin.services.model.request.MAppsAdminremoveSnippetReq
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminupdateAppReq
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdminremoveUserAppReq
-import it.newvision.nvp.xadmin.services.model.request.MAppsAdminupdateSnippetReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppNewKey
 import it.newvision.nvp.xadmin.services.model.request.MAppsAdmingenerateKeyReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppKeyDetail
@@ -85,52 +81,6 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseApp])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * can be invoked only by user with role [APPID]_SNIPPET_MANAGER and for apps of type CUSTOM and
-	 * subtype 4ME-WIDGET
-	 * @param tokenId : String
-	 * @param param : MAppsAdminaddSnippetReq
-	 * @return MResponseSnippetDetail
-	*/
-	def addSnippet(tokenId: String, 
-			param: MAppsAdminaddSnippetReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseSnippetDetail ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JAppsAdminClient.client.resource(this.resourceEndpoint)
-			val response : MResponseSnippetDetail = if(this.resourceEndpoint == ""){
-			
-				new MResponseSnippetDetail()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("appsadmin/addSnippet")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseSnippetDetail],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseSnippetDetail])
 				}
 				else {
 				  throw e
@@ -333,56 +283,6 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * remove a snippet linked to the app.
-	 * <b>
-	 * </b><b>Role valdation:</b>
-	 * <ul>
-	 * 	<li>Can be invoked only by users with role [APPID]_SNIPPET_MANAGER</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MAppsAdminremoveSnippetReq
-	 * @return MResponseApp
-	*/
-	def removeSnippet(tokenId: String, 
-			param: MAppsAdminremoveSnippetReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseApp ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JAppsAdminClient.client.resource(this.resourceEndpoint)
-			val response : MResponseApp = if(this.resourceEndpoint == ""){
-			
-				new MResponseApp()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("appsadmin/removeSnippet")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseApp],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseApp])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * update the App parameters
 	 * 
 	 * <b>Role valdation:</b>
@@ -473,52 +373,6 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseApp])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * update the snippet parameters.
-	 * Can be invoked only by users with role [APPID]_SNIPPET_MANAGER
-	 * @param tokenId : String
-	 * @param param : MAppsAdminupdateSnippetReq
-	 * @return MResponseSnippetDetail
-	*/
-	def updateSnippet(tokenId: String, 
-			param: MAppsAdminupdateSnippetReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseSnippetDetail ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JAppsAdminClient.client.resource(this.resourceEndpoint)
-			val response : MResponseSnippetDetail = if(this.resourceEndpoint == ""){
-			
-				new MResponseSnippetDetail()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("appsadmin/updateSnippet")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseSnippetDetail],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseSnippetDetail])
 				}
 				else {
 				  throw e

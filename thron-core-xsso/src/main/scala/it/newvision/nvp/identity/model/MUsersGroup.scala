@@ -62,9 +62,11 @@ class MUsersGroup extends Serializable {
 	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
-	 * Specify if the user is enable or not to use the platform
+	 * Specify if the group is enable or not to use the platform.
+	 * Users inherit roles and acl only from active linked groups.
 	 */
-	//#SWG#@ApiModelProperty(value = """Specify if the user is enable or not to use the platform""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """Specify if the group is enable or not to use the platform.
+	//#SWGNL#Users inherit roles and acl only from active linked groups.""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
 	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }

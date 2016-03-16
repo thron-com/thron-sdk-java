@@ -12,6 +12,8 @@ import com.thron.intelligence.services.model.metadata.MResponseMetadataDefinitio
 import com.thron.intelligence.services.model.request.MIMetadataDefinitionlistReq
 import com.thron.intelligence.services.model.metadata.MEMetadataDefinitionOrderBy
 import com.thron.intelligence.services.model.request.MIMetadataDefinitionupdateReq
+import com.thron.intelligence.services.model.request.MIMetadataDefinitionchangeTypeReq
+import com.thron.intelligence.services.model.metadata.MResponseMetadataVerifyIfUsed
 
 /* ************************
 *  GENERATED CLASS
@@ -823,5 +825,171 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	 protected def __update(tokenId: String, clientId: String, classificationId: String, id: String, param: MIMetadataDefinitionupdateReq) :MResponseMetadataDefinitionDetail
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_update: String
+
+	/**
+	 * Change a given iMetadataDefinition in a different metadataType.
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>it's possible to change the metadataType if the metadataDefinition is not used in any entity.
+	 * </li>
+	 * </ul>
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MIMetadataDefinitionchangeTypeReq
+	 * @return MResponseMetadataDefinitionDetail
+	*/
+	@POST
+	@Path("/changeType/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/changeType", notes = """Change a given iMetadataDefinition in a different metadataType.
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>it's possible to change the metadataType if the metadataDefinition is not used in any entity.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation:</b>
+	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseMetadataDefinitionDetail])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def changeType(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MIMetadataDefinitionchangeTypeReq):Response /*returnType = MResponseMetadataDefinitionDetail*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__changeType(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_changeType)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_changeType)
+	    }
+	} 
+
+	@GET
+	@Path("/changeType/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def changeType_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseMetadataDefinitionDetail*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__changeType(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MIMetadataDefinitionchangeTypeReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_changeType)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_changeType)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __changeType(tokenId: String, clientId: String, classificationId: String, param: MIMetadataDefinitionchangeTypeReq) :MResponseMetadataDefinitionDetail
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_changeType: String
+
+	/**
+	 * Verify if the given iMetadataDefinition is used in the platform. Only iMetadataDefinition not used
+	 * can be removed or changed the metadataDefinitioType
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param key : String
+	 * @return MResponseMetadataVerifyIfUsed
+	*/
+	@POST
+	@Path("/verifyIfUsed/{clientId}/{classificationId}/{key}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/verifyIfUsed", notes = """Verify if the given iMetadataDefinition is used in the platform. Only iMetadataDefinition not used can be removed or changed the metadataDefinitioType
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation:</b>
+	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseMetadataVerifyIfUsed])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def verifyIfUsed(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("key")
+	key: String):Response /*returnType = MResponseMetadataVerifyIfUsed*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__verifyIfUsed(tokenId,clientId,classificationId,key)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_verifyIfUsed)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_verifyIfUsed)
+	    }
+	} 
+
+	@GET
+	@Path("/verifyIfUsed/{clientId}/{classificationId}/{key}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def verifyIfUsed_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("key")
+	key: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseMetadataVerifyIfUsed*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__verifyIfUsed(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,key	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_verifyIfUsed)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_verifyIfUsed)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __verifyIfUsed(tokenId: String, clientId: String, classificationId: String, key: String) :MResponseMetadataVerifyIfUsed
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_verifyIfUsed: String
 
 }

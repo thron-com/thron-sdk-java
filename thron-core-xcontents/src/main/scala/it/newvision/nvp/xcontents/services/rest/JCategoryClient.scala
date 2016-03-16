@@ -6,20 +6,15 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xcontents.services.model.category.MResponseNewCategory
 import it.newvision.nvp.xcontents.services.model.request.MCategorycreateCategoryReq
-import it.newvision.nvp.xcontents.services.model.request.MCategorycreateSystemCategoryReq
 import it.newvision.nvp.xcontents.services.model.category.MResponseUpdateCategory
 import it.newvision.nvp.xcontents.services.model.request.MCategoryaddCategory4LocaleReq
 import it.newvision.nvp.xcontents.services.model.request.MCategoryremoveCategory4LocaleReq
 import it.newvision.nvp.xcontents.services.model.request.MCategoryupdateCategory4LocaleReq
 import it.newvision.nvp.xcontents.services.model.category.MResponseRemoveCategory
-import it.newvision.nvp.xcontents.services.model.category.MResponseFindCategory
-import it.newvision.nvp.xcontents.services.model.request.MCategoryfindByPropertiesReq
 import it.newvision.nvp.xcontents.services.model.category.MResponseFindCategory2
 import it.newvision.nvp.xcontents.services.model.request.MCategoryfindByProperties2Req
-import it.newvision.nvp.xcontents.services.model.category.MResponseCategorySetParentId
 import it.newvision.nvp.xcontents.services.model.request.MCategoryupdateCategoryReq
 import it.newvision.nvp.xcontents.services.model.category.MResponseGetCategory
-import it.newvision.nvp.xcontents.services.model.category.MResponseGetRootCategories
 import it.newvision.nvp.xcontents.services.model.category.MResponseCategoryPrettyId
 import it.newvision.nvp.xcontents.services.model.request.MCategoryaddCategoryPrettyIdReq
 import it.newvision.nvp.xcontents.services.model.request.MCategoryupdateCategoryPrettyIdReq
@@ -41,24 +36,25 @@ object JCategoryClient {
 	
 }
 /**
- * Service used to handle categories, useful for organize the logical contents
- * present on the platform. The service allows you to manage the metadata
- * associated with categories in multilingual.
+ * Service used to manage categories (Folders).
+ * A Category is a container of contents, and ca be organized in a tree structure.
+ * 
+ * Categories can have multilingual metadata, name and description.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/category/    </li>
+ * com/api/xcontents/resources/category/</li>
  * </ul>
  */
 class JCategoryClient(val resourceEndpoint:String) {
 
 	/**
-	 * create a new category and link to the parent category in the tree hierarchy. The service allows to
-	 * create two different types of category (PUBLIC and PRIVATE). Private categories are used to
-	 * organize the private contents of a user and are visible only by the user that create the category.
+	 * Used to create a new category.
 	 * 
-	 * Category trees with mixed categories (public and private) is not allowed.
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
+	 * CORE_MANAGE_PUBLIC_CATEGORIES
 	 * @param tokenId : String
 	 * @param param : MCategorycreateCategoryReq
 	 * @return MResponseNewCategory
@@ -103,53 +99,12 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * create a new System category and link to the parent category in the tree hierarchy. Only super
-	 * users have the permission to use this service.
-	 * @param tokenId : String
-	 * @param param : MCategorycreateSystemCategoryReq
-	 * @return MResponseNewCategory
-	*/
-	def createSystemCategory(tokenId: String, 
-			param: MCategorycreateSystemCategoryReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseNewCategory ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JCategoryClient.client.resource(this.resourceEndpoint)
-			val response : MResponseNewCategory = if(this.resourceEndpoint == ""){
-			
-				new MResponseNewCategory()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("category/createSystemCategory")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseNewCategory],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseNewCategory])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * Used to add the category's name,except and description in a specific lang
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required  on the specific category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryaddCategory4LocaleReq
 	 * @return MResponseUpdateCategory
@@ -195,6 +150,11 @@ class JCategoryClient(val resourceEndpoint:String) {
 
 	/**
 	 * Used to remove the category's name,except and description for a specific lang
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required  on the specific category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryremoveCategory4LocaleReq
 	 * @return MResponseUpdateCategory
@@ -240,6 +200,11 @@ class JCategoryClient(val resourceEndpoint:String) {
 
 	/**
 	 * Used to update the category's name,except and description in a specific lang
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required  on the specific category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryupdateCategory4LocaleReq
 	 * @return MResponseUpdateCategory
@@ -285,8 +250,12 @@ class JCategoryClient(val resourceEndpoint:String) {
 
 	/**
 	 * The service remove the specified category only if there no linked contents and subcategories.
-	 * With cascade = true the service unlink all linked contents and unlink the subcategories (the
-	 * subcategories becomes root categories)
+	 * With cascade = true the service unlink all linked contents and remove all subcategories
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required  on the specific category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param catId : String
@@ -332,55 +301,6 @@ class JCategoryClient(val resourceEndpoint:String) {
 				  throw e
 				}
 		  }
-	
-	}
-
-	/**
-	 * Deprecated by findByProperties2.
-	 * 
-	 * Returns a flat list of categories that meet the search criteria. Each single category in the result
-	 * set doesn't show the proper "linkedCategory" information.
-	 * @param tokenId : String
-	 * @param param : MCategoryfindByPropertiesReq
-	 * @return MResponseFindCategory
-	*/
-	@Deprecated
-	def findByProperties(tokenId: String, 
-			param: MCategoryfindByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseFindCategory ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JCategoryClient.client.resource(this.resourceEndpoint)
-			val response : MResponseFindCategory = if(this.resourceEndpoint == ""){
-			
-				new MResponseFindCategory()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("category/findByProperties")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseFindCategory],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseFindCategory])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
 	
 	}
 
@@ -431,78 +351,14 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to move a category (and its sub tree) to a different node in the category forest.
-	 * 
-	 * Example:
-	 * given two category tree we move the category C2 inside C4
-	 * <ul>
-	 * 	<li>C1->C2->C3</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>C4->C5->C6</li>
-	 * </ul>
-	 * result:
-	 * <ul>
-	 * 	<li>C1</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>C4->C5->C6</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>     ->C2->C3</li>
-	 * </ul>
-	 * After the operation the category C2 (and subcategories) becomes subcategory of C4.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param categoryId : String
-	 * @param categoryParentId : String
-	 * @return MResponseCategorySetParentId
-	*/
-	def setParentId(tokenId: String, 
-			clientId: String, 
-			categoryId: String, 
-			categoryParentId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseCategorySetParentId ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JCategoryClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(categoryId).foreach(s => params.add("categoryId", s))
-		Option(categoryParentId).foreach(s => params.add("categoryParentId", s))  
-			val response : MResponseCategorySetParentId = if(this.resourceEndpoint == ""){
-			
-				new MResponseCategorySetParentId()
-			
-			}else{
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED	
-				var wbuilder = webResource
-					.path("category/setParentId")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.post(classOf[MResponseCategorySetParentId],params)
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseCategorySetParentId])
-				}
-				else {
-				  throw e
-				}
-		  }
-	
-	}
-
-	/**
 	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
 	 * the "update" attributes you want to change must be included in the body of the request, those not
 	 * included will not be updated.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required  on the specific category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryupdateCategoryReq
 	 * @return MResponseUpdateCategory
@@ -608,68 +464,12 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Deprecated by findByProperties2
-	 * 
-	 * Return the list of top level categories (only root PUBLIC categories) without the children category
-	 * detail. can be used to filter only the root categories of a specific solution (VIEW,PLAY,MOVE...)
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param locale : String
-	 * the give locale used for the output description. Optional parameter.
-	 * @param solution : String
-	 * @param offset : Integer
-	 * @param numberOfResult : Integer
-	 * default value= 50
-	 * value -1, return all result not paginated
-	 * @return MResponseGetRootCategories
-	*/
-	@Deprecated
-	def getRootCategories(tokenId: String, 
-			clientId: String, 
-			locale: String, 
-			solution: String, 
-			offset: Integer, 
-			numberOfResult: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetRootCategories ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JCategoryClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(locale).foreach(s => params.add("locale", s))
-		Option(solution).foreach(s => params.add("solution", s))
-		Option(offset).foreach(s => params.add("offset", s))
-		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))
-			val response : MResponseGetRootCategories = if(this.resourceEndpoint == ""){
-			
-				new MResponseGetRootCategories()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("category/getRootCategories")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseGetRootCategories])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseGetRootCategories])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
-
-	/**
 	 * add the category prettyId for a specific locale.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required  on the specific category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryaddCategoryPrettyIdReq
 	 * @return MResponseCategoryPrettyId
@@ -715,6 +515,11 @@ class JCategoryClient(val resourceEndpoint:String) {
 
 	/**
 	 * update the category prettyId for a specific locale.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required  on the specific category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryupdateCategoryPrettyIdReq
 	 * @return MResponseCategoryPrettyId
@@ -760,6 +565,11 @@ class JCategoryClient(val resourceEndpoint:String) {
 
 	/**
 	 * remove the category prettyId for a specific locale.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required  on the specific category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryremoveCategoryPrettyIdReq
 	 * @return MResponseCategoryPrettyId

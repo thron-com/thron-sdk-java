@@ -8,7 +8,6 @@ import it.newvision.nvp.xcontents.services.model.client.MResponseUpdateClient
 import it.newvision.nvp.xcontents.services.model.request.MClientupdateAuditDurationDaysReq
 import it.newvision.nvp.xcontents.services.model.request.MClientupdateSecureConnectionEnabledReq
 import it.newvision.nvp.xcontents.services.model.request.MClientupdateTrashPropertiesReq
-import it.newvision.nvp.xcontents.services.model.request.MClientupdateClientReq
 import it.newvision.nvp.xcontents.services.model.client.MResponseDetailClient
 
 /* ************************
@@ -205,65 +204,6 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __updateTrashProperties(tokenId: String, param: MClientupdateTrashPropertiesReq) :MResponseUpdateClient
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_updateTrashProperties: String
-
-	/**
-	 * DEPRECATED.
-	 * update all client properties.
-	 * @param tokenId : String
-	 * @param param : MClientupdateClientReq
-	 * @return MResponseUpdateClient
-	*/
-	@POST
-	@Path("/updateClient")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateClient", notes = """DEPRECATED.
-	//#SWGNL#update all client properties.""", response = classOf[MResponseUpdateClient])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	@Deprecated
-	def updateClient(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MClientupdateClientReq):Response /*returnType = MResponseUpdateClient*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__updateClient(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateClient)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateClient)
-	    }
-	} 
-
-	@GET
-	@Path("/updateClient")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	@Deprecated
-	def updateClient_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateClient*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__updateClient(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MClientupdateClientReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateClient)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateClient)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateClient(tokenId: String, param: MClientupdateClientReq) :MResponseUpdateClient
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateClient: String
 
 	/**
 	 * Return all client properties information

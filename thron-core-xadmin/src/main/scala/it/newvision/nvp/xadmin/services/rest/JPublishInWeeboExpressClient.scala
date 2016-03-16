@@ -46,7 +46,7 @@ object JPublishInWeeboExpressClient {
 class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 
 	/**
-	 * Publishing function used to create and publish audio
+	 * Create a new audio content
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishAudioReq
 	 * @return MResponsePublishContent
@@ -91,7 +91,7 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Publishing function used to create and publish images
+	 * Create a new image content
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishImageReq
 	 * @return MResponsePublishContent
@@ -136,7 +136,7 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Publishing function used to create playlists
+	 * Create a new playlist content
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishPlayListReq
 	 * @return MResponsePublishContent
@@ -181,7 +181,6 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Publishing function used to create and publish new live events
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishLiveEventReq
 	 * @return MResponsePublishContent
@@ -226,7 +225,7 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Publishing function used to create and publish video
+	 * Create a new video content
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishVideoReq
 	 * @return MResponsePublishContent
@@ -271,7 +270,7 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Publishing function used to create and publish generic documents (zip,docs,txt... files)
+	 * Create a new generic content (zip,docs,txt... files)
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishDocumentReq
 	 * @return MResponsePublishContent
@@ -316,7 +315,7 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Publishing function used to create new Pagelet
+	 * Create a new pagelet content
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishPageletReq
 	 * @return MResponsePublishContent
@@ -453,11 +452,11 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * This service is used to publish a content in different channels specified in the parameter or using
-	 * the profileId facility (The profile define a collection of channes for a given content type).
-	 * The service return an error if the specified channels are not available for the selected
-	 * mediaContent, but  can be used to adjust a content to a specific profile, publishing the content on
-	 * the missing channels
+	 * This service is used to publish a content in different channels or using a specific profile (The
+	 * profile define a collection of channes for a given content type).
+	 * The service return an error if the specified channels are not available for the selected content,
+	 * but  can be used to adjust a content to a specific profile, publishing the content on the missing
+	 * channels
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishContentInChannelsReq
 	 * @return MResponsePublishContent

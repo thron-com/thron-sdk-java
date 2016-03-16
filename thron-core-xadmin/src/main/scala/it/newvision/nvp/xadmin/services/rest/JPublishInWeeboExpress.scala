@@ -54,7 +54,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Publishing function used to create and publish audio
+	 * Create a new audio content
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishAudioReq
 	 * @return MResponsePublishContent
@@ -63,7 +63,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	@Path("/publishAudio")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/publishAudio", notes = """Publishing function used to create and publish audio""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/publishAudio", notes = """Create a new audio content""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def publishAudio(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -109,7 +109,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	protected def capability_publishAudio: String
 
 	/**
-	 * Publishing function used to create and publish images
+	 * Create a new image content
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishImageReq
 	 * @return MResponsePublishContent
@@ -118,7 +118,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	@Path("/publishImage")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/publishImage", notes = """Publishing function used to create and publish images""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/publishImage", notes = """Create a new image content""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def publishImage(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -164,7 +164,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	protected def capability_publishImage: String
 
 	/**
-	 * Publishing function used to create playlists
+	 * Create a new playlist content
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishPlayListReq
 	 * @return MResponsePublishContent
@@ -173,7 +173,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	@Path("/publishPlayList")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/publishPlayList", notes = """Publishing function used to create playlists""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/publishPlayList", notes = """Create a new playlist content""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def publishPlayList(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -219,7 +219,6 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	protected def capability_publishPlayList: String
 
 	/**
-	 * Publishing function used to create and publish new live events
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishLiveEventReq
 	 * @return MResponsePublishContent
@@ -228,7 +227,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	@Path("/publishLiveEvent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/publishLiveEvent", notes = """Publishing function used to create and publish new live events""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/publishLiveEvent", notes = """""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def publishLiveEvent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -274,7 +273,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	protected def capability_publishLiveEvent: String
 
 	/**
-	 * Publishing function used to create and publish video
+	 * Create a new video content
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishVideoReq
 	 * @return MResponsePublishContent
@@ -283,7 +282,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	@Path("/publishVideo")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/publishVideo", notes = """Publishing function used to create and publish video""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/publishVideo", notes = """Create a new video content""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def publishVideo(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -329,7 +328,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	protected def capability_publishVideo: String
 
 	/**
-	 * Publishing function used to create and publish generic documents (zip,docs,txt... files)
+	 * Create a new generic content (zip,docs,txt... files)
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishDocumentReq
 	 * @return MResponsePublishContent
@@ -338,7 +337,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	@Path("/publishDocument")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/publishDocument", notes = """Publishing function used to create and publish generic documents (zip,docs,txt... files)""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/publishDocument", notes = """Create a new generic content (zip,docs,txt... files)""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def publishDocument(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -384,7 +383,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	protected def capability_publishDocument: String
 
 	/**
-	 * Publishing function used to create new Pagelet
+	 * Create a new pagelet content
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishPageletReq
 	 * @return MResponsePublishContent
@@ -393,7 +392,7 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	@Path("/publishPagelet")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/publishPagelet", notes = """Publishing function used to create new Pagelet""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/publishPagelet", notes = """Create a new pagelet content""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def publishPagelet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -552,11 +551,11 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	protected def capability_publish4MEDocument: String
 
 	/**
-	 * This service is used to publish a content in different channels specified in the parameter or using
-	 * the profileId facility (The profile define a collection of channes for a given content type).
-	 * The service return an error if the specified channels are not available for the selected
-	 * mediaContent, but  can be used to adjust a content to a specific profile, publishing the content on
-	 * the missing channels
+	 * This service is used to publish a content in different channels or using a specific profile (The
+	 * profile define a collection of channes for a given content type).
+	 * The service return an error if the specified channels are not available for the selected content,
+	 * but  can be used to adjust a content to a specific profile, publishing the content on the missing
+	 * channels
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishContentInChannelsReq
 	 * @return MResponsePublishContent
@@ -565,8 +564,8 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	@Path("/publishContentInChannels")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/publishContentInChannels", notes = """This service is used to publish a content in different channels specified in the parameter or using the profileId facility (The profile define a collection of channes for a given content type).
-	//#SWGNL#The service return an error if the specified channels are not available for the selected mediaContent, but  can be used to adjust a content to a specific profile, publishing the content on the missing channels""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/publishContentInChannels", notes = """This service is used to publish a content in different channels or using a specific profile (The profile define a collection of channes for a given content type).
+	//#SWGNL#The service return an error if the specified channels are not available for the selected content, but  can be used to adjust a content to a specific profile, publishing the content on the missing channels""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def publishContentInChannels(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
