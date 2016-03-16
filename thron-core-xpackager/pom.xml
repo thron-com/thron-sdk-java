@@ -3,7 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>thron-core-xpackager_2.11</artifactId>
-
+    <name>THRON xpackager</name>
+    <description>This component includes web services to manage the working area (i.e. the area where contents are stored before publication): it includes services to use both the FTP area or the S3 bucket which can be used to upload new files.</description>
     <parent>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-sdk-java</artifactId>

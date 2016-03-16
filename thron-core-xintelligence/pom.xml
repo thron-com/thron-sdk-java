@@ -3,7 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>thron-core-xintelligence_2.11</artifactId>
-
+    <name>THRON xintelligence</name>
+    <description>This component manages all the intelligence elements, allowing users to define classifications, tags and metadata and to link them to content or contacts.</description>
     <parent>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-sdk-java</artifactId>

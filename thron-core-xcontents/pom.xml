@@ -3,7 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>thron-core-xcontents_2.11</artifactId>
-
+    <name>THRON xcontent</name>
+    <description>This component is used to manage content basic information such as, for example: Title, Description, prettyID and linked contents. It also includes web services to manage folders and those to perform searches.</description>
     <parent>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-sdk-java</artifactId>

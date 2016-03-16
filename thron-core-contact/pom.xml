@@ -3,7 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>thron-core-xcontact_2.11</artifactId>
-
+    <name>THRON xcontact/xdevice</name>
+    <description>xcontact component allows you to handle contacts and their identities. xdevice component allows you to retrieve the list of devices that have accessed your content and to connect (or disconnect) them to your contacts.</description>
     <parent>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-sdk-java</artifactId>

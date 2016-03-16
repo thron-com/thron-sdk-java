@@ -3,7 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>thron-core-xsso_2.11</artifactId>
-
+    <name>THRON xsso</name>
+    <description>This is the Single Sign-On component of the entire platform. It provides a set of web services for users’ authentication as long as web services to reset their password and edit their preferences.</description>
     <parent>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-sdk-java</artifactId>
