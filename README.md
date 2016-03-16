@@ -1,7 +1,7 @@
 SDK THRON Platform [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.thron.sdk/thron-sdk-java/badge.svg)](http://search.maven.org/#search%7Cga%7C1%7Ccom.thron.sdk) [![Build Status](https://travis-ci.org/thron-com/thron-sdk-java.svg)](https://travis-ci.org/thron-com/thron-sdk-java)
 ==============
 
-This open-source `Scala` library allows you to integrate your project with THRON platform using the available REST Api defined in https://developer.thron.com/
+This open-source `Java`/`Scala` library allows you to integrate your project with THRON platform using the available REST Api defined in https://developer.thron.com/
 
 Learn more about the provided samples, documentation, integrating the SDK into your project, and more at https://support.thron.com
 
