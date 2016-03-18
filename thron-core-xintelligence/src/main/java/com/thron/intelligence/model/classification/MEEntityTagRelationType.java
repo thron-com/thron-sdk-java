@@ -14,8 +14,8 @@ import javax.xml.bind.annotation.XmlType;
  * Examples:
  * Mario IS sales
  * Antonio IS support
- * "Thron 5.0" IS product
- * "Thron 5.0" INTERESTED for sales
+ * "THRON 5.0" IS product
+ * "THRON 5.0" INTERESTED for sales
  * Antonio INTERESTED in product
  */
 @XmlType(name="MEEntityTagRelationType") 
@@ -25,8 +25,8 @@ import javax.xml.bind.annotation.XmlType;
 //#SWGNL#Examples:
 //#SWGNL#Mario IS sales
 //#SWGNL#Antonio IS support
-//#SWGNL#"Thron 5.0" IS product
-//#SWGNL#"Thron 5.0" INTERESTED for sales
+//#SWGNL#"THRON 5.0" IS product
+//#SWGNL#"THRON 5.0" INTERESTED for sales
 //#SWGNL#Antonio INTERESTED in product""")
 public enum MEEntityTagRelationType {
 	//#SWG#@ApiModelProperty(value = """""")

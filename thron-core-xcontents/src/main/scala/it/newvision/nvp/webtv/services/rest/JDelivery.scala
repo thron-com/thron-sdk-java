@@ -17,20 +17,20 @@ import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetPlayli
 ****************************/
 /**
  * This service is optimized for the delivery, and provide a set of services to
- * get the content detail information necessary for Thron Player.
+ * get the content detail information necessary for THRON Player.
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/delivery/ </li>
+ * com/api/xcontents/resources/delivery/</li>
  * </ul>
  */
 @Path("/delivery")
-//#SWG#@Api(value = "/delivery", description = """This service is optimized for the delivery, and provide a set of services to get the content detail information necessary for Thron Player. 
+//#SWG#@Api(value = "/delivery", description = """This service is optimized for the delivery, and provide a set of services to get the content detail information necessary for THRON Player. 
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/delivery/ </li>
+//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/delivery/</li>
 //#SWGNL#</ul>""")
 trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

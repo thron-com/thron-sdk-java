@@ -7,8 +7,6 @@ import javax.xml.bind.annotation._
 import com.thron.intelligence.services.model.tag.MResponseITag
 import com.thron.intelligence.services.model.request.MITaginsertReq
 import com.thron.intelligence.services.model.request.MITagremoveReq
-import com.thron.intelligence.services.model.request.MITagapproveReq
-import com.thron.intelligence.services.model.request.MITagrejectReq
 import com.thron.intelligence.services.model.itag.MResponseITagBulk
 import com.thron.intelligence.services.model.request.MITagbulkInsertReq
 import com.thron.intelligence.services.model.request.MITagbulkRemoveReq
@@ -151,118 +149,6 @@ class JITagClient(val resourceEndpoint:String) {
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
 					.path("itag/remove")
-					.path(clientId.toString)
-		.path(classificationId.toString)
-		.path(itagId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseITag],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseITag])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * <b>Not yet available!</b>
-	 * Approve a suggested itag linked to an entity  (Content, User, Contact).
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param itagId : String
-	 * the tag definition id.
-	 * TagDefinition.id or ITagDefinition.prettyId
-	 * @param param : MITagapproveReq
-	 * @return MResponseITag
-	*/
-	def approve(tokenId: String, 
-			clientId: String, 
-			classificationId: String, 
-			itagId: String, 
-			param: MITagapproveReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITag ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JITagClient.client.resource(this.resourceEndpoint)
-			val response : MResponseITag = if(this.resourceEndpoint == ""){
-			
-				new MResponseITag()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("itag/approve")
-					.path(clientId.toString)
-		.path(classificationId.toString)
-		.path(itagId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseITag],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseITag])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * <b>Not yet available!</b>
-	 * Reject a suggested itag linked to an entity.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param itagId : String
-	 * the tag definition id.
-	 * TagDefinition.id or ITagDefinition.prettyId
-	 * @param param : MITagrejectReq
-	 * @return MResponseITag
-	*/
-	def reject(tokenId: String, 
-			clientId: String, 
-			classificationId: String, 
-			itagId: String, 
-			param: MITagrejectReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITag ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JITagClient.client.resource(this.resourceEndpoint)
-			val response : MResponseITag = if(this.resourceEndpoint == ""){
-			
-				new MResponseITag()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("itag/reject")
 					.path(clientId.toString)
 		.path(classificationId.toString)
 		.path(itagId.toString)

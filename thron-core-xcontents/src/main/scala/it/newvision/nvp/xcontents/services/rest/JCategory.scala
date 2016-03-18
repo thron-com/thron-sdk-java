@@ -59,10 +59,15 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 
 	/**
 	 * Used to create a new category.
+	 * When creating a child category, all ACLs are inherited from the parent category (ownership
+	 * included).
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
-	 * CORE_MANAGE_PUBLIC_CATEGORIES
+	 * <b>Validations:</b>
+	 * <ul>
+	 * 	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
+	 * CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	 * 	<li>MODIFY Acl is required  on the parent category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategorycreateCategoryReq
 	 * @return MResponseNewCategory
@@ -72,9 +77,13 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/createCategory", notes = """Used to create a new category. 
+	//#SWGNL#When creating a child category, all ACLs are inherited from the parent category (ownership included).
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or CORE_MANAGE_PUBLIC_CATEGORIES""", response = classOf[MResponseNewCategory])
+	//#SWGNL#<b>Validations:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	//#SWGNL#	<li>MODIFY Acl is required  on the parent category</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseNewCategory])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def createCategory(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -316,7 +325,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 
 	/**
 	 * The service remove the specified category only if there no linked contents and subcategories.
-	 * With cascade = true the service unlink all linked contents and remove all subcategories
+	 * With cascade = true the service unlink all contents and remove recursively all subcategories
 	 * 
 	 * <b>ACL validation:</b>
 	 * <ul>
@@ -334,7 +343,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
 	//#SWG#@ApiOperation(value = "/removeCategory", notes = """The service remove the specified category only if there no linked contents and subcategories. 
-	//#SWGNL#With cascade = true the service unlink all linked contents and remove all subcategories
+	//#SWGNL#With cascade = true the service unlink all contents and remove recursively all subcategories
 	//#SWGNL#
 	//#SWGNL#<b>ACL validation:</b>
 	//#SWGNL#<ul>
@@ -517,7 +526,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_updateCategory: String
 
 	/**
-	 * Return the category object with the specified CategoryID; if cascade = true returns the tree of
+	 * Return the category object with the specified categoryId; if cascade = true returns the tree of
 	 * children categories.
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -538,7 +547,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@GET
 	@Path("/getCategory")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getCategory", notes = """Return the category object with the specified CategoryID; if cascade = true returns the tree of children categories.""", response = classOf[MResponseGetCategory])
+	//#SWG#@ApiOperation(value = "/getCategory", notes = """Return the category object with the specified categoryId; if cascade = true returns the tree of children categories.""", response = classOf[MResponseGetCategory])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getCategory(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

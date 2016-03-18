@@ -26,12 +26,12 @@ object JDeliveryClient {
 }
 /**
  * This service is optimized for the delivery, and provide a set of services to
- * get the content detail information necessary for Thron Player.
+ * get the content detail information necessary for THRON Player.
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/delivery/ </li>
+ * com/api/xcontents/resources/delivery/</li>
  * </ul>
  */
 class JDeliveryClient(val resourceEndpoint:String) {

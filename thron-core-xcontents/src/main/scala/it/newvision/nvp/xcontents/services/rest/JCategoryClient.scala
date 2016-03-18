@@ -51,10 +51,15 @@ class JCategoryClient(val resourceEndpoint:String) {
 
 	/**
 	 * Used to create a new category.
+	 * When creating a child category, all ACLs are inherited from the parent category (ownership
+	 * included).
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
-	 * CORE_MANAGE_PUBLIC_CATEGORIES
+	 * <b>Validations:</b>
+	 * <ul>
+	 * 	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
+	 * CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	 * 	<li>MODIFY Acl is required  on the parent category</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategorycreateCategoryReq
 	 * @return MResponseNewCategory
@@ -250,7 +255,7 @@ class JCategoryClient(val resourceEndpoint:String) {
 
 	/**
 	 * The service remove the specified category only if there no linked contents and subcategories.
-	 * With cascade = true the service unlink all linked contents and remove all subcategories
+	 * With cascade = true the service unlink all contents and remove recursively all subcategories
 	 * 
 	 * <b>ACL validation:</b>
 	 * <ul>
@@ -403,7 +408,7 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return the category object with the specified CategoryID; if cascade = true returns the tree of
+	 * Return the category object with the specified categoryId; if cascade = true returns the tree of
 	 * children categories.
 	 * @param tokenId : String
 	 * @param clientId : String

@@ -55,11 +55,9 @@ class MPlayerEmbedCode extends Serializable {
 	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
 
 	/**
-	 * Google Analytics ID. Used by the player for statistics and reports.
-	 * This attribute is derived from the clientId properties.
+	 * Deprecated
 	 */
-	//#SWG#@ApiModelProperty(value = """Google Analytics ID. Used by the player for statistics and reports.
-	//#SWGNL#This attribute is derived from the clientId properties.""")
+	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@BeanProperty 
 	@Deprecated
 	var trackerGA: String =_

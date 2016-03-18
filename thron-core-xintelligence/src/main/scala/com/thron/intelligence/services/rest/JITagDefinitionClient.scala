@@ -6,15 +6,12 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import com.thron.intelligence.services.model.tag.MResponseITagDefinitionDetail
 import com.thron.intelligence.services.model.request.MITagDefinitioninsertReq
-import com.thron.intelligence.services.model.request.MITagDefinitionsuggestReq
 import com.thron.intelligence.services.model.tag.MResponseITagDefinitionList
 import com.thron.intelligence.services.model.request.MITagDefinitionlistReq
 import com.thron.intelligence.services.model.tag.MEITagDefinitionOrderBy
-import com.thron.intelligence.services.model.request.MITagDefinitionmergeReq
 import com.thron.intelligence.services.model.request.MITagDefinitionupdateReq
 import com.thron.intelligence.services.model.itag.MResponseITagRemove
 import com.thron.intelligence.services.model.request.MITagDefinitionremoveReq
-import com.thron.intelligence.services.model.request.MITagDefinitionapproveReq
 import com.thron.intelligence.services.model.tag.MResponseITagMetadataLink
 import com.thron.intelligence.services.model.request.MITagDefinitionlinkMetadataDefinitionReq
 import com.thron.intelligence.services.model.request.MITagDefinitionunlinkMetadataDefinitionReq
@@ -78,69 +75,6 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
 					.path("itagdefinition/insert")
-					.path(clientId.toString)
-		.path(classificationId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseITagDefinitionDetail],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseITagDefinitionDetail])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * <b>Not yet available!</b>
-	 * Suggest a new ITagDefinition for the given classification.
-	 * Used by users or engines to suggest new tags for a given classification.
-	 * 
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>it's not possible to suggest itagdefinition with a parentId in unapproved status (only
-	 * approved tag can have children) or uncategorized.</li>
-	 * 	<li>it's not possible to linkMetadataDefinition to unapprovedTags</li>
-	 * </ul>
-	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER or
-	 * THRON_CLASS_[CLASSID]_TAG_SUGGESTER 
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param param : MITagDefinitionsuggestReq
-	 * @return MResponseITagDefinitionDetail
-	*/
-	def suggest(tokenId: String, 
-			clientId: String, 
-			classificationId: String, 
-			param: MITagDefinitionsuggestReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDetail ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
-			val response : MResponseITagDefinitionDetail = if(this.resourceEndpoint == ""){
-			
-				new MResponseITagDefinitionDetail()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("itagdefinition/suggest")
 					.path(clientId.toString)
 		.path(classificationId.toString)
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
@@ -355,67 +289,6 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * <b>Not yet available.</b>
-	 * Merge a source ITagDefinition into a target ITagDefinition.
-	 * Constraints:
-	 * <ul>
-	 * 	<li>source and target should have the same categorized value</li>
-	 * 	<li>source.status = suggested</li>
-	 * 	<li>target.status = [suggested or approved]</li>
-	 * 	<li>source should be a leaf</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>source.categorized = true and target.categorized = false is not allowed</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param param : MITagDefinitionmergeReq
-	 * @return MResponseITagDefinitionDetail
-	*/
-	def merge(tokenId: String, 
-			clientId: String, 
-			classificationId: String, 
-			param: MITagDefinitionmergeReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDetail ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
-			val response : MResponseITagDefinitionDetail = if(this.resourceEndpoint == ""){
-			
-				new MResponseITagDefinitionDetail()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("itagdefinition/merge")
-					.path(clientId.toString)
-		.path(classificationId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseITagDefinitionDetail],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseITagDefinitionDetail])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * Update in "patch" mode the ITagDefinition.
 	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
 	 * the "update" attributes you want to change must be included in the body of the request, those not
@@ -527,123 +400,6 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseITagRemove])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * <b>Not yet available!</b>
-	 * Approve and update a suggested ITagDefinition.
-	 * Re-approve "rejected" Tags is not allowed.
-	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param id : String
-	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
-	 * @param param : MITagDefinitionapproveReq
-	 * @return MResponseITagDefinitionDetail
-	*/
-	def approve(tokenId: String, 
-			clientId: String, 
-			classificationId: String, 
-			id: String, 
-			param: MITagDefinitionapproveReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDetail ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
-			val response : MResponseITagDefinitionDetail = if(this.resourceEndpoint == ""){
-			
-				new MResponseITagDefinitionDetail()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("itagdefinition/approve")
-					.path(clientId.toString)
-		.path(classificationId.toString)
-		.path(id.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseITagDefinitionDetail],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseITagDefinitionDetail])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * <b>Not yet available!</b>
-	 * Reject the ITagDefinition and remove all links to contents/users/categories....
-	 * Can be rejected only "suggested" ITagDefinitions (not approved)
-	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param id : String
-	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
-	 * @return MResponseITagDefinitionDetail
-	*/
-	def reject(tokenId: String, 
-			clientId: String, 
-			classificationId: String, 
-			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDetail ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
-			val response : MResponseITagDefinitionDetail = if(this.resourceEndpoint == ""){
-			
-				new MResponseITagDefinitionDetail()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("itagdefinition/reject")
-					.path(clientId.toString)
-		.path(classificationId.toString)
-		.path(id.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseITagDefinitionDetail])
-					
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseITagDefinitionDetail])
 				}
 				else {
 				  throw e

@@ -70,7 +70,9 @@ class MContentUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """date time when the content becomes inactive.
 	//#SWGNL#-> MContent.inactiveDate""")
 	@BeanProperty 
+	@Deprecated
 	var inactiveDate: Date =_
+	@Deprecated
 	def withinactiveDate(p:Date):this.type ={ 	this.inactiveDate = p; 	this }
 
 	/**
@@ -82,7 +84,9 @@ class MContentUpdate extends MUpdater with Serializable  {
 	//#SWG#@ApiModelProperty(value = """used for custom lexicographical order of contents. The field is used in JContent.findByProperties (MEContentOrderBy.sortingField_A/D) to sort the result set.
 	//#SWGNL#-> MContent.sortingField""")
 	@BeanProperty 
+	@Deprecated
 	var sortingField: String =_
+	@Deprecated
 	def withsortingField(p:String):this.type ={ 	this.sortingField = p; 	this }
 
 	/**

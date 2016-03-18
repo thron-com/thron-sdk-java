@@ -26,9 +26,11 @@ class MCategorycreateCategoryReq extends Serializable {
 	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	/**
-	 * Optional.
+	 * Optional. Id of the parent category.
+	 * Used to create categories with a tree structure.
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional. Id of the parent category. 
+	//#SWGNL#Used to create categories with a tree structure.""", required = true)
 	@BeanProperty
 	var upCatId: String =_
 	def withupCatId(p:String):this.type ={ 	this.upCatId = p; 	this }
@@ -39,25 +41,12 @@ class MCategorycreateCategoryReq extends Serializable {
 	def withcatLocales(p:MCategory4Locale):this.type ={ 	this.catLocales = p; 	this }
 
 	/**
-	 * Deprecated. use solutions parameters
+	 * Deprecated
 	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated. use solutions parameters""", required = true)
+	//#SWG#@ApiModelProperty(value = """Deprecated""", required = true)
 	@BeanProperty
 	var solution: String =_
 	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
-
-	/**
-	 * Optional.
-	 * Used to create a private category.
-	 * Private categories can be created only on private categories tree, The upCatId
-	 * (if present) must be private.
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional.
-	//#SWGNL#Used to create a private category. 
-	//#SWGNL#Private categories can be created only on private categories tree, The upCatId (if present) must be private.""", required = true)
-	@BeanProperty
-	var isPrivate: Boolean =_
-	def withisPrivate(p:Boolean):this.type ={ 	this.isPrivate = p; 	this }
 
 	/**
 	 * Optional.

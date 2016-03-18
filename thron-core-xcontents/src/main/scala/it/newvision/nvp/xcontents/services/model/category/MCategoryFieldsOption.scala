@@ -43,7 +43,9 @@ class MCategoryFieldsOption extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """Default = true""")
 	@BeanProperty 
+	@Deprecated
 	var returnNumberOfUnreadContents: Boolean  = true
+	@Deprecated
 	def withreturnNumberOfUnreadContents(p:Boolean):this.type ={ 	this.returnNumberOfUnreadContents = p; 	this }
 
 	/**
@@ -51,7 +53,9 @@ class MCategoryFieldsOption extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """Default = true""")
 	@BeanProperty 
+	@Deprecated
 	var returnNumberOfUnreadContentsInSubCategories: Boolean  = true
+	@Deprecated
 	def withreturnNumberOfUnreadContentsInSubCategories(p:Boolean):this.type ={ 	this.returnNumberOfUnreadContentsInSubCategories = p; 	this }
 
 	/**

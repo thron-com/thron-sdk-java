@@ -39,7 +39,9 @@ class MCategoryResult extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """number of contents not read by the user in the category""")
 	@BeanProperty 
+	@Deprecated
 	var numberOfUnreadContents: Integer =_
+	@Deprecated
 	def withnumberOfUnreadContents(p:Integer):this.type ={ 	this.numberOfUnreadContents = p; 	this }
 
 	/**
@@ -47,7 +49,9 @@ class MCategoryResult extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """number of contents not read by the user in the sub-categories""")
 	@BeanProperty 
+	@Deprecated
 	var numberOfUnreadContentsInSubCategories: Integer =_
+	@Deprecated
 	def withnumberOfUnreadContentsInSubCategories(p:Integer):this.type ={ 	this.numberOfUnreadContentsInSubCategories = p; 	this }
 
 	/**

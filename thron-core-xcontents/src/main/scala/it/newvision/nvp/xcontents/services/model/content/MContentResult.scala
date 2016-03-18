@@ -53,11 +53,11 @@ class MContentResult extends Serializable {
 	def withtotalRecommendedContents(p:Integer):this.type ={ 	this.totalRecommendedContents = p; 	this }
 
 	/**
-	 * Deprecated by bestThumbUrl and divArea.
-	 * Optional. The list of all available thumbnail URLs. 
+	 * Deprecated by dynThumbUrl
+	 * The list of all available thumbnail URLs. 
 	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated by bestThumbUrl and divArea.
-	//#SWGNL#Optional. The list of all available thumbnail URLs. """)
+	//#SWG#@ApiModelProperty(value = """Deprecated by dynThumbUrl 
+	//#SWGNL#The list of all available thumbnail URLs. """)
 	@BeanProperty 
 	@Deprecated
 	var thumbUrls: List[String] = new ArrayList[String]
@@ -65,6 +65,7 @@ class MContentResult extends Serializable {
 	def withthumbUrls(p:List[String]):this.type ={ 	this.thumbUrls = p; 	this }
 
 	/**
+	 * Deprecated by dynThumbUrl parameter.
 	 * Defined if divArea parameter is specified on the request.
 	 * Return the thumbnail that best suits to the given area (DivArea format:
 	 * <widht>x<height>)
@@ -73,11 +74,14 @@ class MContentResult extends Serializable {
 	 * obtain a dynamic link to the best thumbnail (for the given content and div
 	 * area) use the "dynThumbService" attribute (see reference for details)
 	 */
-	//#SWG#@ApiModelProperty(value = """Defined if divArea parameter is specified on the request.
+	//#SWG#@ApiModelProperty(value = """Deprecated by dynThumbUrl parameter.
+	//#SWGNL#Defined if divArea parameter is specified on the request.
 	//#SWGNL#Return the thumbnail that best suits to the given area (DivArea format: <widht>x<height>)
 	//#SWGNL#bestThumbUrl provides the static url of the thumbnail in 4me CDN (Content Delivery Network); the url is volatile and may change with time. In order to obtain a dynamic link to the best thumbnail (for the given content and div area) use the "dynThumbService" attribute (see reference for details)""")
 	@BeanProperty 
+	@Deprecated
 	var bestThumbUrl: String =_
+	@Deprecated
 	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
 	/**
