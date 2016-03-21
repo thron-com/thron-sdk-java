@@ -4,6 +4,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import com.thron.contacts.model.MIdentityKey
 
 /* ************************
 *  GENERATED CLASS
@@ -25,14 +26,12 @@ class MContactremoveKeyReq extends Serializable {
 	var contactId: String =_
 	def withcontactId(p:String):this.type ={ 	this.contactId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
+	/**
+	 * IdentityKey to remove
+	 */
+	//#SWG#@ApiModelProperty(value = """IdentityKey to remove""", required = true)
 	@BeanProperty
-	var key: String =_
-	def withkey(p:String):this.type ={ 	this.key = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var value: String =_
-	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
+	var ik: MIdentityKey =_
+	def withik(p:MIdentityKey):this.type ={ 	this.ik = p; 	this }
 
 }
