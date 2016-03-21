@@ -35,11 +35,11 @@ class MContactCriteria extends Serializable {
 	/**
 	 * list of identity keys:
 	 * iks.keys (lowercase).
-	 * iks.value (case sensitive)
+	 * iks.value (case insensitive)
 	 */
 	//#SWG#@ApiModelProperty(value = """list of identity keys:
 	//#SWGNL#iks.keys (lowercase).
-	//#SWGNL#iks.value (case sensitive)""")
+	//#SWGNL#iks.value (case insensitive)""")
 	@BeanProperty 
 	var iks: List[MIdentityKey] = new ArrayList[MIdentityKey]
 	def withiks(p:List[MIdentityKey]):this.type ={ 	this.iks = p; 	this }

@@ -9,9 +9,12 @@ import javax.xml.bind.annotation._
 *  GENERATED CLASS
 *  DO NOT APPLY ANY CHANGES
 ****************************/
+/**
+ * A custom identity key to identify the contact.
+ */
 @XmlRootElement(name="MIdentityKey") 
 @XmlType(name="MIdentityKey")
-//#SWG#@ApiModel(description = """""")
+//#SWG#@ApiModel(description = """A custom identity key to identify the contact.""")
 class MIdentityKey extends Serializable {
 
 	/**
@@ -63,14 +66,14 @@ class MIdentityKey extends Serializable {
 	 * 
 	 * Constraints:
 	 * <ul>
-	 * 	<li> max length = 100</li>
+	 * 	<li>max length = 100</li>
 	 * </ul>
 	 */
 	//#SWG#@ApiModelProperty(value = """the id for the given key
 	//#SWGNL#
 	//#SWGNL#Constraints:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li> max length = 100</li>
+	//#SWGNL#	<li>max length = 100</li>
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var value: String =_
@@ -83,12 +86,12 @@ class MIdentityKey extends Serializable {
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def isValid():Boolean ={
 		import org.apache.commons.lang.StringUtils
-
+	
 		Option(key).exists{k=> 
 			StringUtils.isNotBlank(k) &&
 			// String length restriction
 			k.length<=50 &&
-			// MongoDB reserved chars, reserved placeholders for internal usage, Windows file name restrictions or URI-reserved chars			
+			// MongoDB reserved chars, reserved placeholders for internal usage, Windows file name restrictions or URI-reserved chars		
 			k.find(Seq('$','§','\\','/',':','*','?','"','<','>','|','#','&').contains).isEmpty &&
 			// No space allowed
 			k.matches("""[^\s]+""") 
@@ -118,6 +121,11 @@ class MIdentityKey extends Serializable {
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def this(key: String, 
 			value: String){
+		//this()
+		//this.key = org.apache.commons.lang.
+		//StringUtils.lowerCase(key)
+		//this.value = value
+
 		this()
 		this.key = key
 		this.value = value

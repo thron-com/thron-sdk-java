@@ -58,14 +58,14 @@ class MContact extends Serializable {
 	def withcontactType(p:MEContactType):this.type ={ 	this.contactType = p; 	this }
 
 	/**
-	 * Used to label the contact
+	 * A custom label for the contact
 	 * 
 	 * Constraint:
 	 * <ul>
 	 * 	<li>max length 100</li>
 	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """Used to label the contact
+	//#SWG#@ApiModelProperty(value = """A custom label for the contact
 	//#SWGNL#
 	//#SWGNL#Constraint: 
 	//#SWGNL#<ul>
