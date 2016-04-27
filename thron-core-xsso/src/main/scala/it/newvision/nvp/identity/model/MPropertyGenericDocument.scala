@@ -54,13 +54,6 @@ class MPropertyGenericDocument extends Serializable {
 	var channelType: String  = "WEB"
 	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	@Deprecated
-	var defaultThumbnailFormat: String  = "L"
-	@Deprecated
-	def withdefaultThumbnailFormat(p:String):this.type ={ 	this.defaultThumbnailFormat = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var channelDescriptions: List[MChannelDescription] = new ArrayList[MChannelDescription]
@@ -74,19 +67,6 @@ class MPropertyGenericDocument extends Serializable {
 	def withthumbsProperties(p:MPropertyThumbnail):this.type ={ 	this.thumbsProperties = p; 	this }
 
 	/**
-	 * <ul>
-	 * 	<li>true = the publishing process start to generate the thumbnail</li>
-	 * 	<li>false = the publishing process do not generate the thumbnails.</li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	@Deprecated
-	var generateThumbnail: Boolean  = true
-	@Deprecated
-	def withgenerateThumbnail(p:Boolean):this.type ={ 	this.generateThumbnail = p; 	this }
-
-	/**
 	 * the application name:
 	 * flash, http
 	 */
@@ -95,17 +75,6 @@ class MPropertyGenericDocument extends Serializable {
 	@BeanProperty 
 	var appName: String  = ""
 	def withappName(p:String):this.type ={ 	this.appName = p; 	this }
-
-	/**
-	 * notification to the client once the content is ready to be published (packaged
-	 * complete)
-	 */
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	@Deprecated
-	var notifyOncePackaged: Boolean  = false
-	@Deprecated
-	def withnotifyOncePackaged(p:Boolean):this.type ={ 	this.notifyOncePackaged = p; 	this }
 
 	/**
 	 * "<clientId>-4me.weebo.it/static/"

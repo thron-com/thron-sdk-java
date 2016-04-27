@@ -20,5 +20,7 @@ public enum MEITagStatus {
 	 * The Tag needs to be moderated
 	 */
 	//#SWG#@ApiModelProperty(value = """The Tag needs to be moderated""")
-	@XmlEnumValue("SUGGESTED") SUGGESTED
+	@XmlEnumValue("SUGGESTED") SUGGESTED,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("COMBINATION") COMBINATION
 }

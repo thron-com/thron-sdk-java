@@ -171,18 +171,26 @@ class MVUserCriteria extends Serializable {
 	def withuserRoles(p:List[String]):this.type ={ 	this.userRoles = p; 	this }
 
 	/**
-	 * text search works over username,firstName, lastName username and email
-	 * addresses using the following approach.
-	 * 
-	 * detail.name.firstName + detail.name.lastName: search text in fields
-	 * or credential.username: search text in field
-	 * or detail.emails.email: search text in field
+	 * text search over fields :
+	 * <ul>
+	 * 	<li>firstName (detail.name.firstName )</li>
+	 * 	<li>lastName (detail.name.lastName)</li>
+	 * 	<li>username (credential.username)</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>email addresses (userPreferences.notificationProperty.email or detail.
+	 * emails.email)</li>
+	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """text search works over username,firstName, lastName username and email addresses using the following approach.
-	//#SWGNL#
-	//#SWGNL#detail.name.firstName + detail.name.lastName: search text in fields
-	//#SWGNL#or credential.username: search text in field
-	//#SWGNL#or detail.emails.email: search text in field""")
+	//#SWG#@ApiModelProperty(value = """text search over fields :
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>firstName (detail.name.firstName )</li>
+	//#SWGNL#	<li>lastName (detail.name.lastName)</li>
+	//#SWGNL#	<li>username (credential.username)</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>email addresses (userPreferences.notificationProperty.email or detail.emails.email)</li>
+	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var textSearch: String =_
 	def withtextSearch(p:String):this.type ={ 	this.textSearch = p; 	this }
@@ -224,27 +232,40 @@ class MVUserCriteria extends Serializable {
 	def withitagOp(p:MITagCriteriaOption):this.type ={ 	this.itagOp = p; 	this }
 
 	/**
-	 * filter the users matching the phone number.
+	 * filter the users matching the phone number. Search phone number on field detail.
+	 * phoneNumbers.phoneNumber
 	 * 
-	 * detail.phoneNumbers.phoneNumber: search text as regexp (use \Q<text to
-	 * search>\E for simple text search)
+	 * Regexp example:
+	 * <ul>
+	 * 	<li>\Q<text to search>\E for simple text search</li>
+	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """filter the users matching the phone number.
+	//#SWG#@ApiModelProperty(value = """filter the users matching the phone number. Search phone number on field detail.phoneNumbers.phoneNumber
 	//#SWGNL#
-	//#SWGNL#detail.phoneNumbers.phoneNumber: search text as regexp (use \Q<text to search>\E for simple text search)""")
+	//#SWGNL#Regexp example:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>\Q<text to search>\E for simple text search</li>
+	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var phoneNumber: String =_
 	def withphoneNumber(p:String):this.type ={ 	this.phoneNumber = p; 	this }
 
 	/**
-	 * filter the users matching the email address (as regex)
+	 * filter the users matching the email address (as regex). Search email on fields
+	 * userPreferences.notificationProperty.email or detail.emails.email
 	 * 
-	 * detail.emails.email: search text as regexp (use \Q<text to search>\E for simple
-	 * text search)
+	 * Regexp example:
+	 * <ul>
+	 * 	<li>\Q<text to search>\E for simple text search</li>
+	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """filter the users matching the email address (as regex)
+	//#SWG#@ApiModelProperty(value = """filter the users matching the email address (as regex). Search email on fields
+	//#SWGNL#userPreferences.notificationProperty.email or detail.emails.email
 	//#SWGNL#
-	//#SWGNL#detail.emails.email: search text as regexp (use \Q<text to search>\E for simple text search)""")
+	//#SWGNL#Regexp example:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>\Q<text to search>\E for simple text search</li>
+	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var email: String =_
 	def withemail(p:String):this.type ={ 	this.email = p; 	this }

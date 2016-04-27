@@ -44,6 +44,7 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	/**
 	 * like getContent service but implemented as post http service. Use the optimised and cached
 	 * getContent for better performance.
+	 * Only for 3x version
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
@@ -58,7 +59,8 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/contentDetail")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/contentDetail", notes = """like getContent service but implemented as post http service. Use the optimised and cached getContent for better performance.""", response = classOf[MResponseGetContent])
+	//#SWG#@ApiOperation(value = "/contentDetail", notes = """like getContent service but implemented as post http service. Use the optimised and cached getContent for better performance.
+	//#SWGNL#Only for 3x version""", response = classOf[MResponseGetContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def contentDetail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -130,6 +132,8 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * If the channelType is not defined, the service return the right descriptor for the giver useragent.
 	 * 
 	 * useragent = mobile/desktop
+	 * 
+	 * Only for 3x version
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
@@ -142,6 +146,7 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * android (for mobile device using flash)
 	 * silverlight
 	 * generic (for web devices using flash)
+	 * @param deliveryToken : String
 	 * @return MResponseGetContent
 	*/
 	@GET
@@ -149,7 +154,9 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
 	//#SWG#@ApiOperation(value = "/getContent", notes = """return the content information for the selected channel type., like published url or smil/m3u8 urls or other descriptors for the selected channel type.
 	//#SWGNL#If the channelType is not defined, the service return the right descriptor for the giver useragent.
-	//#SWGNL#useragent = mobile/desktop""", response = classOf[MResponseGetContent])
+	//#SWGNL#useragent = mobile/desktop
+	//#SWGNL#
+	//#SWGNL#Only for 3x version""", response = classOf[MResponseGetContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -171,7 +178,10 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	//#SWGNL#silverlight 
 	//#SWGNL#generic (for web devices using flash)""")
 	@QueryParam("userAgent")
-	userAgent: String,
+	userAgent: String, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("deliveryToken")
+	deliveryToken: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
@@ -183,7 +193,7 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		//get the cache control specific for this service
 		val cc = this.cachemap("getContent") 
 		try{	
-			val resp = this.__getContent(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,channelType,userAgent)
+			val resp = this.__getContent(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,channelType,userAgent,deliveryToken)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getContent)
 	    }catch{
@@ -196,7 +206,7 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getContent(tokenId: String, clientId: String, contentId: String, channelType: String, userAgent: String) :MResponseGetContent
+	 protected def __getContent(tokenId: String, clientId: String, contentId: String, channelType: String, userAgent: String, deliveryToken: String) :MResponseGetContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_getContent: String
 
@@ -246,6 +256,8 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * android (for mobile device using flash)
 	 * silverlight
 	 * generic (for web devices using flash)
+	 * @param deliveryToken : String
+	 * used to validate the service invocation.
 	 * @return String
 	*/
 	@GET
@@ -297,7 +309,10 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	//#SWGNL#silverlight 
 	//#SWGNL#generic (for web devices using flash)""")
 	@QueryParam("userAgent")
-	userAgent: String,
+	userAgent: String, 
+			//#SWG#@ApiParam(value = """used to validate the service invocation.""")
+	@QueryParam("deliveryToken")
+	deliveryToken: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
@@ -309,7 +324,7 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		//get the cache control specific for this service
 		val cc = this.cachemap("getContentDescriptor") 
 		try{	
-			val resp = this.__getContentDescriptor(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,channelType,userAgent)
+			val resp = this.__getContentDescriptor(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,channelType,userAgent,deliveryToken)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getContentDescriptor)
 	    }catch{
@@ -322,13 +337,14 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getContentDescriptor(tokenId: String, clientId: String, contentId: String, channelType: String, userAgent: String) :String
+	 protected def __getContentDescriptor(tokenId: String, clientId: String, contentId: String, channelType: String, userAgent: String, deliveryToken: String) :String
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_getContentDescriptor: String
 
 	/**
-	 * returns the total space used in 4me CDN. Each client has a quota of storage for the published
-	 * content in CDN.
+	 * returns the total space used in CDN. Each client has a quota of storage for the published content
+	 * in CDN.
+	 * Only for 3x version
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @return MResponseGetQuota
@@ -336,7 +352,8 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@GET
 	@Path("/getQuotaUsage")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getQuotaUsage", notes = """returns the total space used in 4me CDN. Each client has a quota of storage for the published content in CDN.""", response = classOf[MResponseGetQuota])
+	//#SWG#@ApiOperation(value = "/getQuotaUsage", notes = """returns the total space used in CDN. Each client has a quota of storage for the published content in CDN.
+	//#SWGNL#Only for 3x version""", response = classOf[MResponseGetQuota])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getQuotaUsage(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -374,6 +391,7 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 
 	/**
 	 * returns the total space used in CDN by each userId (the owner of the published content)
+	 * Only for 3x version
 	 * @param tokenId : String
 	 * @param param : MWeeboPublishergetQuotaUsageByUserIdReq
 	 * @return MResponseGetQuotaUsage
@@ -382,7 +400,8 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/getQuotaUsageByUserId")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/getQuotaUsageByUserId", notes = """returns the total space used in CDN by each userId (the owner of the published content)""", response = classOf[MResponseGetQuotaUsage])
+	//#SWG#@ApiOperation(value = "/getQuotaUsageByUserId", notes = """returns the total space used in CDN by each userId (the owner of the published content)
+	//#SWGNL#Only for 3x version""", response = classOf[MResponseGetQuotaUsage])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getQuotaUsageByUserId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

@@ -21,12 +21,12 @@ class MResponseDashboard extends Serializable {
 	var resultCode: MEDashboard  = MEDashboard.OK
 	def withresultCode(p:MEDashboard):this.type ={ 	this.resultCode = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var ssoCode: MESSO  = MESSO.OK
 	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var errorDescription: String  = ""
 	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }

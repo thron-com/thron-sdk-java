@@ -12,9 +12,6 @@ import it.newvision.nvp.xcontents.services.model.request.MContentfindByPropertie
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentRemoveLocale
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdate
 import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentReq
-import it.newvision.nvp.xcontents.services.model.request.MContentaddPlayerEmbedCodeReq
-import it.newvision.nvp.xcontents.services.model.request.MContentremovePlayerEmbedCodeReq
-import it.newvision.nvp.xcontents.services.model.request.MContentupdatePlayerEmbedCodeReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdateLocale
 import it.newvision.nvp.xcontents.services.model.request.MContentupdateContent4LocaleReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentPrettyId
@@ -38,21 +35,21 @@ import it.newvision.nvp.xcontents.services.model.request.MContentupdateUserSpeci
  * Service used to manage a Content. A Content is a generic object within the
  * platform, may contain multiple descriptions in different languages, be linked
  * to one or more categories, have tags and  be linked to other contents. A
- * content can be created only throw the specific publishing process service in
+ * content can be created only through the specific publishing process service in
  * xadmin component.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/content/   </li>
+ * com/api/xcontents/resources/content/  </li>
  * </ul>
  */
 @Path("/content")
-//#SWG#@Api(value = "/content", description = """Service used to manage a Content. A Content is a generic object within the platform, may contain multiple descriptions in different languages, be linked to one or more categories, have tags and  be linked to other contents. A content can be created only throw the specific publishing process service in xadmin component.
+//#SWG#@Api(value = "/content", description = """Service used to manage a Content. A Content is a generic object within the platform, may contain multiple descriptions in different languages, be linked to one or more categories, have tags and  be linked to other contents. A content can be created only through the specific publishing process service in xadmin component.
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/content/   </li>
+//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/content/  </li>
 //#SWGNL#</ul>""")
 trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
@@ -301,6 +298,7 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
+	 * xcontentId or prettyId
 	 * @param locale : String
 	 * @param categoryIdForAcl : String
 	 * Optional. For Acl validation
@@ -323,7 +321,7 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 			//#SWG#@ApiParam(value = """""")
 	@FormParam("clientId")
 	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
+			//#SWG#@ApiParam(value = """xcontentId or prettyId""")
 	@FormParam("contentId")
 	contentId: String, 
 			//#SWG#@ApiParam(value = """""")
@@ -441,202 +439,6 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __updateContent(tokenId: String, param: MContentupdateContentReq) :MResponseContentUpdate
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_updateContent: String
-
-	/**
-	 * Used to add a custom Player Embed Code for a specific content.
-	 * 
-	 * <b>ACL validation:</b>
-	 * <ul>
-	 * 	<li>SHARE is required on the specific content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentaddPlayerEmbedCodeReq
-	 * @return MResponseContentUpdate
-	*/
-	@POST
-	@Path("/addPlayerEmbedCode")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addPlayerEmbedCode", notes = """Used to add a custom Player Embed Code for a specific content.
-	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SHARE is required on the specific content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def addPlayerEmbedCode(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentaddPlayerEmbedCodeReq):Response /*returnType = MResponseContentUpdate*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__addPlayerEmbedCode(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addPlayerEmbedCode)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_addPlayerEmbedCode)
-	    }
-	} 
-
-	@GET
-	@Path("/addPlayerEmbedCode")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def addPlayerEmbedCode_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentUpdate*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__addPlayerEmbedCode(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentaddPlayerEmbedCodeReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addPlayerEmbedCode)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addPlayerEmbedCode)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __addPlayerEmbedCode(tokenId: String, param: MContentaddPlayerEmbedCodeReq) :MResponseContentUpdate
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_addPlayerEmbedCode: String
-
-	/**
-	 * Used to remove the custom Player Embed Code for a specific content.
-	 * 
-	 * <b>ACL validation:</b>
-	 * <ul>
-	 * 	<li>SHARE is required on the specific content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentremovePlayerEmbedCodeReq
-	 * @return MResponseContentUpdate
-	*/
-	@POST
-	@Path("/removePlayerEmbedCode")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removePlayerEmbedCode", notes = """Used to remove the custom Player Embed Code for a specific content.
-	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SHARE is required on the specific content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def removePlayerEmbedCode(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentremovePlayerEmbedCodeReq):Response /*returnType = MResponseContentUpdate*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__removePlayerEmbedCode(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removePlayerEmbedCode)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_removePlayerEmbedCode)
-	    }
-	} 
-
-	@GET
-	@Path("/removePlayerEmbedCode")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def removePlayerEmbedCode_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentUpdate*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__removePlayerEmbedCode(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentremovePlayerEmbedCodeReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removePlayerEmbedCode)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removePlayerEmbedCode)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __removePlayerEmbedCode(tokenId: String, param: MContentremovePlayerEmbedCodeReq) :MResponseContentUpdate
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_removePlayerEmbedCode: String
-
-	/**
-	 * Used to update the custom Player Embed Code for a specific content. These information are used by
-	 * the 4me Player for the content presentation.
-	 * 
-	 * <b>ACL validation:</b>
-	 * <ul>
-	 * 	<li>SHARE is required on the specific content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentupdatePlayerEmbedCodeReq
-	 * @return MResponseContentUpdate
-	*/
-	@POST
-	@Path("/updatePlayerEmbedCode")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updatePlayerEmbedCode", notes = """Used to update the custom Player Embed Code for a specific content. These information are used by the 4me Player for the content presentation.
-	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SHARE is required on the specific content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updatePlayerEmbedCode(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentupdatePlayerEmbedCodeReq):Response /*returnType = MResponseContentUpdate*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__updatePlayerEmbedCode(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updatePlayerEmbedCode)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updatePlayerEmbedCode)
-	    }
-	} 
-
-	@GET
-	@Path("/updatePlayerEmbedCode")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updatePlayerEmbedCode_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentUpdate*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__updatePlayerEmbedCode(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentupdatePlayerEmbedCodeReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updatePlayerEmbedCode)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updatePlayerEmbedCode)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updatePlayerEmbedCode(tokenId: String, param: MContentupdatePlayerEmbedCodeReq) :MResponseContentUpdate
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updatePlayerEmbedCode: String
 
 	/**
 	 * Used to update the content's name,except and description for a specific locale (lang)

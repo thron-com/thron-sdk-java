@@ -4,8 +4,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xcontents.services.model.rating.MRatingAverage
 import it.newvision.nvp.xcontents.model.MCategory
+import it.newvision.nvp.xcontents.services.model.rating.MRatingAverage
 import it.newvision.nvp.xcontents.model.MContent
 
 /* ************************
@@ -19,14 +19,6 @@ import it.newvision.nvp.xcontents.model.MContent
 @XmlType(name="MContentWall")
 //#SWG#@ApiModel(description = """The ContentWall class has all necessary information to fill a webtv wall.""")
 class MContentWall extends MContent with Serializable  {
-
-	/**
-	 * The content score. Rating value
-	 */
-	//#SWG#@ApiModelProperty(value = """The content score. Rating value""")
-	@BeanProperty 
-	var score: MRatingAverage =_
-	def withscore(p:MRatingAverage):this.type ={ 	this.score = p; 	this }
 
 	/**
 	 * The deliveryInfo attribute has the delivery information (url descriptors,
@@ -65,6 +57,24 @@ class MContentWall extends MContent with Serializable  {
 	@BeanProperty 
 	var dynThumbService: String =_
 	def withdynThumbService(p:String):this.type ={ 	this.dynThumbService = p; 	this }
+
+	/**
+	 * Deprecated by attribute scoreFixedRange
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated by attribute scoreFixedRange""")
+	@BeanProperty 
+	@Deprecated
+	var score: MRatingAverage =_
+	@Deprecated
+	def withscore(p:MRatingAverage):this.type ={ 	this.score = p; 	this }
+
+	/**
+	 * The average score of the content.
+	 */
+	//#SWG#@ApiModelProperty(value = """The average score of the content.""")
+	@BeanProperty 
+	var scoreFixedRange: MRatingAverage =_
+	def withscoreFixedRange(p:MRatingAverage):this.type ={ 	this.scoreFixedRange = p; 	this }
 
 	/**
 	 * @param c : MContent

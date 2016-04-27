@@ -28,11 +28,9 @@ class MISourceIdentifier extends Serializable {
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
-	 * The source Type:
-	 * USER/APPLICATION/ENGINE
+	 * The source Type: USER/APPLICATION/ENGINE
 	 */
-	//#SWG#@ApiModelProperty(value = """The source Type:
-	//#SWGNL#USER/APPLICATION/ENGINE""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """The source Type: USER/APPLICATION/ENGINE""" ,required = true)
 	@BeanProperty 
 	var stype: String =_
 	def withstype(p:String):this.type ={ 	this.stype = p; 	this }

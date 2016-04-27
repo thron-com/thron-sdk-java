@@ -48,16 +48,12 @@ class JContentCategoryClient(val resourceEndpoint:String) {
 	 * @param clientId : String
 	 * @param categoryId : String
 	 * @param contentId : String
-	 * @param applyAcl : Boolean
-	 * Optional. Default = false
-	 * Automatically Apply the right ACL between Content and Category
 	 * @return MResponseLinkCategoryToContent
 	*/
 	def linkCategoryToContent(tokenId: String, 
 			clientId: String, 
 			categoryId: String, 
-			contentId: String, 
-			applyAcl: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseLinkCategoryToContent ={
+			contentId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseLinkCategoryToContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -65,8 +61,7 @@ class JContentCategoryClient(val resourceEndpoint:String) {
 			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
 			Option(clientId).foreach(s => params.add("clientId", s))
 		Option(categoryId).foreach(s => params.add("categoryId", s))
-		Option(contentId).foreach(s => params.add("contentId", s))
-		Option(applyAcl).foreach(s => params.add("applyAcl", s))  
+		Option(contentId).foreach(s => params.add("contentId", s))  
 			val response : MResponseLinkCategoryToContent = if(this.resourceEndpoint == ""){
 			
 				new MResponseLinkCategoryToContent()
@@ -115,16 +110,12 @@ class JContentCategoryClient(val resourceEndpoint:String) {
 	 * @param clientId : String
 	 * @param categoryId : String
 	 * @param contentId : String
-	 * @param applyAcl : Boolean
-	 * Optional. Default = false
-	 * Automatically Apply the right ACL between Content and Category
 	 * @return MResponseLinkCategoryToContent
 	*/
 	def removeCategoryToContent(tokenId: String, 
 			clientId: String, 
 			categoryId: String, 
-			contentId: String, 
-			applyAcl: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseLinkCategoryToContent ={
+			contentId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseLinkCategoryToContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -132,8 +123,7 @@ class JContentCategoryClient(val resourceEndpoint:String) {
 			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
 			Option(clientId).foreach(s => params.add("clientId", s))
 		Option(categoryId).foreach(s => params.add("categoryId", s))
-		Option(contentId).foreach(s => params.add("contentId", s))
-		Option(applyAcl).foreach(s => params.add("applyAcl", s))  
+		Option(contentId).foreach(s => params.add("contentId", s))  
 			val response : MResponseLinkCategoryToContent = if(this.resourceEndpoint == ""){
 			
 				new MResponseLinkCategoryToContent()

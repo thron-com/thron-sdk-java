@@ -62,21 +62,20 @@ class MUsersGroup extends Serializable {
 	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
-	 * Specify if the group is enable or not to use the platform.
-	 * Users inherit roles and acl only from active linked groups.
+	 * Toggle group active state. When a group is not active it will not impact on ACL
+	 * and Permissions.
 	 */
-	//#SWG#@ApiModelProperty(value = """Specify if the group is enable or not to use the platform.
-	//#SWGNL#Users inherit roles and acl only from active linked groups.""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """Toggle group active state. When a group is not active it will not impact on ACL and Permissions.""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
 	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * Used as roles template. It is possible to define the UserGroup roles that are
-	 * be applied to each user inside the group. The userRoles are derived from the
-	 * list of groupRoles where the user are linked
+	 * applied to each user inside the group. The userRoles are derived from the list
+	 * of groupRoles where the user are linked
 	 */
-	//#SWG#@ApiModelProperty(value = """Used as roles template. It is possible to define the UserGroup roles that are be applied to each user inside the group. The userRoles are derived from the list of groupRoles where the user are linked""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """Used as roles template. It is possible to define the UserGroup roles that are applied to each user inside the group. The userRoles are derived from the list of groupRoles where the user are linked""" ,required = true)
 	@BeanProperty 
 	var groupCapabilities: MUserCapability  = new MUserCapability()
 	def withgroupCapabilities(p:MUserCapability):this.type ={ 	this.groupCapabilities = p; 	this }

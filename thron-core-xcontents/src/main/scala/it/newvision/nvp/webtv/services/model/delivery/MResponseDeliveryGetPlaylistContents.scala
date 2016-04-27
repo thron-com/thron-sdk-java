@@ -20,6 +20,16 @@ class MResponseDeliveryGetPlaylistContents extends MResponseDelivery with Serial
 	def withcontents(p:List[MContentWallMinimal]):this.type ={ 	this.contents = p; 	this }
 
 	/**
+	 * The global status of the playlist: DRAFT,PUBLISH_IN_PROGRESS,PUBLISHED,....
+	 * The value depends on the status of each single item of the playlist.
+	 */
+	//#SWG#@ApiModelProperty(value = """The global status of the playlist: DRAFT,PUBLISH_IN_PROGRESS,PUBLISHED,....
+	//#SWGNL#The value depends on the status of each single item of the playlist.""" ,required = true)
+	@BeanProperty 
+	var status: String =_
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
+
+	/**
 	 * total number of results
 	 */
 	//#SWG#@ApiModelProperty(value = """total number of results""" ,required = true)

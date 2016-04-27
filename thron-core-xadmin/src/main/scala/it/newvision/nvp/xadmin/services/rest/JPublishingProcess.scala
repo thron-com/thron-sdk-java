@@ -56,6 +56,10 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	 * First step of a publishing process. The service create a new empty content in platform linked to a
 	 * specific source file.
 	 * To easily create and publish a content in the platform use the services of JPublishInWeeboExpress.
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessnewContentReq
 	 * @return MResponsePublishContent
@@ -65,7 +69,11 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/newContent", notes = """First step of a publishing process. The service create a new empty content in platform linked to a specific source file.
-	//#SWGNL#To easily create and publish a content in the platform use the services of JPublishInWeeboExpress.""", response = classOf[MResponsePublishContent])
+	//#SWGNL#To easily create and publish a content in the platform use the services of JPublishInWeeboExpress.
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>the service can be invoked only by platform users</li>
+	//#SWGNL#</ul>""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def newContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -113,6 +121,10 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	/**
 	 * First step of a publishing process, used to create a new content of type PAGELET (contents without
 	 * source file, but with a body in html or other formats, readable by the player).
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessnewPageletContentReq
 	 * @return MResponsePublishContent
@@ -121,7 +133,11 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	@Path("/newPageletContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/newPageletContent", notes = """First step of a publishing process, used to create a new content of type PAGELET (contents without source file, but with a body in html or other formats, readable by the player).""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/newPageletContent", notes = """First step of a publishing process, used to create a new content of type PAGELET (contents without source file, but with a body in html or other formats, readable by the player).
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>the service can be invoked only by platform users</li>
+	//#SWGNL#</ul>""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def newPageletContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -225,6 +241,10 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	 * First step of a publishing process for a LIVE EVENT content. The User create a new Live Event
 	 * Content. The service create a content in xcontents (MContent), a new content in xpublisher
 	 * (MContent) and prepare the environment for the publishing process.
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessnewLiveEventContentReq
 	 * @return MResponsePublishContent
@@ -233,7 +253,11 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	@Path("/newLiveEventContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/newLiveEventContent", notes = """First step of a publishing process for a LIVE EVENT content. The User create a new Live Event Content. The service create a content in xcontents (MContent), a new content in xpublisher (MContent) and prepare the environment for the publishing process.""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/newLiveEventContent", notes = """First step of a publishing process for a LIVE EVENT content. The User create a new Live Event Content. The service create a content in xcontents (MContent), a new content in xpublisher (MContent) and prepare the environment for the publishing process.
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>the service can be invoked only by platform users</li>
+	//#SWGNL#</ul>""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def newLiveEventContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -282,6 +306,10 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	 * First step of the publishing process for a PLAYLIST content. The User create a new PlayList Content,
 	 * linked to a set of source files. The service create a content and prepare the environment for the
 	 * publishing process.
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessnewPlayListContentReq
 	 * @return MResponsePublishContent
@@ -290,7 +318,11 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	@Path("/newPlayListContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/newPlayListContent", notes = """First step of the publishing process for a PLAYLIST content. The User create a new PlayList Content, linked to a set of source files. The service create a content and prepare the environment for the publishing process.""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/newPlayListContent", notes = """First step of the publishing process for a PLAYLIST content. The User create a new PlayList Content, linked to a set of source files. The service create a content and prepare the environment for the publishing process.
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>the service can be invoked only by platform users</li>
+	//#SWGNL#</ul>""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def newPlayListContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -395,6 +427,10 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	/**
 	 * Publish a content created for a specific channel. Once the content is ready (packaged), it can be
 	 * published in CDN. This function is ASYNCHRONOUS!
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishingProcesspublishChannelReq
 	 * @return MResponsePublishContent
@@ -403,7 +439,11 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	@Path("/publishChannel")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/publishChannel", notes = """Publish a content created for a specific channel. Once the content is ready (packaged), it can be published in CDN. This function is ASYNCHRONOUS!""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/publishChannel", notes = """Publish a content created for a specific channel. Once the content is ready (packaged), it can be published in CDN. This function is ASYNCHRONOUS!
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>the service can be invoked only by platform users</li>
+	//#SWGNL#</ul>""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def publishChannel(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

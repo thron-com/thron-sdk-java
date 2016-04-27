@@ -40,6 +40,11 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
+	var keepFileFormat: Boolean  = true
+	def withkeepFileFormat(p:Boolean):this.type ={ 	this.keepFileFormat = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
 	var stretch: Boolean  = false
 	def withstretch(p:Boolean):this.type ={ 	this.stretch = p; 	this }
 

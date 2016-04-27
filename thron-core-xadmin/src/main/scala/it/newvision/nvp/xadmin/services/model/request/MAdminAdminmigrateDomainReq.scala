@@ -24,11 +24,9 @@ class MAdminAdminmigrateDomainReq extends Serializable {
 
 	/**
 	 * Available values:
-	 * "4me.it"
 	 * "thron.com"
 	 */
 	//#SWG#@ApiModelProperty(value = """Available values:
-	//#SWGNL#"4me.it"
 	//#SWGNL#"thron.com"""", required = true)
 	@BeanProperty
 	var domain: String =_

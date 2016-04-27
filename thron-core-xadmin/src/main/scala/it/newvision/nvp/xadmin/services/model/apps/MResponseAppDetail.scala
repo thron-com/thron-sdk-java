@@ -20,9 +20,9 @@ class MResponseAppDetail extends MResponseApp with Serializable  {
 	def withapp(p:MAppDetail):this.type ={ 	this.app = p; 	this }
 
 	/**
-	 * the new platform tokenId to use inside the snippet calls
+	 * the application token Id to use with subsequent calls (only with loginApp)
 	 */
-	//#SWG#@ApiModelProperty(value = """the new platform tokenId to use inside the snippet calls""")
+	//#SWG#@ApiModelProperty(value = """the application token Id to use with subsequent calls (only with loginApp)""")
 	@BeanProperty 
 	var appUserTokenId: String =_
 	def withappUserTokenId(p:String):this.type ={ 	this.appUserTokenId = p; 	this }

@@ -121,13 +121,6 @@ class MProperty extends Serializable {
 	var weeboProperties: MPropertyWeebo  = new MPropertyWeebo
 	def withweeboProperties(p:MPropertyWeebo):this.type ={ 	this.weeboProperties = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	@Deprecated
-	var mediaLibraryProperties: MPropertyMediaLibrary  = new MPropertyMediaLibrary
-	@Deprecated
-	def withmediaLibraryProperties(p:MPropertyMediaLibrary):this.type ={ 	this.mediaLibraryProperties = p; 	this }
-
 	/**
 	 * live events properties
 	 */

@@ -124,7 +124,7 @@ class JAdminAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Migrates a client to Thron or 4ME domain
+	 * Migrates a client to THRON domain
 	 * @param tokenId : String
 	 * @param param : MAdminAdminmigrateDomainReq
 	 * @return MResponseMediaContent

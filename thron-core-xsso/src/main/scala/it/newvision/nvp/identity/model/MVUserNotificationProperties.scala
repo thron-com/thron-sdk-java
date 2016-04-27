@@ -19,16 +19,26 @@ import javax.xml.bind.annotation._
 class MVUserNotificationProperties extends Serializable {
 
 	/**
-	 * The main email address. The field is required for all Platform and generic
-	 * users and is used for notification to the user.
-	 * Constraints:
-	 * -) Value must be a valid e-mail address
-	 * -) max length = 1000
+	 * The primary email address of the user. The field is required for all Platform
+	 * and generic users and is used for notification to the user.
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>Value must be a valid e-mail address</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>max length = 1000</li>
+	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """The main email address. The field is required for all Platform and generic users and is used for notification to the user.
-	//#SWGNL#Constraints:
-	//#SWGNL#-) Value must be a valid e-mail address
-	//#SWGNL#-) max length = 1000""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """The primary email address of the user. The field is required for all Platform and generic users and is used for notification to the user.
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Value must be a valid e-mail address</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max length = 1000</li>
+	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var email: String =_
 	def withemail(p:String):this.type ={ 	this.email = p; 	this }

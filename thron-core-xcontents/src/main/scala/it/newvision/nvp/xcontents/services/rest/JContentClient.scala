@@ -12,9 +12,6 @@ import it.newvision.nvp.xcontents.services.model.request.MContentfindByPropertie
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentRemoveLocale
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdate
 import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentReq
-import it.newvision.nvp.xcontents.services.model.request.MContentaddPlayerEmbedCodeReq
-import it.newvision.nvp.xcontents.services.model.request.MContentremovePlayerEmbedCodeReq
-import it.newvision.nvp.xcontents.services.model.request.MContentupdatePlayerEmbedCodeReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdateLocale
 import it.newvision.nvp.xcontents.services.model.request.MContentupdateContent4LocaleReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentPrettyId
@@ -47,13 +44,13 @@ object JContentClient {
  * Service used to manage a Content. A Content is a generic object within the
  * platform, may contain multiple descriptions in different languages, be linked
  * to one or more categories, have tags and  be linked to other contents. A
- * content can be created only throw the specific publishing process service in
+ * content can be created only through the specific publishing process service in
  * xadmin component.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/content/   </li>
+ * com/api/xcontents/resources/content/  </li>
  * </ul>
  */
 class JContentClient(val resourceEndpoint:String) {
@@ -249,6 +246,7 @@ class JContentClient(val resourceEndpoint:String) {
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
+	 * xcontentId or prettyId
 	 * @param locale : String
 	 * @param categoryIdForAcl : String
 	 * Optional. For Acl validation
@@ -325,157 +323,6 @@ class JContentClient(val resourceEndpoint:String) {
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
 					.path("content/updateContent")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContentUpdate],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContentUpdate])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Used to add a custom Player Embed Code for a specific content.
-	 * 
-	 * <b>ACL validation:</b>
-	 * <ul>
-	 * 	<li>SHARE is required on the specific content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentaddPlayerEmbedCodeReq
-	 * @return MResponseContentUpdate
-	*/
-	def addPlayerEmbedCode(tokenId: String, 
-			param: MContentaddPlayerEmbedCodeReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentUpdate ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContentUpdate = if(this.resourceEndpoint == ""){
-			
-				new MResponseContentUpdate()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/addPlayerEmbedCode")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContentUpdate],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContentUpdate])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Used to remove the custom Player Embed Code for a specific content.
-	 * 
-	 * <b>ACL validation:</b>
-	 * <ul>
-	 * 	<li>SHARE is required on the specific content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentremovePlayerEmbedCodeReq
-	 * @return MResponseContentUpdate
-	*/
-	def removePlayerEmbedCode(tokenId: String, 
-			param: MContentremovePlayerEmbedCodeReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentUpdate ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContentUpdate = if(this.resourceEndpoint == ""){
-			
-				new MResponseContentUpdate()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/removePlayerEmbedCode")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContentUpdate],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContentUpdate])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Used to update the custom Player Embed Code for a specific content. These information are used by
-	 * the 4me Player for the content presentation.
-	 * 
-	 * <b>ACL validation:</b>
-	 * <ul>
-	 * 	<li>SHARE is required on the specific content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentupdatePlayerEmbedCodeReq
-	 * @return MResponseContentUpdate
-	*/
-	def updatePlayerEmbedCode(tokenId: String, 
-			param: MContentupdatePlayerEmbedCodeReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentUpdate ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContentUpdate = if(this.resourceEndpoint == ""){
-			
-				new MResponseContentUpdate()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/updatePlayerEmbedCode")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)

@@ -47,6 +47,10 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 
 	/**
 	 * Create a new audio content
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishAudioReq
 	 * @return MResponsePublishContent
@@ -92,6 +96,10 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 
 	/**
 	 * Create a new image content
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishImageReq
 	 * @return MResponsePublishContent
@@ -137,6 +145,10 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 
 	/**
 	 * Create a new playlist content
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishPlayListReq
 	 * @return MResponsePublishContent
@@ -181,6 +193,10 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishLiveEventReq
 	 * @return MResponsePublishContent
@@ -226,6 +242,10 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 
 	/**
 	 * Create a new video content
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishVideoReq
 	 * @return MResponsePublishContent
@@ -271,6 +291,10 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 
 	/**
 	 * Create a new generic content (zip,docs,txt... files)
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishDocumentReq
 	 * @return MResponsePublishContent
@@ -316,6 +340,10 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 
 	/**
 	 * Create a new pagelet content
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishPageletReq
 	 * @return MResponsePublishContent
@@ -457,6 +485,10 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	 * The service return an error if the specified channels are not available for the selected content,
 	 * but  can be used to adjust a content to a specific profile, publishing the content on the missing
 	 * channels
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishInWeeboExpresspublishContentInChannelsReq
 	 * @return MResponsePublishContent

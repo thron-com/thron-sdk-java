@@ -147,7 +147,7 @@ trait JAdminAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 	protected def capability_checkAndFixContents: String
 
 	/**
-	 * Migrates a client to Thron or 4ME domain
+	 * Migrates a client to THRON domain
 	 * @param tokenId : String
 	 * @param param : MAdminAdminmigrateDomainReq
 	 * @return MResponseMediaContent
@@ -156,7 +156,7 @@ trait JAdminAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 	@Path("/migrateDomain")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/migrateDomain", notes = """Migrates a client to Thron or 4ME domain""", response = classOf[MResponseMediaContent])
+	//#SWG#@ApiOperation(value = "/migrateDomain", notes = """Migrates a client to THRON domain""", response = classOf[MResponseMediaContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def migrateDomain(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

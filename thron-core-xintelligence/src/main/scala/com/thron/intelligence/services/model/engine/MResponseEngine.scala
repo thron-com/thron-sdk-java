@@ -20,12 +20,12 @@ class MResponseEngine extends Serializable {
 	var resultCode: MEEngine =_
 	def withresultCode(p:MEEngine):this.type ={ 	this.resultCode = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var ssoCode: MESSO =_
 	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var errorDescription: String  = ""
 	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }

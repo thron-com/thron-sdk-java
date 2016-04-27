@@ -75,11 +75,6 @@ class MContent extends Serializable {
 	var contentBody: MContentBody =_
 	def withcontentBody(p:MContentBody):this.type ={ 	this.contentBody = p; 	this }
 
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var channels: List[MChannel] = new ArrayList[MChannel]
-	  def withchannels(p:List[MChannel]):this.type ={ 	this.channels = p; 	this }
-
 	/**
 	 * Deprecated!
 	 */
@@ -87,6 +82,11 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Deprecated!""")
 	var thumbnails: List[MThumbnail] = new ArrayList[MThumbnail]
 	  def withthumbnails(p:List[MThumbnail]):this.type ={ 	this.thumbnails = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var channels: List[MChannel] = new ArrayList[MChannel]
+	  def withchannels(p:List[MChannel]):this.type ={ 	this.channels = p; 	this }
 
 	/**
 	 * @param channelToBeFilteredOut : String

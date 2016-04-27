@@ -22,15 +22,10 @@ class MMetadataDefinitionConstraints extends Serializable {
 	 * This attribute is used to define where the metadata can be used (for which
 	 * entity). The visibility of metadata is given by the association or not to a
 	 * given tag and the applicableTo entities.
-	 * Example: if X is a metadata with applicableTo: [Content, Catergory] (only for
-	 * contents and categories) and it is linked to the Tag "business". All categories
-	 * and contents with the tag business will see the metadata X, while if a user is
-	 * tagged as business, the metadata X will not be visible.
 	 * Not be visible means that the user can not insert the metadata X to a user
 	 * tagged business. 
 	 */
 	//#SWG#@ApiModelProperty(value = """This attribute is used to define where the metadata can be used (for which entity). The visibility of metadata is given by the association or not to a given tag and the applicableTo entities. 
-	//#SWGNL#Example: if X is a metadata with applicableTo: [Content, Catergory] (only for contents and categories) and it is linked to the Tag "business". All categories and contents with the tag business will see the metadata X, while if a user is tagged as business, the metadata X will not be visible.
 	//#SWGNL#Not be visible means that the user can not insert the metadata X to a user tagged business. """)
 	@BeanProperty 
 	var applicableTo: List[MEEntityType] = new ArrayList[MEEntityType]

@@ -479,8 +479,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	protected def capability_changePassword: String
 
 	/**
-	 * Used to create a new temporary token for users (only PLATFORM_USER and PLATFORM_USER_GUEST). This
-	 * token can be used with the service Jidentitymanager.loginWithDetail.
+	 * Used to create a new temporary token for users (only PLATFORM_USER and PLATFORM_USER_GUEST). 
 	 * @param tokenId : String
 	 * @param param : MVUserManagerresetPasswordReq
 	 * @return MResponseVUserResetPassword
@@ -489,7 +488,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Path("/resetPassword")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/resetPassword", notes = """Used to create a new temporary token for users (only PLATFORM_USER and PLATFORM_USER_GUEST). This token can be used with the service Jidentitymanager.loginWithDetail.""", response = classOf[MResponseVUserResetPassword])
+	//#SWG#@ApiOperation(value = "/resetPassword", notes = """Used to create a new temporary token for users (only PLATFORM_USER and PLATFORM_USER_GUEST). """, response = classOf[MResponseVUserResetPassword])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def resetPassword(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

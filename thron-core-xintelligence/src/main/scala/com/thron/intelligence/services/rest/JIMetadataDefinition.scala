@@ -198,7 +198,7 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	 * @param classificationId : String
 	 * @param itagId : String
 	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
+	 * ITagDefinition.id, prettyId or externalKey
 	 * @param metadataId : String
 	 * Metadata Definition id
 	 * @param param : MIMetadataDefinitionlinkITagReq
@@ -228,7 +228,7 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@PathParam("classificationId")
 	classificationId: String, 
 			//#SWG#@ApiParam(value = """Tag definition id.
-	//#SWGNL#ITagDefinition.id or ITagDefinition.prettyId""")
+	//#SWGNL#ITagDefinition.id, prettyId or externalKey""")
 	@PathParam("itagId")
 	itagId: String, 
 			//#SWG#@ApiParam(value = """Metadata Definition id""")
@@ -258,7 +258,7 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@PathParam("classificationId")
 	classificationId: String,
 			//#SWG#@ApiParam(value = """Tag definition id.
-	//#SWGNL#ITagDefinition.id or ITagDefinition.prettyId""")
+	//#SWGNL#ITagDefinition.id, prettyId or externalKey""")
 	@PathParam("itagId")
 	itagId: String,
 			//#SWG#@ApiParam(value = """Metadata Definition id""")

@@ -709,12 +709,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param xpublisherId : String
 	 * Optional
 	 * @param locale : String
-	 * Optional. Used as preferred locale for the content results.
-	 * Locale fallback logic used in MContentWallMinimal:
-	 * 1) content has locale == locale (the parameter)
-	 * 2) content has locale == EN
-	 * 3) content has one locale
-	 * 4) otherwise contents.name, contents.locale,contents.description are empty
+	 * Optional. Used as preferred locale for the content results. 
 	 * @param pkey : String
 	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
 	 * for the content.
@@ -778,12 +773,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 			//#SWG#@ApiParam(value = """Optional""")
 	@QueryParam("xpublisherId")
 	xpublisherId: String, 
-			//#SWG#@ApiParam(value = """Optional. Used as preferred locale for the content results. 
-	//#SWGNL#Locale fallback logic used in MContentWallMinimal:
-	//#SWGNL#1) content has locale == locale (the parameter)
-	//#SWGNL#2) content has locale == EN
-	//#SWGNL#3) content has one locale
-	//#SWGNL#4) otherwise contents.name, contents.locale,contents.description are empty""")
+			//#SWG#@ApiParam(value = """Optional. Used as preferred locale for the content results. """)
 	@QueryParam("locale")
 	locale: String, 
 			//#SWG#@ApiParam(value = """Optional, the access key for the content. Can be the tokenId for a logged user or the access key for the content.
@@ -873,11 +863,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * Optional
 	 * @param locale : String
 	 * Optional. Used as preferred local for the content results.
-	 * Locale fallback logic used in MContentWallMinimal:
-	 * 1) content has locale == locale (the parameter)
-	 * 2) content has locale == EN
-	 * 3) content has one locale
-	 * 4) otherwise contents.name, contents.locale,contents.description are empty
+
 	 * @param linkedChannelType : String
 	 * Used to filter the linekdcontents available on some channels.The list of values is represented as
 	 * comma separated value, and the attribute is optional.
@@ -934,11 +920,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@QueryParam("xpublisherId")
 	xpublisherId: String, 
 			//#SWG#@ApiParam(value = """Optional. Used as preferred local for the content results. 
-	//#SWGNL#Locale fallback logic used in MContentWallMinimal:
-	//#SWGNL#1) content has locale == locale (the parameter)
-	//#SWGNL#2) content has locale == EN
-	//#SWGNL#3) content has one locale
-	//#SWGNL#4) otherwise contents.name, contents.locale,contents.description are empty""")
+	//#SWGNL#""")
 	@QueryParam("locale")
 	locale: String, 
 			//#SWG#@ApiParam(value = """Used to filter the linekdcontents available on some channels.The list of values is represented as comma separated value, and the attribute is optional.
@@ -1022,12 +1004,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param xpublisherId : String
 	 * Optional
 	 * @param locale : String
-	 * Optional. Used as preferred local for the content results.
-	 * Locale fallback logic used in MContentWallMinimal:
-	 * 1) content has locale == locale (the parameter)
-	 * 2) content has locale == EN
-	 * 3) content has one locale
-	 * 4) otherwise contents.name, contents.locale,contents.description are empty
+	 * Optional. Used as preferred local for the content results. 
 	 * @param linkedChannelType : String
 	 * Optional. Used to filter the linekdcontents available on some channels.The list of values is
 	 * represented as comma separated value, and the attribute is optional.
@@ -1084,12 +1061,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 			//#SWG#@ApiParam(value = """Optional""")
 	@QueryParam("xpublisherId")
 	xpublisherId: String, 
-			//#SWG#@ApiParam(value = """Optional. Used as preferred local for the content results. 
-	//#SWGNL#Locale fallback logic used in MContentWallMinimal:
-	//#SWGNL#1) content has locale == locale (the parameter)
-	//#SWGNL#2) content has locale == EN
-	//#SWGNL#3) content has one locale
-	//#SWGNL#4) otherwise contents.name, contents.locale,contents.description are empty""")
+			//#SWG#@ApiParam(value = """Optional. Used as preferred local for the content results. """)
 	@QueryParam("locale")
 	locale: String, 
 			//#SWG#@ApiParam(value = """Optional. Used to filter the linekdcontents available on some channels.The list of values is represented as comma separated value, and the attribute is optional.

@@ -76,9 +76,17 @@ class MVUserManagercreateReq extends Serializable {
 	def withuserQuota(p:Long):this.type ={ 	this.userQuota = p; 	this }
 
 	/**
-	 * Optional
+	 * Optional.
+	 * Define the lock template id applied to the user.
+	 * Locking templates are used to restrict the user to change some specific fields
+	 * of the VUserDetail, like password, email address, user fullname or other
+	 * details.
+	 * The only allowed value is "DEFAULT".
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional.
+	//#SWGNL#Define the lock template id applied to the user.
+	//#SWGNL#Locking templates are used to restrict the user to change some specific fields of the VUserDetail, like password, email address, user fullname or other details.
+	//#SWGNL#The only allowed value is "DEFAULT".""", required = true)
 	@BeanProperty
 	var userLockTemplate: String =_
 	def withuserLockTemplate(p:String):this.type ={ 	this.userLockTemplate = p; 	this }

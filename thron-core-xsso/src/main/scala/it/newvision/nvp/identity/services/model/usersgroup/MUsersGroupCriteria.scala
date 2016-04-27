@@ -60,7 +60,9 @@ class MUsersGroupCriteria extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """filter the groups having the usersEnabledSolutions in groupCapabilities.enabledSolutions.""")
 	@BeanProperty 
+	@Deprecated
 	var usersEnabledSolutions: List[String] = new ArrayList[String]
+	@Deprecated
 	def withusersEnabledSolutions(p:List[String]):this.type ={ 	this.usersEnabledSolutions = p; 	this }
 
 	/**

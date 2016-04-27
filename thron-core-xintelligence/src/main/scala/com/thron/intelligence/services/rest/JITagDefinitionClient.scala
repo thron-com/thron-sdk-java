@@ -16,6 +16,10 @@ import com.thron.intelligence.services.model.tag.MResponseITagMetadataLink
 import com.thron.intelligence.services.model.request.MITagDefinitionlinkMetadataDefinitionReq
 import com.thron.intelligence.services.model.request.MITagDefinitionunlinkMetadataDefinitionReq
 import com.thron.intelligence.services.model.request.MITagDefinitionupdateTagMetadataReq
+import com.thron.intelligence.services.model.request.MITagDefinitionaddExternalIdReq
+import com.thron.intelligence.services.model.request.MITagDefinitionremoveExternalIdReq
+import com.thron.intelligence.services.model.itag.MResponseITagDefinitionListKeys
+import com.thron.intelligence.services.model.request.MITagDefinitionlistExternalIdKeysReq
 
 /* ************************
 *  GENERATED CLASS
@@ -102,7 +106,8 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Lists the client's Tags. This method return the tags matching the given search criteria.
+	 * Lists the client's ITagDefinitions. This method return the itags matching the given search criteria.
+	 * 
 	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
@@ -172,6 +177,9 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * @param showLinkedMetadata : Boolean
 	 * Optional. default is false
 	 * Fill the list of linked metadata definition in items.linkedMetadataDefinition
+	 * @param showSubNodeIds : Boolean
+	 * Optional. default is false
+	 * Fill the list of subnodes ids in the response.
 	 * @param orderBy : MEITagDefinitionOrderBy
 	 * Optional
 	 * @param offset : Integer
@@ -188,6 +196,7 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 			lang: String, 
 			ids: String, 
 			showLinkedMetadata: Boolean, 
+			showSubNodeIds: Boolean, 
 			orderBy: MEITagDefinitionOrderBy, 
 			offset: Integer, 
 			limit: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionList ={
@@ -200,6 +209,7 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 		Option(lang).foreach(s => params.add("lang", s))
 		Option(ids).foreach(s => params.add("ids", s))
 		Option(showLinkedMetadata).foreach(s => params.add("showLinkedMetadata", s))
+		Option(showSubNodeIds).foreach(s => params.add("showSubNodeIds", s))
 		Option(orderBy).foreach(s => params.add("orderBy", s))
 		Option(offset).foreach(s => params.add("offset", s))
 		Option(limit).foreach(s => params.add("limit", s))
@@ -245,19 +255,24 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * ITagDefinition.id or ITagDefinition.prettyId
 	 * @param showLinkedMetadata : Boolean
 	 * Optional. Default value is false
+	 * @param showSubNodeIds : Boolean
+	 * Optional. default is false
+	 * Fill the list of subnodes ids in the response.
 	 * @return MResponseITagDefinitionDetail
 	*/
 	def detail(tokenId: String, 
 			clientId: String, 
 			classificationId: String, 
 			id: String, 
-			showLinkedMetadata: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDetail ={
+			showLinkedMetadata: Boolean, 
+			showSubNodeIds: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
 			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
 			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
 			Option(showLinkedMetadata).foreach(s => params.add("showLinkedMetadata", s))
+		Option(showSubNodeIds).foreach(s => params.add("showSubNodeIds", s))
 			val response : MResponseITagDefinitionDetail = if(this.resourceEndpoint == ""){
 			
 				new MResponseITagDefinitionDetail()
@@ -294,14 +309,16 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * the "update" attributes you want to change must be included in the body of the request, those not
 	 * included will not be updated.
 	 * 
+	 * <b>Constraints:</b>
+	 * the ITagDefinition must be in state "APPROVED"
+	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
 	 * @param id : String
-	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
+	 * ITagdefinition id, prettyId or externalId
 	 * @param param : MITagDefinitionupdateReq
 	 * @return MResponseITagDefinitionDetail
 	*/
@@ -354,14 +371,16 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * It's only possible to remove ITagDefinition without children.
 	 * The operation remove also the link with metadata definition
 	 * 
+	 * <b>Constraints:</b>
+	 * the ITagDefinition must be in state "APPROVED"
+	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
 	 * @param id : String
-	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
+	 * ITagdefinition id, prettyId or externalId
 	 * @param param : MITagDefinitionremoveReq
 	 * @return MResponseITagRemove
 	*/
@@ -412,11 +431,14 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	/**
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition  </li>
+	 * 	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition </li>
 	 * 	<li>100: max number of IMetadataDefinition per ITagDefinition</li>
 	 * 	<li>it's possible to link metadata only to categorized and approved ITagDefinition</li>
 	 * 	<li>the IMetadataDefinition of type KEY can be linked to one single ITagDefinition.</li>
 	 * </ul>
+	 * 
+	 * <b>Constraints:</b>
+	 * the ITagDefinition must be in state "APPROVED"
 	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
@@ -424,8 +446,7 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * @param clientId : String
 	 * @param classificationId : String
 	 * @param itagId : String
-	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
+	 * ITagdefinition id, prettyId or externalId
 	 * @param param : MITagDefinitionlinkMetadataDefinitionReq
 	 * @return MResponseITagMetadataLink
 	*/
@@ -474,13 +495,16 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * <b>Role Validation:</b>
+	 * <b>Constraints:</b>
+	 * the ITagDefinition must be in state "APPROVED"
+	 * <b>
+	 * </b><b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
 	 * @param itagId : String
-	 * Tag definition id.
+	 * ITagdefinition id, prettyId or externalId
 	 * @param param : MITagDefinitionunlinkMetadataDefinitionReq
 	 * @return MResponseITagMetadataLink
 	*/
@@ -533,14 +557,16 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * IMetadataDefinition.
 	 * Actually used to change the position of the imetadatadefinition inside an itagdefinition
 	 * 
+	 * <b>Constraints:</b>
+	 * the ITagDefinition must be in state "APPROVED"
+	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
 	 * @param itagId : String
-	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
+	 * ITagdefinition id, prettyId or externalId
 	 * @param param : MITagDefinitionupdateTagMetadataReq
 	 * @return MResponseITagMetadataLink
 	*/
@@ -579,6 +605,178 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseITagMetadataLink])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Add an externalId to the ITagDefinition
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>it's not possible to add more than 200 external Ids on the same itagDefinition</li>
+	 * </ul>
+	 * <b>
+	 * </b><b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param id : String
+	 * ITagDefinition.id
+	 * @param param : MITagDefinitionaddExternalIdReq
+	 * @return MResponseITagDefinitionDetail
+	*/
+	def addExternalId(tokenId: String, 
+			clientId: String, 
+			classificationId: String, 
+			id: String, 
+			param: MITagDefinitionaddExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDetail ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
+			val response : MResponseITagDefinitionDetail = if(this.resourceEndpoint == ""){
+			
+				new MResponseITagDefinitionDetail()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("itagdefinition/addExternalId")
+					.path(clientId.toString)
+		.path(classificationId.toString)
+		.path(id.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseITagDefinitionDetail],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseITagDefinitionDetail])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Remove an externalId from the ITagDefinition
+	 * <b>
+	 * </b><b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param id : String
+	 * ITagdefinition id.
+	 * @param param : MITagDefinitionremoveExternalIdReq
+	 * @return MResponseITagDefinitionDetail
+	*/
+	def removeExternalId(tokenId: String, 
+			clientId: String, 
+			classificationId: String, 
+			id: String, 
+			param: MITagDefinitionremoveExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDetail ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
+			val response : MResponseITagDefinitionDetail = if(this.resourceEndpoint == ""){
+			
+				new MResponseITagDefinitionDetail()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("itagdefinition/removeExternalId")
+					.path(clientId.toString)
+		.path(classificationId.toString)
+		.path(id.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseITagDefinitionDetail],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseITagDefinitionDetail])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * List of distinct keys (ExternalId.key) ordered by name
+	 * <b>
+	 * </b><b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagDefinitionlistExternalIdKeysReq
+	 * @return MResponseITagDefinitionListKeys
+	*/
+	def listExternalIdKeys(tokenId: String, 
+			clientId: String, 
+			classificationId: String, 
+			param: MITagDefinitionlistExternalIdKeysReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionListKeys ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
+			val response : MResponseITagDefinitionListKeys = if(this.resourceEndpoint == ""){
+			
+				new MResponseITagDefinitionListKeys()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("itagdefinition/listExternalIdKeys")
+					.path(clientId.toString)
+		.path(classificationId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseITagDefinitionListKeys],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseITagDefinitionListKeys])
 				}
 				else {
 				  throw e

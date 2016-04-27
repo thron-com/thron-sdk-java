@@ -32,18 +32,17 @@ class MGroupUpdateData extends Serializable {
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
-	 * Specify if the group is enable or not to in the platform.
-	 * Users inherit roles and acl only from active linked groups.
+	 * Toggle group active state. When a group is not active it will not impact on ACL
+	 * and Permissions.
 	 */
-	//#SWG#@ApiModelProperty(value = """Specify if the group is enable or not to in the platform.
-	//#SWGNL#Users inherit roles and acl only from active linked groups.""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """Toggle group active state. When a group is not active it will not impact on ACL and Permissions.""")
 	@BeanProperty 
 	var active: Boolean  = true
 	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
-	 * Used as roles template. It is possible to define the UserGroup roles that are
-	 * be applied to each user inside the group. The userRoles are derived from the
+	 * Used as roles template. It is possible to define the UserGroup roles that HAVE
+	 * TO be applied to each user inside the group. The userRoles are derived from the
 	 * list of groupRoles where the user are linked.
 	 * 
 	 * Constraints:
@@ -52,7 +51,7 @@ class MGroupUpdateData extends Serializable {
 	 * groups)</li>
 	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """Used as roles template. It is possible to define the UserGroup roles that are be applied to each user inside the group. The userRoles are derived from the list of groupRoles where the user are linked.
+	//#SWG#@ApiModelProperty(value = """Used as roles template. It is possible to define the UserGroup roles that HAVE TO be applied to each user inside the group. The userRoles are derived from the list of groupRoles where the user are linked.
 	//#SWGNL#
 	//#SWGNL#Constraints:
 	//#SWGNL#<ul>

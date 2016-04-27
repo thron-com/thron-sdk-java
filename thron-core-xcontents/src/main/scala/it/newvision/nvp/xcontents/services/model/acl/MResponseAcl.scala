@@ -21,12 +21,12 @@ class MResponseAcl extends Serializable {
 	var resultCode: MEAcl =_
 	def withresultCode(p:MEAcl):this.type ={ 	this.resultCode = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var ssoCode: MESSO =_
 	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var errorDescription: String =_
 	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }

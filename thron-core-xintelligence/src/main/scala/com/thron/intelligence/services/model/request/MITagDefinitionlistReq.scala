@@ -35,6 +35,16 @@ class MITagDefinitionlistReq extends Serializable {
 	def withshowLinkedMetadata(p:Boolean):this.type ={ 	this.showLinkedMetadata = p; 	this }
 
 	/**
+	 * Optional. default is false
+	 * Fill the list of subnodes ids in the response.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. default is false
+	//#SWGNL#Fill the list of subnodes ids in the response.""", required = true)
+	@BeanProperty
+	var showSubNodeIds: Boolean =_
+	def withshowSubNodeIds(p:Boolean):this.type ={ 	this.showSubNodeIds = p; 	this }
+
+	/**
 	 * Optional
 	 */
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)

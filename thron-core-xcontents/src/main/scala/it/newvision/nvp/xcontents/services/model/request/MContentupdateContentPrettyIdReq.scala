@@ -24,9 +24,9 @@ class MContentupdateContentPrettyIdReq extends Serializable {
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
-	 * no prettyId are allowed.
+	 * xcontentId or prettyId
 	 */
-	//#SWG#@ApiModelProperty(value = """no prettyId are allowed.""", required = true)
+	//#SWG#@ApiModelProperty(value = """xcontentId or prettyId""", required = true)
 	@BeanProperty
 	var contentId: String =_
 	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }

@@ -363,8 +363,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to create a new temporary token for users (only PLATFORM_USER and PLATFORM_USER_GUEST). This
-	 * token can be used with the service Jidentitymanager.loginWithDetail.
+	 * Used to create a new temporary token for users (only PLATFORM_USER and PLATFORM_USER_GUEST). 
 	 * @param tokenId : String
 	 * @param param : MVUserManagerresetPasswordReq
 	 * @return MResponseVUserResetPassword

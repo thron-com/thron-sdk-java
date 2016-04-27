@@ -161,7 +161,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	 * @param classificationId : String
 	 * @param itagId : String
 	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
+	 * ITagDefinition.id, prettyId or externalKey
 	 * @param metadataId : String
 	 * Metadata Definition id
 	 * @param param : MIMetadataDefinitionlinkITagReq

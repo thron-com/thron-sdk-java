@@ -29,9 +29,9 @@ class MResponseSnippetLogin extends MResponseApp with Serializable  {
 	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
 
 	/**
-	 * the new 4me tokenId to use inside the snippet calls
+	 * the application token Id to use with subsequent calls
 	 */
-	//#SWG#@ApiModelProperty(value = """the new 4me tokenId to use inside the snippet calls""")
+	//#SWG#@ApiModelProperty(value = """the application token Id to use with subsequent calls""")
 	@BeanProperty 
 	var appUserTokenId: String =_
 	def withappUserTokenId(p:String):this.type ={ 	this.appUserTokenId = p; 	this }

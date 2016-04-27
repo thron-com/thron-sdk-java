@@ -50,6 +50,10 @@ class JPublishingProcessClient(val resourceEndpoint:String) {
 	 * First step of a publishing process. The service create a new empty content in platform linked to a
 	 * specific source file.
 	 * To easily create and publish a content in the platform use the services of JPublishInWeeboExpress.
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessnewContentReq
 	 * @return MResponsePublishContent
@@ -152,6 +156,10 @@ class JPublishingProcessClient(val resourceEndpoint:String) {
 	/**
 	 * First step of a publishing process, used to create a new content of type PAGELET (contents without
 	 * source file, but with a body in html or other formats, readable by the player).
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessnewPageletContentReq
 	 * @return MResponsePublishContent
@@ -244,6 +252,10 @@ class JPublishingProcessClient(val resourceEndpoint:String) {
 	 * First step of a publishing process for a LIVE EVENT content. The User create a new Live Event
 	 * Content. The service create a content in xcontents (MContent), a new content in xpublisher
 	 * (MContent) and prepare the environment for the publishing process.
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessnewLiveEventContentReq
 	 * @return MResponsePublishContent
@@ -347,6 +359,10 @@ class JPublishingProcessClient(val resourceEndpoint:String) {
 	 * First step of the publishing process for a PLAYLIST content. The User create a new PlayList Content,
 	 * linked to a set of source files. The service create a content and prepare the environment for the
 	 * publishing process.
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessnewPlayListContentReq
 	 * @return MResponsePublishContent
@@ -567,6 +583,10 @@ class JPublishingProcessClient(val resourceEndpoint:String) {
 	/**
 	 * Publish a content created for a specific channel. Once the content is ready (packaged), it can be
 	 * published in CDN. This function is ASYNCHRONOUS!
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MPublishingProcesspublishChannelReq
 	 * @return MResponsePublishContent

@@ -29,6 +29,18 @@ class MITagCriteriaOption extends Serializable {
 	def withoperation(p:MEITagOperation):this.type ={ 	this.operation = p; 	this }
 
 	/**
+	 * Optional.
+	 * The itag source Type: USER/APP/ENGINE.
+	 * This attibute is used to filter the tags coming from a specific source.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional.
+	//#SWGNL#The itag source Type: USER/APP/ENGINE.
+	//#SWGNL#This attibute is used to filter the tags coming from a specific source.""")
+	@BeanProperty 
+	var stypes: List[String] = new ArrayList[String]
+	def withstypes(p:List[String]):this.type ={ 	this.stypes = p; 	this }
+
+	/**
 	 * @return Boolean
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
@@ -38,7 +50,7 @@ class MITagCriteriaOption extends Serializable {
 		import org.apache.commons.lang.StringUtils
 		Option(operation).isDefined &&
 			itags.forall(i=>StringUtils.isNotEmpty(i.classificationId) && 
-			StringUtils.isNotEmpty(i.id)) && itags.size()<=5
+			StringUtils.isNotEmpty(i.id)) && itags.size()<=5 && itags.nonEmpty
 	}
 
 }

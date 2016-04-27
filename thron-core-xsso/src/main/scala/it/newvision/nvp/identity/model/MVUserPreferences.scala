@@ -56,7 +56,9 @@ class MVUserPreferences extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """the default category where the user create new contents""")
 	@BeanProperty 
+	@Deprecated
 	var defaultCategoryId: String =_
+	@Deprecated
 	def withdefaultCategoryId(p:String):this.type ={ 	this.defaultCategoryId = p; 	this }
 
 }

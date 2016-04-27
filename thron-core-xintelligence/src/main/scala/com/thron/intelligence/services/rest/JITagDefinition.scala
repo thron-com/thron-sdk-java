@@ -16,6 +16,10 @@ import com.thron.intelligence.services.model.tag.MResponseITagMetadataLink
 import com.thron.intelligence.services.model.request.MITagDefinitionlinkMetadataDefinitionReq
 import com.thron.intelligence.services.model.request.MITagDefinitionunlinkMetadataDefinitionReq
 import com.thron.intelligence.services.model.request.MITagDefinitionupdateTagMetadataReq
+import com.thron.intelligence.services.model.request.MITagDefinitionaddExternalIdReq
+import com.thron.intelligence.services.model.request.MITagDefinitionremoveExternalIdReq
+import com.thron.intelligence.services.model.itag.MResponseITagDefinitionListKeys
+import com.thron.intelligence.services.model.request.MITagDefinitionlistExternalIdKeysReq
 
 /* ************************
 *  GENERATED CLASS
@@ -136,7 +140,8 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_insert: String
 
 	/**
-	 * Lists the client's Tags. This method return the tags matching the given search criteria.
+	 * Lists the client's ITagDefinitions. This method return the itags matching the given search criteria.
+	 * 
 	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
@@ -150,7 +155,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/list/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/list", notes = """Lists the client's Tags. This method return the tags matching the given search criteria.
+	//#SWG#@ApiOperation(value = "/list", notes = """Lists the client's ITagDefinitions. This method return the itags matching the given search criteria.
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation:</b>
 	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseITagDefinitionList])
@@ -228,6 +233,9 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * @param showLinkedMetadata : Boolean
 	 * Optional. default is false
 	 * Fill the list of linked metadata definition in items.linkedMetadataDefinition
+	 * @param showSubNodeIds : Boolean
+	 * Optional. default is false
+	 * Fill the list of subnodes ids in the response.
 	 * @param orderBy : MEITagDefinitionOrderBy
 	 * Optional
 	 * @param offset : Integer
@@ -267,6 +275,10 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	//#SWGNL#Fill the list of linked metadata definition in items.linkedMetadataDefinition""")
 	@QueryParam("showLinkedMetadata")
 	showLinkedMetadata: Boolean, 
+			//#SWG#@ApiParam(value = """Optional. default is false
+	//#SWGNL#Fill the list of subnodes ids in the response.""")
+	@QueryParam("showSubNodeIds")
+	showSubNodeIds: Boolean, 
 			//#SWG#@ApiParam(value = """Optional""")
 	@QueryParam("orderBy")
 	orderBy: MEITagDefinitionOrderBy, 
@@ -288,7 +300,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		//get the cache control specific for this service
 		val cc = this.cachemap("listGet") 
 		try{	
-			val resp = this.__listGet(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,classificationId,text,lang,ids,showLinkedMetadata,orderBy,offset,limit)
+			val resp = this.__listGet(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,classificationId,text,lang,ids,showLinkedMetadata,showSubNodeIds,orderBy,offset,limit)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_listGet)
 	    }catch{
@@ -301,7 +313,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __listGet(tokenId: String, clientId: String, classificationId: String, text: String, lang: String, ids: String, showLinkedMetadata: Boolean, orderBy: MEITagDefinitionOrderBy, offset: Integer, limit: Integer) :MResponseITagDefinitionList
+	 protected def __listGet(tokenId: String, clientId: String, classificationId: String, text: String, lang: String, ids: String, showLinkedMetadata: Boolean, showSubNodeIds: Boolean, orderBy: MEITagDefinitionOrderBy, offset: Integer, limit: Integer) :MResponseITagDefinitionList
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_listGet: String
 
@@ -318,6 +330,9 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * ITagDefinition.id or ITagDefinition.prettyId
 	 * @param showLinkedMetadata : Boolean
 	 * Optional. Default value is false
+	 * @param showSubNodeIds : Boolean
+	 * Optional. default is false
+	 * Fill the list of subnodes ids in the response.
 	 * @return MResponseITagDefinitionDetail
 	*/
 	@GET
@@ -343,7 +358,11 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	id: String, 
 			//#SWG#@ApiParam(value = """Optional. Default value is false""")
 	@QueryParam("showLinkedMetadata")
-	showLinkedMetadata: Boolean,
+	showLinkedMetadata: Boolean, 
+			//#SWG#@ApiParam(value = """Optional. default is false
+	//#SWGNL#Fill the list of subnodes ids in the response.""")
+	@QueryParam("showSubNodeIds")
+	showSubNodeIds: Boolean,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
@@ -355,7 +374,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		//get the cache control specific for this service
 		val cc = this.cachemap("detail") 
 		try{	
-			val resp = this.__detail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,classificationId,id,showLinkedMetadata)
+			val resp = this.__detail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,classificationId,id,showLinkedMetadata,showSubNodeIds)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
 	    }catch{
@@ -368,7 +387,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __detail(tokenId: String, clientId: String, classificationId: String, id: String, showLinkedMetadata: Boolean) :MResponseITagDefinitionDetail
+	 protected def __detail(tokenId: String, clientId: String, classificationId: String, id: String, showLinkedMetadata: Boolean, showSubNodeIds: Boolean) :MResponseITagDefinitionDetail
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_detail: String
 
@@ -378,14 +397,16 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * the "update" attributes you want to change must be included in the body of the request, those not
 	 * included will not be updated.
 	 * 
+	 * <b>Constraints:</b>
+	 * the ITagDefinition must be in state "APPROVED"
+	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
 	 * @param id : String
-	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
+	 * ITagdefinition id, prettyId or externalId
 	 * @param param : MITagDefinitionupdateReq
 	 * @return MResponseITagDefinitionDetail
 	*/
@@ -395,6 +416,9 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/update", notes = """Update in "patch" mode the ITagDefinition.
 	//#SWGNL#The "update" field of this web service works in “patch" mode: it means that each and everyone of the "update" attributes you want to change must be included in the body of the request, those not included will not be updated.
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#the ITagDefinition must be in state "APPROVED"
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation:</b>
 	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDetail])
@@ -408,8 +432,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String, 
-			//#SWG#@ApiParam(value = """Tag definition id.
-	//#SWGNL#ITagDefinition.id or ITagDefinition.prettyId""")
+			//#SWG#@ApiParam(value = """ITagdefinition id, prettyId or externalId""")
 	@PathParam("id")
 	id: String, 
 			param: MITagDefinitionupdateReq):Response /*returnType = MResponseITagDefinitionDetail*/ = {
@@ -435,8 +458,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String,
-			//#SWG#@ApiParam(value = """Tag definition id.
-	//#SWGNL#ITagDefinition.id or ITagDefinition.prettyId""")
+			//#SWG#@ApiParam(value = """ITagdefinition id, prettyId or externalId""")
 	@PathParam("id")
 	id: String,
 			@QueryParam("param") param_q: String,
@@ -467,14 +489,16 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * It's only possible to remove ITagDefinition without children.
 	 * The operation remove also the link with metadata definition
 	 * 
+	 * <b>Constraints:</b>
+	 * the ITagDefinition must be in state "APPROVED"
+	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
 	 * @param id : String
-	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
+	 * ITagdefinition id, prettyId or externalId
 	 * @param param : MITagDefinitionremoveReq
 	 * @return MResponseITagRemove
 	*/
@@ -485,6 +509,9 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	//#SWG#@ApiOperation(value = "/remove", notes = """Definitely remove  an ITagDefinition from the classification.
 	//#SWGNL#It's only possible to remove ITagDefinition without children. 
 	//#SWGNL#The operation remove also the link with metadata definition
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#the ITagDefinition must be in state "APPROVED"
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation:</b>
 	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagRemove])
@@ -498,8 +525,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String, 
-			//#SWG#@ApiParam(value = """Tag definition id.
-	//#SWGNL#ITagDefinition.id or ITagDefinition.prettyId""")
+			//#SWG#@ApiParam(value = """ITagdefinition id, prettyId or externalId""")
 	@PathParam("id")
 	id: String, 
 			param: MITagDefinitionremoveReq):Response /*returnType = MResponseITagRemove*/ = {
@@ -525,8 +551,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String,
-			//#SWG#@ApiParam(value = """Tag definition id.
-	//#SWGNL#ITagDefinition.id or ITagDefinition.prettyId""")
+			//#SWG#@ApiParam(value = """ITagdefinition id, prettyId or externalId""")
 	@PathParam("id")
 	id: String,
 			@QueryParam("param") param_q: String,
@@ -555,11 +580,14 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	/**
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition  </li>
+	 * 	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition </li>
 	 * 	<li>100: max number of IMetadataDefinition per ITagDefinition</li>
 	 * 	<li>it's possible to link metadata only to categorized and approved ITagDefinition</li>
 	 * 	<li>the IMetadataDefinition of type KEY can be linked to one single ITagDefinition.</li>
 	 * </ul>
+	 * 
+	 * <b>Constraints:</b>
+	 * the ITagDefinition must be in state "APPROVED"
 	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
@@ -567,8 +595,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * @param clientId : String
 	 * @param classificationId : String
 	 * @param itagId : String
-	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
+	 * ITagdefinition id, prettyId or externalId
 	 * @param param : MITagDefinitionlinkMetadataDefinitionReq
 	 * @return MResponseITagMetadataLink
 	*/
@@ -578,11 +605,14 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/linkMetadataDefinition", notes = """<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition  </li>
+	//#SWGNL#	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition </li>
 	//#SWGNL#	<li>100: max number of IMetadataDefinition per ITagDefinition</li>
 	//#SWGNL#	<li>it's possible to link metadata only to categorized and approved ITagDefinition</li>
 	//#SWGNL#	<li>the IMetadataDefinition of type KEY can be linked to one single ITagDefinition.</li>
 	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#the ITagDefinition must be in state "APPROVED"
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation:</b>
 	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagMetadataLink])
@@ -596,8 +626,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String, 
-			//#SWG#@ApiParam(value = """Tag definition id.
-	//#SWGNL#ITagDefinition.id or ITagDefinition.prettyId""")
+			//#SWG#@ApiParam(value = """ITagdefinition id, prettyId or externalId""")
 	@PathParam("itagId")
 	itagId: String, 
 			param: MITagDefinitionlinkMetadataDefinitionReq):Response /*returnType = MResponseITagMetadataLink*/ = {
@@ -623,8 +652,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String,
-			//#SWG#@ApiParam(value = """Tag definition id.
-	//#SWGNL#ITagDefinition.id or ITagDefinition.prettyId""")
+			//#SWG#@ApiParam(value = """ITagdefinition id, prettyId or externalId""")
 	@PathParam("itagId")
 	itagId: String,
 			@QueryParam("param") param_q: String,
@@ -651,13 +679,16 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_linkMetadataDefinition: String
 
 	/**
-	 * <b>Role Validation:</b>
+	 * <b>Constraints:</b>
+	 * the ITagDefinition must be in state "APPROVED"
+	 * <b>
+	 * </b><b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
 	 * @param itagId : String
-	 * Tag definition id.
+	 * ITagdefinition id, prettyId or externalId
 	 * @param param : MITagDefinitionunlinkMetadataDefinitionReq
 	 * @return MResponseITagMetadataLink
 	*/
@@ -665,7 +696,10 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/unlinkMetadataDefinition/{clientId}/{classificationId}/{itagId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/unlinkMetadataDefinition", notes = """<b>Role Validation:</b>
+	//#SWG#@ApiOperation(value = "/unlinkMetadataDefinition", notes = """<b>Constraints:</b>
+	//#SWGNL#the ITagDefinition must be in state "APPROVED"
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Role Validation:</b>
 	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagMetadataLink])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def unlinkMetadataDefinition(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -677,7 +711,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String, 
-			//#SWG#@ApiParam(value = """Tag definition id.""")
+			//#SWG#@ApiParam(value = """ITagdefinition id, prettyId or externalId""")
 	@PathParam("itagId")
 	itagId: String, 
 			param: MITagDefinitionunlinkMetadataDefinitionReq):Response /*returnType = MResponseITagMetadataLink*/ = {
@@ -703,7 +737,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String,
-			//#SWG#@ApiParam(value = """Tag definition id.""")
+			//#SWG#@ApiParam(value = """ITagdefinition id, prettyId or externalId""")
 	@PathParam("itagId")
 	itagId: String,
 			@QueryParam("param") param_q: String,
@@ -734,14 +768,16 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * IMetadataDefinition.
 	 * Actually used to change the position of the imetadatadefinition inside an itagdefinition
 	 * 
+	 * <b>Constraints:</b>
+	 * the ITagDefinition must be in state "APPROVED"
+	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
 	 * @param itagId : String
-	 * Tag definition id.
-	 * ITagDefinition.id or ITagDefinition.prettyId
+	 * ITagdefinition id, prettyId or externalId
 	 * @param param : MITagDefinitionupdateTagMetadataReq
 	 * @return MResponseITagMetadataLink
 	*/
@@ -751,6 +787,9 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/updateTagMetadata", notes = """Update in "patch" mode  the specific values defined in the link between ITagDefinition and IMetadataDefinition.
 	//#SWGNL#Actually used to change the position of the imetadatadefinition inside an itagdefinition
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#the ITagDefinition must be in state "APPROVED"
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation:</b>
 	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagMetadataLink])
@@ -764,8 +803,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String, 
-			//#SWG#@ApiParam(value = """Tag definition id.
-	//#SWGNL#ITagDefinition.id or ITagDefinition.prettyId""")
+			//#SWG#@ApiParam(value = """ITagdefinition id, prettyId or externalId""")
 	@PathParam("itagId")
 	itagId: String, 
 			param: MITagDefinitionupdateTagMetadataReq):Response /*returnType = MResponseITagMetadataLink*/ = {
@@ -791,8 +829,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String,
-			//#SWG#@ApiParam(value = """Tag definition id.
-	//#SWGNL#ITagDefinition.id or ITagDefinition.prettyId""")
+			//#SWG#@ApiParam(value = """ITagdefinition id, prettyId or externalId""")
 	@PathParam("itagId")
 	itagId: String,
 			@QueryParam("param") param_q: String,
@@ -817,5 +854,256 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 protected def __updateTagMetadata(tokenId: String, clientId: String, classificationId: String, itagId: String, param: MITagDefinitionupdateTagMetadataReq) :MResponseITagMetadataLink
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_updateTagMetadata: String
+
+	/**
+	 * Add an externalId to the ITagDefinition
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>it's not possible to add more than 200 external Ids on the same itagDefinition</li>
+	 * </ul>
+	 * <b>
+	 * </b><b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param id : String
+	 * ITagDefinition.id
+	 * @param param : MITagDefinitionaddExternalIdReq
+	 * @return MResponseITagDefinitionDetail
+	*/
+	@POST
+	@Path("/addExternalId/{clientId}/{classificationId}/{id}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/addExternalId", notes = """Add an externalId to the ITagDefinition
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>it's not possible to add more than 200 external Ids on the same itagDefinition</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Role Validation:</b>
+	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDetail])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def addExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			//#SWG#@ApiParam(value = """ITagDefinition.id""")
+	@PathParam("id")
+	id: String, 
+			param: MITagDefinitionaddExternalIdReq):Response /*returnType = MResponseITagDefinitionDetail*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__addExternalId(tokenId,clientId,classificationId,id,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addExternalId)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_addExternalId)
+	    }
+	} 
+
+	@GET
+	@Path("/addExternalId/{clientId}/{classificationId}/{id}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def addExternalId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			//#SWG#@ApiParam(value = """ITagDefinition.id""")
+	@PathParam("id")
+	id: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagDefinitionDetail*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__addExternalId(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,id,PRestHelper.bindRequest[MITagDefinitionaddExternalIdReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addExternalId)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addExternalId)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __addExternalId(tokenId: String, clientId: String, classificationId: String, id: String, param: MITagDefinitionaddExternalIdReq) :MResponseITagDefinitionDetail
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_addExternalId: String
+
+	/**
+	 * Remove an externalId from the ITagDefinition
+	 * <b>
+	 * </b><b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param id : String
+	 * ITagdefinition id.
+	 * @param param : MITagDefinitionremoveExternalIdReq
+	 * @return MResponseITagDefinitionDetail
+	*/
+	@POST
+	@Path("/removeExternalId/{clientId}/{classificationId}/{id}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/removeExternalId", notes = """Remove an externalId from the ITagDefinition
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Role Validation:</b>
+	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDetail])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def removeExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			//#SWG#@ApiParam(value = """ITagdefinition id.""")
+	@PathParam("id")
+	id: String, 
+			param: MITagDefinitionremoveExternalIdReq):Response /*returnType = MResponseITagDefinitionDetail*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__removeExternalId(tokenId,clientId,classificationId,id,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeExternalId)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_removeExternalId)
+	    }
+	} 
+
+	@GET
+	@Path("/removeExternalId/{clientId}/{classificationId}/{id}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def removeExternalId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			//#SWG#@ApiParam(value = """ITagdefinition id.""")
+	@PathParam("id")
+	id: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagDefinitionDetail*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__removeExternalId(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,id,PRestHelper.bindRequest[MITagDefinitionremoveExternalIdReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeExternalId)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeExternalId)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __removeExternalId(tokenId: String, clientId: String, classificationId: String, id: String, param: MITagDefinitionremoveExternalIdReq) :MResponseITagDefinitionDetail
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_removeExternalId: String
+
+	/**
+	 * List of distinct keys (ExternalId.key) ordered by name
+	 * <b>
+	 * </b><b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagDefinitionlistExternalIdKeysReq
+	 * @return MResponseITagDefinitionListKeys
+	*/
+	@POST
+	@Path("/listExternalIdKeys/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/listExternalIdKeys", notes = """List of distinct keys (ExternalId.key) ordered by name
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Role Validation:</b>
+	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseITagDefinitionListKeys])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def listExternalIdKeys(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MITagDefinitionlistExternalIdKeysReq):Response /*returnType = MResponseITagDefinitionListKeys*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__listExternalIdKeys(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_listExternalIdKeys)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_listExternalIdKeys)
+	    }
+	} 
+
+	@GET
+	@Path("/listExternalIdKeys/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def listExternalIdKeys_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagDefinitionListKeys*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__listExternalIdKeys(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitionlistExternalIdKeysReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_listExternalIdKeys)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_listExternalIdKeys)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __listExternalIdKeys(tokenId: String, clientId: String, classificationId: String, param: MITagDefinitionlistExternalIdKeysReq) :MResponseITagDefinitionListKeys
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_listExternalIdKeys: String
 
 }

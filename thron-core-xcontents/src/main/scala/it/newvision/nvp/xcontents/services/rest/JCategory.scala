@@ -66,6 +66,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * <ul>
 	 * 	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
 	 * CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	 * 	<li>Applications can not create root categories</li>
 	 * 	<li>MODIFY Acl is required  on the parent category</li>
 	 * </ul>
 	 * @param tokenId : String
@@ -82,6 +83,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	//#SWGNL#<b>Validations:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	//#SWGNL#	<li>Applications can not create root categories</li>
 	//#SWGNL#	<li>MODIFY Acl is required  on the parent category</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseNewCategory])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
@@ -327,13 +329,18 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * The service remove the specified category only if there no linked contents and subcategories.
 	 * With cascade = true the service unlink all contents and remove recursively all subcategories
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required  on the specific category</li>
+	 * 	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
+	 * CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MODIFY Acl is required  on the specific category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param catId : String
+	 * Id or prettyId
 	 * @param cascade : Boolean
 	 * Used to force the remove also in the subcategories
 	 * @return MResponseRemoveCategory
@@ -345,9 +352,12 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	//#SWG#@ApiOperation(value = "/removeCategory", notes = """The service remove the specified category only if there no linked contents and subcategories. 
 	//#SWGNL#With cascade = true the service unlink all contents and remove recursively all subcategories
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required  on the specific category</li>
+	//#SWGNL#	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY Acl is required  on the specific category</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseRemoveCategory])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeCategory(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -356,7 +366,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 			//#SWG#@ApiParam(value = """""")
 	@FormParam("clientId")
 	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
+			//#SWG#@ApiParam(value = """Id or prettyId""")
 	@FormParam("catId")
 	catId: String, 
 			//#SWG#@ApiParam(value = """Used to force the remove also in the subcategories""")

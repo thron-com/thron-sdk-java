@@ -50,7 +50,9 @@ class MDeliveryInfoMinimal extends Serializable {
 	//#SWGNL#Return the thumbnail that best suits to the given area (DivArea format: <widht>x<height>)
 	//#SWGNL#bestThumbUrl provides the static url of the thumbnail in 4me CDN (Content Delivery Network); the url is volatile and may change with time. In order to obtain a dynamic link to the best thumbnail (for the given content and div area) use the "dynThumbService" attribute (see reference for details)""")
 	@BeanProperty 
+	@Deprecated
 	var bestThumbUrl: String =_
+	@Deprecated
 	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
 	/**
@@ -66,9 +68,9 @@ class MDeliveryInfoMinimal extends Serializable {
 	def withdynThumbService(p:String):this.type ={ 	this.dynThumbService = p; 	this }
 
 	/**
-	 * used only with "downloadable contents"
+	 * used only with downloadable contents or playlist items
 	 */
-	//#SWG#@ApiModelProperty(value = """used only with "downloadable contents"""")
+	//#SWG#@ApiModelProperty(value = """used only with downloadable contents or playlist items""")
 	@BeanProperty 
 	var contentUrl: String =_
 	def withcontentUrl(p:String):this.type ={ 	this.contentUrl = p; 	this }
@@ -81,5 +83,13 @@ class MDeliveryInfoMinimal extends Serializable {
 	@BeanProperty 
 	var sysMetadata: List[MMetadata] = new ArrayList[MMetadata]
 	def withsysMetadata(p:List[MMetadata]):this.type ={ 	this.sysMetadata = p; 	this }
+
+	/**
+	 * Show the status of the content
+	 */
+	//#SWG#@ApiModelProperty(value = """Show the status of the content""" ,required = true)
+	@BeanProperty 
+	var status: String =_
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 }

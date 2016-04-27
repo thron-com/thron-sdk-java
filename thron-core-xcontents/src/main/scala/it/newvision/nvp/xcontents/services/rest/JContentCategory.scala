@@ -54,9 +54,6 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	 * @param clientId : String
 	 * @param categoryId : String
 	 * @param contentId : String
-	 * @param applyAcl : Boolean
-	 * Optional. Default = false
-	 * Automatically Apply the right ACL between Content and Category
 	 * @return MResponseLinkCategoryToContent
 	*/
 	@POST
@@ -87,15 +84,11 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	categoryId: String, 
 			//#SWG#@ApiParam(value = """""")
 	@FormParam("contentId")
-	contentId: String, 
-			//#SWG#@ApiParam(value = """Optional. Default = false
-	//#SWGNL#Automatically Apply the right ACL between Content and Category""")
-	@FormParam("applyAcl")
-	applyAcl: Boolean):Response /*returnType = MResponseLinkCategoryToContent*/ = {
+	contentId: String):Response /*returnType = MResponseLinkCategoryToContent*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__linkCategoryToContent(tokenId,clientId,categoryId,contentId,applyAcl)
+			val resp = this.__linkCategoryToContent(tokenId,clientId,categoryId,contentId)
 			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_linkCategoryToContent)    
 		}catch{
 	      case e:WebApplicationException =>
@@ -109,8 +102,7 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	def linkCategoryToContent_2(@QueryParam("tokenId")tokenId_q: String, 
 			@QueryParam("clientId")clientId_q: String, 
 			@QueryParam("categoryId")categoryId_q: String, 
-			@QueryParam("contentId")contentId_q: String, 
-			@QueryParam("applyAcl")applyAcl_q: Boolean,
+			@QueryParam("contentId")contentId_q: String,
 			@HeaderParam("X-TOKENID") tokenId_h: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseLinkCategoryToContent*/ = { 
@@ -118,7 +110,7 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
 		try{	
-			val resp = this.__linkCategoryToContent(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,categoryId_q,contentId_q,applyAcl_q)
+			val resp = this.__linkCategoryToContent(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,categoryId_q,contentId_q)
 		
 			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_linkCategoryToContent)
 	    }catch{
@@ -129,7 +121,7 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __linkCategoryToContent(tokenId: String, clientId: String, categoryId: String, contentId: String, applyAcl: Boolean) :MResponseLinkCategoryToContent
+	 protected def __linkCategoryToContent(tokenId: String, clientId: String, categoryId: String, contentId: String) :MResponseLinkCategoryToContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_linkCategoryToContent: String
 
@@ -152,9 +144,6 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	 * @param clientId : String
 	 * @param categoryId : String
 	 * @param contentId : String
-	 * @param applyAcl : Boolean
-	 * Optional. Default = false
-	 * Automatically Apply the right ACL between Content and Category
 	 * @return MResponseLinkCategoryToContent
 	*/
 	@POST
@@ -187,15 +176,11 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	categoryId: String, 
 			//#SWG#@ApiParam(value = """""")
 	@FormParam("contentId")
-	contentId: String, 
-			//#SWG#@ApiParam(value = """Optional. Default = false
-	//#SWGNL#Automatically Apply the right ACL between Content and Category""")
-	@FormParam("applyAcl")
-	applyAcl: Boolean):Response /*returnType = MResponseLinkCategoryToContent*/ = {
+	contentId: String):Response /*returnType = MResponseLinkCategoryToContent*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__removeCategoryToContent(tokenId,clientId,categoryId,contentId,applyAcl)
+			val resp = this.__removeCategoryToContent(tokenId,clientId,categoryId,contentId)
 			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeCategoryToContent)    
 		}catch{
 	      case e:WebApplicationException =>
@@ -209,8 +194,7 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	def removeCategoryToContent_2(@QueryParam("tokenId")tokenId_q: String, 
 			@QueryParam("clientId")clientId_q: String, 
 			@QueryParam("categoryId")categoryId_q: String, 
-			@QueryParam("contentId")contentId_q: String, 
-			@QueryParam("applyAcl")applyAcl_q: Boolean,
+			@QueryParam("contentId")contentId_q: String,
 			@HeaderParam("X-TOKENID") tokenId_h: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseLinkCategoryToContent*/ = { 
@@ -218,7 +202,7 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
 		try{	
-			val resp = this.__removeCategoryToContent(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,categoryId_q,contentId_q,applyAcl_q)
+			val resp = this.__removeCategoryToContent(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,categoryId_q,contentId_q)
 		
 			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeCategoryToContent)
 	    }catch{
@@ -229,7 +213,7 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __removeCategoryToContent(tokenId: String, clientId: String, categoryId: String, contentId: String, applyAcl: Boolean) :MResponseLinkCategoryToContent
+	 protected def __removeCategoryToContent(tokenId: String, clientId: String, categoryId: String, contentId: String) :MResponseLinkCategoryToContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_removeCategoryToContent: String
 

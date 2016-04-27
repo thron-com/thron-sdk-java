@@ -38,9 +38,9 @@ class MDeliveryInfo extends Serializable {
 	def withthumbsUrl(p:List[String]):this.type ={ 	this.thumbsUrl = p; 	this }
 
 	/**
-	 * DEPRECATED. Use bestThymbUrl
+	 * DEPRECATED
 	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use bestThymbUrl""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
 	@BeanProperty 
 	@Deprecated
 	var defaultThumbUrl: String =_
@@ -48,17 +48,13 @@ class MDeliveryInfo extends Serializable {
 	def withdefaultThumbUrl(p:String):this.type ={ 	this.defaultThumbUrl = p; 	this }
 
 	/**
-	 * Defined if divArea parameter is specified on the request.
-	 * Return the thumbnail that best suits to the given area (DivArea format:
-	 * <widht>x<height>)
-	 * bestThumbUrl provides the static url of the thumbnail in 4me CDN (Content
-	 * Delivery Network); the url is volatile and may change with time.
+	 * DEPRECATED
 	 */
-	//#SWG#@ApiModelProperty(value = """Defined if divArea parameter is specified on the request.
-	//#SWGNL#Return the thumbnail that best suits to the given area (DivArea format: <widht>x<height>)
-	//#SWGNL#bestThumbUrl provides the static url of the thumbnail in 4me CDN (Content Delivery Network); the url is volatile and may change with time.""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
 	@BeanProperty 
+	@Deprecated
 	var bestThumbUrl: String =_
+	@Deprecated
 	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")

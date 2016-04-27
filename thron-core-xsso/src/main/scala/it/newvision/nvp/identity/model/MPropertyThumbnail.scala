@@ -44,6 +44,20 @@ class MPropertyThumbnail extends Serializable {
 	var stretch: Boolean  = false
 	def withstretch(p:Boolean):this.type ={ 	this.stretch = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var keepFileFormat: Boolean  = false
+	def withkeepFileFormat(p:Boolean):this.type ={ 	this.keepFileFormat = p; 	this }
+
+	/**
+	 * attualmente la conversione avviene solo in JPG con limitazione per i file di
+	 * input non superiori a 2048x2048
+	 */
+	//#SWG#@ApiModelProperty(value = """attualmente la conversione avviene solo in JPG con limitazione per i file di input non superiori a 2048x2048""" ,required = true)
+	@BeanProperty 
+	var convertTo: String  = "JPG"
+	def withconvertTo(p:String):this.type ={ 	this.convertTo = p; 	this }
+
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var thumbs: List[MThumbnailDetail] = new ArrayList[MThumbnailDetail]

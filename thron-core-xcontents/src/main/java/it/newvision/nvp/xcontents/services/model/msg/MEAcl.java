@@ -25,5 +25,7 @@ public enum MEAcl {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("USERSGROUP_NOT_FOUND") USERSGROUP_NOT_FOUND,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("ACL_NOT_FOUND") ACL_NOT_FOUND
+	@XmlEnumValue("ACL_NOT_FOUND") ACL_NOT_FOUND,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("BAD_REQUEST") BAD_REQUEST
 }

@@ -68,7 +68,9 @@ class MAclInverseRuleGeneric extends Serializable {
 		Option(enabled).isDefined && 
 		Option(applyToSpreadTargets).isDefined &&
 		// metadata are allowed only on SEEN_BY rules without applyToSpreadTargets
-		(Option(metadata).forall(_.isEmpty) || (rule == MEAclRuleInverse.SEEN_BY && !applyToSpreadTargets))
+		(Option(metadata).forall(_.isEmpty) || (rule == MEAclRuleInverse.SEEN_BY && !applyToSpreadTargets)) &&
+		// BELONGS_TO and SPREAD_TO cannot be spread to targets
+		(!Seq(MEAclRuleInverse.BELONGS_TO, MEAclRuleInverse.SPREAD_TO).contains(rule) || !applyToSpreadTargets)
 	}
 
 }

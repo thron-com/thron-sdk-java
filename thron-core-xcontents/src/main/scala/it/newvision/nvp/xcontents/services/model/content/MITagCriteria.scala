@@ -37,16 +37,4 @@ class MITagCriteria extends Serializable {
 	var classificationId: String =_
 	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
 
-	/**
-	 * Optional.
-	 * The itag source Type: USER/APP/ENGINE.
-	 * This attribute is used to filter tags coming from a specific source.
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional.
-	//#SWGNL#The itag source Type: USER/APP/ENGINE.
-	//#SWGNL#This attribute is used to filter tags coming from a specific source.""")
-	@BeanProperty 
-	var stypes: List[String] = new ArrayList[String]
-	def withstypes(p:List[String]):this.type ={ 	this.stypes = p; 	this }
-
 }

@@ -39,6 +39,7 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 	/**
 	 * like getContent service but implemented as post http service. Use the optimised and cached
 	 * getContent for better performance.
+	 * Only for 3x version
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
@@ -102,6 +103,8 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 	 * If the channelType is not defined, the service return the right descriptor for the giver useragent.
 	 * 
 	 * useragent = mobile/desktop
+	 * 
+	 * Only for 3x version
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
@@ -114,13 +117,15 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 	 * android (for mobile device using flash)
 	 * silverlight
 	 * generic (for web devices using flash)
+	 * @param deliveryToken : String
 	 * @return MResponseGetContent
 	*/
 	def getContent(tokenId: String, 
 			clientId: String, 
 			contentId: String, 
 			channelType: String, 
-			userAgent: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetContent ={
+			userAgent: String, 
+			deliveryToken: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -130,6 +135,7 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 		Option(contentId).foreach(s => params.add("contentId", s))
 		Option(channelType).foreach(s => params.add("channelType", s))
 		Option(userAgent).foreach(s => params.add("userAgent", s))
+		Option(deliveryToken).foreach(s => params.add("deliveryToken", s))
 			val response : MResponseGetContent = if(this.resourceEndpoint == ""){
 			
 				new MResponseGetContent()
@@ -204,13 +210,16 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 	 * android (for mobile device using flash)
 	 * silverlight
 	 * generic (for web devices using flash)
+	 * @param deliveryToken : String
+	 * used to validate the service invocation.
 	 * @return String
 	*/
 	def getContentDescriptor(tokenId: String, 
 			clientId: String, 
 			contentId: String, 
 			channelType: String, 
-			userAgent: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
+			userAgent: String, 
+			deliveryToken: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -220,6 +229,7 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 		Option(contentId).foreach(s => params.add("contentId", s))
 		Option(channelType).foreach(s => params.add("channelType", s))
 		Option(userAgent).foreach(s => params.add("userAgent", s))
+		Option(deliveryToken).foreach(s => params.add("deliveryToken", s))
 			val response : String = if(this.resourceEndpoint == ""){
 			
 				null
@@ -249,8 +259,9 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * returns the total space used in 4me CDN. Each client has a quota of storage for the published
-	 * content in CDN.
+	 * returns the total space used in CDN. Each client has a quota of storage for the published content
+	 * in CDN.
+	 * Only for 3x version
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @return MResponseGetQuota
@@ -293,6 +304,7 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 
 	/**
 	 * returns the total space used in CDN by each userId (the owner of the published content)
+	 * Only for 3x version
 	 * @param tokenId : String
 	 * @param param : MWeeboPublishergetQuotaUsageByUserIdReq
 	 * @return MResponseGetQuotaUsage

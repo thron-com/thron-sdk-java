@@ -22,7 +22,10 @@ class MCategoryremoveCategoryPrettyIdReq extends Serializable {
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
+	/**
+	 * Id or prettyId
+	 */
+	//#SWG#@ApiModelProperty(value = """Id or prettyId""", required = true)
 	@BeanProperty
 	var categoryId: String =_
 	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }

@@ -30,11 +30,19 @@ class MITagDefinitionDetail extends MITagDefinition with Serializable  {
 	def withstatus(p:MEITagStatus):this.type ={ 	this.status = p; 	this }
 
 	/**
-	 * number of sub tags (total number of nodes of the sub tree)
+	 * number of sub ITagDefinitions (total number of nodes of the sub tree)
 	 */
-	//#SWG#@ApiModelProperty(value = """number of sub tags (total number of nodes of the sub tree)""")
+	//#SWG#@ApiModelProperty(value = """number of sub ITagDefinitions (total number of nodes of the sub tree)""")
 	@BeanProperty 
 	var subNodes: Integer  = 0
 	def withsubNodes(p:Integer):this.type ={ 	this.subNodes = p; 	this }
+
+	/**
+	 * subNodes Ids of the ITagDefinition
+	 */
+	//#SWG#@ApiModelProperty(value = """subNodes Ids of the ITagDefinition""")
+	@BeanProperty 
+	var subNodeIds: List[String] = new ArrayList[String]
+	def withsubNodeIds(p:List[String]):this.type ={ 	this.subNodeIds = p; 	this }
 
 }

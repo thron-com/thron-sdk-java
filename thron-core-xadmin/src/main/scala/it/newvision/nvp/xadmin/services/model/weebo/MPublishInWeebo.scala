@@ -70,14 +70,10 @@ class MPublishInWeebo extends Serializable {
 
 	/**
 	 * Optional.
-	 * Define if a content is User Generated. The UGC contents are not automatically
-	 * published in CDN, but are converted (channel.staus == READY), and after the
-	 * validation of a moderator, can be published.
-	 * This value should be empty for MPublishPageletParams
+	 * Define if a content is User Generated.
 	 */
 	//#SWG#@ApiModelProperty(value = """Optional.
-	//#SWGNL#Define if a content is User Generated. The UGC contents are not automatically published in CDN, but are converted (channel.staus == READY), and after the validation of a moderator, can be published.
-	//#SWGNL#This value should be empty for MPublishPageletParams""")
+	//#SWGNL#Define if a content is User Generated.""")
 	@BeanProperty 
 	var contentUGC: Boolean =_
 	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }

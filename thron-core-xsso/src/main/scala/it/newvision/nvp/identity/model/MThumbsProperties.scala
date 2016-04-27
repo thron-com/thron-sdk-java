@@ -79,7 +79,11 @@ class MThumbsProperties extends Serializable {
 	def init(){
 		thumbsPropertiesVideo.init()
 		thumbsPropertiesAudio.init()
+	
+		//only for images
 		thumbsPropertiesImage.init()
+		thumbsPropertiesImage.keepFileFormat = true
+	
 		thumbsPropertiesLive.init()
 		thumbsPropertiesNdoc.init()
 		thumbsPropertiesDocument.init()

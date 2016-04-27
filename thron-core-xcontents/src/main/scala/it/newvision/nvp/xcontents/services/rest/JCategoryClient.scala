@@ -58,6 +58,7 @@ class JCategoryClient(val resourceEndpoint:String) {
 	 * <ul>
 	 * 	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
 	 * CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	 * 	<li>Applications can not create root categories</li>
 	 * 	<li>MODIFY Acl is required  on the parent category</li>
 	 * </ul>
 	 * @param tokenId : String
@@ -257,13 +258,18 @@ class JCategoryClient(val resourceEndpoint:String) {
 	 * The service remove the specified category only if there no linked contents and subcategories.
 	 * With cascade = true the service unlink all contents and remove recursively all subcategories
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required  on the specific category</li>
+	 * 	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
+	 * CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MODIFY Acl is required  on the specific category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param catId : String
+	 * Id or prettyId
 	 * @param cascade : Boolean
 	 * Used to force the remove also in the subcategories
 	 * @return MResponseRemoveCategory

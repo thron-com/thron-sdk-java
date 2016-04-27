@@ -26,10 +26,10 @@ class MCategorycreateCategoryReq extends Serializable {
 	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	/**
-	 * Optional. Id of the parent category.
+	 * Optional. Id or prettyId of the parent category.
 	 * Used to create categories with a tree structure.
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Id of the parent category. 
+	//#SWG#@ApiModelProperty(value = """Optional. Id or prettyId of the parent category. 
 	//#SWGNL#Used to create categories with a tree structure.""", required = true)
 	@BeanProperty
 	var upCatId: String =_

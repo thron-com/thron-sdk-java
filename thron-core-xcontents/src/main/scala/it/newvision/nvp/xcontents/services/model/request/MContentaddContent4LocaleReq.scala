@@ -24,7 +24,10 @@ class MContentaddContent4LocaleReq extends Serializable {
 	var client: MCredential =_
 	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
+	/**
+	 * xcontentId or prettyId
+	 */
+	//#SWG#@ApiModelProperty(value = """xcontentId or prettyId""", required = true)
 	@BeanProperty
 	var contentId: String =_
 	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }

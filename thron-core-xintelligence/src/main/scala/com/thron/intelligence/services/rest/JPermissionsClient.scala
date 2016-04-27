@@ -38,8 +38,8 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	 * Add new permissions to users or app for a specific classification.
 	 * 
 	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER or
-	 * THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS
+	 * Can be invoked only by users with role  (THRON_CLASSIFICATIONS_MANAGER or
+	 * THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -203,8 +203,8 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	 * Update the given permissions of the classification.
 	 * 
 	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER or
-	 * THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS
+	 * Can be invoked only by users with role  (THRON_CLASSIFICATIONS_MANAGER or
+	 * THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -257,8 +257,8 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	 * Remove permissions to users or app for a specific classification.
 	 * 
 	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER or
-	 * THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS
+	 * Can be invoked only by users with role  (THRON_CLASSIFICATIONS_MANAGER or
+	 * THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String

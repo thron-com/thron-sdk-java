@@ -4,8 +4,10 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import com.thron.intelligence.model.MSourceIdentifier
+import com.thron.intelligence.services.model.common.MExternalIdDetail
+import com.thron.intelligence.model.itag.MJoinedId
 import com.thron.intelligence.model.MLocalization
+import com.thron.intelligence.model.MSourceIdentifier
 
 /* ************************
 *  GENERATED CLASS
@@ -46,6 +48,49 @@ class MITagDefinition extends Serializable {
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
+	 * The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy
+	 */
+	//#SWG#@ApiModelProperty(value = """The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy""")
+	@BeanProperty 
+	var parentId: String =_
+	def withparentId(p:String):this.type ={ 	this.parentId = p; 	this }
+
+	/**
+	 * ordered list of ancestors ITagDefinition Ids. It's used to quickly create the
+	 * TagDefinition tree structure. The list of tagdefinition follow the
+	 * Example:
+	 * Given a tagdefinition tree of 4 levels
+	 * TagDefinition1-> TagDefinition2 -> TagDefinition3-> TagDefinition4
+	 * 
+	 * The ancestors ids for each category is:
+	 * TagDefinition1.ancestorsIds = []
+	 * TagDefinition2.ancestorsIds = [TagDefinition1]
+	 * TagDefinition3.ancestorsIds = [TagDefinition1,TagDefinition2]
+	 * TagDefinition4.ancestorsIds = [TagDefinition1,TagDefinition2, TagDefinition3]
+	 */
+	//#SWG#@ApiModelProperty(value = """ordered list of ancestors ITagDefinition Ids. It's used to quickly create the TagDefinition tree structure. The list of tagdefinition follow the
+	//#SWGNL#Example:
+	//#SWGNL#Given a tagdefinition tree of 4 levels
+	//#SWGNL#TagDefinition1-> TagDefinition2 -> TagDefinition3-> TagDefinition4
+	//#SWGNL#
+	//#SWGNL#The ancestors ids for each category is:
+	//#SWGNL#TagDefinition1.ancestorsIds = []
+	//#SWGNL#TagDefinition2.ancestorsIds = [TagDefinition1]
+	//#SWGNL#TagDefinition3.ancestorsIds = [TagDefinition1,TagDefinition2]
+	//#SWGNL#TagDefinition4.ancestorsIds = [TagDefinition1,TagDefinition2, TagDefinition3]""")
+	@BeanProperty 
+	var ancestorIds: List[String] = new ArrayList[String]
+	def withancestorIds(p:List[String]):this.type ={ 	this.ancestorIds = p; 	this }
+
+	/**
+	 * the list of externalIds
+	 */
+	//#SWG#@ApiModelProperty(value = """the list of externalIds""")
+	@BeanProperty 
+	var externalIds: List[MExternalIdDetail] = new ArrayList[MExternalIdDetail]
+	def withexternalIds(p:List[MExternalIdDetail]):this.type ={ 	this.externalIds = p; 	this }
+
+	/**
 	 * prettyId for the itagDefinition
 	 * 
 	 * Constraints:
@@ -70,6 +115,28 @@ class MITagDefinition extends Serializable {
 	@BeanProperty 
 	var prettyId: String =_
 	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
+
+	/**
+	 * list of old merged/finalized ITags. When two tags are merged the target tags
+	 * store the ids of the other tag.
+	 */
+	//#SWG#@ApiModelProperty(value = """list of old merged/finalized ITags. When two tags are merged the target tags store the ids of the other tag.""")
+	@BeanProperty 
+	var oldIds: List[String] = new ArrayList[String]
+	def witholdIds(p:List[String]):this.type ={ 	this.oldIds = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var joinedIds: List[MJoinedId] = new ArrayList[MJoinedId]
+	def withjoinedIds(p:List[MJoinedId]):this.type ={ 	this.joinedIds = p; 	this }
+
+	/**
+	 * label and description values for the itagDefinition in multilocale
+	 */
+	//#SWG#@ApiModelProperty(value = """label and description values for the itagDefinition in multilocale""")
+	@BeanProperty 
+	var names: List[MLocalization] = new ArrayList[MLocalization]
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * userId of the owner or engineId
@@ -100,7 +167,9 @@ class MITagDefinition extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """Optional. The time when this Tag has been moderated.""")
 	@BeanProperty 
+	@Deprecated
 	var moderatedDate: Date =_
+	@Deprecated
 	def withmoderatedDate(p:Date):this.type ={ 	this.moderatedDate = p; 	this }
 
 	/**
@@ -108,24 +177,10 @@ class MITagDefinition extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """Identifier of the user that approved (or not) the Tag""")
 	@BeanProperty 
+	@Deprecated
 	var moderatedBy: MSourceIdentifier =_
+	@Deprecated
 	def withmoderatedBy(p:MSourceIdentifier):this.type ={ 	this.moderatedBy = p; 	this }
-
-	/**
-	 * The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy
-	 */
-	//#SWG#@ApiModelProperty(value = """The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy""")
-	@BeanProperty 
-	var parentId: String =_
-	def withparentId(p:String):this.type ={ 	this.parentId = p; 	this }
-
-	/**
-	 * label and description values for the itagDefinition in multilocale
-	 */
-	//#SWG#@ApiModelProperty(value = """label and description values for the itagDefinition in multilocale""")
-	@BeanProperty 
-	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * Used to mark the moderated Tags.
@@ -150,42 +205,6 @@ class MITagDefinition extends Serializable {
 	@BeanProperty 
 	var categorized: Boolean  = true
 	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
-
-	/**
-	 * list of old merged Tags. When two tags are merged the target tags store the ids
-	 * of the other tag.
-	 */
-	//#SWG#@ApiModelProperty(value = """list of old merged Tags. When two tags are merged the target tags store the ids of the other tag.""")
-	@BeanProperty 
-	var oldIds: List[String] = new ArrayList[String]
-	def witholdIds(p:List[String]):this.type ={ 	this.oldIds = p; 	this }
-
-	/**
-	 * ordered list of ancestors ITagDefinition Ids. It's used to quickly create the
-	 * TagDefinition tree structure. The list of tagdefinition follow the
-	 * Example:
-	 * Given a tagdefinition tree of 4 levels
-	 * TagDefinition1-> TagDefinition2 -> TagDefinition3-> TagDefinition4
-	 * 
-	 * The ancestors ids for each category is:
-	 * TagDefinition1.ancestorsIds = []
-	 * TagDefinition2.ancestorsIds = [TagDefinition1]
-	 * TagDefinition3.ancestorsIds = [TagDefinition1,TagDefinition2]
-	 * TagDefinition4.ancestorsIds = [TagDefinition1,TagDefinition2, TagDefinition3]
-	 */
-	//#SWG#@ApiModelProperty(value = """ordered list of ancestors ITagDefinition Ids. It's used to quickly create the TagDefinition tree structure. The list of tagdefinition follow the
-	//#SWGNL#Example:
-	//#SWGNL#Given a tagdefinition tree of 4 levels
-	//#SWGNL#TagDefinition1-> TagDefinition2 -> TagDefinition3-> TagDefinition4
-	//#SWGNL#
-	//#SWGNL#The ancestors ids for each category is:
-	//#SWGNL#TagDefinition1.ancestorsIds = []
-	//#SWGNL#TagDefinition2.ancestorsIds = [TagDefinition1]
-	//#SWGNL#TagDefinition3.ancestorsIds = [TagDefinition1,TagDefinition2]
-	//#SWGNL#TagDefinition4.ancestorsIds = [TagDefinition1,TagDefinition2, TagDefinition3]""")
-	@BeanProperty 
-	var ancestorIds: List[String] = new ArrayList[String]
-	def withancestorIds(p:List[String]):this.type ={ 	this.ancestorIds = p; 	this }
 
 	/**
 	 * @return Boolean
