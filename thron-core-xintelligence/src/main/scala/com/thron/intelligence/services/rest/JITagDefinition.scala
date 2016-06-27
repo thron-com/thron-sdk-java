@@ -12,6 +12,13 @@ import com.thron.intelligence.services.model.tag.MEITagDefinitionOrderBy
 import com.thron.intelligence.services.model.request.MITagDefinitionupdateReq
 import com.thron.intelligence.services.model.itag.MResponseITagRemove
 import com.thron.intelligence.services.model.request.MITagDefinitionremoveReq
+import com.thron.intelligence.services.model.request.MITagDefinitioncombineReq
+import com.thron.intelligence.services.model.itag.MResponseITagDefinitionDisjoined
+import com.thron.intelligence.services.model.request.MITagDefinitiondivideReq
+import com.thron.intelligence.services.model.request.MITagDefinitionmergeReq
+import com.thron.intelligence.services.model.request.MITagDefinitionextractReq
+import com.thron.intelligence.services.model.itag.MResponseITagDefinitionJoinedList
+import com.thron.intelligence.services.model.request.MITagDefinitionlistJoinedReq
 import com.thron.intelligence.services.model.tag.MResponseITagMetadataLink
 import com.thron.intelligence.services.model.request.MITagDefinitionlinkMetadataDefinitionReq
 import com.thron.intelligence.services.model.request.MITagDefinitionunlinkMetadataDefinitionReq
@@ -578,16 +585,498 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_remove: String
 
 	/**
+	 * Combine a source ITagDefinition into a target ITagDefinition.
+	 * ExternalIds, linked metadata, and id are combined in the target ITagDefinition. If the user search
+	 * the Itag by externalId/id/prettyId have as response the target ITagDefinition.
+	 * After a combine operation the user can not update/remove the target ITagDefinition
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition </li>
+	 * 	<li>source tag status = APPROVED</li>
+	 * 	<li>source tag should be a leaf</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>categorized source.tag within a NOT categorized tag is not allowed</li>
+	 * </ul>
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * ITagDefinition id
+	 * @param param : MITagDefinitioncombineReq
+	 * @return MResponseITagDefinitionDetail
+	*/
+	@POST
+	@Path("/combine/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/combine", notes = """Combine a source ITagDefinition into a target ITagDefinition. 
+	//#SWGNL#ExternalIds, linked metadata, and id are combined in the target ITagDefinition. If the user search the Itag by externalId/id/prettyId have as response the target ITagDefinition.
+	//#SWGNL#After a combine operation the user can not update/remove the target ITagDefinition 
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>source tag status = APPROVED</li>
+	//#SWGNL#	<li>source tag should be a leaf</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>categorized source.tag within a NOT categorized tag is not allowed</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation:</b>
+	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDetail])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def combine(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """ITagDefinition id""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MITagDefinitioncombineReq):Response /*returnType = MResponseITagDefinitionDetail*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__combine(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_combine)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_combine)
+	    }
+	} 
+
+	@GET
+	@Path("/combine/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def combine_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """ITagDefinition id""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagDefinitionDetail*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__combine(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitioncombineReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_combine)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_combine)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __combine(tokenId: String, clientId: String, classificationId: String, param: MITagDefinitioncombineReq) :MResponseITagDefinitionDetail
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_combine: String
+
+	/**
+	 * Divide a combined ITagDefinition from a target ITagDefinition.
+	 * 
+	 * <ul>
+	 * 	<li>recover id and prettyId of combined ITagDefinition</li>
+	 * 	<li>recover externalIds</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>recover linked metadata</li>
+	 * </ul>
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>source must be in state "combined"</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>the combined ITagDefinition after the divide operation have the same parent of the target.
+	 * </li>
+	 * </ul>
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagDefinitiondivideReq
+	 * @return MResponseITagDefinitionDisjoined
+	*/
+	@POST
+	@Path("/divide/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/divide", notes = """Divide a combined ITagDefinition from a target ITagDefinition. 
+	//#SWGNL#
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>recover id and prettyId of combined ITagDefinition</li>
+	//#SWGNL#	<li>recover externalIds</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>recover linked metadata</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>source must be in state "combined"</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>the combined ITagDefinition after the divide operation have the same parent of the target.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation:</b>
+	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDisjoined])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def divide(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MITagDefinitiondivideReq):Response /*returnType = MResponseITagDefinitionDisjoined*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__divide(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_divide)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_divide)
+	    }
+	} 
+
+	@GET
+	@Path("/divide/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def divide_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagDefinitionDisjoined*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__divide(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitiondivideReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_divide)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_divide)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __divide(tokenId: String, clientId: String, classificationId: String, param: MITagDefinitiondivideReq) :MResponseITagDefinitionDisjoined
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_divide: String
+
+	/**
+	 * Merge a (combined) ITagDefinition within the target ITagDefinition.
+	 * The service moves linkedMetadata, externalIds from the combined ITagDefinition to the target. After
+	 * the merge process, the user can only extract the ITagDefinition.
+	 * The prettyId and names of the combined iTagDefinition are not merged into the target.
+	 * <b>
+	 * </b><b>Constraints</b>:
+	 * <ul>
+	 * 	<li>source must be in state "combined"</li>
+	 * 	<li>All references to combined iTagDefinition (on Contents/Contacts/Users) are replaced by target
+	 * iTagDefinition</li>
+	 * </ul>
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagDefinitionmergeReq
+	 * @return MResponseITagDefinitionDetail
+	*/
+	@POST
+	@Path("/merge/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/merge", notes = """Merge a (combined) ITagDefinition within the target ITagDefinition. 
+	//#SWGNL#The service moves linkedMetadata, externalIds from the combined ITagDefinition to the target. After the merge process, the user can only extract the ITagDefinition.
+	//#SWGNL#The prettyId and names of the combined iTagDefinition are not merged into the target.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Constraints</b>:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>source must be in state "combined"</li>
+	//#SWGNL#	<li>All references to combined iTagDefinition (on Contents/Contacts/Users) are replaced by target iTagDefinition</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation:</b>
+	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDetail])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def merge(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MITagDefinitionmergeReq):Response /*returnType = MResponseITagDefinitionDetail*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__merge(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_merge)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_merge)
+	    }
+	} 
+
+	@GET
+	@Path("/merge/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def merge_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagDefinitionDetail*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__merge(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitionmergeReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_merge)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_merge)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __merge(tokenId: String, clientId: String, classificationId: String, param: MITagDefinitionmergeReq) :MResponseITagDefinitionDetail
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_merge: String
+
+	/**
+	 * Extract a merged ITagDefinition from a target ITagDefinition.
+	 * 
+	 * <ul>
+	 * 	<li>try to restore prettyId (if yet available)</li>
+	 * 	<li>restore the liked metadata</li>
+	 * 	<li>restore names</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>transfer the selected externalIds from source to the restored ITagDefinition</li>
+	 * 	<li>restore the merged iTagDefinition with the same parent iTagDefinition of the target (if the
+	 * tag tree is not full), otherwise move the tag at the root level.</li>
+	 * </ul>
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>source must be in state "merged"</li>
+	 * </ul>
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagDefinitionextractReq
+	 * @return MResponseITagDefinitionDisjoined
+	*/
+	@POST
+	@Path("/extract/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/extract", notes = """Extract a merged ITagDefinition from a target ITagDefinition. 
+	//#SWGNL#
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>try to restore prettyId (if yet available)</li>
+	//#SWGNL#	<li>restore the liked metadata</li>
+	//#SWGNL#	<li>restore names</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>transfer the selected externalIds from source to the restored ITagDefinition</li>
+	//#SWGNL#	<li>restore the merged iTagDefinition with the same parent iTagDefinition of the target (if the tag tree is not full), otherwise move the tag at the root level.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>source must be in state "merged"</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation:</b>
+	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDisjoined])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def extract(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MITagDefinitionextractReq):Response /*returnType = MResponseITagDefinitionDisjoined*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__extract(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_extract)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_extract)
+	    }
+	} 
+
+	@GET
+	@Path("/extract/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def extract_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagDefinitionDisjoined*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__extract(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitionextractReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_extract)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_extract)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __extract(tokenId: String, clientId: String, classificationId: String, param: MITagDefinitionextractReq) :MResponseITagDefinitionDisjoined
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_extract: String
+
+	/**
+	 * Lists the ITagDefinitions joined (combined or merged) in a given tag target. This method return the
+	 * itags matching the given search criteria
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagDefinitionlistJoinedReq
+	 * @return MResponseITagDefinitionJoinedList
+	*/
+	@POST
+	@Path("/listJoined/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/listJoined", notes = """Lists the ITagDefinitions joined (combined or merged) in a given tag target. This method return the itags matching the given search criteria
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation:</b>
+	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseITagDefinitionJoinedList])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def listJoined(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MITagDefinitionlistJoinedReq):Response /*returnType = MResponseITagDefinitionJoinedList*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__listJoined(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_listJoined)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_listJoined)
+	    }
+	} 
+
+	@GET
+	@Path("/listJoined/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def listJoined_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagDefinitionJoinedList*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__listJoined(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitionlistJoinedReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_listJoined)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_listJoined)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __listJoined(tokenId: String, clientId: String, classificationId: String, param: MITagDefinitionlistJoinedReq) :MResponseITagDefinitionJoinedList
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_listJoined: String
+
+	/**
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition</li>
 	 * 	<li>100: max number of IMetadataDefinition per ITagDefinition</li>
 	 * 	<li>it's possible to link metadata only to categorized and approved ITagDefinition</li>
 	 * 	<li>the IMetadataDefinition of type KEY can be linked to one single ITagDefinition.</li>
 	 * </ul>
 	 * 
 	 * <b>Constraints:</b>
-	 * the ITagDefinition must be in state "APPROVED"
+	 * <ul>
+	 * 	<li>the ITagDefinition must be in state "APPROVED"</li>
+	 * </ul>
 	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
@@ -605,14 +1094,16 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/linkMetadataDefinition", notes = """<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition </li>
+	//#SWGNL#	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition</li>
 	//#SWGNL#	<li>100: max number of IMetadataDefinition per ITagDefinition</li>
 	//#SWGNL#	<li>it's possible to link metadata only to categorized and approved ITagDefinition</li>
 	//#SWGNL#	<li>the IMetadataDefinition of type KEY can be linked to one single ITagDefinition.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
-	//#SWGNL#the ITagDefinition must be in state "APPROVED"
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>the ITagDefinition must be in state "APPROVED"</li>
+	//#SWGNL#</ul>
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation:</b>
 	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagMetadataLink])

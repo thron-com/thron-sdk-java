@@ -146,7 +146,9 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * android (for mobile device using flash)
 	 * silverlight
 	 * generic (for web devices using flash)
-	 * @param deliveryToken : String
+	 * @param dt : String
+	 * DeliveryToken.
+	 * Used to validate the service invocation.
 	 * @return MResponseGetContent
 	*/
 	@GET
@@ -179,9 +181,10 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	//#SWGNL#generic (for web devices using flash)""")
 	@QueryParam("userAgent")
 	userAgent: String, 
-			//#SWG#@ApiParam(value = """""")
-	@QueryParam("deliveryToken")
-	deliveryToken: String,
+			//#SWG#@ApiParam(value = """DeliveryToken.
+	//#SWGNL#Used to validate the service invocation.""")
+	@QueryParam("dt")
+	dt: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
@@ -193,7 +196,7 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		//get the cache control specific for this service
 		val cc = this.cachemap("getContent") 
 		try{	
-			val resp = this.__getContent(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,channelType,userAgent,deliveryToken)
+			val resp = this.__getContent(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,channelType,userAgent,dt)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getContent)
 	    }catch{
@@ -206,7 +209,7 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getContent(tokenId: String, clientId: String, contentId: String, channelType: String, userAgent: String, deliveryToken: String) :MResponseGetContent
+	 protected def __getContent(tokenId: String, clientId: String, contentId: String, channelType: String, userAgent: String, dt: String) :MResponseGetContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_getContent: String
 
@@ -256,8 +259,9 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * android (for mobile device using flash)
 	 * silverlight
 	 * generic (for web devices using flash)
-	 * @param deliveryToken : String
-	 * used to validate the service invocation.
+	 * @param dt : String
+	 * DeliveryToken.
+	 * Used to validate the service invocation.
 	 * @return String
 	*/
 	@GET
@@ -310,9 +314,10 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	//#SWGNL#generic (for web devices using flash)""")
 	@QueryParam("userAgent")
 	userAgent: String, 
-			//#SWG#@ApiParam(value = """used to validate the service invocation.""")
-	@QueryParam("deliveryToken")
-	deliveryToken: String,
+			//#SWG#@ApiParam(value = """DeliveryToken.
+	//#SWGNL#Used to validate the service invocation.""")
+	@QueryParam("dt")
+	dt: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
@@ -324,7 +329,7 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		//get the cache control specific for this service
 		val cc = this.cachemap("getContentDescriptor") 
 		try{	
-			val resp = this.__getContentDescriptor(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,channelType,userAgent,deliveryToken)
+			val resp = this.__getContentDescriptor(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contentId,channelType,userAgent,dt)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getContentDescriptor)
 	    }catch{
@@ -337,7 +342,7 @@ trait JWeeboPublisher extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getContentDescriptor(tokenId: String, clientId: String, contentId: String, channelType: String, userAgent: String, deliveryToken: String) :String
+	 protected def __getContentDescriptor(tokenId: String, clientId: String, contentId: String, channelType: String, userAgent: String, dt: String) :String
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_getContentDescriptor: String
 

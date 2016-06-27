@@ -117,7 +117,9 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 	 * android (for mobile device using flash)
 	 * silverlight
 	 * generic (for web devices using flash)
-	 * @param deliveryToken : String
+	 * @param dt : String
+	 * DeliveryToken.
+	 * Used to validate the service invocation.
 	 * @return MResponseGetContent
 	*/
 	def getContent(tokenId: String, 
@@ -125,7 +127,7 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 			contentId: String, 
 			channelType: String, 
 			userAgent: String, 
-			deliveryToken: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetContent ={
+			dt: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -135,7 +137,7 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 		Option(contentId).foreach(s => params.add("contentId", s))
 		Option(channelType).foreach(s => params.add("channelType", s))
 		Option(userAgent).foreach(s => params.add("userAgent", s))
-		Option(deliveryToken).foreach(s => params.add("deliveryToken", s))
+		Option(dt).foreach(s => params.add("dt", s))
 			val response : MResponseGetContent = if(this.resourceEndpoint == ""){
 			
 				new MResponseGetContent()
@@ -210,8 +212,9 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 	 * android (for mobile device using flash)
 	 * silverlight
 	 * generic (for web devices using flash)
-	 * @param deliveryToken : String
-	 * used to validate the service invocation.
+	 * @param dt : String
+	 * DeliveryToken.
+	 * Used to validate the service invocation.
 	 * @return String
 	*/
 	def getContentDescriptor(tokenId: String, 
@@ -219,7 +222,7 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 			contentId: String, 
 			channelType: String, 
 			userAgent: String, 
-			deliveryToken: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
+			dt: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -229,7 +232,7 @@ class JWeeboPublisherClient(val resourceEndpoint:String) {
 		Option(contentId).foreach(s => params.add("contentId", s))
 		Option(channelType).foreach(s => params.add("channelType", s))
 		Option(userAgent).foreach(s => params.add("userAgent", s))
-		Option(deliveryToken).foreach(s => params.add("deliveryToken", s))
+		Option(dt).foreach(s => params.add("dt", s))
 			val response : String = if(this.resourceEndpoint == ""){
 			
 				null

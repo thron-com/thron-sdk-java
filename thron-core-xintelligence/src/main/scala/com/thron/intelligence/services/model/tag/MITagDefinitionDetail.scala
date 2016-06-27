@@ -38,11 +38,28 @@ class MITagDefinitionDetail extends MITagDefinition with Serializable  {
 	def withsubNodes(p:Integer):this.type ={ 	this.subNodes = p; 	this }
 
 	/**
-	 * subNodes Ids of the ITagDefinition
+	 * subNodes Ids of the ITagDefinition tree (nodes of the sub tree)
 	 */
-	//#SWG#@ApiModelProperty(value = """subNodes Ids of the ITagDefinition""")
+	//#SWG#@ApiModelProperty(value = """subNodes Ids of the ITagDefinition tree (nodes of the sub tree)""")
 	@BeanProperty 
 	var subNodeIds: List[String] = new ArrayList[String]
 	def withsubNodeIds(p:List[String]):this.type ={ 	this.subNodeIds = p; 	this }
+
+	/**
+	 * combined subNodes Ids of the ITagDefinition (nodes of the sub tree)
+	 */
+	//#SWG#@ApiModelProperty(value = """combined subNodes Ids of the ITagDefinition (nodes of the sub tree)""")
+	@BeanProperty 
+	var combinedSubNodeIds: List[String] = new ArrayList[String]
+	def withcombinedSubNodeIds(p:List[String]):this.type ={ 	this.combinedSubNodeIds = p; 	this }
+
+	/**
+	 * number of combined sub ITagDefinitions (total number of combined nodes of the
+	 * sub tree)
+	 */
+	//#SWG#@ApiModelProperty(value = """number of combined sub ITagDefinitions (total number of combined nodes of the sub tree)""")
+	@BeanProperty 
+	var combinedSubNodes: Integer  = 0
+	def withcombinedSubNodes(p:Integer):this.type ={ 	this.combinedSubNodes = p; 	this }
 
 }

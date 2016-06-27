@@ -183,11 +183,6 @@ class MApp extends Serializable {
 	var subscriptionData: MAppSubscriptionData =_
 	def withsubscriptionData(p:MAppSubscriptionData):this.type ={ 	this.subscriptionData = p; 	this }
 
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var snippets: List[MSnippet] = new ArrayList[MSnippet]
-	  def withsnippets(p:List[MSnippet]):this.type ={ 	this.snippets = p; 	this }
-
 	/**
 	 * linked system user for the application
 	 */
@@ -195,6 +190,11 @@ class MApp extends Serializable {
 	//#SWG#@ApiModelProperty(value = """linked system user for the application""")
 	var credential: MAppUser =_
 	  def withcredential(p:MAppUser):this.type ={ 	this.credential = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var snippets: List[MSnippet] = new ArrayList[MSnippet]
+	  def withsnippets(p:List[MSnippet]):this.type ={ 	this.snippets = p; 	this }
 
 	/**
 	 * @return void

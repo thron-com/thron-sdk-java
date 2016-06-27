@@ -12,6 +12,13 @@ import com.thron.intelligence.services.model.tag.MEITagDefinitionOrderBy
 import com.thron.intelligence.services.model.request.MITagDefinitionupdateReq
 import com.thron.intelligence.services.model.itag.MResponseITagRemove
 import com.thron.intelligence.services.model.request.MITagDefinitionremoveReq
+import com.thron.intelligence.services.model.request.MITagDefinitioncombineReq
+import com.thron.intelligence.services.model.itag.MResponseITagDefinitionDisjoined
+import com.thron.intelligence.services.model.request.MITagDefinitiondivideReq
+import com.thron.intelligence.services.model.request.MITagDefinitionmergeReq
+import com.thron.intelligence.services.model.request.MITagDefinitionextractReq
+import com.thron.intelligence.services.model.itag.MResponseITagDefinitionJoinedList
+import com.thron.intelligence.services.model.request.MITagDefinitionlistJoinedReq
 import com.thron.intelligence.services.model.tag.MResponseITagMetadataLink
 import com.thron.intelligence.services.model.request.MITagDefinitionlinkMetadataDefinitionReq
 import com.thron.intelligence.services.model.request.MITagDefinitionunlinkMetadataDefinitionReq
@@ -429,16 +436,339 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Combine a source ITagDefinition into a target ITagDefinition.
+	 * ExternalIds, linked metadata, and id are combined in the target ITagDefinition. If the user search
+	 * the Itag by externalId/id/prettyId have as response the target ITagDefinition.
+	 * After a combine operation the user can not update/remove the target ITagDefinition
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition </li>
+	 * 	<li>source tag status = APPROVED</li>
+	 * 	<li>source tag should be a leaf</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>categorized source.tag within a NOT categorized tag is not allowed</li>
+	 * </ul>
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * ITagDefinition id
+	 * @param param : MITagDefinitioncombineReq
+	 * @return MResponseITagDefinitionDetail
+	*/
+	def combine(tokenId: String, 
+			clientId: String, 
+			classificationId: String, 
+			param: MITagDefinitioncombineReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDetail ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
+			val response : MResponseITagDefinitionDetail = if(this.resourceEndpoint == ""){
+			
+				new MResponseITagDefinitionDetail()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("itagdefinition/combine")
+					.path(clientId.toString)
+		.path(classificationId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseITagDefinitionDetail],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseITagDefinitionDetail])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Divide a combined ITagDefinition from a target ITagDefinition.
+	 * 
+	 * <ul>
+	 * 	<li>recover id and prettyId of combined ITagDefinition</li>
+	 * 	<li>recover externalIds</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>recover linked metadata</li>
+	 * </ul>
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>source must be in state "combined"</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>the combined ITagDefinition after the divide operation have the same parent of the target.
+	 * </li>
+	 * </ul>
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagDefinitiondivideReq
+	 * @return MResponseITagDefinitionDisjoined
+	*/
+	def divide(tokenId: String, 
+			clientId: String, 
+			classificationId: String, 
+			param: MITagDefinitiondivideReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDisjoined ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
+			val response : MResponseITagDefinitionDisjoined = if(this.resourceEndpoint == ""){
+			
+				new MResponseITagDefinitionDisjoined()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("itagdefinition/divide")
+					.path(clientId.toString)
+		.path(classificationId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseITagDefinitionDisjoined],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseITagDefinitionDisjoined])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Merge a (combined) ITagDefinition within the target ITagDefinition.
+	 * The service moves linkedMetadata, externalIds from the combined ITagDefinition to the target. After
+	 * the merge process, the user can only extract the ITagDefinition.
+	 * The prettyId and names of the combined iTagDefinition are not merged into the target.
+	 * <b>
+	 * </b><b>Constraints</b>:
+	 * <ul>
+	 * 	<li>source must be in state "combined"</li>
+	 * 	<li>All references to combined iTagDefinition (on Contents/Contacts/Users) are replaced by target
+	 * iTagDefinition</li>
+	 * </ul>
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagDefinitionmergeReq
+	 * @return MResponseITagDefinitionDetail
+	*/
+	def merge(tokenId: String, 
+			clientId: String, 
+			classificationId: String, 
+			param: MITagDefinitionmergeReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDetail ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
+			val response : MResponseITagDefinitionDetail = if(this.resourceEndpoint == ""){
+			
+				new MResponseITagDefinitionDetail()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("itagdefinition/merge")
+					.path(clientId.toString)
+		.path(classificationId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseITagDefinitionDetail],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseITagDefinitionDetail])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Extract a merged ITagDefinition from a target ITagDefinition.
+	 * 
+	 * <ul>
+	 * 	<li>try to restore prettyId (if yet available)</li>
+	 * 	<li>restore the liked metadata</li>
+	 * 	<li>restore names</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>transfer the selected externalIds from source to the restored ITagDefinition</li>
+	 * 	<li>restore the merged iTagDefinition with the same parent iTagDefinition of the target (if the
+	 * tag tree is not full), otherwise move the tag at the root level.</li>
+	 * </ul>
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>source must be in state "merged"</li>
+	 * </ul>
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagDefinitionextractReq
+	 * @return MResponseITagDefinitionDisjoined
+	*/
+	def extract(tokenId: String, 
+			clientId: String, 
+			classificationId: String, 
+			param: MITagDefinitionextractReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionDisjoined ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
+			val response : MResponseITagDefinitionDisjoined = if(this.resourceEndpoint == ""){
+			
+				new MResponseITagDefinitionDisjoined()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("itagdefinition/extract")
+					.path(clientId.toString)
+		.path(classificationId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseITagDefinitionDisjoined],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseITagDefinitionDisjoined])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Lists the ITagDefinitions joined (combined or merged) in a given tag target. This method return the
+	 * itags matching the given search criteria
+	 * 
+	 * <b>Role Validation:</b>
+	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagDefinitionlistJoinedReq
+	 * @return MResponseITagDefinitionJoinedList
+	*/
+	def listJoined(tokenId: String, 
+			clientId: String, 
+			classificationId: String, 
+			param: MITagDefinitionlistJoinedReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseITagDefinitionJoinedList ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JITagDefinitionClient.client.resource(this.resourceEndpoint)
+			val response : MResponseITagDefinitionJoinedList = if(this.resourceEndpoint == ""){
+			
+				new MResponseITagDefinitionJoinedList()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("itagdefinition/listJoined")
+					.path(clientId.toString)
+		.path(classificationId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseITagDefinitionJoinedList],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseITagDefinitionJoinedList])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition</li>
 	 * 	<li>100: max number of IMetadataDefinition per ITagDefinition</li>
 	 * 	<li>it's possible to link metadata only to categorized and approved ITagDefinition</li>
 	 * 	<li>the IMetadataDefinition of type KEY can be linked to one single ITagDefinition.</li>
 	 * </ul>
 	 * 
 	 * <b>Constraints:</b>
-	 * the ITagDefinition must be in state "APPROVED"
+	 * <ul>
+	 * 	<li>the ITagDefinition must be in state "APPROVED"</li>
+	 * </ul>
 	 * 
 	 * <b>Role Validation:</b>
 	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER

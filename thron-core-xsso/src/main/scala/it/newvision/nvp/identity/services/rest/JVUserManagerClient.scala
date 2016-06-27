@@ -58,9 +58,9 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	 * 	<li>PLATFORM_USER_GUEST: allowed to login in platform and use the services</li>
 	 * </ul>
 	 * 
-	 * Username and password are required for platform users (PLATFORM_USER, PLATFORM_USER_GUEST), and
-	 * username must be unique.
-	 * The service convert the given username to lower case.
+	 * <b>Username, password and email</b> (of MVUserNotificationProperties) <b>are required </b>for
+	 * platform users (PLATFORM_USER, PLATFORM_USER_GUEST). Username must be unique and it will be
+	 * automatically converted to lower case.
 	 * 
 	 * Constraints for the username attribute:
 	 * <ol>

@@ -5,7 +5,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
 import com.thron.intelligence.model.MESourceType
-import com.thron.intelligence.model.itag.MEStatus
+import com.thron.intelligence.model.tag.MEStatus
 
 /* ************************
 *  GENERATED CLASS

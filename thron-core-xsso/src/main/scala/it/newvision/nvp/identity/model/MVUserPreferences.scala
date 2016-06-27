@@ -51,14 +51,4 @@ class MVUserPreferences extends Serializable {
 	var notificationProperty: MVUserNotificationProperties  = new MVUserNotificationProperties()
 	def withnotificationProperty(p:MVUserNotificationProperties):this.type ={ 	this.notificationProperty = p; 	this }
 
-	/**
-	 * the default category where the user create new contents
-	 */
-	//#SWG#@ApiModelProperty(value = """the default category where the user create new contents""")
-	@BeanProperty 
-	@Deprecated
-	var defaultCategoryId: String =_
-	@Deprecated
-	def withdefaultCategoryId(p:String):this.type ={ 	this.defaultCategoryId = p; 	this }
-
 }

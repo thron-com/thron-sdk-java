@@ -183,7 +183,7 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	protected def capability_newPageletContent: String
 
 	/**
-	 * Used to update a content body of a PAGELET document.
+	 * Used to update the content body of a PAGELET document.
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessupdatePageletContentReq
 	 * @return MResponsePublishContent
@@ -192,7 +192,7 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	@Path("/updatePageletContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updatePageletContent", notes = """Used to update a content body of a PAGELET document.""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/updatePageletContent", notes = """Used to update the content body of a PAGELET document.""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updatePageletContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -369,7 +369,7 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 
 	/**
 	 * This service activate the ingestion process of the content for a specific channel. Once the content
-	 * is ready (converted in right format),the content can be published usgin the service
+	 * is ready (converted in right format),the content can be published using the service
 	 * "publishChannel". This service is <b>ASYNCHRONOUS</b>!
 	 * @param tokenId : String
 	 * @param param : MPublishingProcesscreateContentForChannelReq
@@ -379,7 +379,7 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	@Path("/createContentForChannel")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/createContentForChannel", notes = """This service activate the ingestion process of the content for a specific channel. Once the content is ready (converted in right format),the content can be published usgin the service "publishChannel". This service is <b>ASYNCHRONOUS</b>!""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/createContentForChannel", notes = """This service activate the ingestion process of the content for a specific channel. Once the content is ready (converted in right format),the content can be published using the service "publishChannel". This service is <b>ASYNCHRONOUS</b>!""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def createContentForChannel(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -768,7 +768,7 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	/**
 	 * This service is used to know the possible platform content type available for a given filename. The
 	 * service map the mime type of filename to the corresponding list of content types.
-	 * For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER 4me content.
+	 * For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessgetContentTypesReq
 	 * @return MResponseGetContentTypes
@@ -778,7 +778,7 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/getContentTypes", notes = """This service is used to know the possible platform content type available for a given filename. The service map the mime type of filename to the corresponding list of content types.
-	//#SWGNL#For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER 4me content.""", response = classOf[MResponseGetContentTypes])
+	//#SWGNL#For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.""", response = classOf[MResponseGetContentTypes])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getContentTypes(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

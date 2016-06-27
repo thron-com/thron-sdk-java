@@ -19,8 +19,9 @@ import javax.xml.bind.annotation._
 class MVUserNotificationProperties extends Serializable {
 
 	/**
-	 * The primary email address of the user. The field is required for all Platform
-	 * and generic users and is used for notification to the user.
+	 * The main email address. The field is mandatory for all Platform users and is
+	 * used to send notifications; moreover, this value will be used to identify the
+	 * email key of the related contact.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
@@ -30,7 +31,7 @@ class MVUserNotificationProperties extends Serializable {
 	 * 	<li>max length = 1000</li>
 	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """The primary email address of the user. The field is required for all Platform and generic users and is used for notification to the user.
+	//#SWG#@ApiModelProperty(value = """The main email address. The field is mandatory for all Platform users and is used to send notifications; moreover, this value will be used to identify the email key of the related contact.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>

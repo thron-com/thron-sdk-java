@@ -111,6 +111,21 @@ class JITagClient(val resourceEndpoint:String) {
 
 	/**
 	 * Unlink a given itagId from a specific entity (Content, User, Contact).
+	 * <b>Removal of combined tags:</b>
+	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	 * 
+	 * <ul>
+	 * 	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service
+	 * will return exception.</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for
+	 * tag "A" and tag "B" because "B" is combined in "A".</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A"
+	 * the service will remove both "A" and "B" tags.</li>
+	 * </ul>
 	 * 
 	 * <b>Role Validation for Tagging Users:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
@@ -244,7 +259,25 @@ class JITagClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Bulk remove service for itags
+	 * Bulk remove service for itags.
+	 * 
+	 * <b>Removal of combined tags:</b>
+	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	 * 
+	 * <ul>
+	 * 	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service
+	 * will return exception.</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for
+	 * tag "A" and tag "B" because "B" is combined in "A".</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A"
+	 * the service will remove both "A" and "B" tags.</li>
+	 * </ul>
+	 * 
+	 * 
 	 * 
 	 * <b>Role Validation for Tagging Users:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
@@ -374,6 +407,21 @@ class JITagClient(val resourceEndpoint:String) {
 
 	/**
 	 * Remove a given itag from a list entities (Content, User, Contact).
+	 * <b>Removal of combined tags:</b>
+	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	 * 
+	 * <ul>
+	 * 	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service
+	 * will return exception.</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for
+	 * tag "A" and tag "B" because "B" is combined in "A".</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A"
+	 * the service will remove both "A" and "B" tags.</li>
+	 * </ul>
 	 * 
 	 * <b>Role Validation for Tagging Users:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and

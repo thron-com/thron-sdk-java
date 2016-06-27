@@ -150,11 +150,13 @@ class MVUserCriteria extends Serializable {
 	def withlinkedGroupsIds(p:List[String]):this.type ={ 	this.linkedGroupsIds = p; 	this }
 
 	/**
-	 * search by AppId in MVuser.usercapabilities.enabledSolutions
+	 * Deprecated
 	 */
-	//#SWG#@ApiModelProperty(value = """search by AppId in MVuser.usercapabilities.enabledSolutions""")
+	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@BeanProperty 
+	@Deprecated
 	var solutions: List[String] = new ArrayList[String]
+	@Deprecated
 	def withsolutions(p:List[String]):this.type ={ 	this.solutions = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")

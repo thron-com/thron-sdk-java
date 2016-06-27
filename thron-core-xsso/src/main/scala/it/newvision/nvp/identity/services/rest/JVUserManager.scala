@@ -64,9 +64,9 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	 * 	<li>PLATFORM_USER_GUEST: allowed to login in platform and use the services</li>
 	 * </ul>
 	 * 
-	 * Username and password are required for platform users (PLATFORM_USER, PLATFORM_USER_GUEST), and
-	 * username must be unique.
-	 * The service convert the given username to lower case.
+	 * <b>Username, password and email</b> (of MVUserNotificationProperties) <b>are required </b>for
+	 * platform users (PLATFORM_USER, PLATFORM_USER_GUEST). Username must be unique and it will be
+	 * automatically converted to lower case.
 	 * 
 	 * Constraints for the username attribute:
 	 * <ol>
@@ -97,8 +97,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	//#SWGNL#	<li>PLATFORM_USER_GUEST: allowed to login in platform and use the services</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#Username and password are required for platform users (PLATFORM_USER, PLATFORM_USER_GUEST), and username must be unique.
-	//#SWGNL#The service convert the given username to lower case.
+	//#SWGNL#<b>Username, password and email</b> (of MVUserNotificationProperties) <b>are required </b>for platform users (PLATFORM_USER, PLATFORM_USER_GUEST). Username must be unique and it will be automatically converted to lower case.
 	//#SWGNL#
 	//#SWGNL#Constraints for the username attribute:
 	//#SWGNL#<ol>

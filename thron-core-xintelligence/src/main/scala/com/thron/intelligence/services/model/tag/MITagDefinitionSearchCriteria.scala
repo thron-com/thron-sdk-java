@@ -33,9 +33,9 @@ import com.thron.intelligence.services.model.itag.MTextSearchOptions
 class MITagDefinitionSearchCriteria extends Serializable {
 
 	/**
-	 * list of ITagDefinition.id or ITagDefinition.prettyId
+	 * list of ITagDefinition.id or ITagDefinition.prettyId or externalId 
 	 */
-	//#SWG#@ApiModelProperty(value = """list of ITagDefinition.id or ITagDefinition.prettyId""")
+	//#SWG#@ApiModelProperty(value = """list of ITagDefinition.id or ITagDefinition.prettyId or externalId """)
 	@BeanProperty 
 	var ids: List[String] = new ArrayList[String]
 	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
@@ -57,11 +57,6 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	@BeanProperty 
 	var excludeLevelHigherThan: Integer =_
 	def withexcludeLevelHigherThan(p:Integer):this.type ={ 	this.excludeLevelHigherThan = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var status: MEITagStatus =_
-	def withstatus(p:MEITagStatus):this.type ={ 	this.status = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 

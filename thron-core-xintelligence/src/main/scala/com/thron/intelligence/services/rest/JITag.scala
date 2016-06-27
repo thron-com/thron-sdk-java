@@ -156,6 +156,21 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Unlink a given itagId from a specific entity (Content, User, Contact).
+	 * <b>Removal of combined tags:</b>
+	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	 * 
+	 * <ul>
+	 * 	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service
+	 * will return exception.</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for
+	 * tag "A" and tag "B" because "B" is combined in "A".</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A"
+	 * the service will remove both "A" and "B" tags.</li>
+	 * </ul>
 	 * 
 	 * <b>Role Validation for Tagging Users:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
@@ -182,6 +197,18 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/remove", notes = """Unlink a given itagId from a specific entity (Content, User, Contact).
+	//#SWGNL#<b>Removal of combined tags:</b> 
+	//#SWGNL#Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	//#SWGNL#
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service will return exception.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for tag "A" and tag "B" because "B" is combined in "A".</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A" the service will remove both "A" and "B" tags.</li>
+	//#SWGNL#</ul>
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Users:</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
@@ -358,7 +385,25 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_bulkInsert: String
 
 	/**
-	 * Bulk remove service for itags
+	 * Bulk remove service for itags.
+	 * 
+	 * <b>Removal of combined tags:</b>
+	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	 * 
+	 * <ul>
+	 * 	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service
+	 * will return exception.</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for
+	 * tag "A" and tag "B" because "B" is combined in "A".</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A"
+	 * the service will remove both "A" and "B" tags.</li>
+	 * </ul>
+	 * 
+	 * 
 	 * 
 	 * <b>Role Validation for Tagging Users:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
@@ -381,7 +426,22 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/bulkRemove/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkRemove", notes = """Bulk remove service for itags
+	//#SWG#@ApiOperation(value = "/bulkRemove", notes = """Bulk remove service for itags.
+	//#SWGNL#
+	//#SWGNL#<b>Removal of combined tags:</b> 
+	//#SWGNL#Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	//#SWGNL#
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service will return exception.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for tag "A" and tag "B" because "B" is combined in "A".</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A" the service will remove both "A" and "B" tags.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Users:</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
@@ -551,6 +611,21 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	/**
 	 * Remove a given itag from a list entities (Content, User, Contact).
+	 * <b>Removal of combined tags:</b>
+	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	 * 
+	 * <ul>
+	 * 	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service
+	 * will return exception.</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for
+	 * tag "A" and tag "B" because "B" is combined in "A".</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A"
+	 * the service will remove both "A" and "B" tags.</li>
+	 * </ul>
 	 * 
 	 * <b>Role Validation for Tagging Users:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
@@ -574,6 +649,18 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/bulkRemoveMultiTargets", notes = """Remove a given itag from a list entities (Content, User, Contact).
+	//#SWGNL#<b>Removal of combined tags:</b> 
+	//#SWGNL#Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	//#SWGNL#
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service will return exception.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for tag "A" and tag "B" because "B" is combined in "A".</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A" the service will remove both "A" and "B" tags.</li>
+	//#SWGNL#</ul>
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Users:</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)

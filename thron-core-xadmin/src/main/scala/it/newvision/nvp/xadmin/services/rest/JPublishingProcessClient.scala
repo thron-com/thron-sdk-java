@@ -204,7 +204,7 @@ class JPublishingProcessClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to update a content body of a PAGELET document.
+	 * Used to update the content body of a PAGELET document.
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessupdatePageletContentReq
 	 * @return MResponsePublishContent
@@ -464,7 +464,7 @@ class JPublishingProcessClient(val resourceEndpoint:String) {
 
 	/**
 	 * This service activate the ingestion process of the content for a specific channel. Once the content
-	 * is ready (converted in right format),the content can be published usgin the service
+	 * is ready (converted in right format),the content can be published using the service
 	 * "publishChannel". This service is <b>ASYNCHRONOUS</b>!
 	 * @param tokenId : String
 	 * @param param : MPublishingProcesscreateContentForChannelReq
@@ -916,7 +916,7 @@ class JPublishingProcessClient(val resourceEndpoint:String) {
 	/**
 	 * This service is used to know the possible platform content type available for a given filename. The
 	 * service map the mime type of filename to the corresponding list of content types.
-	 * For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER 4me content.
+	 * For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.
 	 * @param tokenId : String
 	 * @param param : MPublishingProcessgetContentTypesReq
 	 * @return MResponseGetContentTypes

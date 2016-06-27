@@ -1,8 +1,9 @@
-package com.thron.intelligence.model.itag
+package com.thron.intelligence.model.tag
+import _root_.java.util._ 
+import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}  
 //#SWG#import com.wordnik.swagger.annotations._ 
-import javax.xml.bind.annotation._
-
-import _root_.scala.beans.BeanProperty
+import _root_.scala.beans.BeanProperty 
+import javax.xml.bind.annotation._ 
 
 /* ************************
 *  GENERATED CLASS

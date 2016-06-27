@@ -4,8 +4,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import com.thron.intelligence.services.model.common.MExternalIdDetail
-import com.thron.intelligence.model.itag.MJoinedId
+import com.thron.intelligence.model.MExternalIdDetail
 import com.thron.intelligence.model.MLocalization
 import com.thron.intelligence.model.MSourceIdentifier
 
@@ -117,15 +116,17 @@ class MITagDefinition extends Serializable {
 	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	/**
-	 * list of old merged/finalized ITags. When two tags are merged the target tags
-	 * store the ids of the other tag.
+	 * Deprecated
 	 */
-	//#SWG#@ApiModelProperty(value = """list of old merged/finalized ITags. When two tags are merged the target tags store the ids of the other tag.""")
+	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@BeanProperty 
 	var oldIds: List[String] = new ArrayList[String]
 	def witholdIds(p:List[String]):this.type ={ 	this.oldIds = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * list of all combined/merged ITagDefinition ids.
+	 */
+	//#SWG#@ApiModelProperty(value = """list of all combined/merged ITagDefinition ids.""")
 	@BeanProperty 
 	var joinedIds: List[MJoinedId] = new ArrayList[MJoinedId]
 	def withjoinedIds(p:List[MJoinedId]):this.type ={ 	this.joinedIds = p; 	this }
@@ -163,37 +164,13 @@ class MITagDefinition extends Serializable {
 	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
 
 	/**
-	 * Optional. The time when this Tag has been moderated.
+	 * Deprecated.
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. The time when this Tag has been moderated.""")
+	//#SWG#@ApiModelProperty(value = """Deprecated.""")
 	@BeanProperty 
 	@Deprecated
-	var moderatedDate: Date =_
-	@Deprecated
-	def withmoderatedDate(p:Date):this.type ={ 	this.moderatedDate = p; 	this }
-
-	/**
-	 * Identifier of the user that approved (or not) the Tag
-	 */
-	//#SWG#@ApiModelProperty(value = """Identifier of the user that approved (or not) the Tag""")
-	@BeanProperty 
-	@Deprecated
-	var moderatedBy: MSourceIdentifier =_
-	@Deprecated
-	def withmoderatedBy(p:MSourceIdentifier):this.type ={ 	this.moderatedBy = p; 	this }
-
-	/**
-	 * Used to mark the moderated Tags.
-	 * approved = null (empty) : Tag suggested (not yet approved)
-	 * approved = true:  Tag moderated and approved
-	 * approved = false:  Tag moderated and rejected
-	 */
-	//#SWG#@ApiModelProperty(value = """Used to mark the moderated Tags.
-	//#SWGNL#approved = null (empty) : Tag suggested (not yet approved)
-	//#SWGNL#approved = true:  Tag moderated and approved
-	//#SWGNL#approved = false:  Tag moderated and rejected""")
-	@BeanProperty 
 	var approved: Boolean =_
+	@Deprecated
 	def withapproved(p:Boolean):this.type ={ 	this.approved = p; 	this }
 
 	/**
@@ -215,6 +192,17 @@ class MITagDefinition extends Serializable {
 		import org.apache.commons.lang.StringUtils
 		    StringUtils.isNotBlank(id) &&
 		      StringUtils.isNotBlank(prettyId) 
+	}
+
+	/**
+	 * @return List[String]
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def allIds():List[String] ={
+		import scala.collection.JavaConversions._
+		(this.joinedIds.map(_.id) ++ this.externalIds.map(_.getExtId()) ++ scala.List(this.prettyId, this.id)).filter(_ != null)
+	
 	}
 
 }

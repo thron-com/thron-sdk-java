@@ -14,12 +14,15 @@ import javax.xml.bind.annotation.XmlType;
 public enum MEITagStatus {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("APPROVED") APPROVED,
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * DEPRECATED
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
 	@XmlEnumValue("REJECTED") REJECTED,
 	/**
-	 * The Tag needs to be moderated
+	 * DEPRECATED
 	 */
-	//#SWG#@ApiModelProperty(value = """The Tag needs to be moderated""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
 	@XmlEnumValue("SUGGESTED") SUGGESTED,
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("COMBINATION") COMBINATION

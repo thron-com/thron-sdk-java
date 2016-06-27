@@ -25,9 +25,5 @@ class MDeliveryToken extends Serializable {
 	var xpublisherId: String =_
 	def withxpublisherId(p:String):this.type ={ 	this.xpublisherId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var creationDate: Date =_
-	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 }

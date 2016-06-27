@@ -37,15 +37,8 @@ import javax.xml.bind.annotation._
 class MExternalId extends Serializable {
 
 	/**
-	 * like:
-	 * <ul>
-	 * 	<li>thronuser (reserved for platform users)</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>email,sapId,ecommerce.... (for external systems)</li>
-	 * </ul>
 	 * 
-	 * Constraints:
+	 * <b>Constraints:</b>
 	 * <ul>
 	 * 	<li>can not contain §/$&#<>"?*:\|</li>
 	 * </ul>
@@ -57,15 +50,8 @@ class MExternalId extends Serializable {
 	 * 	<li>lowercase</li>
 	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """like:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>thronuser (reserved for platform users)</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>email,sapId,ecommerce.... (for external systems)</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#Constraints:
+	//#SWG#@ApiModelProperty(value = """
+	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>can not contain §/$&#<>"?*:\|</li>
 	//#SWGNL#</ul>
@@ -80,7 +66,16 @@ class MExternalId extends Serializable {
 	var key: String =_
 	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>max length = 100</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max length = 100</li>
+	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var value: String =_
 	def withvalue(p:String):this.type ={ 	this.value = p; 	this }

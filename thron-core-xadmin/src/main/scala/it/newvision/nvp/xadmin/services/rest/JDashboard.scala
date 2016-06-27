@@ -178,14 +178,14 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	/**
 	 * The service:
 	 * <ul>
-	 * 	<li>replace the source file linked to the MediaContent (MMediaContent.sourceFiles)</li>
+	 * 	<li>replace the source file linked to a content</li>
 	 * </ul>
 	 * <ul>
 	 * 	<li>republish the content in all channels with status PUBLISHED or ERROR.</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>remove the old files (all sourceFiles versions) from repository if removeOriginalFiles
-	 * parameter is TRUE</li>
+	 * 	<li>remove the old versioned files (all sourceFiles versions) from repository if
+	 * removeOriginalFiles  parameter is TRUE</li>
 	 * </ul>
 	 * <ul>
 	 * 	<li>keep a version of the original source file (saved as link in MMediaContent.
@@ -195,7 +195,7 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	 * 	<li>reset the user preferences of the content (the content becomes new for all users)</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>return and error if the content has some channel in progress.</li>
+	 * 	<li>return an error if the content has some channel in progress.</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MDashboardreplaceSourceFilesReq
@@ -207,13 +207,13 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/replaceSourceFiles", notes = """The service:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>replace the source file linked to the MediaContent (MMediaContent.sourceFiles)</li>
+	//#SWGNL#	<li>replace the source file linked to a content</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>republish the content in all channels with status PUBLISHED or ERROR.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>remove the old files (all sourceFiles versions) from repository if removeOriginalFiles  parameter is TRUE</li>
+	//#SWGNL#	<li>remove the old versioned files (all sourceFiles versions) from repository if removeOriginalFiles  parameter is TRUE</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>keep a version of the original source file (saved as link in MMediaContent.sourceFilesOldVersion) if removeOriginalFiles parameter is set to FALSE</li>
@@ -222,7 +222,7 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	//#SWGNL#	<li>reset the user preferences of the content (the content becomes new for all users)</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>return and error if the content has some channel in progress.</li>
+	//#SWGNL#	<li>return an error if the content has some channel in progress.</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseDashboard])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def replaceSourceFiles(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)

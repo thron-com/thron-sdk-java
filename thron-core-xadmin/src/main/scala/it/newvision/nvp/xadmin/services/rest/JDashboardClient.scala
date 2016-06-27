@@ -141,14 +141,14 @@ class JDashboardClient(val resourceEndpoint:String) {
 	/**
 	 * The service:
 	 * <ul>
-	 * 	<li>replace the source file linked to the MediaContent (MMediaContent.sourceFiles)</li>
+	 * 	<li>replace the source file linked to a content</li>
 	 * </ul>
 	 * <ul>
 	 * 	<li>republish the content in all channels with status PUBLISHED or ERROR.</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>remove the old files (all sourceFiles versions) from repository if removeOriginalFiles
-	 * parameter is TRUE</li>
+	 * 	<li>remove the old versioned files (all sourceFiles versions) from repository if
+	 * removeOriginalFiles  parameter is TRUE</li>
 	 * </ul>
 	 * <ul>
 	 * 	<li>keep a version of the original source file (saved as link in MMediaContent.
@@ -158,7 +158,7 @@ class JDashboardClient(val resourceEndpoint:String) {
 	 * 	<li>reset the user preferences of the content (the content becomes new for all users)</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>return and error if the content has some channel in progress.</li>
+	 * 	<li>return an error if the content has some channel in progress.</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MDashboardreplaceSourceFilesReq

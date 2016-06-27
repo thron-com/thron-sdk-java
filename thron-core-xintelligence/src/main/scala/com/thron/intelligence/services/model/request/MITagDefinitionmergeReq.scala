@@ -4,6 +4,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import com.thron.intelligence.services.model.itag.MITagDefinitionList
 
 /* ************************
 *  GENERATED CLASS
@@ -17,14 +18,21 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = "Request message for service JITagDefinition.merge")
 class MITagDefinitionmergeReq extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
+	/**
+	 * Target ITagdefinition id, prettyId or externalId
+	 */
+	//#SWG#@ApiModelProperty(value = """Target ITagdefinition id, prettyId or externalId""", required = true)
 	@BeanProperty
-	var sourceITagId: String =_
-	def withsourceITagId(p:String):this.type ={ 	this.sourceITagId = p; 	this }
+	var targetId: String =_
+	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
+	/**
+	 * Optional list of ITagDefinition ids (joinedIds) to merge in the target
+	 * tagdefinition. If empty the service merge all combined ITagDefinitions,
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional list of ITagDefinition ids (joinedIds) to merge in the target tagdefinition. If empty the service merge all combined ITagDefinitions,""", required = true)
 	@BeanProperty
-	var targetITagId: String =_
-	def withtargetITagId(p:String):this.type ={ 	this.targetITagId = p; 	this }
+	var combinedIdList: MITagDefinitionList =_
+	def withcombinedIdList(p:MITagDefinitionList):this.type ={ 	this.combinedIdList = p; 	this }
 
 }

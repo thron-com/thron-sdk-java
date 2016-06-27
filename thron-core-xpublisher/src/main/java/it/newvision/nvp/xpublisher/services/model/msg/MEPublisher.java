@@ -35,5 +35,10 @@ public enum MEPublisher {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("CONTENT_ALREADY_EXISTS") CONTENT_ALREADY_EXISTS,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("CONTENT_NOT_AVAILABLE") CONTENT_NOT_AVAILABLE
+	@XmlEnumValue("CONTENT_NOT_AVAILABLE") CONTENT_NOT_AVAILABLE,
+	/**
+	 * the resource is expired
+	 */
+	//#SWG#@ApiModelProperty(value = """the resource is expired""")
+	@XmlEnumValue("EXPIRED") EXPIRED
 }
