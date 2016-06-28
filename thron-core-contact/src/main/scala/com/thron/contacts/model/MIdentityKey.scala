@@ -109,7 +109,7 @@ class MIdentityKey extends Serializable {
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def getId():String ={
-		s"${this.key.toLowerCase(Locale.ENGLISH)}#${this.value}"
+		s"${this.key.toLowerCase(Locale.ENGLISH)}#${this.value.toLowerCase(Locale.ENGLISH)}"
 	}
 
 	/**

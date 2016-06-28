@@ -9,17 +9,30 @@ import javax.xml.bind.annotation._
 *  GENERATED CLASS
 *  DO NOT APPLY ANY CHANGES
 ****************************/
+/**
+ * Used to identify a specific source.
+ * Some object can be created/modified by different source like users, or engines.
+ */
 @XmlRootElement(name="MISourceIdentifier") 
 @XmlType(name="MISourceIdentifier")
-//#SWG#@ApiModel(description = """""")
+//#SWG#@ApiModel(description = """Used to identify a specific source.
+//#SWGNL#Some object can be created/modified by different source like users, or engines.""")
 class MISourceIdentifier extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * username or appId or engineId
+	 */
+	//#SWG#@ApiModelProperty(value = """username or appId or engineId""" ,required = true)
 	@BeanProperty 
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * The source Type:
+	 * USER/APPLICATION/ENGINE
+	 */
+	//#SWG#@ApiModelProperty(value = """The source Type:
+	//#SWGNL#USER/APPLICATION/ENGINE""" ,required = true)
 	@BeanProperty 
 	var stype: String =_
 	def withstype(p:String):this.type ={ 	this.stype = p; 	this }
