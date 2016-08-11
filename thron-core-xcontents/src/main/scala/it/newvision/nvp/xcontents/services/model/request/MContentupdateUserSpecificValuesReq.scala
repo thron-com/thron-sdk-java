@@ -46,12 +46,4 @@ class MContentupdateUserSpecificValuesReq extends Serializable {
 	var contentParams: MContentUserSpecificParams =_
 	def withcontentParams(p:MContentUserSpecificParams):this.type ={ 	this.contentParams = p; 	this }
 
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
-
 }

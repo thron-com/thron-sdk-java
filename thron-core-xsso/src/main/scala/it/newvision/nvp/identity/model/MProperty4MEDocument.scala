@@ -46,12 +46,12 @@ class MProperty4MEDocument extends MPropertyGenericDocument with Serializable  {
 		this.compliantWith= "VIEW,PLAY"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download"
-		cd.channelDescription = "Permette all'utente di scaricare un contenuto"
+		cd.channelShortName = "SWF"
+		cd.channelDescription = "Download, formato SWF"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download"
-		cd2.channelDescription = "The user can download a content"
+		cd2.channelShortName = "SWF"
+		cd2.channelDescription = "Download, SWF format"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.convertTo="SWF"

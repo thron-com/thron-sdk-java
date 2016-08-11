@@ -574,13 +574,13 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * Merge a (combined) ITagDefinition within the target ITagDefinition.
 	 * The service moves linkedMetadata, externalIds from the combined ITagDefinition to the target. After
 	 * the merge process, the user can only extract the ITagDefinition.
-	 * The prettyId and names of the combined iTagDefinition are not merged into the target.
+	 * The prettyId and names of the combined ITagDefinition are not merged into the target.
 	 * <b>
 	 * </b><b>Constraints</b>:
 	 * <ul>
 	 * 	<li>source must be in state "combined"</li>
-	 * 	<li>All references to combined iTagDefinition (on Contents/Contacts/Users) are replaced by target
-	 * iTagDefinition</li>
+	 * 	<li>All references to combined ITagDefinition (on Contents/Contacts/Users) are replaced by target
+	 * ITagDefinition</li>
 	 * </ul>
 	 * 
 	 * <b>Role Validation:</b>
@@ -637,13 +637,13 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * Extract a merged ITagDefinition from a target ITagDefinition.
 	 * 
 	 * <ul>
-	 * 	<li>try to restore prettyId (if yet available)</li>
-	 * 	<li>restore the liked metadata</li>
+	 * 	<li>try to restore prettyId (if still available)</li>
+	 * 	<li>restore the linked metadata</li>
 	 * 	<li>restore names</li>
 	 * </ul>
 	 * <ul>
 	 * 	<li>transfer the selected externalIds from source to the restored ITagDefinition</li>
-	 * 	<li>restore the merged iTagDefinition with the same parent iTagDefinition of the target (if the
+	 * 	<li>restore the merged ITagDefinition with the same parent ITagDefinition of the target (if the
 	 * tag tree is not full), otherwise move the tag at the root level.</li>
 	 * </ul>
 	 * 

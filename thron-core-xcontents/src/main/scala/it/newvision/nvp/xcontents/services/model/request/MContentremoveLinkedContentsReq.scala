@@ -39,12 +39,4 @@ class MContentremoveLinkedContentsReq extends Serializable {
 	var criteria: MLinkedContentRemoveCriteria =_
 	def withcriteria(p:MLinkedContentRemoveCriteria):this.type ={ 	this.criteria = p; 	this }
 
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
-
 }

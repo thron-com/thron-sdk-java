@@ -26,9 +26,9 @@ class MITagDefinitiondivideReq extends Serializable {
 	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }
 
 	/**
-	 * ITagdefinition Id to divide
+	 * ITagdefinition id, prettyId or externalId to divide
 	 */
-	//#SWG#@ApiModelProperty(value = """ITagdefinition Id to divide""", required = true)
+	//#SWG#@ApiModelProperty(value = """ITagdefinition id, prettyId or externalId to divide""", required = true)
 	@BeanProperty
 	var combinedId: String =_
 	def withcombinedId(p:String):this.type ={ 	this.combinedId = p; 	this }

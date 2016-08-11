@@ -168,12 +168,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.streamServer = clientId+"-4me.weebo.it/"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Flash"
-		cd.channelDescription = "HTTP Dynamic Streaming Flash "
+		cd.channelShortName = "Streaming Flash"
+		cd.channelDescription = "HDS, codec h264, bitrate 800kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Flash"
-		cd2.channelDescription = "HTTP Dynamic Streaming Flash"
+		cd2.channelShortName = "Streaming Flash"
+		cd2.channelDescription = "HDS, codec h264, bitrate 800kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.convertTo="MP4"
@@ -199,12 +199,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.streamServer = clientId+"-4me.weebo.it/"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Flash FULLHD"
-		cd.channelDescription = "HTTP Dynamic Streaming Flash FULLHD"
+		cd.channelShortName = "Streaming Flash Full HD"
+		cd.channelDescription = "HDS, codec h264, bitrate 4500kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Flash FULLHD"
-		cd2.channelDescription = "HTTP Dynamic Streaming Flash FULLHD"
+		cd2.channelShortName = "Streaming Flash Full HD"
+		cd2.channelDescription = "HDS, codec h264, bitrate 4500kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.convertTo="MP4"
@@ -230,12 +230,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.streamServer = clientId+"-4me.weebo.it/"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Flash HD"
-		cd.channelDescription = "HTTP Dynamic Streaming Flash HD"
+		cd.channelShortName = "Streaming Flash HD"
+		cd.channelDescription = "HDS, codec h264, bitrate 2000kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Flash HD"
-		cd2.channelDescription = "HTTP Dynamic Streaming Flash HD"
+		cd2.channelShortName = "Streaming Flash HD"
+		cd2.channelDescription = "HDS, codec h264, bitrate 2000kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.convertTo="MP4"
@@ -264,12 +264,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.streamServer = clientId+"-4me.weebo.it/"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "iOS"
-		cd.channelDescription = "HTTP Dynamic Streaming per Apple devices"
+		cd.channelShortName = "Streaming HLS"
+		cd.channelDescription = "HLS, codec h264, bitrate 800kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "iOS"
-		cd2.channelDescription = "HTTP Dynamic Streaming for Apple devices"
+		cd2.channelShortName = "Streaming HLS"
+		cd2.channelDescription = "HLS, codec h264, bitrate 800kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.withIngestion=true
@@ -297,45 +297,14 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.streamServer = clientId+"-4me.weebo.it/"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "iOS HD"
-		cd.channelDescription = "HTTP Dynamic Streaming HD per Apple devices"
+		cd.channelShortName = "Streaming HLS HD"
+		cd.channelDescription = "HLS, codec h264, bitrate 2000kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "iOS HD"
-		cd2.channelDescription = "HTTP Dynamic Streaming HD for Apple devices"
+		cd2.channelShortName = "Streaming HLS HD"
+		cd2.channelDescription = "HLS, codec h264, bitrate 2000kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
-		this.withIngestion=true
-	}
-
-	/**
-	 * default init for STREAM channel
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STREAMHTTPMS(clientId: String){
-		this.init_gd_WEB(clientId,"STREAMHTTPMS")
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1020),Integer.valueOf(660),Integer.valueOf(400),Integer.valueOf(170),Integer.valueOf(75)))
-		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(60),Integer.valueOf(60),Integer.valueOf(60),Integer.valueOf(60),Integer.valueOf(60)))
-		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1200),Integer.valueOf(800),Integer.valueOf(512),Integer.valueOf(256),Integer.valueOf(150)))
-		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100)))
-		this.defaultBitRate = 800
-		this.appName = "ms/"
-		this.streamProtocol = "http://"
-		this.streamServer = clientId+"-4me.weebo.it/"
-		val cd = new MChannelDescription
-		cd.locale = "IT"
-		cd.channelShortName = "Microsoft"
-		cd.channelDescription = "HTTP Streaming per Windows mobile devices"
-		val cd2 = new MChannelDescription
-		cd2.locale = "EN"
-		cd2.channelShortName = "Microsoft"
-		cd2.channelDescription = "HTTP Streaming for Windows mobile devices"
-		this.channelDescriptions.add(cd)
-		this.channelDescriptions.add(cd2)
-		this.convertTo="MP4"
 		this.withIngestion=true
 	}
 
@@ -376,12 +345,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.streamServer = ""
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download"
-		cd.channelDescription = "Permette all'utente di scaricare il contenuto"
+		cd.channelShortName = "Mp4"
+		cd.channelDescription = "Download, codec h264, bitrate 800kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download"
-		cd2.channelDescription = "The user can download the content"
+		cd2.channelShortName = "Mp4"
+		cd2.channelDescription = "Download, codec h264, bitrate 800kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.useForDownload = true
@@ -412,12 +381,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.streamServer = ""
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download Audio"
-		cd.channelDescription = "Permette all'utente di ascoltare il contenuto"
+		cd.channelShortName = "Traccia audio MP3"
+		cd.channelDescription = "Download, codec mp3, bitrate 128kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download Audio Only"
-		cd2.channelDescription = "The user can download the audio"
+		cd2.channelShortName = "Audio track MP3"
+		cd2.channelDescription = "Download, codec mp3, bitrate 128kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.useForDownload = false
@@ -448,12 +417,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.convertTo = "WEBM"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download WebM"
-		cd.channelDescription = "Permette all'utente di scaricare il contenuto in formato WebM"
+		cd.channelShortName = "WebM"
+		cd.channelDescription = "Download, codec vp8, bitrate 800kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download WebM"
-		cd2.channelDescription = "The user can download the content in the WebM format"
+		cd2.channelShortName = "WebM"
+		cd2.channelDescription = "Download, codec vp8, bitrate 800kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.withIngestion=true
@@ -479,12 +448,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.compliantWith= "VIEW,PLAY"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download Full HD"
-		cd.channelDescription = "Permette all'utente di scaricare il contenuto"
+		cd.channelShortName = "Mp4 Full HD"
+		cd.channelDescription = "Download, codec h264, bitrate 4500kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download Full HD"
-		cd2.channelDescription = "The user can download the content"
+		cd2.channelShortName = "Mp4 Full HD"
+		cd2.channelDescription = "Download, codec h264, bitrate 4500kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.useForDownload = true
@@ -512,12 +481,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.compliantWith= "VIEW,PLAY"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download HD"
-		cd.channelDescription = "Permette all'utente di scaricare il contenuto"
+		cd.channelShortName = "Mp4 HD"
+		cd.channelDescription = "Download, codec h264, bitrate 2000kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download HD"
-		cd2.channelDescription = "The user can download the content"
+		cd2.channelShortName = "Mp4 HD"
+		cd2.channelDescription = "Download, codec h264, bitrate 2000kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.useForDownload = true
@@ -547,12 +516,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.convertTo = "WEBM"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download Webm FULLHD"
-		cd.channelDescription = "Permette all'utente di scaricare il contenuto in formato WebM"
+		cd.channelShortName = "WebM Full HD"
+		cd.channelDescription = "Download, codec vp8, bitrate 4500kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download Webm FULLHD"
-		cd2.channelDescription = "The user can download the content in WebM format"
+		cd2.channelShortName = "WebM Full HD"
+		cd2.channelDescription = "Download, codec vp8, bitrate 4500kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.withIngestion=true
@@ -580,12 +549,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.convertTo = "WEBM"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download Webm HD"
-		cd.channelDescription = "Permette all'utente di scaricare il contenuto in formato WebM"
+		cd.channelShortName = "WebM HD"
+		cd.channelDescription = "Download, codec vp8, bitrate 2000kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download Webm HD"
-		cd2.channelDescription = "The user can download the content in WebM format"
+		cd2.channelShortName = "WebM HD"
+		cd2.channelDescription = "Download, codec h264, bitrate 2000kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.withIngestion=true
@@ -629,12 +598,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.streamProtocol = "" 
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download per iPhone"
-		cd.channelDescription = "Permette all'utente di scaricare un contenuto ottimizzato per iPhone"
+		cd.channelShortName = "Mp4 base profile"
+		cd.channelDescription = "Download, codec h264 base profile, bitrate 512kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download for iPhone"
-		cd2.channelDescription = "The user can download a content optimized for iPhone"
+		cd2.channelShortName = "Mp4 base profile"
+		cd2.channelDescription = "Download, codec h264 base profile, bitrate 512kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.convertTo="MP4"
@@ -657,12 +626,12 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.streamProtocol = "" 
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download HD per iPhone"
-		cd.channelDescription = "Permette all'utente di scaricare un contenuto ottimizzato per iPhone"
+		cd.channelShortName = "Mp4 HD base profile"
+		cd.channelDescription = "Download, codec h264 base profile, bitrate 2000kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download HD for iPhone"
-		cd2.channelDescription = "The user can download a content optimized for iPhone"
+		cd2.channelShortName = "Mp4 HD base profile"
+		cd2.channelDescription = "Download, codec h264 base profile, bitrate 2000kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.convertTo="MP4"

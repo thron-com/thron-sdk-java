@@ -123,12 +123,12 @@ class MPropertyLiveEvent extends Serializable {
 		this.protocol = "http://"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Flash"
-		cd.channelDescription = "HTTP Dynamic Streaming Flash "
+		cd.channelShortName = "Streaming Flash"
+		cd.channelDescription = "HDS"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Flash"
-		cd2.channelDescription = "HTTP Dynamic Streaming Flash"
+		cd2.channelShortName = "Streaming Flash"
+		cd2.channelDescription = "HDS"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 	}
@@ -146,12 +146,12 @@ class MPropertyLiveEvent extends Serializable {
 		this.protocol = "http://"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "iOS"
-		cd.channelDescription = "HTTP Dynamic Streaming per Apple devices"
+		cd.channelShortName = "Streaming HLS"
+		cd.channelDescription = ""
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "iOS"
-		cd2.channelDescription = "HTTP Dynamic Streaming for Apple devices"
+		cd2.channelShortName = "Streaming HLS"
+		cd2.channelDescription = ""
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 	}

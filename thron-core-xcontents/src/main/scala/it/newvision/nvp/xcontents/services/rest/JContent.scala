@@ -300,8 +300,6 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * @param contentId : String
 	 * xcontentId or prettyId
 	 * @param locale : String
-	 * @param categoryIdForAcl : String
-	 * Optional. For Acl validation
 	 * @return MResponseContentRemoveLocale
 	*/
 	@POST
@@ -326,14 +324,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	contentId: String, 
 			//#SWG#@ApiParam(value = """""")
 	@FormParam("locale")
-	locale: String, 
-			//#SWG#@ApiParam(value = """Optional. For Acl validation""")
-	@FormParam("categoryIdForAcl")
-	categoryIdForAcl: String):Response /*returnType = MResponseContentRemoveLocale*/ = {
+	locale: String):Response /*returnType = MResponseContentRemoveLocale*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__removeContent4Locale(tokenId,clientId,contentId,locale,categoryIdForAcl)
+			val resp = this.__removeContent4Locale(tokenId,clientId,contentId,locale)
 			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeContent4Locale)    
 		}catch{
 	      case e:WebApplicationException =>
@@ -347,8 +342,7 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	def removeContent4Locale_2(@QueryParam("tokenId")tokenId_q: String, 
 			@QueryParam("clientId")clientId_q: String, 
 			@QueryParam("contentId")contentId_q: String, 
-			@QueryParam("locale")locale_q: String, 
-			@QueryParam("categoryIdForAcl")categoryIdForAcl_q: String,
+			@QueryParam("locale")locale_q: String,
 			@HeaderParam("X-TOKENID") tokenId_h: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentRemoveLocale*/ = { 
@@ -356,7 +350,7 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
 		try{	
-			val resp = this.__removeContent4Locale(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,contentId_q,locale_q,categoryIdForAcl_q)
+			val resp = this.__removeContent4Locale(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,contentId_q,locale_q)
 		
 			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeContent4Locale)
 	    }catch{
@@ -367,7 +361,7 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __removeContent4Locale(tokenId: String, clientId: String, contentId: String, locale: String, categoryIdForAcl: String) :MResponseContentRemoveLocale
+	 protected def __removeContent4Locale(tokenId: String, clientId: String, contentId: String, locale: String) :MResponseContentRemoveLocale
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_removeContent4Locale: String
 

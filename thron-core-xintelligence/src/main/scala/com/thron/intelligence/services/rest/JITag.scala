@@ -57,7 +57,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * THRON_MANAGE_CONTACTS)
 	 * 
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
@@ -86,7 +85,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
-	//#SWGNL#
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contents</b>
 	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITag])
@@ -180,7 +178,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * THRON_MANAGE_CONTACTS)
 	 * 
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
@@ -215,7 +212,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
-	//#SWGNL#
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contents</b>
 	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITag])
@@ -299,7 +295,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * THRON_MANAGE_CONTACTS)
 	 * 
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
@@ -324,7 +319,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
-	//#SWGNL#
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contents</b>
 	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITagBulk])
@@ -403,8 +397,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * the service will remove both "A" and "B" tags.</li>
 	 * </ul>
 	 * 
-	 * 
-	 * 
 	 * <b>Role Validation for Tagging Users:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
@@ -440,8 +432,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A" the service will remove both "A" and "B" tags.</li>
 	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Users:</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
@@ -524,7 +514,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * THRON_MANAGE_CONTACTS)
 	 * 
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
@@ -549,7 +538,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
-	//#SWGNL#
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contents</b>
 	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITagBulk2])
@@ -635,7 +623,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * THRON_MANAGE_CONTACTS)
 	 * 
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
@@ -667,7 +654,6 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
-	//#SWGNL#
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contents</b>
 	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITagBulk2])

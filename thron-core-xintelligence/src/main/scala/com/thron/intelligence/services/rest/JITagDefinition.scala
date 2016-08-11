@@ -793,13 +793,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * Merge a (combined) ITagDefinition within the target ITagDefinition.
 	 * The service moves linkedMetadata, externalIds from the combined ITagDefinition to the target. After
 	 * the merge process, the user can only extract the ITagDefinition.
-	 * The prettyId and names of the combined iTagDefinition are not merged into the target.
+	 * The prettyId and names of the combined ITagDefinition are not merged into the target.
 	 * <b>
 	 * </b><b>Constraints</b>:
 	 * <ul>
 	 * 	<li>source must be in state "combined"</li>
-	 * 	<li>All references to combined iTagDefinition (on Contents/Contacts/Users) are replaced by target
-	 * iTagDefinition</li>
+	 * 	<li>All references to combined ITagDefinition (on Contents/Contacts/Users) are replaced by target
+	 * ITagDefinition</li>
 	 * </ul>
 	 * 
 	 * <b>Role Validation:</b>
@@ -816,12 +816,12 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/merge", notes = """Merge a (combined) ITagDefinition within the target ITagDefinition. 
 	//#SWGNL#The service moves linkedMetadata, externalIds from the combined ITagDefinition to the target. After the merge process, the user can only extract the ITagDefinition.
-	//#SWGNL#The prettyId and names of the combined iTagDefinition are not merged into the target.
+	//#SWGNL#The prettyId and names of the combined ITagDefinition are not merged into the target.
 	//#SWGNL#<b>
 	//#SWGNL#</b><b>Constraints</b>:
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>source must be in state "combined"</li>
-	//#SWGNL#	<li>All references to combined iTagDefinition (on Contents/Contacts/Users) are replaced by target iTagDefinition</li>
+	//#SWGNL#	<li>All references to combined ITagDefinition (on Contents/Contacts/Users) are replaced by target ITagDefinition</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
 	//#SWGNL#<b>Role Validation:</b>
@@ -886,13 +886,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * Extract a merged ITagDefinition from a target ITagDefinition.
 	 * 
 	 * <ul>
-	 * 	<li>try to restore prettyId (if yet available)</li>
-	 * 	<li>restore the liked metadata</li>
+	 * 	<li>try to restore prettyId (if still available)</li>
+	 * 	<li>restore the linked metadata</li>
 	 * 	<li>restore names</li>
 	 * </ul>
 	 * <ul>
 	 * 	<li>transfer the selected externalIds from source to the restored ITagDefinition</li>
-	 * 	<li>restore the merged iTagDefinition with the same parent iTagDefinition of the target (if the
+	 * 	<li>restore the merged ITagDefinition with the same parent ITagDefinition of the target (if the
 	 * tag tree is not full), otherwise move the tag at the root level.</li>
 	 * </ul>
 	 * 
@@ -916,13 +916,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	//#SWG#@ApiOperation(value = "/extract", notes = """Extract a merged ITagDefinition from a target ITagDefinition. 
 	//#SWGNL#
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>try to restore prettyId (if yet available)</li>
-	//#SWGNL#	<li>restore the liked metadata</li>
+	//#SWGNL#	<li>try to restore prettyId (if still available)</li>
+	//#SWGNL#	<li>restore the linked metadata</li>
 	//#SWGNL#	<li>restore names</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>transfer the selected externalIds from source to the restored ITagDefinition</li>
-	//#SWGNL#	<li>restore the merged iTagDefinition with the same parent iTagDefinition of the target (if the tag tree is not full), otherwise move the tag at the root level.</li>
+	//#SWGNL#	<li>restore the merged ITagDefinition with the same parent ITagDefinition of the target (if the tag tree is not full), otherwise move the tag at the root level.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>

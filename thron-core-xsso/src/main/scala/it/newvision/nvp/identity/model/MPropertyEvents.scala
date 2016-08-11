@@ -44,12 +44,14 @@ class MPropertyEvents extends Serializable {
 	def withserverProfileName(p:String):this.type ={ 	this.serverProfileName = p; 	this }
 
 	/**
-	 * enable or not the acceleration for the live events. This is a paid service
+	 * enable the CloudFront Acceleration for the live events.
+	 * Live events are accelerated by Akamai (default value)
 	 */
-	//#SWG#@ApiModelProperty(value = """enable or not the acceleration for the live events. This is a paid service""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """enable the CloudFront Acceleration for the live events. 
+	//#SWGNL#Live events are accelerated by Akamai (default value)""" ,required = true)
 	@BeanProperty 
-	var cdnAccelletationEnabled: Boolean  = true
-	def withcdnAccelletationEnabled(p:Boolean):this.type ={ 	this.cdnAccelletationEnabled = p; 	this }
+	var cdnAccelerationEnabled: Boolean  = true
+	def withcdnAccelerationEnabled(p:Boolean):this.type ={ 	this.cdnAccelerationEnabled = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 

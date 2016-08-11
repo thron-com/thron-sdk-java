@@ -248,15 +248,12 @@ class JContentClient(val resourceEndpoint:String) {
 	 * @param contentId : String
 	 * xcontentId or prettyId
 	 * @param locale : String
-	 * @param categoryIdForAcl : String
-	 * Optional. For Acl validation
 	 * @return MResponseContentRemoveLocale
 	*/
 	def removeContent4Locale(tokenId: String, 
 			clientId: String, 
 			contentId: String, 
-			locale: String, 
-			categoryIdForAcl: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentRemoveLocale ={
+			locale: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentRemoveLocale ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -264,8 +261,7 @@ class JContentClient(val resourceEndpoint:String) {
 			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
 			Option(clientId).foreach(s => params.add("clientId", s))
 		Option(contentId).foreach(s => params.add("contentId", s))
-		Option(locale).foreach(s => params.add("locale", s))
-		Option(categoryIdForAcl).foreach(s => params.add("categoryIdForAcl", s))  
+		Option(locale).foreach(s => params.add("locale", s))  
 			val response : MResponseContentRemoveLocale = if(this.resourceEndpoint == ""){
 			
 				new MResponseContentRemoveLocale()

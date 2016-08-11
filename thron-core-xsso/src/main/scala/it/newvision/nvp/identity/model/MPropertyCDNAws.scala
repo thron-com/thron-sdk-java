@@ -18,9 +18,11 @@ import javax.xml.bind.annotation._
 class MPropertyCDNAws extends Serializable {
 
 	/**
-	 * enable or not the acceleration for the live events. This is a paid service
+	 * enable the CloudFront Acceleration for the live events.
+	 * Live events are accelerated by Akamai (default value)
 	 */
-	//#SWG#@ApiModelProperty(value = """enable or not the acceleration for the live events. This is a paid service""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """enable the CloudFront Acceleration for the live events. 
+	//#SWGNL#Live events are accelerated by Akamai (default value)""" ,required = true)
 	@BeanProperty 
 	var cdnAccelerationEnabled: Boolean  = false
 	def withcdnAccelerationEnabled(p:Boolean):this.type ={ 	this.cdnAccelerationEnabled = p; 	this }

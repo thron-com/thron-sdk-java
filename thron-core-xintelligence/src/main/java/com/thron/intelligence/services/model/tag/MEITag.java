@@ -31,5 +31,7 @@ public enum MEITag {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("EXCEPTION") EXCEPTION,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("ITAG_MAX_NUMBER_REACHED") ITAG_MAX_NUMBER_REACHED
+	@XmlEnumValue("ITAG_MAX_NUMBER_REACHED") ITAG_MAX_NUMBER_REACHED,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("MAX_NUMBER_OF_EXTERNAL_IDS_REACHED") MAX_NUMBER_OF_EXTERNAL_IDS_REACHED
 }

@@ -200,12 +200,12 @@ class MPropertyGenericDocument extends Serializable {
 		this.compliantWith= "VIEW,PLAY"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download Contenuto Originale"
-		cd.channelDescription = "Permette all'utente di scaricare il file originale"
+		cd.channelShortName = "Download sorgente"
+		cd.channelDescription = "Download formato originale"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download Original Content"
-		cd2.channelDescription = "The user can download the original source file"
+		cd2.channelShortName = "Download source"
+		cd2.channelDescription = "Download original format"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 	}
@@ -226,12 +226,12 @@ class MPropertyGenericDocument extends Serializable {
 		this.streamServer = clientId + this.streamServer
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download"
-		cd.channelDescription = "Permette all'utente di scaricare un contenuto"
+		cd.channelShortName = "Download sorgente"
+		cd.channelDescription = "Download, formato originale"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download"
-		cd2.channelDescription = "The user can download a content"
+		cd2.channelShortName = "Download source"
+		cd2.channelDescription = "Download, original format"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.useForDownload = true
@@ -255,14 +255,14 @@ class MPropertyGenericDocument extends Serializable {
 		val cd = new MChannelDescription
 		cd.locale = "IT"
 		cd.channelShortName = "PDF"
-		cd.channelDescription = "Converte il contenuto in PDF"
+		cd.channelDescription = "Download, formato PDF"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
 		cd2.channelShortName = "PDF"
-		cd2.channelDescription = "Convert the content to pdf"
+		cd2.channelDescription = "Download, PDF format"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
-		this.useForDownload = false
+		this.useForDownload = true
 		this.convertTo="PDF"
 		this.withIngestion=true
 	}

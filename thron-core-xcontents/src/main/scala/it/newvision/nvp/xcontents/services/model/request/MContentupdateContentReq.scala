@@ -36,12 +36,4 @@ class MContentupdateContentReq extends Serializable {
 	var contentValues: MContentUpdate =_
 	def withcontentValues(p:MContentUpdate):this.type ={ 	this.contentValues = p; 	this }
 
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
-
 }

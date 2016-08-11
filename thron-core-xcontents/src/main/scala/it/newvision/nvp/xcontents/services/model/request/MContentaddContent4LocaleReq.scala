@@ -37,12 +37,4 @@ class MContentaddContent4LocaleReq extends Serializable {
 	var detail: MContent4Locale =_
 	def withdetail(p:MContent4Locale):this.type ={ 	this.detail = p; 	this }
 
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
-
 }

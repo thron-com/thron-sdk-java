@@ -53,7 +53,6 @@ class JITagClient(val resourceEndpoint:String) {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * THRON_MANAGE_CONTACTS)
 	 * 
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
@@ -135,7 +134,6 @@ class JITagClient(val resourceEndpoint:String) {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * THRON_MANAGE_CONTACTS)
 	 * 
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
@@ -207,7 +205,6 @@ class JITagClient(val resourceEndpoint:String) {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * THRON_MANAGE_CONTACTS)
 	 * 
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
@@ -276,8 +273,6 @@ class JITagClient(val resourceEndpoint:String) {
 	 * 	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A"
 	 * the service will remove both "A" and "B" tags.</li>
 	 * </ul>
-	 * 
-	 * 
 	 * 
 	 * <b>Role Validation for Tagging Users:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
@@ -354,7 +349,6 @@ class JITagClient(val resourceEndpoint:String) {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * THRON_MANAGE_CONTACTS)
 	 * 
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
 	 * @param tokenId : String
@@ -430,7 +424,6 @@ class JITagClient(val resourceEndpoint:String) {
 	 * <b>Role Validation for Tagging Contacts</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * THRON_MANAGE_CONTACTS)
-	 * 
 	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER

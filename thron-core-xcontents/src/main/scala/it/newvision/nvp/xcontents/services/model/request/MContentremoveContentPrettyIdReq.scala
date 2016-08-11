@@ -35,12 +35,4 @@ class MContentremoveContentPrettyIdReq extends Serializable {
 	var locale: String =_
 	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
-
 }

@@ -28,12 +28,12 @@ class MPropertyPagelet extends MPropertyGenericDocument with Serializable  {
 		this.compliantWith= "VIEW"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download"
-		cd.channelDescription = "Permette all'utente di visualizzare il contenuto"
+		cd.channelShortName = "HTML"
+		cd.channelDescription = "Download, formato html"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download"
-		cd2.channelDescription = "The user can view the content"
+		cd2.channelShortName = "HTML"
+		cd2.channelDescription = "Download, html format"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.useForDownload = false

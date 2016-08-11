@@ -69,12 +69,12 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 		this.withIngestion=true
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download"
-		cd.channelDescription = "Permette all'utente di scaricare un contenuto"
+		cd.channelShortName = "JPG/PNG/GIF"
+		cd.channelDescription = "Download, qualità 90, altezza 1024px"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download"
-		cd2.channelDescription = "The user can download a content"
+		cd2.channelShortName = "JPG/PNG/GIF"
+		cd2.channelDescription = "Download, quality 90, width 1024px"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.useForDownload = true
@@ -91,12 +91,12 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 		this.compliantWith= "VIEW,PLAY"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "Download HD"
-		cd.channelDescription = "Permette all'utente di scaricare un contenuto in HD"
+		cd.channelShortName = "JPG/PNG/GIF Full HD"
+		cd.channelDescription = "Download, qualità 90, altezza 1024px"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"
-		cd2.channelShortName = "Download HD"
-		cd2.channelDescription = "The user can download a content in HD"
+		cd2.channelShortName = "JPG/PNG/GIF Full HD"
+		cd2.channelDescription = "Download, quality 90, width 1024px"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.resizeWidth = 1920

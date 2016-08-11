@@ -26,12 +26,4 @@ class MITaginsertReq extends Serializable {
 	var target: MTarget =_
 	def withtarget(p:MTarget):this.type ={ 	this.target = p; 	this }
 
-	/**
-	 * Optional.
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional.""", required = true)
-	@BeanProperty
-	var suggested: Boolean =_
-	def withsuggested(p:Boolean):this.type ={ 	this.suggested = p; 	this }
-
 }
