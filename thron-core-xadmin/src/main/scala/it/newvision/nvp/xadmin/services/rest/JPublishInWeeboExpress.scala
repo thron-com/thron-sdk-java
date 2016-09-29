@@ -32,8 +32,8 @@ import com.sun.jersey.multipart._
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xadmin/resources/publishinweeboexpress/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xadmin/resources/publishinweeboexpress/ </li>
  * </ul>
  */
 @Path("/publishinweeboexpress")
@@ -41,7 +41,7 @@ import com.sun.jersey.multipart._
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xadmin/resources/publishinweeboexpress/  </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xadmin/resources/publishinweeboexpress/ </li>
 //#SWGNL#</ul>""")
 trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
@@ -98,12 +98,13 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("publishAudio",this._getCacheControl) 
 		try{
 			val resp = this.__publishAudio(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishInWeeboExpresspublishAudioReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_publishAudio)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publishAudio)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -161,12 +162,13 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("publishImage",this._getCacheControl) 
 		try{
 			val resp = this.__publishImage(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishInWeeboExpresspublishImageReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_publishImage)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publishImage)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -224,12 +226,13 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("publishPlayList",this._getCacheControl) 
 		try{
 			val resp = this.__publishPlayList(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishInWeeboExpresspublishPlayListReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_publishPlayList)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publishPlayList)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -285,12 +288,13 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("publishLiveEvent",this._getCacheControl) 
 		try{
 			val resp = this.__publishLiveEvent(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishInWeeboExpresspublishLiveEventReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_publishLiveEvent)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publishLiveEvent)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -348,12 +352,13 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("publishVideo",this._getCacheControl) 
 		try{
 			val resp = this.__publishVideo(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishInWeeboExpresspublishVideoReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_publishVideo)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publishVideo)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -411,12 +416,13 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("publishDocument",this._getCacheControl) 
 		try{
 			val resp = this.__publishDocument(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishInWeeboExpresspublishDocumentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_publishDocument)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publishDocument)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -474,12 +480,13 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("publishPagelet",this._getCacheControl) 
 		try{
 			val resp = this.__publishPagelet(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishInWeeboExpresspublishPageletReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_publishPagelet)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publishPagelet)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -529,12 +536,13 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("publishProgram",this._getCacheControl) 
 		try{
 			val resp = this.__publishProgram(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishInWeeboExpresspublishProgramReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_publishProgram)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publishProgram)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -587,12 +595,13 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("publish4MEDocument",this._getCacheControl) 
 		try{
 			val resp = this.__publish4MEDocument(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishInWeeboExpresspublish4MEDocumentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_publish4MEDocument)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publish4MEDocument)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -655,12 +664,13 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("publishContentInChannels",this._getCacheControl) 
 		try{
 			val resp = this.__publishContentInChannels(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishInWeeboExpresspublishContentInChannelsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_publishContentInChannels)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publishContentInChannels)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

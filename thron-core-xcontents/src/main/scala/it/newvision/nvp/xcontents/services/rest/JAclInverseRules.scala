@@ -100,12 +100,13 @@ trait JAclInverseRules extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("list",this._getCacheControl) 
 		try{
 			val resp = this.__list(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,targetObjId,PRestHelper.bindRequest[MAclInverseRuleslistReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_list)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_list)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -176,12 +177,13 @@ trait JAclInverseRules extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("insert",this._getCacheControl) 
 		try{
 			val resp = this.__insert(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,PRestHelper.bindRequest[MAclInverseRulesinsertReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_insert)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_insert)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -247,12 +249,13 @@ trait JAclInverseRules extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("remove",this._getCacheControl) 
 		try{
 			val resp = this.__remove(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,PRestHelper.bindRequest[MAclInverseRulesremoveReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_remove)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_remove)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -311,12 +314,13 @@ trait JAclInverseRules extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("verify",this._getCacheControl) 
 		try{
 			val resp = this.__verify(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,PRestHelper.bindRequest[MAclInverseRulesverifyReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_verify)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_verify)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

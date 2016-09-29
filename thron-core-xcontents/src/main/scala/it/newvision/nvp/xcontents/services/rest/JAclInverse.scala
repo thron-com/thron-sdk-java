@@ -88,12 +88,13 @@ trait JAclInverse extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getAclDetail",this._getCacheControl) 
 		try{
 			val resp = this.__getAclDetail(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAclInversegetAclDetailReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getAclDetail)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getAclDetail)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -157,12 +158,13 @@ trait JAclInverse extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addAclRules",this._getCacheControl) 
 		try{
 			val resp = this.__addAclRules(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAclInverseaddAclRulesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addAclRules)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addAclRules)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -214,12 +216,13 @@ trait JAclInverse extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("verifyAclRule",this._getCacheControl) 
 		try{
 			val resp = this.__verifyAclRule(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAclInverseverifyAclRuleReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_verifyAclRule)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_verifyAclRule)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -278,12 +281,13 @@ trait JAclInverse extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("deleteAclRules",this._getCacheControl) 
 		try{
 			val resp = this.__deleteAclRules(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAclInversedeleteAclRulesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_deleteAclRules)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_deleteAclRules)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

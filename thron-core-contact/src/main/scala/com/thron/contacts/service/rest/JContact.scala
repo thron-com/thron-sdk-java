@@ -24,7 +24,7 @@ import com.thron.contacts.service.model.request.MContactlistKeyReq
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
+ * 	<li>REST service: https://clientId-view.thron.
  * com/contactunit/xcontact/resources/contact</li>
  * </ul>
  */
@@ -33,7 +33,7 @@ import com.thron.contacts.service.model.request.MContactlistKeyReq
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/contactunit/xcontact/resources/contact</li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/contactunit/xcontact/resources/contact</li>
 //#SWGNL#</ul>""")
 trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
@@ -46,11 +46,14 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * List of Contacts ordered by accessedDate
+	 * List of Contacts ordered by accessedDate.
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_USE_CONTACTS</li>
+	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MARKETING_USE_CONTACTS (THRON Content Marketing App in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -61,11 +64,14 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/list/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/list", notes = """List of Contacts ordered by accessedDate
+	//#SWG#@ApiOperation(value = "/list", notes = """List of Contacts ordered by accessedDate.
 	//#SWGNL#
 	//#SWGNL#RoleValidation:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>THRON_USE_CONTACTS</li>
+	//#SWGNL#	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MARKETING_USE_CONTACTS (THRON Content Marketing App in Marketplace)</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContactList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -122,7 +128,7 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_MANAGE_CONTACTS</li>
+	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -137,7 +143,7 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#RoleValidation:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>THRON_MANAGE_CONTACTS</li>
+	//#SWGNL#	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContactDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -194,7 +200,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_USE_CONTACTS</li>
+	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	 * 	<li>MARKETING_USE_CONTACTS (THRON Content MarketingApp in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -211,7 +218,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#RoleValidation:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>THRON_USE_CONTACTS</li>
+	//#SWGNL#	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	//#SWGNL#	<li>MARKETING_USE_CONTACTS (THRON Content MarketingApp in Marketplace)</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContactList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listGet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -263,7 +271,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_MANAGE_CONTACTS</li>
+	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
+	 * 	<li>SALES_EDIT_CONTACTS</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -282,7 +291,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#RoleValidation:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>THRON_MANAGE_CONTACTS</li>
+	//#SWGNL#	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
+	//#SWGNL#	<li>SALES_EDIT_CONTACTS</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContactDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -346,6 +356,7 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * RoleValidation:
 	 * <ul>
 	 * 	<li>THRON_MANAGE_CONTACTS</li>
+	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -367,6 +378,7 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#RoleValidation:
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>THRON_MANAGE_CONTACTS</li>
+	//#SWGNL#	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContactDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -423,7 +435,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_MANAGE_CONTACTS</li>
+	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
+	 * 	<li>SALES_EDIT_CONTACTS</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -438,7 +451,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#RoleValidation:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>THRON_MANAGE_CONTACTS</li>
+	//#SWGNL#	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
+	//#SWGNL#	<li>SALES_EDIT_CONTACTS</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContactDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -495,7 +509,10 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_USE_CONTACTS</li>
+	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MARKETING_USE_CONTACTS (THRON Content Marketing App in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -509,7 +526,10 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#RoleValidation:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>THRON_USE_CONTACTS</li>
+	//#SWGNL#	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MARKETING_USE_CONTACTS (THRON Content Marketing App in Marketplace)</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContactDeviceDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -554,7 +574,10 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_USE_CONTACTS</li>
+	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MARKETING_USE_CONTACTS (THRON Content MarketingApp in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -569,7 +592,10 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#RoleValidation:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>THRON_USE_CONTACTS</li>
+	//#SWGNL#	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MARKETING_USE_CONTACTS (THRON Content MarketingApp in Marketplace)</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContactListKey])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)

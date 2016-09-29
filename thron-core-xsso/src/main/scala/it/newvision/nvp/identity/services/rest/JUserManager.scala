@@ -88,12 +88,13 @@ trait JUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("create",this._getCacheControl) 
 		try{
 			val resp = this.__create(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUserManagercreateReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_create)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_create)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -145,12 +146,13 @@ trait JUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
 		try{
 			val resp = this.__update(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUserManagerupdateReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_update)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -210,10 +212,11 @@ trait JUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("remove",this._getCacheControl) 
 		try{	
 			val resp = this.__remove(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,username_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_remove)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_remove)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -278,10 +281,11 @@ trait JUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("changePassword",this._getCacheControl) 
 		try{	
 			val resp = this.__changePassword(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,username_q,newpassword_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_changePassword)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_changePassword)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -333,12 +337,13 @@ trait JUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("changeUserStatus",this._getCacheControl) 
 		try{
 			val resp = this.__changeUserStatus(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUserManagerchangeUserStatusReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_changeUserStatus)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_changeUserStatus)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -390,12 +395,13 @@ trait JUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateCapabilitiesAndRoles",this._getCacheControl) 
 		try{
 			val resp = this.__updateCapabilitiesAndRoles(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUserManagerupdateCapabilitiesAndRolesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateCapabilitiesAndRoles)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateCapabilitiesAndRoles)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -451,12 +457,13 @@ trait JUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("detail",this._getCacheControl) 
 		try{
 			val resp = this.__detail(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUserManagerdetailReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_detail)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -508,12 +515,13 @@ trait JUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("findByProperties",this._getCacheControl) 
 		try{
 			val resp = this.__findByProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUserManagerfindByPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_findByProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findByProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

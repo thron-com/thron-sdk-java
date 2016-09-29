@@ -13,6 +13,7 @@ import it.newvision.nvp.test.services.model.msg.METestEnum
 @XmlRootElement(name="MTestClass") 
 @XmlType(name="MTestClass")
 //#SWG#@ApiModel(description = """""")
+@Deprecated
 class MTestClass extends MTestBaseClass with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
@@ -92,7 +93,9 @@ class MTestClass extends MTestBaseClass with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
+	@Deprecated
 	var lbool: List[Boolean] = new ArrayList[Boolean]
+	@Deprecated
 	def withlbool(p:List[Boolean]):this.type ={ 	this.lbool = p; 	this }
 
 	/**

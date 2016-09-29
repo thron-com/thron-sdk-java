@@ -33,12 +33,4 @@ class MPlaylistupdateReq extends Serializable {
 	var xcontentList: MContentList =_
 	def withxcontentList(p:MContentList):this.type ={ 	this.xcontentList = p; 	this }
 
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
-
 }

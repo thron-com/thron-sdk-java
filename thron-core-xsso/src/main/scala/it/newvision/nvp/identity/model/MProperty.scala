@@ -337,7 +337,8 @@ class MProperty extends Serializable {
 	
 		StringUtils.isBlank(currency) || {
 			try {
-				Option(java.util.Currency.getInstance(currency)).isDefined
+				val c = StringUtils.substringBefore(currency,"-")
+				Option(java.util.Currency.getInstance(c)).isDefined
 			} catch {
 				case e: IllegalArgumentException => false
 			}

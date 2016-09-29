@@ -105,12 +105,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("insert",this._getCacheControl) 
 		try{
 			val resp = this.__insert(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MIMetadatainsertReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_insert)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_insert)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -195,12 +196,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("remove",this._getCacheControl) 
 		try{
 			val resp = this.__remove(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,key,PRestHelper.bindRequest[MIMetadataremoveReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_remove)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_remove)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -277,12 +279,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
 		try{
 			val resp = this.__update(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MIMetadataupdateReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_update)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -359,12 +362,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkInsert",this._getCacheControl) 
 		try{
 			val resp = this.__bulkInsert(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MIMetadatabulkInsertReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_bulkInsert)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkInsert)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -441,12 +445,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkRemove",this._getCacheControl) 
 		try{
 			val resp = this.__bulkRemove(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MIMetadatabulkRemoveReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_bulkRemove)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkRemove)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -523,12 +528,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkInsertMultiTargets",this._getCacheControl) 
 		try{
 			val resp = this.__bulkInsertMultiTargets(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MIMetadatabulkInsertMultiTargetsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_bulkInsertMultiTargets)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkInsertMultiTargets)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -605,12 +611,13 @@ trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkRemoveMultiTargets",this._getCacheControl) 
 		try{
 			val resp = this.__bulkRemoveMultiTargets(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MIMetadatabulkRemoveMultiTargetsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_bulkRemoveMultiTargets)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkRemoveMultiTargets)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

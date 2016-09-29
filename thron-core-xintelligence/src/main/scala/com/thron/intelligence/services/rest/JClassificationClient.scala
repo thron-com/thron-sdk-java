@@ -90,9 +90,6 @@ class JClassificationClient(val resourceEndpoint:String) {
 	/**
 	 * Lists the client's Classification. This method return the classifications matching the given search
 	 * criteria.
-	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MClassificationlistReq
@@ -140,9 +137,6 @@ class JClassificationClient(val resourceEndpoint:String) {
 
 	/**
 	 * Lists the client's Classification. This method return all classification by default.
-	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param text : String

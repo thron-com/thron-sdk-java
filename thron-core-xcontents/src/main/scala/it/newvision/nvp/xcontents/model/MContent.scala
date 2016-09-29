@@ -225,19 +225,6 @@ class MContent extends Serializable {
 	var version: Long =_
 	def withversion(p:Long):this.type ={ 	this.version = p; 	this }
 
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var tags: List[MTag] = new ArrayList[MTag]
-	  def withtags(p:List[MTag]):this.type ={ 	this.tags = p; 	this }
-
-	/**
-	 * name and description values for the content in multilocale
-	 */
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """name and description values for the content in multilocale""")
-	var locales: List[MContent4Locale] = new ArrayList[MContent4Locale]
-	  def withlocales(p:List[MContent4Locale]):this.type ={ 	this.locales = p; 	this }
-
 	/**
 	 * The metadata's collection can be used to add custom information to any contents.
 	 * The collection is used also to store some special information and for this
@@ -258,6 +245,42 @@ class MContent extends Serializable {
 	  def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
 
 	/**
+	 * The linkedContents collection is used to store the connection between two
+	 * contents. the linkedContents is particularly used to record:
+	 * 1) the list of contents belongs to a playlist
+	 * 2) the list of contents recommended by a user
+	 * 3) the list of downloadable content specified by a user.
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """The linkedContents collection is used to store the connection between two contents. the linkedContents is particularly used to record://#SWGNL#1) the list of contents belongs to a playlist//#SWGNL#2) the list of contents recommended by a user//#SWGNL#3) the list of downloadable content specified by a user.""")
+	var linkedContents: List[MContent] = new ArrayList[MContent]
+	  def withlinkedContents(p:List[MContent]):this.type ={ 	this.linkedContents = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var tags: List[MTag] = new ArrayList[MTag]
+	  def withtags(p:List[MTag]):this.type ={ 	this.tags = p; 	this }
+
+	/**
+	 * itags are now returned in the response if the token used to perform the request
+	 * is related to a user with the proper permission to see the classifications.
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """itags are now returned in the response if the token used to perform the request is related to a user with the proper permission to see the classifications.""")
+	var itags: List[MITag] = new ArrayList[MITag]
+	  def withitags(p:List[MITag]):this.type ={ 	this.itags = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var providers: List[MGenericProvider] = new ArrayList[MGenericProvider]
+	  def withproviders(p:List[MGenericProvider]):this.type ={ 	this.providers = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var weebo: MWeeboProvider =_
+	  def withweebo(p:MWeeboProvider):this.type ={ 	this.weebo = p; 	this }
+
+	/**
 	 * imetadata are now returned in the response if the token used to perform the
 	 * request is related to a user with the proper permission to see the
 	 * classifications and itags
@@ -276,35 +299,12 @@ class MContent extends Serializable {
 	  def withembedCodes(p:List[MPlayerEmbedCode]):this.type ={ 	this.embedCodes = p; 	this }
 
 	/**
-	 * The linkedContents collection is used to store the connection between two
-	 * contents. the linkedContents is particularly used to record:
-	 * 1) the list of contents belongs to a playlist
-	 * 2) the list of contents recommended by a user
-	 * 3) the list of downloadable content specified by a user.
+	 * name and description values for the content in multilocale
 	 */
 	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """The linkedContents collection is used to store the connection between two contents. the linkedContents is particularly used to record://#SWGNL#1) the list of contents belongs to a playlist//#SWGNL#2) the list of contents recommended by a user//#SWGNL#3) the list of downloadable content specified by a user.""")
-	var linkedContents: List[MContent] = new ArrayList[MContent]
-	  def withlinkedContents(p:List[MContent]):this.type ={ 	this.linkedContents = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var weebo: MWeeboProvider =_
-	  def withweebo(p:MWeeboProvider):this.type ={ 	this.weebo = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var providers: List[MGenericProvider] = new ArrayList[MGenericProvider]
-	  def withproviders(p:List[MGenericProvider]):this.type ={ 	this.providers = p; 	this }
-
-	/**
-	 * itags are now returned in the response if the token used to perform the request
-	 * is related to a user with the proper permission to see the classifications.
-	 */
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """itags are now returned in the response if the token used to perform the request is related to a user with the proper permission to see the classifications.""")
-	var itags: List[MITag] = new ArrayList[MITag]
-	  def withitags(p:List[MITag]):this.type ={ 	this.itags = p; 	this }
+	//#SWG#@ApiModelProperty(value = """name and description values for the content in multilocale""")
+	var locales: List[MContent4Locale] = new ArrayList[MContent4Locale]
+	  def withlocales(p:List[MContent4Locale]):this.type ={ 	this.locales = p; 	this }
 
 	/**
 	 * @return Boolean

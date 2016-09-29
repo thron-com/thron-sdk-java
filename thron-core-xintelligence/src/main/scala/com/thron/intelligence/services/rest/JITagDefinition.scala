@@ -128,12 +128,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("insert",this._getCacheControl) 
 		try{
 			val resp = this.__insert(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitioninsertReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_insert)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_insert)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -204,12 +205,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("list",this._getCacheControl) 
 		try{
 			val resp = this.__list(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitionlistReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_list)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_list)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -473,12 +475,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
 		try{
 			val resp = this.__update(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,id,PRestHelper.bindRequest[MITagDefinitionupdateReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_update)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -566,12 +569,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("remove",this._getCacheControl) 
 		try{
 			val resp = this.__remove(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,id,PRestHelper.bindRequest[MITagDefinitionremoveReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_remove)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_remove)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -663,12 +667,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("combine",this._getCacheControl) 
 		try{
 			val resp = this.__combine(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitioncombineReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_combine)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_combine)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -771,12 +776,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("divide",this._getCacheControl) 
 		try{
 			val resp = this.__divide(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitiondivideReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_divide)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_divide)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -864,12 +870,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("merge",this._getCacheControl) 
 		try{
 			val resp = this.__merge(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitionmergeReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_merge)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_merge)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -970,12 +977,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("extract",this._getCacheControl) 
 		try{
 			val resp = this.__extract(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitionextractReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_extract)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_extract)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -1046,12 +1054,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("listJoined",this._getCacheControl) 
 		try{
 			val resp = this.__listJoined(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitionlistJoinedReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_listJoined)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_listJoined)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -1151,12 +1160,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("linkMetadataDefinition",this._getCacheControl) 
 		try{
 			val resp = this.__linkMetadataDefinition(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,itagId,PRestHelper.bindRequest[MITagDefinitionlinkMetadataDefinitionReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_linkMetadataDefinition)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_linkMetadataDefinition)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -1236,12 +1246,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("unlinkMetadataDefinition",this._getCacheControl) 
 		try{
 			val resp = this.__unlinkMetadataDefinition(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,itagId,PRestHelper.bindRequest[MITagDefinitionunlinkMetadataDefinitionReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_unlinkMetadataDefinition)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_unlinkMetadataDefinition)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -1328,12 +1339,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateTagMetadata",this._getCacheControl) 
 		try{
 			val resp = this.__updateTagMetadata(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,itagId,PRestHelper.bindRequest[MITagDefinitionupdateTagMetadataReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateTagMetadata)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateTagMetadata)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -1421,12 +1433,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addExternalId",this._getCacheControl) 
 		try{
 			val resp = this.__addExternalId(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,id,PRestHelper.bindRequest[MITagDefinitionaddExternalIdReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addExternalId)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addExternalId)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -1504,12 +1517,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeExternalId",this._getCacheControl) 
 		try{
 			val resp = this.__removeExternalId(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,id,PRestHelper.bindRequest[MITagDefinitionremoveExternalIdReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeExternalId)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeExternalId)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -1579,12 +1593,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("listExternalIdKeys",this._getCacheControl) 
 		try{
 			val resp = this.__listExternalIdKeys(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagDefinitionlistExternalIdKeysReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_listExternalIdKeys)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_listExternalIdKeys)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

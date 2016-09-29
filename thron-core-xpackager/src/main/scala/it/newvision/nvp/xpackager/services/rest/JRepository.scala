@@ -116,12 +116,13 @@ trait JRepository extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addFilesToPlatform",this._getCacheControl) 
 		try{
 			val resp = this.__addFilesToPlatform(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryaddFilesToPlatformReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addFilesToPlatform)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addFilesToPlatform)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -173,12 +174,13 @@ trait JRepository extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addS3ResourceToPlatform",this._getCacheControl) 
 		try{
 			val resp = this.__addS3ResourceToPlatform(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryaddS3ResourceToPlatformReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addS3ResourceToPlatform)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addS3ResourceToPlatform)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -228,12 +230,13 @@ trait JRepository extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addWebResourceToPlatform",this._getCacheControl) 
 		try{
 			val resp = this.__addWebResourceToPlatform(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryaddWebResourceToPlatformReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addWebResourceToPlatform)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addWebResourceToPlatform)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -310,12 +313,13 @@ trait JRepository extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("deleteFtpFile",this._getCacheControl) 
 		try{
 			val resp = this.__deleteFtpFile(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositorydeleteFtpFileReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_deleteFtpFile)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_deleteFtpFile)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -376,12 +380,13 @@ trait JRepository extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getUploadedFileList",this._getCacheControl) 
 		try{
 			val resp = this.__getUploadedFileList(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositorygetUploadedFileListReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getUploadedFileList)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getUploadedFileList)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -441,12 +446,13 @@ trait JRepository extends it.newvision.nvp.core.libraries.restserver.BaseResourc
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getFtpFileList",this._getCacheControl) 
 		try{
 			val resp = this.__getFtpFileList(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositorygetFtpFileListReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getFtpFileList)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getFtpFileList)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

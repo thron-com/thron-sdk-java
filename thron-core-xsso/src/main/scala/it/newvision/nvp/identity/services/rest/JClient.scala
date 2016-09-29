@@ -85,12 +85,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("register",this._getCacheControl) 
 		try{
 			val resp = this.__register(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MClientregisterReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_register)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_register)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -140,12 +141,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
 		try{
 			val resp = this.__update(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MClientupdateReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_update)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -194,12 +196,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("remove",this._getCacheControl) 
 		try{
 			val resp = this.__remove(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MClientremoveReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_remove)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_remove)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -248,12 +251,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("detail",this._getCacheControl) 
 		try{
 			val resp = this.__detail(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MClientdetailReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_detail)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -305,12 +309,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("findByProperties",this._getCacheControl) 
 		try{
 			val resp = this.__findByProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MClientfindByPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_findByProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findByProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -356,12 +361,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getAllClientsId",this._getCacheControl) 
 		try{
 			val resp = this.__getAllClientsId(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 				
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getAllClientsId)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getAllClientsId)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -411,12 +417,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateClientStatus",this._getCacheControl) 
 		try{
 			val resp = this.__updateClientStatus(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MClientupdateClientStatusReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateClientStatus)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateClientStatus)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -463,12 +470,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getSiteAccelerationList",this._getCacheControl) 
 		try{
 			val resp = this.__getSiteAccelerationList(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 				
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getSiteAccelerationList)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getSiteAccelerationList)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -516,12 +524,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getPlayerInfo",this._getCacheControl) 
 		try{
 			val resp = this.__getPlayerInfo(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 				
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getPlayerInfo)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getPlayerInfo)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

@@ -206,7 +206,9 @@ class MPropertyWeebo extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """enable the remove protection of source files in repository. The removed source files are stored in a safe area for retention time""" ,required = true)
 	@BeanProperty 
+	@Deprecated
 	var safeRepository: Boolean  = true
+	@Deprecated
 	def withsafeRepository(p:Boolean):this.type ={ 	this.safeRepository = p; 	this }
 
 	/**

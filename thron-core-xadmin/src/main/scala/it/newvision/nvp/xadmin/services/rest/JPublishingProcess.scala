@@ -31,8 +31,8 @@ import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessgetConte
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xadmin/resources/publishingprocess </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xadmin/resources/publishingprocess</li>
  * </ul>
  */
 @Path("/publishingprocess")
@@ -40,7 +40,7 @@ import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessgetConte
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xadmin/resources/publishingprocess </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xadmin/resources/publishingprocess</li>
 //#SWGNL#</ul>""")
 trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
@@ -100,12 +100,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("newContent",this._getCacheControl) 
 		try{
 			val resp = this.__newContent(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcessnewContentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_newContent)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_newContent)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -164,12 +165,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("newPageletContent",this._getCacheControl) 
 		try{
 			val resp = this.__newPageletContent(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcessnewPageletContentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_newPageletContent)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_newPageletContent)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -219,12 +221,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updatePageletContent",this._getCacheControl) 
 		try{
 			val resp = this.__updatePageletContent(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcessupdatePageletContentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updatePageletContent)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updatePageletContent)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -284,12 +287,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("newLiveEventContent",this._getCacheControl) 
 		try{
 			val resp = this.__newLiveEventContent(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcessnewLiveEventContentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_newLiveEventContent)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_newLiveEventContent)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -349,12 +353,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("newPlayListContent",this._getCacheControl) 
 		try{
 			val resp = this.__newPlayListContent(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcessnewPlayListContentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_newPlayListContent)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_newPlayListContent)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -406,12 +411,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("createContentForChannel",this._getCacheControl) 
 		try{
 			val resp = this.__createContentForChannel(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcesscreateContentForChannelReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_createContentForChannel)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_createContentForChannel)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -470,12 +476,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("publishChannel",this._getCacheControl) 
 		try{
 			val resp = this.__publishChannel(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcesspublishChannelReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_publishChannel)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publishChannel)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -525,12 +532,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("changeChannelStatus",this._getCacheControl) 
 		try{
 			val resp = this.__changeChannelStatus(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcesschangeChannelStatusReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_changeChannelStatus)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_changeChannelStatus)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -581,12 +589,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeChannel",this._getCacheControl) 
 		try{
 			val resp = this.__removeChannel(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcessremoveChannelReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeChannel)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeChannel)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -637,12 +646,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("unpublishContent",this._getCacheControl) 
 		try{
 			val resp = this.__unpublishContent(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcessunpublishContentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_unpublishContent)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_unpublishContent)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -692,12 +702,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("replaceThumbnailInPublishedContent",this._getCacheControl) 
 		try{
 			val resp = this.__replaceThumbnailInPublishedContent(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcessreplaceThumbnailInPublishedContentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_replaceThumbnailInPublishedContent)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_replaceThumbnailInPublishedContent)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -747,12 +758,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updatePublishingProperties",this._getCacheControl) 
 		try{
 			val resp = this.__updatePublishingProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcessupdatePublishingPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updatePublishingProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updatePublishingProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -805,12 +817,13 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getContentTypes",this._getCacheControl) 
 		try{
 			val resp = this.__getContentTypes(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPublishingProcessgetContentTypesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getContentTypes)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getContentTypes)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

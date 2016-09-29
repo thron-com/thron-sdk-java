@@ -116,14 +116,6 @@ class MITagDefinition extends Serializable {
 	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	/**
-	 * Deprecated
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated""")
-	@BeanProperty 
-	var oldIds: List[String] = new ArrayList[String]
-	def witholdIds(p:List[String]):this.type ={ 	this.oldIds = p; 	this }
-
-	/**
 	 * list of all combined/merged ITagDefinition ids.
 	 */
 	//#SWG#@ApiModelProperty(value = """list of all combined/merged ITagDefinition ids.""")

@@ -71,12 +71,13 @@ trait JRating extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("insertRating",this._getCacheControl) 
 		try{
 			val resp = this.__insertRating(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRatinginsertRatingReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_insertRating)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_insertRating)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -191,12 +192,13 @@ trait JRating extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("findRatingByProperties",this._getCacheControl) 
 		try{
 			val resp = this.__findRatingByProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRatingfindRatingByPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_findRatingByProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findRatingByProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -247,12 +249,13 @@ trait JRating extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeRatings",this._getCacheControl) 
 		try{
 			val resp = this.__removeRatings(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRatingremoveRatingsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeRatings)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeRatings)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

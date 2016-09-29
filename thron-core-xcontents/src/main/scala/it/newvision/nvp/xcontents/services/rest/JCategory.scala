@@ -112,12 +112,13 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("createCategory",this._getCacheControl) 
 		try{
 			val resp = this.__createCategory(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCategorycreateCategoryReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_createCategory)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_createCategory)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -177,12 +178,13 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addCategory4Locale",this._getCacheControl) 
 		try{
 			val resp = this.__addCategory4Locale(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCategoryaddCategory4LocaleReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addCategory4Locale)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addCategory4Locale)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -242,12 +244,13 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeCategory4Locale",this._getCacheControl) 
 		try{
 			val resp = this.__removeCategory4Locale(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCategoryremoveCategory4LocaleReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeCategory4Locale)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeCategory4Locale)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -307,12 +310,13 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateCategory4Locale",this._getCacheControl) 
 		try{
 			val resp = this.__updateCategory4Locale(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCategoryupdateCategory4LocaleReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateCategory4Locale)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateCategory4Locale)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -396,10 +400,11 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeCategory",this._getCacheControl) 
 		try{	
 			val resp = this.__removeCategory(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,catId_q,cascade_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeCategory)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeCategory)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -450,12 +455,13 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("findByProperties2",this._getCacheControl) 
 		try{
 			val resp = this.__findByProperties2(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCategoryfindByProperties2Req](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_findByProperties2)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findByProperties2)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -517,12 +523,13 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateCategory",this._getCacheControl) 
 		try{
 			val resp = this.__updateCategory(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCategoryupdateCategoryReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateCategory)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateCategory)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -653,12 +660,13 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addCategoryPrettyId",this._getCacheControl) 
 		try{
 			val resp = this.__addCategoryPrettyId(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCategoryaddCategoryPrettyIdReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addCategoryPrettyId)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addCategoryPrettyId)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -718,12 +726,13 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateCategoryPrettyId",this._getCacheControl) 
 		try{
 			val resp = this.__updateCategoryPrettyId(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCategoryupdateCategoryPrettyIdReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateCategoryPrettyId)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateCategoryPrettyId)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -783,12 +792,13 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeCategoryPrettyId",this._getCacheControl) 
 		try{
 			val resp = this.__removeCategoryPrettyId(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCategoryremoveCategoryPrettyIdReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeCategoryPrettyId)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeCategoryPrettyId)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -846,12 +856,13 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("verifyCategoryPrettyId",this._getCacheControl) 
 		try{
 			val resp = this.__verifyCategoryPrettyId(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,PRestHelper.bindRequest[MCategoryverifyCategoryPrettyIdReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_verifyCategoryPrettyId)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_verifyCategoryPrettyId)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

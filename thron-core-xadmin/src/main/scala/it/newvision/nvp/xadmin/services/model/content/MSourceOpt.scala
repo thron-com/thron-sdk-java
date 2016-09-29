@@ -1,0 +1,76 @@
+package it.newvision.nvp.xadmin.services.model.content
+import _root_.java.util._ 
+import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}  
+//#SWG#import com.wordnik.swagger.annotations._ 
+import _root_.scala.beans.BeanProperty 
+import javax.xml.bind.annotation._ 
+
+/* ************************
+*  GENERATED CLASS
+*  DO NOT APPLY ANY CHANGES
+****************************/
+/**
+ * the original uploaded file used during the publishing process.
+ */
+@XmlRootElement(name="MSourceOpt") 
+@XmlType(name="MSourceOpt")
+//#SWG#@ApiModel(description = """""")
+class MSourceOpt extends Serializable {
+
+	/**
+	 * import from repository
+	 */
+	//#SWG#@ApiModelProperty(value = """import from repository""")
+	@BeanProperty 
+	var repo: MSourceRepoOpt =_
+	def withrepo(p:MSourceRepoOpt):this.type ={ 	this.repo = p; 	this }
+
+	/**
+	 * upload from ftp
+	 */
+	//#SWG#@ApiModelProperty(value = """upload from ftp""")
+	@BeanProperty 
+	var ftp: MSourceFtpOpt =_
+	def withftp(p:MSourceFtpOpt):this.type ={ 	this.ftp = p; 	this }
+
+	/**
+	 * upload from AWS S3
+	 */
+	//#SWG#@ApiModelProperty(value = """upload from AWS S3""")
+	@BeanProperty 
+	var s3: MSourceS3Opt =_
+	def withs3(p:MSourceS3Opt):this.type ={ 	this.s3 = p; 	this }
+
+	/**
+	 * upload from web resource
+	 */
+	//#SWG#@ApiModelProperty(value = """upload from web resource""")
+	@BeanProperty 
+	var web: MSourceWebOpt =_
+	def withweb(p:MSourceWebOpt):this.type ={ 	this.web = p; 	this }
+
+	/**
+	 * upload raw data. Used for Pagelet Contents, or Thumbnail images
+	 */
+	//#SWG#@ApiModelProperty(value = """upload raw data. Used for Pagelet Contents, or Thumbnail images""")
+	@BeanProperty 
+	var raw: MSourceRawOpt =_
+	def withraw(p:MSourceRawOpt):this.type ={ 	this.raw = p; 	this }
+
+	/**
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def validate(){
+		import scala.collection.JavaConversions._
+		if(Option(repo).isEmpty && Option(ftp).isEmpty && Option(s3).isEmpty && Option(web).isEmpty &&
+			Option(raw).isEmpty) throw new IllegalArgumentException("One of the source inner parameter must be defined")
+		Option(repo).foreach{_.validate()}
+		Option(ftp).foreach{_.validate()}
+		Option(s3).foreach{_.validate()}
+		Option(web).foreach{_.validate()}
+		Option(raw).foreach{_.validate()}
+	}
+
+}

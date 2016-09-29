@@ -89,12 +89,13 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addGroupApp",this._getCacheControl) 
 		try{
 			val resp = this.__addGroupApp(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAppsAdminaddGroupAppReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addGroupApp)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addGroupApp)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -146,12 +147,13 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addUserApp",this._getCacheControl) 
 		try{
 			val resp = this.__addUserApp(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAppsAdminaddUserAppReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addUserApp)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addUserApp)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -219,12 +221,13 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("create",this._getCacheControl) 
 		try{
 			val resp = this.__create(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAppsAdmincreateReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_create)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_create)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -276,12 +279,13 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("remove",this._getCacheControl) 
 		try{
 			val resp = this.__remove(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAppsAdminremoveReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_remove)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_remove)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -333,12 +337,13 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeGroupApp",this._getCacheControl) 
 		try{
 			val resp = this.__removeGroupApp(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAppsAdminremoveGroupAppReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeGroupApp)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeGroupApp)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -398,12 +403,13 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateApp",this._getCacheControl) 
 		try{
 			val resp = this.__updateApp(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAppsAdminupdateAppReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateApp)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateApp)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -463,12 +469,13 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeUserApp",this._getCacheControl) 
 		try{
 			val resp = this.__removeUserApp(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAppsAdminremoveUserAppReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeUserApp)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeUserApp)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -545,12 +552,13 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("generateKey",this._getCacheControl) 
 		try{
 			val resp = this.__generateKey(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,PRestHelper.bindRequest[MAppsAdmingenerateKeyReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_generateKey)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_generateKey)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -617,12 +625,13 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateKey",this._getCacheControl) 
 		try{
 			val resp = this.__updateKey(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,PRestHelper.bindRequest[MAppsAdminupdateKeyReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateKey)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateKey)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -689,12 +698,13 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeKey",this._getCacheControl) 
 		try{
 			val resp = this.__removeKey(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,PRestHelper.bindRequest[MAppsAdminremoveKeyReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeKey)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeKey)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -761,12 +771,13 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("listKey",this._getCacheControl) 
 		try{
 			val resp = this.__listKey(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,PRestHelper.bindRequest[MAppsAdminlistKeyReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_listKey)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_listKey)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

@@ -30,4 +30,13 @@ class MAppAddCapability extends Serializable {
 	var addUserRoles: List[String] = new ArrayList[String]
 	def withaddUserRoles(p:List[String]):this.type ={ 	this.addUserRoles = p; 	this }
 
+	/**
+	 * @return Boolean
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def isValid():Boolean ={
+		true
+	}
+
 }

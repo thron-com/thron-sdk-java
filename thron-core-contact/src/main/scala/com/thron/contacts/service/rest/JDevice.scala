@@ -17,7 +17,7 @@ import com.thron.contacts.service.model.request.MDevicedisconnectReq
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-device.thron.
+ * 	<li>REST service: https://clientId-device.thron.
  * com/api/xdevice/resources/device</li>
  * </ul>
  */
@@ -26,7 +26,7 @@ import com.thron.contacts.service.model.request.MDevicedisconnectReq
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-device.thron.com/api/xdevice/resources/device</li>
+//#SWGNL#	<li>REST service: https://clientId-device.thron.com/api/xdevice/resources/device</li>
 //#SWGNL#</ul>""")
 trait JDevice extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
@@ -39,8 +39,10 @@ trait JDevice extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Connect a Device to a Contact with the given identityKey.
-	 * If there are no contacts matching the identityKey, a new contact is created.
+	 * Connect a Device to an Identified Contact with the given identityKey.
+	 * If there are no contacts matching the identityKey, a new contact is created (<b>Only with THRON
+	 * Sales Insights application active</b>)
+	 * 
 	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
 	 * @param param : MDeviceconnectReq
@@ -50,8 +52,9 @@ trait JDevice extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/connect")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/connect", notes = """Connect a Device to a Contact with the given identityKey. 
-	//#SWGNL#If there are no contacts matching the identityKey, a new contact is created.
+	//#SWG#@ApiOperation(value = "/connect", notes = """Connect a Device to an Identified Contact with the given identityKey. 
+	//#SWGNL#If there are no contacts matching the identityKey, a new contact is created (<b>Only with THRON Sales Insights application active</b>)
+	//#SWGNL#
 	//#SWGNL#Authentication token is not required (X-TOKENID).""", response = classOf[MResponseDeviceConnect])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def connect(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)

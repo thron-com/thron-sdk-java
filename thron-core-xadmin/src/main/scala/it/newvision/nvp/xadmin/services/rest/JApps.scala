@@ -171,12 +171,13 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("appDetail",this._getCacheControl) 
 		try{
 			val resp = this.__appDetail(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAppsappDetailReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_appDetail)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_appDetail)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -230,12 +231,13 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("findByProperties",this._getCacheControl) 
 		try{
 			val resp = this.__findByProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAppsfindByPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_findByProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findByProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -287,12 +289,13 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("appsList",this._getCacheControl) 
 		try{
 			val resp = this.__appsList(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAppsappsListReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_appsList)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_appsList)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -349,12 +352,13 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("su",this._getCacheControl) 
 		try{
 			val resp = this.__su(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MAppssuReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_su)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_su)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

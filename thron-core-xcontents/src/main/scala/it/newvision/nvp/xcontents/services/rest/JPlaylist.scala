@@ -89,12 +89,13 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("detail",this._getCacheControl) 
 		try{
 			val resp = this.__detail(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPlaylistdetailReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_detail)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -144,12 +145,13 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
 		try{
 			val resp = this.__update(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPlaylistupdateReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_update)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -199,12 +201,13 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addContentsInQueue",this._getCacheControl) 
 		try{
 			val resp = this.__addContentsInQueue(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPlaylistaddContentsInQueueReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addContentsInQueue)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addContentsInQueue)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -254,12 +257,13 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addContents",this._getCacheControl) 
 		try{
 			val resp = this.__addContents(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPlaylistaddContentsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addContents)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addContents)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -309,12 +313,13 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("moveContentInList",this._getCacheControl) 
 		try{
 			val resp = this.__moveContentInList(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPlaylistmoveContentInListReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_moveContentInList)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_moveContentInList)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -364,12 +369,13 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeContentFromList",this._getCacheControl) 
 		try{
 			val resp = this.__removeContentFromList(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MPlaylistremoveContentFromListReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeContentFromList)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeContentFromList)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

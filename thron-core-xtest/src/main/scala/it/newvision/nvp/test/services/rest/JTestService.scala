@@ -92,12 +92,13 @@ trait JTestService extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("list",this._getCacheControl) 
 		try{
 			val resp = this.__list(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,PRestHelper.bindRequest[MTestServicelistReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_list)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_list)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -191,12 +192,13 @@ trait JTestService extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("post",this._getCacheControl) 
 		try{
 			val resp = this.__post(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MTestServicepostReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_post)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_post)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -391,10 +393,11 @@ trait JTestService extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("form",this._getCacheControl) 
 		try{	
 			val resp = this.__form(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,fakeResponse_q,pstring_q,penum_q,pdate_q,pint_q,plong_q,pbool_q,pdouble_q,pfloat_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_form)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_form)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

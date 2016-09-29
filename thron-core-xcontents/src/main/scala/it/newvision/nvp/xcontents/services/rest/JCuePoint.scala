@@ -78,12 +78,13 @@ trait JCuePoint extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getCuePoints",this._getCacheControl) 
 		try{
 			val resp = this.__getCuePoints(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCuePointgetCuePointsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getCuePoints)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getCuePoints)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -133,12 +134,13 @@ trait JCuePoint extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addCuePoints",this._getCacheControl) 
 		try{
 			val resp = this.__addCuePoints(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCuePointaddCuePointsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addCuePoints)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addCuePoints)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -188,12 +190,13 @@ trait JCuePoint extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateCuePoint",this._getCacheControl) 
 		try{
 			val resp = this.__updateCuePoint(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCuePointupdateCuePointReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateCuePoint)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateCuePoint)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -243,12 +246,13 @@ trait JCuePoint extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeCuePoints",this._getCacheControl) 
 		try{
 			val resp = this.__removeCuePoints(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCuePointremoveCuePointsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeCuePoints)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeCuePoints)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -301,12 +305,13 @@ trait JCuePoint extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("uploadSrtFile",this._getCacheControl) 
 		try{
 			val resp = this.__uploadSrtFile(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MCuePointuploadSrtFileReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_uploadSrtFile)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_uploadSrtFile)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

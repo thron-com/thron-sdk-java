@@ -87,12 +87,13 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("createGroup",this._getCacheControl) 
 		try{
 			val resp = this.__createGroup(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUsersGroupManagercreateGroupReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_createGroup)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_createGroup)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -156,12 +157,13 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
 		try{
 			val resp = this.__update(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,groupId,PRestHelper.bindRequest[MUsersGroupManagerupdateReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_update)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -225,12 +227,13 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateExternalId",this._getCacheControl) 
 		try{
 			val resp = this.__updateExternalId(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,groupId,PRestHelper.bindRequest[MUsersGroupManagerupdateExternalIdReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateExternalId)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateExternalId)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -280,12 +283,13 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("detailGroup",this._getCacheControl) 
 		try{
 			val resp = this.__detailGroup(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUsersGroupManagerdetailGroupReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_detailGroup)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detailGroup)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -334,12 +338,13 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeGroup",this._getCacheControl) 
 		try{
 			val resp = this.__removeGroup(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUsersGroupManagerremoveGroupReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_removeGroup)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeGroup)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -391,12 +396,13 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("findGroupsByProperties",this._getCacheControl) 
 		try{
 			val resp = this.__findGroupsByProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUsersGroupManagerfindGroupsByPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_findGroupsByProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findGroupsByProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -500,12 +506,13 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("linkUserToGroup",this._getCacheControl) 
 		try{
 			val resp = this.__linkUserToGroup(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUsersGroupManagerlinkUserToGroupReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_linkUserToGroup)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_linkUserToGroup)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -555,12 +562,13 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("unlinkUserToGroup",this._getCacheControl) 
 		try{
 			val resp = this.__unlinkUserToGroup(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MUsersGroupManagerunlinkUserToGroupReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_unlinkUserToGroup)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_unlinkUserToGroup)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

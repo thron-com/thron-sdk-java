@@ -35,7 +35,7 @@ class MAppOptions extends Serializable {
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def isValid():Boolean ={
-		true
+		Option(caps).forall(_.isValid())
 	}
 
 }

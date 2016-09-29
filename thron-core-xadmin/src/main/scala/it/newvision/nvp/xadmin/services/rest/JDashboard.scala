@@ -7,11 +7,6 @@ import javax.ws.rs.core._
 import it.newvision.nvp.xadmin.services.model.utils.MResponseDashboard
 import it.newvision.nvp.xadmin.services.model.request.MDashboardchangeContentsOwnerReq
 import it.newvision.nvp.xadmin.services.model.request.MDashboardmigrateUserStuffReq
-import it.newvision.nvp.xadmin.services.model.request.MDashboardreplaceSourceFilesReq
-import it.newvision.nvp.xadmin.services.model.request.MDashboardresetUserPreferencesReq
-import it.newvision.nvp.xadmin.services.model.utils.MResponseContentRemoved
-import it.newvision.nvp.xadmin.services.model.request.MDashboardtrashContentReq
-import it.newvision.nvp.xadmin.services.model.request.MDashboarduntrashContentReq
 
 /* ************************
 *  GENERATED CLASS
@@ -80,12 +75,13 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("changeContentsOwner",this._getCacheControl) 
 		try{
 			val resp = this.__changeContentsOwner(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MDashboardchangeContentsOwnerReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_changeContentsOwner)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_changeContentsOwner)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -157,12 +153,13 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("migrateUserStuff",this._getCacheControl) 
 		try{
 			val resp = this.__migrateUserStuff(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MDashboardmigrateUserStuffReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_migrateUserStuff)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_migrateUserStuff)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -174,280 +171,5 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	 protected def __migrateUserStuff(tokenId: String, param: MDashboardmigrateUserStuffReq) :MResponseDashboard
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_migrateUserStuff: String
-
-	/**
-	 * The service:
-	 * <ul>
-	 * 	<li>replace the source file linked to a content</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>republish the content in all channels with status PUBLISHED or ERROR.</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>remove the old versioned files (all sourceFiles versions) from repository if
-	 * removeOriginalFiles  parameter is TRUE</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>keep a version of the original source file (saved as link in MMediaContent.
-	 * sourceFilesOldVersion) if removeOriginalFiles parameter is set to FALSE</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>reset the user preferences of the content (the content becomes new for all users)</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>return an error if the content has some channel in progress.</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MDashboardreplaceSourceFilesReq
-	 * @return MResponseDashboard
-	*/
-	@POST
-	@Path("/replaceSourceFiles")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/replaceSourceFiles", notes = """The service:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>replace the source file linked to a content</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>republish the content in all channels with status PUBLISHED or ERROR.</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>remove the old versioned files (all sourceFiles versions) from repository if removeOriginalFiles  parameter is TRUE</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>keep a version of the original source file (saved as link in MMediaContent.sourceFilesOldVersion) if removeOriginalFiles parameter is set to FALSE</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>reset the user preferences of the content (the content becomes new for all users)</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>return an error if the content has some channel in progress.</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseDashboard])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def replaceSourceFiles(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MDashboardreplaceSourceFilesReq):Response /*returnType = MResponseDashboard*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__replaceSourceFiles(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_replaceSourceFiles)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_replaceSourceFiles)
-	    }
-	} 
-
-	@GET
-	@Path("/replaceSourceFiles")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def replaceSourceFiles_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseDashboard*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__replaceSourceFiles(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MDashboardreplaceSourceFilesReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_replaceSourceFiles)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_replaceSourceFiles)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __replaceSourceFiles(tokenId: String, param: MDashboardreplaceSourceFilesReq) :MResponseDashboard
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_replaceSourceFiles: String
-
-	/**
-	 * The service remove all user preferences from the specific content
-	 * @param tokenId : String
-	 * @param param : MDashboardresetUserPreferencesReq
-	 * @return MResponseDashboard
-	*/
-	@POST
-	@Path("/resetUserPreferences")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/resetUserPreferences", notes = """The service remove all user preferences from the specific content""", response = classOf[MResponseDashboard])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def resetUserPreferences(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MDashboardresetUserPreferencesReq):Response /*returnType = MResponseDashboard*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__resetUserPreferences(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_resetUserPreferences)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_resetUserPreferences)
-	    }
-	} 
-
-	@GET
-	@Path("/resetUserPreferences")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def resetUserPreferences_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseDashboard*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__resetUserPreferences(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MDashboardresetUserPreferencesReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_resetUserPreferences)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_resetUserPreferences)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __resetUserPreferences(tokenId: String, param: MDashboardresetUserPreferencesReq) :MResponseDashboard
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_resetUserPreferences: String
-
-	/**
-	 * move a content in TRASH category. The content is still published in CDN and can be recovered using
-	 * the service untrashContent.
-	 * 
-	 * The service remove also:
-	 * <ul>
-	 * 	<li>the contents from the linked categories</li>
-	 * 	<li>cleanup the ACL specific of the content</li>
-	 * 	<li>all linked embed codes.</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MDashboardtrashContentReq
-	 * @return MResponseContentRemoved
-	*/
-	@POST
-	@Path("/trashContent")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/trashContent", notes = """move a content in TRASH category. The content is still published in CDN and can be recovered using the service untrashContent.
-	//#SWGNL#
-	//#SWGNL#The service remove also:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>the contents from the linked categories</li>
-	//#SWGNL#	<li>cleanup the ACL specific of the content</li>
-	//#SWGNL#	<li>all linked embed codes.</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContentRemoved])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def trashContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MDashboardtrashContentReq):Response /*returnType = MResponseContentRemoved*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__trashContent(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_trashContent)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_trashContent)
-	    }
-	} 
-
-	@GET
-	@Path("/trashContent")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def trashContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentRemoved*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__trashContent(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MDashboardtrashContentReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_trashContent)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_trashContent)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __trashContent(tokenId: String, param: MDashboardtrashContentReq) :MResponseContentRemoved
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_trashContent: String
-
-	/**
-	 * Used to recover a trashContent operation.
-	 * The service restore the content in the owner's INBOX. 
-	 * @param tokenId : String
-	 * @param param : MDashboarduntrashContentReq
-	 * @return MResponseContentRemoved
-	*/
-	@POST
-	@Path("/untrashContent")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/untrashContent", notes = """Used to recover a trashContent operation. 
-	//#SWGNL#The service restore the content in the owner's INBOX. """, response = classOf[MResponseContentRemoved])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def untrashContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MDashboarduntrashContentReq):Response /*returnType = MResponseContentRemoved*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__untrashContent(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_untrashContent)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_untrashContent)
-	    }
-	} 
-
-	@GET
-	@Path("/untrashContent")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def untrashContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentRemoved*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__untrashContent(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MDashboarduntrashContentReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_untrashContent)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_untrashContent)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __untrashContent(tokenId: String, param: MDashboarduntrashContentReq) :MResponseContentRemoved
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_untrashContent: String
 
 }

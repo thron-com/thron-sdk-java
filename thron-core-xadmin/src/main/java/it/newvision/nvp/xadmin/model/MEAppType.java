@@ -48,5 +48,20 @@ public enum MEAppType {
 	 * Real Time Image Editor
 	 */
 	//#SWG#@ApiModelProperty(value = """Real Time Image Editor""")
-	@XmlEnumValue("RTIE") RTIE
+	@XmlEnumValue("RTIE") RTIE,
+	/**
+	 * Digital Asset Manager
+	 */
+	//#SWG#@ApiModelProperty(value = """Digital Asset Manager""")
+	@XmlEnumValue("OMNICHANNELDAM") OMNICHANNELDAM,
+	/**
+	 * Marking module
+	 */
+	//#SWG#@ApiModelProperty(value = """Marking module""")
+	@XmlEnumValue("THRONFORMARKETING") THRONFORMARKETING,
+	/**
+	 * Sales Module
+	 */
+	//#SWG#@ApiModelProperty(value = """Sales Module""")
+	@XmlEnumValue("THRONFORSALES") THRONFORSALES
 }

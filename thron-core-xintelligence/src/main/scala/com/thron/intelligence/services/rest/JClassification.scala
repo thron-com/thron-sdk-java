@@ -94,12 +94,13 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("insert",this._getCacheControl) 
 		try{
 			val resp = this.__insert(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,PRestHelper.bindRequest[MClassificationinsertReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_insert)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_insert)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -115,9 +116,6 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	/**
 	 * Lists the client's Classification. This method return the classifications matching the given search
 	 * criteria.
-	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MClassificationlistReq
@@ -127,10 +125,7 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/list/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/list", notes = """Lists the client's Classification. This method return the classifications matching the given search criteria.
-	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseClassificationList])
+	//#SWG#@ApiOperation(value = "/list", notes = """Lists the client's Classification. This method return the classifications matching the given search criteria.""", response = classOf[MResponseClassificationList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -163,12 +158,13 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("list",this._getCacheControl) 
 		try{
 			val resp = this.__list(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,PRestHelper.bindRequest[MClassificationlistReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_list)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_list)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -183,9 +179,6 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 
 	/**
 	 * Lists the client's Classification. This method return all classification by default.
-	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_VIEWER
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param text : String
@@ -208,10 +201,7 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@GET
 	@Path("/listGet/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/listGet", notes = """Lists the client's Classification. This method return all classification by default.
-	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASSIFICATIONS_VIEWER""", response = classOf[MResponseClassificationList])
+	//#SWG#@ApiOperation(value = "/listGet", notes = """Lists the client's Classification. This method return all classification by default.""", response = classOf[MResponseClassificationList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listGet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -278,8 +268,7 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@GET
 	@Path("/detail/{clientId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detail", notes = """<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASSIFICATIONS_VIEWER""", response = classOf[MResponseClassificationDetail])
+	//#SWG#@ApiOperation(value = "/detail", notes = """""", response = classOf[MResponseClassificationDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -381,12 +370,13 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
 		try{
 			val resp = this.__update(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,id,PRestHelper.bindRequest[MClassificationupdateReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_update)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -457,12 +447,13 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("remove",this._getCacheControl) 
 		try{
 			val resp = this.__remove(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,id	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_remove)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_remove)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

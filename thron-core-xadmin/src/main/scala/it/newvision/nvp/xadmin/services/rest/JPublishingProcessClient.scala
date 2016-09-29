@@ -40,8 +40,8 @@ object JPublishingProcessClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xadmin/resources/publishingprocess </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xadmin/resources/publishingprocess</li>
  * </ul>
  */
 class JPublishingProcessClient(val resourceEndpoint:String) {

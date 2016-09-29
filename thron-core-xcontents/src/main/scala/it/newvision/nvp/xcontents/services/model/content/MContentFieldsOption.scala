@@ -33,59 +33,60 @@ import javax.xml.bind.annotation._
 class MContentFieldsOption extends Serializable {
 
 	/**
-	 * Default false
+	 * Default=false
 	 */
-	//#SWG#@ApiModelProperty(value = """Default false""")
+	//#SWG#@ApiModelProperty(value = """Default=false""")
 	@BeanProperty 
 	var returnLinkedContents: Boolean  = false
 	def withreturnLinkedContents(p:Boolean):this.type ={ 	this.returnLinkedContents = p; 	this }
 
 	/**
-	 * Default  false
+	 * Default=false
 	 */
-	//#SWG#@ApiModelProperty(value = """Default  false""")
+	//#SWG#@ApiModelProperty(value = """Default=false""")
 	@BeanProperty 
 	var returnLinkedCategories: Boolean  = false
 	def withreturnLinkedCategories(p:Boolean):this.type ={ 	this.returnLinkedCategories = p; 	this }
 
 	/**
-	 * Default true
+	 * Default=true
 	 */
-	//#SWG#@ApiModelProperty(value = """Default true""")
+	//#SWG#@ApiModelProperty(value = """Default=true""")
 	@BeanProperty 
 	var returnEmbedCodes: Boolean  = true
 	def withreturnEmbedCodes(p:Boolean):this.type ={ 	this.returnEmbedCodes = p; 	this }
 
 	/**
-	 * Default false
+	 * Default=false
 	 */
-	//#SWG#@ApiModelProperty(value = """Default false""")
+	//#SWG#@ApiModelProperty(value = """Default=false""")
 	@BeanProperty 
 	var returnThumbnailUrl: Boolean  = false
 	def withreturnThumbnailUrl(p:Boolean):this.type ={ 	this.returnThumbnailUrl = p; 	this }
 
 	/**
 	 * return the list of itags (intelligence tags)
-	 * Default false.
+	 * Default=false
 	 */
 	//#SWG#@ApiModelProperty(value = """return the list of itags (intelligence tags)
-	//#SWGNL#Default false.""")
+	//#SWGNL#Default=false""")
 	@BeanProperty 
 	var returnItags: Boolean  = false
 	def withreturnItags(p:Boolean):this.type ={ 	this.returnItags = p; 	this }
 
 	/**
 	 * Return the list of custom metadata from intelligence
-	 * Default false.
+	 * Default=false
 	 */
 	//#SWG#@ApiModelProperty(value = """Return the list of custom metadata from intelligence
-	//#SWGNL#Default false.""")
+	//#SWGNL#Default=false""")
 	@BeanProperty 
 	var returnImetadata: Boolean  = false
 	def withreturnImetadata(p:Boolean):this.type ={ 	this.returnImetadata = p; 	this }
 
 	/**
 	 * Whether or not result itags will ignore any combining.
+	 * Default=false
 	 * <b>
 	 * </b><b>Example 1:</b>
 	 * itag T1 is combined into itag T2.
@@ -101,6 +102,7 @@ class MContentFieldsOption extends Serializable {
 	 * else E1 itags will include T2 only.
 	 */
 	//#SWG#@ApiModelProperty(value = """Whether or not result itags will ignore any combining.
+	//#SWGNL#Default=false
 	//#SWGNL#<b>
 	//#SWGNL#</b><b>Example 1:</b>
 	//#SWGNL#itag T1 is combined into itag T2.

@@ -125,14 +125,6 @@ class MMediaContent extends Serializable {
 	var contentUGC: Boolean =_
 	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
 
-	/**
-	 * The specific channel for the thumbnails.
-	 */
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """The specific channel for the thumbnails.""")
-	var thumbChannel: MChannel =_
-	  def withthumbChannel(p:MChannel):this.type ={ 	this.thumbChannel = p; 	this }
-
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var channels: List[MChannel] = new ArrayList[MChannel]
@@ -155,6 +147,14 @@ class MMediaContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the original uploaded file properties. calculated using the Repository services.""")
 	var sourceFiles: List[MFile] = new ArrayList[MFile]
 	  def withsourceFiles(p:List[MFile]):this.type ={ 	this.sourceFiles = p; 	this }
+
+	/**
+	 * The specific channel for the thumbnails.
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """The specific channel for the thumbnails.""")
+	var thumbChannel: MChannel =_
+	  def withthumbChannel(p:MChannel):this.type ={ 	this.thumbChannel = p; 	this }
 
 	/**
 	 * @return MEContentStatus

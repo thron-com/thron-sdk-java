@@ -49,12 +49,12 @@ class JITagClient(val resourceEndpoint:String) {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -130,12 +130,12 @@ class JITagClient(val resourceEndpoint:String) {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -201,12 +201,12 @@ class JITagClient(val resourceEndpoint:String) {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -278,13 +278,12 @@ class JITagClient(val resourceEndpoint:String) {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -345,12 +344,12 @@ class JITagClient(val resourceEndpoint:String) {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -421,12 +420,12 @@ class JITagClient(val resourceEndpoint:String) {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String

@@ -131,12 +131,13 @@ trait JMediaContent extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("findContentsByProperties",this._getCacheControl) 
 		try{
 			val resp = this.__findContentsByProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MMediaContentfindContentsByPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_findContentsByProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findContentsByProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

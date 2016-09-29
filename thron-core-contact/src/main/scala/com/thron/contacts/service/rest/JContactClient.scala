@@ -33,18 +33,21 @@ object JContactClient {
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
+ * 	<li>REST service: https://clientId-view.thron.
  * com/contactunit/xcontact/resources/contact</li>
  * </ul>
  */
 class JContactClient(val resourceEndpoint:String) {
 
 	/**
-	 * List of Contacts ordered by accessedDate
+	 * List of Contacts ordered by accessedDate.
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_USE_CONTACTS</li>
+	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MARKETING_USE_CONTACTS (THRON Content Marketing App in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -96,7 +99,7 @@ class JContactClient(val resourceEndpoint:String) {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_MANAGE_CONTACTS</li>
+	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -148,7 +151,8 @@ class JContactClient(val resourceEndpoint:String) {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_USE_CONTACTS</li>
+	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	 * 	<li>MARKETING_USE_CONTACTS (THRON Content MarketingApp in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -206,7 +210,8 @@ class JContactClient(val resourceEndpoint:String) {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_MANAGE_CONTACTS</li>
+	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
+	 * 	<li>SALES_EDIT_CONTACTS</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -265,6 +270,7 @@ class JContactClient(val resourceEndpoint:String) {
 	 * RoleValidation:
 	 * <ul>
 	 * 	<li>THRON_MANAGE_CONTACTS</li>
+	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -316,7 +322,8 @@ class JContactClient(val resourceEndpoint:String) {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_MANAGE_CONTACTS</li>
+	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
+	 * 	<li>SALES_EDIT_CONTACTS</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -368,7 +375,10 @@ class JContactClient(val resourceEndpoint:String) {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_USE_CONTACTS</li>
+	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MARKETING_USE_CONTACTS (THRON Content Marketing App in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -417,7 +427,10 @@ class JContactClient(val resourceEndpoint:String) {
 	 * 
 	 * RoleValidation:
 	 * <ul>
-	 * 	<li>THRON_USE_CONTACTS</li>
+	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MARKETING_USE_CONTACTS (THRON Content MarketingApp in Marketplace)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String

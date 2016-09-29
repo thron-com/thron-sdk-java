@@ -138,12 +138,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("create",this._getCacheControl) 
 		try{
 			val resp = this.__create(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MVUserManagercreateReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_create)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_create)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -207,12 +208,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateExternalId",this._getCacheControl) 
 		try{
 			val resp = this.__updateExternalId(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,username,PRestHelper.bindRequest[MVUserManagerupdateExternalIdReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateExternalId)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateExternalId)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -276,12 +278,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateUser",this._getCacheControl) 
 		try{
 			val resp = this.__updateUser(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,username,PRestHelper.bindRequest[MVUserManagerupdateUserReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateUser)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateUser)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -333,12 +336,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("upgradeUser",this._getCacheControl) 
 		try{
 			val resp = this.__upgradeUser(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MVUserManagerupgradeUserReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_upgradeUser)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_upgradeUser)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -389,12 +393,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateSettings",this._getCacheControl) 
 		try{
 			val resp = this.__updateSettings(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MVUserManagerupdateSettingsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateSettings)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateSettings)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -461,10 +466,11 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("changePassword",this._getCacheControl) 
 		try{	
 			val resp = this.__changePassword(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,username_q,newpassword_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_changePassword)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_changePassword)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -514,12 +520,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("resetPassword",this._getCacheControl) 
 		try{
 			val resp = this.__resetPassword(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MVUserManagerresetPasswordReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_resetPassword)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_resetPassword)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -572,12 +579,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("changeUserStatus",this._getCacheControl) 
 		try{
 			val resp = this.__changeUserStatus(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MVUserManagerchangeUserStatusReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_changeUserStatus)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_changeUserStatus)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -629,12 +637,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateCapabilitiesAndRoles",this._getCacheControl) 
 		try{
 			val resp = this.__updateCapabilitiesAndRoles(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MVUserManagerupdateCapabilitiesAndRolesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateCapabilitiesAndRoles)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateCapabilitiesAndRoles)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -757,12 +766,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("findByProperties",this._getCacheControl) 
 		try{
 			val resp = this.__findByProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MVUserManagerfindByPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_findByProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findByProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -812,12 +822,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateImage",this._getCacheControl) 
 		try{
 			val resp = this.__updateImage(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MVUserManagerupdateImageReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateImage)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateImage)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -875,10 +886,11 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("verifyUsername",this._getCacheControl) 
 		try{	
 			val resp = this.__verifyUsername(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,username_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_verifyUsername)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_verifyUsername)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -941,12 +953,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("linkGroups",this._getCacheControl) 
 		try{
 			val resp = this.__linkGroups(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,username,PRestHelper.bindRequest[MVUserManagerlinkGroupsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_linkGroups)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_linkGroups)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -1009,12 +1022,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("unlinkGroups",this._getCacheControl) 
 		try{
 			val resp = this.__unlinkGroups(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,username,PRestHelper.bindRequest[MVUserManagerunlinkGroupsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_unlinkGroups)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_unlinkGroups)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

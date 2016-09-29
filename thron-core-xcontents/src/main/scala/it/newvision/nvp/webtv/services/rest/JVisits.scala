@@ -74,12 +74,13 @@ trait JVisits extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("resetVisitCounter",this._getCacheControl) 
 		try{
 			val resp = this.__resetVisitCounter(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MVisitsresetVisitCounterReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_resetVisitCounter)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_resetVisitCounter)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -152,10 +153,11 @@ trait JVisits extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("incrementVisits",this._getCacheControl) 
 		try{	
 			val resp = this.__incrementVisits(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,contentId_q,categoryIdForAcl_q,pkey_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_incrementVisits)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_incrementVisits)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

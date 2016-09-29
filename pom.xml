@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.thron.sdk</groupId>
     <artifactId>thron-sdk-java</artifactId>
-    <version>5.1.3</version>
+    <version>5.1.4</version>
     <packaging>pom</packaging>
     <name>thron-sdk-java</name>
     <description>THRON SDK library</description>
@@ -64,7 +64,6 @@
         <module>thron-core-xcontents</module>
         <module>thron-core-xintelligence</module>
         <module>thron-core-xpackager</module>
-        <module>thron-core-xpublisher</module>
         <module>thron-core-xsso</module>
         <module>thron-core-xtest</module>
         <module>thron-core-contact</module>

@@ -91,12 +91,13 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateFileStatus",this._getCacheControl) 
 		try{
 			val resp = this.__updateFileStatus(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryAdminupdateFileStatusReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateFileStatus)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateFileStatus)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -146,12 +147,13 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getFilesToBackup",this._getCacheControl) 
 		try{
 			val resp = this.__getFilesToBackup(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryAdmingetFilesToBackupReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getFilesToBackup)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getFilesToBackup)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -202,12 +204,13 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getFilesToCleanUp",this._getCacheControl) 
 		try{
 			val resp = this.__getFilesToCleanUp(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryAdmingetFilesToCleanUpReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getFilesToCleanUp)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getFilesToCleanUp)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -258,12 +261,13 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getFilesToFix",this._getCacheControl) 
 		try{
 			val resp = this.__getFilesToFix(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryAdmingetFilesToFixReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getFilesToFix)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getFilesToFix)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -315,12 +319,13 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getFilesToPurge",this._getCacheControl) 
 		try{
 			val resp = this.__getFilesToPurge(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryAdmingetFilesToPurgeReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_getFilesToPurge)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getFilesToPurge)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -369,12 +374,13 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("cleanupFilesOnSite",this._getCacheControl) 
 		try{
 			val resp = this.__cleanupFilesOnSite(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryAdmincleanupFilesOnSiteReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_cleanupFilesOnSite)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_cleanupFilesOnSite)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -429,12 +435,13 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("purgeFiles",this._getCacheControl) 
 		try{
 			val resp = this.__purgeFiles(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryAdminpurgeFilesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_purgeFiles)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_purgeFiles)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -490,12 +497,13 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("restoreFiles",this._getCacheControl) 
 		try{
 			val resp = this.__restoreFiles(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryAdminrestoreFilesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_restoreFiles)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_restoreFiles)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -553,12 +561,13 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("findFilesByProperties",this._getCacheControl) 
 		try{
 			val resp = this.__findFilesByProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryAdminfindFilesByPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_findFilesByProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findFilesByProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -610,12 +619,13 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("migrateClientRepository",this._getCacheControl) 
 		try{
 			val resp = this.__migrateClientRepository(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MRepositoryAdminmigrateClientRepositoryReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_migrateClientRepository)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_migrateClientRepository)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

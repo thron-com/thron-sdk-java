@@ -66,12 +66,13 @@ trait JMediaContentAdmin extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("createMediaContent",this._getCacheControl) 
 		try{
 			val resp = this.__createMediaContent(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MMediaContentAdmincreateMediaContentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_createMediaContent)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_createMediaContent)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -124,12 +125,13 @@ trait JMediaContentAdmin extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("findMediaContentByProperties",this._getCacheControl) 
 		try{
 			val resp = this.__findMediaContentByProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MMediaContentAdminfindMediaContentByPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_findMediaContentByProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findMediaContentByProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -180,12 +182,13 @@ trait JMediaContentAdmin extends it.newvision.nvp.core.libraries.restserver.Base
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateMediaContent",this._getCacheControl) 
 		try{
 			val resp = this.__updateMediaContent(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MMediaContentAdminupdateMediaContentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateMediaContent)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateMediaContent)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

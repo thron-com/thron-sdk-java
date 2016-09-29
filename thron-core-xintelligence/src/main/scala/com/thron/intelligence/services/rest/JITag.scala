@@ -53,12 +53,12 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -83,11 +83,12 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#</b><b>Role Validation for Tagging Users:</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
-	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITag])
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITag])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -134,12 +135,13 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("insert",this._getCacheControl) 
 		try{
 			val resp = this.__insert(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,itagId,PRestHelper.bindRequest[MITaginsertReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_insert)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_insert)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -174,12 +176,12 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -210,11 +212,11 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#<b>Role Validation for Tagging Users:</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
-	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITag])
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITag])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -261,12 +263,13 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("remove",this._getCacheControl) 
 		try{
 			val resp = this.__remove(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,itagId,PRestHelper.bindRequest[MITagremoveReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_remove)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_remove)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -291,12 +294,12 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -317,11 +320,12 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#<b>Role Validation for Tagging Users:</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
-	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITagBulk])
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITagBulk])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkInsert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -360,12 +364,13 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkInsert",this._getCacheControl) 
 		try{
 			val resp = this.__bulkInsert(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkInsertReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_bulkInsert)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkInsert)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -401,13 +406,12 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -436,12 +440,12 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#<b>Role Validation for Tagging Users:</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
-	//#SWGNL#
-	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITagBulk])
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITagBulk])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkRemove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -480,12 +484,13 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkRemove",this._getCacheControl) 
 		try{
 			val resp = this.__bulkRemove(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkRemoveReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_bulkRemove)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkRemove)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -510,12 +515,12 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -536,11 +541,12 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#<b>Role Validation for Tagging Users:</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
-	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITagBulk2])
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITagBulk2])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkInsertMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -579,12 +585,13 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkInsertMultiTargets",this._getCacheControl) 
 		try{
 			val resp = this.__bulkInsertMultiTargets(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkInsertMultiTargetsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_bulkInsertMultiTargets)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkInsertMultiTargets)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -619,12 +626,12 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
 	 * CORE_MANAGE_USERS)
 	 * 
-	 * <b>Role Validation for Tagging Contacts</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_MANAGE_CONTACTS)
-	 * 
 	 * <b>Role Validation for Tagging Contents</b>
 	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * 
+	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -652,11 +659,12 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#<b>Role Validation for Tagging Users:</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contacts</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_MANAGE_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_MANAGE_CONTACTS)
-	//#SWGNL#
 	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER""", response = classOf[MResponseITagBulk2])
+	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITagBulk2])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkRemoveMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -695,12 +703,13 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkRemoveMultiTargets",this._getCacheControl) 
 		try{
 			val resp = this.__bulkRemoveMultiTargets(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkRemoveMultiTargetsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_bulkRemoveMultiTargets)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkRemoveMultiTargets)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

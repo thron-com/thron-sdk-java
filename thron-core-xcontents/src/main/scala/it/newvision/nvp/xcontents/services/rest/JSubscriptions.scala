@@ -76,12 +76,13 @@ trait JSubscriptions extends it.newvision.nvp.core.libraries.restserver.BaseReso
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("categorySubscription",this._getCacheControl) 
 		try{
 			val resp = this.__categorySubscription(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MSubscriptionscategorySubscriptionReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_categorySubscription)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_categorySubscription)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -132,12 +133,13 @@ trait JSubscriptions extends it.newvision.nvp.core.libraries.restserver.BaseReso
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("categoriesSubscription",this._getCacheControl) 
 		try{
 			val resp = this.__categoriesSubscription(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MSubscriptionscategoriesSubscriptionReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_categoriesSubscription)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_categoriesSubscription)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

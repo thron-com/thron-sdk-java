@@ -26,15 +26,17 @@ object JDeviceClient {
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-device.thron.
+ * 	<li>REST service: https://clientId-device.thron.
  * com/api/xdevice/resources/device</li>
  * </ul>
  */
 class JDeviceClient(val resourceEndpoint:String) {
 
 	/**
-	 * Connect a Device to a Contact with the given identityKey.
-	 * If there are no contacts matching the identityKey, a new contact is created.
+	 * Connect a Device to an Identified Contact with the given identityKey.
+	 * If there are no contacts matching the identityKey, a new contact is created (<b>Only with THRON
+	 * Sales Insights application active</b>)
+	 * 
 	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
 	 * @param param : MDeviceconnectReq

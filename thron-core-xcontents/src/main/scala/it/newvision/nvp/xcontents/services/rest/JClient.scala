@@ -77,12 +77,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateAuditDurationDays",this._getCacheControl) 
 		try{
 			val resp = this.__updateAuditDurationDays(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MClientupdateAuditDurationDaysReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateAuditDurationDays)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateAuditDurationDays)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -132,12 +133,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateSecureConnectionEnabled",this._getCacheControl) 
 		try{
 			val resp = this.__updateSecureConnectionEnabled(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MClientupdateSecureConnectionEnabledReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateSecureConnectionEnabled)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateSecureConnectionEnabled)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -187,12 +189,13 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateTrashProperties",this._getCacheControl) 
 		try{
 			val resp = this.__updateTrashProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
 			,PRestHelper.bindRequest[MClientupdateTrashPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_updateTrashProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateTrashProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e

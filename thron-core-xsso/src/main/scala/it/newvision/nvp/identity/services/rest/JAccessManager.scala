@@ -91,10 +91,11 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("login",this._getCacheControl) 
 		try{	
 			val resp = this.__login(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,username_q,password_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_login)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_login)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -149,10 +150,11 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("logout",this._getCacheControl) 
 		try{	
 			val resp = this.__logout(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_logout)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_logout)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -212,10 +214,11 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("validateToken",this._getCacheControl) 
 		try{	
 			val resp = this.__validateToken(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,username_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_validateToken)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_validateToken)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -276,10 +279,11 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("validateCapability",this._getCacheControl) 
 		try{	
 			val resp = this.__validateCapability(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,capabilities_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_validateCapability)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_validateCapability)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
@@ -353,10 +357,11 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("validateRole",this._getCacheControl) 
 		try{	
 			val resp = this.__validateRole(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,role_q)
 		
-			PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_validateRole)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_validateRole)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
