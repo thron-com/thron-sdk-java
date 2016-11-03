@@ -29,7 +29,7 @@ resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repos
 
 libraryDependencies ++= Seq(
     "com.sun.jersey"    % "jersey-bundle"                 % "1.10",
-    "com.thron.sdk"     % "thron-core-xcontents_2.11"    % "5.1.4"
+    "com.thron.sdk"     % "thron-core-xcontents_2.11"    % "5.1.5"
 )
 ```
 
@@ -52,7 +52,7 @@ This is the Single Sign-On component of the entire platform. It provides a set o
 ```
 #####Sbt
 ```scala
-libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xsso_2.11"    % "5.1.4")
+libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xsso_2.11"    % "5.1.5")
 ```
 
 ####[xcontents](https://developer.thron.com/#xcontents)
@@ -70,7 +70,7 @@ This component manages the content-related information: content metadata, commen
 ```
 #####Sbt
 ```scala
-libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xcontents_2.11"    % "5.1.4")
+libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xcontents_2.11"    % "5.1.5")
 ```
 
 
@@ -89,7 +89,7 @@ This component manages the content publication process, thanks to its interactio
 ```
 #####Sbt
 ```scala
-libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xadmin_2.11"    % "5.1.4")
+libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xadmin_2.11"    % "5.1.5")
 ```
 
 ####[xintelligence](https://developer.thron.com/#xintelligence)
@@ -107,7 +107,7 @@ This component manages the content intelligence tools, allowing the user to defi
 ```
 #####Sbt
 ```scala
-libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xintelligence_2.11"    % "5.1.4")
+libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xintelligence_2.11"    % "5.1.5")
 ```
 
 
@@ -127,7 +127,7 @@ This is the component for managing user's working area (i.e., the area where con
 
 #####Sbt
 ```scala
-libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xpackager_2.11"    % "5.1.4")
+libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xpackager_2.11"    % "5.1.5")
 ```
 
 ####[xcontact](https://developer.thron.com/#xcontact)
@@ -146,7 +146,7 @@ Xdevice allows you to connect the user to a contact and retrieve its deviceId.
 ```
 #####Sbt
 ```scala
-libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xcontact_2.11"    % "5.1.4")
+libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xcontact_2.11"    % "5.1.5")
 ```
 
 ####[xtest](https://developer.thron.com/#xtest)
@@ -164,5 +164,5 @@ This component allows you to easily check the connection to the platform and the
 ```
 #####Sbt
 ```scala
-libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xtest_2.11"    % "5.1.4")
+libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xtest_2.11"    % "5.1.5")
 ```

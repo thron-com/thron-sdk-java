@@ -30,8 +30,8 @@ object JAclInverseRulesClient {
  * <b>
  * </b><b>Web Service Endpoints</b>:
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.
- * it/api/xcontents/resources/aclinverserules/</li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/aclinverserules</li>
  * </ul>
  */
 class JAclInverseRulesClient(val resourceEndpoint:String) {

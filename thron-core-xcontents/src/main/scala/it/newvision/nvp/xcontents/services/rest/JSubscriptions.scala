@@ -18,8 +18,8 @@ import it.newvision.nvp.xcontents.services.model.request.MSubscriptionscategorie
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/subscriptions/</li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/subscriptions</li>
  * </ul>
  */
 @Path("/subscriptions")
@@ -27,7 +27,7 @@ import it.newvision.nvp.xcontents.services.model.request.MSubscriptionscategorie
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/subscriptions/</li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/subscriptions</li>
 //#SWGNL#</ul>""")
 trait JSubscriptions extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

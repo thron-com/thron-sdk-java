@@ -26,8 +26,8 @@ object JContentListClient {
  * contents sorted by number of visits, rating or creation date.
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/contentlist/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/contentlist</li>
  * </ul>
  */
 class JContentListClient(val resourceEndpoint:String) {

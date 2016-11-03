@@ -38,8 +38,8 @@ object JUsersGroupManagerClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xsso/resources/usersgroupmanager/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xsso/resources/usersgroupmanager</li>
  * </ul>
  */
 class JUsersGroupManagerClient(val resourceEndpoint:String) {

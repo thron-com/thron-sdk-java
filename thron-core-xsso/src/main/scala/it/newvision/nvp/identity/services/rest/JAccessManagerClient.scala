@@ -24,8 +24,8 @@ object JAccessManagerClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xsso/resources/accessmanager/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xsso/resources/accessmanager</li>
  * </ul>
  */
 class JAccessManagerClient(val resourceEndpoint:String) {

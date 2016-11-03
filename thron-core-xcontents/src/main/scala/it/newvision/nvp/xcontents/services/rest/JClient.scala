@@ -19,8 +19,8 @@ import it.newvision.nvp.xcontents.services.model.client.MResponseDetailClient
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/client     </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/client    </li>
  * </ul>
  */
 @Path("/client")
@@ -28,7 +28,7 @@ import it.newvision.nvp.xcontents.services.model.client.MResponseDetailClient
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>   
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/client     </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/client    </li>
 //#SWGNL#</ul>""")
 trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

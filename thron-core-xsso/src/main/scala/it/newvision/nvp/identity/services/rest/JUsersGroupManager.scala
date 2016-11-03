@@ -29,8 +29,8 @@ import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerunlink
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xsso/resources/usersgroupmanager/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xsso/resources/usersgroupmanager</li>
  * </ul>
  */
 @Path("/usersgroupmanager")
@@ -38,7 +38,7 @@ import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerunlink
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xsso/resources/usersgroupmanager/  </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xsso/resources/usersgroupmanager</li>
 //#SWGNL#</ul>""")
 trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

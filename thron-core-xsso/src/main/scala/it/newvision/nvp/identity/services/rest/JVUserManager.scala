@@ -34,8 +34,8 @@ import it.newvision.nvp.identity.services.model.request.MVUserManagerunlinkGroup
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xsso/resources/vusermanager/     </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xsso/resources/vusermanager    </li>
  * </ul>
  */
 @Path("/vusermanager")
@@ -43,7 +43,7 @@ import it.newvision.nvp.identity.services.model.request.MVUserManagerunlinkGroup
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xsso/resources/vusermanager/     </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xsso/resources/vusermanager    </li>
 //#SWGNL#</ul>""")
 trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

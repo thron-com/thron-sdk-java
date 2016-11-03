@@ -30,8 +30,8 @@ import it.newvision.nvp.xcontents.services.model.request.MPlaylistremoveContentF
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/playlist/   </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/playlist</li>
  * </ul>
  */
 @Path("/playlist")
@@ -40,7 +40,7 @@ import it.newvision.nvp.xcontents.services.model.request.MPlaylistremoveContentF
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/playlist/   </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/playlist</li>
 //#SWGNL#</ul>""")
 trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

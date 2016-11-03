@@ -21,8 +21,8 @@ import it.newvision.nvp.xcontents.services.model.request.MRatingFixedRangeremove
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/application.
- * wadl</li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/ratingfixedrange</li>
  * </ul>
  */
 @Path("/ratingfixedrange")
@@ -30,7 +30,7 @@ import it.newvision.nvp.xcontents.services.model.request.MRatingFixedRangeremove
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/application.wadl</li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/ratingfixedrange</li>
 //#SWGNL#</ul>""")
 trait JRatingFixedRange extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

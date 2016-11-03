@@ -36,8 +36,8 @@ object JClientClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.it/api/adxsso/resources/client-sso/
- * </li>
+ * 	<li>REST service: https://clientId-view.thron.com/api/adxsso/resources/client-
+ * sso/</li>
  * </ul>
  */
 class JClientClient(val resourceEndpoint:String) {

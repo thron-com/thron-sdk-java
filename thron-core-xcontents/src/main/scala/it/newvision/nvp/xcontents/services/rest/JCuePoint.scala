@@ -18,18 +18,18 @@ import it.newvision.nvp.xcontents.services.model.request.MCuePointuploadSrtFileR
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * <b>Using </b>
- * <b>Web Service Endpoints:</b>
+ * <b>
+ * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.it/api/xcontents/resources/cuepoint
- *   </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/cuepoint </li>
  * </ul>
  */
 @Path("/cuepoint")
-//#SWG#@Api(value = "/cuepoint", description = """<b>Using </b>
-//#SWGNL#<b>Web Service Endpoints:</b>
+//#SWG#@Api(value = "/cuepoint", description = """<b>
+//#SWGNL#</b><b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.4me.it/api/xcontents/resources/cuepoint    </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/cuepoint </li>
 //#SWGNL#</ul>""")
 trait JCuePoint extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

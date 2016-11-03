@@ -30,8 +30,8 @@ object JRatingFixedRangeClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/application.
- * wadl</li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/ratingfixedrange</li>
  * </ul>
  */
 class JRatingFixedRangeClient(val resourceEndpoint:String) {

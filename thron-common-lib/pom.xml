@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-sdk-java</artifactId>
-        <version>5.1.4</version>
+        <version>5.1.5</version>
     </parent>
 
     <dependencies>

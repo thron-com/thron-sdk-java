@@ -52,7 +52,9 @@ class MSyncCriteria extends Serializable {
 	//#SWGNL#* all contents currently linked to the categoryId
 	//#SWGNL#* all contents were linked to specified categoryId (this is used to know when a content has been removed from a category)""")
 	@BeanProperty 
+	@Deprecated
 	var linkedCategories: List[String] = new ArrayList[String]
+	@Deprecated
 	def withlinkedCategories(p:List[String]):this.type ={ 	this.linkedCategories = p; 	this }
 
 }

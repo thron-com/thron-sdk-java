@@ -21,8 +21,8 @@ import it.newvision.nvp.xcontents.services.model.request.MAclInverseRulesverifyR
  * <b>
  * </b><b>Web Service Endpoints</b>:
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.
- * it/api/xcontents/resources/aclinverserules/</li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/aclinverserules</li>
  * </ul>
  */
 @Path("/aclinverserules")
@@ -30,7 +30,7 @@ import it.newvision.nvp.xcontents.services.model.request.MAclInverseRulesverifyR
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints</b>:
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.4me.it/api/xcontents/resources/aclinverserules/</li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/aclinverserules</li>
 //#SWGNL#</ul>""")
 trait JAclInverseRules extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

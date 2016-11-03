@@ -27,8 +27,8 @@ import it.newvision.nvp.identity.services.model.client.MResponseGetPlayerInfo
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.it/api/adxsso/resources/client-sso/
- * </li>
+ * 	<li>REST service: https://clientId-view.thron.com/api/adxsso/resources/client-
+ * sso/</li>
  * </ul>
  */
 @Path("/client-sso")
@@ -36,7 +36,7 @@ import it.newvision.nvp.identity.services.model.client.MResponseGetPlayerInfo
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.4me.it/api/adxsso/resources/client-sso/ </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/adxsso/resources/client-sso/</li>
 //#SWGNL#</ul>""")
 trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

@@ -21,8 +21,8 @@ import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetPlayli
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/delivery/</li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/delivery</li>
  * </ul>
  */
 @Path("/delivery")
@@ -30,7 +30,7 @@ import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetPlayli
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/delivery/</li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/delivery</li>
 //#SWGNL#</ul>""")
 trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
@@ -243,6 +243,8 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * no processing will be performed
 	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints, keeping the aspet ration)
+	 * 0x0 return the maximum size of the image
+
 	 * @param id : String
 	 * The xcontentId of the content. File extension is optional.
 	 * Example:
@@ -305,8 +307,10 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@PathParam("clientId")
 	clientId: String, 
 			//#SWG#@ApiParam(value = """The desired WidthxHeight of the resulting image. If higher than the original thumbnail resolution, no processing will be performed
-	//#SWGNL#Format: <widht>x<height>
-	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints, keeping the aspet ration)""")
+	//#SWGNL#Format: <widht>x<height> 
+	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints, keeping the aspet ration)
+	//#SWGNL#0x0 return the maximum size of the image
+	//#SWGNL#""")
 	@PathParam("divArea")
 	divArea: String, 
 			//#SWG#@ApiParam(value = """The xcontentId of the content. File extension is optional.

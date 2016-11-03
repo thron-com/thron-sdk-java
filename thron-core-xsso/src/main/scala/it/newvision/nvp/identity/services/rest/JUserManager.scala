@@ -27,8 +27,8 @@ import it.newvision.nvp.identity.services.model.user.MResponseUserAllUsername
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xsso/resources/usermanager/</li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xsso/resources/usermanager</li>
  * </ul>
  */
 @Path("/usermanager")
@@ -37,7 +37,7 @@ import it.newvision.nvp.identity.services.model.user.MResponseUserAllUsername
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xsso/resources/usermanager/</li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xsso/resources/usermanager</li>
 //#SWGNL#</ul>""")
 trait JUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

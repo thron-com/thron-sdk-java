@@ -27,11 +27,11 @@ object JCuePointClient {
 	
 }
 /**
- * <b>Using </b>
- * <b>Web Service Endpoints:</b>
+ * <b>
+ * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.it/api/xcontents/resources/cuepoint
- *   </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/cuepoint </li>
  * </ul>
  */
 class JCuePointClient(val resourceEndpoint:String) {

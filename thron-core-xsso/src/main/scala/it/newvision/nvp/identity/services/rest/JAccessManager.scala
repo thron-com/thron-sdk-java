@@ -15,8 +15,8 @@ import it.newvision.nvp.identity.services.model.identity.MResponseAccessLogin
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xsso/resources/accessmanager/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xsso/resources/accessmanager</li>
  * </ul>
  */
 @Path("/accessmanager")
@@ -24,7 +24,7 @@ import it.newvision.nvp.identity.services.model.identity.MResponseAccessLogin
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xsso/resources/accessmanager/  </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xsso/resources/accessmanager</li>
 //#SWGNL#</ul>""")
 trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

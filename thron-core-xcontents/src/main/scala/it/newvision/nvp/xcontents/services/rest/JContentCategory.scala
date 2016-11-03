@@ -16,8 +16,8 @@ import it.newvision.nvp.xcontents.services.model.contentCategory.MResponseLinkCa
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/contentcategory/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/contentcategory</li>
  * </ul>
  */
 @Path("/contentcategory")
@@ -25,7 +25,7 @@ import it.newvision.nvp.xcontents.services.model.contentCategory.MResponseLinkCa
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/contentcategory/  </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/contentcategory</li>
 //#SWGNL#</ul>""")
 trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

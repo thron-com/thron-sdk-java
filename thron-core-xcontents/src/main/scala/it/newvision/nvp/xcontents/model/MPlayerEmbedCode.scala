@@ -55,6 +55,14 @@ class MPlayerEmbedCode extends Serializable {
 	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
 
 	/**
+	 * specific param to use with RTIE thumbs and images
+	 */
+	//#SWG#@ApiModelProperty(value = """specific param to use with RTIE thumbs and images""")
+	@BeanProperty 
+	var rtieValues: List[MMetadata] = new ArrayList[MMetadata]
+	def withrtieValues(p:List[MMetadata]):this.type ={ 	this.rtieValues = p; 	this }
+
+	/**
 	 * Deprecated
 	 */
 	//#SWG#@ApiModelProperty(value = """Deprecated""")

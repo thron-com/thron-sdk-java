@@ -43,8 +43,8 @@ object JVUserManagerClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xsso/resources/vusermanager/     </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xsso/resources/vusermanager    </li>
  * </ul>
  */
 class JVUserManagerClient(val resourceEndpoint:String) {

@@ -40,8 +40,8 @@ import it.newvision.nvp.xcontents.services.model.request.MContentupdateUserSpeci
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/content/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/content</li>
  * </ul>
  */
 @Path("/content")
@@ -49,7 +49,7 @@ import it.newvision.nvp.xcontents.services.model.request.MContentupdateUserSpeci
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/content/  </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/content</li>
 //#SWGNL#</ul>""")
 trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

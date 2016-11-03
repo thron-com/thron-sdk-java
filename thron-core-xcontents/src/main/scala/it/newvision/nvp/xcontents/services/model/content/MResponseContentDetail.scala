@@ -57,7 +57,9 @@ class MResponseContentDetail extends MResponseContent with Serializable  {
 	 */
 	//#SWG#@ApiModelProperty(value = """Optional. The list of all available thumbnail URLs""")
 	@BeanProperty 
+	@Deprecated
 	var thumbUrls: List[String] = new ArrayList[String]
+	@Deprecated
 	def withthumbUrls(p:List[String]):this.type ={ 	this.thumbUrls = p; 	this }
 
 }

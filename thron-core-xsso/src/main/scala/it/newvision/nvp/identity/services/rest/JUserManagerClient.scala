@@ -36,8 +36,8 @@ object JUserManagerClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xsso/resources/usermanager/</li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xsso/resources/usermanager</li>
  * </ul>
  */
 class JUserManagerClient(val resourceEndpoint:String) {

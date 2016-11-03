@@ -28,8 +28,8 @@ object JClientPropertiesClient {
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xsso/resources/clientproperties/</li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xsso/resources/clientproperties</li>
  * </ul>
  */
 class JClientPropertiesClient(val resourceEndpoint:String) {

@@ -94,166 +94,11 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STREAMRTMP(clientId: String){
-		this.init_gd_WEB(clientId,"STREAMRTMP")
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(980),Integer.valueOf(630),Integer.valueOf(400),Integer.valueOf(200),Integer.valueOf(121)))
-		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(100),Integer.valueOf(90),Integer.valueOf(60),Integer.valueOf(30),Integer.valueOf(14)))
-		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1200),Integer.valueOf(800),Integer.valueOf(512),Integer.valueOf(256),Integer.valueOf(150)))
-		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(22050)))
-		this.defaultBitRate = 800
-		this.appName = "vod/"
-		this.streamProtocol = "rtmp://"
-		this.streamServer = clientId+"-stream4me.weebo.it/"
-		val cd = new MChannelDescription
-		cd.locale = "IT"
-		cd.channelShortName = "RTMP"
-		cd.channelDescription = "Flash Streaming in tecnologia RTMP"
-		val cd2 = new MChannelDescription
-		cd2.locale = "EN"
-		cd2.channelShortName = "RTMP"
-		cd2.channelDescription = "Flash Streaming with RTMP"
-		this.channelDescriptions.add(cd)
-		this.channelDescriptions.add(cd2)
-		this.convertTo="MP4"
-		this.withIngestion=true
-	}
-
-	/**
-	 * default init for STREAMWEB channel
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STREAMRTMPWEB(clientId: String){
-		this.init_gd_WEB(clientId,"STREAMRTMPWEB")
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(980),Integer.valueOf(630),Integer.valueOf(400),Integer.valueOf(200),Integer.valueOf(121)))
-		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(100),Integer.valueOf(90),Integer.valueOf(60),Integer.valueOf(30),Integer.valueOf(14)))
-		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1200),Integer.valueOf(800),Integer.valueOf(512),Integer.valueOf(256),Integer.valueOf(150)))
-		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(22050)))
-		this.defaultBitRate = 800
-		this.appName = "web/"
-		this.streamProtocol = "rtmp://"
-		this.streamServer = clientId+"-stream4me.weebo.it/"
-		val cd = new MChannelDescription
-		cd.locale = "IT"
-		cd.channelShortName = "RTMP progressive"
-		cd.channelDescription = "Flash Streaming e download progressivo"
-		val cd2 = new MChannelDescription
-		cd2.locale = "EN"
-		cd2.channelShortName = "RTMP progressive"
-		cd2.channelDescription = "Flash Streaming and progressive download"
-		this.channelDescriptions.add(cd)
-		this.channelDescriptions.add(cd2)
-		this.convertTo="MP4"
-		this.withIngestion=true
-	}
-
-	/**
-	 * default init for STREAM channel
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STREAMHTTPFLASH(clientId: String){
-		this.init_gd_WEB(clientId,"STREAMHTTPFLASH")
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(680),Integer.valueOf(280),Integer.valueOf(140)))
-		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96)))
-		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(800),Integer.valueOf(400),Integer.valueOf(256)))
-		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100)))
-		this.defaultBitRate = 800
-		this.appName = "flash/"
-		this.streamProtocol = "http://"
-		this.streamServer = clientId+"-4me.weebo.it/"
-		val cd = new MChannelDescription
-		cd.locale = "IT"
-		cd.channelShortName = "Streaming Flash"
-		cd.channelDescription = "HDS, codec h264, bitrate 800kbps"
-		val cd2 = new MChannelDescription
-		cd2.locale = "EN"
-		cd2.channelShortName = "Streaming Flash"
-		cd2.channelDescription = "HDS, codec h264, bitrate 800kbps"
-		this.channelDescriptions.add(cd)
-		this.channelDescriptions.add(cd2)
-		this.convertTo="MP4"
-		this.withIngestion=true
-	}
-
-	/**
-	 * default init for STREAM FULL HD channel
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STREAMHTTPFLASHFULLHD(clientId: String){
-		this.init_gd_WEB(clientId,"STREAMHTTPFLASHFULLHD")
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4300),Integer.valueOf(2800),Integer.valueOf(1800),Integer.valueOf(1400),Integer.valueOf(1020),Integer.valueOf(680),Integer.valueOf(280),Integer.valueOf(140)))
-		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96)))
-		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4500),Integer.valueOf(3000),Integer.valueOf(2000),Integer.valueOf(1600),Integer.valueOf(1200),Integer.valueOf(800),Integer.valueOf(400),Integer.valueOf(256)))
-		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100)))
-		this.defaultBitRate = 800
-		this.appName = "flash/"
-		this.streamProtocol = "http://"
-		this.streamServer = clientId+"-4me.weebo.it/"
-		val cd = new MChannelDescription
-		cd.locale = "IT"
-		cd.channelShortName = "Streaming Flash Full HD"
-		cd.channelDescription = "HDS, codec h264, bitrate 4500kbps"
-		val cd2 = new MChannelDescription
-		cd2.locale = "EN"
-		cd2.channelShortName = "Streaming Flash Full HD"
-		cd2.channelDescription = "HDS, codec h264, bitrate 4500kbps"
-		this.channelDescriptions.add(cd)
-		this.channelDescriptions.add(cd2)
-		this.convertTo="MP4"
-		this.withIngestion=true
-	}
-
-	/**
-	 * default init for STREAM channel
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STREAMHTTPFLASHHD(clientId: String){
-		this.init_gd_WEB(clientId,"STREAMHTTPFLASHHD")
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1800),Integer.valueOf(1400),Integer.valueOf(1020),Integer.valueOf(680),Integer.valueOf(280),Integer.valueOf(140)))
-		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96)))
-		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(2000),Integer.valueOf(1600),Integer.valueOf(1200),Integer.valueOf(800),Integer.valueOf(400),Integer.valueOf(256)))
-		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100)))
-		this.defaultBitRate = 800
-		this.appName = "flash/"
-		this.streamProtocol = "http://"
-		this.streamServer = clientId+"-4me.weebo.it/"
-		val cd = new MChannelDescription
-		cd.locale = "IT"
-		cd.channelShortName = "Streaming Flash HD"
-		cd.channelDescription = "HDS, codec h264, bitrate 2000kbps"
-		val cd2 = new MChannelDescription
-		cd2.locale = "EN"
-		cd2.channelShortName = "Streaming Flash HD"
-		cd2.channelDescription = "HDS, codec h264, bitrate 2000kbps"
-		this.channelDescriptions.add(cd)
-		this.channelDescriptions.add(cd2)
-		this.convertTo="MP4"
-		this.withIngestion=true
-	}
-
-	/**
-	 * default init for STREAM channel
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
 	def init_STREAMHTTPIOS(clientId: String){
 		this.init_gd_WEB(clientId,"STREAMHTTPIOS")
 		// the total bitrate is used as profile name, becaue there are some profile xml file having all setup defined.
 		// to handle multiple profile for the same total bitrate, define a different profile id like 8000 for a profile of 800kb for ipad.
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(604),Integer.valueOf(380)))
+		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(680),Integer.valueOf(400)))
 		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96),Integer.valueOf(96)))
 		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(800),Integer.valueOf(512)))
 		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(44100)))
@@ -286,10 +131,10 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.init_gd_WEB(clientId,"STREAMHTTPIOSHD")
 		// the total bitrate is used as profile name, becaue there are some profile xml file having all setup defined.
 		// to handle multiple profile for the same total bitrate, define a different profile id like 8000 for a profile of 800kb for ipad.
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1004),Integer.valueOf(604),Integer.valueOf(380)))
-		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96)))
-		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1200),Integer.valueOf(800),Integer.valueOf(512)))
-		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100)))
+		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1800),Integer.valueOf(1400),Integer.valueOf(1020),Integer.valueOf(680),Integer.valueOf(400)))
+		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96)))
+		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(2000),Integer.valueOf(1600),Integer.valueOf(1200),Integer.valueOf(800),Integer.valueOf(512)))
+		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100)))
 		this.defaultBitRate = 512
 		this.convertTo = "TS"
 		this.appName = "ios/"
@@ -306,24 +151,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.withIngestion=true
-	}
-
-	/**
-	 * default init for STREAMWEB channel
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_test(clientId: String){
-		this.init_gd_test(clientId,"STREAMWEB")
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(700),Integer.valueOf(400),Integer.valueOf(150),Integer.valueOf(48)))
-		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96),Integer.valueOf(32),Integer.valueOf(24),Integer.valueOf(16)))
-		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(800),Integer.valueOf(500),Integer.valueOf(200),Integer.valueOf(64)))
-		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(22050),Integer.valueOf(22050),Integer.valueOf(11025)))
-		this.thumbsProperties.init
-		this.appName = ""
-		this.streamProtocol = "rtmp://"
 	}
 
 	/**
@@ -357,6 +184,105 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.convertTo="MP4"
 		this.withIngestion=true
 	
+	}
+
+	/**
+	 * default init for WEB channel (Progressive Download)
+	 * @param clientId : String
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def init_WEBHD(clientId: String){
+		this.init_gd_WEB(clientId,"WEBHD")
+		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1800)))
+		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
+		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(2000)))
+		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100)))
+		this.defaultBitRate = 2000
+		this.streamProtocol = ""
+		this.appName = ""
+		this.streamServer = ""
+		this.compliantWith= "VIEW,PLAY"
+		val cd = new MChannelDescription
+		cd.locale = "IT"
+		cd.channelShortName = "Mp4 HD"
+		cd.channelDescription = "Download, codec h264, bitrate 2000kbps"
+		val cd2 = new MChannelDescription
+		cd2.locale = "EN"
+		cd2.channelShortName = "Mp4 HD"
+		cd2.channelDescription = "Download, codec h264, bitrate 2000kbps"
+		this.channelDescriptions.add(cd)
+		this.channelDescriptions.add(cd2)
+		this.useForDownload = true
+		this.convertTo="MP4"
+		this.withIngestion=true
+	}
+
+	/**
+	 * default init for WEB FULL HD channel (Progressive Download)
+	 * @param clientId : String
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def init_WEBFULLHD(clientId: String){
+		this.init_gd_WEB(clientId,"WEBFULLHD")
+		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4300)))
+		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
+		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4500)))
+		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100)))
+		this.defaultBitRate = 4500
+		this.streamProtocol = ""
+		this.appName = ""
+		this.streamServer = ""
+		this.compliantWith= "VIEW,PLAY"
+		val cd = new MChannelDescription
+		cd.locale = "IT"
+		cd.channelShortName = "Mp4 Full HD"
+		cd.channelDescription = "Download, codec h264, bitrate 4500kbps"
+		val cd2 = new MChannelDescription
+		cd2.locale = "EN"
+		cd2.channelShortName = "Mp4 Full HD"
+		cd2.channelDescription = "Download, codec h264, bitrate 4500kbps"
+		this.channelDescriptions.add(cd)
+		this.channelDescriptions.add(cd2)
+		this.useForDownload = true
+		this.convertTo="MP4"
+		this.withIngestion=true
+	}
+
+	/**
+	 * default init for WEB FULL HD channel (Progressive Download)
+	 * @param clientId : String
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def init_WEB4K(clientId: String){
+		this.init_gd_WEB(clientId,"WEB4K")
+		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(25000)))
+		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
+		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(25100)))
+		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100)))
+		this.defaultBitRate = 25000
+		this.streamProtocol = ""
+		this.appName = ""
+		this.streamServer = ""
+		this.compliantWith= "VIEW,PLAY"
+		val cd = new MChannelDescription
+		cd.locale = "IT"
+		cd.channelShortName = "Mp4 4K"
+		cd.channelDescription = "Download, codec h264, bitrate 25000kbps"
+		val cd2 = new MChannelDescription
+		cd2.locale = "EN"
+		cd2.channelShortName = "Mp4 4k"
+		cd2.channelDescription = "Download, codec h264, bitrate 25000kbps"
+		this.channelDescriptions.add(cd)
+		this.channelDescriptions.add(cd2)
+		this.useForDownload = true
+		this.convertTo="MP4"
+		this.withIngestion=true
 	}
 
 	/**
@@ -425,72 +351,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		cd2.channelDescription = "Download, codec vp8, bitrate 800kbps"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
-		this.withIngestion=true
-	}
-
-	/**
-	 * default init for WEB FULL HD channel (Progressive Download)
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBFULLHD(clientId: String){
-		this.init_gd_WEB(clientId,"WEBFULLHD")
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4300)))
-		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
-		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4500)))
-		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100)))
-		this.defaultBitRate = 4500
-		this.streamProtocol = ""
-		this.appName = ""
-		this.streamServer = ""
-		this.compliantWith= "VIEW,PLAY"
-		val cd = new MChannelDescription
-		cd.locale = "IT"
-		cd.channelShortName = "Mp4 Full HD"
-		cd.channelDescription = "Download, codec h264, bitrate 4500kbps"
-		val cd2 = new MChannelDescription
-		cd2.locale = "EN"
-		cd2.channelShortName = "Mp4 Full HD"
-		cd2.channelDescription = "Download, codec h264, bitrate 4500kbps"
-		this.channelDescriptions.add(cd)
-		this.channelDescriptions.add(cd2)
-		this.useForDownload = true
-		this.convertTo="MP4"
-		this.withIngestion=true
-	}
-
-	/**
-	 * default init for WEB channel (Progressive Download)
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBHD(clientId: String){
-		this.init_gd_WEB(clientId,"WEBHD")
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1800)))
-		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
-		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(2000)))
-		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100)))
-		this.defaultBitRate = 2000
-		this.streamProtocol = ""
-		this.appName = ""
-		this.streamServer = ""
-		this.compliantWith= "VIEW,PLAY"
-		val cd = new MChannelDescription
-		cd.locale = "IT"
-		cd.channelShortName = "Mp4 HD"
-		cd.channelDescription = "Download, codec h264, bitrate 2000kbps"
-		val cd2 = new MChannelDescription
-		cd2.locale = "EN"
-		cd2.channelShortName = "Mp4 HD"
-		cd2.channelDescription = "Download, codec h264, bitrate 2000kbps"
-		this.channelDescriptions.add(cd)
-		this.channelDescriptions.add(cd2)
-		this.useForDownload = true
-		this.convertTo="MP4"
 		this.withIngestion=true
 	}
 
@@ -611,31 +471,21 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 	}
 
 	/**
+	 * default init for STREAMWEB channel
 	 * @param clientId : String
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBIPHONEHD(clientId: String){
-		this.init_gd_WEB(clientId,"WEBIPHONE")
-		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1004)))
-		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
-		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1200)))
-		this.sampleRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100)))
-		this.appName = "" 
-		this.streamProtocol = "" 
-		val cd = new MChannelDescription
-		cd.locale = "IT"
-		cd.channelShortName = "Mp4 HD base profile"
-		cd.channelDescription = "Download, codec h264 base profile, bitrate 2000kbps"
-		val cd2 = new MChannelDescription
-		cd2.locale = "EN"
-		cd2.channelShortName = "Mp4 HD base profile"
-		cd2.channelDescription = "Download, codec h264 base profile, bitrate 2000kbps"
-		this.channelDescriptions.add(cd)
-		this.channelDescriptions.add(cd2)
-		this.convertTo="MP4"
-		this.withIngestion=true
+	def init_test(clientId: String){
+		this.init_gd_test(clientId,"STREAMWEB")
+		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(700),Integer.valueOf(400),Integer.valueOf(150),Integer.valueOf(48)))
+		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96),Integer.valueOf(32),Integer.valueOf(24),Integer.valueOf(16)))
+		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(800),Integer.valueOf(500),Integer.valueOf(200),Integer.valueOf(64)))
+		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(22050),Integer.valueOf(22050),Integer.valueOf(11025)))
+		this.thumbsProperties.init
+		this.appName = ""
+		this.streamProtocol = "rtmp://"
 	}
 
 }

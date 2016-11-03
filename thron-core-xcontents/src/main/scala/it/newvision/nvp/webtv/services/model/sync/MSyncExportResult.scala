@@ -12,23 +12,34 @@ import it.newvision.nvp.webtv.services.model.delivery.MDeliveryInfo
 *  GENERATED CLASS
 *  DO NOT APPLY ANY CHANGES
 ****************************/
-@XmlRootElement(name="MChangedContent") 
-@XmlType(name="MChangedContent")
+@XmlRootElement(name="MSyncExportResult") 
+@XmlType(name="MSyncExportResult")
 //#SWG#@ApiModel(description = """""")
-class MChangedContent extends Serializable {
+class MSyncExportResult extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Content metadata, descriptions and attributes.
+	 */
+	//#SWG#@ApiModelProperty(value = """Content metadata, descriptions and attributes.""")
 	@BeanProperty 
 	var content: MContent =_
 	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
 
 	/**
-	 * the list of categories where the content is linked
+	 * the list of categories linked to the content.
 	 */
-	//#SWG#@ApiModelProperty(value = """""")
+	//#SWG#@ApiModelProperty(value = """the list of categories linked to the content.""")
 	@BeanProperty 
 	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
 	def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
+
+	/**
+	 * the list of itags linked to the content.
+	 */
+	//#SWG#@ApiModelProperty(value = """the list of itags linked to the content.""")
+	@BeanProperty 
+	var itagDefinitions: List[MITagDefSummary] = new ArrayList[MITagDefSummary]
+	def withitagDefinitions(p:List[MITagDefSummary]):this.type ={ 	this.itagDefinitions = p; 	this }
 
 	/**
 	 * The delivery information of the content, with the detail where the content is
@@ -40,11 +51,12 @@ class MChangedContent extends Serializable {
 	def withdeliveryInfo(p:List[MDeliveryInfo]):this.type ={ 	this.deliveryInfo = p; 	this }
 
 	/**
-	 * used to show whether the content has been removed
+	 * Returns a dynamic link to the best thumbnail for the given content. (based on
+	 * the thumbDivArea parameter).
 	 */
-	//#SWG#@ApiModelProperty(value = """used to show whether the content has been removed""")
+	//#SWG#@ApiModelProperty(value = """Returns a dynamic link to the best thumbnail for the given content. (based on the thumbDivArea parameter).""" ,required = true)
 	@BeanProperty 
-	var removed: Boolean =_
-	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
+	var thumbUrl: String =_
+	def withthumbUrl(p:String):this.type ={ 	this.thumbUrl = p; 	this }
 
 }

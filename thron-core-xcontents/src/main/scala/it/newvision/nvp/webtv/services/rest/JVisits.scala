@@ -16,8 +16,8 @@ import it.newvision.nvp.webtv.services.model.request.MVisitsresetVisitCounterReq
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/visits/ </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/visits</li>
  * </ul>
  */
 @Path("/visits")
@@ -25,7 +25,7 @@ import it.newvision.nvp.webtv.services.model.request.MVisitsresetVisitCounterReq
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/visits/ </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/visits</li>
 //#SWGNL#</ul>""")
 trait JVisits extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

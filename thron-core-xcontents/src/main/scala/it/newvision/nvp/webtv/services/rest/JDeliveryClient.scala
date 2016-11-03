@@ -30,8 +30,8 @@ object JDeliveryClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/delivery/</li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/delivery</li>
  * </ul>
  */
 class JDeliveryClient(val resourceEndpoint:String) {
@@ -247,6 +247,8 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * no processing will be performed
 	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints, keeping the aspet ration)
+	 * 0x0 return the maximum size of the image
+
 	 * @param id : String
 	 * The xcontentId of the content. File extension is optional.
 	 * Example:

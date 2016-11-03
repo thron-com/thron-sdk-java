@@ -30,7 +30,7 @@ object JAclClient {
  * <b>
  * </b><b>Web Service Endpoints</b>:
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.com/api/xsso/resources/acl/</li>
+ * 	<li>REST service: https://clientId-view.thron.com/api/xsso/resources/acl</li>
  * </ul>
  */
 class JAclClient(val resourceEndpoint:String) {

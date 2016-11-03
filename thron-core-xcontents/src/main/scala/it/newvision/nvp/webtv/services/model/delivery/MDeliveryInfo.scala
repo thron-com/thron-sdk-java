@@ -20,17 +20,17 @@ import it.newvision.nvp.xcontents.model.MMetadata
 class MDeliveryInfo extends Serializable {
 
 	/**
-	 * channel id: WEB, STTEAMHTTPFLASH, ....
+	 * channel id: WEB, STREAMHTTPIOS, ....
 	 */
-	//#SWG#@ApiModelProperty(value = """channel id: WEB, STTEAMHTTPFLASH, ....""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """channel id: WEB, STREAMHTTPIOS, ....""" ,required = true)
 	@BeanProperty 
 	var channelType: String =_
 	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	/**
-	 * DEPRECATED. Use bestThymbUrl
+	 * DEPRECATED
 	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use bestThymbUrl""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
 	@BeanProperty 
 	@Deprecated
 	var thumbsUrl: List[String] = new ArrayList[String]

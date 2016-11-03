@@ -34,8 +34,8 @@ import it.newvision.nvp.xcontents.services.model.request.MCategoryverifyCategory
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/category/</li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/category</li>
  * </ul>
  */
 @Path("/category")
@@ -45,7 +45,7 @@ import it.newvision.nvp.xcontents.services.model.request.MCategoryverifyCategory
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xcontents/resources/category/</li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/category</li>
 //#SWGNL#</ul>""")
 trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

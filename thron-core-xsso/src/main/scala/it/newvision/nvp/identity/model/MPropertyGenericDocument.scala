@@ -184,6 +184,7 @@ class MPropertyGenericDocument extends Serializable {
 		//this.thumbsProperties.init
 		this.httpServer = clientId + this.httpServer
 		this.streamServer = clientId + this.streamServer
+		this.channelDescriptions.clear()
 	}
 
 	/**

@@ -49,8 +49,8 @@ object JContentClient {
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/content/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/content</li>
  * </ul>
  */
 class JContentClient(val resourceEndpoint:String) {

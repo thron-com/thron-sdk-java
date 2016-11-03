@@ -39,8 +39,8 @@ object JPlaylistClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xcontents/resources/playlist/   </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xcontents/resources/playlist</li>
  * </ul>
  */
 class JPlaylistClient(val resourceEndpoint:String) {

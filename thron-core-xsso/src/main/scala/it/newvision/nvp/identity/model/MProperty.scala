@@ -196,13 +196,7 @@ class MProperty extends Serializable {
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def init(clientId: String){
-		//video
-		val v1 = new MPropertyStream
-		v1.init_STREAMHTTPFLASH(clientId)
-	
-		val v2 = new MPropertyStream
-		v2.init_STREAMHTTPFLASHHD(clientId)
-	
+		//video 
 		val v3 = new MPropertyStream
 		v3.init_STREAMHTTPIOS(clientId)
 	
@@ -227,8 +221,6 @@ class MProperty extends Serializable {
 		v9.init_WEBAUDIO(clientId)
 	
 		//audio
-		val a1 = new MPropertyAudio
-		a1.init_STREAMHTTPFLASH(clientId)
 	
 		val a2 = new MPropertyAudio
 		a2.init_STREAMHTTPIOS(clientId)
@@ -236,9 +228,6 @@ class MProperty extends Serializable {
 		val a3 = new MPropertyAudio
 		a3.init_WEB(clientId)
 		a3.useForDownload = true
-	
-		val a4 = new MPropertyAudio
-		a4.init_WEBM(clientId)
 	
 	
 		//image
@@ -271,9 +260,9 @@ class MProperty extends Serializable {
 		mc2.init_WEBORIGINAL(clientId)
 		mc2.useForDownload = true
 	
-		this.streamProperties = new ArrayList[MPropertyStream](Arrays.asList(v1,v2,v3,v4,v5,v6,v7,v8,v9))
-		this.audioProperties = new ArrayList[MPropertyAudio](Arrays.asList(a1,a2,a3,a4))
-		this.imageProperties = new ArrayList[MPropertyImage](Arrays.asList(img1,img2))
+		this.streamProperties = new ArrayList[MPropertyStream](Arrays.asList(v3,v4,v5,v6,v7,v8,v9))
+		this.audioProperties = new ArrayList[MPropertyAudio](Arrays.asList(a2,a3))
+		this.imageProperties = new ArrayList[MPropertyImage](Arrays.asList(img2))
 		this.genericDocumentProperties = new ArrayList[MPropertyGenericDocument](Arrays.asList(gd1,gd2))
 		this.ndocProperties = new ArrayList[MProperty4MEDocument](Arrays.asList(mc1,mc2))
 		this.pageletProperties = new ArrayList[MPropertyPagelet](Arrays.asList(pl1))
