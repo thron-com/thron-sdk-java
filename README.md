@@ -46,7 +46,7 @@ This is the Single Sign-On component of the entire platform. It provides a set o
     <dependency>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-core-xsso_2.11</artifactId>
-        <version>5.1.4</version>
+        <version>5.1.5</version>
     </dependency>
 </dependencies>
 ```
@@ -64,7 +64,7 @@ This component manages the content-related information: content metadata, commen
     <dependency>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-core-xcontents_2.11</artifactId>
-        <version>5.1.4</version>
+        <version>5.1.5</version>
     </dependency>
 </dependencies>
 ```
@@ -83,7 +83,7 @@ This component manages the content publication process, thanks to its interactio
     <dependency>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-core-xadmin_2.11</artifactId>
-        <version>5.1.4</version>
+        <version>5.1.5</version>
     </dependency>
 </dependencies>
 ```
@@ -101,7 +101,7 @@ This component manages the content intelligence tools, allowing the user to defi
     <dependency>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-core-xintelligence_2.11</artifactId>
-        <version>5.1.4</version>
+        <version>5.1.5</version>
     </dependency>
 </dependencies>
 ```
@@ -120,7 +120,7 @@ This is the component for managing user's working area (i.e., the area where con
     <dependency>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-core-xpackager_2.11</artifactId>
-        <version>5.1.4</version>
+        <version>5.1.5</version>
     </dependency>
 </dependencies>
 ```
@@ -140,7 +140,7 @@ Xdevice allows you to connect the user to a contact and retrieve its deviceId.
     <dependency>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-core-xcontact_2.11</artifactId>
-        <version>5.1.4</version>
+        <version>5.1.5</version>
     </dependency>
 </dependencies>
 ```
@@ -158,7 +158,7 @@ This component allows you to easily check the connection to the platform and the
     <dependency>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-core-xtest_2.11</artifactId>
-        <version>5.1.4</version>
+        <version>5.1.5</version>
     </dependency>
 </dependencies>
 ```
