@@ -49,5 +49,7 @@ public enum MEContent {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("PLAYER_EMBED_CODE_ALREADY_EXISTS") PLAYER_EMBED_CODE_ALREADY_EXISTS,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("MAX_NUMBER_OF_ITEMS_REACHED") MAX_NUMBER_OF_ITEMS_REACHED
+	@XmlEnumValue("MAX_NUMBER_OF_ITEMS_REACHED") MAX_NUMBER_OF_ITEMS_REACHED,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("EXTERNALID_ALREADY_EXISTS") EXTERNALID_ALREADY_EXISTS
 }

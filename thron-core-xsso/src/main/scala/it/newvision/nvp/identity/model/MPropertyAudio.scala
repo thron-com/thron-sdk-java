@@ -58,13 +58,13 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 	def withnormalization(p:Integer):this.type ={ 	this.normalization = p; 	this }
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEB(clientId: String){
-		this.init_gd_WEB(clientId, "WEB")
+	def init_WEB(client: MClient){
+		this.init_gd_WEB(client, "WEB")
 		this.bitRate = 128
 		this.sampleRate = 44100
 		this.convertTo = "MP3"
@@ -86,13 +86,13 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 	}
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBAUDIO(clientId: String){
-		this.init_gd_WEB(clientId, "WEB")
+	def init_WEBAUDIO(client: MClient){
+		this.init_gd_WEB(client, "WEB")
 		this.bitRate = 128
 		this.sampleRate = 16000
 		this.convertTo = "MP3"
@@ -115,15 +115,14 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for STREAM iOS channel
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STREAMHTTPIOS(clientId: String){
-		this.init_gd_WEB(clientId,"STREAMHTTPIOS")
+	def init_STREAMHTTPIOS(client: MClient){
+		this.init_gd_WEB(client,"STREAMHTTPIOS")
 		this.streamProtocol = "http://"
-		this.streamServer = clientId+"-4me.weebo.it/"
 		this.bitRate = 96
 		this.sampleRate = 44100
 		this.convertTo = "TS"
@@ -143,13 +142,13 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 	}
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBM(clientId: String){
-		this.init_gd_WEB(clientId, "WEBM")
+	def init_WEBM(client: MClient){
+		this.init_gd_WEB(client, "WEBM")
 		this.bitRate = 128
 		this.sampleRate = 44100
 		this.convertTo = "VORBIS"
@@ -171,13 +170,13 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEBORIGINAL channel (Progressive Download Original Content)
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBORIGINAL(clientId: String){
-		this.init_gd_WEBORIGINAL(clientId)
+	def init_WEBORIGINAL(client: MClient){
+		this.init_gd_WEBORIGINAL(client)
 		this.bitRate = 128
 		this.sampleRate = 44100
 		this.convertTo = "MP3"

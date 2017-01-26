@@ -56,14 +56,12 @@ class MContentOpt extends Serializable {
 	/**
 	 * values belonging to MEContentProperties like:
 	 * <ul>
-	 * 	<li>PREMIUM</li>
 	 * 	<li>UNLINKABLE</li>
 	 * 	<li>RATINGALLOWED</li>
 	 * </ul>
 	 */
 	//#SWG#@ApiModelProperty(value = """values belonging to MEContentProperties like:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>PREMIUM</li>
 	//#SWGNL#	<li>UNLINKABLE</li>
 	//#SWGNL#	<li>RATINGALLOWED</li>
 	//#SWGNL#</ul>""")

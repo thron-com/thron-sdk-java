@@ -4,6 +4,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import it.newvision.nvp.xadmin.model.version.MVersionNote
 
 /* ************************
 *  GENERATED CLASS
@@ -27,8 +28,8 @@ class MUpdateParams extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var sources: List[MSourceOpt] = new ArrayList[MSourceOpt]
-	def withsources(p:List[MSourceOpt]):this.type ={ 	this.sources = p; 	this }
+	var sources: List[MUpdateSourceOpt] = new ArrayList[MUpdateSourceOpt]
+	def withsources(p:List[MUpdateSourceOpt]):this.type ={ 	this.sources = p; 	this }
 
 	/**
 	 * Optional. Default=false. Always false for IMAGE contents.
@@ -41,6 +42,22 @@ class MUpdateParams extends Serializable {
 	def withpreserveThumb(p:Boolean):this.type ={ 	this.preserveThumb = p; 	this }
 
 	/**
+	 * Optional.
+	 * Used to specify the additional channels to be used for publishing the content.
+	 * If empty the list of channels is derived from the profileId parameter.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. 
+	//#SWGNL#Used to specify the additional channels to be used for publishing the content. If empty the list of channels is derived from the profileId parameter.""")
+	@BeanProperty 
+	var additionalChannels: List[String] = new ArrayList[String]
+	def withadditionalChannels(p:List[String]):this.type ={ 	this.additionalChannels = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var note: MVersionNote =_
+	def withnote(p:MVersionNote):this.type ={ 	this.note = p; 	this }
+
+	/**
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
@@ -48,8 +65,9 @@ class MUpdateParams extends Serializable {
 	def validate(){
 		import scala.collection.JavaConversions._
 		if(!(Option(sources).isDefined && sources.size()==1 ))
-			throw new IllegalArgumentException("sources must be defined and have one element") 
-		sources.head.validate()
+			throw new IllegalArgumentException("sources must be defined and have one element")
+		sources.head.validate2()
+		Option(note).foreach(_.validate())
 	}
 
 }

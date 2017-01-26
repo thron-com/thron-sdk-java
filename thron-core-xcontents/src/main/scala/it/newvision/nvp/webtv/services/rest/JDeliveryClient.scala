@@ -101,9 +101,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768
 	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param lcid : String
 	 * Optional. the xcontentId of the main linked content
 	 * This parameter is used to have the descriptor of a linked/recommended content. The ACL of a
@@ -380,9 +378,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * @param numberOfResult : Integer
 	 * Optional. Default and maximum value is 50 items
 	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param lcid : String
 	 * Optional. the xcontentId of the main linked content
 	 * This parameter is used to have the cuepoints of a linked/recommended content. The ACL of a
@@ -478,9 +474,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * @param locale : String
 	 * Optional. the subtitles locale
 	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param lcid : String
 	 * Optional. the xcontentId of the main linked content
 	 * This parameter is used to have the subtitles of a linked/recommended content. The ACL of a
@@ -559,9 +553,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * @param locale : String
 	 * Optional. Used as preferred locale for the content results. 
 	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param admin : Boolean
 	 * Optional. disable the intrinsic filtering of the service, and return all linked contents:
 	 * * downloadable
@@ -681,6 +673,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * optional.
 	 * Possible values are: mobile/desktop/other
 	 * @param pkey : String
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param admin : Boolean
 	 * disable the intrinsic filtering of the service, and return all linked contents:
 	 * * recommended
@@ -789,7 +782,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * attribute is optional.
 	 * Possible values are: mobile/desktop/other
 	 * @param pkey : String
-	 * Optional.
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param admin : Boolean
 	 * Optional. disable the intrinsic filtering of the service, and return all linked contents:
 	 * * recommended

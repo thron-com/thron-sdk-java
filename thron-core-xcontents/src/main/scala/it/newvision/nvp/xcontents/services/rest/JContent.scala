@@ -26,6 +26,10 @@ import it.newvision.nvp.xcontents.services.model.request.MContentaddLinkedConten
 import it.newvision.nvp.xcontents.services.model.request.MContentmoveLinkedContentReq
 import it.newvision.nvp.xcontents.services.model.request.MContentremoveLinkedContentsReq
 import it.newvision.nvp.xcontents.services.model.request.MContentupdateUserSpecificValuesReq
+import it.newvision.nvp.xcontents.services.model.request.MContentaddExternalIdReq
+import it.newvision.nvp.xcontents.services.model.request.MContentremoveExternalIdReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentVerifyExternalId
+import it.newvision.nvp.xcontents.services.model.request.MContentverifyExternalIdReq
 
 /* ************************
 *  GENERATED CLASS
@@ -152,8 +156,9 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * @param returnThumbUrl : Boolean
 	 * Optional. used to specify if the service should return the thumbnail Url of the content
 	 * @param returnItags : Boolean
-	 * Optional. For Acl validation
+	 * Optional. used to specify if the service should return the itags of the content
 	 * @param returnImetadata : Boolean
+	 * Optional. used to specify if the service should return the imetadata of the content
 	 * @param pkey : String
 	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
 	 * for the content.
@@ -195,10 +200,10 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 			//#SWG#@ApiParam(value = """Optional. used to specify if the service should return the thumbnail Url of the content""")
 	@QueryParam("returnThumbUrl")
 	returnThumbUrl: Boolean, 
-			//#SWG#@ApiParam(value = """Optional. For Acl validation""")
+			//#SWG#@ApiParam(value = """Optional. used to specify if the service should return the itags of the content""")
 	@QueryParam("returnItags")
 	returnItags: Boolean, 
-			//#SWG#@ApiParam(value = """""")
+			//#SWG#@ApiParam(value = """Optional. used to specify if the service should return the imetadata of the content""")
 	@QueryParam("returnImetadata")
 	returnImetadata: Boolean, 
 			//#SWG#@ApiParam(value = """Optional, the access key for the content. Can be the tokenId for a logged user or the access key for the content.
@@ -1116,5 +1121,248 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __updateUserSpecificValues(tokenId: String, param: MContentupdateUserSpecificValuesReq) :MResponseContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_updateUserSpecificValues: String
+
+	/**
+	 * Add an externalId to the Content
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>it's not possible to add more than 100 external Ids on the same content.</li>
+	 * </ul>
+	 * <b>
+	 * </b><b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param contentId : String
+	 * @param param : MContentaddExternalIdReq
+	 * @return MResponseContentUpdate
+	*/
+	@POST
+	@Path("/addExternalId/{clientId}/{contentId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/addExternalId", notes = """Add an externalId to the Content
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>it's not possible to add more than 100 external Ids on the same content.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def addExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("contentId")
+	contentId: String, 
+			param: MContentaddExternalIdReq):Response /*returnType = MResponseContentUpdate*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__addExternalId(tokenId,clientId,contentId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addExternalId)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_addExternalId)
+	    }
+	} 
+
+	@GET
+	@Path("/addExternalId/{clientId}/{contentId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def addExternalId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("contentId")
+	contentId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentUpdate*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addExternalId",this._getCacheControl) 
+		try{
+			val resp = this.__addExternalId(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,contentId,PRestHelper.bindRequest[MContentaddExternalIdReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addExternalId)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addExternalId)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __addExternalId(tokenId: String, clientId: String, contentId: String, param: MContentaddExternalIdReq) :MResponseContentUpdate
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_addExternalId: String
+
+	/**
+	 * Remove an externalId from the Content.
+	 * <b>
+	 * </b><b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param contentId : String
+	 * @param param : MContentremoveExternalIdReq
+	 * @return MResponseContentUpdate
+	*/
+	@POST
+	@Path("/removeExternalId/{clientId}/{contentId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/removeExternalId", notes = """Remove an externalId from the Content.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def removeExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("contentId")
+	contentId: String, 
+			param: MContentremoveExternalIdReq):Response /*returnType = MResponseContentUpdate*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__removeExternalId(tokenId,clientId,contentId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeExternalId)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_removeExternalId)
+	    }
+	} 
+
+	@GET
+	@Path("/removeExternalId/{clientId}/{contentId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def removeExternalId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("contentId")
+	contentId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentUpdate*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeExternalId",this._getCacheControl) 
+		try{
+			val resp = this.__removeExternalId(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,contentId,PRestHelper.bindRequest[MContentremoveExternalIdReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeExternalId)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeExternalId)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __removeExternalId(tokenId: String, clientId: String, contentId: String, param: MContentremoveExternalIdReq) :MResponseContentUpdate
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_removeExternalId: String
+
+	/**
+	 * Verify whether a content externalId is used in the platform.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MContentverifyExternalIdReq
+	 * @return MResponseContentVerifyExternalId
+	*/
+	@POST
+	@Path("/verifyExternalId/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/verifyExternalId", notes = """Verify whether a content externalId is used in the platform.
+	//#SWGNL#
+	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentVerifyExternalId])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def verifyExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			param: MContentverifyExternalIdReq):Response /*returnType = MResponseContentVerifyExternalId*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__verifyExternalId(tokenId,clientId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_verifyExternalId)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_verifyExternalId)
+	    }
+	} 
+
+	@GET
+	@Path("/verifyExternalId/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def verifyExternalId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentVerifyExternalId*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("verifyExternalId",this._getCacheControl) 
+		try{
+			val resp = this.__verifyExternalId(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,PRestHelper.bindRequest[MContentverifyExternalIdReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_verifyExternalId)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_verifyExternalId)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __verifyExternalId(tokenId: String, clientId: String, param: MContentverifyExternalIdReq) :MResponseContentVerifyExternalId
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_verifyExternalId: String
 
 }

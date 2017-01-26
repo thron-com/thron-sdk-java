@@ -5,6 +5,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xadmin.model.MEContentType
+import it.newvision.nvp.xadmin.model.version.MVersionNote
 
 /* ************************
 *  GENERATED CLASS
@@ -24,17 +25,6 @@ class MPublishParams extends Serializable {
 	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
 
 	/**
-	 * Optional.
-	 * The Id of the profile  to be used for publishing the content. If empty the
-	 * default profile will be used
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. 
-	//#SWGNL#The Id of the profile  to be used for publishing the content. If empty the default profile will be used""")
-	@BeanProperty 
-	var profileId: String =_
-	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
-
-	/**
 	 * Content basic information such as name and description in a specific locale. If
 	 * content name is not provided, the platform will automatically assign as content
 	 * name the source file name, extension excluded.
@@ -43,6 +33,16 @@ class MPublishParams extends Serializable {
 	@BeanProperty 
 	var contentOpt: MContentOpt =_
 	def withcontentOpt(p:MContentOpt):this.type ={ 	this.contentOpt = p; 	this }
+
+	/**
+	 * Optional.
+	 * Used to drive the playlist ingestion
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional.
+	//#SWGNL#Used to drive the playlist ingestion""")
+	@BeanProperty 
+	var playlistOpt: MPlaylistOpt =_
+	def withplaylistOpt(p:MPlaylistOpt):this.type ={ 	this.playlistOpt = p; 	this }
 
 	/**
 	 * content source.
@@ -54,13 +54,30 @@ class MPublishParams extends Serializable {
 
 	/**
 	 * Optional.
-	 * Used to drive the playlist ingestion
+	 * The Id of the profile  to be used for publishing the content. If empty the
+	 * default profile will be used
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional.
-	//#SWGNL#Used to drive the playlist ingestion""")
+	//#SWG#@ApiModelProperty(value = """Optional. 
+	//#SWGNL#The Id of the profile  to be used for publishing the content. If empty the default profile will be used""")
 	@BeanProperty 
-	var playlistOpt: MPlaylistOpt =_
-	def withplaylistOpt(p:MPlaylistOpt):this.type ={ 	this.playlistOpt = p; 	this }
+	var profileId: String =_
+	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
+
+	/**
+	 * Optional.
+	 * Used to specify the additional channels to be used for publishing the content.
+	 * If empty the list of channels is derived from the profileId parameter.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. 
+	//#SWGNL#Used to specify the additional channels to be used for publishing the content. If empty the list of channels is derived from the profileId parameter.""")
+	@BeanProperty 
+	var additionalChannels: List[String] = new ArrayList[String]
+	def withadditionalChannels(p:List[String]):this.type ={ 	this.additionalChannels = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var note: MVersionNote =_
+	def withnote(p:MVersionNote):this.type ={ 	this.note = p; 	this }
 
 	/**
 	 * @return void
@@ -84,6 +101,7 @@ class MPublishParams extends Serializable {
 					throw new IllegalArgumentException("sources must be defined and have one element. playlistOpt must be empty.") 
 				sources.head.validate()
 		}
+		Option(note).foreach(_.validate())
 	}
 
 }

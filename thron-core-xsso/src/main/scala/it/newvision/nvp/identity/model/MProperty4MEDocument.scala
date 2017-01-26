@@ -36,13 +36,13 @@ class MProperty4MEDocument extends MPropertyGenericDocument with Serializable  {
 	def withthumbPageNumber(p:Integer):this.type ={ 	this.thumbPageNumber = p; 	this }
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEB(clientId: String){
-		this.init_gd_WEB(clientId,"WEB")
+	def init_WEB(client: MClient){
+		this.init_gd_WEB(client,"WEB")
 		this.compliantWith= "VIEW,PLAY"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
@@ -70,13 +70,13 @@ class MProperty4MEDocument extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEBORIGINAL channel (Progressive Download Original Content)
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBORIGINAL(clientId: String){
-		this.init_gd_WEBORIGINAL(clientId)
+	def init_WEBORIGINAL(client: MClient){
+		this.init_gd_WEBORIGINAL(client)
 		this.withIngestion = false
 		this.convertTo="SWF"
 	}

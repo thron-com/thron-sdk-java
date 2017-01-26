@@ -40,7 +40,7 @@ object JPublishInWeeboExpressClient {
  * <b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: https://clientId-view.thron.
- * com/api/xadmin/resources/publishinweeboexpress/ </li>
+ * com/api/xadmin/resources/publishinweeboexpress</li>
  * </ul>
  */
 class JPublishInWeeboExpressClient(val resourceEndpoint:String) {

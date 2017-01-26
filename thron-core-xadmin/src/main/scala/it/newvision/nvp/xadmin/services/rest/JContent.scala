@@ -6,13 +6,19 @@ import javax.ws.rs._
 import javax.ws.rs.core._ 
 import it.newvision.nvp.xadmin.services.model.content.MResponsePublishContents
 import it.newvision.nvp.xadmin.services.model.request.MContentinsertReq
+import it.newvision.nvp.xadmin.services.model.content.MResponseContentListVersions
+import it.newvision.nvp.xadmin.services.model.request.MContentlistVersionsReq
+import it.newvision.nvp.xadmin.services.model.content.MResponseDetailSource
 import it.newvision.nvp.xadmin.services.model.content.MResponsePublish
-import it.newvision.nvp.xadmin.services.model.request.MContentupdateThumbnailReq
 import it.newvision.nvp.xadmin.services.model.request.MContentupdateSourceReq
+import it.newvision.nvp.xadmin.services.model.request.MContentupdateVersionNoteReq
+import it.newvision.nvp.xadmin.services.model.request.MContentupdateThumbnailReq
 import it.newvision.nvp.xadmin.services.model.content.MResponseContentsTrash
 import it.newvision.nvp.xadmin.services.model.request.MContenttrashReq
 import it.newvision.nvp.xadmin.services.model.request.MContentuntrashReq
 import it.newvision.nvp.xadmin.services.model.request.MContentremoveReq
+import it.newvision.nvp.xadmin.services.model.weebo.MResponseGetContentTypes
+import it.newvision.nvp.xadmin.services.model.request.MContentgetContentTypesReq
 
 /* ************************
 *  GENERATED CLASS
@@ -120,73 +126,143 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_insert: String
 
 	/**
-	 * Replace the thumbnail for a published content.
-	 * 
-	 * <b>Role Validation</b>
-	 * MODIFY ACL on Content and 4ME_USE_CONTENTS role
+	 * List all available version of the content
+	 * <b>
+	 * </b><b>Role Validation</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
-	 * @param param : MContentupdateThumbnailReq
-	 * @return MResponsePublish
+	 * @param xcontentId : String
+	 * @param param : MContentlistVersionsReq
+	 * @return MResponseContentListVersions
 	*/
 	@POST
-	@Path("/updateThumbnail/{clientId}")
+	@Path("/listVersions/{clientId}/{xcontentId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateThumbnail", notes = """Replace the thumbnail for a published content.
-	//#SWGNL#
-	//#SWGNL#<b>Role Validation</b>
-	//#SWGNL#MODIFY ACL on Content and 4ME_USE_CONTENTS role""", response = classOf[MResponsePublish])
+	//#SWG#@ApiOperation(value = "/listVersions", notes = """List all available version of the content
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Role Validation</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentListVersions])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updateThumbnail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def listVersions(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("clientId")
 	clientId: String, 
-			param: MContentupdateThumbnailReq):Response /*returnType = MResponsePublish*/ = {
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("xcontentId")
+	xcontentId: String, 
+			param: MContentlistVersionsReq):Response /*returnType = MResponseContentListVersions*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__updateThumbnail(tokenId,clientId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateThumbnail)    
+			val resp = this.__listVersions(tokenId,clientId,xcontentId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_listVersions)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateThumbnail)
+	        throw new WebApplicationException(e,this.capability_listVersions)
 	    }
 	} 
 
 	@GET
-	@Path("/updateThumbnail/{clientId}")
+	@Path("/listVersions/{clientId}/{xcontentId}")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updateThumbnail_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def listVersions_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("clientId")
 	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("xcontentId")
+	xcontentId: String,
 			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublish*/ = { 
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentListVersions*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("updateThumbnail",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("listVersions",this._getCacheControl) 
 		try{
-			val resp = this.__updateThumbnail(
+			val resp = this.__listVersions(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,PRestHelper.bindRequest[MContentupdateThumbnailReq](param_q)	
+			,clientId,xcontentId,PRestHelper.bindRequest[MContentlistVersionsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateThumbnail)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_listVersions)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateThumbnail)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_listVersions)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateThumbnail(tokenId: String, clientId: String, param: MContentupdateThumbnailReq) :MResponsePublish
+	 protected def __listVersions(tokenId: String, clientId: String, xcontentId: String, param: MContentlistVersionsReq) :MResponseContentListVersions
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateThumbnail: String
+	protected def capability_listVersions: String
+
+	/**
+	 * The service return the information about the source of the content (not only file)
+	 * <b>
+	 * </b><b>Role Validation</b>
+	 * <ul>
+	 * 	<li>READ ACL on Content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param xcontentId : String
+	 * @return MResponseDetailSource
+	*/
+	@GET
+	@Path("/detailSource/{clientId}/{xcontentId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
+	//#SWG#@ApiOperation(value = "/detailSource", notes = """The service return the information about the source of the content (not only file)
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Role Validation</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>READ ACL on Content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseDetailSource])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def detailSource(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("xcontentId")
+	xcontentId: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String
+			,
+			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseDetailSource*/= { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		//get the cache control specific for this service
+		val cc = this.cachemap("detailSource") 
+		try{	
+			val resp = this.__detailSource(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,xcontentId)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detailSource)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_detailSource)
+	    }
+	}
+
+	 
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __detailSource(tokenId: String, clientId: String, xcontentId: String) :MResponseDetailSource
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_detailSource: String
 
 	/**
 	 * The service:
@@ -195,14 +271,6 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * </ul>
 	 * <ul>
 	 * 	<li>republish the content in all channels with status PUBLISHED or ERROR.</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>remove the old versioned files (all sourceFiles versions) from repository if
-	 * removeOriginalFiles  parameter is TRUE</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>keep a version of the original source file (saved as link in MMediaContent.
-	 * sourceFilesOldVersion) if removeOriginalFiles parameter is set to FALSE</li>
 	 * </ul>
 	 * <ul>
 	 * 	<li>reset the user preferences of the content (the content becomes new for all users)</li>
@@ -230,12 +298,6 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#</ul>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>republish the content in all channels with status PUBLISHED or ERROR.</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>remove the old versioned files (all sourceFiles versions) from repository if removeOriginalFiles  parameter is TRUE</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>keep a version of the original source file (saved as link in MMediaContent.sourceFilesOldVersion) if removeOriginalFiles parameter is set to FALSE</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>reset the user preferences of the content (the content becomes new for all users)</li>
@@ -298,6 +360,163 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __updateSource(tokenId: String, clientId: String, param: MContentupdateSourceReq) :MResponsePublish
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_updateSource: String
+
+	/**
+	 * Update the version note for the current active version of the content.
+	 * <b>
+	 * </b><b>Role Validation</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>available only for the creator of the version.</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param xcontentId : String
+	 * @param param : MContentupdateVersionNoteReq
+	 * @return MResponsePublish
+	*/
+	@POST
+	@Path("/updateVersionNote/{clientId}/{xcontentId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/updateVersionNote", notes = """Update the version note for the current active version of the content.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Role Validation</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>available only for the creator of the version.</li>
+	//#SWGNL#</ul>""", response = classOf[MResponsePublish])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def updateVersionNote(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("xcontentId")
+	xcontentId: String, 
+			param: MContentupdateVersionNoteReq):Response /*returnType = MResponsePublish*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__updateVersionNote(tokenId,clientId,xcontentId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateVersionNote)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_updateVersionNote)
+	    }
+	} 
+
+	@GET
+	@Path("/updateVersionNote/{clientId}/{xcontentId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def updateVersionNote_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("xcontentId")
+	xcontentId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublish*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateVersionNote",this._getCacheControl) 
+		try{
+			val resp = this.__updateVersionNote(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,xcontentId,PRestHelper.bindRequest[MContentupdateVersionNoteReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateVersionNote)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateVersionNote)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __updateVersionNote(tokenId: String, clientId: String, xcontentId: String, param: MContentupdateVersionNoteReq) :MResponsePublish
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_updateVersionNote: String
+
+	/**
+	 * Replace the thumbnail for a published content.
+	 * Not available for IMAGE content type.
+	 * 
+	 * <b>Role Validation</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MContentupdateThumbnailReq
+	 * @return MResponsePublish
+	*/
+	@POST
+	@Path("/updateThumbnail/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/updateThumbnail", notes = """Replace the thumbnail for a published content.
+	//#SWGNL#Not available for IMAGE content type.
+	//#SWGNL#
+	//#SWGNL#<b>Role Validation</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponsePublish])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def updateThumbnail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			param: MContentupdateThumbnailReq):Response /*returnType = MResponsePublish*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__updateThumbnail(tokenId,clientId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateThumbnail)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_updateThumbnail)
+	    }
+	} 
+
+	@GET
+	@Path("/updateThumbnail/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def updateThumbnail_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublish*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateThumbnail",this._getCacheControl) 
+		try{
+			val resp = this.__updateThumbnail(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,PRestHelper.bindRequest[MContentupdateThumbnailReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateThumbnail)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateThumbnail)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __updateThumbnail(tokenId: String, clientId: String, param: MContentupdateThumbnailReq) :MResponsePublish
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_updateThumbnail: String
 
 	/**
 	 * move a content in TRASH category. The content is still published in CDN and can be recovered using
@@ -534,5 +753,64 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __remove(tokenId: String, clientId: String, param: MContentremoveReq) :MResponsePublish
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_remove: String
+
+	/**
+	 * This service is used to know the possible platform content type available for a given filename. The
+	 * service map the mime type of filename to the corresponding list of content types.
+	 * For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.
+	 * @param tokenId : String
+	 * @param param : MContentgetContentTypesReq
+	 * @return MResponseGetContentTypes
+	*/
+	@POST
+	@Path("/getContentTypes")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/getContentTypes", notes = """This service is used to know the possible platform content type available for a given filename. The service map the mime type of filename to the corresponding list of content types.
+	//#SWGNL#For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.""", response = classOf[MResponseGetContentTypes])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def getContentTypes(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MContentgetContentTypesReq):Response /*returnType = MResponseGetContentTypes*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__getContentTypes(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_getContentTypes)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_getContentTypes)
+	    }
+	} 
+
+	@GET
+	@Path("/getContentTypes")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def getContentTypes_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseGetContentTypes*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getContentTypes",this._getCacheControl) 
+		try{
+			val resp = this.__getContentTypes(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MContentgetContentTypesReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getContentTypes)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_getContentTypes)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __getContentTypes(tokenId: String, param: MContentgetContentTypesReq) :MResponseGetContentTypes
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_getContentTypes: String
 
 }

@@ -26,6 +26,10 @@ import it.newvision.nvp.xcontents.services.model.request.MContentaddLinkedConten
 import it.newvision.nvp.xcontents.services.model.request.MContentmoveLinkedContentReq
 import it.newvision.nvp.xcontents.services.model.request.MContentremoveLinkedContentsReq
 import it.newvision.nvp.xcontents.services.model.request.MContentupdateUserSpecificValuesReq
+import it.newvision.nvp.xcontents.services.model.request.MContentaddExternalIdReq
+import it.newvision.nvp.xcontents.services.model.request.MContentremoveExternalIdReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentVerifyExternalId
+import it.newvision.nvp.xcontents.services.model.request.MContentverifyExternalIdReq
 
 /* ************************
 *  GENERATED CLASS
@@ -130,8 +134,9 @@ class JContentClient(val resourceEndpoint:String) {
 	 * @param returnThumbUrl : Boolean
 	 * Optional. used to specify if the service should return the thumbnail Url of the content
 	 * @param returnItags : Boolean
-	 * Optional. For Acl validation
+	 * Optional. used to specify if the service should return the itags of the content
 	 * @param returnImetadata : Boolean
+	 * Optional. used to specify if the service should return the imetadata of the content
 	 * @param pkey : String
 	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
 	 * for the content.
@@ -846,6 +851,173 @@ class JContentClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseContent])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Add an externalId to the Content
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>it's not possible to add more than 100 external Ids on the same content.</li>
+	 * </ul>
+	 * <b>
+	 * </b><b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param contentId : String
+	 * @param param : MContentaddExternalIdReq
+	 * @return MResponseContentUpdate
+	*/
+	def addExternalId(tokenId: String, 
+			clientId: String, 
+			contentId: String, 
+			param: MContentaddExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentUpdate ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseContentUpdate = if(this.resourceEndpoint == ""){
+			
+				new MResponseContentUpdate()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/addExternalId")
+					.path(clientId.toString)
+		.path(contentId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseContentUpdate],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseContentUpdate])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Remove an externalId from the Content.
+	 * <b>
+	 * </b><b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param contentId : String
+	 * @param param : MContentremoveExternalIdReq
+	 * @return MResponseContentUpdate
+	*/
+	def removeExternalId(tokenId: String, 
+			clientId: String, 
+			contentId: String, 
+			param: MContentremoveExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentUpdate ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseContentUpdate = if(this.resourceEndpoint == ""){
+			
+				new MResponseContentUpdate()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/removeExternalId")
+					.path(clientId.toString)
+		.path(contentId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseContentUpdate],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseContentUpdate])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Verify whether a content externalId is used in the platform.
+	 * 
+	 * <b>ACL validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY is required on the specific content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MContentverifyExternalIdReq
+	 * @return MResponseContentVerifyExternalId
+	*/
+	def verifyExternalId(tokenId: String, 
+			clientId: String, 
+			param: MContentverifyExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentVerifyExternalId ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseContentVerifyExternalId = if(this.resourceEndpoint == ""){
+			
+				new MResponseContentVerifyExternalId()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/verifyExternalId")
+					.path(clientId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseContentVerifyExternalId],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseContentVerifyExternalId])
 				}
 				else {
 				  throw e

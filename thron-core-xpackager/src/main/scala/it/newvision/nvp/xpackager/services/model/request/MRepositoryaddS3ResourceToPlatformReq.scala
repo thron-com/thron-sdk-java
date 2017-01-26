@@ -32,10 +32,10 @@ class MRepositoryaddS3ResourceToPlatformReq extends Serializable {
 	def withresource(p:MS3Resource):this.type ={ 	this.resource = p; 	this }
 
 	/**
-	 * remove the source file once imported in 4me Platform (if possible). Default
-	 * value is false
+	 * remove the source file once imported in Platform (if possible). Default value
+	 * is false
 	 */
-	//#SWG#@ApiModelProperty(value = """remove the source file once imported in 4me Platform (if possible). Default value is false""", required = true)
+	//#SWG#@ApiModelProperty(value = """remove the source file once imported in Platform (if possible). Default value is false""", required = true)
 	@BeanProperty
 	var removeResourceIfPossible: Boolean =_
 	def withremoveResourceIfPossible(p:Boolean):this.type ={ 	this.removeResourceIfPossible = p; 	this }

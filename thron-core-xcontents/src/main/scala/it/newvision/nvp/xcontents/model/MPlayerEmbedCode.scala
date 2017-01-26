@@ -63,6 +63,22 @@ class MPlayerEmbedCode extends Serializable {
 	def withrtieValues(p:List[MMetadata]):this.type ={ 	this.rtieValues = p; 	this }
 
 	/**
+	 * a pretty short name of the content with the file extension (seo optimization).
+	 * Like:
+	 * * mountain-landscape.jpg
+	 * * sport-car.mp4
+	 * * brown-bag.png
+	 */
+	//#SWG#@ApiModelProperty(value = """a pretty short name of the content with the file extension (seo optimization).
+	//#SWGNL#Like: 
+	//#SWGNL#* mountain-landscape.jpg
+	//#SWGNL#* sport-car.mp4
+	//#SWGNL#* brown-bag.png""")
+	@BeanProperty 
+	var prettyName: String =_
+	def withprettyName(p:String):this.type ={ 	this.prettyName = p; 	this }
+
+	/**
 	 * Deprecated
 	 */
 	//#SWG#@ApiModelProperty(value = """Deprecated""")

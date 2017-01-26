@@ -47,7 +47,7 @@ object JITagDefinitionClient {
  * </b><b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/itagdefinition/</li>
+ * com/api/xintelligence/resources/itagdefinition</li>
  * </ul>
  */
 class JITagDefinitionClient(val resourceEndpoint:String) {

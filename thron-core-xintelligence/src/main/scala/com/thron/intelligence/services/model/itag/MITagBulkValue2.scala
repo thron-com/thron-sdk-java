@@ -18,7 +18,12 @@ import com.thron.intelligence.services.model.common.MTarget
 //#SWG#@ApiModel(description = """""")
 class MITagBulkValue2 extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * the tag definition id.
+	 * TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId
+	 */
+	//#SWG#@ApiModelProperty(value = """the tag definition id.
+	//#SWGNL#TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId""" ,required = true)
 	@BeanProperty 
 	var tagId: MITagId =_
 	def withtagId(p:MITagId):this.type ={ 	this.tagId = p; 	this }

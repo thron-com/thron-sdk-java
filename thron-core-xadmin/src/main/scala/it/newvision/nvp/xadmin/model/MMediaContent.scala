@@ -125,10 +125,21 @@ class MMediaContent extends Serializable {
 	var contentUGC: Boolean =_
 	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
 
+	/**
+	 * The specific channel for the thumbnails.
+	 */
 	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var channels: List[MChannel] = new ArrayList[MChannel]
-	  def withchannels(p:List[MChannel]):this.type ={ 	this.channels = p; 	this }
+	//#SWG#@ApiModelProperty(value = """The specific channel for the thumbnails.""")
+	var thumbChannel: MChannel =_
+	  def withthumbChannel(p:MChannel):this.type ={ 	this.thumbChannel = p; 	this }
+
+	/**
+	 * the original uploaded file properties. calculated using the Repository services.
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """the original uploaded file properties. calculated using the Repository services.""")
+	var sourceFiles: List[MFile] = new ArrayList[MFile]
+	  def withsourceFiles(p:List[MFile]):this.type ={ 	this.sourceFiles = p; 	this }
 
 	/**
 	 * Used as link to the source files in repository used in past. The current source
@@ -140,21 +151,10 @@ class MMediaContent extends Serializable {
 	var sourcefilesOldVersions: List[MFile] = new ArrayList[MFile]
 	  def withsourcefilesOldVersions(p:List[MFile]):this.type ={ 	this.sourcefilesOldVersions = p; 	this }
 
-	/**
-	 * the original uploaded file properties. calculated using the Repository services.
-	 */
 	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """the original uploaded file properties. calculated using the Repository services.""")
-	var sourceFiles: List[MFile] = new ArrayList[MFile]
-	  def withsourceFiles(p:List[MFile]):this.type ={ 	this.sourceFiles = p; 	this }
-
-	/**
-	 * The specific channel for the thumbnails.
-	 */
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """The specific channel for the thumbnails.""")
-	var thumbChannel: MChannel =_
-	  def withthumbChannel(p:MChannel):this.type ={ 	this.thumbChannel = p; 	this }
+	//#SWG#@ApiModelProperty(value = """""")
+	var channels: List[MChannel] = new ArrayList[MChannel]
+	  def withchannels(p:List[MChannel]):this.type ={ 	this.channels = p; 	this }
 
 	/**
 	 * @return MEContentStatus

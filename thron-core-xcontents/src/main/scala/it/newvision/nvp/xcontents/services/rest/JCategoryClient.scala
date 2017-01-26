@@ -37,7 +37,7 @@ object JCategoryClient {
 }
 /**
  * Service used to manage categories (Folders).
- * A Category is a container of contents, and ca be organized in a tree structure.
+ * A Category is a container of contents, and can be organized in a tree structure.
  * 
  * Categories can have multilingual metadata, name and description.
  * <b>
@@ -269,7 +269,7 @@ class JCategoryClient(val resourceEndpoint:String) {
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param catId : String
-	 * Id or prettyId
+	 * Category id or prettyId
 	 * @param cascade : Boolean
 	 * Used to force the remove also in the subcategories
 	 * @return MResponseRemoveCategory
@@ -419,9 +419,7 @@ class JCategoryClient(val resourceEndpoint:String) {
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param categoryId : String
-	 * required.
-	 * Can be used the Category Id or the Category PrettyId
-
+	 * Category id or prettyId
 	 * @param cascade : Boolean
 	 * Optional. With cascade equals true, the service return the children sub tree of the given category
 	 * @param locale : String

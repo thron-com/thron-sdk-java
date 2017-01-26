@@ -28,8 +28,8 @@ object JPermissionsClient {
 /**
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/permissions/     </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/permissions</li>
  * </ul>
  */
 class JPermissionsClient(val resourceEndpoint:String) {

@@ -89,13 +89,13 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for STREAM channel
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STREAMHTTPIOS(clientId: String){
-		this.init_gd_WEB(clientId,"STREAMHTTPIOS")
+	def init_STREAMHTTPIOS(client: MClient){
+		this.init_gd_WEB(client,"STREAMHTTPIOS")
 		// the total bitrate is used as profile name, becaue there are some profile xml file having all setup defined.
 		// to handle multiple profile for the same total bitrate, define a different profile id like 8000 for a profile of 800kb for ipad.
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(680),Integer.valueOf(400)))
@@ -106,7 +106,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.convertTo = "TS"
 		this.appName = "ios/"
 		this.streamProtocol = "http://"
-		this.streamServer = clientId+"-4me.weebo.it/"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
 		cd.channelShortName = "Streaming HLS"
@@ -122,13 +121,13 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for STREAM channel
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STREAMHTTPIOSHD(clientId: String){
-		this.init_gd_WEB(clientId,"STREAMHTTPIOSHD")
+	def init_STREAMHTTPIOSHD(client: MClient){
+		this.init_gd_WEB(client,"STREAMHTTPIOSHD")
 		// the total bitrate is used as profile name, becaue there are some profile xml file having all setup defined.
 		// to handle multiple profile for the same total bitrate, define a different profile id like 8000 for a profile of 800kb for ipad.
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1800),Integer.valueOf(1400),Integer.valueOf(1020),Integer.valueOf(680),Integer.valueOf(400)))
@@ -139,7 +138,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.convertTo = "TS"
 		this.appName = "ios/"
 		this.streamProtocol = "http://"
-		this.streamServer = clientId+"-4me.weebo.it/"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
 		cd.channelShortName = "Streaming HLS HD"
@@ -155,13 +153,13 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEB channel (Progressive Download)
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEB(clientId: String){
-		this.init_gd_WEB(clientId,"WEB")
+	def init_WEB(client: MClient){
+		this.init_gd_WEB(client,"WEB")
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(704)))
 		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
 		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(800)))
@@ -169,7 +167,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.defaultBitRate = 800
 		this.streamProtocol = ""
 		this.appName = ""
-		this.streamServer = ""
 		val cd = new MChannelDescription
 		cd.locale = "IT"
 		cd.channelShortName = "Mp4"
@@ -188,13 +185,13 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEB channel (Progressive Download)
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBHD(clientId: String){
-		this.init_gd_WEB(clientId,"WEBHD")
+	def init_WEBHD(client: MClient){
+		this.init_gd_WEB(client,"WEBHD")
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1800)))
 		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
 		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(2000)))
@@ -202,7 +199,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.defaultBitRate = 2000
 		this.streamProtocol = ""
 		this.appName = ""
-		this.streamServer = ""
 		this.compliantWith= "VIEW,PLAY"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
@@ -221,13 +217,13 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEB FULL HD channel (Progressive Download)
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBFULLHD(clientId: String){
-		this.init_gd_WEB(clientId,"WEBFULLHD")
+	def init_WEBFULLHD(client: MClient){
+		this.init_gd_WEB(client,"WEBFULLHD")
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4300)))
 		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
 		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4500)))
@@ -235,7 +231,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.defaultBitRate = 4500
 		this.streamProtocol = ""
 		this.appName = ""
-		this.streamServer = ""
 		this.compliantWith= "VIEW,PLAY"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
@@ -254,13 +249,13 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEB FULL HD channel (Progressive Download)
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEB4K(clientId: String){
-		this.init_gd_WEB(clientId,"WEB4K")
+	def init_WEB4K(client: MClient){
+		this.init_gd_WEB(client,"WEB4K")
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(25000)))
 		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
 		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(25100)))
@@ -268,7 +263,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.defaultBitRate = 25000
 		this.streamProtocol = ""
 		this.appName = ""
-		this.streamServer = ""
 		this.compliantWith= "VIEW,PLAY"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
@@ -287,13 +281,13 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEBAUDIO channel (Progressive Download)
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBAUDIO(clientId: String){
-		this.init_gd_WEB(clientId,"WEBAUDIO")
+	def init_WEBAUDIO(client: MClient){
+		this.init_gd_WEB(client,"WEBAUDIO")
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(0)))
 		//this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(128))) x mp3
 		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(128)))
@@ -304,7 +298,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.defaultBitRate = 128
 		this.streamProtocol = ""
 		this.appName = ""
-		this.streamServer = ""
 		val cd = new MChannelDescription
 		cd.locale = "IT"
 		cd.channelShortName = "Traccia audio MP3"
@@ -324,13 +317,13 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEBM channel (Progressive Download, WebM format)
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBM(clientId: String){
-		this.init_gd_WEB(clientId,"WEBM")
+	def init_WEBM(client: MClient){
+		this.init_gd_WEB(client,"WEBM")
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(704)))
 		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
 		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(800)))
@@ -338,7 +331,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.defaultBitRate = 800
 		this.streamProtocol = ""
 		this.appName = ""
-		this.streamServer = ""
 		this.codec = "vp8"
 		this.convertTo = "WEBM"
 		val cd = new MChannelDescription
@@ -356,13 +348,13 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEBM channel (Progressive Download, WebM format) Full HD
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBMFULLHD(clientId: String){
-		this.init_gd_WEB(clientId,"WEBMFULLHD")
+	def init_WEBMFULLHD(client: MClient){
+		this.init_gd_WEB(client,"WEBMFULLHD")
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4300)))
 		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
 		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4500)))
@@ -370,7 +362,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.defaultBitRate = 4500
 		this.streamProtocol = ""
 		this.appName = ""
-		this.streamServer = ""
 		this.compliantWith= "VIEW"
 		this.codec = "vp8"
 		this.convertTo = "WEBM"
@@ -389,13 +380,13 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEBM channel (Progressive Download, WebM format)
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBMHD(clientId: String){
-		this.init_gd_WEB(clientId,"WEBMHD")
+	def init_WEBMHD(client: MClient){
+		this.init_gd_WEB(client,"WEBMHD")
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1800)))
 		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
 		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(2000)))
@@ -403,7 +394,6 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.defaultBitRate = 2000
 		this.streamProtocol = ""
 		this.appName = ""
-		this.streamServer = ""
 		this.compliantWith= "VIEW"
 		this.codec = "vp8"
 		this.convertTo = "WEBM"
@@ -422,13 +412,13 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEBORIGINAL channel (Progressive Download Original Content)
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBORIGINAL(clientId: String){
-		this.init_gd_WEBORIGINAL(clientId)
+	def init_WEBORIGINAL(client: MClient){
+		this.init_gd_WEBORIGINAL(client)
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1)))
 		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1)))
 		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(1)))
@@ -436,20 +426,19 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		this.defaultBitRate = 1
 		this.streamProtocol = ""
 		this.appName = ""
-		this.streamServer = ""
 		this.withIngestion = false
 		this.useForDownload = true
 		this.convertTo="MP4"
 	}
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBIPHONE(clientId: String){
-		this.init_gd_WEB(clientId,"WEBIPHONE")
+	def init_WEBIPHONE(client: MClient){
+		this.init_gd_WEB(client,"WEBIPHONE")
 		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(416)))
 		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96)))
 		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(512)))

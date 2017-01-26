@@ -15,8 +15,8 @@ import javax.ws.rs.core._
  * 
  * <b>Web Service Endpoints</b>:
  * <ul>
- * 	<li>REST: http://clientId-view.thron.com/api/xpackager/resources/application.
- * wadl </li>
+ * 	<li>REST: https://clientId-view.thron.
+ * com/api/xpackager/resources/preview</li>
  * </ul>
  */
 @Path("/preview")
@@ -24,7 +24,7 @@ import javax.ws.rs.core._
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints</b>:
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST: http://clientId-view.thron.com/api/xpackager/resources/application.wadl </li>
+//#SWGNL#	<li>REST: https://clientId-view.thron.com/api/xpackager/resources/preview</li>
 //#SWGNL#</ul>""")
 trait JPreview extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

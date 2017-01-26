@@ -25,8 +25,8 @@ import it.newvision.nvp.test.services.model.request.MTestServiceputReq
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>WADL REST service (latest version): http://clientId-view.thron.
- * com/api/xtest/resources/application.wadl </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xtest/resources/testservice</li>
  * </ul>
  */
 @Path("/testservice")
@@ -36,7 +36,7 @@ import it.newvision.nvp.test.services.model.request.MTestServiceputReq
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>WADL REST service (latest version): http://clientId-view.thron.com/api/xtest/resources/application.wadl </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xtest/resources/testservice</li>
 //#SWGNL#</ul>""")
 trait JTestService extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

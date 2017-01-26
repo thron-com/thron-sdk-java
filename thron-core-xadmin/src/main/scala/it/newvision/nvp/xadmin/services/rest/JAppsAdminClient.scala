@@ -34,12 +34,12 @@ object JAppsAdminClient {
 	
 }
 /**
- * This service is used to manage the APP (4ME Apps) properties.
+ * This service is used to manage an App properties.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xadmin/resources/appsadmin/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xadmin/resources/appsadmin</li>
  * </ul>
  */
 class JAppsAdminClient(val resourceEndpoint:String) {

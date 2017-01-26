@@ -31,11 +31,13 @@ class MWebResource extends Serializable {
 	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	/**
-	 * the new filename to assign to the resource. The renameFileTo is used as
-	 * suggestion because the file can be renamed if not unique inside the platform.
-	 * The attribute is optional
+	 * Optional.
+	 * the new filename (with right extension) to assign to the resource. The
+	 * renameFileTo is used as suggestion because the file can be renamed if not
+	 * unique inside the platform.
 	 */
-	//#SWG#@ApiModelProperty(value = """the new filename to assign to the resource. The renameFileTo is used as suggestion because the file can be renamed if not unique inside the platform. The attribute is optional""")
+	//#SWG#@ApiModelProperty(value = """Optional.
+	//#SWGNL#the new filename (with right extension) to assign to the resource. The renameFileTo is used as suggestion because the file can be renamed if not unique inside the platform.""")
 	@BeanProperty 
 	var renameFileTo: String =_
 	def withrenameFileTo(p:String):this.type ={ 	this.renameFileTo = p; 	this }

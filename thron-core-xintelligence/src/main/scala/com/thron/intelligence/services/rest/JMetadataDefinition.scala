@@ -21,8 +21,8 @@ import com.thron.intelligence.services.model.request.MMetadataDefinitionupdateRe
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/metadatadefinition/            </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/metadatadefinition</li>
  * </ul>
  */
 @Path("/metadatadefinition")
@@ -30,7 +30,7 @@ import com.thron.intelligence.services.model.request.MMetadataDefinitionupdateRe
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xintelligence/resources/metadatadefinition/            </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xintelligence/resources/metadatadefinition</li>
 //#SWGNL#</ul>""")
 trait JMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

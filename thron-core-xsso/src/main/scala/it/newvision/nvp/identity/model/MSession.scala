@@ -231,6 +231,14 @@ class MSession extends Serializable {
 	def withuserClassifications(p:List[MClassificationMinimal]):this.type ={ 	this.userClassifications = p; 	this }
 
 	/**
+	 * Contact id, if any
+	 */
+	//#SWG#@ApiModelProperty(value = """Contact id, if any""")
+	@BeanProperty 
+	var contactId: String  = ""
+	def withcontactId(p:String):this.type ={ 	this.contactId = p; 	this }
+
+	/**
 	 * create a new session from an other
 	 * @param s : MSession
 	 * @return void
@@ -248,6 +256,7 @@ class MSession extends Serializable {
 		this.setOwnAclRules(s.getOwnAclRules)
 		this.setSubjectClass(s.getSubjectClass)
 		this.setSubjectId(s.getSubjectId)
+		this.setContactId(s.getContactId)
 		this.setToken(s.getToken)
 		this.setUserCapabilities(s.getUserCapabilities)
 		this.setUserCompanyName(s.getUserCompanyName)

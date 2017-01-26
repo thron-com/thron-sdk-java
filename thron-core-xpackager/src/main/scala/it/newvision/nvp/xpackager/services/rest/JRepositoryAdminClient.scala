@@ -39,8 +39,8 @@ object JRepositoryAdminClient {
  * <b>
  * </b><b>Web Service Endpoints</b>:
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.
- * it/api/adxpackager/resources/repositoryadmin/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/adxpackager/resources/repositoryadmin</li>
  * </ul>
  */
 class JRepositoryAdminClient(val resourceEndpoint:String) {

@@ -28,7 +28,7 @@ import it.newvision.nvp.xcontents.services.model.request.MCategoryverifyCategory
 ****************************/
 /**
  * Service used to manage categories (Folders).
- * A Category is a container of contents, and ca be organized in a tree structure.
+ * A Category is a container of contents, and can be organized in a tree structure.
  * 
  * Categories can have multilingual metadata, name and description.
  * <b>
@@ -40,7 +40,7 @@ import it.newvision.nvp.xcontents.services.model.request.MCategoryverifyCategory
  */
 @Path("/category")
 //#SWG#@Api(value = "/category", description = """Service used to manage categories (Folders). 
-//#SWGNL#A Category is a container of contents, and ca be organized in a tree structure.
+//#SWGNL#A Category is a container of contents, and can be organized in a tree structure.
 //#SWGNL#Categories can have multilingual metadata, name and description.
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b> 
@@ -344,7 +344,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param catId : String
-	 * Id or prettyId
+	 * Category id or prettyId
 	 * @param cascade : Boolean
 	 * Used to force the remove also in the subcategories
 	 * @return MResponseRemoveCategory
@@ -370,7 +370,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 			//#SWG#@ApiParam(value = """""")
 	@FormParam("clientId")
 	clientId: String, 
-			//#SWG#@ApiParam(value = """Id or prettyId""")
+			//#SWG#@ApiParam(value = """Category id or prettyId""")
 	@FormParam("catId")
 	catId: String, 
 			//#SWG#@ApiParam(value = """Used to force the remove also in the subcategories""")
@@ -548,9 +548,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param categoryId : String
-	 * required.
-	 * Can be used the Category Id or the Category PrettyId
-
+	 * Category id or prettyId
 	 * @param cascade : Boolean
 	 * Optional. With cascade equals true, the service return the children sub tree of the given category
 	 * @param locale : String
@@ -572,9 +570,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 			//#SWG#@ApiParam(value = """""")
 	@QueryParam("clientId")
 	clientId: String, 
-			//#SWG#@ApiParam(value = """required.
-	//#SWGNL#Can be used the Category Id or the Category PrettyId
-	//#SWGNL#""")
+			//#SWG#@ApiParam(value = """Category id or prettyId""")
 	@QueryParam("categoryId")
 	categoryId: String, 
 			//#SWG#@ApiParam(value = """Optional. With cascade equals true, the service return the children sub tree of the given category""")

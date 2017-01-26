@@ -54,6 +54,16 @@ class MWeeboProvider extends MProvider with Serializable  {
 	def withweeboThumbChannel(p:MWeeboChannel):this.type ={ 	this.weeboThumbChannel = p; 	this }
 
 	/**
+	 * The total number of versions for the content.
+	 * Each version corresponds to a replacement of the  source file
+	 */
+	//#SWG#@ApiModelProperty(value = """The total number of versions for the content. 
+	//#SWGNL#Each version corresponds to a replacement of the  source file""")
+	@BeanProperty 
+	var totalVersions: Integer =_
+	def withtotalVersions(p:Integer):this.type ={ 	this.totalVersions = p; 	this }
+
+	/**
 	 * @return Boolean
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)

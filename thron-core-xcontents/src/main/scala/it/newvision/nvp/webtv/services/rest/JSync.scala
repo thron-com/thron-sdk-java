@@ -20,7 +20,7 @@ import it.newvision.nvp.webtv.services.model.request.MSyncexportReq
  * Service used for integration with external systems.
  * The purpose of the service is to provide a list of changes that have been
  * occurred in the platform in such a way to maintain synchronized an external
- * system. The Service avoid ACL restrictions.
+ * system.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
@@ -30,7 +30,7 @@ import it.newvision.nvp.webtv.services.model.request.MSyncexportReq
  */
 @Path("/sync")
 //#SWG#@Api(value = "/sync", description = """Service used for integration with external systems.
-//#SWGNL#The purpose of the service is to provide a list of changes that have been occurred in the platform in such a way to maintain synchronized an external system. The Service avoid ACL restrictions.
+//#SWGNL#The purpose of the service is to provide a list of changes that have been occurred in the platform in such a way to maintain synchronized an external system.
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
@@ -291,6 +291,7 @@ trait JSync extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * The resultset is paginated (max page size is 200 elements), after the 1st call the service return a
 	 * "nextPage" identifier to be used on the next call, to get the following elements. If  the
 	 * "nextPage" value is empty it means that you are on the last page of the result set.
+	 * The Service avoids ACL restrictions.
 	 * 
 	 * <b>ROLE validation:</b>
 	 * <ul>
@@ -308,6 +309,7 @@ trait JSync extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWG#@ApiOperation(value = "/export", notes = """Used to export all content matching the given exportCriteria.
 	//#SWGNL#The service can return for each content the deliveryInfo (with the content urls and thumbnail), the linked categories and the itagDefinitions.
 	//#SWGNL#The resultset is paginated (max page size is 200 elements), after the 1st call the service return a "nextPage" identifier to be used on the next call, to get the following elements. If  the "nextPage" value is empty it means that you are on the last page of the result set.
+	//#SWGNL#The Service avoids ACL restrictions.
 	//#SWGNL#
 	//#SWGNL#<b>ROLE validation:</b>
 	//#SWGNL#<ul>

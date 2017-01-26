@@ -159,7 +159,7 @@ class JContactClient(val resourceEndpoint:String) {
 	 * @param offset : Integer
 	 * Optional.
 	 * @param limit : Integer
-	 * Max and default value is 50
+	 * Optional. Max and default value is 50
 	 * @return MResponseContactList
 	*/
 	def listGet(tokenId: String, 

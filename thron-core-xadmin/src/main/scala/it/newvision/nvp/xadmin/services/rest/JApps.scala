@@ -17,20 +17,20 @@ import it.newvision.nvp.xadmin.services.model.request.MAppssuReq
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * This service is used to manage the APP properties.
+ * This service is used to manage an App properties.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.com/api/xadmin/resources/apps/
- * </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xadmin/resources/apps</li>
  * </ul>
  */
 @Path("/apps")
-//#SWG#@Api(value = "/apps", description = """This service is used to manage the APP properties.
+//#SWG#@Api(value = "/apps", description = """This service is used to manage an App properties.
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xadmin/resources/apps/   </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xadmin/resources/apps</li>
 //#SWGNL#</ul>""")
 trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

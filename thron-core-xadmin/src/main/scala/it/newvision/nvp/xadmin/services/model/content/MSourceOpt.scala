@@ -18,9 +18,9 @@ import javax.xml.bind.annotation._
 class MSourceOpt extends Serializable {
 
 	/**
-	 * import from repository
+	 * Deprecated. Import from repository
 	 */
-	//#SWG#@ApiModelProperty(value = """import from repository""")
+	//#SWG#@ApiModelProperty(value = """Deprecated. Import from repository""")
 	@BeanProperty 
 	var repo: MSourceRepoOpt =_
 	def withrepo(p:MSourceRepoOpt):this.type ={ 	this.repo = p; 	this }
@@ -64,13 +64,22 @@ class MSourceOpt extends Serializable {
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def validate(){
 		import scala.collection.JavaConversions._
-		if(Option(repo).isEmpty && Option(ftp).isEmpty && Option(s3).isEmpty && Option(web).isEmpty &&
-			Option(raw).isEmpty) throw new IllegalArgumentException("One of the source inner parameter must be defined")
-		Option(repo).foreach{_.validate()}
-		Option(ftp).foreach{_.validate()}
-		Option(s3).foreach{_.validate()}
-		Option(web).foreach{_.validate()}
-		Option(raw).foreach{_.validate()}
+	
+		val existingSources = Seq(
+			Option(repo).isDefined,
+			Option(ftp).isDefined,
+			Option(raw).isDefined,
+			Option(s3).isDefined,
+			Option(web).isDefined
+		).filter(_.booleanValue)
+	
+		if (existingSources.size != 1) throw new IllegalArgumentException("Exactly one source must be defined")
+	
+		Option(repo).foreach(_.validate())
+		Option(ftp).foreach(_.validate())
+		Option(s3).foreach(_.validate())
+		Option(web).foreach(_.validate())
+		Option(raw).foreach(_.validate())
 	}
 
 }

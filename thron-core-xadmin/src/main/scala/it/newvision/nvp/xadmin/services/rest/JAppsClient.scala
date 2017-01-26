@@ -26,12 +26,12 @@ object JAppsClient {
 	
 }
 /**
- * This service is used to manage the APP properties.
+ * This service is used to manage an App properties.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.com/api/xadmin/resources/apps/
- * </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xadmin/resources/apps</li>
  * </ul>
  */
 class JAppsClient(val resourceEndpoint:String) {

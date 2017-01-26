@@ -172,11 +172,13 @@ class MCategory extends Serializable {
 	def withcategoryType(p:MECategoryType):this.type ={ 	this.categoryType = p; 	this }
 
 	/**
-	 * custom metadata linked to the category
+	 * Deprecated. Custom metadata linked to the category
 	 */
-	//#SWG#@ApiModelProperty(value = """custom metadata linked to the category""")
+	//#SWG#@ApiModelProperty(value = """Deprecated. Custom metadata linked to the category""")
 	@BeanProperty 
+	@Deprecated
 	var metadatas: List[MMetadata] = new ArrayList[MMetadata]
+	@Deprecated
 	def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
 
 	/**

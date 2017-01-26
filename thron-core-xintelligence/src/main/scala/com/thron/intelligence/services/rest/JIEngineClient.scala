@@ -25,8 +25,8 @@ object JIEngineClient {
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/iengine/      </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/iengine</li>
  * </ul>
  */
 class JIEngineClient(val resourceEndpoint:String) {

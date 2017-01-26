@@ -27,8 +27,8 @@ object JContextClient {
 /**
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/context/ </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/context</li>
  * </ul>
  */
 class JContextClient(val resourceEndpoint:String) {

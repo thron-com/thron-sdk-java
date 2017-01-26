@@ -30,8 +30,8 @@ import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdminmigrate
  * <b>
  * </b><b>Web Service Endpoints</b>:
  * <ul>
- * 	<li>REST service: http://clientId-view.4me.
- * it/api/adxpackager/resources/repositoryadmin/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/adxpackager/resources/repositoryadmin</li>
  * </ul>
  */
 @Path("/repositoryadmin")
@@ -39,7 +39,7 @@ import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdminmigrate
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints</b>:
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.4me.it/api/adxpackager/resources/repositoryadmin/  </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/adxpackager/resources/repositoryadmin</li>
 //#SWGNL#</ul>""")
 trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

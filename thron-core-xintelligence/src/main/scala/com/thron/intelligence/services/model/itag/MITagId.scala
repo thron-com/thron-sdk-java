@@ -15,9 +15,11 @@ import javax.xml.bind.annotation._
 class MITagId extends Serializable {
 
 	/**
-	 * ITagDefinition.id or ITagDefinition.prettyId.
+	 * the tag definition id.
+	 * TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId
 	 */
-	//#SWG#@ApiModelProperty(value = """ITagDefinition.id or ITagDefinition.prettyId.""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """the tag definition id.
+	//#SWGNL#TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId""" ,required = true)
 	@BeanProperty 
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }

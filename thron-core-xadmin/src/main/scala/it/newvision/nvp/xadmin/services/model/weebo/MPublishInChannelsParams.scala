@@ -61,4 +61,12 @@ class MPublishInChannelsParams extends Serializable {
 	@Deprecated
 	def withstopForPreview(p:Boolean):this.type ={ 	this.stopForPreview = p; 	this }
 
+	/**
+	 * Optional. Default false.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Default false.""")
+	@BeanProperty 
+	var silentMode: Boolean  = false
+	def withsilentMode(p:Boolean):this.type ={ 	this.silentMode = p; 	this }
+
 }

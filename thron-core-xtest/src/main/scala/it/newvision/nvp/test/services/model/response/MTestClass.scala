@@ -98,6 +98,11 @@ class MTestClass extends MTestBaseClass with Serializable  {
 	@Deprecated
 	def withlbool(p:List[Boolean]):this.type ={ 	this.lbool = p; 	this }
 
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var testaclasses: List[MTestAClass] = new ArrayList[MTestAClass]
+	  def withtestaclasses(p:List[MTestAClass]):this.type ={ 	this.testaclasses = p; 	this }
+
 	/**
 	 * attribute note definition
 	 */
@@ -105,11 +110,6 @@ class MTestClass extends MTestBaseClass with Serializable  {
 	//#SWG#@ApiModelProperty(value = """attribute note definition""")
 	var attTestClass: MTestClass =_
 	  def withattTestClass(p:MTestClass):this.type ={ 	this.attTestClass = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var testaclasses: List[MTestAClass] = new ArrayList[MTestAClass]
-	  def withtestaclasses(p:List[MTestAClass]):this.type ={ 	this.testaclasses = p; 	this }
 
 	/**
 	 * @return Boolean

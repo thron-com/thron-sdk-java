@@ -27,15 +27,7 @@ import javax.xml.bind.annotation._
  */
 @XmlRootElement(name="MITagDefSummary") 
 @XmlType(name="MITagDefSummary")
-//#SWG#@ApiModel(description = """TagDefinition are "labels" used to answer questions defined in the classification. For example, the question: what is it about this content? The answer (tags) could be: politics, religion, money, computer science...
-//#SWGNL#TagDefinition are "subclasses "of a classification and can be organized in a tree structure.
-//#SWGNL#
-//#SWGNL#Constraints:
-//#SWGNL#<ul>
-//#SWGNL#	<li>may belongs to a single classification </li>
-//#SWGNL#	<li>it's not possible create tree of uncategorized tagdefinition (categorized = false)</li>
-//#SWGNL#	<li>It's not possible to merge a tagdefinition with linked metadatadefinition</li>
-//#SWGNL#</ul>""")
+//#SWG#@ApiModel(description = """""")
 class MITagDefSummary extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
@@ -49,9 +41,9 @@ class MITagDefSummary extends Serializable {
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
-	 * The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy
+	 * The identifier (TagDefinition.id) of the parent TagDefinition. 
 	 */
-	//#SWG#@ApiModelProperty(value = """The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy""")
+	//#SWG#@ApiModelProperty(value = """The identifier (TagDefinition.id) of the parent TagDefinition. """)
 	@BeanProperty 
 	var parentId: String =_
 	def withparentId(p:String):this.type ={ 	this.parentId = p; 	this }
@@ -99,27 +91,27 @@ class MITagDefSummary extends Serializable {
 	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	/**
-	 * Optional. The creation date of the Tag
+	 * Optional. The creation date of the TagDefinition
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the Tag""")
+	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the TagDefinition""")
 	@BeanProperty 
 	var createdDate: Date  = new Date()
 	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
 	/**
-	 * Last time this Tag was modified by anyone.
+	 * Last time this TagDefinition was modified by anyone.
 	 */
-	//#SWG#@ApiModelProperty(value = """Last time this Tag was modified by anyone.""")
+	//#SWG#@ApiModelProperty(value = """Last time this TagDefinition was modified by anyone.""")
 	@BeanProperty 
 	var modifiedDate: Date =_
 	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
 
 	/**
-	 * Used to split the tagdefinition in two macro categories (categorized and
-	 * uncategorized tags). Usually the semantic engines creates new tagDefinition
+	 * Used to split the TagDefinition in two macro categories (categorized and
+	 * uncategorized tags). Usually the semantic engines creates new TagDefinition
 	 * with the categorized attribute to false.
 	 */
-	//#SWG#@ApiModelProperty(value = """Used to split the tagdefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new tagDefinition with the categorized attribute to false.""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """Used to split the TagDefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new TagDefinition with the categorized attribute to false.""" ,required = true)
 	@BeanProperty 
 	var categorized: Boolean  = true
 	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }

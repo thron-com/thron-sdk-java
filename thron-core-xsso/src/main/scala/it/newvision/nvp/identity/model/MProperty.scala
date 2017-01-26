@@ -190,86 +190,83 @@ class MProperty extends Serializable {
 	def withcurrency(p:String):this.type ={ 	this.currency = p; 	this }
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init(clientId: String){
+	def init(client: MClient){
 		//video 
 		val v3 = new MPropertyStream
-		v3.init_STREAMHTTPIOS(clientId)
+		v3.init_STREAMHTTPIOS(client)
 	
 		val v4 = new MPropertyStream
-		v4.init_STREAMHTTPIOSHD(clientId)
+		v4.init_STREAMHTTPIOSHD(client)
 	
 		val v5 = new MPropertyStream
-		v5.init_WEB(clientId)
+		v5.init_WEB(client)
 		v5.useForDownload = true
 	
 		val v6 = new MPropertyStream
-		v6.init_WEBHD(clientId)
+		v6.init_WEBHD(client)
 		v6.useForDownload = true
 	
 		val v7 = new MPropertyStream
-		v7.init_WEBMHD(clientId)
+		v7.init_WEBMHD(client)
 	
 		val v8 = new MPropertyStream
-		v8.init_WEBIPHONE(clientId)
+		v8.init_WEBIPHONE(client)
 	
 		val v9 = new MPropertyStream
-		v9.init_WEBAUDIO(clientId)
+		v9.init_WEBAUDIO(client)
 	
 		//audio
 	
-		val a2 = new MPropertyAudio
-		a2.init_STREAMHTTPIOS(clientId)
 	
 		val a3 = new MPropertyAudio
-		a3.init_WEB(clientId)
+		a3.init_WEB(client)
 		a3.useForDownload = true
 	
 	
 		//image
 		val img1 = new MPropertyImage
-		img1.init_WEB(clientId)
+		img1.init_WEB(client)
 		img1.useForDownload = true
 	
 		val img2 = new MPropertyImage
-		img2.init_WEBHD(clientId)
+		img2.init_WEBHD(client)
 		img2.useForDownload = true
 	
 		//generic documents
 		val gd1 = new MPropertyGenericDocument
-		gd1.init_WEB(clientId,"WEB")
+		gd1.init_WEB(client,"WEB")
 		gd1.useForDownload = true
 		val gd2 = new MPropertyGenericDocument
-		gd2.init_WEBDOC(clientId,"WEBDOC")
+		gd2.init_WEBDOC(client,"WEBDOC")
 		gd2.useForDownload = false
 	
 		//pagelet documents
 		val pl1 = new MPropertyPagelet
-		pl1.init_WEB(clientId,"WEB")
-		pl1.useForDownload = false
+		pl1.init_WEB(client,"WEB")
 	
 		// 4me documents
 		val mc1 = new MProperty4MEDocument
-		mc1.init_WEB(clientId)
+		mc1.init_WEB(client)
 	
 		val mc2 = new MProperty4MEDocument
-		mc2.init_WEBORIGINAL(clientId)
+		mc2.init_WEBORIGINAL(client)
 		mc2.useForDownload = true
 	
 		this.streamProperties = new ArrayList[MPropertyStream](Arrays.asList(v3,v4,v5,v6,v7,v8,v9))
-		this.audioProperties = new ArrayList[MPropertyAudio](Arrays.asList(a2,a3))
+		this.audioProperties = new ArrayList[MPropertyAudio](Arrays.asList(a3))
 		this.imageProperties = new ArrayList[MPropertyImage](Arrays.asList(img2))
 		this.genericDocumentProperties = new ArrayList[MPropertyGenericDocument](Arrays.asList(gd1,gd2))
 		this.ndocProperties = new ArrayList[MProperty4MEDocument](Arrays.asList(mc1,mc2))
 		this.pageletProperties = new ArrayList[MPropertyPagelet](Arrays.asList(pl1))
 	
 		this.emailProperties.init
-		this.weeboProperties.init(clientId)
-		this.applicationProperties.init(clientId)
+		this.weeboProperties.init(client.clientId)
+		this.applicationProperties.init(client.clientId)
 		this.thumbsProperties.init()
 	}
 

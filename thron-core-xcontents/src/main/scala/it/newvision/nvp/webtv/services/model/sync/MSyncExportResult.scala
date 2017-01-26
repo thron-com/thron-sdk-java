@@ -51,6 +51,14 @@ class MSyncExportResult extends Serializable {
 	def withdeliveryInfo(p:List[MDeliveryInfo]):this.type ={ 	this.deliveryInfo = p; 	this }
 
 	/**
+	 * The summary of last version of the content
+	 */
+	//#SWG#@ApiModelProperty(value = """The summary of last version of the content""")
+	@BeanProperty 
+	var versionInfo: MVersionSummary =_
+	def withversionInfo(p:MVersionSummary):this.type ={ 	this.versionInfo = p; 	this }
+
+	/**
 	 * Returns a dynamic link to the best thumbnail for the given content. (based on
 	 * the thumbDivArea parameter).
 	 */

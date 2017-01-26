@@ -26,8 +26,8 @@ object JDashboardClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xadmin/resources/dashboard  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xadmin/resources/dashboard </li>
  * </ul>
  */
 class JDashboardClient(val resourceEndpoint:String) {

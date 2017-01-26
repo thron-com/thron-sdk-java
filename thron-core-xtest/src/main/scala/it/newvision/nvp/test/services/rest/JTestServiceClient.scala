@@ -34,8 +34,8 @@ object JTestServiceClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>WADL REST service (latest version): http://clientId-view.thron.
- * com/api/xtest/resources/application.wadl </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xtest/resources/testservice</li>
  * </ul>
  */
 class JTestServiceClient(val resourceEndpoint:String) {

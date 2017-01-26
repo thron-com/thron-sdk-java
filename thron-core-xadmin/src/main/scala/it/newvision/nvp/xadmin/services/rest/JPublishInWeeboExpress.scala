@@ -33,7 +33,7 @@ import com.sun.jersey.multipart._
  * <b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: https://clientId-view.thron.
- * com/api/xadmin/resources/publishinweeboexpress/ </li>
+ * com/api/xadmin/resources/publishinweeboexpress</li>
  * </ul>
  */
 @Path("/publishinweeboexpress")
@@ -41,7 +41,7 @@ import com.sun.jersey.multipart._
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xadmin/resources/publishinweeboexpress/ </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xadmin/resources/publishinweeboexpress</li>
 //#SWGNL#</ul>""")
 trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

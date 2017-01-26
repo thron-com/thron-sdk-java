@@ -16,8 +16,8 @@ import com.thron.intelligence.services.model.request.MIEngineupdateReq
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/iengine/      </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/iengine</li>
  * </ul>
  */
 @Path("/iengine")
@@ -25,7 +25,7 @@ import com.thron.intelligence.services.model.request.MIEngineupdateReq
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xintelligence/resources/iengine/      </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xintelligence/resources/iengine</li>
 //#SWGNL#</ul>""")
 trait JIEngine extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

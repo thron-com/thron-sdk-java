@@ -28,8 +28,8 @@ import com.thron.intelligence.services.model.metadata.MResponseMetadataVerifyIfU
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/imetadatadefinition/       </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/imetadatadefinition</li>
  * </ul>
  */
 @Path("/imetadatadefinition")
@@ -40,7 +40,7 @@ import com.thron.intelligence.services.model.metadata.MResponseMetadataVerifyIfU
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xintelligence/resources/imetadatadefinition/       </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xintelligence/resources/imetadatadefinition</li>
 //#SWGNL#</ul>""")
 trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

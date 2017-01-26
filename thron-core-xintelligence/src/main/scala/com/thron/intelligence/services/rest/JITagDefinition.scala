@@ -38,7 +38,7 @@ import com.thron.intelligence.services.model.request.MITagDefinitionlistExternal
  * </b><b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/itagdefinition/</li>
+ * com/api/xintelligence/resources/itagdefinition</li>
  * </ul>
  */
 @Path("/itagdefinition")
@@ -46,7 +46,7 @@ import com.thron.intelligence.services.model.request.MITagDefinitionlistExternal
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xintelligence/resources/itagdefinition/</li>
+//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xintelligence/resources/itagdefinition</li>
 //#SWGNL#</ul>""")
 trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

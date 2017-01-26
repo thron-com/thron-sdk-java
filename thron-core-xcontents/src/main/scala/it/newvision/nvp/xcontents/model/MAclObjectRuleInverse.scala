@@ -65,13 +65,13 @@ class MAclObjectRuleInverse extends Serializable {
 										 r.isValid && ((
 													  (r.sourceObjClass == MEObjClass.USER && 
 													   r.rulesInverse.toSet.diff(Set(MEAclRuleInverse.SEEN_BY, MEAclRuleInverse.MODIFIED_BY, MEAclRuleInverse.SHARED_BY, MEAclRuleInverse.BELONGS_TO)).size == 0) ||
-													  (r.sourceObjClass == MEObjClass.GROUP && 
+													  ((r.sourceObjClass == MEObjClass.GROUP || r.sourceObjClass == MEObjClass.APP) && 
 													   r.rulesInverse.toSet.diff(Set(MEAclRuleInverse.SEEN_BY, MEAclRuleInverse.MODIFIED_BY, MEAclRuleInverse.SHARED_BY)).size == 0) ||
 													  (r.sourceObjClass == MEObjClass.CUSTOM && r.rulesInverse.nonEmpty && r.rulesInverse.forall(_ == MEAclRuleInverse.SEEN_BY))
 										 )||(
 													   (r.sourceObjClass == MEObjClass.USER &&
 														r.disabledRulesInverse.toSet.diff(Set(MEAclRuleInverse.SEEN_BY, MEAclRuleInverse.MODIFIED_BY, MEAclRuleInverse.SHARED_BY, MEAclRuleInverse.BELONGS_TO)).size == 0) ||
-													   (r.sourceObjClass == MEObjClass.GROUP &&
+													   ((r.sourceObjClass == MEObjClass.GROUP || r.sourceObjClass == MEObjClass.APP) &&
 														r.disabledRulesInverse.toSet.diff(Set(MEAclRuleInverse.SEEN_BY, MEAclRuleInverse.MODIFIED_BY, MEAclRuleInverse.SHARED_BY)).size == 0) ||
 													   (r.sourceObjClass == MEObjClass.CUSTOM && r.disabledRulesInverse.nonEmpty && r.disabledRulesInverse.forall(_ == MEAclRuleInverse.SEEN_BY))
 										 ))

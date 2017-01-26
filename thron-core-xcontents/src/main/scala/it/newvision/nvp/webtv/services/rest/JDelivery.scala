@@ -107,9 +107,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768
 	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param lcid : String
 	 * Optional. the xcontentId of the main linked content
 	 * This parameter is used to have the descriptor of a linked/recommended content. The ACL of a
@@ -182,8 +180,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768""")
 	@QueryParam("divArea")
 	divArea: String, 
-			//#SWG#@ApiParam(value = """Optional, the access key for the content. Can be the tokenId for a logged user or the access key for the content.
-	//#SWGNL#It's not required for public contents""")
+			//#SWG#@ApiParam(value = """Optional, the access key for the content. It's not required when session token is provided.""")
 	@QueryParam("pkey")
 	pkey: String, 
 			//#SWG#@ApiParam(value = """Optional. the xcontentId of the main linked content
@@ -415,9 +412,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param numberOfResult : Integer
 	 * Optional. Default and maximum value is 50 items
 	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param lcid : String
 	 * Optional. the xcontentId of the main linked content
 	 * This parameter is used to have the cuepoints of a linked/recommended content. The ACL of a
@@ -479,8 +474,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 			//#SWG#@ApiParam(value = """Optional. Default and maximum value is 50 items""")
 	@QueryParam("numberOfResult")
 	numberOfResult: Integer, 
-			//#SWG#@ApiParam(value = """Optional, the access key for the content. Can be the tokenId for a logged user or the access key for the content.
-	//#SWGNL#It's not required for public contents""")
+			//#SWG#@ApiParam(value = """Optional, the access key for the content. It's not required when session token is provided.""")
 	@QueryParam("pkey")
 	pkey: String, 
 			//#SWG#@ApiParam(value = """Optional. the xcontentId of the main linked content
@@ -612,9 +606,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param locale : String
 	 * Optional. the subtitles locale
 	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param lcid : String
 	 * Optional. the xcontentId of the main linked content
 	 * This parameter is used to have the subtitles of a linked/recommended content. The ACL of a
@@ -653,8 +645,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 			//#SWG#@ApiParam(value = """Optional. the subtitles locale""")
 	@QueryParam("locale")
 	locale: String, 
-			//#SWG#@ApiParam(value = """Optional, the access key for the content. Can be the tokenId for a logged user or the access key for the content.
-	//#SWGNL#It's not required for public contents""")
+			//#SWG#@ApiParam(value = """Optional, the access key for the content. It's not required when session token is provided.""")
 	@QueryParam("pkey")
 	pkey: String, 
 			//#SWG#@ApiParam(value = """Optional. the xcontentId of the main linked content
@@ -715,9 +706,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param locale : String
 	 * Optional. Used as preferred locale for the content results. 
 	 * @param pkey : String
-	 * Optional, the access key for the content. Can be the tokenId for a logged user or the access key
-	 * for the content.
-	 * It's not required for public contents
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param admin : Boolean
 	 * Optional. disable the intrinsic filtering of the service, and return all linked contents:
 	 * * downloadable
@@ -780,8 +769,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 			//#SWG#@ApiParam(value = """Optional. Used as preferred locale for the content results. """)
 	@QueryParam("locale")
 	locale: String, 
-			//#SWG#@ApiParam(value = """Optional, the access key for the content. Can be the tokenId for a logged user or the access key for the content.
-	//#SWGNL#It's not required for public contents""")
+			//#SWG#@ApiParam(value = """Optional, the access key for the content. It's not required when session token is provided.""")
 	@QueryParam("pkey")
 	pkey: String, 
 			//#SWG#@ApiParam(value = """Optional. disable the intrinsic filtering of the service, and return all linked contents:
@@ -877,6 +865,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * optional.
 	 * Possible values are: mobile/desktop/other
 	 * @param pkey : String
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param admin : Boolean
 	 * disable the intrinsic filtering of the service, and return all linked contents:
 	 * * recommended
@@ -935,7 +924,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	//#SWGNL#Possible values are: mobile/desktop/other""")
 	@QueryParam("linkedUserAgent")
 	linkedUserAgent: String, 
-			//#SWG#@ApiParam(value = """""")
+			//#SWG#@ApiParam(value = """Optional, the access key for the content. It's not required when session token is provided.""")
 	@QueryParam("pkey")
 	pkey: String, 
 			//#SWG#@ApiParam(value = """disable the intrinsic filtering of the service, and return all linked contents:
@@ -1018,7 +1007,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * attribute is optional.
 	 * Possible values are: mobile/desktop/other
 	 * @param pkey : String
-	 * Optional.
+	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param admin : Boolean
 	 * Optional. disable the intrinsic filtering of the service, and return all linked contents:
 	 * * recommended
@@ -1076,7 +1065,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	//#SWGNL#Possible values are: mobile/desktop/other""")
 	@QueryParam("linkedUserAgent")
 	linkedUserAgent: String, 
-			//#SWG#@ApiParam(value = """Optional.""")
+			//#SWG#@ApiParam(value = """Optional, the access key for the content. It's not required when session token is provided.""")
 	@QueryParam("pkey")
 	pkey: String, 
 			//#SWG#@ApiParam(value = """Optional. disable the intrinsic filtering of the service, and return all linked contents:

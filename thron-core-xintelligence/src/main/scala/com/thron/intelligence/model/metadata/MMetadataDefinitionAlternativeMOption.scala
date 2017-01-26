@@ -23,9 +23,11 @@ class MMetadataDefinitionAlternativeMOption extends MMetadataDefinitionOptionCla
 	def withfieldType(p:MEAlternativeMType):this.type ={ 	this.fieldType = p; 	this }
 
 	/**
-	 * Used for validation
+	 * Used for validation.
+	 * Max number of values: 100
 	 */
-	//#SWG#@ApiModelProperty(value = """Used for validation""")
+	//#SWG#@ApiModelProperty(value = """Used for validation.
+	//#SWGNL#Max number of values: 100""")
 	@BeanProperty 
 	var values: List[MAlternativeValue] = new ArrayList[MAlternativeValue]
 	def withvalues(p:List[MAlternativeValue]):this.type ={ 	this.values = p; 	this }
@@ -37,7 +39,8 @@ class MMetadataDefinitionAlternativeMOption extends MMetadataDefinitionOptionCla
 	@org.codehaus.jackson.annotate.JsonIgnore
 	override def isValid():Boolean ={
 		import scala.collection.JavaConversions._
-		values.nonEmpty && values.forall(_.isValid)
+		val size = values.size
+		values.forall(_.isValid) && size > 0 && size <= 100
 	}
 
 	/**
@@ -49,7 +52,8 @@ class MMetadataDefinitionAlternativeMOption extends MMetadataDefinitionOptionCla
 	override def validateData(value: String):Boolean ={
 		import scala.collection.JavaConversions._
 		val reqValues = value.split(",")
-		reqValues.nonEmpty && (reqValues forall (v => values.exists (_.value == v)))
+		val size = reqValues.size
+		reqValues.forall(v => values.exists(_.value == v)) && size > 0 && size <= 100
 	}
 
 }

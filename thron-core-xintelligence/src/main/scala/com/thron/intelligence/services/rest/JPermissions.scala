@@ -19,14 +19,14 @@ import com.thron.intelligence.services.model.request.MPermissionsremoveReq
 /**
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/permissions/     </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/permissions</li>
  * </ul>
  */
 @Path("/permissions")
 //#SWG#@Api(value = "/permissions", description = """<b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xintelligence/resources/permissions/     </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xintelligence/resources/permissions</li>
 //#SWGNL#</ul>""")
 trait JPermissions extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

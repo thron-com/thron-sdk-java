@@ -57,13 +57,13 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 	def withingestionParameters(p:String):this.type ={ 	this.ingestionParameters = p; 	this }
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEB(clientId: String){
-		this.init_gd_WEB(clientId,"WEB")
+	def init_WEB(client: MClient){
+		this.init_gd_WEB(client,"WEB")
 		this.compliantWith= "VIEW,PLAY"
 		this.convertTo="JPG"
 		this.withIngestion=true
@@ -81,13 +81,13 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 	}
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBHD(clientId: String){
-		this.init_gd_WEB(clientId,"WEBHD")
+	def init_WEBHD(client: MClient){
+		this.init_gd_WEB(client,"WEBHD")
 		this.compliantWith= "VIEW,PLAY"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
@@ -116,13 +116,13 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 	}
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBIPHONE(clientId: String){
-		this.init_gd_WEB(clientId,"WEBIPHONE")
+	def init_WEBIPHONE(client: MClient){
+		this.init_gd_WEB(client,"WEBIPHONE")
 		this.jpegQuality = 80
 		this.convertTo="JPG"
 		this.withIngestion=true
@@ -130,13 +130,13 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 
 	/**
 	 * default init for WEBORIGINAL channel (Progressive Download Original Content)
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBORIGINAL(clientId: String){
-		this.init_gd_WEBORIGINAL(clientId)
+	def init_WEBORIGINAL(client: MClient){
+		this.init_gd_WEBORIGINAL(client)
 		this.withIngestion = false
 		this.convertTo="JPG"
 	}

@@ -24,8 +24,8 @@ object JPreviewClient {
  * 
  * <b>Web Service Endpoints</b>:
  * <ul>
- * 	<li>REST: http://clientId-view.thron.com/api/xpackager/resources/application.
- * wadl </li>
+ * 	<li>REST: https://clientId-view.thron.
+ * com/api/xpackager/resources/preview</li>
  * </ul>
  */
 class JPreviewClient(val resourceEndpoint:String) {

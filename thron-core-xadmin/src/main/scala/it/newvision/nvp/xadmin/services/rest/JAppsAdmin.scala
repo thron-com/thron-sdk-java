@@ -25,20 +25,20 @@ import it.newvision.nvp.xadmin.services.model.request.MAppsAdminlistKeyReq
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * This service is used to manage the APP (4ME Apps) properties.
+ * This service is used to manage an App properties.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xadmin/resources/appsadmin/  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xadmin/resources/appsadmin</li>
  * </ul>
  */
 @Path("/appsadmin")
-//#SWG#@Api(value = "/appsadmin", description = """This service is used to manage the APP (4ME Apps) properties.
+//#SWG#@Api(value = "/appsadmin", description = """This service is used to manage an App properties.
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xadmin/resources/appsadmin/  </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xadmin/resources/appsadmin</li>
 //#SWGNL#</ul>""")
 trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

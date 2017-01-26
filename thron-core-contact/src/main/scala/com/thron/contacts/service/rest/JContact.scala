@@ -231,7 +231,7 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 			//#SWG#@ApiParam(value = """Optional.""")
 	@QueryParam("offset")
 	offset: Integer, 
-			//#SWG#@ApiParam(value = """Max and default value is 50""")
+			//#SWG#@ApiParam(value = """Optional. Max and default value is 50""")
 	@QueryParam("limit")
 	limit: Integer,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")

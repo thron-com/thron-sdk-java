@@ -38,5 +38,7 @@ public enum MEPublish {
 	//#SWG#@ApiModelProperty(value = """The uploaded file exceeds the maximum size allowed""")
 	@XmlEnumValue("SOURCE_FILE_TOO_BIG") SOURCE_FILE_TOO_BIG,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("CONTENT_IS_LINKED") CONTENT_IS_LINKED
+	@XmlEnumValue("CONTENT_IS_LINKED") CONTENT_IS_LINKED,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("VERSION_NOT_AVAILABLE") VERSION_NOT_AVAILABLE
 }

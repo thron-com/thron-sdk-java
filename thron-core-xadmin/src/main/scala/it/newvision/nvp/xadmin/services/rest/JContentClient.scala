@@ -6,13 +6,19 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xadmin.services.model.content.MResponsePublishContents
 import it.newvision.nvp.xadmin.services.model.request.MContentinsertReq
+import it.newvision.nvp.xadmin.services.model.content.MResponseContentListVersions
+import it.newvision.nvp.xadmin.services.model.request.MContentlistVersionsReq
+import it.newvision.nvp.xadmin.services.model.content.MResponseDetailSource
 import it.newvision.nvp.xadmin.services.model.content.MResponsePublish
-import it.newvision.nvp.xadmin.services.model.request.MContentupdateThumbnailReq
 import it.newvision.nvp.xadmin.services.model.request.MContentupdateSourceReq
+import it.newvision.nvp.xadmin.services.model.request.MContentupdateVersionNoteReq
+import it.newvision.nvp.xadmin.services.model.request.MContentupdateThumbnailReq
 import it.newvision.nvp.xadmin.services.model.content.MResponseContentsTrash
 import it.newvision.nvp.xadmin.services.model.request.MContenttrashReq
 import it.newvision.nvp.xadmin.services.model.request.MContentuntrashReq
 import it.newvision.nvp.xadmin.services.model.request.MContentremoveReq
+import it.newvision.nvp.xadmin.services.model.weebo.MResponseGetContentTypes
+import it.newvision.nvp.xadmin.services.model.request.MContentgetContentTypesReq
 
 /* ************************
 *  GENERATED CLASS
@@ -93,37 +99,42 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Replace the thumbnail for a published content.
-	 * 
-	 * <b>Role Validation</b>
-	 * MODIFY ACL on Content and 4ME_USE_CONTENTS role
+	 * List all available version of the content
+	 * <b>
+	 * </b><b>Role Validation</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
-	 * @param param : MContentupdateThumbnailReq
-	 * @return MResponsePublish
+	 * @param xcontentId : String
+	 * @param param : MContentlistVersionsReq
+	 * @return MResponseContentListVersions
 	*/
-	def updateThumbnail(tokenId: String, 
+	def listVersions(tokenId: String, 
 			clientId: String, 
-			param: MContentupdateThumbnailReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublish ={
+			xcontentId: String, 
+			param: MContentlistVersionsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentListVersions ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
 			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponsePublish = if(this.resourceEndpoint == ""){
+			val response : MResponseContentListVersions = if(this.resourceEndpoint == ""){
 			
-				new MResponsePublish()
+				new MResponseContentListVersions()
 			
 			}else{	
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
-					.path("content/updateThumbnail")
+					.path("content/listVersions")
 					.path(clientId.toString)
+		.path(xcontentId.toString)
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)
 					.header("X-TOKENID",tokenId)
 				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
 			
-				wbuilder.post(classOf[MResponsePublish],param)
+				wbuilder.post(classOf[MResponseContentListVersions],param)
 			
 			
 			}
@@ -132,7 +143,7 @@ class JContentClient(val resourceEndpoint:String) {
 			case e : com.sun.jersey.api.client.UniformInterfaceException =>
 				val response = e.getResponse
 				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponsePublish])
+				  response.getEntity(classOf[MResponseContentListVersions])
 				}
 				else {
 				  throw e
@@ -143,20 +154,62 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * The service return the information about the source of the content (not only file)
+	 * <b>
+	 * </b><b>Role Validation</b>
+	 * <ul>
+	 * 	<li>READ ACL on Content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param xcontentId : String
+	 * @return MResponseDetailSource
+	*/
+	def detailSource(tokenId: String, 
+			clientId: String, 
+			xcontentId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDetailSource ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+		
+			val response : MResponseDetailSource = if(this.resourceEndpoint == ""){
+			
+				new MResponseDetailSource()
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("content/detailSource")
+					.path(clientId.toString)
+		.path(xcontentId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[MResponseDetailSource])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseDetailSource])
+				}
+				else {
+					throw e
+				}
+			
+		  }
+	
+	}
+
+	/**
 	 * The service:
 	 * <ul>
 	 * 	<li>replace the source file linked to a content</li>
 	 * </ul>
 	 * <ul>
 	 * 	<li>republish the content in all channels with status PUBLISHED or ERROR.</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>remove the old versioned files (all sourceFiles versions) from repository if
-	 * removeOriginalFiles  parameter is TRUE</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>keep a version of the original source file (saved as link in MMediaContent.
-	 * sourceFilesOldVersion) if removeOriginalFiles parameter is set to FALSE</li>
 	 * </ul>
 	 * <ul>
 	 * 	<li>reset the user preferences of the content (the content becomes new for all users)</li>
@@ -189,6 +242,115 @@ class JContentClient(val resourceEndpoint:String) {
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
 					.path("content/updateSource")
+					.path(clientId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponsePublish],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponsePublish])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Update the version note for the current active version of the content.
+	 * <b>
+	 * </b><b>Role Validation</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>available only for the creator of the version.</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param xcontentId : String
+	 * @param param : MContentupdateVersionNoteReq
+	 * @return MResponsePublish
+	*/
+	def updateVersionNote(tokenId: String, 
+			clientId: String, 
+			xcontentId: String, 
+			param: MContentupdateVersionNoteReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublish ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponsePublish = if(this.resourceEndpoint == ""){
+			
+				new MResponsePublish()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/updateVersionNote")
+					.path(clientId.toString)
+		.path(xcontentId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponsePublish],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponsePublish])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Replace the thumbnail for a published content.
+	 * Not available for IMAGE content type.
+	 * 
+	 * <b>Role Validation</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MContentupdateThumbnailReq
+	 * @return MResponsePublish
+	*/
+	def updateThumbnail(tokenId: String, 
+			clientId: String, 
+			param: MContentupdateThumbnailReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublish ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponsePublish = if(this.resourceEndpoint == ""){
+			
+				new MResponsePublish()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/updateThumbnail")
 					.path(clientId.toString)
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)
@@ -370,6 +532,53 @@ class JContentClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponsePublish])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * This service is used to know the possible platform content type available for a given filename. The
+	 * service map the mime type of filename to the corresponding list of content types.
+	 * For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.
+	 * @param tokenId : String
+	 * @param param : MContentgetContentTypesReq
+	 * @return MResponseGetContentTypes
+	*/
+	def getContentTypes(tokenId: String, 
+			param: MContentgetContentTypesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetContentTypes ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseGetContentTypes = if(this.resourceEndpoint == ""){
+			
+				new MResponseGetContentTypes()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/getContentTypes")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseGetContentTypes],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseGetContentTypes])
 				}
 				else {
 				  throw e

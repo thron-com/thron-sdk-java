@@ -20,9 +20,11 @@ import com.thron.intelligence.model.MEPermission
 class MClassificationPermission extends Serializable {
 
 	/**
-	 * username, appId or groupId
+	 * username, appId or groupId.
+	 * Only users with PLATFORM_USER userType can be assigned permissions to.
 	 */
-	//#SWG#@ApiModelProperty(value = """username, appId or groupId""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """username, appId or groupId.
+	//#SWGNL#Only users with PLATFORM_USER userType can be assigned permissions to.""" ,required = true)
 	@BeanProperty 
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }

@@ -30,8 +30,8 @@ object JITagClient {
 /**
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/itag/      </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/itag  </li>
  * </ul>
  */
 class JITagClient(val resourceEndpoint:String) {
@@ -60,7 +60,7 @@ class JITagClient(val resourceEndpoint:String) {
 	 * @param classificationId : String
 	 * @param itagId : String
 	 * the tag definition id.
-	 * TagDefinition.id or ITagDefinition.prettyId
+	 * TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId
 	 * @param param : MITaginsertReq
 	 * @return MResponseITag
 	*/
@@ -141,7 +141,7 @@ class JITagClient(val resourceEndpoint:String) {
 	 * @param classificationId : String
 	 * @param itagId : String
 	 * the tag definition id.
-	 * TagDefinition.id or ITagDefinition.prettyId
+	 * TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId
 	 * @param param : MITagremoveReq
 	 * @return MResponseITag
 	*/

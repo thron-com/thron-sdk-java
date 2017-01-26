@@ -53,6 +53,14 @@ class MContent extends Serializable {
 	def withprettyIds(p:List[MPrettyId]):this.type ={ 	this.prettyIds = p; 	this }
 
 	/**
+	 * the list of externalIds
+	 */
+	//#SWG#@ApiModelProperty(value = """the list of externalIds""")
+	@BeanProperty 
+	var externalIds: List[MExternalId] = new ArrayList[MExternalId]
+	def withexternalIds(p:List[MExternalId]):this.type ={ 	this.externalIds = p; 	this }
+
+	/**
 	 * DEPRECATED.
 	 * Used client-side to store information about the status of the content. The
 	 * attribute is not used in 4ME for business logic.
@@ -221,9 +229,34 @@ class MContent extends Serializable {
 	@Deprecated
 	def withsortingField(p:String):this.type ={ 	this.sortingField = p; 	this }
 
+	/**
+	 * The value increments upon each content's save.
+	 */
 	@BeanProperty 
 	var version: Long =_
 	def withversion(p:Long):this.type ={ 	this.version = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var tags: List[MTag] = new ArrayList[MTag]
+	  def withtags(p:List[MTag]):this.type ={ 	this.tags = p; 	this }
+
+	/**
+	 * The linkedContents collection is used to store the connection between two
+	 * contents. the linkedContents is particularly used to record:
+	 * 1) the list of contents belongs to a playlist
+	 * 2) the list of contents recommended by a user
+	 * 3) the list of downloadable content specified by a user.
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """The linkedContents collection is used to store the connection between two contents. the linkedContents is particularly used to record://#SWGNL#1) the list of contents belongs to a playlist//#SWGNL#2) the list of contents recommended by a user//#SWGNL#3) the list of downloadable content specified by a user.""")
+	var linkedContents: List[MContent] = new ArrayList[MContent]
+	  def withlinkedContents(p:List[MContent]):this.type ={ 	this.linkedContents = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var weebo: MWeeboProvider =_
+	  def withweebo(p:MWeeboProvider):this.type ={ 	this.weebo = p; 	this }
 
 	/**
 	 * the list of custom player parameters
@@ -237,15 +270,6 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	var providers: List[MGenericProvider] = new ArrayList[MGenericProvider]
 	  def withproviders(p:List[MGenericProvider]):this.type ={ 	this.providers = p; 	this }
-
-	/**
-	 * itags are now returned in the response if the token used to perform the request
-	 * is related to a user with the proper permission to see the classifications.
-	 */
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """itags are now returned in the response if the token used to perform the request is related to a user with the proper permission to see the classifications.""")
-	var itags: List[MITag] = new ArrayList[MITag]
-	  def withitags(p:List[MITag]):this.type ={ 	this.itags = p; 	this }
 
 	/**
 	 * name and description values for the content in multilocale
@@ -284,27 +308,14 @@ class MContent extends Serializable {
 	var imetadata: List[MIMetadata] = new ArrayList[MIMetadata]
 	  def withimetadata(p:List[MIMetadata]):this.type ={ 	this.imetadata = p; 	this }
 
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var weebo: MWeeboProvider =_
-	  def withweebo(p:MWeeboProvider):this.type ={ 	this.weebo = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var tags: List[MTag] = new ArrayList[MTag]
-	  def withtags(p:List[MTag]):this.type ={ 	this.tags = p; 	this }
-
 	/**
-	 * The linkedContents collection is used to store the connection between two
-	 * contents. the linkedContents is particularly used to record:
-	 * 1) the list of contents belongs to a playlist
-	 * 2) the list of contents recommended by a user
-	 * 3) the list of downloadable content specified by a user.
+	 * itags are now returned in the response if the token used to perform the request
+	 * is related to a user with the proper permission to see the classifications.
 	 */
 	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """The linkedContents collection is used to store the connection between two contents. the linkedContents is particularly used to record://#SWGNL#1) the list of contents belongs to a playlist//#SWGNL#2) the list of contents recommended by a user//#SWGNL#3) the list of downloadable content specified by a user.""")
-	var linkedContents: List[MContent] = new ArrayList[MContent]
-	  def withlinkedContents(p:List[MContent]):this.type ={ 	this.linkedContents = p; 	this }
+	//#SWG#@ApiModelProperty(value = """itags are now returned in the response if the token used to perform the request is related to a user with the proper permission to see the classifications.""")
+	var itags: List[MITag] = new ArrayList[MITag]
+	  def withitags(p:List[MITag]):this.type ={ 	this.itags = p; 	this }
 
 	/**
 	 * @return Boolean

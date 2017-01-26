@@ -49,7 +49,7 @@ class MAclInverseRulesItem2 extends Serializable {
 		  case (Some(_), Some(MEObjClass.CONTENT), Some(a)) if Option(a.rules).nonEmpty =>
 			def validateRule(sourceObjClass: MEObjClass)(ruleEnums: Set[MEAclRuleInverse]) = sourceObjClass match {
 			  case MEObjClass.USER => ruleEnums.diff(fullEnumRules + MEAclRuleInverse.BELONGS_TO).isEmpty
-			  case MEObjClass.GROUP => ruleEnums.diff(fullEnumRules).isEmpty
+			  case MEObjClass.GROUP | MEObjClass.APP => ruleEnums.diff(fullEnumRules).isEmpty
 			  case MEObjClass.CUSTOM => ruleEnums.diff(Set(MEAclRuleInverse.SEEN_BY)).isEmpty
 			}
 			// applyToSpreadTargets must be false on contents

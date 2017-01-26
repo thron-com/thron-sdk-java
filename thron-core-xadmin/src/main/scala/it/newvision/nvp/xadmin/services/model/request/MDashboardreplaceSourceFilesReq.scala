@@ -41,15 +41,4 @@ class MDashboardreplaceSourceFilesReq extends Serializable {
 	var sourceFiles: MFiles =_
 	def withsourceFiles(p:MFiles):this.type ={ 	this.sourceFiles = p; 	this }
 
-	/**
-	 * if true, remove from repository the original file.
-	 * if false, a link to le original source file is saved in MMEdiaContent.
-	 * sourceFilesOldVersions
-	 */
-	//#SWG#@ApiModelProperty(value = """if true, remove from repository the original file.
-	//#SWGNL#if false, a link to le original source file is saved in MMEdiaContent.sourceFilesOldVersions""", required = true)
-	@BeanProperty
-	var removeOriginalFiles: Boolean =_
-	def withremoveOriginalFiles(p:Boolean):this.type ={ 	this.removeOriginalFiles = p; 	this }
-
 }

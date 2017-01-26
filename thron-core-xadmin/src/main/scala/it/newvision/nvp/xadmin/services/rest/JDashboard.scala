@@ -17,8 +17,8 @@ import it.newvision.nvp.xadmin.services.model.request.MDashboardmigrateUserStuff
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xadmin/resources/dashboard  </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xadmin/resources/dashboard </li>
  * </ul>
  */
 @Path("/dashboard")
@@ -26,7 +26,7 @@ import it.newvision.nvp.xadmin.services.model.request.MDashboardmigrateUserStuff
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xadmin/resources/dashboard  </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xadmin/resources/dashboard </li>
 //#SWGNL#</ul>""")
 trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

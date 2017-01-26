@@ -18,10 +18,10 @@ import javax.xml.bind.annotation._
 class MSourceRawOpt extends Serializable {
 
 	/**
-	 * base64 encoded with UTF-8 charset.
+	 * base64 String encoded with UTF-8 charset.
 	 * Max size: 2MB
 	 */
-	//#SWG#@ApiModelProperty(value = """base64 encoded with UTF-8 charset.
+	//#SWG#@ApiModelProperty(value = """base64 String encoded with UTF-8 charset.
 	//#SWGNL#Max size: 2MB""")
 	@BeanProperty 
 	var buffer: Array[Byte]= new Array[Byte](0)

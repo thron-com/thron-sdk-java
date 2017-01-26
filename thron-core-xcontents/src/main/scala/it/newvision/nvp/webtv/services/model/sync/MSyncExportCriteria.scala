@@ -10,9 +10,19 @@ import it.newvision.nvp.xcontents.model.MEContentType
 *  GENERATED CLASS
 *  DO NOT APPLY ANY CHANGES
 ****************************/
+/**
+ * <b>Constraints: </b>
+ * <ul>
+ * 	<li>linkedCategoryOp.linkedCategoryIds: max number of elements 50 (when
+ * cascade is true)</li>
+ * </ul>
+ */
 @XmlRootElement(name="MSyncExportCriteria") 
 @XmlType(name="MSyncExportCriteria")
-//#SWG#@ApiModel(description = """""")
+//#SWG#@ApiModel(description = """<b>Constraints: </b>
+//#SWGNL#<ul>
+//#SWGNL#	<li>linkedCategoryOp.linkedCategoryIds: max number of elements 50 (when cascade is true)</li>
+//#SWGNL#</ul>""")
 class MSyncExportCriteria extends Serializable {
 
 	/**

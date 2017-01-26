@@ -22,14 +22,14 @@ import com.thron.intelligence.services.model.request.MIMetadatabulkRemoveMultiTa
 /**
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/imetadata/       </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/imetadata</li>
  * </ul>
  */
 @Path("/imetadata")
 //#SWG#@Api(value = "/imetadata", description = """<b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xintelligence/resources/imetadata/       </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xintelligence/resources/imetadata</li>
 //#SWGNL#</ul>""")
 trait JIMetadata extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

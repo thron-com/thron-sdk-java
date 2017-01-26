@@ -76,20 +76,14 @@ class MPropertyGenericDocument extends Serializable {
 	var appName: String  = ""
 	def withappName(p:String):this.type ={ 	this.appName = p; 	this }
 
-	/**
-	 * "<clientId>-4me.weebo.it/static/"
-	 */
-	//#SWG#@ApiModelProperty(value = """"<clientId>-4me.weebo.it/static/"""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var httpServer: String  = "-4me.weebo.it/static/"
+	var httpServer: String  = ""
 	def withhttpServer(p:String):this.type ={ 	this.httpServer = p; 	this }
 
-	/**
-	 * "<clientId>-stream.weebo.it/"
-	 */
-	//#SWG#@ApiModelProperty(value = """"<clientId>-stream.weebo.it/"""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var streamServer: String  = "-stream.weebo.it/"
+	var streamServer: String  = ""
 	def withstreamServer(p:String):this.type ={ 	this.streamServer = p; 	this }
 
 	/**
@@ -172,32 +166,48 @@ class MPropertyGenericDocument extends Serializable {
 	def withconvertTo(p:String):this.type ={ 	this.convertTo = p; 	this }
 
 	/**
-	 * @param clientId : String
+	 * Sets httpServer and streamServer value based on client domain
+	 * @param domain : String
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def init_servers(domain: String){
+		val s = domain match {
+			case "4me.it" => "-4me.weebo.it/static/"
+			case "thron.com" => "-cdn.thron.com/static/"
+		}
+		this.httpServer = s
+		this.streamServer = s
+	}
+
+	/**
+	 * @param client : MClient
 	 * @param channeltype : String
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_gd_WEB(clientId: String, 
+	def init_gd_WEB(client: MClient, 
 			channeltype: String){
+		this.init_servers(client.domain)
 		this.channelType = channeltype
-		//this.thumbsProperties.init
-		this.httpServer = clientId + this.httpServer
-		this.streamServer = clientId + this.streamServer
+		this.httpServer = client.clientId + this.httpServer
+		this.streamServer = client.clientId + this.streamServer
 		this.channelDescriptions.clear()
 	}
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_gd_WEBORIGINAL(clientId: String){
+	def init_gd_WEBORIGINAL(client: MClient){
+		this.init_servers(client.domain)
 		this.channelType = "WEBORIGINAL"
-		//this.thumbsProperties.init
-		this.httpServer = clientId + this.httpServer
-		this.streamServer = clientId + this.streamServer
+		this.httpServer = client.clientId + this.httpServer
+		this.streamServer = client.clientId + this.streamServer
 		this.compliantWith= "VIEW,PLAY"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
@@ -212,19 +222,20 @@ class MPropertyGenericDocument extends Serializable {
 	}
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @param channeltype : String
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEB(clientId: String, 
+	def init_WEB(client: MClient, 
 			channeltype: String){
+		this.init_servers(client.domain)
 		this.channelType = channeltype
 		this.compliantWith= "VIEW,PLAY"
 		//this.thumbsProperties.init
-		this.httpServer = clientId + this.httpServer
-		this.streamServer = clientId + this.streamServer
+		this.httpServer = client.clientId + this.httpServer
+		this.streamServer = client.clientId + this.streamServer
 		val cd = new MChannelDescription
 		cd.locale = "IT"
 		cd.channelShortName = "Download sorgente"
@@ -240,19 +251,20 @@ class MPropertyGenericDocument extends Serializable {
 	}
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @param channeltype : String
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBDOC(clientId: String, 
+	def init_WEBDOC(client: MClient, 
 			channeltype: String){
+		this.init_servers(client.domain)
 		this.channelType = channeltype
 		this.compliantWith= "VIEW"
 		//this.thumbsProperties.init
-		this.httpServer = clientId + this.httpServer
-		this.streamServer = clientId + this.streamServer
+		this.httpServer = client.clientId + this.httpServer
+		this.streamServer = client.clientId + this.streamServer
 		val cd = new MChannelDescription
 		cd.locale = "IT"
 		cd.channelShortName = "PDF"

@@ -103,12 +103,13 @@ class MContentWallMinimal extends Serializable {
 	def withdeliveryInfoMinimal(p:MDeliveryInfoMinimal):this.type ={ 	this.deliveryInfoMinimal = p; 	this }
 
 	/**
-	 * the version number of the content in xpublisher. Used to track when the content
-	 * file change.
+	 * Deprecated
 	 */
-	//#SWG#@ApiModelProperty(value = """the version number of the content in xpublisher. Used to track when the content file change.""")
+	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@BeanProperty 
+	@Deprecated
 	var pcontentVersion: Integer  = 0
+	@Deprecated
 	def withpcontentVersion(p:Integer):this.type ={ 	this.pcontentVersion = p; 	this }
 
 	/**

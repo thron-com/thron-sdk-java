@@ -18,13 +18,13 @@ import javax.xml.bind.annotation._
 class MPropertyPagelet extends MPropertyGenericDocument with Serializable  {
 
 	/**
-	 * @param clientId : String
+	 * @param client : MClient
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEB(clientId: String){
-		this.init_gd_WEB(clientId,"WEB")
+	def init_WEB(client: MClient){
+		this.init_gd_WEB(client,"WEB")
 		this.compliantWith= "VIEW"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
@@ -36,7 +36,7 @@ class MPropertyPagelet extends MPropertyGenericDocument with Serializable  {
 		cd2.channelDescription = "Download, html format"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
-		this.useForDownload = false
+		this.useForDownload = true
 	}
 
 	/**

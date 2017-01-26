@@ -65,6 +65,11 @@ class MSyncOptions extends Serializable {
 	var returnImetadata: Boolean  = false
 	def withreturnImetadata(p:Boolean):this.type ={ 	this.returnImetadata = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var returnVersionInfo: Boolean  = false
+	def withreturnVersionInfo(p:Boolean):this.type ={ 	this.returnVersionInfo = p; 	this }
+
 	/**
 	 * Optional. Define the area where the thumbnail should be displayed. Used to
 	 * return the thumbnail that best suits (thumbUrl attribute).

@@ -81,6 +81,24 @@ class MExternalId extends Serializable {
 	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
+	 * Optional. Short description
+	 * <b>
+	 * </b><b>Constraints:</b>
+	 * <ul>
+	 * 	<li>max length = 10000</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Short description
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max length = 10000</li>
+	//#SWGNL#</ul>""")
+	@BeanProperty 
+	var description: String =_
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+
+	/**
 	 * @return String
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
@@ -110,6 +128,10 @@ class MExternalId extends Serializable {
 			StringUtils.isNotBlank(v) &&
 			// String length restriction
 			v.length<=200
+		}&& 
+		Option(description).forall{v=>
+			// String length restriction
+			v.length<=10000
 		}
 	}
 
@@ -125,15 +147,18 @@ class MExternalId extends Serializable {
 	/**
 	 * @param key : String
 	 * @param value : String
+	 * @param description : String
 	 * @return 
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def this(key: String, 
-			value: String){
+			value: String, 
+			description: String){
 		this()
 		this.key = key
 		this.value = value
+		this.description = description
 		sanitize()
 	}
 

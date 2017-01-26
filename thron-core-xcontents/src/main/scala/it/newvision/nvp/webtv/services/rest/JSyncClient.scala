@@ -29,7 +29,7 @@ object JSyncClient {
  * Service used for integration with external systems.
  * The purpose of the service is to provide a list of changes that have been
  * occurred in the platform in such a way to maintain synchronized an external
- * system. The Service avoid ACL restrictions.
+ * system.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
@@ -218,6 +218,7 @@ class JSyncClient(val resourceEndpoint:String) {
 	 * The resultset is paginated (max page size is 200 elements), after the 1st call the service return a
 	 * "nextPage" identifier to be used on the next call, to get the following elements. If  the
 	 * "nextPage" value is empty it means that you are on the last page of the result set.
+	 * The Service avoids ACL restrictions.
 	 * 
 	 * <b>ROLE validation:</b>
 	 * <ul>

@@ -21,8 +21,8 @@ import com.thron.intelligence.services.model.classification.MResponseClassificat
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/classification/     </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/classification</li>
  * </ul>
  */
 @Path("/classification")
@@ -30,7 +30,7 @@ import com.thron.intelligence.services.model.classification.MResponseClassificat
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xintelligence/resources/classification/     </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xintelligence/resources/classification</li>
 //#SWGNL#</ul>""")
 trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 

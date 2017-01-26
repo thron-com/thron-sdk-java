@@ -30,8 +30,8 @@ object JMetadataDefinitionClient {
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/metadatadefinition/            </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/metadatadefinition</li>
  * </ul>
  */
 class JMetadataDefinitionClient(val resourceEndpoint:String) {

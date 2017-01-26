@@ -21,14 +21,14 @@ import com.thron.intelligence.services.model.request.MITagbulkRemoveMultiTargets
 /**
  * <b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: http://clientId-view.thron.
- * com/api/xintelligence/resources/itag/      </li>
+ * 	<li>REST service: https://clientId-view.thron.
+ * com/api/xintelligence/resources/itag  </li>
  * </ul>
  */
 @Path("/itag")
 //#SWG#@Api(value = "/itag", description = """<b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: http://clientId-view.thron.com/api/xintelligence/resources/itag/      </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xintelligence/resources/itag  </li>
 //#SWGNL#</ul>""")
 trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
@@ -64,7 +64,7 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * @param classificationId : String
 	 * @param itagId : String
 	 * the tag definition id.
-	 * TagDefinition.id or ITagDefinition.prettyId
+	 * TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId
 	 * @param param : MITaginsertReq
 	 * @return MResponseITag
 	*/
@@ -100,7 +100,7 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@PathParam("classificationId")
 	classificationId: String, 
 			//#SWG#@ApiParam(value = """the tag definition id.
-	//#SWGNL#TagDefinition.id or ITagDefinition.prettyId""")
+	//#SWGNL#TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId""")
 	@PathParam("itagId")
 	itagId: String, 
 			param: MITaginsertReq):Response /*returnType = MResponseITag*/ = {
@@ -127,7 +127,7 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@PathParam("classificationId")
 	classificationId: String,
 			//#SWG#@ApiParam(value = """the tag definition id.
-	//#SWGNL#TagDefinition.id or ITagDefinition.prettyId""")
+	//#SWGNL#TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId""")
 	@PathParam("itagId")
 	itagId: String,
 			@QueryParam("param") param_q: String,
@@ -187,7 +187,7 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * @param classificationId : String
 	 * @param itagId : String
 	 * the tag definition id.
-	 * TagDefinition.id or ITagDefinition.prettyId
+	 * TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId
 	 * @param param : MITagremoveReq
 	 * @return MResponseITag
 	*/
@@ -228,7 +228,7 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@PathParam("classificationId")
 	classificationId: String, 
 			//#SWG#@ApiParam(value = """the tag definition id.
-	//#SWGNL#TagDefinition.id or ITagDefinition.prettyId""")
+	//#SWGNL#TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId""")
 	@PathParam("itagId")
 	itagId: String, 
 			param: MITagremoveReq):Response /*returnType = MResponseITag*/ = {
@@ -255,7 +255,7 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@PathParam("classificationId")
 	classificationId: String,
 			//#SWG#@ApiParam(value = """the tag definition id.
-	//#SWGNL#TagDefinition.id or ITagDefinition.prettyId""")
+	//#SWGNL#TagDefinition.id, ITagDefinition.prettyId or ITagDefinition.externalId""")
 	@PathParam("itagId")
 	itagId: String,
 			@QueryParam("param") param_q: String,

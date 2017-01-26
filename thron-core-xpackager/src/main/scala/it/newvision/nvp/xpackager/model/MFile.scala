@@ -34,6 +34,11 @@ class MFile extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
+	var source: MFileSource =_
+	def withsource(p:MFileSource):this.type ={ 	this.source = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
 	var path: String =_
 	def withpath(p:String):this.type ={ 	this.path = p; 	this }
 
@@ -117,6 +122,14 @@ class MFile extends Serializable {
 	@BeanProperty 
 	var creationDate: Date  = new Date()
 	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
+
+	/**
+	 * exif, xmp data
+	 */
+	//#SWG#@ApiModelProperty(value = """exif, xmp data""")
+	@BeanProperty 
+	var metadata: List[MMetadata] = new ArrayList[MMetadata]
+	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 	/**
 	 * @param fileName : String
