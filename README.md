@@ -5,15 +5,15 @@ This open-source `Java`/`Scala` library allows you to integrate your project wit
 
 Learn more about the provided samples, documentation, integrating the SDK into your project, and more at https://support.thron.com
 
-##Getting Started
+## Getting Started
 
-###Master release
+### Master release
 Master releases are published in http://mvnrepository.com
 
-###Snapshot
+### Snapshot
 For version under development you need to add `nexus snapshot repository`: https://oss.sonatype.org/content/repositories/snapshots
 
-####Maven
+#### Maven
 ```xml
 <repositories>
     <repository>
@@ -22,7 +22,7 @@ For version under development you need to add `nexus snapshot repository`: https
     </repository>
 </repositories>
 ```
-####Sbt
+#### Sbt
 With Sbt add always the jersey-bundle dependency
 ```scala
 resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
@@ -33,14 +33,14 @@ libraryDependencies ++= Seq(
 )
 ```
 
-##Overview
+## Overview
 
 The library is composed by different modules that can be added independently to your project.
 
-####[xsso](https://developer.thron.com/#xsso)
+#### [xsso](https://developer.thron.com/#xsso)
 This is the Single Sign-On component of the entire platform. It provides a set of interfaces for web services authentication and methods for user-defined configuration properties retrieving.
 
-#####Maven
+##### Maven
 ```xml
 <dependencies>
     <dependency>
@@ -50,15 +50,15 @@ This is the Single Sign-On component of the entire platform. It provides a set o
     </dependency>
 </dependencies>
 ```
-#####Sbt
+##### Sbt
 ```scala
 libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xsso_2.11"    % "6.1.0")
 ```
 
-####[xcontents](https://developer.thron.com/#xcontents)
+#### [xcontents](https://developer.thron.com/#xcontents)
 This component manages the content-related information: content metadata, comments, tags, content proprieties, ratings, visualizations and relations with other contents. It provides a set of web services to manage contents within folders, to moderate comments added by other users or to update content's description in different languages.
 
-#####Maven
+##### Maven
 ```xml
 <dependencies>
     <dependency>
@@ -68,16 +68,16 @@ This component manages the content-related information: content metadata, commen
     </dependency>
 </dependencies>
 ```
-#####Sbt
+##### Sbt
 ```scala
 libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xcontents_2.11"    % "6.1.0")
 ```
 
 
-####[xadmin](https://developer.thron.com/#xadmin)
+#### [xadmin](https://developer.thron.com/#xadmin)
 This component manages the content publication process, thanks to its interaction with xpackager and xcontents. Moreover, it provides a set of services for user roles and playlist management.
 
-#####Maven
+##### Maven
 ```xml
 <dependencies>
     <dependency>
@@ -87,15 +87,15 @@ This component manages the content publication process, thanks to its interactio
     </dependency>
 </dependencies>
 ```
-#####Sbt
+##### Sbt
 ```scala
 libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xadmin_2.11"    % "6.1.0")
 ```
 
-####[xintelligence](https://developer.thron.com/#xintelligence)
+#### [xintelligence](https://developer.thron.com/#xintelligence)
 This component manages the content intelligence tools, allowing the user to define new classifications and tags and to link them to the entities.
 
-#####Maven
+##### Maven
 ```xml
 <dependencies>
     <dependency>
@@ -105,16 +105,16 @@ This component manages the content intelligence tools, allowing the user to defi
     </dependency>
 </dependencies>
 ```
-#####Sbt
+##### Sbt
 ```scala
 libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xintelligence_2.11"    % "6.1.0")
 ```
 
 
-####[xpackager](https://developer.thron.com/#xpackager)
+#### [xpackager](https://developer.thron.com/#xpackager)
 This is the component for managing user's working area (i.e., the area where contents are stored before publication) and content's packaging and transcoding process. Moreover, this component provides a set of services to manage contents preview before their publication over CDN.
 
-#####Maven
+##### Maven
 ```xml
 <dependencies>
     <dependency>
@@ -125,16 +125,16 @@ This is the component for managing user's working area (i.e., the area where con
 </dependencies>
 ```
 
-#####Sbt
+##### Sbt
 ```scala
 libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xpackager_2.11"    % "6.1.0")
 ```
 
-####[xcontact](https://developer.thron.com/#xcontact)
+#### [xcontact](https://developer.thron.com/#xcontact)
 Xcontact allows you to handle the contacts received by the platform entities (users and contents), and allows you to connect the user to a contact and retrieve its deviceId.
 Xdevice allows you to connect the user to a contact and retrieve its deviceId.
 
-#####Maven
+##### Maven
 ```xml
 <dependencies>
     <dependency>
@@ -144,15 +144,15 @@ Xdevice allows you to connect the user to a contact and retrieve its deviceId.
     </dependency>
 </dependencies>
 ```
-#####Sbt
+##### Sbt
 ```scala
 libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xcontact_2.11"    % "6.1.0")
 ```
 
-####[xtest](https://developer.thron.com/#xtest)
+#### [xtest](https://developer.thron.com/#xtest)
 This component allows you to easily check the connection to the platform and the integration best practices.
 
-#####Maven
+##### Maven
 ```xml
 <dependencies>
     <dependency>
@@ -162,7 +162,7 @@ This component allows you to easily check the connection to the platform and the
     </dependency>
 </dependencies>
 ```
-#####Sbt
+##### Sbt
 ```scala
 libraryDependencies ++= Seq("com.thron.sdk"     % "thron-core-xtest_2.11"    % "6.1.0")
 ```
