@@ -43,15 +43,7 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Used to authenticate an App through the appId and appKey (optional) and return
-	 * 
-	 * 
-	 * Provides:
-	 * <ul>
-	 * 	<li>all app detail (metadata)</li>
-	 * 	<li>the tokenId for the application, to use in the inside service call of the snippet</li>
-	 * 	<li>the rootCategory of the linked App.</li>
-	 * </ul>
+	 * Authenticates an app, returning its detail, rootCategoryId, and a session tokenId.
 	 * 
 	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
@@ -67,15 +59,7 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/loginApp/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/loginApp", notes = """Used to authenticate an App through the appId and appKey (optional) and return 
-	//#SWGNL#
-	//#SWGNL#
-	//#SWGNL#Provides:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>all app detail (metadata)</li>
-	//#SWGNL#	<li>the tokenId for the application, to use in the inside service call of the snippet</li>
-	//#SWGNL#	<li>the rootCategory of the linked App.</li>
-	//#SWGNL#</ul>
+	//#SWG#@ApiOperation(value = "/loginApp", notes = """Authenticates an app, returning its detail, rootCategoryId, and a session tokenId.
 	//#SWGNL#
 	//#SWGNL#Authentication token is not required (X-TOKENID).""", response = classOf[MResponseAppDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
@@ -121,14 +105,12 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_loginApp: String
 
 	/**
-	 * Used to authenticate an App through the appId and return all details.
-	 * Provides:
-	 * <ul>
-	 * 	<li>all app detail (metadata)</li>
-	 * 	<li>the rootCategory of the linked App.</li>
-	 * </ul>
+	 * Returns the detail of an app.
 	 * 
-	 * Can be invoked only by user with role [APPID]_MANAGER or [APPID]_APP_EDITOR or CORE_MANAGE_APPS
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>[APPID]_MANAGER or [APPID]_APP_EDITOR or CORE_MANAGE_APPS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsappDetailReq
 	 * @return MResponseAppDetail
@@ -137,14 +119,12 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/appDetail")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/appDetail", notes = """Used to authenticate an App through the appId and return all details.
-	//#SWGNL#Provides:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>all app detail (metadata)</li>
-	//#SWGNL#	<li>the rootCategory of the linked App.</li>
-	//#SWGNL#</ul>
+	//#SWG#@ApiOperation(value = "/appDetail", notes = """Returns the detail of an app.
 	//#SWGNL#
-	//#SWGNL#Can be invoked only by user with role [APPID]_MANAGER or [APPID]_APP_EDITOR or CORE_MANAGE_APPS""", response = classOf[MResponseAppDetail])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>[APPID]_MANAGER or [APPID]_APP_EDITOR or CORE_MANAGE_APPS role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseAppDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def appDetail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -191,9 +171,17 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_appDetail: String
 
 	/**
-	 * returns a list of apps  matching the search criteria.
-	 * Can be invoked only by user with role CORE_MANAGE_APPS.
-	 * apps.disguiseData is returned only if the user has some role for the app.
+	 * Returns the list of apps matching provided criteria.
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>disguiseData is returned only if user has any role for the app.</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_APPS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsfindByPropertiesReq
 	 * @return MResponseAppList
@@ -202,9 +190,17 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/findByProperties")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/findByProperties", notes = """returns a list of apps  matching the search criteria.
-	//#SWGNL#Can be invoked only by user with role CORE_MANAGE_APPS.
-	//#SWGNL#apps.disguiseData is returned only if the user has some role for the app.""", response = classOf[MResponseAppList])
+	//#SWG#@ApiOperation(value = "/findByProperties", notes = """Returns the list of apps matching provided criteria.
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>disguiseData is returned only if user has any role for the app.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>CORE_MANAGE_APPS role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseAppList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def findByProperties(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -251,8 +247,12 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_findByProperties: String
 
 	/**
-	 * the service return a list with summary information related to the apps.
-	 * Can be invoked by any platform users.
+	 * Returns summary details for a list of apps matching provided criteria.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>Can be invoked by any platform users.</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsappsListReq
 	 * @return MResponseAppSummaryList
@@ -261,8 +261,12 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/appsList")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/appsList", notes = """the service return a list with summary information related to the apps.
-	//#SWGNL#Can be invoked by any platform users.""", response = classOf[MResponseAppSummaryList])
+	//#SWG#@ApiOperation(value = "/appsList", notes = """Returns summary details for a list of apps matching provided criteria.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Can be invoked by any platform users.</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseAppSummaryList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def appsList(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -309,11 +313,19 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_appsList: String
 
 	/**
-	 * used to impersonate another user (sudo function)
-	 * The service can be invoked only by Apps with canDisguise attribute enabled.
-	 * The service return a valid token for the specified user if exists and if the app allows to
-	 * impersonate the user (based on the MApp.disguiseData values).
+	 * Impersonates a platform user (sudo function), returning an access token of the user.
+	 * 
 	 * Authentication token is not required (X-TOKENID).
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>disguiseData must allow app to impersonate the user</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>can be invoked only by apps with canDisguise attribute enabled.</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppssuReq
 	 * @return String
@@ -322,10 +334,19 @@ trait JApps extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/su")
 	@Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/su", notes = """used to impersonate another user (sudo function)
-	//#SWGNL#The service can be invoked only by Apps with canDisguise attribute enabled. 
-	//#SWGNL#The service return a valid token for the specified user if exists and if the app allows to impersonate the user (based on the MApp.disguiseData values).
-	//#SWGNL#Authentication token is not required (X-TOKENID).""", response = classOf[String])
+	//#SWG#@ApiOperation(value = "/su", notes = """Impersonates a platform user (sudo function), returning an access token of the user.
+	//#SWGNL#
+	//#SWGNL#Authentication token is not required (X-TOKENID).
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>disguiseData must allow app to impersonate the user</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>can be invoked only by apps with canDisguise attribute enabled.</li>
+	//#SWGNL#</ul>""", response = classOf[String])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def su(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

@@ -21,20 +21,20 @@ object JArchiveClient {
 	
 }
 /**
- * This service used to download content.
+ * This service is used to download content.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: https://clientId-view.thron.
+ * 	<li>REST service: https://clientId-extra.thron.
  * com/api/xcontents/resources/archive</li>
  * </ul>
  */
 class JArchiveClient(val resourceEndpoint:String) {
 
 	/**
-	 * Return a zip file with all elements matching the prepare request.
+	 * Returns a zip file with the content matching the prepare request.
 	 * <b>
-	 * </b><b>Role Validation</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
@@ -91,7 +91,12 @@ class JArchiveClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * This service provides  a zip file with all items of the playlist.
+	 * Returns a zip file with the published resources of the playlist's elements.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * Domain name used to access THRON
@@ -157,10 +162,9 @@ class JArchiveClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * This service is used to prepare an archive. Use the downloadId to invoke the downloadservice and
-	 * save the zip file.
+	 * Returns an id used by download service to zip and download a set of content.
 	 * <b>
-	 * </b><b>Role Validation</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
@@ -206,6 +210,61 @@ class JArchiveClient(val resourceEndpoint:String) {
 				}
 		  }
 		  
+	
+	}
+
+	/**
+	 * Returns a zip file with the resources of a player embed template.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * Domain name used to access THRON
+	 * @param templateId : String
+	 * @param templateVersion : Integer
+	 * @return java.io.File
+	*/
+	def downloadPlayerEmbedTemplate(tokenId: String, 
+			clientId: String, 
+			templateId: String, 
+			templateVersion: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):java.io.File ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JArchiveClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			  
+			val response : java.io.File = if(this.resourceEndpoint == ""){
+			
+				null
+			
+			}else{
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED	
+				var wbuilder = webResource
+					.path("archive/downloadPlayerEmbedTemplate")
+					.path(clientId.toString)
+		.path(templateId.toString)
+		.path(templateVersion.toString)
+					.accept(javax.ws.rs.core.MediaType.WILDCARD)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.post(classOf[java.io.File],params)
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[java.io.File])
+				}
+				else {
+				  throw e
+				}
+		  }
 	
 	}
 

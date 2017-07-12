@@ -37,24 +37,24 @@ object JITagClient {
 class JITagClient(val resourceEndpoint:String) {
 
 	/**
-	 * Link a given itagId to a specific entity  (Content, User, Contact).
+	 * Links an itag to an entity.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>50: max number of itags in each target (created by users)</li>
-	 * 	<li>50: max number of itags in each target (created by engines)</li>
+	 * 	<li>max number of user-generated itags per entity: 50</li>
+	 * 	<li>max number of engine-generated itags per entity : 50</li>
 	 * </ul>
 	 * <b>
-	 * </b><b>Role Validation for Tagging Users:</b>
+	 * </b><b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -109,8 +109,9 @@ class JITagClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Unlink a given itagId from a specific entity (Content, User, Contact).
-	 * <b>Removal of combined tags:</b>
+	 * Unlinks an itagId from an entity.
+	 * <b>
+	 * </b><b>Removal of combined tags:</b>
 	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
 	 * 
 	 * <ul>
@@ -126,16 +127,16 @@ class JITagClient(val resourceEndpoint:String) {
 	 * the service will remove both "A" and "B" tags.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation for Tagging Users:</b>
+	 * <b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_EDIT_CONTACTS)
+	 * THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -190,23 +191,24 @@ class JITagClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Bulk insert service for itags
+	 * Links a list of itags to an entity.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>100: max number of itags for each target</li>
+	 * 	<li>max number of user-generated itags per entity: 50</li>
+	 * 	<li>max number of engine-generated itags per entity : 50</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation for Tagging Users:</b>
+	 * <b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -256,7 +258,7 @@ class JITagClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Bulk remove service for itags.
+	 * Removes a list of itags from an entity.
 	 * 
 	 * <b>Removal of combined tags:</b>
 	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
@@ -274,16 +276,16 @@ class JITagClient(val resourceEndpoint:String) {
 	 * the service will remove both "A" and "B" tags.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation for Tagging Users:</b>
+	 * <b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -333,23 +335,24 @@ class JITagClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Apply a single itag to multiple targets  (Content, User, Contact).
-	 * 
-	 * <b>Constraints:</b>
+	 * Links an itag to multiple entity.
+	 * <b>
+	 * </b><b>Constraints:</b>
 	 * <ul>
-	 * 	<li>100: max number of itags for each target</li>
+	 * 	<li>max number of user-generated itags per entity: 50</li>
+	 * 	<li>max number of engine-generated itags per entity : 50</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation for Tagging Users:</b>
+	 * <b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -399,8 +402,9 @@ class JITagClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Remove a given itag from a list entities (Content, User, Contact).
-	 * <b>Removal of combined tags:</b>
+	 * Removes an itag from multiple entities.
+	 * <b>
+	 * </b><b>Removal of combined tags:</b>
 	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
 	 * 
 	 * <ul>
@@ -416,16 +420,16 @@ class JITagClient(val resourceEndpoint:String) {
 	 * the service will remove both "A" and "B" tags.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation for Tagging Users:</b>
+	 * <b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String

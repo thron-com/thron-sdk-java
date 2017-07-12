@@ -66,7 +66,7 @@ class MIMetadata extends Serializable {
 		import org.apache.commons.lang.StringUtils
 	
 		val isValueValid = forRemove || (
-			StringUtils.isNotBlank(value) &&
+			Option(value).isDefined &&
 			StringUtils.length(value) <= 2000000
 		)
 	

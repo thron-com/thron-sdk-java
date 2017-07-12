@@ -43,6 +43,7 @@ trait JMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Bas
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String
@@ -51,7 +52,7 @@ trait JMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Bas
 	@GET
 	@Path("/detail/{clientId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detail", notes = """""", response = classOf[MResponseMetadataDefinitionDetail])
+	//#SWG#@ApiOperation(value = "/detail", notes = """Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseMetadataDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -219,6 +220,8 @@ trait JMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Bas
 
 	/**
 	 * Lists the client's MetadataDefinition.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param searchText : String
@@ -242,7 +245,9 @@ trait JMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Bas
 	@GET
 	@Path("/listGet/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/listGet", notes = """Lists the client's MetadataDefinition.""", response = classOf[MResponseMetadataDefinitionList])
+	//#SWG#@ApiOperation(value = "/listGet", notes = """Lists the client's MetadataDefinition.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseMetadataDefinitionList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listGet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

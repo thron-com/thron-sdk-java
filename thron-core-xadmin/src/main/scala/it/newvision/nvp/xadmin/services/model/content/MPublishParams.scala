@@ -17,9 +17,9 @@ import it.newvision.nvp.xadmin.model.version.MVersionNote
 class MPublishParams extends Serializable {
 
 	/**
-	 * VIDEO, AUDIO, IMAGE, DOCUMENT, PLAYLIST, PAGELET
+	 * VIDEO, AUDIO, IMAGE, OTHER, PLAYLIST, PAGELET, URL
 	 */
-	//#SWG#@ApiModelProperty(value = """VIDEO, AUDIO, IMAGE, DOCUMENT, PLAYLIST, PAGELET""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """VIDEO, AUDIO, IMAGE, OTHER, PLAYLIST, PAGELET, URL""" ,required = true)
 	@BeanProperty 
 	var contentType: MEContentType =_
 	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
@@ -90,11 +90,11 @@ class MPublishParams extends Serializable {
 		if(Option(contentOpt).isEmpty) throw new IllegalArgumentException("missing contentOpt parameter")
 		contentOpt.validate()
 		if(!Seq(MEContentType.AUDIO,MEContentType.VIDEO,MEContentType.IMAGE,MEContentType.OTHER,
-			MEContentType.PLAYLIST,MEContentType.PAGELET).contains(contentType)) throw new IllegalArgumentException(s"$contentType is not accepted")
+			MEContentType.PLAYLIST,MEContentType.PAGELET,MEContentType.URL).contains(contentType)) throw new IllegalArgumentException(s"$contentType is not accepted")
 		contentType match{
 			case MEContentType.PLAYLIST =>
 				if(Option(playlistOpt).isEmpty) throw new IllegalArgumentException("missing playlistOpt parameter")
-				if(Option(sources).isDefined)	throw new IllegalArgumentException("sources must be empty if playlistOpt is defined")
+				if(Option(sources).exists(_.isEmpty)) throw new IllegalArgumentException("sources must be empty if playlistOpt is defined")
 				playlistOpt.validate()
 			case _=> 
 				if(!(Option(sources).isDefined && sources.size()==1 && Option(playlistOpt).isEmpty))

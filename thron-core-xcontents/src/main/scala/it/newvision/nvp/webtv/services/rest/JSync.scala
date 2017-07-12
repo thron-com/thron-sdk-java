@@ -132,7 +132,7 @@ trait JSync extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * Deprecated by JSync.updatedContents
 	 * 
 	 * The service returns the list of contents modified inside a specified date range (only for IMAGE,
-	 * NDOC, OTHER, DOCUMENT, PLAYLIST, AUDIO, VIDEO content Type).
+	 * OTHER, DOCUMENT, PLAYLIST, AUDIO, VIDEO content Type).
 	 * The response provides all metadata information and the list of ids (contentsRemoved) of the
 	 * contents removed after that date. The service return also the deliveryInformation with the content
 	 * url and the list of thumbnails.
@@ -147,7 +147,7 @@ trait JSync extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/lastUpdatedContents", notes = """Deprecated by JSync.updatedContents
 	//#SWGNL#
-	//#SWGNL#The service returns the list of contents modified inside a specified date range (only for IMAGE, NDOC, OTHER, DOCUMENT, PLAYLIST, AUDIO, VIDEO content Type).
+	//#SWGNL#The service returns the list of contents modified inside a specified date range (only for IMAGE, OTHER, DOCUMENT, PLAYLIST, AUDIO, VIDEO content Type).
 	//#SWGNL#The response provides all metadata information and the list of ids (contentsRemoved) of the contents removed after that date. The service return also the deliveryInformation with the content url and the list of thumbnails.
 	//#SWGNL#The service does not return the list of comments linked to the content.""", response = classOf[MResponseContentLastUpdated])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
@@ -205,13 +205,13 @@ trait JSync extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * linked categories and the itagDefinitions.
 	 * The resultset is paginated (max page size is 200 elements), after the 1st call the service return a
 	 * "nextPage" identifier to be used on the next call, to get the following elements. If  the
-	 * "nextPage" value is empty it means that you are on the last page of the result set.
+	 * "nextPage" value is missing it means that you are on the last page of the result set.
 	 * 
 	 * Service call frequency: the service should be called every 10 minutes.
 	 * 
-	 * <b>ROLE validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>CORE_SYNC_CONTENTS</li>
+	 * 	<li>CORE_SYNC_CONTENTS role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -225,13 +225,13 @@ trait JSync extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWG#@ApiOperation(value = "/updatedContent", notes = """The service returns the list of content modified inside the specified date range.
 	//#SWGNL#The response provides all metadata information and the list of ids (contents.removed) of the contents removed within the date range.
 	//#SWGNL#The service can return for each content the deliveryInfo (with the content urls and thumbnail), the linked categories and the itagDefinitions.
-	//#SWGNL#The resultset is paginated (max page size is 200 elements), after the 1st call the service return a "nextPage" identifier to be used on the next call, to get the following elements. If  the "nextPage" value is empty it means that you are on the last page of the result set.
+	//#SWGNL#The resultset is paginated (max page size is 200 elements), after the 1st call the service return a "nextPage" identifier to be used on the next call, to get the following elements. If  the "nextPage" value is missing it means that you are on the last page of the result set.
 	//#SWGNL#
 	//#SWGNL#Service call frequency: the service should be called every 10 minutes.
 	//#SWGNL#
-	//#SWGNL#<b>ROLE validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>CORE_SYNC_CONTENTS</li>
+	//#SWGNL#	<li>CORE_SYNC_CONTENTS role</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseUpdatedContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updatedContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -293,9 +293,9 @@ trait JSync extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * "nextPage" value is empty it means that you are on the last page of the result set.
 	 * The Service avoids ACL restrictions.
 	 * 
-	 * <b>ROLE validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>CORE_SYNC_CONTENTS</li>
+	 * 	<li>CORE_SYNC_CONTENTS role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -311,9 +311,9 @@ trait JSync extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#The resultset is paginated (max page size is 200 elements), after the 1st call the service return a "nextPage" identifier to be used on the next call, to get the following elements. If  the "nextPage" value is empty it means that you are on the last page of the result set.
 	//#SWGNL#The Service avoids ACL restrictions.
 	//#SWGNL#
-	//#SWGNL#<b>ROLE validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>CORE_SYNC_CONTENTS</li>
+	//#SWGNL#	<li>CORE_SYNC_CONTENTS role</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseExport])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def export(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)

@@ -22,34 +22,24 @@ class MPropertyGenericDocument extends Serializable {
 	 * the channel type is an identifier used by xadmin and xpublisher and follows
 	 * this namingconvention
 	 * 
-	 * WEB<USERSPACIFIC>
+	 * WEB<USERSPECIFIC>
 	 * STREAM<USERSPECIFIC>
 	 * 
 	 * example:
 	 * WEB
-	 * STREAM
-	 * STREAMIPHONE
-	 * STREAMSILVERLIGHT
-	 * STREAMMOBILE
+	 * STREAMHTTPIOS
 	 * WEBIPHONE
-	 * WEBMP3
-	 * WEBFLV
 	 */
 	//#SWG#@ApiModelProperty(value = """it's the channel type where the content is published.
 	//#SWGNL#the channel type is an identifier used by xadmin and xpublisher and follows this namingconvention
 	//#SWGNL#
-	//#SWGNL#WEB<USERSPACIFIC>
+	//#SWGNL#WEB<USERSPECIFIC>
 	//#SWGNL#STREAM<USERSPECIFIC>
 	//#SWGNL#
 	//#SWGNL#example:
 	//#SWGNL#WEB
-	//#SWGNL#STREAM
-	//#SWGNL#STREAMIPHONE
-	//#SWGNL#STREAMSILVERLIGHT
-	//#SWGNL#STREAMMOBILE
-	//#SWGNL#WEBIPHONE
-	//#SWGNL#WEBMP3
-	//#SWGNL#WEBFLV""" ,required = true)
+	//#SWGNL#STREAMHTTPIOS
+	//#SWGNL#WEBIPHONE""" ,required = true)
 	@BeanProperty 
 	var channelType: String  = "WEB"
 	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
@@ -101,7 +91,7 @@ class MPropertyGenericDocument extends Serializable {
 	//#SWG#@ApiModelProperty(value = """available protocols. list of comma separated values.
 	//#SWGNL#"http://,https://"""" ,required = true)
 	@BeanProperty 
-	var webProtocols: String  = "http://"
+	var webProtocols: String  = "https://"
 	def withwebProtocols(p:String):this.type ={ 	this.webProtocols = p; 	this }
 
 	/**

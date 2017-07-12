@@ -22,4 +22,16 @@ class MAclInverseRule extends MAclInverseRuleGeneric with Serializable  {
 	var status: MEAclInverseRuleStatus =_
 	def withstatus(p:MEAclInverseRuleStatus):this.type ={ 	this.status = p; 	this }
 
+	/**
+	 * Whether or not rule needs to be propagated
+	 * @return Boolean
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def needsToBePropagated():Boolean ={
+		this.applyToSpreadTargets &&
+		this.status != MEAclInverseRuleStatus.INFERRED &&
+		Seq(MEAclRuleInverse.SEEN_BY, MEAclRuleInverse.MODIFIED_BY, MEAclRuleInverse.SHARED_BY).contains(this.rule)
+	}
+
 }

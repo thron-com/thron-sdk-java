@@ -49,11 +49,11 @@ class MContentFieldsOption extends Serializable {
 	def withreturnLinkedCategories(p:Boolean):this.type ={ 	this.returnLinkedCategories = p; 	this }
 
 	/**
-	 * Default=true
+	 * Default=false
 	 */
-	//#SWG#@ApiModelProperty(value = """Default=true""")
+	//#SWG#@ApiModelProperty(value = """Default=false""")
 	@BeanProperty 
-	var returnEmbedCodes: Boolean  = true
+	var returnEmbedCodes: Boolean  = false
 	def withreturnEmbedCodes(p:Boolean):this.type ={ 	this.returnEmbedCodes = p; 	this }
 
 	/**

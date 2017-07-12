@@ -44,8 +44,9 @@ class MAclInverseRulesValue extends Serializable {
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def isValid():Boolean ={
 		import scala.collection.JavaConversions._
-		Option(sourceObjId).isDefined && 
-		Option(sourceObjClass).isDefined && 
+		import org.apache.commons.lang.StringUtils
+		StringUtils.isNotEmpty(sourceObjId) &&
+		Option(sourceObjClass).isDefined &&
 		rules.nonEmpty
 	}
 

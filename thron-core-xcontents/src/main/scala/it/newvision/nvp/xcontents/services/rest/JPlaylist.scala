@@ -18,12 +18,11 @@ import it.newvision.nvp.xcontents.services.model.request.MPlaylistremoveContentF
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * The Playlist service provide a set of functions to handle the list of contents
- * used inside a Playlist or slideshow. These service are optimised to handle a
- * high number of elements linked to a playlist. The linked contents list return
- * only the xcontentId information, and to get the other content metadata like
- * name and description is necessary to query the Content.findbyproperties
- * function.
+ * Service provides a set of functions to handle the list of contents used inside
+ * a playlist or slideshow. These service are optimised to handle a high number of
+ * elements linked to a playlist. The linked contents list return only the
+ * xcontentId information, and to get the other content metadata like name and
+ * description is necessary to query the Content.findbyproperties function.
  * For performance reason the linkedcontents list is not verified so, if the
  * client create a playlist content with a list invalid xcontentsId, the platform
  * do not verify and the detail function return exactly the same list.
@@ -35,7 +34,7 @@ import it.newvision.nvp.xcontents.services.model.request.MPlaylistremoveContentF
  * </ul>
  */
 @Path("/playlist")
-//#SWG#@Api(value = "/playlist", description = """The Playlist service provide a set of functions to handle the list of contents used inside a Playlist or slideshow. These service are optimised to handle a high number of elements linked to a playlist. The linked contents list return only the xcontentId information, and to get the other content metadata like name and description is necessary to query the Content.findbyproperties function.
+//#SWG#@Api(value = "/playlist", description = """Service provides a set of functions to handle the list of contents used inside a playlist or slideshow. These service are optimised to handle a high number of elements linked to a playlist. The linked contents list return only the xcontentId information, and to get the other content metadata like name and description is necessary to query the Content.findbyproperties function.
 //#SWGNL#For performance reason the linkedcontents list is not verified so, if the client create a playlist content with a list invalid xcontentsId, the platform do not verify and the detail function return exactly the same list.
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
@@ -53,7 +52,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * The service return the playlist detail, with all linked items.
+	 * Returns a playlist content detail, complete with the list of linkedContents.
 	 * @param tokenId : String
 	 * @param param : MPlaylistdetailReq
 	 * @return MResponsePlayListDetail
@@ -62,7 +61,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Path("/detail")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/detail", notes = """The service return the playlist detail, with all linked items.""", response = classOf[MResponsePlayListDetail])
+	//#SWG#@ApiOperation(value = "/detail", notes = """Returns a playlist content detail, complete with the list of linkedContents.""", response = classOf[MResponsePlayListDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -109,7 +108,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_detail: String
 
 	/**
-	 * Replace the playlist's elements with the given list of contents.
+	 * Updates the linkedContents value of a playlist content.
 	 * @param tokenId : String
 	 * @param param : MPlaylistupdateReq
 	 * @return MResponsePlayList
@@ -118,7 +117,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Path("/update")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/update", notes = """Replace the playlist's elements with the given list of contents.""", response = classOf[MResponsePlayList])
+	//#SWG#@ApiOperation(value = "/update", notes = """Updates the linkedContents value of a playlist content.""", response = classOf[MResponsePlayList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -165,7 +164,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_update: String
 
 	/**
-	 * Add new playlist items in the queue.
+	 * Adds a content to the linkedContents of a playlist content.
 	 * @param tokenId : String
 	 * @param param : MPlaylistaddContentsInQueueReq
 	 * @return MResponsePlayList
@@ -174,7 +173,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Path("/addContentsInQueue")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addContentsInQueue", notes = """Add new playlist items in the queue.""", response = classOf[MResponsePlayList])
+	//#SWG#@ApiOperation(value = "/addContentsInQueue", notes = """Adds a content to the linkedContents of a playlist content.""", response = classOf[MResponsePlayList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addContentsInQueue(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -221,7 +220,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_addContentsInQueue: String
 
 	/**
-	 * Add new playlist items in the specific position
+	 * Adds a list of content to the linkedContents of a playlist content.
 	 * @param tokenId : String
 	 * @param param : MPlaylistaddContentsReq
 	 * @return MResponsePlayList
@@ -230,7 +229,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Path("/addContents")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addContents", notes = """Add new playlist items in the specific position""", response = classOf[MResponsePlayList])
+	//#SWG#@ApiOperation(value = "/addContents", notes = """Adds a list of content to the linkedContents of a playlist content.""", response = classOf[MResponsePlayList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -277,7 +276,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_addContents: String
 
 	/**
-	 * Move a playlist element from position "oldContentPosition" to "newContentPosition"
+	 * Moves a content among the linkedContents of a playlist content.
 	 * @param tokenId : String
 	 * @param param : MPlaylistmoveContentInListReq
 	 * @return MResponsePlayList
@@ -286,7 +285,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Path("/moveContentInList")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/moveContentInList", notes = """Move a playlist element from position "oldContentPosition" to "newContentPosition"""", response = classOf[MResponsePlayList])
+	//#SWG#@ApiOperation(value = "/moveContentInList", notes = """Moves a content among the linkedContents of a playlist content.""", response = classOf[MResponsePlayList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def moveContentInList(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -333,7 +332,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_moveContentInList: String
 
 	/**
-	 * Remove from the playlist the element in "contentPosition"
+	 * Removes a content from the linkedContents of a playlist content.
 	 * @param tokenId : String
 	 * @param param : MPlaylistremoveContentFromListReq
 	 * @return MResponsePlayList
@@ -342,7 +341,7 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@Path("/removeContentFromList")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeContentFromList", notes = """Remove from the playlist the element in "contentPosition"""", response = classOf[MResponsePlayList])
+	//#SWG#@ApiOperation(value = "/removeContentFromList", notes = """Removes a content from the linkedContents of a playlist content.""", response = classOf[MResponsePlayList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeContentFromList(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

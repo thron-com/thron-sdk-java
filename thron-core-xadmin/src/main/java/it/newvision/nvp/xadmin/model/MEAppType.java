@@ -27,8 +27,6 @@ public enum MEAppType {
 	 */
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("WEBTV") WEBTV,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("COMMENT") COMMENT,
 	/**
 	 * for custom apps with snippets
 	 */
@@ -63,5 +61,15 @@ public enum MEAppType {
 	 * Sales Module
 	 */
 	//#SWG#@ApiModelProperty(value = """Sales Module""")
-	@XmlEnumValue("THRONFORSALES") THRONFORSALES
+	@XmlEnumValue("THRONFORSALES") THRONFORSALES,
+	/**
+	 * Magic Site App Master
+	 */
+	//#SWG#@ApiModelProperty(value = """Magic Site App Master""")
+	@XmlEnumValue("MAGICSITE_MASTER") MAGICSITE_MASTER,
+	/**
+	 * Magic Site App Slave
+	 */
+	//#SWG#@ApiModelProperty(value = """Magic Site App Slave""")
+	@XmlEnumValue("MAGICSITE_SLAVE") MAGICSITE_SLAVE
 }

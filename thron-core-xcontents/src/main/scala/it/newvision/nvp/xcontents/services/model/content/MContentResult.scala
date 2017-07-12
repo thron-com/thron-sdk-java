@@ -53,10 +53,10 @@ class MContentResult extends Serializable {
 	def withtotalRecommendedContents(p:Integer):this.type ={ 	this.totalRecommendedContents = p; 	this }
 
 	/**
-	 * Deprecated by dynThumbUrl
+	 * Deprecated by dynThumbService
 	 * The list of all available thumbnail URLs. 
 	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated by dynThumbUrl 
+	//#SWG#@ApiModelProperty(value = """Deprecated by dynThumbService 
 	//#SWGNL#The list of all available thumbnail URLs. """)
 	@BeanProperty 
 	@Deprecated
@@ -65,7 +65,7 @@ class MContentResult extends Serializable {
 	def withthumbUrls(p:List[String]):this.type ={ 	this.thumbUrls = p; 	this }
 
 	/**
-	 * Deprecated by dynThumbUrl parameter.
+	 * Deprecated by dynThumbService parameter.
 	 * Defined if divArea parameter is specified on the request.
 	 * Return the thumbnail that best suits to the given area (DivArea format:
 	 * <widht>x<height>)
@@ -74,7 +74,7 @@ class MContentResult extends Serializable {
 	 * obtain a dynamic link to the best thumbnail (for the given content and div
 	 * area) use the "dynThumbService" attribute (see reference for details)
 	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated by dynThumbUrl parameter.
+	//#SWG#@ApiModelProperty(value = """Deprecated by dynThumbService parameter.
 	//#SWGNL#Defined if divArea parameter is specified on the request.
 	//#SWGNL#Return the thumbnail that best suits to the given area (DivArea format: <widht>x<height>)
 	//#SWGNL#bestThumbUrl provides the static url of the thumbnail in 4me CDN (Content Delivery Network); the url is volatile and may change with time. In order to obtain a dynamic link to the best thumbnail (for the given content and div area) use the "dynThumbService" attribute (see reference for details)""")

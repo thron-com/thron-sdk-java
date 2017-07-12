@@ -101,7 +101,7 @@ class JSyncClient(val resourceEndpoint:String) {
 	 * Deprecated by JSync.updatedContents
 	 * 
 	 * The service returns the list of contents modified inside a specified date range (only for IMAGE,
-	 * NDOC, OTHER, DOCUMENT, PLAYLIST, AUDIO, VIDEO content Type).
+	 * OTHER, DOCUMENT, PLAYLIST, AUDIO, VIDEO content Type).
 	 * The response provides all metadata information and the list of ids (contentsRemoved) of the
 	 * contents removed after that date. The service return also the deliveryInformation with the content
 	 * url and the list of thumbnails.
@@ -158,13 +158,13 @@ class JSyncClient(val resourceEndpoint:String) {
 	 * linked categories and the itagDefinitions.
 	 * The resultset is paginated (max page size is 200 elements), after the 1st call the service return a
 	 * "nextPage" identifier to be used on the next call, to get the following elements. If  the
-	 * "nextPage" value is empty it means that you are on the last page of the result set.
+	 * "nextPage" value is missing it means that you are on the last page of the result set.
 	 * 
 	 * Service call frequency: the service should be called every 10 minutes.
 	 * 
-	 * <b>ROLE validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>CORE_SYNC_CONTENTS</li>
+	 * 	<li>CORE_SYNC_CONTENTS role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -220,9 +220,9 @@ class JSyncClient(val resourceEndpoint:String) {
 	 * "nextPage" value is empty it means that you are on the last page of the result set.
 	 * The Service avoids ACL restrictions.
 	 * 
-	 * <b>ROLE validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>CORE_SYNC_CONTENTS</li>
+	 * 	<li>CORE_SYNC_CONTENTS role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String

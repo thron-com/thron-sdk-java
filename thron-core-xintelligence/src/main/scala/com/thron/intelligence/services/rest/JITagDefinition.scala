@@ -59,17 +59,19 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Insert a new ITagDefinition inside a given classification.
+	 * Inserts an itagDefinition to a classification.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's not possible to create itagdefinition with a parentId uncategorized or unapproved.</li>
+	 * 	<li>parentId, if any, must refer to a categorized itagDefinition.</li>
 	 * 	<li>it's not possible to create tree structure with more than 1000 nodes.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER or
-	 * THRON_CLASS_[CLASSID]_TAG_SUGGESTER (only for not categorized tags)
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER or THRON_CLASS_[CLASSID]_TAG_SUGGESTER (only for not categorized
+	 * tags) role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -80,16 +82,18 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/insert/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/insert", notes = """Insert a new ITagDefinition inside a given classification.
+	//#SWG#@ApiOperation(value = "/insert", notes = """Inserts an itagDefinition to a classification.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>it's not possible to create itagdefinition with a parentId uncategorized or unapproved.</li>
+	//#SWGNL#	<li>parentId, if any, must refer to a categorized itagDefinition.</li>
 	//#SWGNL#	<li>it's not possible to create tree structure with more than 1000 nodes.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER or THRON_CLASS_[CLASSID]_TAG_SUGGESTER (only for not categorized tags)""", response = classOf[MResponseITagDefinitionDetail])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER or THRON_CLASS_[CLASSID]_TAG_SUGGESTER (only for not categorized tags) role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -148,11 +152,12 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_insert: String
 
 	/**
-	 * Lists the client's ITagDefinitions. This method return the itags matching the given search criteria.
+	 * Returns the list of itagDefinition matching provided criteria.
 	 * 
-	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -163,10 +168,12 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/list/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/list", notes = """Lists the client's ITagDefinitions. This method return the itags matching the given search criteria.
+	//#SWG#@ApiOperation(value = "/list", notes = """Returns the list of itagDefinition matching provided criteria.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseITagDefinitionList])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -225,10 +232,14 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_list: String
 
 	/**
-	 * Lists the client's Tags. This method return the ITagDefinition matching the given search criteria.
+	 * Returns the list of itagDefinition matching provided criteria.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -236,7 +247,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * @param text : String
 	 * Optional. search criteria
 	 * @param lang : String
-	 * Optional
+	 * Optional. Used to filter itagDefinitions
 	 * @param ids : String
 	 * Optional. As csv list of ITagDefinition.id or ITagDefinition.prettyId
 	 * @param showLinkedMetadata : Boolean
@@ -257,10 +268,14 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@GET
 	@Path("/listGet/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/listGet", notes = """Lists the client's Tags. This method return the ITagDefinition matching the given search criteria.
+	//#SWG#@ApiOperation(value = "/listGet", notes = """Returns the list of itagDefinition matching provided criteria.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseITagDefinitionList])
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listGet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -274,7 +289,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """Optional. search criteria""")
 	@QueryParam("text")
 	text: String, 
-			//#SWG#@ApiParam(value = """Optional""")
+			//#SWG#@ApiParam(value = """Optional. Used to filter itagDefinitions""")
 	@QueryParam("lang")
 	lang: String, 
 			//#SWG#@ApiParam(value = """Optional. As csv list of ITagDefinition.id or ITagDefinition.prettyId""")
@@ -327,10 +342,14 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_listGet: String
 
 	/**
-	 * Return the detail information for a given ITagDefinition.
+	 * Returns the detail of an itagDefinition.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li> THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -347,10 +366,14 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@GET
 	@Path("/detail/{clientId}/{classificationId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detail", notes = """Return the detail information for a given ITagDefinition.
+	//#SWG#@ApiOperation(value = "/detail", notes = """Returns the detail of an itagDefinition.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseITagDefinitionDetail])
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li> THRON_CLASS_[CLASSID]_VIEWER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -407,10 +430,14 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * included will not be updated.
 	 * 
 	 * <b>Constraints:</b>
-	 * the ITagDefinition must be in state "APPROVED"
+	 * <ul>
+	 * 	<li>itagDefinition must be APPROVED</li>
+	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -427,10 +454,14 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	//#SWGNL#The "update" field of this web service works in “patch" mode: it means that each and everyone of the "update" attributes you want to change must be included in the body of the request, those not included will not be updated.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
-	//#SWGNL#the ITagDefinition must be in state "APPROVED"
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>itagDefinition must be APPROVED</li>
+	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDetail])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -495,15 +526,19 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_update: String
 
 	/**
-	 * Definitely remove  an ITagDefinition from the classification.
-	 * It's only possible to remove ITagDefinition without children.
-	 * The operation remove also the link with metadata definition
+	 * Remove s an itagDefinition from a classification.
+	 * It also removes any linked imetadataDefinition.
 	 * 
 	 * <b>Constraints:</b>
-	 * the ITagDefinition must be in state "APPROVED"
+	 * <ul>
+	 * 	<li>itagDefinition must be APPROVED</li>
+	 * 	<li>Cannot remove itagDefinition with any child node</li>
+	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -516,15 +551,19 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/remove/{clientId}/{classificationId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/remove", notes = """Definitely remove  an ITagDefinition from the classification.
-	//#SWGNL#It's only possible to remove ITagDefinition without children. 
-	//#SWGNL#The operation remove also the link with metadata definition
+	//#SWG#@ApiOperation(value = "/remove", notes = """Remove s an itagDefinition from a classification.
+	//#SWGNL#It also removes any linked imetadataDefinition.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
-	//#SWGNL#the ITagDefinition must be in state "APPROVED"
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>itagDefinition must be APPROVED</li>
+	//#SWGNL#	<li>Cannot remove itagDefinition with any child node</li>
+	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagRemove])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagRemove])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -589,21 +628,25 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_remove: String
 
 	/**
-	 * Combine a source ITagDefinition into a target ITagDefinition.
-	 * ExternalIds, linked metadata, and id are combined in the target ITagDefinition. If the user search
-	 * the Itag by externalId/id/prettyId have as response the target ITagDefinition.
-	 * After a combine operation the user can not update/remove the target ITagDefinition
+	 * Combines a source itagDefinition into a target itagDefinition.
+	 * ExternalIds and linked imetadataDefinitions are combined into the target itagDefinition.
+	 * After a combine operation any itagDefinition search by source ids will return target itagDefinition.
+	 * 
+	 * After a combine operation target itagDefinition cannot be updated or removed.
+	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>source tag status = APPROVED</li>
-	 * 	<li>source tag should be a leaf</li>
+	 * 	<li>source itagDefinition must be APPROVED</li>
+	 * 	<li>source itagDefinition  must not have child nodes</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>categorized source.tag within a NOT categorized tag is not allowed</li>
+	 * 	<li>cannot combine a categorized itagDefinition into a non-categorized itagDefinition.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -615,20 +658,24 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/combine/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/combine", notes = """Combine a source ITagDefinition into a target ITagDefinition. 
-	//#SWGNL#ExternalIds, linked metadata, and id are combined in the target ITagDefinition. If the user search the Itag by externalId/id/prettyId have as response the target ITagDefinition.
-	//#SWGNL#After a combine operation the user can not update/remove the target ITagDefinition 
+	//#SWG#@ApiOperation(value = "/combine", notes = """Combines a source itagDefinition into a target itagDefinition. 
+	//#SWGNL#ExternalIds and linked imetadataDefinitions are combined into the target itagDefinition.
+	//#SWGNL#After a combine operation any itagDefinition search by source ids will return target itagDefinition.
+	//#SWGNL#After a combine operation target itagDefinition cannot be updated or removed.
+	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>source tag status = APPROVED</li>
-	//#SWGNL#	<li>source tag should be a leaf</li>
+	//#SWGNL#	<li>source itagDefinition must be APPROVED</li>
+	//#SWGNL#	<li>source itagDefinition  must not have child nodes</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>categorized source.tag within a NOT categorized tag is not allowed</li>
+	//#SWGNL#	<li>cannot combine a categorized itagDefinition into a non-categorized itagDefinition.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDetail])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def combine(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -687,27 +734,19 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_combine: String
 
 	/**
-	 * Divide a combined ITagDefinition from a target ITagDefinition.
-	 * 
-	 * <ul>
-	 * 	<li>recover id and prettyId of combined ITagDefinition</li>
-	 * 	<li>recover externalIds</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>recover linked metadata</li>
-	 * </ul>
+	 * Divides a combined itagDefinition from a target itagDefinition.
+	 * Restores combined itagDefinition ids.and linked imetadataDefinitions.
+	 * After the divide operation divided itagDefinition will have the same parent of the target.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>source must be in state "combined"</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>the combined ITagDefinition after the divide operation have the same parent of the target.
-	 * </li>
+	 * 	<li>source itagDefinition must be COMBINED</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -718,26 +757,19 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/divide/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/divide", notes = """Divide a combined ITagDefinition from a target ITagDefinition. 
-	//#SWGNL#
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>recover id and prettyId of combined ITagDefinition</li>
-	//#SWGNL#	<li>recover externalIds</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>recover linked metadata</li>
-	//#SWGNL#</ul>
+	//#SWG#@ApiOperation(value = "/divide", notes = """Divides a combined itagDefinition from a target itagDefinition. 
+	//#SWGNL#Restores combined itagDefinition ids.and linked imetadataDefinitions.
+	//#SWGNL#After the divide operation divided itagDefinition will have the same parent of the target.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>source must be in state "combined"</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>the combined ITagDefinition after the divide operation have the same parent of the target.</li>
+	//#SWGNL#	<li>source itagDefinition must be COMBINED</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDisjoined])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionDisjoined])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def divide(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -796,20 +828,20 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_divide: String
 
 	/**
-	 * Merge a (combined) ITagDefinition within the target ITagDefinition.
-	 * The service moves linkedMetadata, externalIds from the combined ITagDefinition to the target. After
-	 * the merge process, the user can only extract the ITagDefinition.
-	 * The prettyId and names of the combined ITagDefinition are not merged into the target.
+	 * Merges a list of combined itagDefinitions into a target itagDefinition.
+	 * ExternalIds and linked imetadataDefinitions are moved from combined itagDefinitions to the target;
+	 * combined itagDefinitions prettyId and localized names are not merged into the target.
+	 * Any reference to combined itagDefinitions on any entity is replaced by target itagDefinition.
 	 * <b>
 	 * </b><b>Constraints</b>:
 	 * <ul>
-	 * 	<li>source must be in state "combined"</li>
-	 * 	<li>All references to combined ITagDefinition (on Contents/Contacts/Users) are replaced by target
-	 * ITagDefinition</li>
+	 * 	<li>combined itagDefinitions must be COMBINED</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -820,18 +852,19 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/merge/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/merge", notes = """Merge a (combined) ITagDefinition within the target ITagDefinition. 
-	//#SWGNL#The service moves linkedMetadata, externalIds from the combined ITagDefinition to the target. After the merge process, the user can only extract the ITagDefinition.
-	//#SWGNL#The prettyId and names of the combined ITagDefinition are not merged into the target.
+	//#SWG#@ApiOperation(value = "/merge", notes = """Merges a list of combined itagDefinitions into a target itagDefinition. 
+	//#SWGNL#ExternalIds and linked imetadataDefinitions are moved from combined itagDefinitions to the target; combined itagDefinitions prettyId and localized names are not merged into the target.
+	//#SWGNL#Any reference to combined itagDefinitions on any entity is replaced by target itagDefinition.
 	//#SWGNL#<b>
 	//#SWGNL#</b><b>Constraints</b>:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>source must be in state "combined"</li>
-	//#SWGNL#	<li>All references to combined ITagDefinition (on Contents/Contacts/Users) are replaced by target ITagDefinition</li>
+	//#SWGNL#	<li>combined itagDefinitions must be COMBINED</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDetail])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def merge(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -890,26 +923,21 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_merge: String
 
 	/**
-	 * Extract a merged ITagDefinition from a target ITagDefinition.
-	 * 
-	 * <ul>
-	 * 	<li>try to restore prettyId (if still available)</li>
-	 * 	<li>restore the linked metadata</li>
-	 * 	<li>restore names</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>transfer the selected externalIds from source to the restored ITagDefinition</li>
-	 * 	<li>restore the merged ITagDefinition with the same parent ITagDefinition of the target (if the
-	 * tag tree is not full), otherwise move the tag at the root level.</li>
-	 * </ul>
+	 * Extracts a merged itagDefinition from a target itagDefinition.
+	 * Restores prettyId (if still available), externalIds, linked imetadataDefinitions, and localized
+	 * names.
+	 * After extract operation merged itagDefinition will have the same parent itagDefinition of the
+	 * target (if the tag tree is not full), otherwise the tag is added as a new root.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>source must be in state "merged"</li>
+	 * 	<li>merged itagDefinition must be MERGED</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -920,25 +948,19 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/extract/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/extract", notes = """Extract a merged ITagDefinition from a target ITagDefinition. 
-	//#SWGNL#
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>try to restore prettyId (if still available)</li>
-	//#SWGNL#	<li>restore the linked metadata</li>
-	//#SWGNL#	<li>restore names</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>transfer the selected externalIds from source to the restored ITagDefinition</li>
-	//#SWGNL#	<li>restore the merged ITagDefinition with the same parent ITagDefinition of the target (if the tag tree is not full), otherwise move the tag at the root level.</li>
-	//#SWGNL#</ul>
+	//#SWG#@ApiOperation(value = "/extract", notes = """Extracts a merged itagDefinition from a target itagDefinition.
+	//#SWGNL#Restores prettyId (if still available), externalIds, linked imetadataDefinitions, and localized names.
+	//#SWGNL#After extract operation merged itagDefinition will have the same parent itagDefinition of the target (if the tag tree is not full), otherwise the tag is added as a new root.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>source must be in state "merged"</li>
+	//#SWGNL#	<li>merged itagDefinition must be MERGED</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDisjoined])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionDisjoined])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def extract(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -997,11 +1019,13 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_extract: String
 
 	/**
-	 * Lists the ITagDefinitions joined (combined or merged) in a given tag target. This method return the
-	 * itags matching the given search criteria
+	 * Lists the itagDefinitions joined (i.e., combined or merged) into a target itagDefinition matching
+	 * provided criteria.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -1012,10 +1036,12 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/listJoined/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/listJoined", notes = """Lists the ITagDefinitions joined (combined or merged) in a given tag target. This method return the itags matching the given search criteria
+	//#SWG#@ApiOperation(value = "/listJoined", notes = """Lists the itagDefinitions joined (i.e., combined or merged) into a target itagDefinition matching provided criteria.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseITagDefinitionJoinedList])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionJoinedList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listJoined(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -1074,21 +1100,19 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_listJoined: String
 
 	/**
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition</li>
-	 * 	<li>100: max number of IMetadataDefinition per ITagDefinition</li>
-	 * 	<li>it's possible to link metadata only to categorized and approved ITagDefinition</li>
-	 * 	<li>the IMetadataDefinition of type KEY can be linked to one single ITagDefinition.</li>
-	 * </ul>
+	 * Links an imetadataDefinition to an itagDefinition.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>the ITagDefinition must be in state "APPROVED"</li>
+	 * 	<li>itagDefinition must be APPROVED and CATEGORIZED</li>
+	 * 	<li>max number of imetadataDefinition linked to an itagDefinition: 100</li>
+	 * 	<li>KEY type imetadataDefinitions can only be linked to a single itagDefinition.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -1101,21 +1125,19 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/linkMetadataDefinition/{clientId}/{classificationId}/{itagId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/linkMetadataDefinition", notes = """<b>Constraints:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition</li>
-	//#SWGNL#	<li>100: max number of IMetadataDefinition per ITagDefinition</li>
-	//#SWGNL#	<li>it's possible to link metadata only to categorized and approved ITagDefinition</li>
-	//#SWGNL#	<li>the IMetadataDefinition of type KEY can be linked to one single ITagDefinition.</li>
-	//#SWGNL#</ul>
+	//#SWG#@ApiOperation(value = "/linkMetadataDefinition", notes = """Links an imetadataDefinition to an itagDefinition.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>the ITagDefinition must be in state "APPROVED"</li>
+	//#SWGNL#	<li>itagDefinition must be APPROVED and CATEGORIZED</li>
+	//#SWGNL#	<li>max number of imetadataDefinition linked to an itagDefinition: 100</li>
+	//#SWGNL#	<li>KEY type imetadataDefinitions can only be linked to a single itagDefinition.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagMetadataLink])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagMetadataLink])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def linkMetadataDefinition(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -1180,11 +1202,17 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_linkMetadataDefinition: String
 
 	/**
-	 * <b>Constraints:</b>
-	 * the ITagDefinition must be in state "APPROVED"
+	 * Unlinks an imetadataDefinition from an itagDefinition.
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * </b><b>Constraints:</b>
+	 * <ul>
+	 * 	<li>itagDefinition must be APPROVED</li>
+	 * </ul>
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -1197,11 +1225,17 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/unlinkMetadataDefinition/{clientId}/{classificationId}/{itagId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/unlinkMetadataDefinition", notes = """<b>Constraints:</b>
-	//#SWGNL#the ITagDefinition must be in state "APPROVED"
+	//#SWG#@ApiOperation(value = "/unlinkMetadataDefinition", notes = """Unlinks an imetadataDefinition from an itagDefinition.
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagMetadataLink])
+	//#SWGNL#</b><b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>itagDefinition must be APPROVED</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagMetadataLink])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def unlinkMetadataDefinition(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -1266,15 +1300,20 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_unlinkMetadataDefinition: String
 
 	/**
-	 * Update in "patch" mode  the specific values defined in the link between ITagDefinition and
-	 * IMetadataDefinition.
-	 * Actually used to change the position of the imetadatadefinition inside an itagdefinition
+	 * Update in "patch" mode  the specific values defined in the link between itagDefinition and
+	 * imetadataDefinition.
+	 * Can be used to change the position of an imetadataDefinition among the list of
+	 * linkedMetadataDefinition of an itagDefinition.
 	 * 
 	 * <b>Constraints:</b>
-	 * the ITagDefinition must be in state "APPROVED"
+	 * <ul>
+	 * 	<li>itagDefinition must be APPROVED</li>
+	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -1287,14 +1326,18 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/updateTagMetadata/{clientId}/{classificationId}/{itagId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateTagMetadata", notes = """Update in "patch" mode  the specific values defined in the link between ITagDefinition and IMetadataDefinition.
-	//#SWGNL#Actually used to change the position of the imetadatadefinition inside an itagdefinition
+	//#SWG#@ApiOperation(value = "/updateTagMetadata", notes = """Update in "patch" mode  the specific values defined in the link between itagDefinition and imetadataDefinition.
+	//#SWGNL#Can be used to change the position of an imetadataDefinition among the list of linkedMetadataDefinition of an itagDefinition.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
-	//#SWGNL#the ITagDefinition must be in state "APPROVED"
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>itagDefinition must be APPROVED</li>
+	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagMetadataLink])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagMetadataLink])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateTagMetadata(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -1359,15 +1402,17 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_updateTagMetadata: String
 
 	/**
-	 * Add an externalId to the ITagDefinition
+	 * Adds an externalId to an itagDefinition.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's not possible to add more than 200 external Ids on the same itagDefinition</li>
+	 * 	<li>max number of externalIds on an itagDefinition: 200</li>
 	 * </ul>
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -1380,15 +1425,17 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/addExternalId/{clientId}/{classificationId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addExternalId", notes = """Add an externalId to the ITagDefinition
+	//#SWG#@ApiOperation(value = "/addExternalId", notes = """Adds an externalId to an itagDefinition.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>it's not possible to add more than 200 external Ids on the same itagDefinition</li>
+	//#SWGNL#	<li>max number of externalIds on an itagDefinition: 200</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDetail])
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -1453,10 +1500,12 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_addExternalId: String
 
 	/**
-	 * Remove an externalId from the ITagDefinition
+	 * Removes an externalId from an itagDefinition.
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -1469,10 +1518,12 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/removeExternalId/{clientId}/{classificationId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeExternalId", notes = """Remove an externalId from the ITagDefinition
+	//#SWG#@ApiOperation(value = "/removeExternalId", notes = """Removes an externalId from an itagDefinition.
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseITagDefinitionDetail])
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -1537,10 +1588,12 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_removeExternalId: String
 
 	/**
-	 * List of distinct keys (ExternalId.key) ordered by name
+	 * Returns the list of distinct keys (i.e., externalId.key) sorted by name.
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -1551,10 +1604,12 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/listExternalIdKeys/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/listExternalIdKeys", notes = """List of distinct keys (ExternalId.key) ordered by name
+	//#SWG#@ApiOperation(value = "/listExternalIdKeys", notes = """Returns the list of distinct keys (i.e., externalId.key) sorted by name.
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseITagDefinitionListKeys])
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseITagDefinitionListKeys])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listExternalIdKeys(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

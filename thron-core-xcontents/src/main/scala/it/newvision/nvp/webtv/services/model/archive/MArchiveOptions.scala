@@ -29,7 +29,7 @@ class MArchiveOptions extends Serializable {
 	 * </ul>
 	 * 
 	 * Example:
-	 * ["SOURCE","WEBHD","WEBMHD"]
+	 * ["SOURCE","WEBHD"]
 	 */
 	//#SWG#@ApiModelProperty(value = """Empty (default value): the service returns the Source, if available otherwise the Published content.
 	//#SWGNL#
@@ -39,9 +39,9 @@ class MArchiveOptions extends Serializable {
 	//#SWGNL#	<li>PUBLISHED: only the published resource</li>
 	//#SWGNL#	<li><channel>: specific channel</li>
 	//#SWGNL#</ul>
-	//#SWGNL# 
+	//#SWGNL#
 	//#SWGNL#Example:
-	//#SWGNL#["SOURCE","WEBHD","WEBMHD"]""")
+	//#SWGNL#["SOURCE","WEBHD"]""")
 	@BeanProperty 
 	var video: List[String] = new ArrayList[String]
 	def withvideo(p:List[String]):this.type ={ 	this.video = p; 	this }

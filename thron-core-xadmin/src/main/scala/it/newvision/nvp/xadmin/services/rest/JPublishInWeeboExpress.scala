@@ -13,7 +13,6 @@ import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspubl
 import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishDocumentReq
 import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishPageletReq
 import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishProgramReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublish4MEDocumentReq
 import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishContentInChannelsReq
 import it.newvision.nvp.xadmin.model.MEContentType
 
@@ -554,65 +553,6 @@ trait JPublishInWeeboExpress extends it.newvision.nvp.core.libraries.restserver.
 	 protected def __publishProgram(tokenId: String, param: MPublishInWeeboExpresspublishProgramReq) :MResponsePublishContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_publishProgram: String
-
-	/**
-	 * Deprecated.
-	 * Publishing function specialized on 4ME Documents. This service is typically used to publish and
-	 * convert PDF document to SWF format.
-	 * @param tokenId : String
-	 * @param param : MPublishInWeeboExpresspublish4MEDocumentReq
-	 * @return MResponsePublishContent
-	*/
-	@POST
-	@Path("/publish4MEDocument")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/publish4MEDocument", notes = """Deprecated.
-	//#SWGNL#Publishing function specialized on 4ME Documents. This service is typically used to publish and convert PDF document to SWF format.""", response = classOf[MResponsePublishContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def publish4MEDocument(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MPublishInWeeboExpresspublish4MEDocumentReq):Response /*returnType = MResponsePublishContent*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__publish4MEDocument(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_publish4MEDocument)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_publish4MEDocument)
-	    }
-	} 
-
-	@GET
-	@Path("/publish4MEDocument")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def publish4MEDocument_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublishContent*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("publish4MEDocument",this._getCacheControl) 
-		try{
-			val resp = this.__publish4MEDocument(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MPublishInWeeboExpresspublish4MEDocumentReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_publish4MEDocument)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_publish4MEDocument)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __publish4MEDocument(tokenId: String, param: MPublishInWeeboExpresspublish4MEDocumentReq) :MResponsePublishContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_publish4MEDocument: String
 
 	/**
 	 * This service is used to publish a content in different channels or using a specific profile (The

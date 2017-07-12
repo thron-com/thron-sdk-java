@@ -47,20 +47,17 @@ class MPublishingProfile extends Serializable {
 	def withgenericDocument(p:List[MPublishingProfileDetail]):this.type ={ 	this.genericDocument = p; 	this }
 
 	/**
-	 * 4me document
-	 */
-	//#SWG#@ApiModelProperty(value = """4me document""")
-	@BeanProperty 
-	var ndoc: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
-	def withndoc(p:List[MPublishingProfileDetail]):this.type ={ 	this.ndoc = p; 	this }
-
-	/**
 	 * pagelet document
 	 */
 	//#SWG#@ApiModelProperty(value = """pagelet document""")
 	@BeanProperty 
 	var pagelet: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
 	def withpagelet(p:List[MPublishingProfileDetail]):this.type ={ 	this.pagelet = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var url: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
+	def withurl(p:List[MPublishingProfileDetail]):this.type ={ 	this.url = p; 	this }
 
 	/**
 	 * @return void
@@ -80,18 +77,12 @@ class MPublishingProfile extends Serializable {
 		  p
 		}
 	
-		def doc4me = {
-		  val p = new MPublishingProfileDetail()
-		  p.init_HD_IDP()
-		  p
-		}
-		
 		this.audio.add(avp)
 		this.stream.add(avp)
 		this.image.add(idp)
 		this.genericDocument.add(idp)
-		this.ndoc.add(doc4me)
 		this.pagelet.add(idp)
+		this.url.add(idp)
 	}
 
 	/**
@@ -111,19 +102,13 @@ class MPublishingProfile extends Serializable {
 		  p.init_STANDARD_IDP()
 		  p
 		}
-		
-		def doc4me = {
-		  val p = new MPublishingProfileDetail()
-		  p.init_STANDARD_IDP()
-		  p
-		}
-		
+	
 		this.audio.add(avp)
 		this.stream.add(avp)
 		this.image.add(idp)
 		this.genericDocument.add(idp)
-		this.ndoc.add(doc4me)
 		this.pagelet.add(idp)
+		this.url.add(idp)
 	}
 
 	/**
@@ -136,8 +121,8 @@ class MPublishingProfile extends Serializable {
 		this.stream.clear()
 		this.image.clear()
 		this.genericDocument.clear()
-		this.ndoc.clear()
 		this.pagelet.clear()
+		this.url.clear()
 		this.add_HD()
 		this.add_STANDARD()
 	}

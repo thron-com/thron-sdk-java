@@ -34,11 +34,6 @@ class MThumbsProperties extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var thumbsPropertiesNdoc: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesNdoc(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesNdoc = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
 	var thumbsPropertiesAudio: MPropertyThumbnail  = new MPropertyThumbnail
 	def withthumbsPropertiesAudio(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesAudio = p; 	this }
 
@@ -46,6 +41,11 @@ class MThumbsProperties extends Serializable {
 	@BeanProperty 
 	var thumbsPropertiesDocument: MPropertyThumbnail  = new MPropertyThumbnail
 	def withthumbsPropertiesDocument(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesDocument = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var thumbsPropertiesUrl: MPropertyThumbnail  = new MPropertyThumbnail
+	def withthumbsPropertiesUrl(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesUrl = p; 	this }
 
 	/**
 	 * thumbs properties for pagelet contents
@@ -64,14 +64,6 @@ class MThumbsProperties extends Serializable {
 	def withthumbVideoFrameTime(p:Integer):this.type ={ 	this.thumbVideoFrameTime = p; 	this }
 
 	/**
-	 * Only for NDoc documents: create the thumbnail using the specified page.
-	 */
-	//#SWG#@ApiModelProperty(value = """Only for NDoc documents: create the thumbnail using the specified page.""" ,required = true)
-	@BeanProperty 
-	var thumbNdocPageNumber: Integer  = 1
-	def withthumbNdocPageNumber(p:Integer):this.type ={ 	this.thumbNdocPageNumber = p; 	this }
-
-	/**
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
@@ -85,9 +77,9 @@ class MThumbsProperties extends Serializable {
 		thumbsPropertiesImage.keepFileFormat = true
 	
 		thumbsPropertiesLive.init()
-		thumbsPropertiesNdoc.init()
 		thumbsPropertiesDocument.init()
 		thumbsPropertiesPagelet.init()
+		thumbsPropertiesUrl.init()
 	}
 
 }

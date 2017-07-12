@@ -48,9 +48,14 @@ class MClientProperties extends Serializable {
 	var customMetadatas: List[MCustomMetadata] = new ArrayList[MCustomMetadata]
 	def withcustomMetadatas(p:List[MCustomMetadata]):this.type ={ 	this.customMetadatas = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Deprecated.
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated.""")
 	@BeanProperty 
+	@Deprecated
 	var embedTemplates: List[MPlayerEmbedTemplate] = new ArrayList[MPlayerEmbedTemplate]
+	@Deprecated
 	def withembedTemplates(p:List[MPlayerEmbedTemplate]):this.type ={ 	this.embedTemplates = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")

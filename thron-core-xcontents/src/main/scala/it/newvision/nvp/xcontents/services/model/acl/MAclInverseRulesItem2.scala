@@ -37,7 +37,9 @@ class MAclInverseRulesItem2 extends Serializable {
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def isValid():Boolean ={
 		import it.newvision.nvp.xcontents.model.MEAclRuleInverse
+		import org.apache.commons.lang.StringUtils
 		import collection.JavaConversions._
+		import scala.util.Try
 		import collection.Set
 		implicit def tuple2List[T](t: (T,T)): Seq[T] = t match { case (l,r) => Seq(l,r) }
 		def getEnumRules(r: Iterable[it.newvision.nvp.xcontents.model.MAclInverseRuleGeneric]) = r.map(_.rule).toSet
@@ -45,23 +47,29 @@ class MAclInverseRulesItem2 extends Serializable {
 		// Separate disabled from enabled rules
 		val (ruleEnums :: disabledRuleEnums :: Nil) = acl.rules.partition(_.enabled).map(getEnumRules)
 	
+		def isUUID(s: String) = {
+			val trimmedS = StringUtils.trim(s)
+			Try(UUID.fromString(trimmedS).toString == trimmedS).getOrElse(false)
+		}
+	
 		(Option(targetObjId), Option(targetObjClass), Option(acl)) match {
 		  case (Some(_), Some(MEObjClass.CONTENT), Some(a)) if Option(a.rules).nonEmpty =>
-			def validateRule(sourceObjClass: MEObjClass)(ruleEnums: Set[MEAclRuleInverse]) = sourceObjClass match {
-			  case MEObjClass.USER => ruleEnums.diff(fullEnumRules + MEAclRuleInverse.BELONGS_TO).isEmpty
-			  case MEObjClass.GROUP | MEObjClass.APP => ruleEnums.diff(fullEnumRules).isEmpty
-			  case MEObjClass.CUSTOM => ruleEnums.diff(Set(MEAclRuleInverse.SEEN_BY)).isEmpty
+			def validateRule(sourceObjClass: MEObjClass, sourceObjId: String)(ruleEnums: Set[MEAclRuleInverse]) = sourceObjClass match {
+				case MEObjClass.USER => ruleEnums.diff(fullEnumRules + MEAclRuleInverse.BELONGS_TO).isEmpty
+				case MEObjClass.GROUP | MEObjClass.APP => ruleEnums.diff(fullEnumRules).isEmpty
+				case MEObjClass.CUSTOM => ruleEnums.diff(Set(MEAclRuleInverse.SEEN_BY)).isEmpty && !isUUID(sourceObjId)
 			}
 			// applyToSpreadTargets must be false on contents
-			acl.rules.forall(r => r.isValid && !r.applyToSpreadTargets && (validateRule(acl.sourceObjClass)(ruleEnums) || validateRule(acl.sourceObjClass)(disabledRuleEnums)))
+			acl.isValid() && acl.rules.forall(r => r.isValid && !r.applyToSpreadTargets
+				&& (validateRule(acl.sourceObjClass, acl.sourceObjId)(ruleEnums) || validateRule(acl.sourceObjClass, acl.sourceObjId)(disabledRuleEnums)))
 		  case (Some(_), Some(MEObjClass.CATEGORY), Some(a)) if Option(a.rules).nonEmpty && disabledRuleEnums.isEmpty =>
-			def validateRule(sourceObjClass: MEObjClass)(ruleEnums: Set[MEAclRuleInverse]) = sourceObjClass match {
-			  case MEObjClass.USER => ruleEnums.diff(fullEnumRules + MEAclRuleInverse.BELONGS_TO).isEmpty
-			  case MEObjClass.GROUP | MEObjClass.APP => ruleEnums.diff(fullEnumRules).isEmpty
-			  case MEObjClass.CUSTOM => ruleEnums.diff(Set(MEAclRuleInverse.SEEN_BY)).isEmpty
-			  case MEObjClass.CONTENT => ruleEnums.diff(Set(MEAclRuleInverse.SPREAD_TO)).isEmpty
+			def validateRule(sourceObjClass: MEObjClass, sourceObjId: String)(ruleEnums: Set[MEAclRuleInverse]) = sourceObjClass match {
+				case MEObjClass.USER => ruleEnums.diff(fullEnumRules + MEAclRuleInverse.BELONGS_TO).isEmpty
+				case MEObjClass.GROUP | MEObjClass.APP => ruleEnums.diff(fullEnumRules).isEmpty
+				case MEObjClass.CUSTOM => ruleEnums.diff(Set(MEAclRuleInverse.SEEN_BY)).isEmpty && !isUUID(sourceObjId)
+				case MEObjClass.CONTENT => ruleEnums.diff(Set(MEAclRuleInverse.SPREAD_TO)).isEmpty
 			}
-			acl.rules.forall(_.isValid && validateRule(acl.sourceObjClass)(ruleEnums))
+			acl.isValid() && acl.rules.forall(_.isValid && validateRule(acl.sourceObjClass, acl.sourceObjId)(ruleEnums))
 		  case _ => false
 		}
 	}

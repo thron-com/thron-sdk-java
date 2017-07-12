@@ -66,11 +66,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Used to add the content's name,except and description in a specific locale (lang)
+	 * Add localized name and description to a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddContent4LocaleReq
@@ -80,11 +80,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/addContent4Locale")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addContent4Locale", notes = """Used to add the content's name,except and description in a specific locale (lang)
+	//#SWG#@ApiOperation(value = "/addContent4Locale", notes = """Add localized name and description to a content.
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentAddLocale])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addContent4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -132,15 +132,17 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_addContent4Locale: String
 
 	/**
-	 * return all content information:
+	 * Returns content information:
 	 * <ul>
-	 * 	<li>all metadata </li>
-	 * 	<li>the specified content4Locale </li>
-	 * 	<li>the linkedcontent collection </li>
-	 * 	<li>the list of tags </li>
+	 * 	<li>metadata</li>
+	 * 	<li>localized information</li>
+	 * 	<li>linkedContents list</li>
+	 * 	<li>tags</li>
 	 * </ul>
 	 * 
-	 * if the value of locale is empty, the service returns the value for all locales added to the content.
+	 * if locale parameter is missing, the service returns all locales.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
@@ -168,15 +170,17 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@GET
 	@Path("/detail")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detail", notes = """return all content information:
+	//#SWG#@ApiOperation(value = "/detail", notes = """Returns content information:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>all metadata </li>
-	//#SWGNL#	<li>the specified content4Locale </li>
-	//#SWGNL#	<li>the linkedcontent collection </li>
-	//#SWGNL#	<li>the list of tags </li>
+	//#SWGNL#	<li>metadata</li>
+	//#SWGNL#	<li>localized information</li>
+	//#SWGNL#	<li>linkedContents list</li>
+	//#SWGNL#	<li>tags</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#if the value of locale is empty, the service returns the value for all locales added to the content.""", response = classOf[MResponseContentDetail])
+	//#SWGNL#if locale parameter is missing, the service returns all locales.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseContentDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -239,8 +243,7 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_detail: String
 
 	/**
-	 * The content find by properties return a list of Contents, all information about Contents, only one
-	 * Channel, and with the detail in one single locale.
+	 * Returns a list of contents matching provided criteria.
 	 * @param tokenId : String
 	 * @param param : MContentfindByPropertiesReq
 	 * @return MResponseContentFindByProperties
@@ -249,7 +252,7 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/findByProperties")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/findByProperties", notes = """The content find by properties return a list of Contents, all information about Contents, only one Channel, and with the detail in one single locale.""", response = classOf[MResponseContentFindByProperties])
+	//#SWG#@ApiOperation(value = "/findByProperties", notes = """Returns a list of contents matching provided criteria.""", response = classOf[MResponseContentFindByProperties])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def findByProperties(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -296,11 +299,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_findByProperties: String
 
 	/**
-	 * Used to remove the content's name,except and description for a specific locale (lang)
+	 * Removes localized name and description from a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -313,11 +316,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/removeContent4Locale")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/removeContent4Locale", notes = """Used to remove the content's name,except and description for a specific locale (lang)
+	//#SWG#@ApiOperation(value = "/removeContent4Locale", notes = """Removes localized name and description from a content.
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentRemoveLocale])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeContent4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -374,14 +377,14 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_removeContent4Locale: String
 
 	/**
-	 * Update content parameters.
-	 * The " "contentValues" field of this web service works in “patch" mode: it means that each and
+	 * Updates a content.
+	 * The  "contentValues" field of this web service works in “patch" mode: it means that each and
 	 * everyone of the "contentValues" attributes you want to change must be included in the body of the
 	 * request, those not included will not be updated.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContentReq
@@ -391,12 +394,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateContent", notes = """Update content parameters.
-	//#SWGNL#The " "contentValues" field of this web service works in “patch" mode: it means that each and everyone of the "contentValues" attributes you want to change must be included in the body of the request, those not included will not be updated.
+	//#SWG#@ApiOperation(value = "/updateContent", notes = """Updates a content.
+	//#SWGNL#The  "contentValues" field of this web service works in “patch" mode: it means that each and everyone of the "contentValues" attributes you want to change must be included in the body of the request, those not included will not be updated.
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -444,11 +447,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateContent: String
 
 	/**
-	 * Used to update the content's name,except and description for a specific locale (lang)
+	 * Updates localized name and description of a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContent4LocaleReq
@@ -458,11 +461,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateContent4Locale")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateContent4Locale", notes = """Used to update the content's name,except and description for a specific locale (lang)
+	//#SWG#@ApiOperation(value = "/updateContent4Locale", notes = """Updates localized name and description of a content.
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdateLocale])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateContent4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -510,9 +513,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateContent4Locale: String
 
 	/**
-	 * <b>ACL validation:</b>
+	 * Updates a localized prettyId of a content.
+	 * <b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContentPrettyIdReq
@@ -522,9 +527,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateContentPrettyId")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateContentPrettyId", notes = """<b>ACL validation:</b>
+	//#SWG#@ApiOperation(value = "/updateContentPrettyId", notes = """Updates a localized prettyId of a content.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentPrettyId])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateContentPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -572,11 +579,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateContentPrettyId: String
 
 	/**
-	 * remove the prettyId for the given locale
+	 * Removes a localized prettyId from a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentremoveContentPrettyIdReq
@@ -586,11 +593,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/removeContentPrettyId")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeContentPrettyId", notes = """remove the prettyId for the given locale
+	//#SWG#@ApiOperation(value = "/removeContentPrettyId", notes = """Removes a localized prettyId from a content.
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentPrettyId])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeContentPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -638,11 +645,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_removeContentPrettyId: String
 
 	/**
-	 * add a new prettyId to the content for the given locale.
+	 * Adds a localized prettyId to a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddContentPrettyIdReq
@@ -652,11 +659,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/addContentPrettyId")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addContentPrettyId", notes = """add a new prettyId to the content for the given locale.
+	//#SWG#@ApiOperation(value = "/addContentPrettyId", notes = """Adds a localized prettyId to a content.
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentPrettyId])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addContentPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -768,22 +775,25 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_verifyContentPrettyId: String
 
 	/**
-	 * Add a new element to the list of linkedContents.
-	 * The linkedContens list is used to store the full list of links between contents (like playlist
-	 * items, recommended contents or downloadable contents). For this reason it is necessary to specify
-	 * the relation linkType.
-	 * Constraints on linkType and ContentType.
+	 * Adds a content to the linkedContents list of a content.
+	 * The linkedContens list is used to store the full list of links between content (like playlist items,
+	 * recommended content or downloadable content). For this reason it is necessary to specify the
+	 * relation linkType.
+	 * Constraints on linkType and contentType.
 	 * 
-	 * * RECOMMENDED link is available only for VIDEO/AUDIO/IMAGE/OTHER/PLAYLIST contents
-	 * * DOWNLOADABLE link is available only for VIDEO/AUDIO/IMAGE/OTHER contents
-	 * * Only linkable contents can be added to another content (contens without property UNLINKABLE)
-	 * 
-	 * <b>ACL validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>RECOMMENDED link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
+	 * content.</li>
+	 * 	<li>DOWNLOADABLE link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
+	 * contents</li>
+	 * 	<li>Only linkable content can be added to another content (i.e., content without UNLINKABLE
+	 * property)</li>
 	 * </ul>
 	 * 
-	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddLinkedContentReq
 	 * @return MResponseContent
@@ -792,20 +802,20 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/addLinkedContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addLinkedContent", notes = """Add a new element to the list of linkedContents. 
-	//#SWGNL#The linkedContens list is used to store the full list of links between contents (like playlist items, recommended contents or downloadable contents). For this reason it is necessary to specify the relation linkType.
-	//#SWGNL#Constraints on linkType and ContentType.
+	//#SWG#@ApiOperation(value = "/addLinkedContent", notes = """Adds a content to the linkedContents list of a content.
+	//#SWGNL#The linkedContens list is used to store the full list of links between content (like playlist items, recommended content or downloadable content). For this reason it is necessary to specify the relation linkType.
+	//#SWGNL#Constraints on linkType and contentType.
 	//#SWGNL#
-	//#SWGNL#* RECOMMENDED link is available only for VIDEO/AUDIO/IMAGE/OTHER/PLAYLIST contents
-	//#SWGNL#* DOWNLOADABLE link is available only for VIDEO/AUDIO/IMAGE/OTHER contents
-	//#SWGNL#* Only linkable contents can be added to another content (contens without property UNLINKABLE)
-	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>RECOMMENDED link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO content.</li>
+	//#SWGNL#	<li>DOWNLOADABLE link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO contents</li>
+	//#SWGNL#	<li>Only linkable content can be added to another content (i.e., content without UNLINKABLE property)</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#	""", response = classOf[MResponseContent])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addLinkedContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -852,15 +862,15 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_addLinkedContent: String
 
 	/**
-	 * Add a list of new element to the list of linkedContents.
-	 * The linkedContens list is used to store the full list of links between contents (like playlist
-	 * items, recommended contents or downloadable contents). For this reason it is necessary to specify
-	 * the relation linkType.
-	 * Only linkable contents can be added to another content (contens without property UNLINKABLE)
+	 * Adds a set of content to the linkedContents list of a content.
+	 * The linkedContens list is used to store the full list of links between content (like playlist items,
+	 * recommended content or downloadable content). For this reason it is necessary to specify the
+	 * relation linkType.
+	 * Only linkable content can be added to another content (i.e., content without UNLINKABLE property)
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddLinkedContentsReq
@@ -870,13 +880,13 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/addLinkedContents")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addLinkedContents", notes = """Add a list of new element to the list of linkedContents. 
-	//#SWGNL#The linkedContens list is used to store the full list of links between contents (like playlist items, recommended contents or downloadable contents). For this reason it is necessary to specify the relation linkType.
-	//#SWGNL#Only linkable contents can be added to another content (contens without property UNLINKABLE)
+	//#SWG#@ApiOperation(value = "/addLinkedContents", notes = """Adds a set of content to the linkedContents list of a content.
+	//#SWGNL#The linkedContens list is used to store the full list of links between content (like playlist items, recommended content or downloadable content). For this reason it is necessary to specify the relation linkType.
+	//#SWGNL#Only linkable content can be added to another content (i.e., content without UNLINKABLE property)
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addLinkedContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -924,12 +934,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_addLinkedContents: String
 
 	/**
-	 * this service move a content in the linkedContents list from position "oldPosition" to "newPosition".
+	 * Moves a content among the linkedContents list of a content.
 	 * 
-	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentmoveLinkedContentReq
@@ -939,11 +948,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/moveLinkedContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/moveLinkedContent", notes = """this service move a content in the linkedContents list from position "oldPosition" to "newPosition".
+	//#SWG#@ApiOperation(value = "/moveLinkedContent", notes = """Moves a content among the linkedContents list of a content.
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def moveLinkedContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -991,11 +1000,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_moveLinkedContent: String
 
 	/**
-	 * the function removes from the list of linked Contents the elements matching the criteria
+	 * Removes content matching provided criteria from the list linkedContents of a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentremoveLinkedContentsReq
@@ -1005,11 +1014,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/removeLinkedContents")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeLinkedContents", notes = """the function removes from the list of linked Contents the elements matching the criteria
+	//#SWG#@ApiOperation(value = "/removeLinkedContents", notes = """Removes content matching provided criteria from the list linkedContents of a content.
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeLinkedContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -1057,11 +1066,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_removeLinkedContents: String
 
 	/**
-	 * used to mark if a content has been read or not by a user (the user who call the service)
+	 * Marks whether or not a content has been read by a user (the service invoker)
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>SEEN is required on the specific content</li>
+	 * 	<li>SEE ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateUserSpecificValuesReq
@@ -1071,11 +1080,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateUserSpecificValues")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateUserSpecificValues", notes = """used to mark if a content has been read or not by a user (the user who call the service)
+	//#SWG#@ApiOperation(value = "/updateUserSpecificValues", notes = """Marks whether or not a content has been read by a user (the service invoker)
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>SEEN is required on the specific content</li>
+	//#SWGNL#	<li>SEE ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateUserSpecificValues(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -1123,16 +1132,16 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateUserSpecificValues: String
 
 	/**
-	 * Add an externalId to the Content
+	 * Adds an externalId to a content.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's not possible to add more than 100 external Ids on the same content.</li>
+	 * 	<li>max number of externalIds on a content: 100</li>
 	 * </ul>
 	 * <b>
-	 * </b><b>ACL validation:</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -1144,16 +1153,16 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/addExternalId/{clientId}/{contentId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addExternalId", notes = """Add an externalId to the Content
+	//#SWG#@ApiOperation(value = "/addExternalId", notes = """Adds an externalId to a content.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>it's not possible to add more than 100 external Ids on the same content.</li>
+	//#SWGNL#	<li>max number of externalIds on a content: 100</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>ACL validation:</b>
+	//#SWGNL#</b><b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -1213,11 +1222,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_addExternalId: String
 
 	/**
-	 * Remove an externalId from the Content.
+	 * Removes an externalId from a content.
 	 * <b>
-	 * </b><b>ACL validation:</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -1229,11 +1238,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/removeExternalId/{clientId}/{contentId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeExternalId", notes = """Remove an externalId from the Content.
+	//#SWG#@ApiOperation(value = "/removeExternalId", notes = """Removes an externalId from a content.
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>ACL validation:</b>
+	//#SWGNL#</b><b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -1293,11 +1302,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_removeExternalId: String
 
 	/**
-	 * Verify whether a content externalId is used in the platform.
+	 * Verifies whether or not a content externalId is used in the platform.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -1308,11 +1317,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/verifyExternalId/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/verifyExternalId", notes = """Verify whether a content externalId is used in the platform.
+	//#SWG#@ApiOperation(value = "/verifyExternalId", notes = """Verifies whether or not a content externalId is used in the platform.
 	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific content</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentVerifyExternalId])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def verifyExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)

@@ -13,7 +13,6 @@ import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspubl
 import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishDocumentReq
 import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishPageletReq
 import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishProgramReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublish4MEDocumentReq
 import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishContentInChannelsReq
 
 /* ************************
@@ -407,53 +406,6 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
 					.path("publishinweeboexpress/publishProgram")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponsePublishContent],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponsePublishContent])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Deprecated.
-	 * Publishing function specialized on 4ME Documents. This service is typically used to publish and
-	 * convert PDF document to SWF format.
-	 * @param tokenId : String
-	 * @param param : MPublishInWeeboExpresspublish4MEDocumentReq
-	 * @return MResponsePublishContent
-	*/
-	def publish4MEDocument(tokenId: String, 
-			param: MPublishInWeeboExpresspublish4MEDocumentReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublishContent ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JPublishInWeeboExpressClient.client.resource(this.resourceEndpoint)
-			val response : MResponsePublishContent = if(this.resourceEndpoint == ""){
-			
-				new MResponsePublishContent()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("publishinweeboexpress/publish4MEDocument")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)

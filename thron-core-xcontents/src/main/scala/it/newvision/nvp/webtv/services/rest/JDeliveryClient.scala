@@ -37,24 +37,17 @@ object JDeliveryClient {
 class JDeliveryClient(val resourceEndpoint:String) {
 
 	/**
-	 * The service is used to return all content's metadata, aggregated with the specific channel details
-	 * (like thumbnails url, descriptor urls).
-	 * This service is used by THRON player to display name, content's description and to trace the events
-	 * for statistics purpose. it supports jsonp callback using the callback queryparam.
+	 * Returns content detail.
+	 * This service is used by THRON player to display content name, description and to track stats.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * <b>
 	 * </b><b>Limits:</b>
-	 * <ul>
-	 * 	<li>It does not return the list of comments associated with the content. </li>
-	 * </ul>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
 	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * 
-	 * <b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getContentDetail</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -100,12 +93,14 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * that best suits.
 	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768
-	 * @param pkey : String
-	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param lcid : String
 	 * Optional. the xcontentId of the main linked content
 	 * This parameter is used to have the descriptor of a linked/recommended content. The ACL of a
 	 * recommended content are validated on the context of the main content.
+	 * @param pkey : String
+	 * Optional, the access key for the content. It's not required when session token is provided.
+	 * @param embedCodeId : String
+	 * Optional. define the playerEmbedCode to use for the content renering.
 	 * @return MResponseDeliveryGetContentDetail
 	*/
 	def getContentDetail(tokenId: String, 
@@ -116,8 +111,9 @@ class JDeliveryClient(val resourceEndpoint:String) {
 			linkedChannelType: String, 
 			linkedUserAgent: String, 
 			divArea: String, 
+			lcid: String, 
 			pkey: String, 
-			lcid: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetContentDetail ={
+			embedCodeId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetContentDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -130,8 +126,9 @@ class JDeliveryClient(val resourceEndpoint:String) {
 		Option(linkedChannelType).foreach(s => params.add("linkedChannelType", s))
 		Option(linkedUserAgent).foreach(s => params.add("linkedUserAgent", s))
 		Option(divArea).foreach(s => params.add("divArea", s))
-		Option(pkey).foreach(s => params.add("pkey", s))
 		Option(lcid).foreach(s => params.add("lcid", s))
+		Option(pkey).foreach(s => params.add("pkey", s))
+		Option(embedCodeId).foreach(s => params.add("embedCodeId", s))
 			val response : MResponseDeliveryGetContentDetail = if(this.resourceEndpoint == ""){
 			
 				new MResponseDeliveryGetContentDetail()
@@ -221,18 +218,21 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * This service provides the thumbnail of a given content with the desired resolution and quality:
-	 * THRON will automatically process the highest available quality image to apply cropping and resize
-	 * algorithms that match your request, as specified by URL parameters expressed after ContentID.
-	 * For backward compatibility, if no additional query param is provided, the service will return the
+	 * This service provides the thumbnail of a content with the desired resolution and quality: THRON
+	 * will automatically process the highest available quality image to apply cropping and resize
+	 * algorithms that match your request.
+	 * For backward compatibility, if no additional queryparam is provided, the service will return the
 	 * image of the exact width of the divArea while height will respect the aspect ratio.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
 	 * HTTP status codes:
 	 * <ul>
-	 * 	<li>400: invalid arguments, </li>
-	 * 	<li>404: content not found, </li>
-	 * 	<li>500: generic error , </li>
-	 * 	<li>307: redirects to resulting image, </li>
-	 * 	<li>200: ok. </li>
+	 * 	<li>400: invalid arguments,</li>
+	 * 	<li>404: content not found,</li>
+	 * 	<li>500: generic error ,</li>
+	 * 	<li>307: redirects to resulting image,</li>
+	 * 	<li>200: ok.</li>
 	 * </ul>
 	 * 
 	 * If no thumbnail is available, a default fallback image will be provided.
@@ -283,6 +283,15 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * performed.
 	 * @param quality : Integer
 	 * Optional. The quality of the resulting image. Available values are: [0-100]. Default value is 90
+	 * @param adjustcrop : String
+	 * @param fill : String
+	 * @param fillcolor : String
+	 * @param format : String
+	 * @param enhance : String
+	 * @param dpr : Integer
+	 * Optional. Device Pixel Ration, available values are [1..1000]
+	 * 0-100: zoom out
+	 * 100-1000: zoom in
 	 * @return java.io.File
 	*/
 	def getThumbnail(tokenId: String, 
@@ -295,7 +304,13 @@ class JDeliveryClient(val resourceEndpoint:String) {
 			cropy: Double, 
 			cropw: Double, 
 			croph: Double, 
-			quality: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):java.io.File ={
+			quality: Integer, 
+			adjustcrop: String, 
+			fill: String, 
+			fillcolor: String, 
+			format: String, 
+			enhance: String, 
+			dpr: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):java.io.File ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -308,6 +323,12 @@ class JDeliveryClient(val resourceEndpoint:String) {
 		Option(cropw).foreach(s => params.add("cropw", s))
 		Option(croph).foreach(s => params.add("croph", s))
 		Option(quality).foreach(s => params.add("quality", s))
+		Option(adjustcrop).foreach(s => params.add("adjustcrop", s))
+		Option(fill).foreach(s => params.add("fill", s))
+		Option(fillcolor).foreach(s => params.add("fillcolor", s))
+		Option(format).foreach(s => params.add("format", s))
+		Option(enhance).foreach(s => params.add("enhance", s))
+		Option(dpr).foreach(s => params.add("dpr", s))
 			val response : java.io.File = if(this.resourceEndpoint == ""){
 			
 				null
@@ -339,19 +360,16 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * The service is used to return the content cuepoints for a public content.
-	 * The REST webservice is enabled for jsonp callback using the callback queryparam
+	 * Returns cuepoints of a public content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * <b>Limits:</b>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
 	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * 
-	 * <b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getCuePoints</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -448,22 +466,16 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * The service is used to return only the content subtitles in srt format for a public content and for
-	 * a single locale.
-	 * Subtitles are archived as cuepoints but this service is used to return the list in the standard srt
-	 * format
-	 * The REST webservice is enabled for jsonp callback using the callback queryparam
+	 * Returns localized subtitles for a public content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * <b>Limits:</b>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
 	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * 
-	 * <b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getSubTitles</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -528,21 +540,16 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * The service is used to return the list of "Downloadable Contents" linked to a specified content
-	 * without "UNLINKABLE" in MContent.properties .
-	 * The REST webservice is enabled for jsonp callback using the callback queryparam
+	 * Returns the list of downloadable content of a content without "UNLINKABLE" property.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * <b>Limits:</b>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
-	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * 
-	 * <b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.
-	 * com/api/xcontents/resources/delivery/getDownloadableContents</li>
+	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -568,7 +575,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * contents are validated on the context of the parent content.
 	 * example:
 	 * A -> has A1, A2 as recommended contents
-	 * A1 -> has D1,D2 has downloadable contents
+	 * A1 -> has D1,D2 as downloadable contents
 	 * 
 	 * To show the list of downloadable contents of A1 (on the context fo A):
 	 * xcontentId = A1
@@ -640,20 +647,16 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * The service is used to return the list of "Recommended Contents" linked to a specified content. The
-	 * REST webservice is enabled for jsonp callback using the callback queryparam
+	 * Returns the list of recommended content of a content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * <b>
 	 * </b><b>Limits:</b>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
-	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * 
-	 * <b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.
-	 * com/api/xcontents/resources/delivery/getRecommendedContents</li>
+	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -750,20 +753,16 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * The service is used to return the list of "Playlist items" linked to a specified Playlist. The REST
-	 * webservice is enabled for jsonp callback using the callback queryparam
+	 * Returns the list of content linked to a playlist content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * <b>Limits:</b>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
-	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * <b>
-	 * </b><b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.
-	 * com/api/xcontents/resources/delivery/getPlaylistContents</li>
+	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -791,6 +790,18 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	 * 
 	 * Enabling this parameter, the service can be used in the admin console to show all contents linked
 	 * even those unmatching the filters.
+	 * @param lcid : String
+	 * Optional. the xcontentId of the parent linked content
+	 * This parameter is used to have the list of playlist contents. The ACL of a playlist content are
+	 * validated on the context of the parent content.
+	 * example:
+	 * A -> has A1, A2 as recommended contents
+	 * A1 -> has C1,C2 as playlist contents
+	 * 
+	 * To show the list of playlist contents of A1 (on the context fo A):
+	 * xcontentId = A1
+	 * lcid = A
+	 * pkey = pkey/token of A
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
@@ -811,6 +822,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 			linkedUserAgent: String, 
 			pkey: String, 
 			admin: Boolean, 
+			lcid: String, 
 			divArea: String, 
 			offset: Integer, 
 			numberOfResult: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetPlaylistContents ={
@@ -827,6 +839,7 @@ class JDeliveryClient(val resourceEndpoint:String) {
 		Option(linkedUserAgent).foreach(s => params.add("linkedUserAgent", s))
 		Option(pkey).foreach(s => params.add("pkey", s))
 		Option(admin).foreach(s => params.add("admin", s))
+		Option(lcid).foreach(s => params.add("lcid", s))
 		Option(divArea).foreach(s => params.add("divArea", s))
 		Option(offset).foreach(s => params.add("offset", s))
 		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))

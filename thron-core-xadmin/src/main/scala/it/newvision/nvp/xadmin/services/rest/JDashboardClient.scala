@@ -33,7 +33,7 @@ object JDashboardClient {
 class JDashboardClient(val resourceEndpoint:String) {
 
 	/**
-	 * The service change the owner for a given list of contents.
+	 * Changes the owner of a set of content.
 	 * @param tokenId : String
 	 * @param param : MDashboardchangeContentsOwnerReq
 	 * @return MResponseDashboard
@@ -78,18 +78,15 @@ class JDashboardClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * This service is used to migrate:
+	 * Changes the ownership of:
 	 * <ul>
-	 * 	<li>owned contents </li>
-	 * 	<li>owned public categories</li>
-	 * 	<li>owned repository files</li>
+	 * 	<li>content</li>
+	 * 	<li>public categories</li>
+	 * 	<li>repository files</li>
+	 * 	<li>player embed templates</li>
+	 * 	<li>player embed codes</li>
 	 * </ul>
-	 * Should be used when a user is removed and the contents should be assigned to another user.
-	 * 
-	 * The service also remove
-	 * <ul>
-	 * 	<li>all links to the userId1 private folders </li>
-	 * </ul>
+	 * created by a user to another user, optionally removing the former.
 	 * @param tokenId : String
 	 * @param param : MDashboardmigrateUserStuffReq
 	 * @return MResponseDashboard

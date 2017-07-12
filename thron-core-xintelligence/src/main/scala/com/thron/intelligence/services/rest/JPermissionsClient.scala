@@ -35,11 +35,13 @@ object JPermissionsClient {
 class JPermissionsClient(val resourceEndpoint:String) {
 
 	/**
-	 * Add new permissions to users or app for a specific classification.
+	 * Adds classification permissions to a user, group or app.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  (THRON_CLASSIFICATIONS_MANAGER or
-	 * THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>(THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
+	 * role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -89,11 +91,12 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Lists the classification's permissions. This method return the permission matching the given search
-	 * criteria.
+	 * Returns the classification permissions matching provided criteria.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -143,11 +146,14 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Lists the classification's permissions. This method return the permission matching the given search
-	 * criteria.
+	 * Returns the classification permissions matching provided criteria.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -200,11 +206,13 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Update the given permissions of the classification.
+	 * Updates classification permissions of a user, group or app.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  (THRON_CLASSIFICATIONS_MANAGER or
-	 * THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>(THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
+	 * role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -254,11 +262,13 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Remove permissions to users or app for a specific classification.
+	 * Removes classification permissions from a user, group or app.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  (THRON_CLASSIFICATIONS_MANAGER or
-	 * THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>(THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
+	 * role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String

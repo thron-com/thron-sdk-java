@@ -44,8 +44,14 @@ object JIMetadataDefinitionClient {
 class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 
 	/**
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * Returns the detail of an imetadataDefinition.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li> THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -93,11 +99,13 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Create a new IMetadataDefinition for a given classification. The metadata definition can be linked
-	 * automatically to a specific tag of the same classification
+	 * Creates an imetadataDefinition is a classification.
+	 * The imetadataDefinition can be linked to an itagDefinition belonging to the same classification.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -147,15 +155,17 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to link a IMetadataDefinition to a specific ITagDefinition.
+	 * Links an imetadataDefinition to an itagDefinition.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>the metadata definition of type KEY can be linked to one single ITagDefinition.</li>
+	 * 	<li>KEY type imetadataDefinitions can only be linked to a single itagDefinition.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -214,11 +224,12 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Lists the client's IMetadataDefinition for a specific classification. This method return the
-	 * IMetadataDefinition matching the given search criteria.
+	 * Returns the list of imetadataDefinition of a classification matching provided criteria.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -268,10 +279,14 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Lists the client's IMetadataDefinition for a specific classification.
+	 * Returns the list of imetadataDefinition of a classification matching provided criteria.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -279,8 +294,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	 * Optional
 	 * Search criteria
 	 * @param lang : String
-	 * Optional.
-
+	 * Optional. Used to filter imetadataDefinitions
 	 * @param ids : String
 	 * Optional. csv list of Attribute.id
 	 * Search criteria
@@ -348,12 +362,13 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * move to trash. This operation unlink the IMetadataDefinition from all linked ITagDefinition.
-	 * This operation does not remove the instances of metadata linked to a specific entity
-	 * (content/user/contact...), so it's possible to restore the metadata using the untrash service.
+	 * Moves an imetadataDefinition to the trash, unlinking it from every linked itagDefinition.
+	 * It doesn't remove the instances of imetadata linked to any entity.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -404,10 +419,12 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Unlink a given IMetadataDefinition from a ITagDefition inside a classification.
+	 * Unlinks an imetadataDefinition from an itagDefinition.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -463,10 +480,12 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Restore a IMetadataDefinition from the trash
+	 * Restores an imetadataDefinition from the trash.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -534,8 +553,10 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	 * the "update" attributes you want to change must be included in the body of the request, those not
 	 * included will not be updated.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -589,16 +610,17 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Change a given iMetadataDefinition in a different metadataType.
+	 * Changes the type of an imetadataDefinition.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's possible to change the metadataType if the metadataDefinition is not used in any entity.
-	 * </li>
+	 * 	<li>you can change the type of a imetadataDefinition only if it's not used in the platform</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -648,11 +670,12 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Verify if the given iMetadataDefinition is used in the platform. Only iMetadataDefinition not used
-	 * can be removed or changed the metadataDefinitioType
+	 * Verifies whether or not the value of an imetadataDefinition is present on any entity.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String

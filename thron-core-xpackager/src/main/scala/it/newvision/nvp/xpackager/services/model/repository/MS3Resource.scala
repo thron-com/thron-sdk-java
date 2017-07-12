@@ -46,4 +46,20 @@ class MS3Resource extends Serializable {
 	var renameFileTo: String =_
 	def withrenameFileTo(p:String):this.type ={ 	this.renameFileTo = p; 	this }
 
+	/**
+	 * Optional. Not required for THRON S3 bucket
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Not required for THRON S3 bucket""")
+	@BeanProperty 
+	var accessKey: String =_
+	def withaccessKey(p:String):this.type ={ 	this.accessKey = p; 	this }
+
+	/**
+	 * Optional. Not required for THRON S3 bucket
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Not required for THRON S3 bucket""")
+	@BeanProperty 
+	var secretKey: String =_
+	def withsecretKey(p:String):this.type ={ 	this.secretKey = p; 	this }
+
 }

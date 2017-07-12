@@ -45,6 +45,19 @@ class MITagDefinitionlistReq extends Serializable {
 	def withshowSubNodeIds(p:Boolean):this.type ={ 	this.showSubNodeIds = p; 	this }
 
 	/**
+	 * Optional. Used in conjunction with orderBy field to sort itagDefinitions by
+	 * name (for a specific lang).
+	 * The service always return all available langs for each itagDefinition.
+	 * Locale code (ISO639-1)
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Used in conjunction with orderBy field to sort itagDefinitions by name (for a specific lang).
+	//#SWGNL#The service always return all available langs for each itagDefinition.
+	//#SWGNL#Locale code (ISO639-1)""", required = true)
+	@BeanProperty
+	var lang: String =_
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
+
+	/**
 	 * Optional
 	 */
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)

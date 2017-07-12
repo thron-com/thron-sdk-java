@@ -104,10 +104,10 @@ class MContentDescription extends Serializable {
 
 	/**
 	 * values belonging to MEContentProperties (xcontent component), like:
-	 * PREMIUM,UNLINKABLE.RATINGALLOWED
+	 * UNLINKABLE, RATINGALLOWED
 	 */
 	//#SWG#@ApiModelProperty(value = """values belonging to MEContentProperties (xcontent component), like:
-	//#SWGNL#PREMIUM,UNLINKABLE.RATINGALLOWED""")
+	//#SWGNL#UNLINKABLE, RATINGALLOWED""")
 	@BeanProperty 
 	var properties: List[String] = new ArrayList[String]
 	def withproperties(p:List[String]):this.type ={ 	this.properties = p; 	this }

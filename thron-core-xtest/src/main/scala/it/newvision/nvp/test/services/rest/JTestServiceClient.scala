@@ -88,7 +88,9 @@ class JTestServiceClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * return a list of items
+	 * return a list of items.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @return MResponseTestList
@@ -174,6 +176,7 @@ class JTestServiceClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param fakeResponse : Boolean

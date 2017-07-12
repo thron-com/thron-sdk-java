@@ -60,11 +60,11 @@ object JContentClient {
 class JContentClient(val resourceEndpoint:String) {
 
 	/**
-	 * Used to add the content's name,except and description in a specific locale (lang)
+	 * Add localized name and description to a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddContent4LocaleReq
@@ -110,15 +110,17 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * return all content information:
+	 * Returns content information:
 	 * <ul>
-	 * 	<li>all metadata </li>
-	 * 	<li>the specified content4Locale </li>
-	 * 	<li>the linkedcontent collection </li>
-	 * 	<li>the list of tags </li>
+	 * 	<li>metadata</li>
+	 * 	<li>localized information</li>
+	 * 	<li>linkedContents list</li>
+	 * 	<li>tags</li>
 	 * </ul>
 	 * 
-	 * if the value of locale is empty, the service returns the value for all locales added to the content.
+	 * if locale parameter is missing, the service returns all locales.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
@@ -196,8 +198,7 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * The content find by properties return a list of Contents, all information about Contents, only one
-	 * Channel, and with the detail in one single locale.
+	 * Returns a list of contents matching provided criteria.
 	 * @param tokenId : String
 	 * @param param : MContentfindByPropertiesReq
 	 * @return MResponseContentFindByProperties
@@ -242,11 +243,11 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to remove the content's name,except and description for a specific locale (lang)
+	 * Removes localized name and description from a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -297,14 +298,14 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Update content parameters.
-	 * The " "contentValues" field of this web service works in “patch" mode: it means that each and
+	 * Updates a content.
+	 * The  "contentValues" field of this web service works in “patch" mode: it means that each and
 	 * everyone of the "contentValues" attributes you want to change must be included in the body of the
 	 * request, those not included will not be updated.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContentReq
@@ -350,11 +351,11 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to update the content's name,except and description for a specific locale (lang)
+	 * Updates localized name and description of a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContent4LocaleReq
@@ -400,9 +401,11 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * <b>ACL validation:</b>
+	 * Updates a localized prettyId of a content.
+	 * <b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateContentPrettyIdReq
@@ -448,11 +451,11 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * remove the prettyId for the given locale
+	 * Removes a localized prettyId from a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentremoveContentPrettyIdReq
@@ -498,11 +501,11 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * add a new prettyId to the content for the given locale.
+	 * Adds a localized prettyId to a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddContentPrettyIdReq
@@ -596,22 +599,25 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Add a new element to the list of linkedContents.
-	 * The linkedContens list is used to store the full list of links between contents (like playlist
-	 * items, recommended contents or downloadable contents). For this reason it is necessary to specify
-	 * the relation linkType.
-	 * Constraints on linkType and ContentType.
+	 * Adds a content to the linkedContents list of a content.
+	 * The linkedContens list is used to store the full list of links between content (like playlist items,
+	 * recommended content or downloadable content). For this reason it is necessary to specify the
+	 * relation linkType.
+	 * Constraints on linkType and contentType.
 	 * 
-	 * * RECOMMENDED link is available only for VIDEO/AUDIO/IMAGE/OTHER/PLAYLIST contents
-	 * * DOWNLOADABLE link is available only for VIDEO/AUDIO/IMAGE/OTHER contents
-	 * * Only linkable contents can be added to another content (contens without property UNLINKABLE)
-	 * 
-	 * <b>ACL validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>RECOMMENDED link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
+	 * content.</li>
+	 * 	<li>DOWNLOADABLE link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
+	 * contents</li>
+	 * 	<li>Only linkable content can be added to another content (i.e., content without UNLINKABLE
+	 * property)</li>
 	 * </ul>
 	 * 
-	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddLinkedContentReq
 	 * @return MResponseContent
@@ -656,15 +662,15 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Add a list of new element to the list of linkedContents.
-	 * The linkedContens list is used to store the full list of links between contents (like playlist
-	 * items, recommended contents or downloadable contents). For this reason it is necessary to specify
-	 * the relation linkType.
-	 * Only linkable contents can be added to another content (contens without property UNLINKABLE)
+	 * Adds a set of content to the linkedContents list of a content.
+	 * The linkedContens list is used to store the full list of links between content (like playlist items,
+	 * recommended content or downloadable content). For this reason it is necessary to specify the
+	 * relation linkType.
+	 * Only linkable content can be added to another content (i.e., content without UNLINKABLE property)
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentaddLinkedContentsReq
@@ -710,12 +716,11 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * this service move a content in the linkedContents list from position "oldPosition" to "newPosition".
+	 * Moves a content among the linkedContents list of a content.
 	 * 
-	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentmoveLinkedContentReq
@@ -761,11 +766,11 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * the function removes from the list of linked Contents the elements matching the criteria
+	 * Removes content matching provided criteria from the list linkedContents of a content.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentremoveLinkedContentsReq
@@ -811,11 +816,11 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * used to mark if a content has been read or not by a user (the user who call the service)
+	 * Marks whether or not a content has been read by a user (the service invoker)
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>SEEN is required on the specific content</li>
+	 * 	<li>SEE ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MContentupdateUserSpecificValuesReq
@@ -861,16 +866,16 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Add an externalId to the Content
+	 * Adds an externalId to a content.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's not possible to add more than 100 external Ids on the same content.</li>
+	 * 	<li>max number of externalIds on a content: 100</li>
 	 * </ul>
 	 * <b>
-	 * </b><b>ACL validation:</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -921,11 +926,11 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Remove an externalId from the Content.
+	 * Removes an externalId from a content.
 	 * <b>
-	 * </b><b>ACL validation:</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -976,11 +981,11 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Verify whether a content externalId is used in the platform.
+	 * Verifies whether or not a content externalId is used in the platform.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific content</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String

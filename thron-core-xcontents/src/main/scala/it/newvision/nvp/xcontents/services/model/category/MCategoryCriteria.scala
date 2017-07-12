@@ -26,24 +26,31 @@ class MCategoryCriteria extends Serializable {
 	def withcategoryIds(p:List[String]):this.type ={ 	this.categoryIds = p; 	this }
 
 	/**
-	 * used to find only the categories having the specified "name" for a specific
-	 * "locale".
-	 * The criteria works only if "locale" criteria is defined.
+	 * DEPRECATED.
+	 * Use the textSearch field.
 	 */
-	//#SWG#@ApiModelProperty(value = """used to find only the categories having the specified "name" for a specific "locale". 
-	//#SWGNL#The criteria works only if "locale" criteria is defined.""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.
+	//#SWGNL#Use the textSearch field.""")
 	@BeanProperty 
+	@Deprecated
 	var name: String =_
+	@Deprecated
 	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
-	 * used to search the categories having title like "name" for the defined locale.
+	 * Locale code (ISO639-1).
+	 * Used to search the categories having title like "name" for one of the defined
+	 * locales. Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)
 	 * Example: the user would like to find the categories with name "my house" for
 	 * locale "EN". If the "name" is empty the service return all categories defined
 	 * for the specified locale.
+	 * The fields works in combination with MContentCriteria.name and MContentCriteria.
+	 * textSearch.searchKey
 	 */
-	//#SWG#@ApiModelProperty(value = """used to search the categories having title like "name" for the defined locale.
-	//#SWGNL#Example: the user would like to find the categories with name "my house" for locale "EN". If the "name" is empty the service return all categories defined for the specified locale.""")
+	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1).
+	//#SWGNL#Used to search the categories having title like "name" for one of the defined locales. Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)
+	//#SWGNL#Example: the user would like to find the categories with name "my house" for locale "EN". If the "name" is empty the service return all categories defined for the specified locale.
+	//#SWGNL#The fields works in combination with MContentCriteria.name and MContentCriteria.textSearch.searchKey""")
 	@BeanProperty 
 	var locale: String =_
 	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }

@@ -47,11 +47,11 @@ object JContentClient {
 class JContentClient(val resourceEndpoint:String) {
 
 	/**
-	 * Create a new THRON content starting from a source file or resource.
+	 * Creates a content.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>the service can be invoked only by platform users</li>
+	 * 	<li>applications cannot create content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -99,11 +99,12 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * List all available version of the content
+	 * Returns the list of versions of a content
 	 * <b>
-	 * </b><b>Role Validation</b>
+	 * </b><b>Validation</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -154,11 +155,13 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * The service return the information about the source of the content (not only file)
+	 * Return the detail of a content source.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * <b>
-	 * </b><b>Role Validation</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>READ ACL on Content</li>
+	 * 	<li>READ ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -218,9 +221,10 @@ class JContentClient(val resourceEndpoint:String) {
 	 * 	<li>return an error if the content has some channel in progress.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation</b>
+	 * <b>Validation</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -268,12 +272,13 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Update the version note for the current active version of the content.
+	 * Updates the version note for the active version of a content.
 	 * <b>
-	 * </b><b>Role Validation</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
-	 * 	<li>available only for the creator of the version.</li>
+	 * 	<li>can be invoked only by version creator</li>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -324,12 +329,17 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Replace the thumbnail for a published content.
-	 * Not available for IMAGE content type.
+	 * Replaces the thumbnail of a content.
 	 * 
-	 * <b>Role Validation</b>
+	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>image content are not eligible for thumbnail substitution.</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -377,19 +387,20 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * move a content in TRASH category. The content is still published in CDN and can be recovered using
-	 * the service untrashContent.
+	 * Moves a content to the Trash category.
+	 * Content remains available for delivery and can be recovered via the untrash service.
 	 * 
-	 * The service remove also:
+	 * The service:
 	 * <ul>
-	 * 	<li>the contents from the linked categories</li>
-	 * 	<li>cleanup the ACL specific of the content</li>
-	 * 	<li>all linked embed codes.</li>
+	 * 	<li>unlinks the content from every linked categories</li>
+	 * 	<li>removes linked embed codes</li>
+	 * 	<li>removes any ACL but owner's</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -437,10 +448,10 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to recover a trashContent operation.
-	 * The service restore the content in the owner's INBOX.
+	 * Restores a trashed content.
+	 * Content is restored in owner's inbox.
 	 * 
-	 * <b>Role Validation</b>
+	 * <b>Validation:</b>
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
@@ -490,11 +501,12 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Permanently remove a content from the Platform.
+	 * Removes a content from the platform.
 	 * 
-	 * <b>Role Validation</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -542,8 +554,8 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * This service is used to know the possible platform content type available for a given filename. The
-	 * service map the mime type of filename to the corresponding list of content types.
+	 * Returns the list of contentType available for a file based on its name.
+	 * The service map the mime type of filename to the corresponding list of content types.
 	 * For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.
 	 * @param tokenId : String
 	 * @param param : MContentgetContentTypesReq

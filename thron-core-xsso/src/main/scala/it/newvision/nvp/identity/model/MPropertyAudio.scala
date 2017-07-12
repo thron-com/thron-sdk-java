@@ -142,33 +142,6 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 	}
 
 	/**
-	 * @param client : MClient
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_WEBM(client: MClient){
-		this.init_gd_WEB(client, "WEBM")
-		this.bitRate = 128
-		this.sampleRate = 44100
-		this.convertTo = "VORBIS"
-		this.codec = "vorbis"
-		this.withIngestion= true
-		this.compliantWith= "VIEW"
-		val cd = new MChannelDescription
-		cd.locale = "IT"
-		cd.channelShortName = "WebM"
-		cd.channelDescription = "Download, codec vorbis, bitrate 128kbps"
-		val cd2 = new MChannelDescription
-		cd2.locale = "EN"
-		cd2.channelShortName = "WebM"
-		cd2.channelDescription = "Download, codec mp3, bitrate 128kbps"
-		this.channelDescriptions.add(cd)
-		this.channelDescriptions.add(cd2)
-	
-	}
-
-	/**
 	 * default init for WEBORIGINAL channel (Progressive Download Original Content)
 	 * @param client : MClient
 	 * @return void

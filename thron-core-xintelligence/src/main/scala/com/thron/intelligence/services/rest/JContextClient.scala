@@ -34,11 +34,11 @@ object JContextClient {
 class JContextClient(val resourceEndpoint:String) {
 
 	/**
-	 * Create a new context
+	 * Creates a context.
 	 * 
-	 * <b>Role Validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>THRON_MANAGE_CONTEXT</li>
+	 * 	<li>THRON_MANAGE_CONTEXT role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -86,11 +86,11 @@ class JContextClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Mark to removed the context
+	 * Marks a context as removed.
 	 * 
-	 * <b>Role Validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>THRON_MANAGE_CONTEXT</li>
+	 * 	<li>THRON_MANAGE_CONTEXT role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -138,14 +138,14 @@ class JContextClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * update the context description in patch mode.
+	 * Updates a context in patch mode.
 	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
 	 * the "update" attributes you want to change must be included in the body of the request, those not
 	 * included will not be updated.
 	 * 
-	 * <b>Role Validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>THRON_MANAGE_CONTEXT</li>
+	 * 	<li>THRON_MANAGE_CONTEXT role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -196,7 +196,7 @@ class JContextClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return the list of context. Ordered by createdDate
+	 * Returns the list of contexts matching provided criteria sorted by createdDate.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MContextlistReq

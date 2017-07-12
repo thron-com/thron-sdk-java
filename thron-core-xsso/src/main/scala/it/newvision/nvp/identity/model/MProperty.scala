@@ -99,12 +99,12 @@ class MProperty extends Serializable {
 	def withpageletProperties(p:List[MPropertyPagelet]):this.type ={ 	this.pageletProperties = p; 	this }
 
 	/**
-	 * properties for the 4ME Documents published in CDN
+	 * properties for the url documents published in platform
 	 */
-	//#SWG#@ApiModelProperty(value = """properties for the 4ME Documents published in CDN""")
+	//#SWG#@ApiModelProperty(value = """properties for the url documents published in platform""")
 	@BeanProperty 
-	var ndocProperties: List[MProperty4MEDocument] = new ArrayList[MProperty4MEDocument]
-	def withndocProperties(p:List[MProperty4MEDocument]):this.type ={ 	this.ndocProperties = p; 	this }
+	var urlProperties: List[MPropertyUrl] = new ArrayList[MPropertyUrl]
+	def withurlProperties(p:List[MPropertyUrl]):this.type ={ 	this.urlProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
@@ -139,11 +139,6 @@ class MProperty extends Serializable {
 	
 	}
 	def witheventsProperties(p:List[MPropertyLiveEvent]):this.type ={ 	this.eventsProperties = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var notifyOncePublished: Boolean =_
-	def withnotifyOncePublished(p:Boolean):this.type ={ 	this.notifyOncePublished = p; 	this }
 
 	/**
 	 * used to enable or disable the comunity services like comments and ratings.
@@ -211,9 +206,6 @@ class MProperty extends Serializable {
 		v6.init_WEBHD(client)
 		v6.useForDownload = true
 	
-		val v7 = new MPropertyStream
-		v7.init_WEBMHD(client)
-	
 		val v8 = new MPropertyStream
 		v8.init_WEBIPHONE(client)
 	
@@ -249,20 +241,16 @@ class MProperty extends Serializable {
 		val pl1 = new MPropertyPagelet
 		pl1.init_WEB(client,"WEB")
 	
-		// 4me documents
-		val mc1 = new MProperty4MEDocument
-		mc1.init_WEB(client)
+		//url documents
+		val u1 = new MPropertyUrl
+		u1.init_WEB(client,"WEB")
 	
-		val mc2 = new MProperty4MEDocument
-		mc2.init_WEBORIGINAL(client)
-		mc2.useForDownload = true
-	
-		this.streamProperties = new ArrayList[MPropertyStream](Arrays.asList(v3,v4,v5,v6,v7,v8,v9))
+		this.streamProperties = new ArrayList[MPropertyStream](Arrays.asList(v3,v4,v5,v6,v8,v9))
 		this.audioProperties = new ArrayList[MPropertyAudio](Arrays.asList(a3))
 		this.imageProperties = new ArrayList[MPropertyImage](Arrays.asList(img2))
 		this.genericDocumentProperties = new ArrayList[MPropertyGenericDocument](Arrays.asList(gd1,gd2))
-		this.ndocProperties = new ArrayList[MProperty4MEDocument](Arrays.asList(mc1,mc2))
 		this.pageletProperties = new ArrayList[MPropertyPagelet](Arrays.asList(pl1))
+		this.urlProperties = new ArrayList[MPropertyUrl](Arrays.asList(u1))
 	
 		this.emailProperties.init
 		this.weeboProperties.init(client.clientId)
@@ -285,6 +273,8 @@ class MProperty extends Serializable {
 		img1.init_test(clientId)
 		val pl1 = new MPropertyPagelet
 		pl1.init_gd_test(clientId,"WEB")
+		val u1 = new MPropertyUrl
+		u1.init_gd_test(clientId,"WEB")
 		val gd1 = new MPropertyGenericDocument
 		gd1.init_gd_test(clientId,"WEB")
 	
@@ -292,13 +282,13 @@ class MProperty extends Serializable {
 		this.audioProperties = new ArrayList[MPropertyAudio](Arrays.asList(a1))
 		this.imageProperties = new ArrayList[MPropertyImage](Arrays.asList(img1))
 		this.pageletProperties = new ArrayList[MPropertyPagelet](Arrays.asList(pl1))
+		this.urlProperties = new ArrayList[MPropertyUrl](Arrays.asList(u1))
 		this.genericDocumentProperties = new ArrayList[MPropertyGenericDocument](Arrays.asList(gd1))
 	
 		this.emailProperties.init
 		this.weeboProperties.init(clientId)
 		this.applicationProperties.init_test(clientId)
 		this.thumbsProperties.init()
-	
 	}
 
 	/**

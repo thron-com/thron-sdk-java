@@ -147,7 +147,9 @@ class JContactClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * List of Contacts ordered by accessedDate
+	 * List of Contacts ordered by accessedDate.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * RoleValidation:
 	 * <ul>
@@ -372,6 +374,8 @@ class JContactClient(val resourceEndpoint:String) {
 
 	/**
 	 * Show a specific contact.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * RoleValidation:
 	 * <ul>

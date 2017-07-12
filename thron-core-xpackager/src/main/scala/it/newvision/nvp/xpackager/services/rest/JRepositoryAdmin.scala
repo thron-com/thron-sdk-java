@@ -12,10 +12,7 @@ import it.newvision.nvp.xpackager.services.model.repository.MResponseFilesToClea
 import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdmingetFilesToCleanUpReq
 import it.newvision.nvp.xpackager.services.model.repository.MResponseFindFilesByProperties
 import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdmingetFilesToFixReq
-import it.newvision.nvp.xpackager.services.model.repository.MResponseFilesToPurge
-import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdmingetFilesToPurgeReq
 import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdmincleanupFilesOnSiteReq
-import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdminpurgeFilesReq
 import it.newvision.nvp.xpackager.services.model.repository.MResponseFilesRestored
 import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdminrestoreFilesReq
 import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdminfindFilesByPropertiesReq
@@ -281,64 +278,6 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	protected def capability_getFilesToFix: String
 
 	/**
-	 * This service is used by purge script. return the list of files removed but in "safeArea" that
-	 * should be definitely removed from the platform. Return only the removed files with removeDate older
-	 * than retention time.
-	 * @param tokenId : String
-	 * @param param : MRepositoryAdmingetFilesToPurgeReq
-	 * @return MResponseFilesToPurge
-	*/
-	@POST
-	@Path("/getFilesToPurge")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/getFilesToPurge", notes = """This service is used by purge script. return the list of files removed but in "safeArea" that should be definitely removed from the platform. Return only the removed files with removeDate older than retention time.""", response = classOf[MResponseFilesToPurge])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def getFilesToPurge(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MRepositoryAdmingetFilesToPurgeReq):Response /*returnType = MResponseFilesToPurge*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__getFilesToPurge(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_getFilesToPurge)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_getFilesToPurge)
-	    }
-	} 
-
-	@GET
-	@Path("/getFilesToPurge")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def getFilesToPurge_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseFilesToPurge*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("getFilesToPurge",this._getCacheControl) 
-		try{
-			val resp = this.__getFilesToPurge(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MRepositoryAdmingetFilesToPurgeReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getFilesToPurge)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_getFilesToPurge)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getFilesToPurge(tokenId: String, param: MRepositoryAdmingetFilesToPurgeReq) :MResponseFilesToPurge
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_getFilesToPurge: String
-
-	/**
 	 * @param tokenId : String
 	 * @param param : MRepositoryAdmincleanupFilesOnSiteReq
 	 * @return MResponseRepository
@@ -392,67 +331,6 @@ trait JRepositoryAdmin extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	 protected def __cleanupFilesOnSite(tokenId: String, param: MRepositoryAdmincleanupFilesOnSiteReq) :MResponseRepository
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_cleanupFilesOnSite: String
-
-	/**
-	 * remove definitively from the platform the given list of files.
-	 * Remove only the file if the file is marked as removed and removedDate later that the retention time.
-	 * 
-	 * The service doesn't log in Audit each single remove operation.
-	 * @param tokenId : String
-	 * @param param : MRepositoryAdminpurgeFilesReq
-	 * @return MResponseRepository
-	*/
-	@POST
-	@Path("/purgeFiles")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/purgeFiles", notes = """remove definitively from the platform the given list of files.
-	//#SWGNL#Remove only the file if the file is marked as removed and removedDate later that the retention time.
-	//#SWGNL#The service doesn't log in Audit each single remove operation.""", response = classOf[MResponseRepository])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def purgeFiles(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MRepositoryAdminpurgeFilesReq):Response /*returnType = MResponseRepository*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__purgeFiles(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_purgeFiles)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_purgeFiles)
-	    }
-	} 
-
-	@GET
-	@Path("/purgeFiles")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def purgeFiles_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseRepository*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("purgeFiles",this._getCacheControl) 
-		try{
-			val resp = this.__purgeFiles(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MRepositoryAdminpurgeFilesReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_purgeFiles)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_purgeFiles)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __purgeFiles(tokenId: String, param: MRepositoryAdminpurgeFilesReq) :MResponseRepository
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_purgeFiles: String
 
 	/**
 	 * try to recover the give list of files in repository.

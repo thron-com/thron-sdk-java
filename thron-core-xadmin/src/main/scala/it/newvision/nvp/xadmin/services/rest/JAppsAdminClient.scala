@@ -45,8 +45,12 @@ object JAppsAdminClient {
 class JAppsAdminClient(val resourceEndpoint:String) {
 
 	/**
-	 * add the group to access the app.
-	 * Can be invoked only by users with role  [APPID]_MANAGER 
+	 * Adds a group to the access list of an app.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>[APPID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminaddGroupAppReq
 	 * @return MResponseApp
@@ -91,8 +95,12 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * add the user to access the app.
-	 * Can be invoked only by users with role [APPID]_MANAGER 
+	 * Adds a user to the access list of an app.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>[APPID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminaddUserAppReq
 	 * @return MResponseApp
@@ -137,16 +145,19 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Create a new App.
-	 * Can be invoked only by users with role CORE_MANAGE_APPS.
-	 * The service add the roles:
+	 * Creates an app.
+	 * App owner gets the following roles:
 	 * <ul>
 	 * 	<li>[APPID]_MANAGER</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>[APPID]_SNIPPET_MANAGER (Only for app custom)</li>
+	 * 	<li>[APPID]_SNIPPET_MANAGER (custom apps only)</li>
 	 * </ul>
-	 * to the app's owner
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_APPS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdmincreateReq
 	 * @return MResponseAppDetail
@@ -191,8 +202,12 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * remove the app, and clean up the setting in THRON.
-	 * Can be invoked only by users with role [APPID]_MANAGER and by the owner
+	 * Removes an app.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>[APPID]_MANAGER role or app owner</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminremoveReq
 	 * @return MResponseApp
@@ -237,8 +252,12 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * deny the group to access the app.
-	 * Can be invoked only by users with role [APPID[_MANAGER
+	 * Removes a group from the access list of an app.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>[APPID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminremoveGroupAppReq
 	 * @return MResponseApp
@@ -283,11 +302,11 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * update the App parameters
+	 * Updates an app.
 	 * 
-	 * <b>Role valdation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with roles [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminupdateAppReq
@@ -333,11 +352,11 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * deny the user to access the app.
+	 * Removes a user from the access list of an app.
 	 * <b>
-	 * </b><b>Role valdation:</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with roles [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminremoveUserAppReq
@@ -383,16 +402,16 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Generate a new appKey for the specified app.
+	 * Generates an access key for an app.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>maximum 10 keys for each app.</li>
+	 * 	<li>max number of keys per app: 10</li>
 	 * </ul>
 	 * 
-	 * <b>Role valdation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -440,11 +459,11 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Update the key for the specified app.
+	 * Updates an access key for an app.
 	 * 
-	 * <b>Role valdation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -492,11 +511,11 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Remove a specific appKey.
+	 * Removes an access key from an app.
 	 * 
-	 * <b>Role valdation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -544,11 +563,11 @@ class JAppsAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * List the available app Key for the given application.
+	 * Returns the list of access keys of an app.
 	 * 
-	 * <b>Role valdation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String

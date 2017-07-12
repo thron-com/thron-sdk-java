@@ -32,9 +32,15 @@ public enum MEContentOrderBy {
 	@XmlEnumValue("creationDate_A") creationDate_A,
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("creationDate_D") creationDate_D,
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Deprecated
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@XmlEnumValue("viewCounter_A") viewCounter_A,
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Deprecated
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@XmlEnumValue("viewCounter_D") viewCounter_D,
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("ratingCounter_A") ratingCounter_A,

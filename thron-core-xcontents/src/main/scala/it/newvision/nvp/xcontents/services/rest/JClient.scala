@@ -15,20 +15,20 @@ import it.newvision.nvp.xcontents.services.model.client.MResponseDetailClient
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * This service is used to update the client properties of xcontent.
+ * This service is used to update the client properties of xcontents.
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: https://clientId-view.thron.
- * com/api/xcontents/resources/client    </li>
+ * com/api/xcontents/resources/client   </li>
  * </ul>
  */
 @Path("/client")
-//#SWG#@Api(value = "/client", description = """This service is used to update the client properties of xcontent. 
+//#SWG#@Api(value = "/client", description = """This service is used to update the client properties of xcontents.
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>   
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/client    </li>
+//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/client   </li>
 //#SWGNL#</ul>""")
 trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
@@ -41,7 +41,7 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * update audit duration days
+	 * Updates audit duration value.
 	 * @param tokenId : String
 	 * @param param : MClientupdateAuditDurationDaysReq
 	 * @return MResponseUpdateClient
@@ -50,7 +50,7 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateAuditDurationDays")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateAuditDurationDays", notes = """update audit duration days""", response = classOf[MResponseUpdateClient])
+	//#SWG#@ApiOperation(value = "/updateAuditDurationDays", notes = """Updates audit duration value.""", response = classOf[MResponseUpdateClient])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateAuditDurationDays(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -97,7 +97,7 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateAuditDurationDays: String
 
 	/**
-	 * update secure connection enabled
+	 * Updates secure connection enabled value.
 	 * @param tokenId : String
 	 * @param param : MClientupdateSecureConnectionEnabledReq
 	 * @return MResponseUpdateClient
@@ -106,7 +106,7 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateSecureConnectionEnabled")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateSecureConnectionEnabled", notes = """update secure connection enabled""", response = classOf[MResponseUpdateClient])
+	//#SWG#@ApiOperation(value = "/updateSecureConnectionEnabled", notes = """Updates secure connection enabled value.""", response = classOf[MResponseUpdateClient])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateSecureConnectionEnabled(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -153,7 +153,7 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateSecureConnectionEnabled: String
 
 	/**
-	 * update trash properties
+	 * Updates trash properties value.
 	 * @param tokenId : String
 	 * @param param : MClientupdateTrashPropertiesReq
 	 * @return MResponseUpdateClient
@@ -162,7 +162,7 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateTrashProperties")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateTrashProperties", notes = """update trash properties""", response = classOf[MResponseUpdateClient])
+	//#SWG#@ApiOperation(value = "/updateTrashProperties", notes = """Updates trash properties value.""", response = classOf[MResponseUpdateClient])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateTrashProperties(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -209,7 +209,9 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateTrashProperties: String
 
 	/**
-	 * Return all client properties information
+	 * Returns client properties.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @return MResponseDetailClient
@@ -217,7 +219,9 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@GET
 	@Path("/detailClient")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detailClient", notes = """Return all client properties information""", response = classOf[MResponseDetailClient])
+	//#SWG#@ApiOperation(value = "/detailClient", notes = """Returns client properties.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseDetailClient])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def detailClient(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

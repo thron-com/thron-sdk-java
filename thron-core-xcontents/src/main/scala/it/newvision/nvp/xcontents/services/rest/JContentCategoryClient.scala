@@ -20,8 +20,7 @@ object JContentCategoryClient {
 	
 }
 /**
- * Service used to organize the contents inside the categories, especially to
- * add/remove a content to a specific category.
+ * Service used to add/remove content to/from categories.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
@@ -32,17 +31,13 @@ object JContentCategoryClient {
 class JContentCategoryClient(val resourceEndpoint:String) {
 
 	/**
-	 * Used to link a content to a specific category.
+	 * Adds a content to a category.
 	 * 
-	 * <b>Roles restrictions:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
-	 * </ul>
-	 * 
-	 * <b>ACL validation:</b>
-	 * <ul>
-	 * 	<li>SHARE is required on the specific content</li>
-	 * 	<li>MODIFY is required on the specific category</li>
+	 * 	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES role</li>
+	 * 	<li>SHARE ACL on the content</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -92,19 +87,15 @@ class JContentCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to remove a content from a specific category.
+	 * Removes a content from a category.
 	 * 
-	 * <b>Roles restrictions:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
-	 * </ul>
-	 * 
-	 * <b>ACL validation:</b>
-	 * <ul>
-	 * 	<li>SHARE is required on the specific content</li>
+	 * 	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES role</li>
+	 * 	<li>SHARE ACL on the content</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific category</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String

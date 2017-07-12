@@ -16,9 +16,9 @@ import it.newvision.nvp.xadmin.model.MMetadata
 class MRef extends Serializable {
 
 	/**
-	 * Optional
+	 * Optional. External reference Id (repository file)
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional""")
+	//#SWG#@ApiModelProperty(value = """Optional. External reference Id (repository file)""")
 	@BeanProperty 
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }

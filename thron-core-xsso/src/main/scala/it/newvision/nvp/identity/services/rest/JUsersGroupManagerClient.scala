@@ -45,7 +45,7 @@ object JUsersGroupManagerClient {
 class JUsersGroupManagerClient(val resourceEndpoint:String) {
 
 	/**
-	 * The service is used to create a new UserGroup in the platform.
+	 * Creates a group of users.
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagercreateGroupReq
 	 * @return MResponseCreateUsersGroup
@@ -90,7 +90,7 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Update the Group detail and capabilities
+	 * Updates the detail and capabilities of a group.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param groupId : String
@@ -140,7 +140,7 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Update the Group external Id
+	 * Updates an externalId of a group.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param groupId : String
@@ -190,7 +190,7 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return the information about a group and the list of linked users
+	 * Returns the detail of a group and the list of users linked to it.
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerdetailGroupReq
 	 * @return MResponseDetailUsersGroup
@@ -235,6 +235,7 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Removes a group.
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerremoveGroupReq
 	 * @return MResponseUsersGroup
@@ -279,8 +280,8 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return the list of groups matching the given criteria.
-	 * The service return the list of groups without the list of linked users
+	 * Returns the list of groups matching provided criteria.
+	 * The list of users linked to each group is not returned.
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerfindGroupsByPropertiesReq
 	 * @return MResponseFindGroupsByProperties
@@ -325,33 +326,20 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * The service links a list of users to a specific usersGroup.
+	 * Links a set of users to a group.
 	 * Constraints about the relation between user and groups:
 	 * 
 	 * <b>[MEUserType] ->(link to) [MEUserGroupType]</b>
 	 * 
 	 * <ul>
 	 * 	<li>PLATFORM_USER-> PLATFORM (group)</li>
-	 * </ul>
-	 * <ul>
+	 * 	<li>PLATFORM_USER-> PLATFORM_BLIND (group)</li>
 	 * 	<li>PLATFORM_USER_GUEST-> PLATFORM_BLIND (group)</li>
 	 * </ul>
 	 * 
-	 * <b>Deprecated Relations: [MEUserType] ->(link to) [MEUserGroupType]</b>
-	 * 
+	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>GENERIC_CONTACT-> SHARED_CONTACTS (group)</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>EXTERNAL_USER -> SHARED_CONTACTS (group)</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>* -> PRIVATE (group)</li>
-	 * </ul>
-	 * 
-	 * <b>Constraints: </b>
-	 * <ul>
-	 * 	<li>A user can be linked to a maximum of 500 groups.</li>
+	 * 	<li>max number of groups a user can be linked to: 500</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerlinkUserToGroupReq
@@ -397,7 +385,7 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * the service unlinks a list of users from a specific group.
+	 * Unlinks a set of users from a group.
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerunlinkUserToGroupReq
 	 * @return MResponseUsersGroup

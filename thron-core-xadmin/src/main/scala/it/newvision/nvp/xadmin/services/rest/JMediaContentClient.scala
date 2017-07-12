@@ -22,14 +22,12 @@ object JMediaContentClient {
 	
 }
 /**
- * DEPRECATED.
- * To get information about the status of a content use the JContent service in
- * xcontent component.
+ * DEPRECATED by xcontents JContent
  */
 class JMediaContentClient(val resourceEndpoint:String) {
 
 	/**
-	 * Deprecated by service<b> [xcontents] JContent.detail</b>
+	 * Deprecated by <b>[xcontents] JContent.detail</b>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param mediaContentId : String
@@ -83,10 +81,7 @@ class JMediaContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * <b>Deprecated by service [xcontents] JContent.findByProperties</b>
-	 * Return the list of contents: the list of published contents, or the contents are being ingested or
-	 * packaged in the system. this is service is used in administration consoles where is necessary to
-	 * show the list of contents published (or not ) in the platform.
+	 * Deprecated by <b>[xcontents] JContent.findByProperties</b>
 	 * @param tokenId : String
 	 * @param param : MMediaContentfindContentsByPropertiesReq
 	 * @return MResponseFindContents

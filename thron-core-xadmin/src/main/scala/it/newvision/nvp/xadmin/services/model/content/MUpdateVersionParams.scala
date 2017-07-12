@@ -10,9 +10,18 @@ import it.newvision.nvp.xadmin.model.version.MVersionNote
 *  GENERATED CLASS
 *  DO NOT APPLY ANY CHANGES
 ****************************/
+/**
+ * <b>Constraints:</b>
+ * <ul>
+ * 	<li>note.description max length: 10000</li>
+ * </ul>
+ */
 @XmlRootElement(name="MUpdateVersionParams") 
 @XmlType(name="MUpdateVersionParams")
-//#SWG#@ApiModel(description = """""")
+//#SWG#@ApiModel(description = """<b>Constraints:</b>
+//#SWGNL#<ul>
+//#SWGNL#	<li>note.description max length: 10000</li>
+//#SWGNL#</ul>""")
 class MUpdateVersionParams extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)

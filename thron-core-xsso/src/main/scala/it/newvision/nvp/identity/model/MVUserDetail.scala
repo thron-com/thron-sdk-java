@@ -46,13 +46,38 @@ class MVUserDetail extends Serializable {
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
-	var urls: List[MUrl] = new ArrayList[MUrl]
-	  def withurls(p:List[MUrl]):this.type ={ 	this.urls = p; 	this }
+	var imcontacts: List[MIstantMessaging] = new ArrayList[MIstantMessaging]
+	  def withimcontacts(p:List[MIstantMessaging]):this.type ={ 	this.imcontacts = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var icalls: List[MInternetCall] = new ArrayList[MInternetCall]
 	  def withicalls(p:List[MInternetCall]):this.type ={ 	this.icalls = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var name: MFullName =_
+	  def withname(p:MFullName):this.type ={ 	this.name = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var emails: List[MMailAddress] = new ArrayList[MMailAddress]
+	  def withemails(p:List[MMailAddress]):this.type ={ 	this.emails = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var phoneNumbers: List[MPhoneAddress] = new ArrayList[MPhoneAddress]
+	  def withphoneNumbers(p:List[MPhoneAddress]):this.type ={ 	this.phoneNumbers = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var urls: List[MUrl] = new ArrayList[MUrl]
+	  def withurls(p:List[MUrl]):this.type ={ 	this.urls = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var image: MImage =_
+	  def withimage(p:MImage):this.type ={ 	this.image = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
@@ -63,31 +88,6 @@ class MVUserDetail extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	var businessDetail: MBusinnessDetail =_
 	  def withbusinessDetail(p:MBusinnessDetail):this.type ={ 	this.businessDetail = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var imcontacts: List[MIstantMessaging] = new ArrayList[MIstantMessaging]
-	  def withimcontacts(p:List[MIstantMessaging]):this.type ={ 	this.imcontacts = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var name: MFullName =_
-	  def withname(p:MFullName):this.type ={ 	this.name = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var phoneNumbers: List[MPhoneAddress] = new ArrayList[MPhoneAddress]
-	  def withphoneNumbers(p:List[MPhoneAddress]):this.type ={ 	this.phoneNumbers = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var emails: List[MMailAddress] = new ArrayList[MMailAddress]
-	  def withemails(p:List[MMailAddress]):this.type ={ 	this.emails = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var image: MImage =_
-	  def withimage(p:MImage):this.type ={ 	this.image = p; 	this }
 
 	/**
 	 * @return String

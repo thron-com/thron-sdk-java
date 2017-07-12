@@ -37,12 +37,12 @@ object JRatingFixedRangeClient {
 class JRatingFixedRangeClient(val resourceEndpoint:String) {
 
 	/**
-	 * Insert a new vote for the specific content with fixed Range between 0 and 1
+	 * Inserts a vote for a content with range between 0 and 1.
 	 * 
 	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>SEEN ACL is required on the specific content</li>
-	 * 	<li>RATINGALLOWED properties is required on the specific content</li>
+	 * 	<li>SEE ACL on the content</li>
+	 * 	<li>RATINGALLOWED property on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MRatingFixedRangeinsertRatingReq
@@ -88,8 +88,10 @@ class JRatingFixedRangeClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return the "score/vote" of a specific content. The content score is the average of the total votes
-	 * of a content in a specific time range.
+	 * Returns the score of a content.
+	 * Content score is the votes average of a content for a defined time range.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param contentId : String
@@ -142,6 +144,7 @@ class JRatingFixedRangeClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Returns the list of votes of a content matching provided criteria.
 	 * @param tokenId : String
 	 * @param param : MRatingFixedRangefindRatingByPropertiesReq
 	 * @return MResponseGetRatingByProperties
@@ -186,15 +189,14 @@ class JRatingFixedRangeClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Remote all votes for a given contentId using the specified search criteria. It's possible to remove
-	 * all ratings added by a specific userId or in a specific time range.
+	 * Removes votes matching provided criteria from a content.
 	 * 
 	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>SEEN ACL is required on the specific content</li>
+	 * 	<li>SEE ACL on the content</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>RATINGALLOWED properties is required on the specific content</li>
+	 * 	<li>RATINGALLOWED property on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MRatingFixedRangeremoveRatingsReq

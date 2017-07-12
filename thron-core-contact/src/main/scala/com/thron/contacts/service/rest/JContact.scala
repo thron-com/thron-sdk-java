@@ -196,7 +196,9 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_insert: String
 
 	/**
-	 * List of Contacts ordered by accessedDate
+	 * List of Contacts ordered by accessedDate.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * RoleValidation:
 	 * <ul>
@@ -208,13 +210,15 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * @param offset : Integer
 	 * Optional.
 	 * @param limit : Integer
-	 * Max and default value is 50
+	 * Optional. Max and default value is 50
 	 * @return MResponseContactList
 	*/
 	@GET
 	@Path("/listGet/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/listGet", notes = """List of Contacts ordered by accessedDate
+	//#SWG#@ApiOperation(value = "/listGet", notes = """List of Contacts ordered by accessedDate.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#
 	//#SWGNL#RoleValidation:
 	//#SWGNL#<ul>
@@ -507,6 +511,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	/**
 	 * Show a specific contact.
 	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
 	 * RoleValidation:
 	 * <ul>
 	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
@@ -523,6 +529,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/detail/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
 	//#SWG#@ApiOperation(value = "/detail", notes = """Show a specific contact.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#
 	//#SWGNL#RoleValidation:
 	//#SWGNL#<ul>

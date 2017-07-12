@@ -13,15 +13,13 @@ import javax.xml.bind.annotation.XmlType;
 //#SWG#@ApiModel(description = """""")
 public enum MEEmbedTargets {
 	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("GENERIC") GENERIC,
+	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("FACEBOOK") FACEBOOK,
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("TWITTER") TWITTER,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("GENERIC") GENERIC,
-	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("EMAIL") EMAIL,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("SMS") SMS,
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("LINK") LINK
 }

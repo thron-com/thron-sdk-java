@@ -68,11 +68,9 @@ class MCategoryfindByProperties2Req extends Serializable {
 	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
-	 * default value= 50
-	 * value -1, return all result not paginated
+	 * Default and maximum value is 50.
 	 */
-	//#SWG#@ApiModelProperty(value = """default value= 50
-	//#SWGNL#value -1, return all result not paginated""", required = true)
+	//#SWG#@ApiModelProperty(value = """Default and maximum value is 50.""", required = true)
 	@BeanProperty
 	var numberOfResult: Integer =_
 	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }

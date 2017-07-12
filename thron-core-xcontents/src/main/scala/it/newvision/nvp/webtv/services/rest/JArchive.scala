@@ -12,20 +12,20 @@ import it.newvision.nvp.webtv.services.model.request.MArchiveprepareReq
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * This service used to download content.
+ * This service is used to download content.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: https://clientId-view.thron.
+ * 	<li>REST service: https://clientId-extra.thron.
  * com/api/xcontents/resources/archive</li>
  * </ul>
  */
 @Path("/archive")
-//#SWG#@Api(value = "/archive", description = """This service used to download content.
+//#SWG#@Api(value = "/archive", description = """This service is used to download content.
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/archive</li>
+//#SWGNL#	<li>REST service: https://clientId-extra.thron.com/api/xcontents/resources/archive</li>
 //#SWGNL#</ul>""")
 trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
@@ -38,9 +38,9 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Return a zip file with all elements matching the prepare request.
+	 * Returns a zip file with the content matching the prepare request.
 	 * <b>
-	 * </b><b>Role Validation</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
@@ -58,9 +58,9 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/download/{clientId}")
 	@Produces(Array(MediaType.WILDCARD))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/download", notes = """Return a zip file with all elements matching the prepare request.
+	//#SWG#@ApiOperation(value = "/download", notes = """Returns a zip file with the content matching the prepare request.
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation</b>
+	//#SWGNL#</b><b>Validation:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
 	//#SWGNL#</ul>""", response = classOf[java.io.File])
@@ -123,7 +123,12 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_download: String
 
 	/**
-	 * This service provides  a zip file with all items of the playlist.
+	 * Returns a zip file with the published resources of the playlist's elements.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * Domain name used to access THRON
@@ -146,7 +151,12 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/downloadPlaylist/{clientId}/{id}")
 	@Produces(Array(MediaType.WILDCARD))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/downloadPlaylist", notes = """This service provides  a zip file with all items of the playlist.""", response = classOf[java.io.File])
+	//#SWG#@ApiOperation(value = "/downloadPlaylist", notes = """Returns a zip file with the published resources of the playlist's elements.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
+	//#SWGNL#</ul>""", response = classOf[java.io.File])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def downloadPlaylist(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -216,10 +226,9 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_downloadPlaylist: String
 
 	/**
-	 * This service is used to prepare an archive. Use the downloadId to invoke the downloadservice and
-	 * save the zip file.
+	 * Returns an id used by download service to zip and download a set of content.
 	 * <b>
-	 * </b><b>Role Validation</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
@@ -232,9 +241,9 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/prepare/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/prepare", notes = """This service is used to prepare an archive. Use the downloadId to invoke the downloadservice and save the zip file.
+	//#SWG#@ApiOperation(value = "/prepare", notes = """Returns an id used by download service to zip and download a set of content.
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation</b>
+	//#SWGNL#</b><b>Validation:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
 	//#SWGNL#</ul>""", response = classOf[MResponsePrepareArchive])
@@ -288,5 +297,83 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __prepare(tokenId: String, clientId: String, param: MArchiveprepareReq) :MResponsePrepareArchive
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_prepare: String
+
+	/**
+	 * Returns a zip file with the resources of a player embed template.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * Domain name used to access THRON
+	 * @param templateId : String
+	 * @param templateVersion : Integer
+	 * @return java.io.File
+	*/
+	@POST
+	@Path("/downloadPlayerEmbedTemplate/{clientId}/{templateId}/{templateVersion}")
+	@Produces(Array(MediaType.WILDCARD))
+	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
+	//#SWG#@ApiOperation(value = "/downloadPlayerEmbedTemplate", notes = """Returns a zip file with the resources of a player embed template.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
+	//#SWGNL#</ul>""", response = classOf[java.io.File])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def downloadPlayerEmbedTemplate(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """Domain name used to access THRON""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("templateId")
+	templateId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("templateVersion")
+	templateVersion: Integer):Response /*returnType = java.io.File*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__downloadPlayerEmbedTemplate(tokenId,clientId,templateId,templateVersion)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_downloadPlayerEmbedTemplate)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_downloadPlayerEmbedTemplate)
+	    }
+	} 
+
+	@GET
+	@Path("/downloadPlayerEmbedTemplate/{clientId}/{templateId}/{templateVersion}")
+	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
+	def downloadPlayerEmbedTemplate_2(@QueryParam("tokenId")tokenId_q: String, 
+			@PathParam("clientId")clientId_q: String, 
+			@PathParam("templateId")templateId_q: String, 
+			@PathParam("templateVersion")templateVersion_q: Integer,
+			@HeaderParam("X-TOKENID") tokenId_h: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String):Response /*returnType = java.io.File*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("downloadPlayerEmbedTemplate",this._getCacheControl) 
+		try{	
+			val resp = this.__downloadPlayerEmbedTemplate(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,templateId_q,templateVersion_q)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_downloadPlayerEmbedTemplate)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_downloadPlayerEmbedTemplate)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __downloadPlayerEmbedTemplate(tokenId: String, clientId: String, templateId: String, templateVersion: Integer) :java.io.File
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_downloadPlayerEmbedTemplate: String
 
 }

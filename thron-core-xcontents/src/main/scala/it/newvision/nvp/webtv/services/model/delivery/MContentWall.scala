@@ -78,6 +78,14 @@ class MContentWall extends MContent with Serializable  {
 	def withscoreFixedRange(p:MRatingAverage):this.type ={ 	this.scoreFixedRange = p; 	this }
 
 	/**
+	 * the list of subtitles Url for each locale
+	 */
+	//#SWG#@ApiModelProperty(value = """the list of subtitles Url for each locale""")
+	@BeanProperty 
+	var subtitlesUrls: List[MSubtitlesUrl] = new ArrayList[MSubtitlesUrl]
+	def withsubtitlesUrls(p:List[MSubtitlesUrl]):this.type ={ 	this.subtitlesUrls = p; 	this }
+
+	/**
 	 * @param c : MContent
 	 * @return 
 	*/

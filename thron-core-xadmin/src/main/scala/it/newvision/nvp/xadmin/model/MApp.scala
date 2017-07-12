@@ -38,10 +38,10 @@ class MApp extends Serializable {
 
 	/**
 	 * used to define the application "class":
-	 * PLAY,MOVE,CUSTOM...
+	 * RTIE,CUSTOM...
 	 */
 	//#SWG#@ApiModelProperty(value = """used to define the application "class":
-	//#SWGNL#PLAY,MOVE,CUSTOM...""" ,required = true)
+	//#SWGNL#RTIE,CUSTOM...""" ,required = true)
 	@BeanProperty 
 	var appType: MEAppType =_
 	def withappType(p:MEAppType):this.type ={ 	this.appType = p; 	this }
@@ -217,17 +217,6 @@ class MApp extends Serializable {
 		this.id = "PLAY"
 		this.description = "Playbox"
 		this.appType = MEAppType.PLAY
-	}
-
-	/**
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_COMMENT(){
-		this.id = "COMMENT"
-		this.description = "Comment"
-		this.appType = MEAppType.COMMENT
 	}
 
 	/**

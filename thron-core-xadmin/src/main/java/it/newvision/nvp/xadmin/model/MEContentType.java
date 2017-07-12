@@ -27,36 +27,13 @@ public enum MEContentType {
 	 * NOT YET AVAILABLE
 	 */
 	//#SWG#@ApiModelProperty(value = """NOT YET AVAILABLE""")
-	@XmlEnumValue("BANNER") BANNER,
-	/**
-	 * NOT YET AVAILABLE
-	 */
-	//#SWG#@ApiModelProperty(value = """NOT YET AVAILABLE""")
-	@XmlEnumValue("NEWS") NEWS,
-	/**
-	 * NOT YET AVAILABLE
-	 */
-	//#SWG#@ApiModelProperty(value = """NOT YET AVAILABLE""")
 	@XmlEnumValue("LIVEEVENT") LIVEEVENT,
-	/**
-	 * DEPRECATED
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
-	@XmlEnumValue("DOCUMENT") DOCUMENT,
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("PLAYLIST") PLAYLIST,
-	/**
-	 * NOT YET AVAILABLE
-	 */
-	//#SWG#@ApiModelProperty(value = """NOT YET AVAILABLE""")
-	@XmlEnumValue("PALIMPSEST") PALIMPSEST,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("URL") URL,
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("PROGRAMS") PROGRAMS,
-	/**
-	 * The 4ME Document Type
-	 */
-	//#SWG#@ApiModelProperty(value = """The 4ME Document Type""")
-	@XmlEnumValue("NDOC") NDOC,
 	/**
 	 * Generic html document that can be created and editing in the platform
 	 */

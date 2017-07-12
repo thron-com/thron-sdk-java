@@ -51,16 +51,6 @@ class MUserGroupUpdate extends MUpdater with Serializable  {
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
-	 * Specify if the group is enable or not to use the platform.
-	 * Users inherit roles and acl only from active linked groups.
-	 */
-	//#SWG#@ApiModelProperty(value = """Specify if the group is enable or not to use the platform.
-	//#SWGNL#Users inherit roles and acl only from active linked groups.""")
-	@BeanProperty 
-	var active: Boolean =_
-	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
-
-	/**
 	 * Used as roles template. It is possible to define the UserGroup roles that are
 	 * be applied to each user inside the group. The userRoles are derived from the
 	 * list of groupRoles where the user are linked.
@@ -77,5 +67,15 @@ class MUserGroupUpdate extends MUpdater with Serializable  {
 	@BeanProperty 
 	var groupCapabilities: MUserCapability =_
 	def withgroupCapabilities(p:MUserCapability):this.type ={ 	this.groupCapabilities = p; 	this }
+
+	/**
+	 * Specify if the group is enable or not to use the platform.
+	 * Users inherit roles and acl only from active linked groups.
+	 */
+	//#SWG#@ApiModelProperty(value = """Specify if the group is enable or not to use the platform.
+	//#SWGNL#Users inherit roles and acl only from active linked groups.""")
+	@BeanProperty 
+	var active: Boolean =_
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 }

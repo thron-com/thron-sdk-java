@@ -29,4 +29,20 @@ class MClientSearchCriteria extends Serializable {
 	var toDate: Date =_
 	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
+	/**
+	 * Available values:
+	 * <ul>
+	 * 	<li>4me.it</li>
+	 * 	<li>thron.com</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """Available values:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>4me.it</li>
+	//#SWGNL#	<li>thron.com</li>
+	//#SWGNL#</ul>""")
+	@BeanProperty 
+	var domain: String =_
+	def withdomain(p:String):this.type ={ 	this.domain = p; 	this }
+
 }

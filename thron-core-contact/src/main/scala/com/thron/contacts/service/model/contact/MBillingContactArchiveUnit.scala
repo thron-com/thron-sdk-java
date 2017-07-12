@@ -35,22 +35,32 @@ class MBillingContactArchiveUnit extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var totalContacts: Long =_
+	var totalContacts: Long  = 0L
 	def withtotalContacts(p:Long):this.type ={ 	this.totalContacts = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var totalContactsUnmerged: Long =_
+	var identifiedContacts: Long  = 0L
+	def withidentifiedContacts(p:Long):this.type ={ 	this.identifiedContacts = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var totalContactsUnmerged: Long  = 0L
 	def withtotalContactsUnmerged(p:Long):this.type ={ 	this.totalContactsUnmerged = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var totalActiveContacts: Long =_
+	var totalActiveContacts: Long  = 0L
 	def withtotalActiveContacts(p:Long):this.type ={ 	this.totalActiveContacts = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var totalActiveContactsUnmerged: Long =_
+	var identifiedActiveContacts: Long  = 0L
+	def withidentifiedActiveContacts(p:Long):this.type ={ 	this.identifiedActiveContacts = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var totalActiveContactsUnmerged: Long  = 0L
 	def withtotalActiveContactsUnmerged(p:Long):this.type ={ 	this.totalActiveContactsUnmerged = p; 	this }
 
 }

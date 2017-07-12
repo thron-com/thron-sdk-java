@@ -12,10 +12,7 @@ import it.newvision.nvp.xpackager.services.model.repository.MResponseFilesToClea
 import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdmingetFilesToCleanUpReq
 import it.newvision.nvp.xpackager.services.model.repository.MResponseFindFilesByProperties
 import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdmingetFilesToFixReq
-import it.newvision.nvp.xpackager.services.model.repository.MResponseFilesToPurge
-import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdmingetFilesToPurgeReq
 import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdmincleanupFilesOnSiteReq
-import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdminpurgeFilesReq
 import it.newvision.nvp.xpackager.services.model.repository.MResponseFilesRestored
 import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdminrestoreFilesReq
 import it.newvision.nvp.xpackager.services.model.request.MRepositoryAdminfindFilesByPropertiesReq
@@ -230,53 +227,6 @@ class JRepositoryAdminClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * This service is used by purge script. return the list of files removed but in "safeArea" that
-	 * should be definitely removed from the platform. Return only the removed files with removeDate older
-	 * than retention time.
-	 * @param tokenId : String
-	 * @param param : MRepositoryAdmingetFilesToPurgeReq
-	 * @return MResponseFilesToPurge
-	*/
-	def getFilesToPurge(tokenId: String, 
-			param: MRepositoryAdmingetFilesToPurgeReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseFilesToPurge ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JRepositoryAdminClient.client.resource(this.resourceEndpoint)
-			val response : MResponseFilesToPurge = if(this.resourceEndpoint == ""){
-			
-				new MResponseFilesToPurge()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("repositoryadmin/getFilesToPurge")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseFilesToPurge],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseFilesToPurge])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * @param tokenId : String
 	 * @param param : MRepositoryAdmincleanupFilesOnSiteReq
 	 * @return MResponseRepository
@@ -295,54 +245,6 @@ class JRepositoryAdminClient(val resourceEndpoint:String) {
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
 					.path("repositoryadmin/cleanupFilesOnSite")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseRepository],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseRepository])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * remove definitively from the platform the given list of files.
-	 * Remove only the file if the file is marked as removed and removedDate later that the retention time.
-	 * 
-	 * The service doesn't log in Audit each single remove operation.
-	 * @param tokenId : String
-	 * @param param : MRepositoryAdminpurgeFilesReq
-	 * @return MResponseRepository
-	*/
-	def purgeFiles(tokenId: String, 
-			param: MRepositoryAdminpurgeFilesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRepository ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JRepositoryAdminClient.client.resource(this.resourceEndpoint)
-			val response : MResponseRepository = if(this.resourceEndpoint == ""){
-			
-				new MResponseRepository()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("repositoryadmin/purgeFiles")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)

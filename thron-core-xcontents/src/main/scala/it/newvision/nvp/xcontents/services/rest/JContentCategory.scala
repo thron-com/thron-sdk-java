@@ -11,8 +11,7 @@ import it.newvision.nvp.xcontents.services.model.contentCategory.MResponseLinkCa
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * Service used to organize the contents inside the categories, especially to
- * add/remove a content to a specific category.
+ * Service used to add/remove content to/from categories.
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
@@ -21,7 +20,7 @@ import it.newvision.nvp.xcontents.services.model.contentCategory.MResponseLinkCa
  * </ul>
  */
 @Path("/contentcategory")
-//#SWG#@Api(value = "/contentcategory", description = """Service used to organize the contents inside the categories, especially to add/remove a content to a specific category.
+//#SWG#@Api(value = "/contentcategory", description = """Service used to add/remove content to/from categories.
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
@@ -38,17 +37,13 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Used to link a content to a specific category.
+	 * Adds a content to a category.
 	 * 
-	 * <b>Roles restrictions:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
-	 * </ul>
-	 * 
-	 * <b>ACL validation:</b>
-	 * <ul>
-	 * 	<li>SHARE is required on the specific content</li>
-	 * 	<li>MODIFY is required on the specific category</li>
+	 * 	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES role</li>
+	 * 	<li>SHARE ACL on the content</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -60,17 +55,13 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	@Path("/linkCategoryToContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/linkCategoryToContent", notes = """Used to link a content to a specific category.
+	//#SWG#@ApiOperation(value = "/linkCategoryToContent", notes = """Adds a content to a category.
 	//#SWGNL#
-	//#SWGNL#<b>Roles restrictions:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SHARE is required on the specific content</li>
-	//#SWGNL#	<li>MODIFY is required on the specific category</li>
+	//#SWGNL#	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES role</li>
+	//#SWGNL#	<li>SHARE ACL on the content</li>
+	//#SWGNL#	<li>MODIFY ACL on the category</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseLinkCategoryToContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def linkCategoryToContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -127,19 +118,15 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	protected def capability_linkCategoryToContent: String
 
 	/**
-	 * Used to remove a content from a specific category.
+	 * Removes a content from a category.
 	 * 
-	 * <b>Roles restrictions:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
-	 * </ul>
-	 * 
-	 * <b>ACL validation:</b>
-	 * <ul>
-	 * 	<li>SHARE is required on the specific content</li>
+	 * 	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES role</li>
+	 * 	<li>SHARE ACL on the content</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>MODIFY is required on the specific category</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -151,19 +138,15 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	@Path("/removeCategoryToContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/removeCategoryToContent", notes = """Used to remove a content from a specific category.
+	//#SWG#@ApiOperation(value = "/removeCategoryToContent", notes = """Removes a content from a category.
 	//#SWGNL#
-	//#SWGNL#<b>Roles restrictions:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>ACL validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SHARE is required on the specific content</li>
+	//#SWGNL#	<li>4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES role</li>
+	//#SWGNL#	<li>SHARE ACL on the content</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY is required on the specific category</li>
+	//#SWGNL#	<li>MODIFY ACL on the category</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseLinkCategoryToContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeCategoryToContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)

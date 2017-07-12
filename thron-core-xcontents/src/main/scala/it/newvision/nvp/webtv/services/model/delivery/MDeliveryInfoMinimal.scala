@@ -20,9 +20,9 @@ import it.newvision.nvp.xcontents.model.MMetadata
 class MDeliveryInfoMinimal extends Serializable {
 
 	/**
-	 * DEPRECATED. Use bestThymbUrl or dynThumbService
+	 * DEPRECATED. Use dynThumbService
 	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use bestThymbUrl or dynThumbService""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use dynThumbService""")
 	@BeanProperty 
 	@Deprecated
 	var thumbsUrl: List[String] = new ArrayList[String]
@@ -30,9 +30,9 @@ class MDeliveryInfoMinimal extends Serializable {
 	def withthumbsUrl(p:List[String]):this.type ={ 	this.thumbsUrl = p; 	this }
 
 	/**
-	 * DEPRECATED. Use bestThymbUrl or dynThumbService
+	 * DEPRECATED. Use dynThumbService
 	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use bestThymbUrl or dynThumbService""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use dynThumbService""")
 	@BeanProperty 
 	var defaultThumbUrl: String =_
 	def withdefaultThumbUrl(p:String):this.type ={ 	this.defaultThumbUrl = p; 	this }

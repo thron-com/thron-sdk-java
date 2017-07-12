@@ -27,12 +27,11 @@ object JPlaylistClient {
 	
 }
 /**
- * The Playlist service provide a set of functions to handle the list of contents
- * used inside a Playlist or slideshow. These service are optimised to handle a
- * high number of elements linked to a playlist. The linked contents list return
- * only the xcontentId information, and to get the other content metadata like
- * name and description is necessary to query the Content.findbyproperties
- * function.
+ * Service provides a set of functions to handle the list of contents used inside
+ * a playlist or slideshow. These service are optimised to handle a high number of
+ * elements linked to a playlist. The linked contents list return only the
+ * xcontentId information, and to get the other content metadata like name and
+ * description is necessary to query the Content.findbyproperties function.
  * For performance reason the linkedcontents list is not verified so, if the
  * client create a playlist content with a list invalid xcontentsId, the platform
  * do not verify and the detail function return exactly the same list.
@@ -46,7 +45,7 @@ object JPlaylistClient {
 class JPlaylistClient(val resourceEndpoint:String) {
 
 	/**
-	 * The service return the playlist detail, with all linked items.
+	 * Returns a playlist content detail, complete with the list of linkedContents.
 	 * @param tokenId : String
 	 * @param param : MPlaylistdetailReq
 	 * @return MResponsePlayListDetail
@@ -91,7 +90,7 @@ class JPlaylistClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Replace the playlist's elements with the given list of contents.
+	 * Updates the linkedContents value of a playlist content.
 	 * @param tokenId : String
 	 * @param param : MPlaylistupdateReq
 	 * @return MResponsePlayList
@@ -136,7 +135,7 @@ class JPlaylistClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Add new playlist items in the queue.
+	 * Adds a content to the linkedContents of a playlist content.
 	 * @param tokenId : String
 	 * @param param : MPlaylistaddContentsInQueueReq
 	 * @return MResponsePlayList
@@ -181,7 +180,7 @@ class JPlaylistClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Add new playlist items in the specific position
+	 * Adds a list of content to the linkedContents of a playlist content.
 	 * @param tokenId : String
 	 * @param param : MPlaylistaddContentsReq
 	 * @return MResponsePlayList
@@ -226,7 +225,7 @@ class JPlaylistClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Move a playlist element from position "oldContentPosition" to "newContentPosition"
+	 * Moves a content among the linkedContents of a playlist content.
 	 * @param tokenId : String
 	 * @param param : MPlaylistmoveContentInListReq
 	 * @return MResponsePlayList
@@ -271,7 +270,7 @@ class JPlaylistClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Remove from the playlist the element in "contentPosition"
+	 * Removes a content from the linkedContents of a playlist content.
 	 * @param tokenId : String
 	 * @param param : MPlaylistremoveContentFromListReq
 	 * @return MResponsePlayList

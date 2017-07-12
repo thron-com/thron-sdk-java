@@ -26,8 +26,6 @@ public enum MEContentProperties {
 	 */
 	//#SWG#@ApiModelProperty(value = """it is possibile to comment the content""")
 	@XmlEnumValue("COMMENTSALLOWED") COMMENTSALLOWED,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("PREMIUM") PREMIUM,
 	/**
 	 * The user can decide to show or not the liked contents in the 4me player.
 	 */

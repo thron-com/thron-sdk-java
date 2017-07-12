@@ -13,13 +13,10 @@ import it.newvision.nvp.xadmin.services.model.request.MMediaContentfindContentsB
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * DEPRECATED.
- * To get information about the status of a content use the JContent service in
- * xcontent component.
+ * DEPRECATED by xcontents JContent
  */
 @Path("/mediacontent")
-//#SWG#@Api(value = "/mediacontent", description = """DEPRECATED. 
-//#SWGNL#To get information about the status of a content use the JContent service in xcontent component.""")
+//#SWG#@Api(value = "/mediacontent", description = """DEPRECATED by xcontents JContent""")
 trait JMediaContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
 	
@@ -31,7 +28,7 @@ trait JMediaContent extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Deprecated by service<b> [xcontents] JContent.detail</b>
+	 * Deprecated by <b>[xcontents] JContent.detail</b>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param mediaContentId : String
@@ -45,7 +42,7 @@ trait JMediaContent extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@GET
 	@Path("/detailMediaContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detailMediaContent", notes = """Deprecated by service<b> [xcontents] JContent.detail</b>""", response = classOf[MResponseDetailMediaContent])
+	//#SWG#@ApiOperation(value = "/detailMediaContent", notes = """Deprecated by <b>[xcontents] JContent.detail</b>""", response = classOf[MResponseDetailMediaContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def detailMediaContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -91,10 +88,7 @@ trait JMediaContent extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	protected def capability_detailMediaContent: String
 
 	/**
-	 * <b>Deprecated by service [xcontents] JContent.findByProperties</b>
-	 * Return the list of contents: the list of published contents, or the contents are being ingested or
-	 * packaged in the system. this is service is used in administration consoles where is necessary to
-	 * show the list of contents published (or not ) in the platform.
+	 * Deprecated by <b>[xcontents] JContent.findByProperties</b>
 	 * @param tokenId : String
 	 * @param param : MMediaContentfindContentsByPropertiesReq
 	 * @return MResponseFindContents
@@ -103,8 +97,7 @@ trait JMediaContent extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Path("/findContentsByProperties")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/findContentsByProperties", notes = """<b>Deprecated by service [xcontents] JContent.findByProperties</b>
-	//#SWGNL#Return the list of contents: the list of published contents, or the contents are being ingested or packaged in the system. this is service is used in administration consoles where is necessary to show the list of contents published (or not ) in the platform.""", response = classOf[MResponseFindContents])
+	//#SWG#@ApiOperation(value = "/findContentsByProperties", notes = """Deprecated by <b>[xcontents] JContent.findByProperties</b>""", response = classOf[MResponseFindContents])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def findContentsByProperties(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

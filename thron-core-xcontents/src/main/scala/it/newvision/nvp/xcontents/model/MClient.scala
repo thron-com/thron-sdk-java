@@ -56,11 +56,13 @@ class MClient extends Serializable {
 	def withcustomMetadatas(p:List[MCustomMetadata]):this.type ={ 	this.customMetadatas = p; 	this }
 
 	/**
-	 * The list of templates used to customize the Player layout
+	 * Deprecated.
 	 */
-	//#SWG#@ApiModelProperty(value = """The list of templates used to customize the Player layout""")
+	//#SWG#@ApiModelProperty(value = """Deprecated.""")
 	@BeanProperty 
+	@Deprecated
 	var embedTemplates: List[MPlayerEmbedTemplate] = new ArrayList[MPlayerEmbedTemplate]
+	@Deprecated
 	def withembedTemplates(p:List[MPlayerEmbedTemplate]):this.type ={ 	this.embedTemplates = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)

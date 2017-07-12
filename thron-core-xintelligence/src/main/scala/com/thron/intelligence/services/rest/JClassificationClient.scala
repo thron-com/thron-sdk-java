@@ -37,11 +37,17 @@ object JClassificationClient {
 class JClassificationClient(val resourceEndpoint:String) {
 
 	/**
-	 * Insert a new Classification.
-	 * Max number of clientId's classification is 5 (1 TOPIC, 1 TARGET and 3 CUSTOM classifications)
+	 * Creates a classification.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>max number of classifications: 5 (1 TOPIC, 1 TARGET, and 3 CUSTOM)</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASSIFICATIONS_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MClassificationinsertReq
@@ -88,8 +94,7 @@ class JClassificationClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Lists the client's Classification. This method return the classifications matching the given search
-	 * criteria.
+	 * Returns the lists of classifications matching provided criteria.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MClassificationlistReq
@@ -136,7 +141,9 @@ class JClassificationClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Lists the client's Classification. This method return all classification by default.
+	 * Returns the lists of classifications matching provided criteria.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param text : String
@@ -202,8 +209,9 @@ class JClassificationClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_VIEWER
+	 * Returns the detail of a classification.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String
@@ -249,14 +257,15 @@ class JClassificationClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Update a given classification in patch mode.
+	 * Updates a classification in patch mode.
 	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
 	 * the "update" attributes you want to change must be included in the body of the request, those not
 	 * included will not be updated.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER or
-	 * THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String
@@ -307,12 +316,17 @@ class JClassificationClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Remove a given classification.
-	 * Only inactive classification can be removed (Classification.active= false)
+	 * Removes a classification.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER or
-	 * THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>classification must not be active</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String

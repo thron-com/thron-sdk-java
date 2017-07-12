@@ -125,6 +125,11 @@ class MMediaContent extends Serializable {
 	var contentUGC: Boolean =_
 	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
 
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var channels: List[MChannel] = new ArrayList[MChannel]
+	  def withchannels(p:List[MChannel]):this.type ={ 	this.channels = p; 	this }
+
 	/**
 	 * The specific channel for the thumbnails.
 	 */
@@ -150,11 +155,6 @@ class MMediaContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """Used as link to the source files in repository used in past. The current source files is moved in this list when the user call the service JDashboard.replaceSourceFiles""")
 	var sourcefilesOldVersions: List[MFile] = new ArrayList[MFile]
 	  def withsourcefilesOldVersions(p:List[MFile]):this.type ={ 	this.sourcefilesOldVersions = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var channels: List[MChannel] = new ArrayList[MChannel]
-	  def withchannels(p:List[MChannel]):this.type ={ 	this.channels = p; 	this }
 
 	/**
 	 * @return MEContentStatus

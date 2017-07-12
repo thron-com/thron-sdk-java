@@ -112,7 +112,9 @@ trait JTestService extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	protected def capability_list: String
 
 	/**
-	 * return a list of items
+	 * return a list of items.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @return MResponseTestList
@@ -120,7 +122,9 @@ trait JTestService extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	@GET
 	@Path("/listGet/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/listGet", notes = """return a list of items""", response = classOf[MResponseTestList])
+	//#SWG#@ApiOperation(value = "/listGet", notes = """return a list of items.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseTestList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listGet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -212,6 +216,7 @@ trait JTestService extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	protected def capability_post: String
 
 	/**
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param fakeResponse : Boolean
@@ -237,7 +242,7 @@ trait JTestService extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	@GET
 	@Path("/get/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/get", notes = """""", response = classOf[MResponseTestF])
+	//#SWG#@ApiOperation(value = "/get", notes = """Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseTestF])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def get(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

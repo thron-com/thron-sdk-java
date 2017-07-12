@@ -13,13 +13,17 @@ import javax.xml.bind.annotation.XmlType;
 //#SWG#@ApiModel(description = """""")
 public enum MESearchOption {
 	/**
-	 * Quoted pattern of text value
+	 * regex pattern: /\QsearchKey\E/i
+	 * Quoted pattern of searchKey value
 	 */
-	//#SWG#@ApiModelProperty(value = """Quoted pattern of text value""")
+	//#SWG#@ApiModelProperty(value = """regex pattern: /\QsearchKey\E/i
+	//#SWGNL#Quoted pattern of searchKey value""")
 	@XmlEnumValue("EXACT_MATCH") EXACT_MATCH,
 	/**
-	 * Search all tokens (distinct words) specified in the text value.
+	 * regex pattern: /searchKey[1].*searchKey[2].*searchKey[3].*searchKey[n]/is
+	 * Search all tokens (distinct words) specified in the searchKey value.
 	 */
-	//#SWG#@ApiModelProperty(value = """Search all tokens (distinct words) specified in the text value.""")
+	//#SWG#@ApiModelProperty(value = """regex pattern: /searchKey[1].*searchKey[2].*searchKey[3].*searchKey[n]/is
+	//#SWGNL#Search all tokens (distinct words) specified in the searchKey value.""")
 	@XmlEnumValue("BY_TOKEN") BY_TOKEN
 }

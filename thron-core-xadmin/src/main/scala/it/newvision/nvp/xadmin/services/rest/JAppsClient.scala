@@ -37,15 +37,7 @@ object JAppsClient {
 class JAppsClient(val resourceEndpoint:String) {
 
 	/**
-	 * Used to authenticate an App through the appId and appKey (optional) and return
-	 * 
-	 * 
-	 * Provides:
-	 * <ul>
-	 * 	<li>all app detail (metadata)</li>
-	 * 	<li>the tokenId for the application, to use in the inside service call of the snippet</li>
-	 * 	<li>the rootCategory of the linked App.</li>
-	 * </ul>
+	 * Authenticates an app, returning its detail, rootCategoryId, and a session tokenId.
 	 * 
 	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
@@ -98,14 +90,12 @@ class JAppsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to authenticate an App through the appId and return all details.
-	 * Provides:
-	 * <ul>
-	 * 	<li>all app detail (metadata)</li>
-	 * 	<li>the rootCategory of the linked App.</li>
-	 * </ul>
+	 * Returns the detail of an app.
 	 * 
-	 * Can be invoked only by user with role [APPID]_MANAGER or [APPID]_APP_EDITOR or CORE_MANAGE_APPS
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>[APPID]_MANAGER or [APPID]_APP_EDITOR or CORE_MANAGE_APPS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsappDetailReq
 	 * @return MResponseAppDetail
@@ -150,9 +140,17 @@ class JAppsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * returns a list of apps  matching the search criteria.
-	 * Can be invoked only by user with role CORE_MANAGE_APPS.
-	 * apps.disguiseData is returned only if the user has some role for the app.
+	 * Returns the list of apps matching provided criteria.
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>disguiseData is returned only if user has any role for the app.</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_APPS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsfindByPropertiesReq
 	 * @return MResponseAppList
@@ -197,8 +195,12 @@ class JAppsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * the service return a list with summary information related to the apps.
-	 * Can be invoked by any platform users.
+	 * Returns summary details for a list of apps matching provided criteria.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>Can be invoked by any platform users.</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsappsListReq
 	 * @return MResponseAppSummaryList
@@ -243,11 +245,19 @@ class JAppsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * used to impersonate another user (sudo function)
-	 * The service can be invoked only by Apps with canDisguise attribute enabled.
-	 * The service return a valid token for the specified user if exists and if the app allows to
-	 * impersonate the user (based on the MApp.disguiseData values).
+	 * Impersonates a platform user (sudo function), returning an access token of the user.
+	 * 
 	 * Authentication token is not required (X-TOKENID).
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>disguiseData must allow app to impersonate the user</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>can be invoked only by apps with canDisguise attribute enabled.</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppssuReq
 	 * @return String

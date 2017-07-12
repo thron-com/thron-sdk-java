@@ -53,10 +53,10 @@ class MAppSummary extends Serializable {
 
 	/**
 	 * used to define the application "class":
-	 * PLAY,MOVE,CUSTOM...
+	 * RTIE,CUSTOM...
 	 */
 	//#SWG#@ApiModelProperty(value = """used to define the application "class":
-	//#SWGNL#PLAY,MOVE,CUSTOM...""" ,required = true)
+	//#SWGNL#RTIE,CUSTOM...""" ,required = true)
 	@BeanProperty 
 	var appType: MEAppType =_
 	def withappType(p:MEAppType):this.type ={ 	this.appType = p; 	this }

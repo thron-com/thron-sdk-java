@@ -25,5 +25,7 @@ public enum MEContentCategory {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("CONTENT_NOT_EXISTS") CONTENT_NOT_EXISTS,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("MAX_NUMBER_OF_ITEMS_REACHED") MAX_NUMBER_OF_ITEMS_REACHED
+	@XmlEnumValue("MAX_NUMBER_OF_ITEMS_REACHED") MAX_NUMBER_OF_ITEMS_REACHED,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("ACCESS_DENIED") ACCESS_DENIED
 }

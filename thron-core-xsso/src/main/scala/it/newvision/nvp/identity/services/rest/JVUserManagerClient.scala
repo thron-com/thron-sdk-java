@@ -50,31 +50,24 @@ object JVUserManagerClient {
 class JVUserManagerClient(val resourceEndpoint:String) {
 
 	/**
-	 * This service is used to create users in the platform. The are four different type of users:
-	 * <ul>
-	 * 	<li>PLATFORM_USER: allowed to login in platform and use the services</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>PLATFORM_USER_GUEST: allowed to login in platform and use the services</li>
-	 * </ul>
+	 * Creates a user.
 	 * 
-	 * <b>Username, password and email</b> (of MVUserNotificationProperties) <b>are required </b>for
-	 * platform users (PLATFORM_USER, PLATFORM_USER_GUEST). Username must be unique and it will be
-	 * automatically converted to lower case.
+	 * <b>Username, password and email</b> (of MVUserNotificationProperties) <b>are mandatory</b>.
+	 * Username must be unique and it will be automatically converted to lowercase.
 	 * 
 	 * Constraints for the username attribute:
-	 * <ol>
+	 * <ul>
 	 * 	<li>can not contain §/$&#<>"?*:\|</li>
 	 * 	<li>can not contain spaces</li>
 	 * 	<li>can not start with _</li>
 	 * 	<li>can not start with !</li>
-	 * 	<li>max length = 50</li>
-	 * </ol>
+	 * 	<li>max length: 50</li>
+	 * </ul>
 	 * 
 	 * Constraints for the password attribute:
-	 * <ol>
-	 * 	<li>max length = 100</li>
-	 * </ol>
+	 * <ul>
+	 * 	<li>max length: 100</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MVUserManagercreateReq
 	 * @return MResponseVUserCreate
@@ -119,7 +112,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * update the user ExternalId
+	 * Updates the externalId of a user.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -169,7 +162,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * update the user detail.
+	 * Update the detail of a user.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -219,8 +212,8 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to upgrade a user PLATFORM_USER_GUEST to PLATFORM_USER.
-	 * It's not allowed to change the original username.
+	 * Upgrades a PLATFORM_USER_GUEST type user to PLATFORM_USER type.
+	 * Username cannot be changed.
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupgradeUserReq
 	 * @return MResponseVUserCreate
@@ -265,8 +258,12 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * update restricted params of the user (userQuota and userLockTemplate). The service is available
-	 * only for User Administrators.
+	 * Updates restricted params of a user (userQuota and userLockTemplate).
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupdateSettingsReq
 	 * @return MResponseVUser
@@ -311,9 +308,9 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Change the user password.
-	 * Each user can change the owned password, or the user with the right capabilities (administrator)
-	 * can change the password of other users.
+	 * Changes the password of a user.
+	 * Users can change only their own password, while user administrators can change the password of any
+	 * user.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -363,7 +360,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to create a new temporary token for users (only PLATFORM_USER and PLATFORM_USER_GUEST). 
+	 * Sends a a notification email to a user, prompting him to change his password.
 	 * @param tokenId : String
 	 * @param param : MVUserManagerresetPasswordReq
 	 * @return MResponseVUserResetPassword
@@ -408,9 +405,14 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to activate/deactivate a user in the platform. When the user is not active he can not login
-	 * and use the platform's application and services.
-	 * Can be invoked only by users Administrators with role CORE_MANAGE_USERS
+	 * Modifies the active status of a user.
+	 * 
+	 * An inactive user cannot login or use any service of the platform.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MVUserManagerchangeUserStatusReq
 	 * @return MResponseVUser
@@ -455,8 +457,12 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * The service UPDATE the user capabilities and roles for the given user.
-	 * Can be invoked only by user Administrators with role CORE_MANAGE_USERS
+	 * Updates the capabilities and roles of a user.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupdateCapabilitiesAndRolesReq
 	 * @return MResponseVUser
@@ -501,8 +507,10 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * return the user detail information and the list of available Capabilities.
-	 * The service return only the first 50 groups linked to the user and no own Acl.
+	 * Returns the detail and capabilities of a user.
+	 * The service return only the first 50 groups linked to the user and no own ACLs.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -565,6 +573,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Returns the list of users matching provided criteria.
 	 * @param tokenId : String
 	 * @param param : MVUserManagerfindByPropertiesReq
 	 * @return MResponseVUserFindByProperties
@@ -609,7 +618,9 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Upload a new File for the user profile picture. JPG/PNG file format are suggested.
+	 * Updates the profile picture of a user.
+	 * 
+	 * Supported file formats: JPEG, PNG.
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupdateImageReq
 	 * @return MResponseVUser
@@ -654,7 +665,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Verify whether a username is valid or not, and eventually suggest an alternative.
+	 * Verifies whether or not a username is valid, and eventually suggest an alternative.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -699,6 +710,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Links a user to a group.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -748,6 +760,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Unlinks a user from a group.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String

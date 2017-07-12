@@ -160,4 +160,77 @@ class MWeeboProvider extends MProvider with Serializable  {
 		this.status = result.getOrElse("DRAFT")
 	}
 
+	/**
+	 * @return 
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def updateStatusForImage(){
+		import scala.collection.JavaConversions._
+		var result: Option[String] = None
+	
+		def statusInProgress(channelStatus: MEWeeboChannelStatus) = {
+			(channelStatus == MEWeeboChannelStatus.INGESTION_INPROGRESS ||
+				channelStatus == MEWeeboChannelStatus.PACKAGING_INPROGRESS ||
+				channelStatus == MEWeeboChannelStatus.PACKAGED_THUMBNAIL_INPROGRESS)
+		}
+	
+		def statusInPublishing(channelStatus: MEWeeboChannelStatus) = channelStatus == MEWeeboChannelStatus.PUBLISHING_INPROGRESS
+	
+		def statusPublished(channelStatus: MEWeeboChannelStatus) = {
+			(channelStatus == MEWeeboChannelStatus.PUBLISHED || channelStatus == MEWeeboChannelStatus.PUBLISHED_THUMBNAIL)
+		}
+	
+		def statusThumbInError(channelStatus: MEWeeboChannelStatus) = {
+			(channelStatus == MEWeeboChannelStatus.PACKAGED_ERROR ||
+				channelStatus == MEWeeboChannelStatus.PUBLISHED_ERROR ||
+				channelStatus == MEWeeboChannelStatus.PACKAGED_THUMBNAIL_ERROR)
+		}
+	
+		//DRAFT if all channels are empty
+		result = result.orElse(
+			if (this.weeboChannels.isEmpty) Some("DRAFT")
+			else None
+		)
+		// error when exists one channel in error (also thumbs channel)
+		result = result.orElse(
+			if (this.weeboChannels.exists(el => el.status.toString.indexOf("ERROR") > -1) ||
+				Option(this.weeboThumbChannel).exists(tc => statusThumbInError(tc.status))
+			) Some("ERROR")
+			else None
+		)
+		// INGESTION_INPROGRESS if exists one channel in progress
+		result = result.orElse(
+			if (this.weeboChannels.exists(el => statusInProgress(el.status)) || (Option(this.weeboThumbChannel).exists(tc => statusInProgress(tc.status)))) {
+				Some("INGESTION_IN_PROGRESS")
+			} else None
+		)
+		// PUBLISHING_INPROGRESS if exists one channel in progress
+		result = result.orElse(
+			if (this.weeboChannels.exists(el => statusInPublishing(el.status)) || (Option(weeboThumbChannel).exists(tc => statusInPublishing(tc.status)))) {
+				Some("PUBLISH_IN_PROGRESS")
+			} else None
+		)
+		// UNPUBLISHING_INPROGRESS if exists one channel in progress
+		result = result.orElse(
+			if (this.weeboChannels.exists(el => el.status == MEWeeboChannelStatus.UNPUBLISHING_INPROGRESS)) Some("UNPUBLISHING_IN_PROGRESS")
+			else None
+		)
+		// READY if exists one channel packaged or thumbs are packaged
+		result = result.orElse(
+			if (this.weeboChannels.exists(el => el.status == MEWeeboChannelStatus.PACKAGED) ||
+				(Option(this.weeboThumbChannel).exists(tc => tc.status == MEWeeboChannelStatus.PACKAGED_THUMBNAIL))) {
+				Some("READY")
+			} else None
+		)
+		// PUBLISHED if the content is not in progress and the channels are published
+		result = result.orElse(
+			if (this.weeboChannels.exists(el => statusPublished(el.status)) &&
+				Option(this.weeboThumbChannel).forall(tc => statusPublished(tc.status))
+			) Some("PUBLISHED")
+			else None
+		)
+		this.status = result.getOrElse("DRAFT")
+	}
+
 }

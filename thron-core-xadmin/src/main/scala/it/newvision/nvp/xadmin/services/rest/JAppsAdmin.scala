@@ -51,8 +51,12 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * add the group to access the app.
-	 * Can be invoked only by users with role  [APPID]_MANAGER 
+	 * Adds a group to the access list of an app.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>[APPID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminaddGroupAppReq
 	 * @return MResponseApp
@@ -61,8 +65,12 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/addGroupApp")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addGroupApp", notes = """add the group to access the app.
-	//#SWGNL#Can be invoked only by users with role  [APPID]_MANAGER """, response = classOf[MResponseApp])
+	//#SWG#@ApiOperation(value = "/addGroupApp", notes = """Adds a group to the access list of an app.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>[APPID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseApp])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addGroupApp(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -109,8 +117,12 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_addGroupApp: String
 
 	/**
-	 * add the user to access the app.
-	 * Can be invoked only by users with role [APPID]_MANAGER 
+	 * Adds a user to the access list of an app.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>[APPID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminaddUserAppReq
 	 * @return MResponseApp
@@ -119,8 +131,12 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/addUserApp")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addUserApp", notes = """add the user to access the app.
-	//#SWGNL#Can be invoked only by users with role [APPID]_MANAGER """, response = classOf[MResponseApp])
+	//#SWG#@ApiOperation(value = "/addUserApp", notes = """Adds a user to the access list of an app.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>[APPID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseApp])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def addUserApp(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -167,16 +183,19 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_addUserApp: String
 
 	/**
-	 * Create a new App.
-	 * Can be invoked only by users with role CORE_MANAGE_APPS.
-	 * The service add the roles:
+	 * Creates an app.
+	 * App owner gets the following roles:
 	 * <ul>
 	 * 	<li>[APPID]_MANAGER</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>[APPID]_SNIPPET_MANAGER (Only for app custom)</li>
+	 * 	<li>[APPID]_SNIPPET_MANAGER (custom apps only)</li>
 	 * </ul>
-	 * to the app's owner
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_APPS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdmincreateReq
 	 * @return MResponseAppDetail
@@ -185,16 +204,19 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/create")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/create", notes = """Create a new App.
-	//#SWGNL#Can be invoked only by users with role CORE_MANAGE_APPS.
-	//#SWGNL#The service add the roles:
+	//#SWG#@ApiOperation(value = "/create", notes = """Creates an app.
+	//#SWGNL#App owner gets the following roles:
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>[APPID]_MANAGER</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>[APPID]_SNIPPET_MANAGER (Only for app custom)</li>
+	//#SWGNL#	<li>[APPID]_SNIPPET_MANAGER (custom apps only)</li>
 	//#SWGNL#</ul>
-	//#SWGNL#to the app's owner""", response = classOf[MResponseAppDetail])
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>CORE_MANAGE_APPS role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseAppDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def create(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -241,8 +263,12 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_create: String
 
 	/**
-	 * remove the app, and clean up the setting in THRON.
-	 * Can be invoked only by users with role [APPID]_MANAGER and by the owner
+	 * Removes an app.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>[APPID]_MANAGER role or app owner</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminremoveReq
 	 * @return MResponseApp
@@ -251,8 +277,12 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/remove")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/remove", notes = """remove the app, and clean up the setting in THRON.
-	//#SWGNL#Can be invoked only by users with role [APPID]_MANAGER and by the owner""", response = classOf[MResponseApp])
+	//#SWG#@ApiOperation(value = "/remove", notes = """Removes an app.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>[APPID]_MANAGER role or app owner</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseApp])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -299,8 +329,12 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_remove: String
 
 	/**
-	 * deny the group to access the app.
-	 * Can be invoked only by users with role [APPID[_MANAGER
+	 * Removes a group from the access list of an app.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>[APPID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminremoveGroupAppReq
 	 * @return MResponseApp
@@ -309,8 +343,12 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/removeGroupApp")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeGroupApp", notes = """deny the group to access the app.
-	//#SWGNL#Can be invoked only by users with role [APPID[_MANAGER""", response = classOf[MResponseApp])
+	//#SWG#@ApiOperation(value = "/removeGroupApp", notes = """Removes a group from the access list of an app.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>[APPID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseApp])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeGroupApp(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -357,11 +395,11 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_removeGroupApp: String
 
 	/**
-	 * update the App parameters
+	 * Updates an app.
 	 * 
-	 * <b>Role valdation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with roles [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminupdateAppReq
@@ -371,11 +409,11 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/updateApp")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateApp", notes = """update the App parameters
+	//#SWG#@ApiOperation(value = "/updateApp", notes = """Updates an app.
 	//#SWGNL#
-	//#SWGNL#<b>Role valdation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>Can be invoked only by users with roles [APPID]_MANAGER</li>
+	//#SWGNL#	<li>[APPID]_MANAGER role</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseAppDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateApp(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -423,11 +461,11 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_updateApp: String
 
 	/**
-	 * deny the user to access the app.
+	 * Removes a user from the access list of an app.
 	 * <b>
-	 * </b><b>Role valdation:</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with roles [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MAppsAdminremoveUserAppReq
@@ -437,11 +475,11 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/removeUserApp")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeUserApp", notes = """deny the user to access the app.
+	//#SWG#@ApiOperation(value = "/removeUserApp", notes = """Removes a user from the access list of an app.
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role valdation:</b>
+	//#SWGNL#</b><b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>Can be invoked only by users with roles [APPID]_MANAGER</li>
+	//#SWGNL#	<li>[APPID]_MANAGER role</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseApp])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeUserApp(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -489,16 +527,16 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_removeUserApp: String
 
 	/**
-	 * Generate a new appKey for the specified app.
+	 * Generates an access key for an app.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>maximum 10 keys for each app.</li>
+	 * 	<li>max number of keys per app: 10</li>
 	 * </ul>
 	 * 
-	 * <b>Role valdation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -509,16 +547,16 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/generateKey/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/generateKey", notes = """Generate a new appKey for the specified app.
+	//#SWG#@ApiOperation(value = "/generateKey", notes = """Generates an access key for an app.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>maximum 10 keys for each app.</li>
+	//#SWGNL#	<li>max number of keys per app: 10</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role valdation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	//#SWGNL#	<li>[APPID]_MANAGER role</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseAppNewKey])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def generateKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -572,11 +610,11 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_generateKey: String
 
 	/**
-	 * Update the key for the specified app.
+	 * Updates an access key for an app.
 	 * 
-	 * <b>Role valdation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -587,11 +625,11 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/updateKey/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateKey", notes = """Update the key for the specified app.
+	//#SWG#@ApiOperation(value = "/updateKey", notes = """Updates an access key for an app.
 	//#SWGNL#
-	//#SWGNL#<b>Role valdation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	//#SWGNL#	<li>[APPID]_MANAGER role</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseAppKeyDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -645,11 +683,11 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_updateKey: String
 
 	/**
-	 * Remove a specific appKey.
+	 * Removes an access key from an app.
 	 * 
-	 * <b>Role valdation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -660,11 +698,11 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/removeKey/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeKey", notes = """Remove a specific appKey.
+	//#SWG#@ApiOperation(value = "/removeKey", notes = """Removes an access key from an app.
 	//#SWGNL#
-	//#SWGNL#<b>Role valdation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	//#SWGNL#	<li>[APPID]_MANAGER role</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseApp])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -718,11 +756,11 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_removeKey: String
 
 	/**
-	 * List the available app Key for the given application.
+	 * Returns the list of access keys of an app.
 	 * 
-	 * <b>Role valdation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	 * 	<li>[APPID]_MANAGER role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -733,11 +771,11 @@ trait JAppsAdmin extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/listKey/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/listKey", notes = """List the available app Key for the given application.
+	//#SWG#@ApiOperation(value = "/listKey", notes = """Returns the list of access keys of an app.
 	//#SWGNL#
-	//#SWGNL#<b>Role valdation:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>Can be invoked only by users with role [APPID]_MANAGER</li>
+	//#SWGNL#	<li>[APPID]_MANAGER role</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseAppKeyDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)

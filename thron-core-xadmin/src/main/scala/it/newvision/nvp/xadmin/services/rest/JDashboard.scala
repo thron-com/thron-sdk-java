@@ -39,7 +39,7 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * The service change the owner for a given list of contents.
+	 * Changes the owner of a set of content.
 	 * @param tokenId : String
 	 * @param param : MDashboardchangeContentsOwnerReq
 	 * @return MResponseDashboard
@@ -48,7 +48,7 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/changeContentsOwner")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/changeContentsOwner", notes = """The service change the owner for a given list of contents.""", response = classOf[MResponseDashboard])
+	//#SWG#@ApiOperation(value = "/changeContentsOwner", notes = """Changes the owner of a set of content.""", response = classOf[MResponseDashboard])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def changeContentsOwner(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -95,18 +95,15 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	protected def capability_changeContentsOwner: String
 
 	/**
-	 * This service is used to migrate:
+	 * Changes the ownership of:
 	 * <ul>
-	 * 	<li>owned contents </li>
-	 * 	<li>owned public categories</li>
-	 * 	<li>owned repository files</li>
+	 * 	<li>content</li>
+	 * 	<li>public categories</li>
+	 * 	<li>repository files</li>
+	 * 	<li>player embed templates</li>
+	 * 	<li>player embed codes</li>
 	 * </ul>
-	 * Should be used when a user is removed and the contents should be assigned to another user.
-	 * 
-	 * The service also remove
-	 * <ul>
-	 * 	<li>all links to the userId1 private folders </li>
-	 * </ul>
+	 * created by a user to another user, optionally removing the former.
 	 * @param tokenId : String
 	 * @param param : MDashboardmigrateUserStuffReq
 	 * @return MResponseDashboard
@@ -115,18 +112,15 @@ trait JDashboard extends it.newvision.nvp.core.libraries.restserver.BaseResource
 	@Path("/migrateUserStuff")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/migrateUserStuff", notes = """This service is used to migrate:
+	//#SWG#@ApiOperation(value = "/migrateUserStuff", notes = """Changes the ownership of:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>owned contents </li>
-	//#SWGNL#	<li>owned public categories</li>
-	//#SWGNL#	<li>owned repository files</li>
+	//#SWGNL#	<li>content</li>
+	//#SWGNL#	<li>public categories</li>
+	//#SWGNL#	<li>repository files</li>
+	//#SWGNL#	<li>player embed templates</li>
+	//#SWGNL#	<li>player embed codes</li>
 	//#SWGNL#</ul>
-	//#SWGNL#Should be used when a user is removed and the contents should be assigned to another user. 
-	//#SWGNL#
-	//#SWGNL#The service also remove 
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>all links to the userId1 private folders </li>
-	//#SWGNL#</ul>""", response = classOf[MResponseDashboard])
+	//#SWGNL#created by a user to another user, optionally removing the former.""", response = classOf[MResponseDashboard])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def migrateUserStuff(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

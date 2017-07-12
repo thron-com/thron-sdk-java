@@ -37,6 +37,7 @@ object JMetadataDefinitionClient {
 class JMetadataDefinitionClient(val resourceEndpoint:String) {
 
 	/**
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String
@@ -177,6 +178,8 @@ class JMetadataDefinitionClient(val resourceEndpoint:String) {
 
 	/**
 	 * Lists the client's MetadataDefinition.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param searchText : String

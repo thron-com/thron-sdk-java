@@ -18,14 +18,14 @@ import javax.xml.bind.annotation._
 class MSourceRawOpt extends Serializable {
 
 	/**
-	 * base64 String encoded with UTF-8 charset.
+	 * Base64 String encoded with UTF-8 charset.
 	 * Max size: 2MB
 	 */
-	//#SWG#@ApiModelProperty(value = """base64 String encoded with UTF-8 charset.
-	//#SWGNL#Max size: 2MB""")
+	//#SWG#@ApiModelProperty(value = """Base64 String encoded with UTF-8 charset.
+	//#SWGNL#Max size: 2MB""" ,required = true)
 	@BeanProperty 
-	var buffer: Array[Byte]= new Array[Byte](0)
-	def withbuffer(p:Array[Byte]):this.type ={ 	this.buffer = p; 	this }
+	var buffer: String =_
+	def withbuffer(p:String):this.type ={ 	this.buffer = p; 	this }
 
 	/**
 	 * Used to specify the mime type of the buffer
@@ -41,10 +41,9 @@ class MSourceRawOpt extends Serializable {
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def validate(){
-		import scala.collection.JavaConversions._
 		import org.apache.commons.lang.StringUtils
-		if(StringUtils.isBlank(mimeType)) throw new IllegalArgumentException("missing mimeType attribute")
-		if(buffer.isEmpty) throw new IllegalArgumentException("buffer attribute is empty")
+		if(StringUtils.isBlank(mimeType)) throw new IllegalArgumentException("Missing mimeType attribute")
+		if(Option(buffer).isEmpty) throw new IllegalArgumentException("Missing buffer attribute")
 	}
 
 }

@@ -53,17 +53,19 @@ object JITagDefinitionClient {
 class JITagDefinitionClient(val resourceEndpoint:String) {
 
 	/**
-	 * Insert a new ITagDefinition inside a given classification.
+	 * Inserts an itagDefinition to a classification.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's not possible to create itagdefinition with a parentId uncategorized or unapproved.</li>
+	 * 	<li>parentId, if any, must refer to a categorized itagDefinition.</li>
 	 * 	<li>it's not possible to create tree structure with more than 1000 nodes.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER or
-	 * THRON_CLASS_[CLASSID]_TAG_SUGGESTER (only for not categorized tags)
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER or THRON_CLASS_[CLASSID]_TAG_SUGGESTER (only for not categorized
+	 * tags) role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -113,11 +115,12 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Lists the client's ITagDefinitions. This method return the itags matching the given search criteria.
+	 * Returns the list of itagDefinition matching provided criteria.
 	 * 
-	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -167,10 +170,14 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Lists the client's Tags. This method return the ITagDefinition matching the given search criteria.
+	 * Returns the list of itagDefinition matching provided criteria.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -178,7 +185,7 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * @param text : String
 	 * Optional. search criteria
 	 * @param lang : String
-	 * Optional
+	 * Optional. Used to filter itagDefinitions
 	 * @param ids : String
 	 * Optional. As csv list of ITagDefinition.id or ITagDefinition.prettyId
 	 * @param showLinkedMetadata : Boolean
@@ -250,10 +257,14 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return the detail information for a given ITagDefinition.
+	 * Returns the detail of an itagDefinition.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li> THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -317,10 +328,14 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * included will not be updated.
 	 * 
 	 * <b>Constraints:</b>
-	 * the ITagDefinition must be in state "APPROVED"
+	 * <ul>
+	 * 	<li>itagDefinition must be APPROVED</li>
+	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -374,15 +389,19 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Definitely remove  an ITagDefinition from the classification.
-	 * It's only possible to remove ITagDefinition without children.
-	 * The operation remove also the link with metadata definition
+	 * Remove s an itagDefinition from a classification.
+	 * It also removes any linked imetadataDefinition.
 	 * 
 	 * <b>Constraints:</b>
-	 * the ITagDefinition must be in state "APPROVED"
+	 * <ul>
+	 * 	<li>itagDefinition must be APPROVED</li>
+	 * 	<li>Cannot remove itagDefinition with any child node</li>
+	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -436,21 +455,25 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Combine a source ITagDefinition into a target ITagDefinition.
-	 * ExternalIds, linked metadata, and id are combined in the target ITagDefinition. If the user search
-	 * the Itag by externalId/id/prettyId have as response the target ITagDefinition.
-	 * After a combine operation the user can not update/remove the target ITagDefinition
+	 * Combines a source itagDefinition into a target itagDefinition.
+	 * ExternalIds and linked imetadataDefinitions are combined into the target itagDefinition.
+	 * After a combine operation any itagDefinition search by source ids will return target itagDefinition.
+	 * 
+	 * After a combine operation target itagDefinition cannot be updated or removed.
+	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>source tag status = APPROVED</li>
-	 * 	<li>source tag should be a leaf</li>
+	 * 	<li>source itagDefinition must be APPROVED</li>
+	 * 	<li>source itagDefinition  must not have child nodes</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>categorized source.tag within a NOT categorized tag is not allowed</li>
+	 * 	<li>cannot combine a categorized itagDefinition into a non-categorized itagDefinition.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -501,27 +524,19 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Divide a combined ITagDefinition from a target ITagDefinition.
-	 * 
-	 * <ul>
-	 * 	<li>recover id and prettyId of combined ITagDefinition</li>
-	 * 	<li>recover externalIds</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>recover linked metadata</li>
-	 * </ul>
+	 * Divides a combined itagDefinition from a target itagDefinition.
+	 * Restores combined itagDefinition ids.and linked imetadataDefinitions.
+	 * After the divide operation divided itagDefinition will have the same parent of the target.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>source must be in state "combined"</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>the combined ITagDefinition after the divide operation have the same parent of the target.
-	 * </li>
+	 * 	<li>source itagDefinition must be COMBINED</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -571,20 +586,20 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Merge a (combined) ITagDefinition within the target ITagDefinition.
-	 * The service moves linkedMetadata, externalIds from the combined ITagDefinition to the target. After
-	 * the merge process, the user can only extract the ITagDefinition.
-	 * The prettyId and names of the combined ITagDefinition are not merged into the target.
+	 * Merges a list of combined itagDefinitions into a target itagDefinition.
+	 * ExternalIds and linked imetadataDefinitions are moved from combined itagDefinitions to the target;
+	 * combined itagDefinitions prettyId and localized names are not merged into the target.
+	 * Any reference to combined itagDefinitions on any entity is replaced by target itagDefinition.
 	 * <b>
 	 * </b><b>Constraints</b>:
 	 * <ul>
-	 * 	<li>source must be in state "combined"</li>
-	 * 	<li>All references to combined ITagDefinition (on Contents/Contacts/Users) are replaced by target
-	 * ITagDefinition</li>
+	 * 	<li>combined itagDefinitions must be COMBINED</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -634,26 +649,21 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Extract a merged ITagDefinition from a target ITagDefinition.
-	 * 
-	 * <ul>
-	 * 	<li>try to restore prettyId (if still available)</li>
-	 * 	<li>restore the linked metadata</li>
-	 * 	<li>restore names</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>transfer the selected externalIds from source to the restored ITagDefinition</li>
-	 * 	<li>restore the merged ITagDefinition with the same parent ITagDefinition of the target (if the
-	 * tag tree is not full), otherwise move the tag at the root level.</li>
-	 * </ul>
+	 * Extracts a merged itagDefinition from a target itagDefinition.
+	 * Restores prettyId (if still available), externalIds, linked imetadataDefinitions, and localized
+	 * names.
+	 * After extract operation merged itagDefinition will have the same parent itagDefinition of the
+	 * target (if the tag tree is not full), otherwise the tag is added as a new root.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>source must be in state "merged"</li>
+	 * 	<li>merged itagDefinition must be MERGED</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -703,11 +713,13 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Lists the ITagDefinitions joined (combined or merged) in a given tag target. This method return the
-	 * itags matching the given search criteria
+	 * Lists the itagDefinitions joined (i.e., combined or merged) into a target itagDefinition matching
+	 * provided criteria.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -757,21 +769,19 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>it's possible to link IMetadataDefinition only to an approved ITagDefinition</li>
-	 * 	<li>100: max number of IMetadataDefinition per ITagDefinition</li>
-	 * 	<li>it's possible to link metadata only to categorized and approved ITagDefinition</li>
-	 * 	<li>the IMetadataDefinition of type KEY can be linked to one single ITagDefinition.</li>
-	 * </ul>
+	 * Links an imetadataDefinition to an itagDefinition.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>the ITagDefinition must be in state "APPROVED"</li>
+	 * 	<li>itagDefinition must be APPROVED and CATEGORIZED</li>
+	 * 	<li>max number of imetadataDefinition linked to an itagDefinition: 100</li>
+	 * 	<li>KEY type imetadataDefinitions can only be linked to a single itagDefinition.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -825,11 +835,17 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * <b>Constraints:</b>
-	 * the ITagDefinition must be in state "APPROVED"
+	 * Unlinks an imetadataDefinition from an itagDefinition.
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * </b><b>Constraints:</b>
+	 * <ul>
+	 * 	<li>itagDefinition must be APPROVED</li>
+	 * </ul>
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -883,15 +899,20 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Update in "patch" mode  the specific values defined in the link between ITagDefinition and
-	 * IMetadataDefinition.
-	 * Actually used to change the position of the imetadatadefinition inside an itagdefinition
+	 * Update in "patch" mode  the specific values defined in the link between itagDefinition and
+	 * imetadataDefinition.
+	 * Can be used to change the position of an imetadataDefinition among the list of
+	 * linkedMetadataDefinition of an itagDefinition.
 	 * 
 	 * <b>Constraints:</b>
-	 * the ITagDefinition must be in state "APPROVED"
+	 * <ul>
+	 * 	<li>itagDefinition must be APPROVED</li>
+	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -945,15 +966,17 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Add an externalId to the ITagDefinition
+	 * Adds an externalId to an itagDefinition.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's not possible to add more than 200 external Ids on the same itagDefinition</li>
+	 * 	<li>max number of externalIds on an itagDefinition: 200</li>
 	 * </ul>
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -1007,10 +1030,12 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Remove an externalId from the ITagDefinition
+	 * Removes an externalId from an itagDefinition.
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -1064,10 +1089,12 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * List of distinct keys (ExternalId.key) ordered by name
+	 * Returns the list of distinct keys (i.e., externalId.key) sorted by name.
 	 * <b>
-	 * </b><b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String

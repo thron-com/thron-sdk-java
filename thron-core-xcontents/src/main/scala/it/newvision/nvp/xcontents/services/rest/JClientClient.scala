@@ -24,18 +24,18 @@ object JClientClient {
 	
 }
 /**
- * This service is used to update the client properties of xcontent.
+ * This service is used to update the client properties of xcontents.
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: https://clientId-view.thron.
- * com/api/xcontents/resources/client    </li>
+ * com/api/xcontents/resources/client   </li>
  * </ul>
  */
 class JClientClient(val resourceEndpoint:String) {
 
 	/**
-	 * update audit duration days
+	 * Updates audit duration value.
 	 * @param tokenId : String
 	 * @param param : MClientupdateAuditDurationDaysReq
 	 * @return MResponseUpdateClient
@@ -80,7 +80,7 @@ class JClientClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * update secure connection enabled
+	 * Updates secure connection enabled value.
 	 * @param tokenId : String
 	 * @param param : MClientupdateSecureConnectionEnabledReq
 	 * @return MResponseUpdateClient
@@ -125,7 +125,7 @@ class JClientClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * update trash properties
+	 * Updates trash properties value.
 	 * @param tokenId : String
 	 * @param param : MClientupdateTrashPropertiesReq
 	 * @return MResponseUpdateClient
@@ -170,7 +170,9 @@ class JClientClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return all client properties information
+	 * Returns client properties.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @return MResponseDetailClient

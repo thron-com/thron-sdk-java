@@ -106,12 +106,4 @@ class MSearchCriteria extends Serializable {
 	var removeDateTo: Date =_
 	def withremoveDateTo(p:Date):this.type ={ 	this.removeDateTo = p; 	this }
 
-	/**
-	 * default = false
-	 */
-	//#SWG#@ApiModelProperty(value = """default = false""")
-	@BeanProperty 
-	var purged: Boolean =_
-	def withpurged(p:Boolean):this.type ={ 	this.purged = p; 	this }
-
 }

@@ -14,7 +14,10 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MVersion extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * The version Id
+	 */
+	//#SWG#@ApiModelProperty(value = """The version Id""" ,required = true)
 	@BeanProperty 
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }

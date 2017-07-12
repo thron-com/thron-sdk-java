@@ -20,7 +20,8 @@ object JAccessManagerClient {
 	
 }
 /**
- * This service allow the user to login and logout in the platform.
+ * This service allows users to authenticate on the platform and verify their
+ * roles and capabilities.
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
@@ -31,10 +32,10 @@ object JAccessManagerClient {
 class JAccessManagerClient(val resourceEndpoint:String) {
 
 	/**
-	 * Get a tokenId (access token) that authorize the user to make calls against API.
-	 * Each <b>tokenId </b>is valid for a specific session time (1 hour), after that it's necessary to
-	 * invoke the service to get a new key.
-	 * <b>The service is protected by  account lockout policy.</b>
+	 * Returns an access token used by users to invoke API services.
+	 * Lifespan of a token is 1 hour.
+	 * 
+	 * <b>Note: the service is protected by  account lockout policy.</b>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -82,8 +83,7 @@ class JAccessManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * The user can close the user session and invalidate the given tokenId.
-	 * To make other calls, it's necessary to invoke the login service and get a new tokenId.
+	 * Expires an access token.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @return String
@@ -126,7 +126,7 @@ class JAccessManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * verify the session tokenId, if it is valid or expired.
+	 * Returns HTTP code 403 if access token has expired, 200 OK otherwise.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -173,8 +173,8 @@ class JAccessManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * HTTP status 200 if the given capability (or list of capabilities) is active for the user (given
-	 * tokenId) otherwise HTTP status 403.
+	 * Returns HTTP code 403 if a set of comma-separated capabilities are invalid for a session token, 200
+	 * OK otherwise.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param capabilities : String
@@ -221,8 +221,8 @@ class JAccessManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * return HTTP status 200  if the given role is active for the user in session (given tokenId)
-	 * otherwise HTTP status 403.
+	 * Returns HTTP code 403 if a set of comma-separated roles are invalid for a session token, 200 OK
+	 * otherwise.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param role : String

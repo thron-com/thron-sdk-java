@@ -50,16 +50,14 @@ object JCategoryClient {
 class JCategoryClient(val resourceEndpoint:String) {
 
 	/**
-	 * Used to create a new category.
-	 * When creating a child category, all ACLs are inherited from the parent category (ownership
-	 * included).
+	 * Creates a category.
+	 * Category owner and ACLs are inherited from parent category, if any.
 	 * 
-	 * <b>Validations:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
-	 * CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	 * 	<li>CORE_MANAGE_PUBLIC_CATEGORIES role</li>
 	 * 	<li>Applications can not create root categories</li>
-	 * 	<li>MODIFY Acl is required  on the parent category</li>
+	 * 	<li>MODIFY ACL on parent category, if any.</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategorycreateCategoryReq
@@ -105,11 +103,11 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to add the category's name,except and description in a specific lang
+	 * Adds localized name and description to a category.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required  on the specific category</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryaddCategory4LocaleReq
@@ -155,11 +153,11 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to remove the category's name,except and description for a specific lang
+	 * Removes localized name and description from a category.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required  on the specific category</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryremoveCategory4LocaleReq
@@ -205,11 +203,11 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to update the category's name,except and description in a specific lang
+	 * Updates localized name and description of a category.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required  on the specific category</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryupdateCategory4LocaleReq
@@ -260,11 +258,11 @@ class JCategoryClient(val resourceEndpoint:String) {
 	 * 
 	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
-	 * CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	 * 	<li>4ME_MANAGE_PUBLIC_CATEGORIES or CORE_MANAGE_PUBLIC_CATEGORIES role</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>MODIFY Acl is required  on the specific category</li>
+	 * 	<li>MODIFY ACL on the category</li>
+	 * 	<li>No Apps linked to the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -316,8 +314,9 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * returns a flat list of categories that meet the search criteria. Each single category in the result
-	 * set doesn't show the proper "linkedCategory" information.
+	 * Returns the list of categories matching provided criteria.
+	 * 
+	 * Categories linkedCategories property is not returned.
 	 * @param tokenId : String
 	 * @param param : MCategoryfindByProperties2Req
 	 * @return MResponseFindCategory2
@@ -362,13 +361,15 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Updates the detail of a category.
+	 * 
 	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
 	 * the "update" attributes you want to change must be included in the body of the request, those not
 	 * included will not be updated.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required  on the specific category</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryupdateCategoryReq
@@ -414,8 +415,10 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return the category object with the specified categoryId; if cascade = true returns the tree of
-	 * children categories.
+	 * Returns category detail; if cascade parameter is true, service returns the tree of children
+	 * categories.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param categoryId : String
@@ -473,11 +476,11 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * add the category prettyId for a specific locale.
+	 * Adds a localized prettyId to a category.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required  on the specific category</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryaddCategoryPrettyIdReq
@@ -523,11 +526,11 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * update the category prettyId for a specific locale.
+	 * Updates a localized prettyId of a category.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required  on the specific category</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryupdateCategoryPrettyIdReq
@@ -573,11 +576,11 @@ class JCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * remove the category prettyId for a specific locale.
+	 * Removes localized prettyId from a category.
 	 * 
-	 * <b>ACL validation:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY is required  on the specific category</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MCategoryremoveCategoryPrettyIdReq

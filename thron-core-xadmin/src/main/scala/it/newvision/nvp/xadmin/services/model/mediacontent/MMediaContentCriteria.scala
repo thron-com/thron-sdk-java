@@ -119,7 +119,9 @@ class MMediaContentCriteria extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """Used to filter the content having source files of a specific mimeType.""")
 	@BeanProperty 
+	@Deprecated
 	var mimeType: String =_
+	@Deprecated
 	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
 
 	/**

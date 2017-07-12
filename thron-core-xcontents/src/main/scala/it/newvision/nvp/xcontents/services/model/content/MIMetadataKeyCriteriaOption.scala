@@ -35,8 +35,8 @@ class MIMetadataKeyCriteriaOption extends Serializable {
 		import collection.JavaConversions._
 		import org.apache.commons.lang.StringUtils
 		imetadata.forall(i=>StringUtils.isNotEmpty(i.classificationId) && 
-		StringUtils.isNotEmpty(i.key)  && 
-		StringUtils.isNotEmpty(i.value)
+		StringUtils.isNotEmpty(i.key) &&
+		Option(i.value).isDefined
 		) && imetadata.size()<=5
 	}
 

@@ -41,24 +41,24 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Link a given itagId to a specific entity  (Content, User, Contact).
+	 * Links an itag to an entity.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>50: max number of itags in each target (created by users)</li>
-	 * 	<li>50: max number of itags in each target (created by engines)</li>
+	 * 	<li>max number of user-generated itags per entity: 50</li>
+	 * 	<li>max number of engine-generated itags per entity : 50</li>
 	 * </ul>
 	 * <b>
-	 * </b><b>Role Validation for Tagging Users:</b>
+	 * </b><b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -72,23 +72,23 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/insert/{clientId}/{classificationId}/{itagId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/insert", notes = """Link a given itagId to a specific entity  (Content, User, Contact).
+	//#SWG#@ApiOperation(value = "/insert", notes = """Links an itag to an entity.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>50: max number of itags in each target (created by users)</li>
-	//#SWGNL#	<li>50: max number of itags in each target (created by engines)</li>
+	//#SWGNL#	<li>max number of user-generated itags per entity: 50</li>
+	//#SWGNL#	<li>max number of engine-generated itags per entity : 50</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation for Tagging Users:</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#</b><b>Validation for user:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#<b>Validation for content:</b>
+	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
-	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITag])
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITag])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -155,8 +155,9 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_insert: String
 
 	/**
-	 * Unlink a given itagId from a specific entity (Content, User, Contact).
-	 * <b>Removal of combined tags:</b>
+	 * Unlinks an itagId from an entity.
+	 * <b>
+	 * </b><b>Removal of combined tags:</b>
 	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
 	 * 
 	 * <ul>
@@ -172,16 +173,16 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * the service will remove both "A" and "B" tags.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation for Tagging Users:</b>
+	 * <b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * THRON_EDIT_CONTACTS)
+	 * THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -195,8 +196,9 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/remove/{clientId}/{classificationId}/{itagId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/remove", notes = """Unlink a given itagId from a specific entity (Content, User, Contact).
-	//#SWGNL#<b>Removal of combined tags:</b> 
+	//#SWG#@ApiOperation(value = "/remove", notes = """Unlinks an itagId from an entity.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Removal of combined tags:</b> 
 	//#SWGNL#Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
 	//#SWGNL#
 	//#SWGNL#<ul>
@@ -209,14 +211,14 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A" the service will remove both "A" and "B" tags.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Users:</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#<b>Validation for user:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#<b>Validation for content:</b>
+	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITag])
+	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITag])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -283,23 +285,24 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_remove: String
 
 	/**
-	 * Bulk insert service for itags
+	 * Links a list of itags to an entity.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>100: max number of itags for each target</li>
+	 * 	<li>max number of user-generated itags per entity: 50</li>
+	 * 	<li>max number of engine-generated itags per entity : 50</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation for Tagging Users:</b>
+	 * <b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -310,22 +313,23 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/bulkInsert/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkInsert", notes = """Bulk insert service for itags
+	//#SWG#@ApiOperation(value = "/bulkInsert", notes = """Links a list of itags to an entity.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>100: max number of itags for each target</li>
+	//#SWGNL#	<li>max number of user-generated itags per entity: 50</li>
+	//#SWGNL#	<li>max number of engine-generated itags per entity : 50</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Users:</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#<b>Validation for user:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#<b>Validation for content:</b>
+	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
-	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITagBulk])
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkInsert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -384,7 +388,7 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_bulkInsert: String
 
 	/**
-	 * Bulk remove service for itags.
+	 * Removes a list of itags from an entity.
 	 * 
 	 * <b>Removal of combined tags:</b>
 	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
@@ -402,16 +406,16 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * the service will remove both "A" and "B" tags.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation for Tagging Users:</b>
+	 * <b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -422,7 +426,7 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/bulkRemove/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkRemove", notes = """Bulk remove service for itags.
+	//#SWG#@ApiOperation(value = "/bulkRemove", notes = """Removes a list of itags from an entity.
 	//#SWGNL#
 	//#SWGNL#<b>Removal of combined tags:</b> 
 	//#SWGNL#Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
@@ -437,15 +441,15 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A" the service will remove both "A" and "B" tags.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Users:</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#<b>Validation for user:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#<b>Validation for content:</b>
+	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
-	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITagBulk])
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkRemove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -504,23 +508,24 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_bulkRemove: String
 
 	/**
-	 * Apply a single itag to multiple targets  (Content, User, Contact).
-	 * 
-	 * <b>Constraints:</b>
+	 * Links an itag to multiple entity.
+	 * <b>
+	 * </b><b>Constraints:</b>
 	 * <ul>
-	 * 	<li>100: max number of itags for each target</li>
+	 * 	<li>max number of user-generated itags per entity: 50</li>
+	 * 	<li>max number of engine-generated itags per entity : 50</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation for Tagging Users:</b>
+	 * <b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -531,22 +536,23 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/bulkInsertMultiTargets/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkInsertMultiTargets", notes = """Apply a single itag to multiple targets  (Content, User, Contact).
-	//#SWGNL#
-	//#SWGNL#<b>Constraints:</b>
+	//#SWG#@ApiOperation(value = "/bulkInsertMultiTargets", notes = """Links an itag to multiple entity.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>100: max number of itags for each target</li>
+	//#SWGNL#	<li>max number of user-generated itags per entity: 50</li>
+	//#SWGNL#	<li>max number of engine-generated itags per entity : 50</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Users:</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#<b>Validation for user:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#<b>Validation for content:</b>
+	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
-	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITagBulk2])
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk2])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkInsertMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -605,8 +611,9 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_bulkInsertMultiTargets: String
 
 	/**
-	 * Remove a given itag from a list entities (Content, User, Contact).
-	 * <b>Removal of combined tags:</b>
+	 * Removes an itag from multiple entities.
+	 * <b>
+	 * </b><b>Removal of combined tags:</b>
 	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
 	 * 
 	 * <ul>
@@ -622,16 +629,16 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * the service will remove both "A" and "B" tags.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation for Tagging Users:</b>
+	 * <b>Validation for user:</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS)
+	 * CORE_MANAGE_USERS) role
 	 * 
-	 * <b>Role Validation for Tagging Contents</b>
-	 * MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	 * 
-	 * <b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
 	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -642,8 +649,9 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/bulkRemoveMultiTargets/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkRemoveMultiTargets", notes = """Remove a given itag from a list entities (Content, User, Contact).
-	//#SWGNL#<b>Removal of combined tags:</b> 
+	//#SWG#@ApiOperation(value = "/bulkRemoveMultiTargets", notes = """Removes an itag from multiple entities.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Removal of combined tags:</b> 
 	//#SWGNL#Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
 	//#SWGNL#
 	//#SWGNL#<ul>
@@ -656,15 +664,15 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A" the service will remove both "A" and "B" tags.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Users:</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS)
+	//#SWGNL#<b>Validation for user:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents</b>
-	//#SWGNL#MODIFY ACL on Contents and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER
+	//#SWGNL#<b>Validation for content:</b>
+	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation for Tagging Contents (only with Sales or Marketing App)</b>
+	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
 	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
-	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS)""", response = classOf[MResponseITagBulk2])
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk2])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def bulkRemoveMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

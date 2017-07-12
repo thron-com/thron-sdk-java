@@ -53,8 +53,14 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * Returns the detail of an imetadataDefinition.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li> THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -64,8 +70,14 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@GET
 	@Path("/detail/{clientId}/{classificationId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detail", notes = """<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseMetadataDefinitionDetail])
+	//#SWG#@ApiOperation(value = "/detail", notes = """Returns the detail of an imetadataDefinition.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li> THRON_CLASS_[CLASSID]_VIEWER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadataDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -108,11 +120,13 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	protected def capability_detail: String
 
 	/**
-	 * Create a new IMetadataDefinition for a given classification. The metadata definition can be linked
-	 * automatically to a specific tag of the same classification
+	 * Creates an imetadataDefinition is a classification.
+	 * The imetadataDefinition can be linked to an itagDefinition belonging to the same classification.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -123,10 +137,13 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@Path("/insert/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/insert", notes = """Create a new IMetadataDefinition for a given classification. The metadata definition can be linked automatically to a specific tag of the same classification
+	//#SWG#@ApiOperation(value = "/insert", notes = """Creates an imetadataDefinition is a classification.
+	//#SWGNL#The imetadataDefinition can be linked to an itagDefinition belonging to the same classification.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseMetadataDefinitionDetail])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadataDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -185,15 +202,17 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	protected def capability_insert: String
 
 	/**
-	 * Used to link a IMetadataDefinition to a specific ITagDefinition.
+	 * Links an imetadataDefinition to an itagDefinition.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>the metadata definition of type KEY can be linked to one single ITagDefinition.</li>
+	 * 	<li>KEY type imetadataDefinitions can only be linked to a single itagDefinition.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -209,15 +228,17 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@Path("/linkITag/{clientId}/{classificationId}/{itagId}/{metadataId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/linkITag", notes = """Used to link a IMetadataDefinition to a specific ITagDefinition.
+	//#SWG#@ApiOperation(value = "/linkITag", notes = """Links an imetadataDefinition to an itagDefinition.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>the metadata definition of type KEY can be linked to one single ITagDefinition.</li>
+	//#SWGNL#	<li>KEY type imetadataDefinitions can only be linked to a single itagDefinition.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseMetadataDefinition])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadataDefinition])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def linkITag(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -290,11 +311,12 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	protected def capability_linkITag: String
 
 	/**
-	 * Lists the client's IMetadataDefinition for a specific classification. This method return the
-	 * IMetadataDefinition matching the given search criteria.
+	 * Returns the list of imetadataDefinition of a classification matching provided criteria.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -305,10 +327,12 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@Path("/list/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/list", notes = """Lists the client's IMetadataDefinition for a specific classification. This method return the IMetadataDefinition matching the given search criteria.
+	//#SWG#@ApiOperation(value = "/list", notes = """Returns the list of imetadataDefinition of a classification matching provided criteria.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseMetadataDefinitionList])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadataDefinitionList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -367,10 +391,14 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	protected def capability_list: String
 
 	/**
-	 * Lists the client's IMetadataDefinition for a specific classification.
+	 * Returns the list of imetadataDefinition of a classification matching provided criteria.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -378,8 +406,7 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	 * Optional
 	 * Search criteria
 	 * @param lang : String
-	 * Optional.
-
+	 * Optional. Used to filter imetadataDefinitions
 	 * @param ids : String
 	 * Optional. csv list of Attribute.id
 	 * Search criteria
@@ -398,10 +425,14 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@GET
 	@Path("/listGet/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/listGet", notes = """Lists the client's IMetadataDefinition for a specific classification.
+	//#SWG#@ApiOperation(value = "/listGet", notes = """Returns the list of imetadataDefinition of a classification matching provided criteria.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_VIEWER""", response = classOf[MResponseMetadataDefinitionList])
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_VIEWER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadataDefinitionList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listGet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -416,8 +447,7 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	//#SWGNL#Search criteria""")
 	@QueryParam("text")
 	text: String, 
-			//#SWG#@ApiParam(value = """Optional.
-	//#SWGNL#""")
+			//#SWG#@ApiParam(value = """Optional. Used to filter imetadataDefinitions""")
 	@QueryParam("lang")
 	lang: String, 
 			//#SWG#@ApiParam(value = """Optional. csv list of Attribute.id
@@ -467,12 +497,13 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	protected def capability_listGet: String
 
 	/**
-	 * move to trash. This operation unlink the IMetadataDefinition from all linked ITagDefinition.
-	 * This operation does not remove the instances of metadata linked to a specific entity
-	 * (content/user/contact...), so it's possible to restore the metadata using the untrash service.
+	 * Moves an imetadataDefinition to the trash, unlinking it from every linked itagDefinition.
+	 * It doesn't remove the instances of imetadata linked to any entity.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -484,11 +515,13 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@Path("/trash/{clientId}/{classificationId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/trash", notes = """move to trash. This operation unlink the IMetadataDefinition from all linked ITagDefinition.
-	//#SWGNL#This operation does not remove the instances of metadata linked to a specific entity (content/user/contact...), so it's possible to restore the metadata using the untrash service.
+	//#SWG#@ApiOperation(value = "/trash", notes = """Moves an imetadataDefinition to the trash, unlinking it from every linked itagDefinition.
+	//#SWGNL#It doesn't remove the instances of imetadata linked to any entity.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseMetadataDefinition])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadataDefinition])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def trash(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -551,10 +584,12 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	protected def capability_trash: String
 
 	/**
-	 * Unlink a given IMetadataDefinition from a ITagDefition inside a classification.
+	 * Unlinks an imetadataDefinition from an itagDefinition.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -569,10 +604,12 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@Path("/unlinkITag/{clientId}/{classificationId}/{itagId}/{metadataId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/unlinkITag", notes = """Unlink a given IMetadataDefinition from a ITagDefition inside a classification.
+	//#SWG#@ApiOperation(value = "/unlinkITag", notes = """Unlinks an imetadataDefinition from an itagDefinition.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseMetadataDefinition])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadataDefinition])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def unlinkITag(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -643,10 +680,12 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	protected def capability_unlinkITag: String
 
 	/**
-	 * Restore a IMetadataDefinition from the trash
+	 * Restores an imetadataDefinition from the trash.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -658,10 +697,12 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@Path("/untrash/{clientId}/{classificationId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/untrash", notes = """Restore a IMetadataDefinition from the trash
+	//#SWG#@ApiOperation(value = "/untrash", notes = """Restores an imetadataDefinition from the trash.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseMetadataDefinition])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadataDefinition])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def untrash(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -741,8 +782,10 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	 * the "update" attributes you want to change must be included in the body of the request, those not
 	 * included will not be updated.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -768,8 +811,10 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	//#SWGNL#
 	//#SWGNL#The "update" field of this web service works in “patch" mode: it means that each and everyone of the "update" attributes you want to change must be included in the body of the request, those not included will not be updated.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseMetadataDefinitionDetail])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadataDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -834,16 +879,17 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	protected def capability_update: String
 
 	/**
-	 * Change a given iMetadataDefinition in a different metadataType.
+	 * Changes the type of an imetadataDefinition.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>it's possible to change the metadataType if the metadataDefinition is not used in any entity.
-	 * </li>
+	 * 	<li>you can change the type of a imetadataDefinition only if it's not used in the platform</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -854,15 +900,17 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@Path("/changeType/{clientId}/{classificationId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/changeType", notes = """Change a given iMetadataDefinition in a different metadataType.
+	//#SWG#@ApiOperation(value = "/changeType", notes = """Changes the type of an imetadataDefinition.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>it's possible to change the metadataType if the metadataDefinition is not used in any entity.</li>
+	//#SWGNL#	<li>you can change the type of a imetadataDefinition only if it's not used in the platform</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseMetadataDefinitionDetail])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadataDefinitionDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def changeType(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -921,11 +969,12 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	protected def capability_changeType: String
 
 	/**
-	 * Verify if the given iMetadataDefinition is used in the platform. Only iMetadataDefinition not used
-	 * can be removed or changed the metadataDefinitioType
+	 * Verifies whether or not the value of an imetadataDefinition is present on any entity.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
@@ -936,10 +985,12 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	@Path("/verifyIfUsed/{clientId}/{classificationId}/{key}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/verifyIfUsed", notes = """Verify if the given iMetadataDefinition is used in the platform. Only iMetadataDefinition not used can be removed or changed the metadataDefinitioType
+	//#SWG#@ApiOperation(value = "/verifyIfUsed", notes = """Verifies whether or not the value of an imetadataDefinition is present on any entity.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseMetadataVerifyIfUsed])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseMetadataVerifyIfUsed])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def verifyIfUsed(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

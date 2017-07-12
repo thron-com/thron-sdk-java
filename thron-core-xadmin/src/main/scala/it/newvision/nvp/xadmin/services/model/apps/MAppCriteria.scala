@@ -20,10 +20,10 @@ class MAppCriteria extends Serializable {
 
 	/**
 	 * used to define the application "class":
-	 * PLAY,MOVE,CUSTOM...
+	 * RTIE,CUSTOM...
 	 */
 	//#SWG#@ApiModelProperty(value = """used to define the application "class":
-	//#SWGNL#PLAY,MOVE,CUSTOM...""")
+	//#SWGNL#RTIE,CUSTOM...""")
 	@BeanProperty 
 	var appType: List[MEAppType] = new ArrayList[MEAppType]
 	def withappType(p:List[MEAppType]):this.type ={ 	this.appType = p; 	this }

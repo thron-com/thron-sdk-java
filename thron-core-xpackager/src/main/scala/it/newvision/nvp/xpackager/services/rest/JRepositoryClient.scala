@@ -14,7 +14,6 @@ import it.newvision.nvp.xpackager.services.model.request.MRepositorydeleteFtpFil
 import it.newvision.nvp.xpackager.services.model.repository.MResponseGetUploadedFiles
 import it.newvision.nvp.xpackager.services.model.request.MRepositorygetUploadedFileListReq
 import it.newvision.nvp.xpackager.services.model.request.MRepositorygetFtpFileListReq
-import it.newvision.nvp.xpackager.services.model.repository.MResponseGetQuota
 import it.newvision.nvp.xpackager.services.model.repository.MResponseGetS3UploadCredentials
 
 /* ************************
@@ -56,8 +55,8 @@ object JRepositoryClient {
 class JRepositoryClient(val resourceEndpoint:String) {
 
 	/**
-	 * add the selected files from the FTP folder to the working area in the platform. The service delete
-	 * the file from the temporary folder in FTP.
+	 * Adds a list of files from the FTP folder to platform working area.
+	 * Imported files are then deleted from the FTP folder.
 	 * @param tokenId : String
 	 * @param param : MRepositoryaddFilesToPlatformReq
 	 * @return MResponseAddFilesToPlatform
@@ -102,9 +101,11 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * add the selected files from the Amazon S3 Bucket folder to the Platform working area.  The S3
-	 * bucket should be public, or have no read restrictions. Use the Jrepository.getS3UploadCredentials
-	 * to get temporary credentials and S3 bucket where to upload the files before to upload in Platform.
+	 * Adds a file from the Amazon S3 Bucket folder to platform working area.
+	 * S3 bucket must be public or have no read restrictions.
+	 * 
+	 * Use JRepository.getS3UploadCredentials to get temporary credentials and the S3 bucket to upload
+	 * files to.
 	 * @param tokenId : String
 	 * @param param : MRepositoryaddS3ResourceToPlatformReq
 	 * @return MResponseAddFilesToPlatform
@@ -149,7 +150,7 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * add the selected files from the web to the working area in the platform.
+	 * Add a web file to platform working area.
 	 * @param tokenId : String
 	 * @param param : MRepositoryaddWebResourceToPlatformReq
 	 * @return MResponseAddFilesToPlatform
@@ -247,7 +248,7 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Delete the selected file from the ftp temporary folder.
+	 * Deletes a file from the FTP folder.
 	 * @param tokenId : String
 	 * @param param : MRepositorydeleteFtpFileReq
 	 * @return MResponseDeleteUploadedFiles
@@ -292,8 +293,8 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return the list of all uploaded Files from the Working Area, using specific search criteria. The
-	 * service return only owned source files.
+	 * Returns uploaded files in platform working area matching provide criteria.
+	 * The service return only owned files.
 	 * 
 	 * OrderBy parameter schema: <b>[orderbyFileds]_[A|D]</b>
 	 * Available orderbyFileds are: fileName, siteName,totalSpace,modifiedDate,mimetype
@@ -343,9 +344,8 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * return the list of all uploaded Files in the FTP temporary folder, using specific search criteria.
-	 * If offset and numberOfResult are not specified, the service return the full list of results not
-	 * paginated.
+	 * Returns the uploaded files in the FTP folder matching provided criteria.
+	 * 
 	 * The service use a specific orderBy parameter schema: <b>[orderbyFileds]_[A|D]</b>
 	 * Available orderbyFileds are: fileName, siteName,totalSpace,modifiedDate,mimetype
 	 * _A suffix means -> ascendant order
@@ -394,55 +394,15 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * returns the total space used in the working area
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @return MResponseGetQuota
-	*/
-	def getQuotaUsage(tokenId: String, 
-			clientId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetQuota ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JRepositoryClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-			val response : MResponseGetQuota = if(this.resourceEndpoint == ""){
-			
-				new MResponseGetQuota()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("repository/getQuotaUsage")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseGetQuota])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseGetQuota])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
-
-	/**
-	 * Returns a set of temporary credentials (1h lifetime) for uploading files into an Amazon S3 Bucket.
+	 * Returns a set of temporary credentials (1h lifespan) for uploading files into an Amazon S3 Bucket.
 	 * 
 	 * Once the file is uploaded to the bucket (using the proper S3 services and specifying AES256 server-
-	 * side encryption), the user can upload the file in platform calling the service
-	 * "addS3ResourceToPlatform".
+	 * side encryption), users can upload it in platform working area via addS3ResourceToPlatform service.
 	 * 
-	 * The bucket is a temporary storage for the files, which are cleaned up periodically.
+	 * 
+	 * Note: S3 bucket is a temporary storage, uploaded files get cleaned up periodically.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @return MResponseGetS3UploadCredentials

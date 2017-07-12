@@ -43,24 +43,17 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * The service is used to return all content's metadata, aggregated with the specific channel details
-	 * (like thumbnails url, descriptor urls).
-	 * This service is used by THRON player to display name, content's description and to trace the events
-	 * for statistics purpose. it supports jsonp callback using the callback queryparam.
+	 * Returns content detail.
+	 * This service is used by THRON player to display content name, description and to track stats.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * <b>
 	 * </b><b>Limits:</b>
-	 * <ul>
-	 * 	<li>It does not return the list of comments associated with the content. </li>
-	 * </ul>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
 	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * 
-	 * <b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getContentDetail</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -106,31 +99,28 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * that best suits.
 	 * Format: <widht>x<height>
 	 * Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768
-	 * @param pkey : String
-	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param lcid : String
 	 * Optional. the xcontentId of the main linked content
 	 * This parameter is used to have the descriptor of a linked/recommended content. The ACL of a
 	 * recommended content are validated on the context of the main content.
+	 * @param pkey : String
+	 * Optional, the access key for the content. It's not required when session token is provided.
+	 * @param embedCodeId : String
+	 * Optional. define the playerEmbedCode to use for the content renering.
 	 * @return MResponseDeliveryGetContentDetail
 	*/
 	@GET
 	@Path("/getContentDetail")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getContentDetail", notes = """The service is used to return all content's metadata, aggregated with the specific channel details (like thumbnails url, descriptor urls). 
-	//#SWGNL#This service is used by THRON player to display name, content's description and to trace the events for statistics purpose. it supports jsonp callback using the callback queryparam.
+	//#SWG#@ApiOperation(value = "/getContentDetail", notes = """Returns content detail.
+	//#SWGNL#This service is used by THRON player to display content name, description and to track stats.
+	//#SWGNL#JSONP is supported via the callback queryparam.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#<b>
 	//#SWGNL#</b><b>Limits:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>It does not return the list of comments associated with the content. </li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
 	//#SWGNL#	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate the user session or specific keys used to share the content (shareboard feature).if the pkey is not valid the service return an error response like CONTENT_NOT_FOUND</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>Web Service Endpoints</b>:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getContentDetail</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseDeliveryGetContentDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getContentDetail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -180,13 +170,16 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints), 1024x768""")
 	@QueryParam("divArea")
 	divArea: String, 
-			//#SWG#@ApiParam(value = """Optional, the access key for the content. It's not required when session token is provided.""")
-	@QueryParam("pkey")
-	pkey: String, 
 			//#SWG#@ApiParam(value = """Optional. the xcontentId of the main linked content
 	//#SWGNL#This parameter is used to have the descriptor of a linked/recommended content. The ACL of a recommended content are validated on the context of the main content.""")
 	@QueryParam("lcid")
-	lcid: String,
+	lcid: String, 
+			//#SWG#@ApiParam(value = """Optional, the access key for the content. It's not required when session token is provided.""")
+	@QueryParam("pkey")
+	pkey: String, 
+			//#SWG#@ApiParam(value = """Optional. define the playerEmbedCode to use for the content renering.""")
+	@QueryParam("embedCodeId")
+	embedCodeId: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
@@ -198,7 +191,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		//get the cache control specific for this service
 		val cc = this.cachemap("getContentDetail") 
 		try{	
-			val resp = this.__getContentDetail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,xcontentId,xpublisherId,locale,linkedChannelType,linkedUserAgent,divArea,pkey,lcid)
+			val resp = this.__getContentDetail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,xcontentId,xpublisherId,locale,linkedChannelType,linkedUserAgent,divArea,lcid,pkey,embedCodeId)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getContentDetail)
 	    }catch{
@@ -211,23 +204,26 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getContentDetail(tokenId: String, clientId: String, xcontentId: String, xpublisherId: String, locale: String, linkedChannelType: String, linkedUserAgent: String, divArea: String, pkey: String, lcid: String) :MResponseDeliveryGetContentDetail
+	 protected def __getContentDetail(tokenId: String, clientId: String, xcontentId: String, xpublisherId: String, locale: String, linkedChannelType: String, linkedUserAgent: String, divArea: String, lcid: String, pkey: String, embedCodeId: String) :MResponseDeliveryGetContentDetail
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_getContentDetail: String
 
 	/**
-	 * This service provides the thumbnail of a given content with the desired resolution and quality:
-	 * THRON will automatically process the highest available quality image to apply cropping and resize
-	 * algorithms that match your request, as specified by URL parameters expressed after ContentID.
-	 * For backward compatibility, if no additional query param is provided, the service will return the
+	 * This service provides the thumbnail of a content with the desired resolution and quality: THRON
+	 * will automatically process the highest available quality image to apply cropping and resize
+	 * algorithms that match your request.
+	 * For backward compatibility, if no additional queryparam is provided, the service will return the
 	 * image of the exact width of the divArea while height will respect the aspect ratio.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
 	 * HTTP status codes:
 	 * <ul>
-	 * 	<li>400: invalid arguments, </li>
-	 * 	<li>404: content not found, </li>
-	 * 	<li>500: generic error , </li>
-	 * 	<li>307: redirects to resulting image, </li>
-	 * 	<li>200: ok. </li>
+	 * 	<li>400: invalid arguments,</li>
+	 * 	<li>404: content not found,</li>
+	 * 	<li>500: generic error ,</li>
+	 * 	<li>307: redirects to resulting image,</li>
+	 * 	<li>200: ok.</li>
 	 * </ul>
 	 * 
 	 * If no thumbnail is available, a default fallback image will be provided.
@@ -278,20 +274,32 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * performed.
 	 * @param quality : Integer
 	 * Optional. The quality of the resulting image. Available values are: [0-100]. Default value is 90
+	 * @param adjustcrop : String
+	 * @param fill : String
+	 * @param fillcolor : String
+	 * @param format : String
+	 * @param enhance : String
+	 * @param dpr : Integer
+	 * Optional. Device Pixel Ration, available values are [1..1000]
+	 * 0-100: zoom out
+	 * 100-1000: zoom in
 	 * @return java.io.File
 	*/
 	@GET
 	@Path("/getThumbnail/{clientId}/{divArea}/{id}")
 	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getThumbnail", notes = """This service provides the thumbnail of a given content with the desired resolution and quality: THRON will automatically process the highest available quality image to apply cropping and resize algorithms that match your request, as specified by URL parameters expressed after ContentID. 
-	//#SWGNL#For backward compatibility, if no additional query param is provided, the service will return the image of the exact width of the divArea while height will respect the aspect ratio.
+	//#SWG#@ApiOperation(value = "/getThumbnail", notes = """This service provides the thumbnail of a content with the desired resolution and quality: THRON will automatically process the highest available quality image to apply cropping and resize algorithms that match your request. 
+	//#SWGNL#For backward compatibility, if no additional queryparam is provided, the service will return the image of the exact width of the divArea while height will respect the aspect ratio.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
+	//#SWGNL#
 	//#SWGNL#HTTP status codes: 
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>400: invalid arguments, </li>
-	//#SWGNL#	<li>404: content not found, </li>
-	//#SWGNL#	<li>500: generic error , </li>
-	//#SWGNL#	<li>307: redirects to resulting image, </li>
-	//#SWGNL#	<li>200: ok. </li>
+	//#SWGNL#	<li>400: invalid arguments,</li>
+	//#SWGNL#	<li>404: content not found,</li>
+	//#SWGNL#	<li>500: generic error ,</li>
+	//#SWGNL#	<li>307: redirects to resulting image,</li>
+	//#SWGNL#	<li>200: ok.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
 	//#SWGNL#If no thumbnail is available, a default fallback image will be provided. 
@@ -343,7 +351,27 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	croph: Double, 
 			//#SWG#@ApiParam(value = """Optional. The quality of the resulting image. Available values are: [0-100]. Default value is 90""")
 	@QueryParam("quality")
-	quality: Integer,
+	quality: Integer, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("adjustcrop")
+	adjustcrop: String, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("fill")
+	fill: String, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("fillcolor")
+	fillcolor: String, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("format")
+	format: String, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("enhance")
+	enhance: String, 
+			//#SWG#@ApiParam(value = """Optional. Device Pixel Ration, available values are [1..1000]
+	//#SWGNL#0-100: zoom out
+	//#SWGNL#100-1000: zoom in""")
+	@QueryParam("dpr")
+	dpr: Integer,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
@@ -355,7 +383,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		//get the cache control specific for this service
 		val cc = this.cachemap("getThumbnail") 
 		try{	
-			val resp = this.__getThumbnail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,divArea,id,scalemode,cropmode,cropx,cropy,cropw,croph,quality)
+			val resp = this.__getThumbnail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,divArea,id,scalemode,cropmode,cropx,cropy,cropw,croph,quality,adjustcrop,fill,fillcolor,format,enhance,dpr)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getThumbnail)
 	    }catch{
@@ -368,24 +396,21 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getThumbnail(tokenId: String, clientId: String, divArea: String, id: String, scalemode: String, cropmode: String, cropx: Double, cropy: Double, cropw: Double, croph: Double, quality: Integer) :java.io.File
+	 protected def __getThumbnail(tokenId: String, clientId: String, divArea: String, id: String, scalemode: String, cropmode: String, cropx: Double, cropy: Double, cropw: Double, croph: Double, quality: Integer, adjustcrop: String, fill: String, fillcolor: String, format: String, enhance: String, dpr: Integer) :java.io.File
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_getThumbnail: String
 
 	/**
-	 * The service is used to return the content cuepoints for a public content.
-	 * The REST webservice is enabled for jsonp callback using the callback queryparam
+	 * Returns cuepoints of a public content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * <b>Limits:</b>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
 	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * 
-	 * <b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getCuePoints</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -422,17 +447,14 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@GET
 	@Path("/getCuePoints")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getCuePoints", notes = """The service is used to return the content cuepoints for a public content.
-	//#SWGNL#The REST webservice is enabled for jsonp callback using the callback queryparam
+	//#SWG#@ApiOperation(value = "/getCuePoints", notes = """Returns cuepoints of a public content.
+	//#SWGNL#JSONP is supported via the callback queryparam.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#
 	//#SWGNL#<b>Limits:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate the user session or specific keys used to share the content (shareboard feature).if the pkey is not valid the service return an error response like CONTENT_NOT_FOUND</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>Web Service Endpoints</b>:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getCuePoints</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseDeliveryGetCuePoints])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getCuePoints(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -580,22 +602,16 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_getPlayListDescriptor: String
 
 	/**
-	 * The service is used to return only the content subtitles in srt format for a public content and for
-	 * a single locale.
-	 * Subtitles are archived as cuepoints but this service is used to return the list in the standard srt
-	 * format
-	 * The REST webservice is enabled for jsonp callback using the callback queryparam
+	 * Returns localized subtitles for a public content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * <b>Limits:</b>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
 	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * 
-	 * <b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getSubTitles</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -616,18 +632,14 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@GET
 	@Path("/getSubTitles")
 	@Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getSubTitles", notes = """The service is used to return only the content subtitles in srt format for a public content and for a single locale.
-	//#SWGNL#Subtitles are archived as cuepoints but this service is used to return the list in the standard srt format
-	//#SWGNL#The REST webservice is enabled for jsonp callback using the callback queryparam
+	//#SWG#@ApiOperation(value = "/getSubTitles", notes = """Returns localized subtitles for a public content.
+	//#SWGNL#JSONP is supported via the callback queryparam.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#
 	//#SWGNL#<b>Limits:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate the user session or specific keys used to share the content (shareboard feature).if the pkey is not valid the service return an error response like CONTENT_NOT_FOUND</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>Web Service Endpoints</b>:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getSubTitles</li>
 	//#SWGNL#</ul>""", response = classOf[String])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getSubTitles(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -681,21 +693,16 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_getSubTitles: String
 
 	/**
-	 * The service is used to return the list of "Downloadable Contents" linked to a specified content
-	 * without "UNLINKABLE" in MContent.properties .
-	 * The REST webservice is enabled for jsonp callback using the callback queryparam
+	 * Returns the list of downloadable content of a content without "UNLINKABLE" property.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * <b>Limits:</b>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
-	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * 
-	 * <b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.
-	 * com/api/xcontents/resources/delivery/getDownloadableContents</li>
+	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -721,7 +728,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * contents are validated on the context of the parent content.
 	 * example:
 	 * A -> has A1, A2 as recommended contents
-	 * A1 -> has D1,D2 has downloadable contents
+	 * A1 -> has D1,D2 as downloadable contents
 	 * 
 	 * To show the list of downloadable contents of A1 (on the context fo A):
 	 * xcontentId = A1
@@ -741,17 +748,14 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@GET
 	@Path("/getDownloadableContents")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getDownloadableContents", notes = """The service is used to return the list of "Downloadable Contents" linked to a specified content without "UNLINKABLE" in MContent.properties . 
-	//#SWGNL#The REST webservice is enabled for jsonp callback using the callback queryparam
+	//#SWG#@ApiOperation(value = "/getDownloadableContents", notes = """Returns the list of downloadable content of a content without "UNLINKABLE" property.
+	//#SWGNL#JSONP is supported via the callback queryparam.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#
 	//#SWGNL#<b>Limits:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate the user session or specific keys used to share the content (shareboard feature).if the pkey is not valid the service return an error response like CONTENT_NOT_FOUND</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>Web Service Endpoints</b>:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getDownloadableContents</li>
+	//#SWGNL#	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate the user session or specific keys used to share the content (shareboard feature).if the pkey is not valid the service return an error response like CONTENT_NOT_FOUND.</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseDeliveryGetDownloadableContents])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getDownloadableContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -784,7 +788,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	//#SWGNL#This parameter is used to have the list of downloadable contents. The ACL of a downloadable contents are validated on the context of the parent content.
 	//#SWGNL#example:
 	//#SWGNL#A -> has A1, A2 as recommended contents
-	//#SWGNL#A1 -> has D1,D2 has downloadable contents
+	//#SWGNL#A1 -> has D1,D2 as downloadable contents
 	//#SWGNL#
 	//#SWGNL#To show the list of downloadable contents of A1 (on the context fo A):
 	//#SWGNL#xcontentId = A1
@@ -832,20 +836,16 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_getDownloadableContents: String
 
 	/**
-	 * The service is used to return the list of "Recommended Contents" linked to a specified content. The
-	 * REST webservice is enabled for jsonp callback using the callback queryparam
+	 * Returns the list of recommended content of a content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * <b>
 	 * </b><b>Limits:</b>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
-	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * 
-	 * <b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.
-	 * com/api/xcontents/resources/delivery/getRecommendedContents</li>
+	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -888,16 +888,14 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@GET
 	@Path("/getRecommendedContents")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getRecommendedContents", notes = """The service is used to return the list of "Recommended Contents" linked to a specified content. The REST webservice is enabled for jsonp callback using the callback queryparam
+	//#SWG#@ApiOperation(value = "/getRecommendedContents", notes = """Returns the list of recommended content of a content.
+	//#SWGNL#JSONP is supported via the callback queryparam.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#<b>
 	//#SWGNL#</b><b>Limits:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate the user session or specific keys used to share the content (shareboard feature).if the pkey is not valid the service return an error response like CONTENT_NOT_FOUND</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>Web Service Endpoints</b>:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getRecommendedContents</li>
+	//#SWGNL#	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate the user session or specific keys used to share the content (shareboard feature).if the pkey is not valid the service return an error response like CONTENT_NOT_FOUND.</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseDeliveryGetRecommendedContents])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getRecommendedContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -975,20 +973,16 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_getRecommendedContents: String
 
 	/**
-	 * The service is used to return the list of "Playlist items" linked to a specified Playlist. The REST
-	 * webservice is enabled for jsonp callback using the callback queryparam
+	 * Returns the list of content linked to a playlist content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * <b>Limits:</b>
 	 * <ul>
 	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
 	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
-	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * <b>
-	 * </b><b>Web Service Endpoints</b>:
-	 * <ul>
-	 * 	<li>REST: http://clientId-view.thron.
-	 * com/api/xcontents/resources/delivery/getPlaylistContents</li>
+	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -1016,6 +1010,18 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * 
 	 * Enabling this parameter, the service can be used in the admin console to show all contents linked
 	 * even those unmatching the filters.
+	 * @param lcid : String
+	 * Optional. the xcontentId of the parent linked content
+	 * This parameter is used to have the list of playlist contents. The ACL of a playlist content are
+	 * validated on the context of the parent content.
+	 * example:
+	 * A -> has A1, A2 as recommended contents
+	 * A1 -> has C1,C2 as playlist contents
+	 * 
+	 * To show the list of playlist contents of A1 (on the context fo A):
+	 * xcontentId = A1
+	 * lcid = A
+	 * pkey = pkey/token of A
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
@@ -1030,16 +1036,14 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	@GET
 	@Path("/getPlaylistContents")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getPlaylistContents", notes = """The service is used to return the list of "Playlist items" linked to a specified Playlist. The REST webservice is enabled for jsonp callback using the callback queryparam
+	//#SWG#@ApiOperation(value = "/getPlaylistContents", notes = """Returns the list of content linked to a playlist content.
+	//#SWGNL#JSONP is supported via the callback queryparam.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#
 	//#SWGNL#<b>Limits:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate the user session or specific keys used to share the content (shareboard feature).if the pkey is not valid the service return an error response like CONTENT_NOT_FOUND</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<b>
-	//#SWGNL#</b><b>Web Service Endpoints</b>:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>REST: http://clientId-view.thron.com/api/xcontents/resources/delivery/getPlaylistContents</li>
+	//#SWGNL#	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate the user session or specific keys used to share the content (shareboard feature).if the pkey is not valid the service return an error response like CONTENT_NOT_FOUND.</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseDeliveryGetPlaylistContents])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getPlaylistContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -1076,6 +1080,18 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	//#SWGNL#Enabling this parameter, the service can be used in the admin console to show all contents linked even those unmatching the filters.""")
 	@QueryParam("admin")
 	admin: Boolean, 
+			//#SWG#@ApiParam(value = """Optional. the xcontentId of the parent linked content
+	//#SWGNL#This parameter is used to have the list of playlist contents. The ACL of a playlist content are validated on the context of the parent content.
+	//#SWGNL#example:
+	//#SWGNL#A -> has A1, A2 as recommended contents
+	//#SWGNL#A1 -> has C1,C2 as playlist contents
+	//#SWGNL#
+	//#SWGNL#To show the list of playlist contents of A1 (on the context fo A):
+	//#SWGNL#xcontentId = A1
+	//#SWGNL#lcid = A
+	//#SWGNL#pkey = pkey/token of A""")
+	@QueryParam("lcid")
+	lcid: String, 
 			//#SWG#@ApiParam(value = """Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail that best suits.
 	//#SWGNL#Format: <widht>x<height>
 	//#SWGNL#Example: 1280x1024, 768x0 (zero means no coinstraints)""")
@@ -1098,7 +1114,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 		//get the cache control specific for this service
 		val cc = this.cachemap("getPlaylistContents") 
 		try{	
-			val resp = this.__getPlaylistContents(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,xcontentId,xpublisherId,locale,linkedChannelType,linkedUserAgent,pkey,admin,divArea,offset,numberOfResult)
+			val resp = this.__getPlaylistContents(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,xcontentId,xpublisherId,locale,linkedChannelType,linkedUserAgent,pkey,admin,lcid,divArea,offset,numberOfResult)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getPlaylistContents)
 	    }catch{
@@ -1111,7 +1127,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getPlaylistContents(tokenId: String, clientId: String, xcontentId: String, xpublisherId: String, locale: String, linkedChannelType: String, linkedUserAgent: String, pkey: String, admin: Boolean, divArea: String, offset: Integer, numberOfResult: Integer) :MResponseDeliveryGetPlaylistContents
+	 protected def __getPlaylistContents(tokenId: String, clientId: String, xcontentId: String, xpublisherId: String, locale: String, linkedChannelType: String, linkedUserAgent: String, pkey: String, admin: Boolean, lcid: String, divArea: String, offset: Integer, numberOfResult: Integer) :MResponseDeliveryGetPlaylistContents
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_getPlaylistContents: String
 

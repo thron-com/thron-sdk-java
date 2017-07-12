@@ -53,11 +53,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Create a new THRON content starting from a source file or resource.
+	 * Creates a content.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>the service can be invoked only by platform users</li>
+	 * 	<li>applications cannot create content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -68,11 +68,11 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/insert/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/insert", notes = """Create a new THRON content starting from a source file or resource.
+	//#SWG#@ApiOperation(value = "/insert", notes = """Creates a content.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>the service can be invoked only by platform users</li>
+	//#SWGNL#	<li>applications cannot create content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponsePublishContents])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -126,11 +126,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_insert: String
 
 	/**
-	 * List all available version of the content
+	 * Returns the list of versions of a content
 	 * <b>
-	 * </b><b>Role Validation</b>
+	 * </b><b>Validation</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -142,11 +143,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/listVersions/{clientId}/{xcontentId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/listVersions", notes = """List all available version of the content
+	//#SWG#@ApiOperation(value = "/listVersions", notes = """Returns the list of versions of a content
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation</b>
+	//#SWGNL#</b><b>Validation</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentListVersions])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listVersions(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -206,11 +208,13 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_listVersions: String
 
 	/**
-	 * The service return the information about the source of the content (not only file)
+	 * Return the detail of a content source.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * <b>
-	 * </b><b>Role Validation</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>READ ACL on Content</li>
+	 * 	<li>READ ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -220,11 +224,13 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@GET
 	@Path("/detailSource/{clientId}/{xcontentId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detailSource", notes = """The service return the information about the source of the content (not only file)
+	//#SWG#@ApiOperation(value = "/detailSource", notes = """Return the detail of a content source.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation</b>
+	//#SWGNL#</b><b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>READ ACL on Content</li>
+	//#SWGNL#	<li>READ ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseDetailSource])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def detailSource(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -279,9 +285,10 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * 	<li>return an error if the content has some channel in progress.</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation</b>
+	 * <b>Validation</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -306,9 +313,10 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#	<li>return an error if the content has some channel in progress.</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation</b>
+	//#SWGNL#<b>Validation</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponsePublish])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateSource(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -362,12 +370,13 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateSource: String
 
 	/**
-	 * Update the version note for the current active version of the content.
+	 * Updates the version note for the active version of a content.
 	 * <b>
-	 * </b><b>Role Validation</b>
+	 * </b><b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
-	 * 	<li>available only for the creator of the version.</li>
+	 * 	<li>can be invoked only by version creator</li>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -379,12 +388,13 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateVersionNote/{clientId}/{xcontentId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateVersionNote", notes = """Update the version note for the current active version of the content.
+	//#SWG#@ApiOperation(value = "/updateVersionNote", notes = """Updates the version note for the active version of a content.
 	//#SWGNL#<b>
-	//#SWGNL#</b><b>Role Validation</b>
+	//#SWGNL#</b><b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
-	//#SWGNL#	<li>available only for the creator of the version.</li>
+	//#SWGNL#	<li>can be invoked only by version creator</li>
+	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponsePublish])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateVersionNote(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -444,12 +454,17 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateVersionNote: String
 
 	/**
-	 * Replace the thumbnail for a published content.
-	 * Not available for IMAGE content type.
+	 * Replaces the thumbnail of a content.
 	 * 
-	 * <b>Role Validation</b>
+	 * <b>Constraints:</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>image content are not eligible for thumbnail substitution.</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -460,12 +475,17 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/updateThumbnail/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateThumbnail", notes = """Replace the thumbnail for a published content.
-	//#SWGNL#Not available for IMAGE content type.
+	//#SWG#@ApiOperation(value = "/updateThumbnail", notes = """Replaces the thumbnail of a content.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation</b>
+	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>image content are not eligible for thumbnail substitution.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponsePublish])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateThumbnail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -519,19 +539,20 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateThumbnail: String
 
 	/**
-	 * move a content in TRASH category. The content is still published in CDN and can be recovered using
-	 * the service untrashContent.
+	 * Moves a content to the Trash category.
+	 * Content remains available for delivery and can be recovered via the untrash service.
 	 * 
-	 * The service remove also:
+	 * The service:
 	 * <ul>
-	 * 	<li>the contents from the linked categories</li>
-	 * 	<li>cleanup the ACL specific of the content</li>
-	 * 	<li>all linked embed codes.</li>
+	 * 	<li>unlinks the content from every linked categories</li>
+	 * 	<li>removes linked embed codes</li>
+	 * 	<li>removes any ACL but owner's</li>
 	 * </ul>
 	 * 
-	 * <b>Role Validation</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -542,18 +563,20 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/trash/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/trash", notes = """move a content in TRASH category. The content is still published in CDN and can be recovered using the service untrashContent.
+	//#SWG#@ApiOperation(value = "/trash", notes = """Moves a content to the Trash category.
+	//#SWGNL#Content remains available for delivery and can be recovered via the untrash service.
 	//#SWGNL#
-	//#SWGNL#The service remove also:
+	//#SWGNL#The service:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>the contents from the linked categories</li>
-	//#SWGNL#	<li>cleanup the ACL specific of the content</li>
-	//#SWGNL#	<li>all linked embed codes.</li>
+	//#SWGNL#	<li>unlinks the content from every linked categories</li>
+	//#SWGNL#	<li>removes linked embed codes</li>
+	//#SWGNL#	<li>removes any ACL but owner's</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentsTrash])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def trash(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -607,10 +630,10 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_trash: String
 
 	/**
-	 * Used to recover a trashContent operation.
-	 * The service restore the content in the owner's INBOX.
+	 * Restores a trashed content.
+	 * Content is restored in owner's inbox.
 	 * 
-	 * <b>Role Validation</b>
+	 * <b>Validation:</b>
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
@@ -623,10 +646,10 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/untrash/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/untrash", notes = """Used to recover a trashContent operation. 
-	//#SWGNL#The service restore the content in the owner's INBOX. 
+	//#SWG#@ApiOperation(value = "/untrash", notes = """Restores a trashed content. 
+	//#SWGNL#Content is restored in owner's inbox.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseContentsTrash])
@@ -682,11 +705,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_untrash: String
 
 	/**
-	 * Permanently remove a content from the Platform.
+	 * Removes a content from the platform.
 	 * 
-	 * <b>Role Validation</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * 	<li>MODIFY ACL on the content</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -697,11 +721,12 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/remove/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/remove", notes = """Permanently remove a content from the Platform.
+	//#SWG#@ApiOperation(value = "/remove", notes = """Removes a content from the platform.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on Content and 4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
 	//#SWGNL#</ul>""", response = classOf[MResponsePublish])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -755,8 +780,8 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_remove: String
 
 	/**
-	 * This service is used to know the possible platform content type available for a given filename. The
-	 * service map the mime type of filename to the corresponding list of content types.
+	 * Returns the list of contentType available for a file based on its name.
+	 * The service map the mime type of filename to the corresponding list of content types.
 	 * For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.
 	 * @param tokenId : String
 	 * @param param : MContentgetContentTypesReq
@@ -766,7 +791,8 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/getContentTypes")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/getContentTypes", notes = """This service is used to know the possible platform content type available for a given filename. The service map the mime type of filename to the corresponding list of content types.
+	//#SWG#@ApiOperation(value = "/getContentTypes", notes = """Returns the list of contentType available for a file based on its name.
+	//#SWGNL#The service map the mime type of filename to the corresponding list of content types.
 	//#SWGNL#For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.""", response = classOf[MResponseGetContentTypes])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def getContentTypes(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)

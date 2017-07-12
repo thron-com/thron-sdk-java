@@ -24,7 +24,7 @@ class MIMetadata extends Serializable {
 	var key: String =_
 	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var value: String =_
 	def withvalue(p:String):this.type ={ 	this.value = p; 	this }

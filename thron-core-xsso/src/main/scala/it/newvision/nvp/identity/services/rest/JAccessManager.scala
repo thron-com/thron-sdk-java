@@ -11,7 +11,8 @@ import it.newvision.nvp.identity.services.model.identity.MResponseAccessLogin
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * This service allow the user to login and logout in the platform.
+ * This service allows users to authenticate on the platform and verify their
+ * roles and capabilities.
  * 
  * <b>Web Service Endpoints:</b>
  * <ul>
@@ -20,7 +21,7 @@ import it.newvision.nvp.identity.services.model.identity.MResponseAccessLogin
  * </ul>
  */
 @Path("/accessmanager")
-//#SWG#@Api(value = "/accessmanager", description = """This service allow the user to login and logout in the platform.
+//#SWG#@Api(value = "/accessmanager", description = """This service allows users to authenticate on the platform and verify their roles and capabilities.
 //#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
@@ -37,10 +38,10 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Get a tokenId (access token) that authorize the user to make calls against API.
-	 * Each <b>tokenId </b>is valid for a specific session time (1 hour), after that it's necessary to
-	 * invoke the service to get a new key.
-	 * <b>The service is protected by  account lockout policy.</b>
+	 * Returns an access token used by users to invoke API services.
+	 * Lifespan of a token is 1 hour.
+	 * 
+	 * <b>Note: the service is protected by  account lockout policy.</b>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -51,9 +52,10 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	@Path("/login/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/login", notes = """Get a tokenId (access token) that authorize the user to make calls against API.
-	//#SWGNL#Each <b>tokenId </b>is valid for a specific session time (1 hour), after that it's necessary to invoke the service to get a new key.
-	//#SWGNL#<b>The service is protected by  account lockout policy.</b>""", response = classOf[MResponseAccessLogin])
+	//#SWG#@ApiOperation(value = "/login", notes = """Returns an access token used by users to invoke API services.
+	//#SWGNL#Lifespan of a token is 1 hour.
+	//#SWGNL#
+	//#SWGNL#<b>Note: the service is protected by  account lockout policy.</b>""", response = classOf[MResponseAccessLogin])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def login(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -109,8 +111,7 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	protected def capability_login: String
 
 	/**
-	 * The user can close the user session and invalidate the given tokenId.
-	 * To make other calls, it's necessary to invoke the login service and get a new tokenId.
+	 * Expires an access token.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @return String
@@ -119,8 +120,7 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	@Path("/logout/{clientId}")
 	@Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/logout", notes = """The user can close the user session and invalidate the given tokenId.
-	//#SWGNL#To make other calls, it's necessary to invoke the login service and get a new tokenId.""", response = classOf[String])
+	//#SWG#@ApiOperation(value = "/logout", notes = """Expires an access token.""", response = classOf[String])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def logout(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -168,7 +168,7 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	protected def capability_logout: String
 
 	/**
-	 * verify the session tokenId, if it is valid or expired.
+	 * Returns HTTP code 403 if access token has expired, 200 OK otherwise.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -180,7 +180,7 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	@Path("/validateToken/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/validateToken", notes = """verify the session tokenId, if it is valid or expired.""", response = classOf[MResponseAccessLogin])
+	//#SWG#@ApiOperation(value = "/validateToken", notes = """Returns HTTP code 403 if access token has expired, 200 OK otherwise.""", response = classOf[MResponseAccessLogin])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def validateToken(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -232,8 +232,8 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	protected def capability_validateToken: String
 
 	/**
-	 * HTTP status 200 if the given capability (or list of capabilities) is active for the user (given
-	 * tokenId) otherwise HTTP status 403.
+	 * Returns HTTP code 403 if a set of comma-separated capabilities are invalid for a session token, 200
+	 * OK otherwise.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param capabilities : String
@@ -245,7 +245,7 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	@Path("/validateCapability/{clientId}")
 	@Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/validateCapability", notes = """HTTP status 200 if the given capability (or list of capabilities) is active for the user (given tokenId) otherwise HTTP status 403.""", response = classOf[String])
+	//#SWG#@ApiOperation(value = "/validateCapability", notes = """Returns HTTP code 403 if a set of comma-separated capabilities are invalid for a session token, 200 OK otherwise.""", response = classOf[String])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def validateCapability(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -297,8 +297,8 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	protected def capability_validateCapability: String
 
 	/**
-	 * return HTTP status 200  if the given role is active for the user in session (given tokenId)
-	 * otherwise HTTP status 403.
+	 * Returns HTTP code 403 if a set of comma-separated roles are invalid for a session token, 200 OK
+	 * otherwise.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param role : String
@@ -317,7 +317,7 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	@Path("/validateRole/{clientId}")
 	@Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD))
 	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/validateRole", notes = """return HTTP status 200  if the given role is active for the user in session (given tokenId) otherwise HTTP status 403.""", response = classOf[String])
+	//#SWG#@ApiOperation(value = "/validateRole", notes = """Returns HTTP code 403 if a set of comma-separated roles are invalid for a session token, 200 OK otherwise.""", response = classOf[String])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def validateRole(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

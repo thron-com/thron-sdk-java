@@ -22,8 +22,9 @@ object JContentListClient {
 	
 }
 /**
- * This service is optimised for the webtv component, where are required lists of
- * contents sorted by number of visits, rating or creation date.
+ * This service is optimized for lists of contents sorted by number of visits,
+ * rating or creation date.
+ * 
  * <b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: https://clientId-view.thron.
@@ -33,14 +34,15 @@ object JContentListClient {
 class JContentListClient(val resourceEndpoint:String) {
 
 	/**
-	 * The service shows the contents sorted using the orderBy criteria. This service is used to fill the
-	 * webTv wall.
+	 * Returns content matching provided criteria.
 	 * The orderBy parameter follows a specific pattern: <b>[orderByKey]_[A|D]</b>
 	 * All possible values are defined in MEContentOrderBy enumeration.
-	 * Use the locale parameter to filter all contents having a specific locale.
+	 * Use the locale parameter to filter content having a specific locale.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * <b>Limits:</b>
-	 * The service doesn't return itags and imetadata value on contents.
+	 * The service doesn't return itags and imetadata value on content.
 	 * 
 	 * <b>Examples: </b>
 	 * http://demo-view.thron.

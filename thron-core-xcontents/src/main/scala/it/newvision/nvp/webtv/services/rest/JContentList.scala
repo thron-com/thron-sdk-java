@@ -13,8 +13,9 @@ import it.newvision.nvp.xcontents.model.MEContentType
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * This service is optimised for the webtv component, where are required lists of
- * contents sorted by number of visits, rating or creation date.
+ * This service is optimized for lists of contents sorted by number of visits,
+ * rating or creation date.
+ * 
  * <b>Web Service Endpoints:</b>
  * <ul>
  * 	<li>REST service: https://clientId-view.thron.
@@ -22,7 +23,8 @@ import it.newvision.nvp.xcontents.model.MEContentType
  * </ul>
  */
 @Path("/contentlist")
-//#SWG#@Api(value = "/contentlist", description = """This service is optimised for the webtv component, where are required lists of contents sorted by number of visits, rating or creation date. 
+//#SWG#@Api(value = "/contentlist", description = """This service is optimized for lists of contents sorted by number of visits, rating or creation date.
+//#SWGNL#
 //#SWGNL#<b>Web Service Endpoints:</b>
 //#SWGNL#<ul>
 //#SWGNL#	<li>REST service: https://clientId-view.thron.com/api/xcontents/resources/contentlist</li>
@@ -38,14 +40,15 @@ trait JContentList extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * The service shows the contents sorted using the orderBy criteria. This service is used to fill the
-	 * webTv wall.
+	 * Returns content matching provided criteria.
 	 * The orderBy parameter follows a specific pattern: <b>[orderByKey]_[A|D]</b>
 	 * All possible values are defined in MEContentOrderBy enumeration.
-	 * Use the locale parameter to filter all contents having a specific locale.
+	 * Use the locale parameter to filter content having a specific locale.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
 	 * <b>Limits:</b>
-	 * The service doesn't return itags and imetadata value on contents.
+	 * The service doesn't return itags and imetadata value on content.
 	 * 
 	 * <b>Examples: </b>
 	 * http://demo-view.thron.
@@ -131,13 +134,15 @@ trait JContentList extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	@GET
 	@Path("/showContents")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/showContents", notes = """The service shows the contents sorted using the orderBy criteria. This service is used to fill the webTv wall.
+	//#SWG#@ApiOperation(value = "/showContents", notes = """Returns content matching provided criteria.
 	//#SWGNL#The orderBy parameter follows a specific pattern: <b>[orderByKey]_[A|D]</b>
 	//#SWGNL#All possible values are defined in MEContentOrderBy enumeration.
-	//#SWGNL#Use the locale parameter to filter all contents having a specific locale.
+	//#SWGNL#Use the locale parameter to filter content having a specific locale.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#
 	//#SWGNL#<b>Limits:</b>
-	//#SWGNL#The service doesn't return itags and imetadata value on contents.
+	//#SWGNL#The service doesn't return itags and imetadata value on content.
 	//#SWGNL#
 	//#SWGNL#<b>Examples: </b>
 	//#SWGNL#http://demo-view.thron.com/api/xcontents/resources/contentlist/showContents?clientId=demo&locale=IT&orderBy=lastUpdate_A

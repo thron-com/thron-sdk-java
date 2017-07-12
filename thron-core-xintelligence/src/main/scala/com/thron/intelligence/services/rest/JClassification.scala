@@ -43,11 +43,17 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Insert a new Classification.
-	 * Max number of clientId's classification is 5 (1 TOPIC, 1 TARGET and 3 CUSTOM classifications)
+	 * Creates a classification.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>max number of classifications: 5 (1 TOPIC, 1 TARGET, and 3 CUSTOM)</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASSIFICATIONS_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MClassificationinsertReq
@@ -57,11 +63,17 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/insert/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/insert", notes = """Insert a new Classification. 
-	//#SWGNL#Max number of clientId's classification is 5 (1 TOPIC, 1 TARGET and 3 CUSTOM classifications)
+	//#SWG#@ApiOperation(value = "/insert", notes = """Creates a classification. 
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER""", response = classOf[MResponseClassificationDetail])
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max number of classifications: 5 (1 TOPIC, 1 TARGET, and 3 CUSTOM)</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASSIFICATIONS_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseClassificationDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -114,8 +126,7 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_insert: String
 
 	/**
-	 * Lists the client's Classification. This method return the classifications matching the given search
-	 * criteria.
+	 * Returns the lists of classifications matching provided criteria.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MClassificationlistReq
@@ -125,7 +136,7 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/list/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/list", notes = """Lists the client's Classification. This method return the classifications matching the given search criteria.""", response = classOf[MResponseClassificationList])
+	//#SWG#@ApiOperation(value = "/list", notes = """Returns the lists of classifications matching provided criteria.""", response = classOf[MResponseClassificationList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -178,7 +189,9 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_list: String
 
 	/**
-	 * Lists the client's Classification. This method return all classification by default.
+	 * Returns the lists of classifications matching provided criteria.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param text : String
@@ -201,7 +214,9 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@GET
 	@Path("/listGet/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/listGet", notes = """Lists the client's Classification. This method return all classification by default.""", response = classOf[MResponseClassificationList])
+	//#SWG#@ApiOperation(value = "/listGet", notes = """Returns the lists of classifications matching provided criteria.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseClassificationList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listGet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -257,8 +272,9 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_listGet: String
 
 	/**
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_VIEWER
+	 * Returns the detail of a classification.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String
@@ -268,7 +284,9 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@GET
 	@Path("/detail/{clientId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detail", notes = """""", response = classOf[MResponseClassificationDetail])
+	//#SWG#@ApiOperation(value = "/detail", notes = """Returns the detail of a classification.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseClassificationDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -308,14 +326,15 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_detail: String
 
 	/**
-	 * Update a given classification in patch mode.
+	 * Updates a classification in patch mode.
 	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
 	 * the "update" attributes you want to change must be included in the body of the request, those not
 	 * included will not be updated.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER or
-	 * THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String
@@ -327,11 +346,13 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/update/{clientId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/update", notes = """Update a given classification in patch mode.
+	//#SWG#@ApiOperation(value = "/update", notes = """Updates a classification in patch mode.
 	//#SWGNL#The "update" field of this web service works in “patch" mode: it means that each and everyone of the "update" attributes you want to change must be included in the body of the request, those not included will not be updated.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseClassificationDetail])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseClassificationDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -390,12 +411,17 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_update: String
 
 	/**
-	 * Remove a given classification.
-	 * Only inactive classification can be removed (Classification.active= false)
+	 * Removes a classification.
 	 * 
-	 * <b>Role Validation:</b>
-	 * Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER or
-	 * THRON_CLASS_[CLASSID]_MANAGER
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>classification must not be active</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String
@@ -406,11 +432,17 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	@Path("/remove/{clientId}/{id}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/remove", notes = """Remove a given classification.
-	//#SWGNL#Only inactive classification can be removed (Classification.active= false)
+	//#SWG#@ApiOperation(value = "/remove", notes = """Removes a classification.
 	//#SWGNL#
-	//#SWGNL#<b>Role Validation:</b>
-	//#SWGNL#Can be invoked only by users with role  THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER""", response = classOf[MResponseClassification])
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>classification must not be active</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseClassification])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

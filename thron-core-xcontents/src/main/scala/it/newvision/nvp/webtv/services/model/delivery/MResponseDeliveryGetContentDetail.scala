@@ -56,20 +56,9 @@ class MResponseDeliveryGetContentDetail extends MResponseDelivery with Serializa
 	def withtotalRecommendedContents(p:Integer):this.type ={ 	this.totalRecommendedContents = p; 	this }
 
 	/**
-	 * Deprecated.
+	 * The template used to customize Player layout for the content
 	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated.""")
-	@BeanProperty 
-	@Deprecated
-	var totalSimilarContents: Integer =_
-	@Deprecated
-	def withtotalSimilarContents(p:Integer):this.type ={ 	this.totalSimilarContents = p; 	this }
-
-	/**
-	 * The list of templates used to customize the Player layout for the current
-	 * content.
-	 */
-	//#SWG#@ApiModelProperty(value = """The list of templates used to customize the Player layout for the current content.""")
+	//#SWG#@ApiModelProperty(value = """The template used to customize Player layout for the content""")
 	@BeanProperty 
 	var embedTemplate: MPlayerEmbedTemplateDetail =_
 	def withembedTemplate(p:MPlayerEmbedTemplateDetail):this.type ={ 	this.embedTemplate = p; 	this }
