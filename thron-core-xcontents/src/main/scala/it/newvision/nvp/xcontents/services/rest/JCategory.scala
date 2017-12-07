@@ -556,7 +556,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param categoryId : String
-	 * Category id or prettyId
+	 * Id or prettyId
 	 * @param cascade : Boolean
 	 * Optional. With cascade equals true, the service return the children sub tree of the given category
 	 * @param locale : String
@@ -580,7 +580,7 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 			//#SWG#@ApiParam(value = """""")
 	@QueryParam("clientId")
 	clientId: String, 
-			//#SWG#@ApiParam(value = """Category id or prettyId""")
+			//#SWG#@ApiParam(value = """Id or prettyId""")
 	@QueryParam("categoryId")
 	categoryId: String, 
 			//#SWG#@ApiParam(value = """Optional. With cascade equals true, the service return the children sub tree of the given category""")

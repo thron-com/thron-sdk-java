@@ -164,10 +164,10 @@ class MPropertyGenericDocument extends Serializable {
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def init_servers(domain: String){
 		val s = domain match {
-			case "4me.it" => "-4me.weebo.it/static/"
-			case "thron.com" => "-cdn.thron.com/static/"
+			case "4me.it" => "-4me.weebo.it/"
+			case "thron.com" => "-cdn.thron.com/"
 		}
-		this.httpServer = s
+		this.httpServer = s+"static/"
 		this.streamServer = s
 	}
 

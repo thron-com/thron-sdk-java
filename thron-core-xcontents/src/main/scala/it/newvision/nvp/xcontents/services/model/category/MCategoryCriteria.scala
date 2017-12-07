@@ -18,9 +18,9 @@ import it.newvision.nvp.xcontents.services.model.acl.MAclCriteria
 class MCategoryCriteria extends Serializable {
 
 	/**
-	 * list of category Ids or category PrettyIds
+	 * list of category Ids or prettyIds
 	 */
-	//#SWG#@ApiModelProperty(value = """list of category Ids or category PrettyIds""")
+	//#SWG#@ApiModelProperty(value = """list of category Ids or prettyIds""")
 	@BeanProperty 
 	var categoryIds: List[String] = new ArrayList[String]
 	def withcategoryIds(p:List[String]):this.type ={ 	this.categoryIds = p; 	this }

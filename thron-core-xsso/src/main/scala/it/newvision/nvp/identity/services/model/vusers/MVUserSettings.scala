@@ -16,11 +16,8 @@ class MVUserSettings extends Serializable {
 
 	/**
 	 * Deprecated.
-	 * Optional. the total amount of quota reserved to the user (in MB). If zero the
-	 * user have no quota restrictions
 	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated.
-	//#SWGNL#Optional. the total amount of quota reserved to the user (in MB). If zero the user have no quota restrictions""")
+	//#SWG#@ApiModelProperty(value = """Deprecated.""")
 	@BeanProperty 
 	@Deprecated
 	var userQuota: Long =_

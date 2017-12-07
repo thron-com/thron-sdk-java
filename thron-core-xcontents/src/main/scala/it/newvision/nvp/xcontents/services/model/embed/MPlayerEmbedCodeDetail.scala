@@ -20,4 +20,9 @@ class MPlayerEmbedCodeDetail extends MPlayerEmbedCode with Serializable  {
 	var pkey: String =_
 	def withpkey(p:String):this.type ={ 	this.pkey = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var source: MPlayerEmbedCodeEntityDetail =_
+	def withsource(p:MPlayerEmbedCodeEntityDetail):this.type ={ 	this.source = p; 	this }
+
 }

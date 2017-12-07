@@ -120,7 +120,8 @@ class MClient extends Serializable {
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def isValid():Boolean ={
-		(clientId != null)
+		import org.apache.commons.lang.StringUtils
+		Option(clientId).map(StringUtils.trim).exists(_.length <= 20)
 	}
 
 }

@@ -4,6 +4,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import it.newvision.nvp.identity.services.model.client.MResponseRoleHierarchy
 import it.newvision.nvp.identity.services.model.client.MResponseRoleList
 import it.newvision.nvp.identity.services.model.client.MResponseDetailClientProperty
 
@@ -40,19 +41,20 @@ class JClientPropertiesClient(val resourceEndpoint:String) {
 	 * is also a  VIEW_PUBLISH_OWN_CONTENT
 	 * @param tokenId : String
 	 * @param role : String
-	 * @return MResponseRoleList
+	 * Optional. If no role is provided, full roles hierarchy is returned.
+	 * @return MResponseRoleHierarchy
 	*/
 	def roleHierarchy(tokenId: String, 
-			role: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRoleList ={
+			role: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRoleHierarchy ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
 			val webResource = JClientPropertiesClient.client.resource(this.resourceEndpoint)
 			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
 			Option(role).foreach(s => params.add("role", s))
-			val response : MResponseRoleList = if(this.resourceEndpoint == ""){
+			val response : MResponseRoleHierarchy = if(this.resourceEndpoint == ""){
 			
-				new MResponseRoleList()
+				new MResponseRoleHierarchy()
 			
 			}else{
 				var wbuilder = webResource.queryParams(params)
@@ -61,14 +63,14 @@ class JClientPropertiesClient(val resourceEndpoint:String) {
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
 					.header("X-TOKENID",tokenId)	
 				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseRoleList])
+				wbuilder.get(classOf[MResponseRoleHierarchy])
 			}
 			response
 		  }catch{
 			case e : com.sun.jersey.api.client.UniformInterfaceException =>
 				val response = e.getResponse
 				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseRoleList])
+				  response.getEntity(classOf[MResponseRoleHierarchy])
 				}
 				else {
 					throw e

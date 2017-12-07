@@ -20,6 +20,8 @@ class MLinkedCategorySearchOptions extends Serializable {
 	/**
 	 * used to filter the contents linked to the given categories. Commonly used to
 	 * have the list of Contents linked to a category or NOT linked to a category.
+	 * Category id or prettyId are supported.
+	 * 
 	 * The list of linkedCategories is partitioned in two set:
 	 * <ul>
 	 * 	<li>cids = the list of categoriesId</li>
@@ -47,6 +49,8 @@ class MLinkedCategorySearchOptions extends Serializable {
 	 * 	"linkedCategories": ["a","b","!_c","!_d"]
 	 */
 	//#SWG#@ApiModelProperty(value = """used to filter the contents linked to the given categories. Commonly used to have the list of Contents linked to a category or NOT linked to a category.
+	//#SWGNL#Category id or prettyId are supported.
+	//#SWGNL#
 	//#SWGNL#The list of linkedCategories is partitioned in two set:
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>cids = the list of categoriesId</li>

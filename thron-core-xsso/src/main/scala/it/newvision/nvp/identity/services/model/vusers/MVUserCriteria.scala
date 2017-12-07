@@ -5,6 +5,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.identity.model.MEUserType
+import it.newvision.nvp.identity.services.model.msg.MERoleContext
 import it.newvision.nvp.identity.services.model.acl.MAclUsersGroupCriteria
 
 /* ************************
@@ -171,6 +172,15 @@ class MVUserCriteria extends Serializable {
 	@BeanProperty 
 	var userRoles: List[String] = new ArrayList[String]
 	def withuserRoles(p:List[String]):this.type ={ 	this.userRoles = p; 	this }
+
+	/**
+	 * Used in combination with userRoles to filter users matching one of the
+	 * specified roles.
+	 */
+	//#SWG#@ApiModelProperty(value = """Used in combination with userRoles to filter users matching one of the specified roles.""")
+	@BeanProperty 
+	var roleContext: MERoleContext  = MERoleContext.OWN
+	def withroleContext(p:MERoleContext):this.type ={ 	this.roleContext = p; 	this }
 
 	/**
 	 * text search over fields :

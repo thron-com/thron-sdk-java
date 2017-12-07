@@ -33,9 +33,12 @@ class MPlayerEmbedCodeinsertReq extends Serializable {
 	def withvalue(p:MPlayerEmbedCodeValue):this.type ={ 	this.value = p; 	this }
 
 	/**
-	 * Whether or not service should skip pkey creation for this Player Embed Code.
+	 * Optional. Whether or not service should skip pkey creation for this Player
+	 * Embed Code.
+	 * Default is false.
 	 */
-	//#SWG#@ApiModelProperty(value = """Whether or not service should skip pkey creation for this Player Embed Code.""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional. Whether or not service should skip pkey creation for this Player Embed Code.
+	//#SWGNL#Default is false.""", required = true)
 	@BeanProperty
 	var skipPkeyCreation: Boolean =_
 	def withskipPkeyCreation(p:Boolean):this.type ={ 	this.skipPkeyCreation = p; 	this }

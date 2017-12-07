@@ -14,7 +14,10 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MResponseVUserVerifyUsername extends MResponseVUser with Serializable  {
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Valid username
+	 */
+	//#SWG#@ApiModelProperty(value = """Valid username""" ,required = true)
 	@BeanProperty 
 	var bestUsername: String =_
 	def withbestUsername(p:String):this.type ={ 	this.bestUsername = p; 	this }

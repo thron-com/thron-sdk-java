@@ -74,15 +74,7 @@ class MCategory extends Serializable {
 	 * 	<li>it's not possible to have more prettyId with the same locale.</li>
 	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """Constraints:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>max length = 150</li>
-	//#SWGNL#	<li>only lower case chars and digits</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>no spaces allowed, special characters "-" and"_" are allowed"</li>
-	//#SWGNL#	<li>it's not possible to have more prettyId with the same locale.</li>
-	//#SWGNL#</ul>""")
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var prettyIds: List[MPrettyId] = new ArrayList[MPrettyId]
 	def withprettyIds(p:List[MPrettyId]):this.type ={ 	this.prettyIds = p; 	this }

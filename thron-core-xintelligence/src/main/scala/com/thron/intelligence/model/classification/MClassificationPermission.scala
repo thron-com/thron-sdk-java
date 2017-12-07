@@ -23,7 +23,7 @@ class MClassificationPermission extends Serializable {
 	 * username, appId or groupId.
 	 * Only users with PLATFORM_USER userType can be assigned permissions to.
 	 */
-	//#SWG#@ApiModelProperty(value = """username, appId or groupId.
+	//#SWG#@ApiModelProperty(value = """username, appId, groupId or ROLE
 	//#SWGNL#Only users with PLATFORM_USER userType can be assigned permissions to.""" ,required = true)
 	@BeanProperty 
 	var id: String =_

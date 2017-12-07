@@ -4,6 +4,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import it.newvision.nvp.identity.services.model.msg.MERoleContext
 import it.newvision.nvp.identity.services.model.acl.MAclUsersGroupCriteria
 import it.newvision.nvp.identity.model.MEGroupType
 
@@ -55,6 +56,15 @@ class MUsersGroupCriteria extends Serializable {
 	def withgroupRoles(p:List[String]):this.type ={ 	this.groupRoles = p; 	this }
 
 	/**
+	 * used in combination with groupRoles to filter the groups with a specific
+	 * UserRole defined (in groupCapabilities.userRoles)
+	 */
+	//#SWG#@ApiModelProperty(value = """used in combination with groupRoles to filter the groups with a specific UserRole defined (in groupCapabilities.userRoles)""")
+	@BeanProperty 
+	var roleContext: MERoleContext  = MERoleContext.OWN
+	def withroleContext(p:MERoleContext):this.type ={ 	this.roleContext = p; 	this }
+
+	/**
 	 * filter the groups having the usersEnabledSolutions in groupCapabilities.
 	 * enabledSolutions.
 	 */
@@ -90,9 +100,9 @@ class MUsersGroupCriteria extends Serializable {
 	def withownerUsername(p:List[String]):this.type ={ 	this.ownerUsername = p; 	this }
 
 	/**
-	 * external ids of the user
+	 * external ids of the group
 	 */
-	//#SWG#@ApiModelProperty(value = """external ids of the user""")
+	//#SWG#@ApiModelProperty(value = """external ids of the group""")
 	@BeanProperty 
 	var externalId: String =_
 	def withexternalId(p:String):this.type ={ 	this.externalId = p; 	this }

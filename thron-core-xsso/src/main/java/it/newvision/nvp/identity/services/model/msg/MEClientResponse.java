@@ -39,5 +39,7 @@ public enum MEClientResponse {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("USERSGROUP_NOT_EMPTY") USERSGROUP_NOT_EMPTY,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("MAX_NUMBER_OF_ITEMS_REACHED") MAX_NUMBER_OF_ITEMS_REACHED
+	@XmlEnumValue("MAX_NUMBER_OF_ITEMS_REACHED") MAX_NUMBER_OF_ITEMS_REACHED,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("EXTERNALID_ALREADY_EXISTS") EXTERNALID_ALREADY_EXISTS
 }

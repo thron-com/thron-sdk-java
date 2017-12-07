@@ -106,7 +106,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 * @param pkey : String
 	 * Optional, the access key for the content. It's not required when session token is provided.
 	 * @param embedCodeId : String
-	 * Optional. define the playerEmbedCode to use for the content renering.
+	 * Optional. define the playerEmbedCode to use for the content rendering.
 	 * @return MResponseDeliveryGetContentDetail
 	*/
 	@GET
@@ -177,7 +177,7 @@ trait JDelivery extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 			//#SWG#@ApiParam(value = """Optional, the access key for the content. It's not required when session token is provided.""")
 	@QueryParam("pkey")
 	pkey: String, 
-			//#SWG#@ApiParam(value = """Optional. define the playerEmbedCode to use for the content renering.""")
+			//#SWG#@ApiParam(value = """Optional. define the playerEmbedCode to use for the content rendering.""")
 	@QueryParam("embedCodeId")
 	embedCodeId: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")

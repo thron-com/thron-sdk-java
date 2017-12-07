@@ -32,6 +32,19 @@ class MProperty extends Serializable {
 	var silentMode: Boolean  = true
 	def withsilentMode(p:Boolean):this.type ={ 	this.silentMode = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var trialMode: Boolean  = false
+	def withtrialMode(p:Boolean):this.type ={ 	this.trialMode = p; 	this }
+
+	/**
+	 * business Model code
+	 */
+	//#SWG#@ApiModelProperty(value = """business Model code""")
+	@BeanProperty 
+	var bmCode: String =_
+	def withbmCode(p:String):this.type ={ 	this.bmCode = p; 	this }
+
 	/**
 	 * The cilent can have multiple profiles (ingestions) and use it during the
 	 * publishing process.

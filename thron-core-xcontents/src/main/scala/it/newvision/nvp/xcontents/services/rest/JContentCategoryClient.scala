@@ -42,6 +42,7 @@ class JContentCategoryClient(val resourceEndpoint:String) {
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param categoryId : String
+	 * Id or prettyId
 	 * @param contentId : String
 	 * @return MResponseLinkCategoryToContent
 	*/
@@ -100,6 +101,7 @@ class JContentCategoryClient(val resourceEndpoint:String) {
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param categoryId : String
+	 * Id or prettyId
 	 * @param contentId : String
 	 * @return MResponseLinkCategoryToContent
 	*/

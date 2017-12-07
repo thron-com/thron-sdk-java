@@ -14,7 +14,7 @@ import javax.xml.bind.annotation._
  */
 @XmlRootElement(name="MPlayerEmbedCodeEntity") 
 @XmlType(name="MPlayerEmbedCodeEntity")
-//#SWG#@ApiModel(description = """content or category id""")
+//#SWG#@ApiModel(description = """""")
 class MPlayerEmbedCodeEntity extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)

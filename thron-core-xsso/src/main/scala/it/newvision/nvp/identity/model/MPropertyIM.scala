@@ -29,6 +29,11 @@ class MPropertyIM extends Serializable {
 	var secure: Boolean  = true
 	def withsecure(p:Boolean):this.type ={ 	this.secure = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var conf: List[MMetadata] = new ArrayList[MMetadata]
+	def withconf(p:List[MMetadata]):this.type ={ 	this.conf = p; 	this }
+
 	/**
 	 * @return void
 	*/

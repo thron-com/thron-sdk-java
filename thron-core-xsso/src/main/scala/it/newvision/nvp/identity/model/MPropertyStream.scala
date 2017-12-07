@@ -152,6 +152,70 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 	}
 
 	/**
+	 * default init for STREAM channel
+	 * @param client : MClient
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def init_STREAMHTTPIOSFULLHD(client: MClient){
+		this.init_gd_WEB(client,"STREAMHTTPIOSFULLHD")
+		// the total bitrate is used as profile name, becaue there are some profile xml file having all setup defined.
+		// to handle multiple profile for the same total bitrate, define a different profile id like 8000 for a profile of 800kb for ipad.
+		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4300),Integer.valueOf(1800),Integer.valueOf(1400),Integer.valueOf(1020),Integer.valueOf(680),Integer.valueOf(400)))
+		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96)))
+		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(4500),Integer.valueOf(2000),Integer.valueOf(1600),Integer.valueOf(1200),Integer.valueOf(800),Integer.valueOf(512)))
+		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100)))
+		this.defaultBitRate = 512
+		this.convertTo = "TS"
+		this.appName = "ios/"
+		this.streamProtocol = "http://"
+		val cd = new MChannelDescription
+		cd.locale = "IT"
+		cd.channelShortName = "Streaming HLS FULL HD"
+		cd.channelDescription = "HLS, codec h264, bitrate 4500kbps"
+		val cd2 = new MChannelDescription
+		cd2.locale = "EN"
+		cd2.channelShortName = "Streaming HLS FULL HD"
+		cd2.channelDescription = "HLS, codec h264, bitrate 4500kbps"
+		this.channelDescriptions.add(cd)
+		this.channelDescriptions.add(cd2)
+		this.withIngestion=true
+	}
+
+	/**
+	 * default init for STREAM channel
+	 * @param client : MClient
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def init_STREAMHTTPIOS4K(client: MClient){
+		this.init_gd_WEB(client,"STREAMHTTPIOS4K")
+		// the total bitrate is used as profile name, becaue there are some profile xml file having all setup defined.
+		// to handle multiple profile for the same total bitrate, define a different profile id like 8000 for a profile of 800kb for ipad.
+		this.videoBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(25000),Integer.valueOf(4300),Integer.valueOf(1800),Integer.valueOf(1400),Integer.valueOf(1020),Integer.valueOf(680),Integer.valueOf(400)))
+		this.audioBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96),Integer.valueOf(96)))
+		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(25100),Integer.valueOf(4500),Integer.valueOf(2000),Integer.valueOf(1600),Integer.valueOf(1200),Integer.valueOf(800),Integer.valueOf(512)))
+		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100),Integer.valueOf(44100)))
+		this.defaultBitRate = 512
+		this.convertTo = "TS"
+		this.appName = "ios/"
+		this.streamProtocol = "http://"
+		val cd = new MChannelDescription
+		cd.locale = "IT"
+		cd.channelShortName = "Streaming HLS 4K"
+		cd.channelDescription = "HLS, codec h264, bitrate 25000kbps"
+		val cd2 = new MChannelDescription
+		cd2.locale = "EN"
+		cd2.channelShortName = "Streaming HLS 4K"
+		cd2.channelDescription = "HLS, codec h264, bitrate 25000kbps"
+		this.channelDescriptions.add(cd)
+		this.channelDescriptions.add(cd2)
+		this.withIngestion=true
+	}
+
+	/**
 	 * default init for WEB channel (Progressive Download)
 	 * @param client : MClient
 	 * @return void

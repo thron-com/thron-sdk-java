@@ -68,6 +68,7 @@ trait JContentList extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	 * @param categoryId : String
 	 * Optional.Used as optional search criteria. Return only the contents linked to the specified
 	 * category.
+	 * Category id or prettyId are supported.
 	 * @param searchOnSubCategories : Boolean
 	 * Optional. If true and categoryId is defined, the service earch all contents in the cateogry subtree.
 	 * @param xcontentIds : String
@@ -159,7 +160,8 @@ trait JContentList extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	//#SWGNL#The parameter is required if the "searchKey" parameter is specified""")
 	@QueryParam("locale")
 	locale: String, 
-			//#SWG#@ApiParam(value = """Optional.Used as optional search criteria. Return only the contents linked to the specified category.""")
+			//#SWG#@ApiParam(value = """Optional.Used as optional search criteria. Return only the contents linked to the specified category.
+	//#SWGNL#Category id or prettyId are supported.""")
 	@QueryParam("categoryId")
 	categoryId: String, 
 			//#SWG#@ApiParam(value = """Optional. If true and categoryId is defined, the service earch all contents in the cateogry subtree.""")

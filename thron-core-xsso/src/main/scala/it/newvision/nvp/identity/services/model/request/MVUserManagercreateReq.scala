@@ -67,10 +67,10 @@ class MVUserManagercreateReq extends Serializable {
 	def withuserCapabilities(p:MUserCapability):this.type ={ 	this.userCapabilities = p; 	this }
 
 	/**
-	 * ptional. the total amount of quota reserved to the user (in MB). If zero the
+	 * Optional. the total amount of quota reserved to the user (in MB). If zero the
 	 * user have no quota restrictions
 	 */
-	//#SWG#@ApiModelProperty(value = """ptional. the total amount of quota reserved to the user (in MB). If zero the user have no quota restrictions""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional. the total amount of quota reserved to the user (in MB). If zero the user have no quota restrictions""", required = true)
 	@BeanProperty
 	var userQuota: Long =_
 	def withuserQuota(p:Long):this.type ={ 	this.userQuota = p; 	this }
@@ -95,11 +95,11 @@ class MVUserManagercreateReq extends Serializable {
 	 * if true the service send to the new user an email with the link to 1st access
 	 * page.
 	 * The new user can complete the profile setup and change his password.
-	 * Defaullt is false
+	 * Default is false
 	 */
 	//#SWG#@ApiModelProperty(value = """if true the service send to the new user an email with the link to 1st access page.
 	//#SWGNL#The new user can complete the profile setup and change his password.
-	//#SWGNL#Defaullt is false""", required = true)
+	//#SWGNL#Default is false""", required = true)
 	@BeanProperty
 	var sendFirstAccessNotification: Boolean =_
 	def withsendFirstAccessNotification(p:Boolean):this.type ={ 	this.sendFirstAccessNotification = p; 	this }

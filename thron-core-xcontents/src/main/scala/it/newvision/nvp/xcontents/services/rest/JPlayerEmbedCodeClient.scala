@@ -309,8 +309,8 @@ class JPlayerEmbedCodeClient(val resourceEndpoint:String) {
 	 * 
 	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>4ME_MANAGE_PLAYER_EMBED_TEMPLATES or 4ME_MANAGE_PLAYER_EMBED_VERSIONS role</li>
-	 * 	<li>can be invoked only by template's managers or editors</li>
+	 * 	<li>4ME_MANAGE_PLAYER_EMBED_VERSIONS role or (4ME_MANAGE_PLAYER_EMBED_TEMPLATES role and user is
+	 * template's manager or editor)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String

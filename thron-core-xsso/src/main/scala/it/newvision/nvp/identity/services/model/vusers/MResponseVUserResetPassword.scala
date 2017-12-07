@@ -15,11 +15,19 @@ import javax.xml.bind.annotation._
 class MResponseVUserResetPassword extends MResponseVUser with Serializable  {
 
 	/**
-	 * temporary token that can be used with JVuserManager.login
+	 * temporary token that can be used with JIdentityManager.loginWithDetail
 	 */
-	//#SWG#@ApiModelProperty(value = """temporary token that can be used with JVuserManager.login""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var tmpToken: String =_
 	def withtmpToken(p:String):this.type ={ 	this.tmpToken = p; 	this }
+
+	/**
+	 * URL where user can start the reset password process.
+	 */
+	//#SWG#@ApiModelProperty(value = """URL where user can start the reset password process.""" ,required = true)
+	@BeanProperty 
+	var url: String =_
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 }

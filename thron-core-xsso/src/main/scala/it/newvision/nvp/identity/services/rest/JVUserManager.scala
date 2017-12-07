@@ -146,6 +146,11 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 
 	/**
 	 * Updates the externalId of a user.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -156,7 +161,12 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Path("/updateExternalId/{clientId}/{username}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateExternalId", notes = """Updates the externalId of a user.""", response = classOf[MResponseVUser])
+	//#SWG#@ApiOperation(value = "/updateExternalId", notes = """Updates the externalId of a user.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>CORE_MANAGE_USERS role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseVUser])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -216,6 +226,14 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 
 	/**
 	 * Update the detail of a user.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MODIFY ACL on user</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -226,7 +244,15 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Path("/updateUser/{clientId}/{username}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateUser", notes = """Update the detail of a user.""", response = classOf[MResponseVUser])
+	//#SWG#@ApiOperation(value = "/updateUser", notes = """Update the detail of a user.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>CORE_MANAGE_USERS role</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on user</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseVUser])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateUser(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -287,6 +313,11 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	/**
 	 * Upgrades a PLATFORM_USER_GUEST type user to PLATFORM_USER type.
 	 * Username cannot be changed.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupgradeUserReq
 	 * @return MResponseVUserCreate
@@ -296,7 +327,12 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/upgradeUser", notes = """Upgrades a PLATFORM_USER_GUEST type user to PLATFORM_USER type.
-	//#SWGNL#Username cannot be changed.""", response = classOf[MResponseVUserCreate])
+	//#SWGNL#Username cannot be changed.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>CORE_MANAGE_USERS role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseVUserCreate])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def upgradeUser(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -480,7 +516,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	protected def capability_changePassword: String
 
 	/**
-	 * Sends a a notification email to a user, prompting him to change his password.
+	 * Resets user password, eventually sending him an email with the link to insert the new one.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * 	<li>MODIFY ACL on user</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MVUserManagerresetPasswordReq
 	 * @return MResponseVUserResetPassword
@@ -489,7 +531,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Path("/resetPassword")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/resetPassword", notes = """Sends a a notification email to a user, prompting him to change his password.""", response = classOf[MResponseVUserResetPassword])
+	//#SWG#@ApiOperation(value = "/resetPassword", notes = """Resets user password, eventually sending him an email with the link to insert the new one.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>CORE_MANAGE_USERS role</li>
+	//#SWGNL#	<li>MODIFY ACL on user</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseVUserResetPassword])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def resetPassword(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -543,6 +591,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	 * <b>Validation:</b>
 	 * <ul>
 	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * 	<li>MODIFY ACL on user</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MVUserManagerchangeUserStatusReq
@@ -559,6 +608,7 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>CORE_MANAGE_USERS role</li>
+	//#SWGNL#	<li>MODIFY ACL on user</li>
 	//#SWGNL#</ul>""", response = classOf[MResponseVUser])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def changeUserStatus(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -807,7 +857,6 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 
 	/**
 	 * Updates the profile picture of a user.
-	 * 
 	 * Supported file formats: JPEG, PNG.
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupdateImageReq
@@ -818,7 +867,6 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/updateImage", notes = """Updates the profile picture of a user.
-	//#SWGNL#
 	//#SWGNL#Supported file formats: JPEG, PNG.""", response = classOf[MResponseVUser])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def updateImage(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
@@ -929,6 +977,12 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 
 	/**
 	 * Links a user to a group.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * 	<li>MODIFY ACL on user</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -939,7 +993,13 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Path("/linkGroups/{clientId}/{username}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/linkGroups", notes = """Links a user to a group.""", response = classOf[MResponseVUser])
+	//#SWG#@ApiOperation(value = "/linkGroups", notes = """Links a user to a group.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>CORE_MANAGE_USERS role</li>
+	//#SWGNL#	<li>MODIFY ACL on user</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseVUser])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def linkGroups(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -999,6 +1059,14 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 
 	/**
 	 * Unlinks a user from a group.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MODIFY ACL on user</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -1009,7 +1077,15 @@ trait JVUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResou
 	@Path("/unlinkGroups/{clientId}/{username}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/unlinkGroups", notes = """Unlinks a user from a group.""", response = classOf[MResponseVUser])
+	//#SWG#@ApiOperation(value = "/unlinkGroups", notes = """Unlinks a user from a group.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>CORE_MANAGE_USERS role</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on user</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseVUser])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def unlinkGroups(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

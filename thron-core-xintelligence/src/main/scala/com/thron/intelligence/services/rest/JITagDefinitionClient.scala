@@ -477,7 +477,6 @@ class JITagDefinitionClient(val resourceEndpoint:String) {
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
-	 * ITagDefinition id
 	 * @param param : MITagDefinitioncombineReq
 	 * @return MResponseITagDefinitionDetail
 	*/

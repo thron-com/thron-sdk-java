@@ -422,7 +422,7 @@ class JCategoryClient(val resourceEndpoint:String) {
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param categoryId : String
-	 * Category id or prettyId
+	 * Id or prettyId
 	 * @param cascade : Boolean
 	 * Optional. With cascade equals true, the service return the children sub tree of the given category
 	 * @param locale : String

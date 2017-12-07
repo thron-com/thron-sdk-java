@@ -4,6 +4,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
+import it.newvision.nvp.identity.services.model.client.MResponseRoleHierarchy
 import it.newvision.nvp.identity.services.model.client.MResponseRoleList
 import it.newvision.nvp.identity.services.model.client.MResponseDetailClientProperty
 
@@ -46,24 +47,25 @@ trait JClientProperties extends it.newvision.nvp.core.libraries.restserver.BaseR
 	 * is also a  VIEW_PUBLISH_OWN_CONTENT
 	 * @param tokenId : String
 	 * @param role : String
-	 * @return MResponseRoleList
+	 * Optional. If no role is provided, full roles hierarchy is returned.
+	 * @return MResponseRoleHierarchy
 	*/
 	@GET
 	@Path("/roleHierarchy")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/roleHierarchy", notes = """The service return the role hierarchy list for the given role. This service is used when an admin console want to know the linked roles of a given role. Example: the role VIEW_PUBLISH_ANY_CONTENT is also a  VIEW_PUBLISH_OWN_CONTENT""", response = classOf[MResponseRoleList])
+	//#SWG#@ApiOperation(value = "/roleHierarchy", notes = """The service return the role hierarchy list for the given role. This service is used when an admin console want to know the linked roles of a given role. Example: the role VIEW_PUBLISH_ANY_CONTENT is also a  VIEW_PUBLISH_OWN_CONTENT""", response = classOf[MResponseRoleHierarchy])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def roleHierarchy(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
+			//#SWG#@ApiParam(value = """Optional. If no role is provided, full roles hierarchy is returned.""")
 	@QueryParam("role")
 	role: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
 			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseRoleList*/= { 
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseRoleHierarchy*/= { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
@@ -83,7 +85,7 @@ trait JClientProperties extends it.newvision.nvp.core.libraries.restserver.BaseR
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __roleHierarchy(tokenId: String, role: String) :MResponseRoleList
+	 protected def __roleHierarchy(tokenId: String, role: String) :MResponseRoleHierarchy
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_roleHierarchy: String
 

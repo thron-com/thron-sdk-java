@@ -44,6 +44,10 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
+	 * 
+	 * <b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser
+	 * may not be able to evaluate. For this reason it is recommended to test this service using an
+	 * external API testing software.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param downloadId : String
@@ -63,7 +67,9 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#</b><b>Validation:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
-	//#SWGNL#</ul>""", response = classOf[java.io.File])
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser may not be able to evaluate. For this reason it is recommended to test this service using an external API testing software.""", response = classOf[java.io.File])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def download(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -129,6 +135,10 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
+	 * 
+	 * <b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser
+	 * may not be able to evaluate. For this reason it is recommended to test this service using an
+	 * external API testing software.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * Domain name used to access THRON
@@ -156,7 +166,9 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#</b><b>Validation:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
-	//#SWGNL#</ul>""", response = classOf[java.io.File])
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser may not be able to evaluate. For this reason it is recommended to test this service using an external API testing software.""", response = classOf[java.io.File])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def downloadPlaylist(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -305,6 +317,10 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
+	 * 
+	 * <b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser
+	 * may not be able to evaluate. For this reason it is recommended to test this service using an
+	 * external API testing software.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * Domain name used to access THRON
@@ -321,7 +337,9 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#</b><b>Validation:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
-	//#SWGNL#</ul>""", response = classOf[java.io.File])
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser may not be able to evaluate. For this reason it is recommended to test this service using an external API testing software.""", response = classOf[java.io.File])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def downloadPlayerEmbedTemplate(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")

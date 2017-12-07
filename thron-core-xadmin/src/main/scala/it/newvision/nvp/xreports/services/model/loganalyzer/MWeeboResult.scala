@@ -19,6 +19,11 @@ class MWeeboResult extends Serializable {
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var originCountryId: Integer =_
+	def withoriginCountryId(p:Integer):this.type ={ 	this.originCountryId = p; 	this }
+
 	/**
 	 * in Bytes
 	 */

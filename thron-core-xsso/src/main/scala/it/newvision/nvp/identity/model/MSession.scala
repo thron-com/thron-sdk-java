@@ -77,9 +77,14 @@ class MSession extends Serializable {
 	var aclDisabled: Boolean  = true
 	def withaclDisabled(p:Boolean):this.type ={ 	this.aclDisabled = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * Deprecated by subjectId
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated by subjectId""" ,required = true)
 	@BeanProperty 
+	@Deprecated
 	var username: String  = ""
+	@Deprecated
 	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")

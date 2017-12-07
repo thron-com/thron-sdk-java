@@ -30,4 +30,21 @@ class MVUserManagerresetPasswordReq extends Serializable {
 	var username: String =_
 	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
+	/**
+	 * Optional. Min 36 characters
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Min 36 characters""", required = true)
+	@BeanProperty
+	var tmpToken: String =_
+	def withtmpToken(p:String):this.type ={ 	this.tmpToken = p; 	this }
+
+	/**
+	 * Optional. Whether or not service should skip sending email to the user. Default
+	 * is false
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Whether or not service should skip sending email to the user. Default is false""", required = true)
+	@BeanProperty
+	var skipEmailSending: Boolean =_
+	def withskipEmailSending(p:Boolean):this.type ={ 	this.skipEmailSending = p; 	this }
+
 }

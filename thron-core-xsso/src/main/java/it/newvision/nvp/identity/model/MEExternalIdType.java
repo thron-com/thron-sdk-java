@@ -13,5 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 //#SWG#@ApiModel(description = """""")
 public enum MEExternalIdType {
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("LDAP") LDAP
+	@XmlEnumValue("LDAP") LDAP,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("SAML") SAML
 }

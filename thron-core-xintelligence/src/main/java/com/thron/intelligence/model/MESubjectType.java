@@ -17,5 +17,7 @@ public enum MESubjectType {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("USER") USER,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("GROUP") GROUP
+	@XmlEnumValue("GROUP") GROUP,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("ROLE") ROLE
 }

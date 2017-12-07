@@ -91,8 +91,10 @@ class MITagDefinitionValue extends Serializable {
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def isValid():Boolean ={
+		import scala.collection.JavaConversions._
 		import java.util.regex._
 		val p = Pattern.compile("^[a-zA-Z0-9-_]+$")
+		Option(names).forall(_.forall(_.isValid())) &&
 			Option(prettyId).forall(s => s.length<=150 && p.matcher(s).matches)
 	}
 

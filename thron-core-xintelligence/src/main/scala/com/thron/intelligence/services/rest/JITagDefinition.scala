@@ -650,7 +650,6 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param classificationId : String
-	 * ITagDefinition id
 	 * @param param : MITagDefinitioncombineReq
 	 * @return MResponseITagDefinitionDetail
 	*/
@@ -683,7 +682,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("clientId")
 	clientId: String, 
-			//#SWG#@ApiParam(value = """ITagDefinition id""")
+			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String, 
 			param: MITagDefinitioncombineReq):Response /*returnType = MResponseITagDefinitionDetail*/ = {
@@ -706,7 +705,7 @@ trait JITagDefinition extends it.newvision.nvp.core.libraries.restserver.BaseRes
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("clientId")
 	clientId: String,
-			//#SWG#@ApiParam(value = """ITagDefinition id""")
+			//#SWG#@ApiParam(value = """""")
 	@PathParam("classificationId")
 	classificationId: String,
 			@QueryParam("param") param_q: String,

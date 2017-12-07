@@ -28,12 +28,32 @@ class MBillingItem extends Serializable {
 	def withclientType(p:String):this.type ={ 	this.clientType = p; 	this }
 
 	/**
+	 * Business Model Code
+	 */
+	//#SWG#@ApiModelProperty(value = """Business Model Code""" ,required = true)
+	@BeanProperty 
+	var bmCode: String =_
+	def withbmCode(p:String):this.type ={ 	this.bmCode = p; 	this }
+
+	/**
+	 * world wide traffic:
 	 * in Bytes
 	 */
-	//#SWG#@ApiModelProperty(value = """in Bytes""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """world wide traffic:
+	//#SWGNL#in Bytes""" ,required = true)
 	@BeanProperty 
 	var totalTraffic: Long  = 0L
 	def withtotalTraffic(p:Long):this.type ={ 	this.totalTraffic = p; 	this }
+
+	/**
+	 * China traffic:
+	 * in Bytes
+	 */
+	//#SWG#@ApiModelProperty(value = """China traffic:
+	//#SWGNL#in Bytes""" ,required = true)
+	@BeanProperty 
+	var totalChinaTraffic: Long  = 0L
+	def withtotalChinaTraffic(p:Long):this.type ={ 	this.totalChinaTraffic = p; 	this }
 
 	/**
 	 * from traffic report
@@ -42,6 +62,14 @@ class MBillingItem extends Serializable {
 	@BeanProperty 
 	var totalHits: Long  = 0L
 	def withtotalHits(p:Long):this.type ={ 	this.totalHits = p; 	this }
+
+	/**
+	 * from traffic report
+	 */
+	//#SWG#@ApiModelProperty(value = """from traffic report""" ,required = true)
+	@BeanProperty 
+	var totalChinaHits: Long  = 0L
+	def withtotalChinaHits(p:Long):this.type ={ 	this.totalChinaHits = p; 	this }
 
 	/**
 	 * in Bytes (repository + CDN)
@@ -186,5 +214,13 @@ class MBillingItem extends Serializable {
 	@BeanProperty 
 	var newContents: Long  = 0L
 	def withnewContents(p:Long):this.type ={ 	this.newContents = p; 	this }
+
+	/**
+	 * total number of versions (creation date based)
+	 */
+	//#SWG#@ApiModelProperty(value = """total number of versions (creation date based)""" ,required = true)
+	@BeanProperty 
+	var totalVersions: Long  = 0L
+	def withtotalVersions(p:Long):this.type ={ 	this.totalVersions = p; 	this }
 
 }

@@ -9,20 +9,20 @@ import javax.xml.bind.annotation.XmlType;
 *  DO NOT APPLY ANY CHANGES
 ****************************/
 /**
- * Different kind of contenxt used by Acl system
+ * Different kind of context used by ACL system
  */
 @XmlType(name="MEAclContext") 
 @XmlEnum
-//#SWG#@ApiModel(description = """Different kind of contenxt used by Acl system""")
+//#SWG#@ApiModel(description = """Different kind of context used by ACL system""")
 public enum MEAclContext {
 	/**
-	 * Means ACL defined for a specific targetObjet and not derived by other elements.
+	 * Means ACL defined for a specific targetObject and not derived by other elements.
 	 */
-	//#SWG#@ApiModelProperty(value = """Means ACL defined for a specific targetObjet and not derived by other elements.""")
+	//#SWG#@ApiModelProperty(value = """Means ACL defined for a specific targetObject and not derived by other elements.""")
 	@XmlEnumValue("DIRECT") DIRECT,
 	/**
-	 * Means ACL for a specific targetObjet derived by other elements (no direct ACL)
+	 * Means ACL for a specific targetObject derived by other elements (no direct ACL)
 	 */
-	//#SWG#@ApiModelProperty(value = """Means ACL for a specific targetObjet derived by other elements (no direct ACL)""")
+	//#SWG#@ApiModelProperty(value = """Means ACL for a specific targetObject derived by other elements (no direct ACL)""")
 	@XmlEnumValue("DERIVED") DERIVED
 }

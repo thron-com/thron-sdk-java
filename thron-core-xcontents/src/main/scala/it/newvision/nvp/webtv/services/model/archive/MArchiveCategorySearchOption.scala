@@ -17,6 +17,7 @@ class MArchiveCategorySearchOption extends Serializable {
 	/**
 	 * used to filter the contents linked to the given categories. Commonly used to
 	 * have the list of Contents linked to a category or subcategories.
+	 * Category id or prettyId are supported.
 	 * 
 	 * <b>Constraints: </b>
 	 * <ul>
@@ -24,6 +25,7 @@ class MArchiveCategorySearchOption extends Serializable {
 	 * </ul>
 	 */
 	//#SWG#@ApiModelProperty(value = """used to filter the contents linked to the given categories. Commonly used to have the list of Contents linked to a category or subcategories.
+	//#SWGNL#Category id or prettyId are supported.
 	//#SWGNL#
 	//#SWGNL#<b>Constraints: </b>
 	//#SWGNL#<ul>

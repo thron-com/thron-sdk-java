@@ -24,19 +24,19 @@ class MPrettyId extends Serializable {
 	 * Constraints:
 	 * <ul>
 	 * 	<li>max length = 150</li>
-	 * 	<li>only lower case chars and digits</li>
+	 * 	<li>only lower case chars, digits, "-", and "_" are allowed</li>
 	 * </ul>
 	 * <ul>
-	 * 	<li>no spaces allowed, special characters "-" and"_" are allowed"</li>
+	 * 	<li>no spaces allowed</li>
 	 * </ul>
 	 */
 	//#SWG#@ApiModelProperty(value = """Constraints:
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>max length = 150</li>
-	//#SWGNL#	<li>only lower case chars and digits</li>
+	//#SWGNL#	<li>only lower case chars, digits, "-", and "_" are allowed</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>no spaces allowed, special characters "-" and"_" are allowed"</li>
+	//#SWGNL#	<li>no spaces allowed</li>
 	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var id: String =_

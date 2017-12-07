@@ -94,7 +94,7 @@ class MPublishParams extends Serializable {
 		contentType match{
 			case MEContentType.PLAYLIST =>
 				if(Option(playlistOpt).isEmpty) throw new IllegalArgumentException("missing playlistOpt parameter")
-				if(Option(sources).exists(_.isEmpty)) throw new IllegalArgumentException("sources must be empty if playlistOpt is defined")
+				if(Option(sources).exists(_.nonEmpty)) throw new IllegalArgumentException("sources must be empty if playlistOpt is defined")
 				playlistOpt.validate()
 			case _=> 
 				if(!(Option(sources).isDefined && sources.size()==1 && Option(playlistOpt).isEmpty))

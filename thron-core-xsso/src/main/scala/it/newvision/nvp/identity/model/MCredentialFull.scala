@@ -125,13 +125,12 @@ class MCredentialFull extends MCredential with Serializable  {
 		.map(StringUtils.replaceChars(_, charBlackList, "_"))
 		// Ensure max length
 		.map(_.take(50))
-		.foreach{ u =>
+		// Ensure lower-case
+		.map(_.toLowerCase(Locale.ENGLISH))
+		.map{ u =>
 			// Skip sysuser reserved usernames
-			val validUsername = sysusernames.find(_ == u).fold(u)(_ + "_")
-			// Replace value
-			username = validUsername
-		}
-		username
+			sysusernames.find(_ == u).fold(u)(_ + "_")
+		}.orNull
 	}
 
 }

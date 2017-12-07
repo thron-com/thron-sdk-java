@@ -424,8 +424,8 @@ trait JPlayerEmbedCode extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	 * 
 	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>4ME_MANAGE_PLAYER_EMBED_TEMPLATES or 4ME_MANAGE_PLAYER_EMBED_VERSIONS role</li>
-	 * 	<li>can be invoked only by template's managers or editors</li>
+	 * 	<li>4ME_MANAGE_PLAYER_EMBED_VERSIONS role or (4ME_MANAGE_PLAYER_EMBED_TEMPLATES role and user is
+	 * template's manager or editor)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -440,8 +440,7 @@ trait JPlayerEmbedCode extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	//#SWGNL#
 	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>4ME_MANAGE_PLAYER_EMBED_TEMPLATES or 4ME_MANAGE_PLAYER_EMBED_VERSIONS role</li>
-	//#SWGNL#	<li>can be invoked only by template's managers or editors</li>
+	//#SWGNL#	<li>4ME_MANAGE_PLAYER_EMBED_VERSIONS role or (4ME_MANAGE_PLAYER_EMBED_TEMPLATES role and user is template's manager or editor)</li>
 	//#SWGNL#</ul>""", response = classOf[MResponsePlayerEmbed])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def sync(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)

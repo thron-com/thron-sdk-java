@@ -48,6 +48,7 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param categoryId : String
+	 * Id or prettyId
 	 * @param contentId : String
 	 * @return MResponseLinkCategoryToContent
 	*/
@@ -70,7 +71,7 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 			//#SWG#@ApiParam(value = """""")
 	@FormParam("clientId")
 	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
+			//#SWG#@ApiParam(value = """Id or prettyId""")
 	@FormParam("categoryId")
 	categoryId: String, 
 			//#SWG#@ApiParam(value = """""")
@@ -131,6 +132,7 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param categoryId : String
+	 * Id or prettyId
 	 * @param contentId : String
 	 * @return MResponseLinkCategoryToContent
 	*/
@@ -155,7 +157,7 @@ trait JContentCategory extends it.newvision.nvp.core.libraries.restserver.BaseRe
 			//#SWG#@ApiParam(value = """""")
 	@FormParam("clientId")
 	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
+			//#SWG#@ApiParam(value = """Id or prettyId""")
 	@FormParam("categoryId")
 	categoryId: String, 
 			//#SWG#@ApiParam(value = """""")

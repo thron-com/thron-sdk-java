@@ -62,6 +62,7 @@ class JContentListClient(val resourceEndpoint:String) {
 	 * @param categoryId : String
 	 * Optional.Used as optional search criteria. Return only the contents linked to the specified
 	 * category.
+	 * Category id or prettyId are supported.
 	 * @param searchOnSubCategories : Boolean
 	 * Optional. If true and categoryId is defined, the service earch all contents in the cateogry subtree.
 	 * @param xcontentIds : String

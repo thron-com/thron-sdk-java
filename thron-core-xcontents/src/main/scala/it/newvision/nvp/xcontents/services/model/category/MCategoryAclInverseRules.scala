@@ -4,22 +4,20 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import it.newvision.nvp.xcontents.services.model.acl.MAclInverseRulesDetail
 
 /* ************************
 *  GENERATED CLASS
 *  DO NOT APPLY ANY CHANGES
 ****************************/
-@XmlRootElement(name="MCategoryIds") 
-@XmlType(name="MCategoryIds")
+@XmlRootElement(name="MCategoryAclInverseRules") 
+@XmlType(name="MCategoryAclInverseRules")
 //#SWG#@ApiModel(description = """""")
-class MCategoryIds extends Serializable {
+class MCategoryAclInverseRules extends Serializable {
 
-	/**
-	 * list of category Ids or prettyIds
-	 */
-	//#SWG#@ApiModelProperty(value = """list of category Ids or prettyIds""")
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var categoryIds: List[String] = new ArrayList[String]
-	def withcategoryIds(p:List[String]):this.type ={ 	this.categoryIds = p; 	this }
+	var items: List[MAclInverseRulesDetail] = new ArrayList[MAclInverseRulesDetail]
+	def withitems(p:List[MAclInverseRulesDetail]):this.type ={ 	this.items = p; 	this }
 
 }

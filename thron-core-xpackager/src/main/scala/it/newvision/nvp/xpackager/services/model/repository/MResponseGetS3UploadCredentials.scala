@@ -35,4 +35,12 @@ class MResponseGetS3UploadCredentials extends MResponseRepository with Serializa
 	var path: String =_
 	def withpath(p:String):this.type ={ 	this.path = p; 	this }
 
+	/**
+	 * S3 region
+	 */
+	//#SWG#@ApiModelProperty(value = """S3 region""" ,required = true)
+	@BeanProperty 
+	var region: String =_
+	def withregion(p:String):this.type ={ 	this.region = p; 	this }
+
 }

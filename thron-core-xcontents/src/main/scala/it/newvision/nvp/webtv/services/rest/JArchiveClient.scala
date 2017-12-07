@@ -38,6 +38,10 @@ class JArchiveClient(val resourceEndpoint:String) {
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
+	 * 
+	 * <b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser
+	 * may not be able to evaluate. For this reason it is recommended to test this service using an
+	 * external API testing software.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param downloadId : String
@@ -97,6 +101,10 @@ class JArchiveClient(val resourceEndpoint:String) {
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
+	 * 
+	 * <b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser
+	 * may not be able to evaluate. For this reason it is recommended to test this service using an
+	 * external API testing software.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * Domain name used to access THRON
@@ -220,6 +228,10 @@ class JArchiveClient(val resourceEndpoint:String) {
 	 * <ul>
 	 * 	<li>4ME_USE_CONTENTS role</li>
 	 * </ul>
+	 * 
+	 * <b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser
+	 * may not be able to evaluate. For this reason it is recommended to test this service using an
+	 * external API testing software.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * Domain name used to access THRON

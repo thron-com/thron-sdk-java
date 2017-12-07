@@ -113,6 +113,11 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 
 	/**
 	 * Updates the externalId of a user.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -163,6 +168,14 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 
 	/**
 	 * Update the detail of a user.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MODIFY ACL on user</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -214,6 +227,11 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	/**
 	 * Upgrades a PLATFORM_USER_GUEST type user to PLATFORM_USER type.
 	 * Username cannot be changed.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupgradeUserReq
 	 * @return MResponseVUserCreate
@@ -360,7 +378,13 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Sends a a notification email to a user, prompting him to change his password.
+	 * Resets user password, eventually sending him an email with the link to insert the new one.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * 	<li>MODIFY ACL on user</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MVUserManagerresetPasswordReq
 	 * @return MResponseVUserResetPassword
@@ -412,6 +436,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	 * <b>Validation:</b>
 	 * <ul>
 	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * 	<li>MODIFY ACL on user</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param param : MVUserManagerchangeUserStatusReq
@@ -619,7 +644,6 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 
 	/**
 	 * Updates the profile picture of a user.
-	 * 
 	 * Supported file formats: JPEG, PNG.
 	 * @param tokenId : String
 	 * @param param : MVUserManagerupdateImageReq
@@ -711,6 +735,12 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 
 	/**
 	 * Links a user to a group.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * 	<li>MODIFY ACL on user</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String
@@ -761,6 +791,14 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 
 	/**
 	 * Unlinks a user from a group.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MODIFY ACL on user</li>
+	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param username : String

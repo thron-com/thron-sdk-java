@@ -55,9 +55,10 @@ class MSyncExportCriteria extends Serializable {
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def isValid():Boolean ={
 		import collection.JavaConversions._
-	
-		Option(linkedCategoryOp).forall(_.isValid()) &&
-		Option(linkedCategoryOp).forall(_.linkedCategoryIds.nonEmpty)
+		Option(linkedCategoryOp).forall{ o =>
+			o.isValid() &&
+			Option(o.linkedCategoryIds).forall(_.nonEmpty)
+		}
 	}
 
 }
