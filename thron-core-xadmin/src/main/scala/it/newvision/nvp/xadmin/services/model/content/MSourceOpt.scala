@@ -42,9 +42,10 @@ class MSourceOpt extends Serializable {
 	def withs3(p:MSourceS3Opt):this.type ={ 	this.s3 = p; 	this }
 
 	/**
-	 * upload from web resource
+	 * upload from web resource, basic HTTP/HTTPS authentication can be included in
+	 * the url
 	 */
-	//#SWG#@ApiModelProperty(value = """upload from web resource""")
+	//#SWG#@ApiModelProperty(value = """upload from web resource, basic HTTP/HTTPS authentication can be included in the url""")
 	@BeanProperty 
 	var web: MSourceWebOpt =_
 	def withweb(p:MSourceWebOpt):this.type ={ 	this.web = p; 	this }

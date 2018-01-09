@@ -9,6 +9,7 @@ import it.newvision.nvp.xcontents.services.model.request.MClientupdateAuditDurat
 import it.newvision.nvp.xcontents.services.model.request.MClientupdateSecureConnectionEnabledReq
 import it.newvision.nvp.xcontents.services.model.request.MClientupdateTrashPropertiesReq
 import it.newvision.nvp.xcontents.services.model.client.MResponseDetailClient
+import it.newvision.nvp.xcontents.services.model.request.MClientupdateTrackingPreferencesReq
 
 /* ************************
 *  GENERATED CLASS
@@ -210,6 +211,51 @@ class JClientClient(val resourceEndpoint:String) {
 				}
 			
 		  }
+	
+	}
+
+	/**
+	 * Updates secure connection enabled value.
+	 * @param tokenId : String
+	 * @param param : MClientupdateTrackingPreferencesReq
+	 * @return MResponseUpdateClient
+	*/
+	def updateTrackingPreferences(tokenId: String, 
+			param: MClientupdateTrackingPreferencesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUpdateClient ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JClientClient.client.resource(this.resourceEndpoint)
+			val response : MResponseUpdateClient = if(this.resourceEndpoint == ""){
+			
+				new MResponseUpdateClient()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("client/updateTrackingPreferences")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseUpdateClient],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseUpdateClient])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
 	
 	}
 

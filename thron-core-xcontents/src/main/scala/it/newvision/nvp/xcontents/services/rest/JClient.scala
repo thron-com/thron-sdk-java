@@ -9,6 +9,7 @@ import it.newvision.nvp.xcontents.services.model.request.MClientupdateAuditDurat
 import it.newvision.nvp.xcontents.services.model.request.MClientupdateSecureConnectionEnabledReq
 import it.newvision.nvp.xcontents.services.model.request.MClientupdateTrashPropertiesReq
 import it.newvision.nvp.xcontents.services.model.client.MResponseDetailClient
+import it.newvision.nvp.xcontents.services.model.request.MClientupdateTrackingPreferencesReq
 
 /* ************************
 *  GENERATED CLASS
@@ -256,5 +257,61 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __detailClient(tokenId: String, clientId: String) :MResponseDetailClient
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_detailClient: String
+
+	/**
+	 * Updates secure connection enabled value.
+	 * @param tokenId : String
+	 * @param param : MClientupdateTrackingPreferencesReq
+	 * @return MResponseUpdateClient
+	*/
+	@POST
+	@Path("/updateTrackingPreferences")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/updateTrackingPreferences", notes = """Updates secure connection enabled value.""", response = classOf[MResponseUpdateClient])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def updateTrackingPreferences(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MClientupdateTrackingPreferencesReq):Response /*returnType = MResponseUpdateClient*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__updateTrackingPreferences(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateTrackingPreferences)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_updateTrackingPreferences)
+	    }
+	} 
+
+	@GET
+	@Path("/updateTrackingPreferences")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def updateTrackingPreferences_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateClient*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateTrackingPreferences",this._getCacheControl) 
+		try{
+			val resp = this.__updateTrackingPreferences(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MClientupdateTrackingPreferencesReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateTrackingPreferences)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateTrackingPreferences)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __updateTrackingPreferences(tokenId: String, param: MClientupdateTrackingPreferencesReq) :MResponseUpdateClient
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_updateTrackingPreferences: String
 
 }

@@ -35,7 +35,7 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 	 */
 	//#SWG#@ApiModelProperty(value = """default no resize. 0 = keep aspect ration depending on the width size.""" ,required = true)
 	@BeanProperty 
-	var resizeHeight: Integer  = 0
+	var resizeHeight: Integer  = 1024
 	def withresizeHeight(p:Integer):this.type ={ 	this.resizeHeight = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
@@ -95,6 +95,7 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.resizeWidth = 1920
+		this.resizeHeight = 1920
 		this.useForDownload = true
 		this.convertTo="JPG"
 		this.withIngestion=true

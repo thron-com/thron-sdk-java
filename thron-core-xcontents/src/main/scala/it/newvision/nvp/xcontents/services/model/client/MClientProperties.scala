@@ -40,7 +40,9 @@ class MClientProperties extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """if true the each new ugc content need to be moderated before to be visible, otherwise each new ugc is automatically published.""")
 	@BeanProperty 
+	@Deprecated
 	var ugcModerationEnabled: Boolean =_
+	@Deprecated
 	def withugcModerationEnabled(p:Boolean):this.type ={ 	this.ugcModerationEnabled = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
@@ -92,7 +94,9 @@ class MClientProperties extends Serializable {
 	//#SWGNL#	<li>n: number of days after that the old entries have been automatically removed.</li>
 	//#SWGNL#</ul>""")
 	@BeanProperty 
+	@Deprecated
 	var auditDurationDays: Integer =_
+	@Deprecated
 	def withauditDurationDays(p:Integer):this.type ={ 	this.auditDurationDays = p; 	this }
 
 	/**
@@ -102,6 +106,14 @@ class MClientProperties extends Serializable {
 	@BeanProperty 
 	var secureConnectionEnabled: Boolean =_
 	def withsecureConnectionEnabled(p:Boolean):this.type ={ 	this.secureConnectionEnabled = p; 	this }
+
+	/**
+	 * disable tracking events
+	 */
+	//#SWG#@ApiModelProperty(value = """disable tracking events""")
+	@BeanProperty 
+	var disableTracking: Boolean =_
+	def withdisableTracking(p:Boolean):this.type ={ 	this.disableTracking = p; 	this }
 
 	/**
 	 * @return void

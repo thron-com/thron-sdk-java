@@ -13,6 +13,21 @@ import javax.xml.bind.annotation.XmlType;
 //#SWG#@ApiModel(description = """""")
 public enum MEAppType {
 	/**
+	 * Platform Module
+	 */
+	//#SWG#@ApiModelProperty(value = """Platform Module""")
+	@XmlEnumValue("CONTENT") CONTENT,
+	/**
+	 * Platform Module
+	 */
+	//#SWG#@ApiModelProperty(value = """Platform Module""")
+	@XmlEnumValue("DELIVERY") DELIVERY,
+	/**
+	 * Platform Module
+	 */
+	//#SWG#@ApiModelProperty(value = """Platform Module""")
+	@XmlEnumValue("INTELLIGENCE") INTELLIGENCE,
+	/**
 	 * Digital Signage
 	 */
 	//#SWG#@ApiModelProperty(value = """Digital Signage""")
@@ -28,9 +43,9 @@ public enum MEAppType {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("WEBTV") WEBTV,
 	/**
-	 * for custom apps with snippets
+	 * for custom apps
 	 */
-	//#SWG#@ApiModelProperty(value = """for custom apps with snippets""")
+	//#SWG#@ApiModelProperty(value = """for custom apps""")
 	@XmlEnumValue("CUSTOM") CUSTOM,
 	/**
 	 * Master Recommendation App

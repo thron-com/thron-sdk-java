@@ -103,6 +103,14 @@ class MClient extends Serializable {
 	def withauditDurationDays(p:Integer):this.type ={ 	this.auditDurationDays = p; 	this }
 
 	/**
+	 * disable tracking events
+	 */
+	//#SWG#@ApiModelProperty(value = """disable tracking events""")
+	@BeanProperty 
+	var disableTracking: Boolean  = false
+	def withdisableTracking(p:Boolean):this.type ={ 	this.disableTracking = p; 	this }
+
+	/**
 	 * if true secure connection is enforced
 	 */
 	//#SWG#@ApiModelProperty(value = """if true secure connection is enforced""" ,required = true)

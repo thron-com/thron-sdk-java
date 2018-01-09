@@ -6,6 +6,7 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import com.thron.intelligence.model.MESourceType
 import com.thron.intelligence.services.model.itag.MTextSearchOptions
+import com.thron.intelligence.services.model.itag.MExternalIdSearchOptions
 
 /* ************************
 *  GENERATED CLASS
@@ -172,6 +173,16 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
+	 * Optional. Used to search tagdefinition on the extenalId field.
+	 * Cannot be used along with ids field.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Used to search tagdefinition on the extenalId field.
+	//#SWGNL#Cannot be used along with ids field.""")
+	@BeanProperty 
+	var externalIdSearchOptions: MExternalIdSearchOptions =_
+	def withexternalIdSearchOptions(p:MExternalIdSearchOptions):this.type ={ 	this.externalIdSearchOptions = p; 	this }
+
+	/**
 	 * Filter all ITagDefinition linked to one of the metadataDefinition specified in
 	 * the list.
 	 */
@@ -198,8 +209,16 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	def isValid():Boolean ={
 		import org.apache.commons.lang.StringUtils
 		Option(excludeLevelHigherThan).forall(_ >0) &&
-			StringUtils.isBlank(text) ||
-		    (Option(text).exists(_.length <= 200) && StringUtils.isNotBlank(lang))
+		Option(text).filter(StringUtils.isNotBlank)
+		.forall{ _ =>
+			text.length <= 200 &&
+			StringUtils.isNotBlank(lang)
+		} &&
+		Option(externalIdSearchOptions).forall{ _ =>
+			externalIdSearchOptions.isValid() &&
+			// No multiple searches on ids
+			Option(ids).forall(_.isEmpty)
+		}
 	}
 
 }

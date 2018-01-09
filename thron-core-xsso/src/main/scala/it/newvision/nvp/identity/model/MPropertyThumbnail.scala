@@ -65,27 +65,35 @@ class MPropertyThumbnail extends Serializable {
 		val t8 = new MThumbnailDetail()
 	
 		t8.setWidth(4096)
+		t8.setHeight(4096)
 		t8.setFormat("L2")
 	
 		t7.setWidth(1024)
+		t7.setHeight(1024)
 		t7.setFormat("L1")
 	
 		t1.setWidth(720)
+		t1.setHeight(720)
 		t1.setFormat("L")
 	
 		t2.setWidth(520)
+		t2.setHeight(520)
 		t2.setFormat("M1")
 	
 		t3.setWidth(340)
+		t3.setHeight(340)
 		t3.setFormat("M")
 	
 		t4.setWidth(240)//for bacheca
+		t4.setHeight(240)
 		t4.setFormat("S2")
 	
 		t5.setWidth(160)//for bacheca
+		t5.setHeight(160)
 		t5.setFormat("S1")
 	
 		t6.setWidth(75)
+		t6.setHeight(75)
 		t6.setFormat("S")
 	
 	

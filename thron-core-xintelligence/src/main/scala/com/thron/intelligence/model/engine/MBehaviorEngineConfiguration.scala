@@ -26,7 +26,7 @@ class MBehaviorEngineConfiguration extends MIEngineConfiguration with Serializab
 	 */
 	//#SWG#@ApiModelProperty(value = """The sensitivity of the engine to the passing of time""" ,required = true)
 	@BeanProperty 
-	var timeDecaySensitivity: Double = 3.0
+	var timeDecaySensitivity: Double  = 3.0
 	def withtimeDecaySensitivity(p:Double):this.type ={ 	this.timeDecaySensitivity = p; 	this }
 
 	/**

@@ -25,5 +25,12 @@ public enum MESearchOption {
 	 */
 	//#SWG#@ApiModelProperty(value = """regex pattern: /searchKey[1].*searchKey[2].*searchKey[3].*searchKey[n]/is
 	//#SWGNL#Search all tokens (distinct words) specified in the searchKey value.""")
-	@XmlEnumValue("BY_TOKEN") BY_TOKEN
+	@XmlEnumValue("BY_TOKEN") BY_TOKEN,
+	/**
+	 * regex pattern: /^\QsearchKey\E/i
+	 * Start with the Quoted pattern of "searchKey" value
+	 */
+	//#SWG#@ApiModelProperty(value = """regex pattern: /^\QsearchKey\E/i
+	//#SWGNL#Start with the Quoted pattern of "searchKey" value""")
+	@XmlEnumValue("START_WITH") START_WITH
 }
