@@ -118,4 +118,14 @@ class MContentFieldsOption extends Serializable {
 	var ignoreITagCombining: Boolean  = false
 	def withignoreITagCombining(p:Boolean):this.type ={ 	this.ignoreITagCombining = p; 	this }
 
+	/**
+	 * return the totalResults value on response.
+	 * if false, the response should be faster.
+	 */
+	//#SWG#@ApiModelProperty(value = """return the totalResults value on response. 
+	//#SWGNL#if false, the response should be faster.""" ,required = true)
+	@BeanProperty 
+	var returnTotalResults: Boolean  = true
+	def withreturnTotalResults(p:Boolean):this.type ={ 	this.returnTotalResults = p; 	this }
+
 }

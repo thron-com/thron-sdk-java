@@ -72,4 +72,13 @@ class MVUserFieldsOption extends Serializable {
 	var ignoreITagCombining: Boolean  = false
 	def withignoreITagCombining(p:Boolean):this.type ={ 	this.ignoreITagCombining = p; 	this }
 
+	/**
+	 * if true, totalResults will be calculated and included in the response; if false,
+	 * totalResults will not be calculated and the service performs better.
+	 */
+	//#SWG#@ApiModelProperty(value = """if true, totalResults will be calculated and included in the response; if false, totalResults will not be calculated and the service performs better.""" ,required = true)
+	@BeanProperty 
+	var returnTotalResults: Boolean  = true
+	def withreturnTotalResults(p:Boolean):this.type ={ 	this.returnTotalResults = p; 	this }
+
 }

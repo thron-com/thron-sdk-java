@@ -81,7 +81,7 @@ class MPropertyVideo extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var thumbsProperties: MPropertyThumbnail  = new MPropertyThumbnail
+	var thumbsProperties: MPropertyThumbnail =_
 	def withthumbsProperties(p:MPropertyThumbnail):this.type ={ 	this.thumbsProperties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)

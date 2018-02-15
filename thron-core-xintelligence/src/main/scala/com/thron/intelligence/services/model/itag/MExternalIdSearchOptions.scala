@@ -24,18 +24,44 @@ class MExternalIdSearchOptions extends Serializable {
 
 	/**
 	 * search on  externalId.value.
-	 * Min length: 3
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>max length = 100</li>
+	 * 	<li>min length = 3</li>
+	 * </ul>
 	 */
 	//#SWG#@ApiModelProperty(value = """search on  externalId.value.
-	//#SWGNL#Min length: 3""" ,required = true)
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max length = 100</li>
+	//#SWGNL#	<li>min length = 3</li>
+	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var value: String =_
 	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * Optional. externalId.key, if empty search on the value in all keys
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>can not contain §/$&#<>"?*:\|</li>
+	 * 	<li>can not contain spaces</li>
+	 * 	<li>max length = 50</li>
+	 * 	<li>lowercase</li>
+	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. externalId.key, if empty search on the value in all keys""")
+	//#SWG#@ApiModelProperty(value = """Optional. externalId.key, if empty search on the value in all keys
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>can not contain §/$&#<>"?*:\|</li>
+	//#SWGNL#	<li>can not contain spaces</li>
+	//#SWGNL#	<li>max length = 50</li>
+	//#SWGNL#	<li>lowercase</li>
+	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var key: String =_
 	def withkey(p:String):this.type ={ 	this.key = p; 	this }

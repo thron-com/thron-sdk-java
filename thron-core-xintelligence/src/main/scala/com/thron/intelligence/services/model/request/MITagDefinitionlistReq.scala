@@ -45,6 +45,17 @@ class MITagDefinitionlistReq extends Serializable {
 	def withshowSubNodeIds(p:Boolean):this.type ={ 	this.showSubNodeIds = p; 	this }
 
 	/**
+	 * if true, totalResults will be calculated and included in the response; if false,
+	 * totalResults will not be calculated and the service performs better.
+	 * Default value = true
+	 */
+	//#SWG#@ApiModelProperty(value = """if true, totalResults will be calculated and included in the response; if false, totalResults will not be calculated and the service performs better.
+	//#SWGNL#Default value = true""", required = true)
+	@BeanProperty
+	var returnTotalResults: Boolean =_
+	def withreturnTotalResults(p:Boolean):this.type ={ 	this.returnTotalResults = p; 	this }
+
+	/**
 	 * Optional. Used in conjunction with orderBy field to sort itagDefinitions by
 	 * name (for a specific lang).
 	 * The service always return all available langs for each itagDefinition.

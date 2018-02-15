@@ -229,12 +229,14 @@ class MContent extends Serializable {
 	def withversion(p:Long):this.type ={ 	this.version = p; 	this }
 
 	/**
-	 * the list of custom player parameters
+	 * imetadata are now returned in the response if the token used to perform the
+	 * request is related to a user with the proper permission to see the
+	 * classifications and itags
 	 */
 	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """the list of custom player parameters""")
-	var embedCodes: List[MPlayerEmbedCode] = new ArrayList[MPlayerEmbedCode]
-	  def withembedCodes(p:List[MPlayerEmbedCode]):this.type ={ 	this.embedCodes = p; 	this }
+	//#SWG#@ApiModelProperty(value = """imetadata are now returned in the response if the token used to perform the request is related to a user with the proper permission to see the classifications and itags""")
+	var imetadata: List[MIMetadata] = new ArrayList[MIMetadata]
+	  def withimetadata(p:List[MIMetadata]):this.type ={ 	this.imetadata = p; 	this }
 
 	/**
 	 * The linkedContents collection is used to store the connection between two
@@ -248,42 +250,15 @@ class MContent extends Serializable {
 	var linkedContents: List[MContent] = new ArrayList[MContent]
 	  def withlinkedContents(p:List[MContent]):this.type ={ 	this.linkedContents = p; 	this }
 
-	/**
-	 * name and description values for the content in multilocale
-	 */
 	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """name and description values for the content in multilocale""")
-	var locales: List[MContent4Locale] = new ArrayList[MContent4Locale]
-	  def withlocales(p:List[MContent4Locale]):this.type ={ 	this.locales = p; 	this }
-
-	/**
-	 * imetadata are now returned in the response if the token used to perform the
-	 * request is related to a user with the proper permission to see the
-	 * classifications and itags
-	 */
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """imetadata are now returned in the response if the token used to perform the request is related to a user with the proper permission to see the classifications and itags""")
-	var imetadata: List[MIMetadata] = new ArrayList[MIMetadata]
-	  def withimetadata(p:List[MIMetadata]):this.type ={ 	this.imetadata = p; 	this }
-
-	/**
-	 * itags are now returned in the response if the token used to perform the request
-	 * is related to a user with the proper permission to see the classifications.
-	 */
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """itags are now returned in the response if the token used to perform the request is related to a user with the proper permission to see the classifications.""")
-	var itags: List[MITag] = new ArrayList[MITag]
-	  def withitags(p:List[MITag]):this.type ={ 	this.itags = p; 	this }
+	//#SWG#@ApiModelProperty(value = """""")
+	var weebo: MWeeboProvider =_
+	  def withweebo(p:MWeeboProvider):this.type ={ 	this.weebo = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
 	var providers: List[MGenericProvider] = new ArrayList[MGenericProvider]
 	  def withproviders(p:List[MGenericProvider]):this.type ={ 	this.providers = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var weebo: MWeeboProvider =_
-	  def withweebo(p:MWeeboProvider):this.type ={ 	this.weebo = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
@@ -308,6 +283,31 @@ class MContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """The metadata's collection can be used to add custom information to any contents. The collection is used also to store some special information and for this reason the platform use some special metadata.name keywords://#SWGNL#1) _PLAYLISTTEMPLATE_  -> used with playlist contents to know the type of playlist (VIDEO/IMAGE/AUDIO..)//#SWGNL#2) _CONTENTVIEWPREFERENCES_ -> used to store the visualisation preference of the content. In the admin console the user can decide to show or not the recommended, similar or downloadable contents (NONE,SIMILAR,RECOMMENDED are the possible values)//#SWGNL#3) _<SOLUTION><KEY>_ -> naming convention for custom metadata used by Platform/Apps to store special custom metadata.//#SWGNL#""")
 	var metadatas: List[MMetadata] = new ArrayList[MMetadata]
 	  def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
+
+	/**
+	 * the list of custom player parameters
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """the list of custom player parameters""")
+	var embedCodes: List[MPlayerEmbedCode] = new ArrayList[MPlayerEmbedCode]
+	  def withembedCodes(p:List[MPlayerEmbedCode]):this.type ={ 	this.embedCodes = p; 	this }
+
+	/**
+	 * itags are now returned in the response if the token used to perform the request
+	 * is related to a user with the proper permission to see the classifications.
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """itags are now returned in the response if the token used to perform the request is related to a user with the proper permission to see the classifications.""")
+	var itags: List[MITag] = new ArrayList[MITag]
+	  def withitags(p:List[MITag]):this.type ={ 	this.itags = p; 	this }
+
+	/**
+	 * name and description values for the content in multilocale
+	 */
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """name and description values for the content in multilocale""")
+	var locales: List[MContent4Locale] = new ArrayList[MContent4Locale]
+	  def withlocales(p:List[MContent4Locale]):this.type ={ 	this.locales = p; 	this }
 
 	/**
 	 * @return Boolean

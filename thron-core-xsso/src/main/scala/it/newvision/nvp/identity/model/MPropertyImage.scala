@@ -99,6 +99,7 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 		this.useForDownload = true
 		this.convertTo="JPG"
 		this.withIngestion=true
+	
 	}
 
 	/**
