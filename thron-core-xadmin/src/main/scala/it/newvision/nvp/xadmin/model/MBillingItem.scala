@@ -36,20 +36,20 @@ class MBillingItem extends Serializable {
 	def withbmCode(p:String):this.type ={ 	this.bmCode = p; 	this }
 
 	/**
-	 * world wide traffic:
+	 * world wide traffic in the time range:
 	 * in Bytes
 	 */
-	//#SWG#@ApiModelProperty(value = """world wide traffic:
+	//#SWG#@ApiModelProperty(value = """world wide traffic in the time range:
 	//#SWGNL#in Bytes""" ,required = true)
 	@BeanProperty 
 	var totalTraffic: Long  = 0L
 	def withtotalTraffic(p:Long):this.type ={ 	this.totalTraffic = p; 	this }
 
 	/**
-	 * China traffic:
+	 * China traffic in the time range:
 	 * in Bytes
 	 */
-	//#SWG#@ApiModelProperty(value = """China traffic:
+	//#SWG#@ApiModelProperty(value = """China traffic in the time range:
 	//#SWGNL#in Bytes""" ,required = true)
 	@BeanProperty 
 	var totalChinaTraffic: Long  = 0L
@@ -140,7 +140,9 @@ class MBillingItem extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """max number of apps in the time range.""" ,required = true)
 	@BeanProperty 
+	@Deprecated
 	var maxNumberOfApps: Long  = 0L
+	@Deprecated
 	def withmaxNumberOfApps(p:Long):this.type ={ 	this.maxNumberOfApps = p; 	this }
 
 	/**
@@ -168,9 +170,9 @@ class MBillingItem extends Serializable {
 	def withtotalContactsUnmerged(p:Long):this.type ={ 	this.totalContactsUnmerged = p; 	this }
 
 	/**
-	 * number of contacts active in the time range
+	 * number of contacts active in the time range. Used for BM 2017
 	 */
-	//#SWG#@ApiModelProperty(value = """number of contacts active in the time range""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """number of contacts active in the time range. Used for BM 2017""" ,required = true)
 	@BeanProperty 
 	var totalContactsActive: Long  = 0L
 	def withtotalContactsActive(p:Long):this.type ={ 	this.totalContactsActive = p; 	this }
@@ -180,15 +182,19 @@ class MBillingItem extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """identified active contacts""" ,required = true)
 	@BeanProperty 
+	@Deprecated
 	var identifiedActiveContacts: Long  = 0L
+	@Deprecated
 	def withidentifiedActiveContacts(p:Long):this.type ={ 	this.identifiedActiveContacts = p; 	this }
 
 	/**
-	 * number of unmerged contacts in the time range
+	 * number of device active in the time range
 	 */
-	//#SWG#@ApiModelProperty(value = """number of unmerged contacts in the time range""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """number of device active in the time range""" ,required = true)
 	@BeanProperty 
+	@Deprecated
 	var totalContactsUnmergedActive: Long  = 0L
+	@Deprecated
 	def withtotalContactsUnmergedActive(p:Long):this.type ={ 	this.totalContactsUnmergedActive = p; 	this }
 
 	/**
@@ -204,7 +210,9 @@ class MBillingItem extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """total number of contents not in trash (creation date based)""" ,required = true)
 	@BeanProperty 
+	@Deprecated
 	var totalContents: Long  = 0L
+	@Deprecated
 	def withtotalContents(p:Long):this.type ={ 	this.totalContents = p; 	this }
 
 	/**
@@ -212,15 +220,25 @@ class MBillingItem extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """contents created in the month (based on creation date)""" ,required = true)
 	@BeanProperty 
+	@Deprecated
 	var newContents: Long  = 0L
+	@Deprecated
 	def withnewContents(p:Long):this.type ={ 	this.newContents = p; 	this }
 
 	/**
-	 * total number of versions (creation date based)
+	 * total number of versions (creation date based). Used with BM2018
 	 */
-	//#SWG#@ApiModelProperty(value = """total number of versions (creation date based)""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """total number of versions (creation date based). Used with BM2018""" ,required = true)
 	@BeanProperty 
 	var totalVersions: Long  = 0L
 	def withtotalVersions(p:Long):this.type ={ 	this.totalVersions = p; 	this }
+
+	/**
+	 * Total number of visits in the time range. BM2018 Intelligence module
+	 */
+	//#SWG#@ApiModelProperty(value = """Total number of visits in the time range. BM2018 Intelligence module""" ,required = true)
+	@BeanProperty 
+	var totalVisits: Long  = 0L
+	def withtotalVisits(p:Long):this.type ={ 	this.totalVisits = p; 	this }
 
 }

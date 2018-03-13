@@ -199,11 +199,6 @@ class MCategory extends Serializable {
 	var version: Long =_
 	def withversion(p:Long):this.type ={ 	this.version = p; 	this }
 
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
-	  def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
-
 	/**
 	 * name and description values for the category in multilocale
 	 */
@@ -211,6 +206,11 @@ class MCategory extends Serializable {
 	//#SWG#@ApiModelProperty(value = """name and description values for the category in multilocale""")
 	var locales: List[MCategory4Locale] = new ArrayList[MCategory4Locale]
 	  def withlocales(p:List[MCategory4Locale]):this.type ={ 	this.locales = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
+	  def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
 
 	/**
 	 * @return Boolean

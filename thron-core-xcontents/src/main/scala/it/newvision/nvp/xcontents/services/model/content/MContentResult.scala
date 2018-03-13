@@ -104,4 +104,12 @@ class MContentResult extends Serializable {
 	var ownerFullname: String =_
 	def withownerFullname(p:String):this.type ={ 	this.ownerFullname = p; 	this }
 
+	/**
+	 * acl information for the content and user in session
+	 */
+	//#SWG#@ApiModelProperty(value = """acl information for the content and user in session""")
+	@BeanProperty 
+	var aclInfo: MContentAclInverseRules =_
+	def withaclInfo(p:MContentAclInverseRules):this.type ={ 	this.aclInfo = p; 	this }
+
 }

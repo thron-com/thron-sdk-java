@@ -51,4 +51,9 @@ class MVUserPreferences extends Serializable {
 	var notificationProperty: MVUserNotificationProperties  = new MVUserNotificationProperties()
 	def withnotificationProperty(p:MVUserNotificationProperties):this.type ={ 	this.notificationProperty = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var metadata: List[MMetadata] = new ArrayList[MMetadata]
+	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
+
 }

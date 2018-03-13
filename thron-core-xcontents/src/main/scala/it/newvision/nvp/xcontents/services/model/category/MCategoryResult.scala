@@ -70,4 +70,12 @@ class MCategoryResult extends Serializable {
 	var ownerFullname: String =_
 	def withownerFullname(p:String):this.type ={ 	this.ownerFullname = p; 	this }
 
+	/**
+	 * acl information for the category and user in session
+	 */
+	//#SWG#@ApiModelProperty(value = """acl information for the category and user in session""")
+	@BeanProperty 
+	var aclInfo: MCategoryAclInverseRules =_
+	def withaclInfo(p:MCategoryAclInverseRules):this.type ={ 	this.aclInfo = p; 	this }
+
 }

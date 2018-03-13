@@ -67,14 +67,23 @@ class MCategoryFieldsOption extends Serializable {
 	def withreturnNumberOfSubCategories(p:Boolean):this.type ={ 	this.returnNumberOfSubCategories = p; 	this }
 
 	/**
-	 * return the totalResults value on response.
-	 * if false, the response should be faster.
+	 * if true, totalResults will be calculated and included in the response; if false,
+	 * totalResults will not be calculated and the service performs better.
 	 */
-	//#SWG#@ApiModelProperty(value = """return the totalResults value on response. 
-	//#SWGNL#if false, the response should be faster.""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """if true, totalResults will be calculated and included in the response; if false, totalResults will not be calculated and the service performs better.""" ,required = true)
 	@BeanProperty 
 	var returnTotalResults: Boolean  = true
 	def withreturnTotalResults(p:Boolean):this.type ={ 	this.returnTotalResults = p; 	this }
+
+	/**
+	 * if true, aclInfo will be calculated and included in the response;
+	 * Default value is false.
+	 */
+	//#SWG#@ApiModelProperty(value = """if true, aclInfo will be calculated and included in the response; 
+	//#SWGNL#Default value is false.""")
+	@BeanProperty 
+	var returnAclInfo: Boolean  = false
+	def withreturnAclInfo(p:Boolean):this.type ={ 	this.returnAclInfo = p; 	this }
 
 	/**
 	 * @return MCategoryFieldsOption
