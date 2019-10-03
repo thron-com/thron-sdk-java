@@ -4,8 +4,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xadmin.model.MMetadata
 import it.newvision.nvp.xadmin.model.MAppDisguiseData
+import it.newvision.nvp.xadmin.model.MMetadata
 import it.newvision.nvp.xadmin.services.model.common.MUpdater
 
 /* ************************
@@ -25,26 +25,10 @@ class MAppUpdateData extends MUpdater with Serializable  {
 	var active: Boolean =_
 	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
-	/**
-	 * prettyId for the APP
-	 */
-	//#SWG#@ApiModelProperty(value = """prettyId for the APP""")
-	@BeanProperty 
-	var prettyId: String =_
-	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
-
-	/**
-	 * main url of the app
-	 */
-	//#SWG#@ApiModelProperty(value = """main url of the app""")
-	@BeanProperty 
-	var urlThumbnail: String =_
-	def withurlThumbnail(p:String):this.type ={ 	this.urlThumbnail = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var displayName: String =_
-	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
+	var canDisguise: Boolean =_
+	def withcanDisguise(p:Boolean):this.type ={ 	this.canDisguise = p; 	this }
 
 	/**
 	 * custom description of the app
@@ -53,6 +37,16 @@ class MAppUpdateData extends MUpdater with Serializable  {
 	@BeanProperty 
 	var description: String =_
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var disguiseData: MAppDisguiseData =_
+	def withdisguiseData(p:MAppDisguiseData):this.type ={ 	this.disguiseData = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var displayName: String =_
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
 	/**
 	 * the white list of the allowed domain where the app can run.
@@ -73,6 +67,14 @@ class MAppUpdateData extends MUpdater with Serializable  {
 	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 	/**
+	 * prettyId for the APP
+	 */
+	//#SWG#@ApiModelProperty(value = """prettyId for the APP""")
+	@BeanProperty 
+	var prettyId: String =_
+	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
+
+	/**
 	 * main url of the app
 	 */
 	//#SWG#@ApiModelProperty(value = """main url of the app""")
@@ -80,15 +82,13 @@ class MAppUpdateData extends MUpdater with Serializable  {
 	var url: String =_
 	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * main url of the app
+	 */
+	//#SWG#@ApiModelProperty(value = """main url of the app""")
 	@BeanProperty 
-	var canDisguise: Boolean =_
-	def withcanDisguise(p:Boolean):this.type ={ 	this.canDisguise = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var disguiseData: MAppDisguiseData =_
-	def withdisguiseData(p:MAppDisguiseData):this.type ={ 	this.disguiseData = p; 	this }
+	var urlThumbnail: String =_
+	def withurlThumbnail(p:String):this.type ={ 	this.urlThumbnail = p; 	this }
 
 	/**
 	 * @return Boolean

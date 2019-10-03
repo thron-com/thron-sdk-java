@@ -60,61 +60,6 @@ class MCategory extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var id: String  = java.util.UUID.randomUUID.toString
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
-	/**
-	 * Constraints:
-	 * <ul>
-	 * 	<li>max length = 150</li>
-	 * 	<li>only lower case chars and digits</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>no spaces allowed, special characters "-" and"_" are allowed"</li>
-	 * 	<li>it's not possible to have more prettyId with the same locale.</li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var prettyIds: List[MPrettyId] = new ArrayList[MPrettyId]
-	def withprettyIds(p:List[MPrettyId]):this.type ={ 	this.prettyIds = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var upCategoryId: String =_
-	def withupCategoryId(p:String):this.type ={ 	this.upCategoryId = p; 	this }
-
-	/**
-	 * DEPRECATED.
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.""")
-	@BeanProperty 
-	@Deprecated
-	var solution: String =_
-	@Deprecated
-	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
-
-	/**
-	 * DEPRECATED.
-	 * AvailableInSolutions field is used to mark the categories owned by a set of
-	 * solutions (Apps).
-	 * The are no special constraints based on this filed and is used in the search
-	 * criteria.
-	 * This field allow a specific App to show only the category subset specific for
-	 * the app.
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#AvailableInSolutions field is used to mark the categories owned by a set of solutions (Apps).
-	//#SWGNL#The are no special constraints based on this filed and is used in the search criteria.
-	//#SWGNL#This field allow a specific App to show only the category subset specific for the app.""")
-	@BeanProperty 
-	@Deprecated
-	var availableInSolutions: List[String] = new ArrayList[String]
-	@Deprecated
-	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
 	var active: Boolean  = true
 	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
@@ -146,13 +91,23 @@ class MCategory extends Serializable {
 	def withancestorIds(p:List[String]):this.type ={ 	this.ancestorIds = p; 	this }
 
 	/**
-	 * the username of the owner of the category. It's used to define private
-	 * categories and with categoryType=PRIVATE
+	 * DEPRECATED.
+	 * AvailableInSolutions field is used to mark the categories owned by a set of
+	 * solutions (Apps).
+	 * The are no special constraints based on this filed and is used in the search
+	 * criteria.
+	 * This field allow a specific App to show only the category subset specific for
+	 * the app.
 	 */
-	//#SWG#@ApiModelProperty(value = """the username of the owner of the category. It's used to define private categories and with categoryType=PRIVATE""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.
+	//#SWGNL#AvailableInSolutions field is used to mark the categories owned by a set of solutions (Apps).
+	//#SWGNL#The are no special constraints based on this filed and is used in the search criteria.
+	//#SWGNL#This field allow a specific App to show only the category subset specific for the app.""")
 	@BeanProperty 
-	var userId: String =_
-	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
+	@Deprecated
+	var availableInSolutions: List[String] = new ArrayList[String]
+	@Deprecated
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
 
 	/**
 	 * used to categorize the different categories in 4ME Platform. Only categories
@@ -162,6 +117,19 @@ class MCategory extends Serializable {
 	@BeanProperty 
 	var categoryType: MECategoryType  = MECategoryType.PUBLIC
 	def withcategoryType(p:MECategoryType):this.type ={ 	this.categoryType = p; 	this }
+
+	/**
+	 * Optional. The creation date of the category
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the category""")
+	@BeanProperty 
+	var creationDate: Date  = new Date()
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var id: String  = java.util.UUID.randomUUID.toString
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * Deprecated. Custom metadata linked to the category
@@ -174,12 +142,30 @@ class MCategory extends Serializable {
 	def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
 
 	/**
-	 * Optional. The creation date of the category
+	 * Constraints:
+	 * <ul>
+	 * 	<li>max length = 150</li>
+	 * 	<li>only lower case chars and digits</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>no spaces allowed, special characters "-" and"_" are allowed"</li>
+	 * 	<li>it's not possible to have more prettyId with the same locale.</li>
+	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the category""")
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var creationDate: Date  = new Date()
-	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
+	var prettyIds: List[MPrettyId] = new ArrayList[MPrettyId]
+	def withprettyIds(p:List[MPrettyId]):this.type ={ 	this.prettyIds = p; 	this }
+
+	/**
+	 * DEPRECATED.
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.""")
+	@BeanProperty 
+	@Deprecated
+	var solution: String =_
+	@Deprecated
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * Deprecated.
@@ -195,9 +181,28 @@ class MCategory extends Serializable {
 	@Deprecated
 	def withsortingField(p:String):this.type ={ 	this.sortingField = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var upCategoryId: String =_
+	def withupCategoryId(p:String):this.type ={ 	this.upCategoryId = p; 	this }
+
+	/**
+	 * the username of the owner of the category. It's used to define private
+	 * categories and with categoryType=PRIVATE
+	 */
+	//#SWG#@ApiModelProperty(value = """the username of the owner of the category. It's used to define private categories and with categoryType=PRIVATE""")
+	@BeanProperty 
+	var userId: String =_
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
+
 	@BeanProperty 
 	var version: Long =_
 	def withversion(p:Long):this.type ={ 	this.version = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
+	  def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
 
 	/**
 	 * name and description values for the category in multilocale
@@ -206,11 +211,6 @@ class MCategory extends Serializable {
 	//#SWG#@ApiModelProperty(value = """name and description values for the category in multilocale""")
 	var locales: List[MCategory4Locale] = new ArrayList[MCategory4Locale]
 	  def withlocales(p:List[MCategory4Locale]):this.type ={ 	this.locales = p; 	this }
-
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
-	  def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
 
 	/**
 	 * @return Boolean

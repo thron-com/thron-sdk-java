@@ -18,9 +18,9 @@ import javax.xml.bind.annotation._
 class MCategorymoveReq extends Serializable {
 
 	/**
-	 * Optional.Target categoryId
+	 * Optional.Target categoryId or prettyId
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional.Target categoryId""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional.Target categoryId or prettyId""", required = true)
 	@BeanProperty
 	var targetId: String =_
 	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }

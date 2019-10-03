@@ -23,11 +23,6 @@ class MUserManagerupdateReq extends Serializable {
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
-
 	/**
 	 * user information
 	 */
@@ -35,5 +30,10 @@ class MUserManagerupdateReq extends Serializable {
 	@BeanProperty
 	var detail: MUserDetail =_
 	def withdetail(p:MUserDetail):this.type ={ 	this.detail = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

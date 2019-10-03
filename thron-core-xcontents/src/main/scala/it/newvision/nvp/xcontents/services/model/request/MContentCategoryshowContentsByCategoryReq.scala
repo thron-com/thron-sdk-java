@@ -21,13 +21,13 @@ class MContentCategoryshowContentsByCategoryReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var client: MCredential =_
-	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
+	var categoryId: String =_
+	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var categoryId: String =_
-	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
+	var client: MCredential =_
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
@@ -45,12 +45,12 @@ class MContentCategoryshowContentsByCategoryReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var offset: Integer =_
-	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
+	var numberOfResult: Integer =_
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
+	var offset: Integer =_
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 }

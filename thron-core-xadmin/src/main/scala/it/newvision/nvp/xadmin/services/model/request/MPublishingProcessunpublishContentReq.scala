@@ -23,22 +23,6 @@ class MPublishingProcessunpublishContentReq extends Serializable {
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
-	 * mediaContentId or xcontentId are required
-	 */
-	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
-	@BeanProperty
-	var mediaContentId: String =_
-	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
-
-	/**
-	 * mediaContentId or xcontentId are required
-	 */
-	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
-	@BeanProperty
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	/**
 	 * used to force the unpublishing process, and discard the warning messaging about
 	 * content linked by other contents.
 	 */
@@ -46,6 +30,14 @@ class MPublishingProcessunpublishContentReq extends Serializable {
 	@BeanProperty
 	var force: Boolean =_
 	def withforce(p:Boolean):this.type ={ 	this.force = p; 	this }
+
+	/**
+	 * mediaContentId or xcontentId are required
+	 */
+	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
+	@BeanProperty
+	var mediaContentId: String =_
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
 	 * Optional (default true).
@@ -58,5 +50,13 @@ class MPublishingProcessunpublishContentReq extends Serializable {
 	@BeanProperty
 	var removeSourceFiles: Boolean =_
 	def withremoveSourceFiles(p:Boolean):this.type ={ 	this.removeSourceFiles = p; 	this }
+
+	/**
+	 * mediaContentId or xcontentId are required
+	 */
+	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
+	@BeanProperty
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 }

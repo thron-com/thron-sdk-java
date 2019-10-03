@@ -16,6 +16,11 @@ class MAppKey extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
+	var active: Boolean  = true
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
 	var key: String =_
 	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
@@ -26,10 +31,5 @@ class MAppKey extends Serializable {
 	@BeanProperty 
 	var note: String =_
 	def withnote(p:String):this.type ={ 	this.note = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var active: Boolean  = true
-	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 }

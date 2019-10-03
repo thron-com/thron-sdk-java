@@ -17,15 +17,13 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """The Source Roule Object""")
 class MAclRuleInverse extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * The different type of disabled rules.
+	 */
+	//#SWG#@ApiModelProperty(value = """The different type of disabled rules.""")
 	@BeanProperty 
-	var sourceObjId: String =_
-	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var sourceObjClass: MEObjClass =_
-	def withsourceObjClass(p:MEObjClass):this.type ={ 	this.sourceObjClass = p; 	this }
+	var disabledRulesInverse: List[MEAclRuleInverse] = new ArrayList[MEAclRuleInverse]
+	def withdisabledRulesInverse(p:List[MEAclRuleInverse]):this.type ={ 	this.disabledRulesInverse = p; 	this }
 
 	/**
 	 * The different type of active rules.
@@ -35,12 +33,14 @@ class MAclRuleInverse extends Serializable {
 	var rulesInverse: List[MEAclRuleInverse] = new ArrayList[MEAclRuleInverse]
 	def withrulesInverse(p:List[MEAclRuleInverse]):this.type ={ 	this.rulesInverse = p; 	this }
 
-	/**
-	 * The different type of disabled rules.
-	 */
-	//#SWG#@ApiModelProperty(value = """The different type of disabled rules.""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var disabledRulesInverse: List[MEAclRuleInverse] = new ArrayList[MEAclRuleInverse]
-	def withdisabledRulesInverse(p:List[MEAclRuleInverse]):this.type ={ 	this.disabledRulesInverse = p; 	this }
+	var sourceObjClass: MEObjClass =_
+	def withsourceObjClass(p:MEObjClass):this.type ={ 	this.sourceObjClass = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var sourceObjId: String =_
+	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
 
 }

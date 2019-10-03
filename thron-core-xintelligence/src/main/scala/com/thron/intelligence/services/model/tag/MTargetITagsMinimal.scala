@@ -18,15 +18,15 @@ import com.thron.intelligence.services.model.common.MTarget
 //#SWG#@ApiModel(description = """""")
 class MTargetITagsMinimal extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var target: MTarget =_
-	def withtarget(p:MTarget):this.type ={ 	this.target = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var tagIds: List[String] = new ArrayList[String]
 	def withtagIds(p:List[String]):this.type ={ 	this.tagIds = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var target: MTarget =_
+	def withtarget(p:MTarget):this.type ={ 	this.target = p; 	this }
 
 	/**
 	 * @return Boolean

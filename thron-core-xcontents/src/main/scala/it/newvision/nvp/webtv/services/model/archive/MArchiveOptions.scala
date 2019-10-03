@@ -18,33 +18,16 @@ import javax.xml.bind.annotation._
 class MArchiveOptions extends Serializable {
 
 	/**
-	 * Empty (default value): the service returns the Source, if available otherwise
-	 * the Published content.
-	 * 
-	 * other possible values:
-	 * <ul>
-	 * 	<li>SOURCE: only the source file</li>
-	 * 	<li>PUBLISHED: only the published resource</li>
-	 * 	<li><channel>: specific channel</li>
-	 * </ul>
-	 * 
-	 * Example:
-	 * ["SOURCE","WEBHD"]
+	 * Optional. Default value false.
+	 * create the manifest inside the archive file.
+	 * The manifest file is a csv with the format: <xcontentId>,fileName,channel
 	 */
-	//#SWG#@ApiModelProperty(value = """Empty (default value): the service returns the Source, if available otherwise the Published content.
-	//#SWGNL#
-	//#SWGNL#other possible values:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SOURCE: only the source file</li>
-	//#SWGNL#	<li>PUBLISHED: only the published resource</li>
-	//#SWGNL#	<li><channel>: specific channel</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#Example:
-	//#SWGNL#["SOURCE","WEBHD"]""")
+	//#SWG#@ApiModelProperty(value = """Optional. Default value false.
+	//#SWGNL#create the manifest inside the archive file. 
+	//#SWGNL#The manifest file is a csv with the format: <xcontentId>,fileName,channel""")
 	@BeanProperty 
-	var video: List[String] = new ArrayList[String]
-	def withvideo(p:List[String]):this.type ={ 	this.video = p; 	this }
+	var appendManifestFile: Boolean  = false
+	def withappendManifestFile(p:Boolean):this.type ={ 	this.appendManifestFile = p; 	this }
 
 	/**
 	 * Empty (default value): the service returns the Source, if available otherwise
@@ -74,35 +57,6 @@ class MArchiveOptions extends Serializable {
 	@BeanProperty 
 	var audio: List[String] = new ArrayList[String]
 	def withaudio(p:List[String]):this.type ={ 	this.audio = p; 	this }
-
-	/**
-	 * Empty (default value): the service returns the Source, if available otherwise
-	 * the Published content.
-	 * 
-	 * other possible values:
-	 * <ul>
-	 * 	<li>SOURCE: only the source file</li>
-	 * 	<li>PUBLISHED: only the published resource</li>
-	 * 	<li><channel>: specific channel</li>
-	 * </ul>
-	 * 
-	 * Example:
-	 * ["SOURCE","PUBLISHED","WEBDOC"]
-	 */
-	//#SWG#@ApiModelProperty(value = """Empty (default value): the service returns the Source, if available otherwise the Published content.
-	//#SWGNL#
-	//#SWGNL#other possible values:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SOURCE: only the source file</li>
-	//#SWGNL#	<li>PUBLISHED: only the published resource</li>
-	//#SWGNL#	<li><channel>: specific channel</li>
-	//#SWGNL#</ul>
-	//#SWGNL# 
-	//#SWGNL#Example:
-	//#SWGNL#["SOURCE","PUBLISHED","WEBDOC"]""")
-	@BeanProperty 
-	var other: List[String] = new ArrayList[String]
-	def withother(p:List[String]):this.type ={ 	this.other = p; 	this }
 
 	/**
 	 * Empty (default value): the service returns the Source, if available otherwise
@@ -142,15 +96,61 @@ class MArchiveOptions extends Serializable {
 	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
-	 * Optional. Default value false.
-	 * create the manifest inside the archive file.
-	 * The manifest file is a csv with the format: <xcontentId>,fileName,channel
+	 * Empty (default value): the service returns the Source, if available otherwise
+	 * the Published content.
+	 * 
+	 * other possible values:
+	 * <ul>
+	 * 	<li>SOURCE: only the source file</li>
+	 * 	<li>PUBLISHED: only the published resource</li>
+	 * 	<li><channel>: specific channel</li>
+	 * </ul>
+	 * 
+	 * Example:
+	 * ["SOURCE","PUBLISHED","WEBDOC"]
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Default value false.
-	//#SWGNL#create the manifest inside the archive file. 
-	//#SWGNL#The manifest file is a csv with the format: <xcontentId>,fileName,channel""")
+	//#SWG#@ApiModelProperty(value = """Empty (default value): the service returns the Source, if available otherwise the Published content.
+	//#SWGNL#
+	//#SWGNL#other possible values:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>SOURCE: only the source file</li>
+	//#SWGNL#	<li>PUBLISHED: only the published resource</li>
+	//#SWGNL#	<li><channel>: specific channel</li>
+	//#SWGNL#</ul>
+	//#SWGNL# 
+	//#SWGNL#Example:
+	//#SWGNL#["SOURCE","PUBLISHED","WEBDOC"]""")
 	@BeanProperty 
-	var appendManifestFile: Boolean  = false
-	def withappendManifestFile(p:Boolean):this.type ={ 	this.appendManifestFile = p; 	this }
+	var other: List[String] = new ArrayList[String]
+	def withother(p:List[String]):this.type ={ 	this.other = p; 	this }
+
+	/**
+	 * Empty (default value): the service returns the Source, if available otherwise
+	 * the Published content.
+	 * 
+	 * other possible values:
+	 * <ul>
+	 * 	<li>SOURCE: only the source file</li>
+	 * 	<li>PUBLISHED: only the published resource</li>
+	 * 	<li><channel>: specific channel</li>
+	 * </ul>
+	 * 
+	 * Example:
+	 * ["SOURCE","WEBHD"]
+	 */
+	//#SWG#@ApiModelProperty(value = """Empty (default value): the service returns the Source, if available otherwise the Published content.
+	//#SWGNL#
+	//#SWGNL#other possible values:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>SOURCE: only the source file</li>
+	//#SWGNL#	<li>PUBLISHED: only the published resource</li>
+	//#SWGNL#	<li><channel>: specific channel</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#Example:
+	//#SWGNL#["SOURCE","WEBHD"]""")
+	@BeanProperty 
+	var video: List[String] = new ArrayList[String]
+	def withvideo(p:List[String]):this.type ={ 	this.video = p; 	this }
 
 }

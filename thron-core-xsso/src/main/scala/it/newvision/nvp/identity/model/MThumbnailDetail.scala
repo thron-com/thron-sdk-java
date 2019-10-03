@@ -14,19 +14,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MThumbnailDetail extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var width: Integer =_
-	def withwidth(p:Integer):this.type ={ 	this.width = p; 	this }
-
-	/**
-	 * value = 0 means that the height is proportional with the width size.
-	 */
-	//#SWG#@ApiModelProperty(value = """value = 0 means that the height is proportional with the width size.""" ,required = true)
-	@BeanProperty 
-	var height: Integer  = 0
-	def withheight(p:Integer):this.type ={ 	this.height = p; 	this }
-
 	/**
 	 * L = Large,
 	 * M= Medium,
@@ -40,5 +27,18 @@ class MThumbnailDetail extends Serializable {
 	@BeanProperty 
 	var format: String =_
 	def withformat(p:String):this.type ={ 	this.format = p; 	this }
+
+	/**
+	 * value = 0 means that the height is proportional with the width size.
+	 */
+	//#SWG#@ApiModelProperty(value = """value = 0 means that the height is proportional with the width size.""" ,required = true)
+	@BeanProperty 
+	var height: Integer  = 0
+	def withheight(p:Integer):this.type ={ 	this.height = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var width: Integer =_
+	def withwidth(p:Integer):this.type ={ 	this.width = p; 	this }
 
 }

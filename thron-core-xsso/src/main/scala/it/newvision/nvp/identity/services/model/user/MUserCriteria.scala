@@ -25,28 +25,18 @@ class MUserCriteria extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var usernames: List[String] = new ArrayList[String]
-	def withusernames(p:List[String]):this.type ={ 	this.usernames = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var solutions: List[String] = new ArrayList[String]
-	def withsolutions(p:List[String]):this.type ={ 	this.solutions = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
 	var active: Boolean =_
 	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var userRole: List[String] = new ArrayList[String]
-	def withuserRole(p:List[String]):this.type ={ 	this.userRole = p; 	this }
+	var email: String =_
+	def withemail(p:String):this.type ={ 	this.email = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var email: String =_
-	def withemail(p:String):this.type ={ 	this.email = p; 	this }
+	var firstname: String =_
+	def withfirstname(p:String):this.type ={ 	this.firstname = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -60,7 +50,17 @@ class MUserCriteria extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var firstname: String =_
-	def withfirstname(p:String):this.type ={ 	this.firstname = p; 	this }
+	var solutions: List[String] = new ArrayList[String]
+	def withsolutions(p:List[String]):this.type ={ 	this.solutions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var usernames: List[String] = new ArrayList[String]
+	def withusernames(p:List[String]):this.type ={ 	this.usernames = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var userRole: List[String] = new ArrayList[String]
+	def withuserRole(p:List[String]):this.type ={ 	this.userRole = p; 	this }
 
 }

@@ -19,6 +19,17 @@ import javax.xml.bind.annotation._
 class MSourceWebOpt extends Serializable {
 
 	/**
+	 * Optional.
+	 * The desired filename (without extension) to assign to the resource (the file
+	 * can be renamed if not unique inside the platform)
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional.
+	//#SWGNL#The desired filename (without extension) to assign to the resource (the file can be renamed if not unique inside the platform)""")
+	@BeanProperty 
+	var newFileName: String =_
+	def withnewFileName(p:String):this.type ={ 	this.newFileName = p; 	this }
+
+	/**
 	 * public url resource like:
 	 * http//hostname/path/file.mp4
 	 * ftp://username:password@hostname/path/file.mp4
@@ -29,17 +40,6 @@ class MSourceWebOpt extends Serializable {
 	@BeanProperty 
 	var url: String =_
 	def withurl(p:String):this.type ={ 	this.url = p; 	this }
-
-	/**
-	 * Optional.
-	 * The desired filename (without extension) to assign to the resource (the file
-	 * can be renamed if not unique inside the platform)
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional.
-	//#SWGNL#The desired filename (without extension) to assign to the resource (the file can be renamed if not unique inside the platform)""")
-	@BeanProperty 
-	var newFileName: String =_
-	def withnewFileName(p:String):this.type ={ 	this.newFileName = p; 	this }
 
 	/**
 	 * @return void

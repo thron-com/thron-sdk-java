@@ -19,6 +19,14 @@ import it.newvision.nvp.xcontents.model.MMetadata
 //#SWG#@ApiModel(description = "Request message for service JMetadata.insertMetadata")
 class MMetadatainsertMetadataReq extends Serializable {
 
+	/**
+	 * Optional. For Acl validation
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
+	@BeanProperty
+	var categoryIdForAcl: String =_
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
@@ -33,13 +41,5 @@ class MMetadatainsertMetadataReq extends Serializable {
 	@BeanProperty
 	var metadata: MMetadata =_
 	def withmetadata(p:MMetadata):this.type ={ 	this.metadata = p; 	this }
-
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

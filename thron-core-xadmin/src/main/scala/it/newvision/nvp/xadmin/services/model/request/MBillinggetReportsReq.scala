@@ -23,6 +23,16 @@ class MBillinggetReportsReq extends Serializable {
 	var criteria: MBillingReportCriteria =_
 	def withcriteria(p:MBillingReportCriteria):this.type ={ 	this.criteria = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var numberOfResult: Integer =_
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var offset: Integer =_
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
+
 	/**
 	 * Optional. Used to filter the result set from the list of BillingItems
 	 * (MBillingReport.items)
@@ -31,15 +41,5 @@ class MBillinggetReportsReq extends Serializable {
 	@BeanProperty
 	var withItemsDetail: Boolean =_
 	def withwithItemsDetail(p:Boolean):this.type ={ 	this.withItemsDetail = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var offset: Integer =_
-	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 }

@@ -4,10 +4,10 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xcontents.services.model.common.MCredential
-import it.newvision.nvp.xcontents.services.model.category.MCategoryCriteria
-import it.newvision.nvp.xcontents.services.model.msg.MECategoryOrderBy
 import it.newvision.nvp.xcontents.services.model.category.MCategoryFieldsOption
+import it.newvision.nvp.xcontents.services.model.common.MCredential
+import it.newvision.nvp.xcontents.services.model.msg.MECategoryOrderBy
+import it.newvision.nvp.xcontents.services.model.category.MCategoryCriteria
 
 /* ************************
 *  GENERATED CLASS
@@ -21,15 +21,18 @@ import it.newvision.nvp.xcontents.services.model.category.MCategoryFieldsOption
 //#SWG#@ApiModel(description = "Request message for service JCategory.findByProperties2")
 class MCategoryfindByProperties2Req extends Serializable {
 
+	/**
+	 * Optional
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
+	@BeanProperty
+	var categoryFieldOption: MCategoryFieldsOption =_
+	def withcategoryFieldOption(p:MCategoryFieldsOption):this.type ={ 	this.categoryFieldOption = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var client: MCredential =_
 	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var properties: MCategoryCriteria =_
-	def withproperties(p:MCategoryCriteria):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * Optional.If the client desires to have the category description for a specific
@@ -47,20 +50,12 @@ class MCategoryfindByProperties2Req extends Serializable {
 	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
-	 * Optional. Used to order the result set for a specific field
+	 * Default and maximum value is 50.
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Used to order the result set for a specific field""", required = true)
+	//#SWG#@ApiModelProperty(value = """Default and maximum value is 50.""", required = true)
 	@BeanProperty
-	var orderBy: MECategoryOrderBy =_
-	def withorderBy(p:MECategoryOrderBy):this.type ={ 	this.orderBy = p; 	this }
-
-	/**
-	 * Optional
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
-	@BeanProperty
-	var categoryFieldOption: MCategoryFieldsOption =_
-	def withcategoryFieldOption(p:MCategoryFieldsOption):this.type ={ 	this.categoryFieldOption = p; 	this }
+	var numberOfResult: Integer =_
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
@@ -68,11 +63,16 @@ class MCategoryfindByProperties2Req extends Serializable {
 	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
-	 * Default and maximum value is 50.
+	 * Optional. Used to order the result set for a specific field
 	 */
-	//#SWG#@ApiModelProperty(value = """Default and maximum value is 50.""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional. Used to order the result set for a specific field""", required = true)
 	@BeanProperty
-	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
+	var orderBy: MECategoryOrderBy =_
+	def withorderBy(p:MECategoryOrderBy):this.type ={ 	this.orderBy = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var properties: MCategoryCriteria =_
+	def withproperties(p:MCategoryCriteria):this.type ={ 	this.properties = p; 	this }
 
 }

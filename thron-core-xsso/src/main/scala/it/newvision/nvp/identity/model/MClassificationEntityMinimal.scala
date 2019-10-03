@@ -16,12 +16,12 @@ class MClassificationEntityMinimal extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var applicableTo: String =_
-	def withapplicableTo(p:String):this.type ={ 	this.applicableTo = p; 	this }
+	var active: Boolean =_
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var active: Boolean =_
-	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
+	var applicableTo: String =_
+	def withapplicableTo(p:String):this.type ={ 	this.applicableTo = p; 	this }
 
 }

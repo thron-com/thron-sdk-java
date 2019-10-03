@@ -16,12 +16,30 @@ import it.newvision.nvp.xadmin.model.MMetadata
 class MRef extends Serializable {
 
 	/**
+	 * creation Date in the Platform
+	 */
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var creationDate: Date =_
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
+
+	/**
 	 * Optional. External reference Id (repository file)
 	 */
 	//#SWG#@ApiModelProperty(value = """Optional. External reference Id (repository file)""")
 	@BeanProperty 
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var metadata: List[MMetadata] = new ArrayList[MMetadata]
+	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var mimetype: String =_
+	def withmimetype(p:String):this.type ={ 	this.mimetype = p; 	this }
 
 	/**
 	 * Optional. name of the resource (fileName or url)
@@ -38,23 +56,5 @@ class MRef extends Serializable {
 	@BeanProperty 
 	var size: Long =_
 	def withsize(p:Long):this.type ={ 	this.size = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var mimetype: String =_
-	def withmimetype(p:String):this.type ={ 	this.mimetype = p; 	this }
-
-	/**
-	 * creation Date in the Platform
-	 */
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var creationDate: Date =_
-	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var metadata: List[MMetadata] = new ArrayList[MMetadata]
-	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 }

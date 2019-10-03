@@ -20,6 +20,22 @@ import javax.xml.bind.annotation._
 class MSnippetSummary extends Serializable {
 
 	/**
+	 * custom description of the snippet
+	 */
+	//#SWG#@ApiModelProperty(value = """custom description of the snippet""")
+	@BeanProperty 
+	var description: String =_
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+
+	/**
+	 * the display name of the snippet
+	 */
+	//#SWG#@ApiModelProperty(value = """the display name of the snippet""")
+	@BeanProperty 
+	var displayName: String =_
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
+
+	/**
 	 * the snippet id.
 	 * Empty if the user has no roles for the Snippet
 	 */
@@ -28,6 +44,37 @@ class MSnippetSummary extends Serializable {
 	@BeanProperty 
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var lastUpdate: Date =_
+	def withlastUpdate(p:Date):this.type ={ 	this.lastUpdate = p; 	this }
+
+	/**
+	 * derived at runtime.
+	 */
+	//#SWG#@ApiModelProperty(value = """derived at runtime.""")
+	@BeanProperty 
+	var ownerFullName: String =_
+	def withownerFullName(p:String):this.type ={ 	this.ownerFullName = p; 	this }
+
+	/**
+	 * username of the owner of the snippet.
+	 * The user who created the snippet instance
+	 */
+	//#SWG#@ApiModelProperty(value = """username of the owner of the snippet.
+	//#SWGNL#The user who created the snippet instance""")
+	@BeanProperty 
+	var ownerUsername: String =_
+	def withownerUsername(p:String):this.type ={ 	this.ownerUsername = p; 	this }
+
+	/**
+	 * used to define the snippet "class"
+	 */
+	//#SWG#@ApiModelProperty(value = """used to define the snippet "class"""")
+	@BeanProperty 
+	var snippetType: String =_
+	def withsnippetType(p:String):this.type ={ 	this.snippetType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -41,52 +88,5 @@ class MSnippetSummary extends Serializable {
 	@BeanProperty 
 	var version: String =_
 	def withversion(p:String):this.type ={ 	this.version = p; 	this }
-
-	/**
-	 * used to define the snippet "class"
-	 */
-	//#SWG#@ApiModelProperty(value = """used to define the snippet "class"""")
-	@BeanProperty 
-	var snippetType: String =_
-	def withsnippetType(p:String):this.type ={ 	this.snippetType = p; 	this }
-
-	/**
-	 * username of the owner of the snippet.
-	 * The user who created the snippet instance
-	 */
-	//#SWG#@ApiModelProperty(value = """username of the owner of the snippet.
-	//#SWGNL#The user who created the snippet instance""")
-	@BeanProperty 
-	var ownerUsername: String =_
-	def withownerUsername(p:String):this.type ={ 	this.ownerUsername = p; 	this }
-
-	/**
-	 * derived at runtime.
-	 */
-	//#SWG#@ApiModelProperty(value = """derived at runtime.""")
-	@BeanProperty 
-	var ownerFullName: String =_
-	def withownerFullName(p:String):this.type ={ 	this.ownerFullName = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var lastUpdate: Date =_
-	def withlastUpdate(p:Date):this.type ={ 	this.lastUpdate = p; 	this }
-
-	/**
-	 * the display name of the snippet
-	 */
-	//#SWG#@ApiModelProperty(value = """the display name of the snippet""")
-	@BeanProperty 
-	var displayName: String =_
-	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
-
-	/**
-	 * custom description of the snippet
-	 */
-	//#SWG#@ApiModelProperty(value = """custom description of the snippet""")
-	@BeanProperty 
-	var description: String =_
-	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 }

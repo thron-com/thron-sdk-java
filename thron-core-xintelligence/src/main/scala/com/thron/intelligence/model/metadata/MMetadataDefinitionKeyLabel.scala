@@ -19,12 +19,12 @@ import javax.xml.bind.annotation._
 class MMetadataDefinitionKeyLabel extends Serializable {
 
 	/**
-	 * en/it/ ....
+	 * The help text in the specific locale. Used only for presentation
 	 */
-	//#SWG#@ApiModelProperty(value = """en/it/ ....""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """The help text in the specific locale. Used only for presentation""" ,required = true)
 	@BeanProperty 
-	var lang: String =_
-	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
+	var hint: String =_
+	def withhint(p:String):this.type ={ 	this.hint = p; 	this }
 
 	/**
 	 * Description in the specific locale. Used only for presentation
@@ -35,11 +35,11 @@ class MMetadataDefinitionKeyLabel extends Serializable {
 	def withlabel(p:String):this.type ={ 	this.label = p; 	this }
 
 	/**
-	 * The help text in the specific locale. Used only for presentation
+	 * en/it/ ....
 	 */
-	//#SWG#@ApiModelProperty(value = """The help text in the specific locale. Used only for presentation""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """en/it/ ....""" ,required = true)
 	@BeanProperty 
-	var hint: String =_
-	def withhint(p:String):this.type ={ 	this.hint = p; 	this }
+	var lang: String =_
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 }

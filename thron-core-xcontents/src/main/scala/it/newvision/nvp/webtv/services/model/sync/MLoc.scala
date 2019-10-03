@@ -15,12 +15,12 @@ import javax.xml.bind.annotation._
 class MLoc extends Serializable {
 
 	/**
-	 * Locale code (ISO639-1) 
+	 * Constraints: length <= 10000
 	 */
-	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1) """ ,required = true)
+	//#SWG#@ApiModelProperty(value = """Constraints: length <= 10000""")
 	@BeanProperty 
-	var lang: String =_
-	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
+	var description: String =_
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * Constraints: length <= 150
@@ -31,12 +31,12 @@ class MLoc extends Serializable {
 	def withlabel(p:String):this.type ={ 	this.label = p; 	this }
 
 	/**
-	 * Constraints: length <= 10000
+	 * Locale code (ISO639-1) 
 	 */
-	//#SWG#@ApiModelProperty(value = """Constraints: length <= 10000""")
+	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1) """ ,required = true)
 	@BeanProperty 
-	var description: String =_
-	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+	var lang: String =_
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
 	 * @return Boolean

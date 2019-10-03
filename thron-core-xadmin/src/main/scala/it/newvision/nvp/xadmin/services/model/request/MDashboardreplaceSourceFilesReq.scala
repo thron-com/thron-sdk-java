@@ -33,12 +33,12 @@ class MDashboardreplaceSourceFilesReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
+	var sourceFiles: MFiles =_
+	def withsourceFiles(p:MFiles):this.type ={ 	this.sourceFiles = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var sourceFiles: MFiles =_
-	def withsourceFiles(p:MFiles):this.type ={ 	this.sourceFiles = p; 	this }
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 }

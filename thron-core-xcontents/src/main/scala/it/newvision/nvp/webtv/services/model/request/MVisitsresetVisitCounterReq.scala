@@ -17,6 +17,14 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = "Request message for service JVisits.resetVisitCounter")
 class MVisitsresetVisitCounterReq extends Serializable {
 
+	/**
+	 * Optional. For Acl validation
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
+	@BeanProperty
+	var categoryIdForAcl: String =_
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
@@ -31,13 +39,5 @@ class MVisitsresetVisitCounterReq extends Serializable {
 	@BeanProperty
 	var initialValue: Long =_
 	def withinitialValue(p:Long):this.type ={ 	this.initialValue = p; 	this }
-
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

@@ -23,19 +23,6 @@ class MCommentPub extends Serializable {
 	var description: String =_
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var userId: String =_
-	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
-
-	/**
-	 * used at client side, to handle the comment status.
-	 */
-	//#SWG#@ApiModelProperty(value = """used at client side, to handle the comment status.""")
-	@BeanProperty 
-	var status: String =_
-	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
-
 	/**
 	 * the commentId of the comment referenced to.
 	 * Used to reply to a different comment.
@@ -45,6 +32,19 @@ class MCommentPub extends Serializable {
 	@BeanProperty 
 	var replyTo: String =_
 	def withreplyTo(p:String):this.type ={ 	this.replyTo = p; 	this }
+
+	/**
+	 * used at client side, to handle the comment status.
+	 */
+	//#SWG#@ApiModelProperty(value = """used at client side, to handle the comment status.""")
+	@BeanProperty 
+	var status: String =_
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var userId: String =_
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")

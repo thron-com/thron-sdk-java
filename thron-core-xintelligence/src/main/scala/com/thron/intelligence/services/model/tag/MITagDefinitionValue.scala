@@ -16,6 +16,32 @@ import com.thron.intelligence.model.MLocalization
 class MITagDefinitionValue extends Serializable {
 
 	/**
+	 * Used to split the tagdefinition in two macro categories (categorized and
+	 * uncategorized tags). Usually the semantic engines creates new tagDefinition
+	 * with the categorized attribute to false.
+	 * 
+	 * Constraints:
+	 * <ul>
+	 * 	<li>it's possible to change the categorized attribute only for a tagDefinition
+	 * without parentId and sub nodes.  </li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """Used to split the tagdefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new tagDefinition with the categorized attribute to false.
+	//#SWGNL#
+	//#SWGNL#Constraints:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>it's possible to change the categorized attribute only for a tagDefinition without parentId and sub nodes.  </li>
+	//#SWGNL#</ul>""" ,required = true)
+	@BeanProperty 
+	var categorized: Boolean  = true
+	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var names: List[MLocalization] = new ArrayList[MLocalization]
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
+
+	/**
 	 * Optional. Used to add new tagdefinition inside a tree structure.
 	 * This should be the parent tagdefinition id 
 	 */
@@ -24,11 +50,6 @@ class MITagDefinitionValue extends Serializable {
 	@BeanProperty 
 	var parentId: String =_
 	def withparentId(p:String):this.type ={ 	this.parentId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * Desired tag position among elements of a specific tree level.
@@ -63,27 +84,6 @@ class MITagDefinitionValue extends Serializable {
 	@BeanProperty 
 	var prettyId: String =_
 	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
-
-	/**
-	 * Used to split the tagdefinition in two macro categories (categorized and
-	 * uncategorized tags). Usually the semantic engines creates new tagDefinition
-	 * with the categorized attribute to false.
-	 * 
-	 * Constraints:
-	 * <ul>
-	 * 	<li>it's possible to change the categorized attribute only for a tagDefinition
-	 * without parentId and sub nodes.  </li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """Used to split the tagdefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new tagDefinition with the categorized attribute to false.
-	//#SWGNL#
-	//#SWGNL#Constraints:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>it's possible to change the categorized attribute only for a tagDefinition without parentId and sub nodes.  </li>
-	//#SWGNL#</ul>""" ,required = true)
-	@BeanProperty 
-	var categorized: Boolean  = true
-	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -19,18 +19,6 @@ class MFile extends Serializable {
 
 	/**
 	 * Optional.
-	 * the Repository File id, used as reference Id.
-	 * MFile.id (xpackager component)
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional.
-	//#SWGNL#the Repository File id, used as reference Id.
-	//#SWGNL#MFile.id (xpackager component)""")
-	@BeanProperty 
-	var repositoryFileId: String =_
-	def withrepositoryFileId(p:String):this.type ={ 	this.repositoryFileId = p; 	this }
-
-	/**
-	 * Optional.
 	 * limited to 64 characters.
 	 * filename with extension (example myimage.jpg)
 	 */
@@ -46,24 +34,16 @@ class MFile extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@BeanProperty 
-	var path: String =_
-	def withpath(p:String):this.type ={ 	this.path = p; 	this }
-
-	/**
-	 * Deprecated
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated""")
-	@BeanProperty 
 	var host: String =_
 	def withhost(p:String):this.type ={ 	this.host = p; 	this }
 
 	/**
-	 * Deprecated
+	 * Optional
 	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """Optional""")
 	@BeanProperty 
-	var siteName: String =_
-	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
+	var mimeType: String =_
+	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
 
 	/**
 	 * Optional. Epoc format.
@@ -74,20 +54,12 @@ class MFile extends Serializable {
 	def withmodifiedDate(p:Long):this.type ={ 	this.modifiedDate = p; 	this }
 
 	/**
-	 * Optional. In bytes
+	 * Deprecated
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. In bytes""")
+	//#SWG#@ApiModelProperty(value = """Deprecated""")
 	@BeanProperty 
-	var totalSpace: Long =_
-	def withtotalSpace(p:Long):this.type ={ 	this.totalSpace = p; 	this }
-
-	/**
-	 * Optional
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional""")
-	@BeanProperty 
-	var mimeType: String =_
-	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
+	var path: String =_
+	def withpath(p:String):this.type ={ 	this.path = p; 	this }
 
 	/**
 	 * Optional.
@@ -100,5 +72,33 @@ class MFile extends Serializable {
 	@BeanProperty 
 	var removed: Boolean  = false
 	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
+
+	/**
+	 * Optional.
+	 * the Repository File id, used as reference Id.
+	 * MFile.id (xpackager component)
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional.
+	//#SWGNL#the Repository File id, used as reference Id.
+	//#SWGNL#MFile.id (xpackager component)""")
+	@BeanProperty 
+	var repositoryFileId: String =_
+	def withrepositoryFileId(p:String):this.type ={ 	this.repositoryFileId = p; 	this }
+
+	/**
+	 * Deprecated
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated""" ,required = true)
+	@BeanProperty 
+	var siteName: String =_
+	def withsiteName(p:String):this.type ={ 	this.siteName = p; 	this }
+
+	/**
+	 * Optional. In bytes
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. In bytes""")
+	@BeanProperty 
+	var totalSpace: Long =_
+	def withtotalSpace(p:Long):this.type ={ 	this.totalSpace = p; 	this }
 
 }

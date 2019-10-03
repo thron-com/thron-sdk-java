@@ -14,10 +14,21 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MUserCredential extends MCredentialFull with Serializable  {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * Specify if the user is enable or not to use the platform
+	 */
+	//#SWG#@ApiModelProperty(value = """Specify if the user is enable or not to use the platform""" ,required = true)
 	@BeanProperty 
-	var userCapabilities: MUserCapability  = new MUserCapability()
-	def withuserCapabilities(p:MUserCapability):this.type ={ 	this.userCapabilities = p; 	this }
+	var active: Boolean  = true
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
+
+	/**
+	 * external reference of contactId
+	 */
+	//#SWG#@ApiModelProperty(value = """external reference of contactId""")
+	@BeanProperty 
+	var contactId: String =_
+	def withcontactId(p:String):this.type ={ 	this.contactId = p; 	this }
 
 	/**
 	 * user creation date
@@ -26,14 +37,6 @@ class MUserCredential extends MCredentialFull with Serializable  {
 	@BeanProperty 
 	var creationDate: Date  = new Date()
 	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
-
-	/**
-	 * Specify if the user is enable or not to use the platform
-	 */
-	//#SWG#@ApiModelProperty(value = """Specify if the user is enable or not to use the platform""" ,required = true)
-	@BeanProperty 
-	var active: Boolean  = true
-	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -48,12 +51,9 @@ class MUserCredential extends MCredentialFull with Serializable  {
 	var expiryDate: Date =_
 	def withexpiryDate(p:Date):this.type ={ 	this.expiryDate = p; 	this }
 
-	/**
-	 * external reference of contactId
-	 */
-	//#SWG#@ApiModelProperty(value = """external reference of contactId""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var contactId: String =_
-	def withcontactId(p:String):this.type ={ 	this.contactId = p; 	this }
+	var userCapabilities: MUserCapability  = new MUserCapability()
+	def withuserCapabilities(p:MUserCapability):this.type ={ 	this.userCapabilities = p; 	this }
 
 }

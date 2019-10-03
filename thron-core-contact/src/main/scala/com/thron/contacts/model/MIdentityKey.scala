@@ -80,6 +80,15 @@ class MIdentityKey extends Serializable {
 	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
+	 * @return String
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def getId():String ={
+		s"${this.key.toLowerCase(Locale.ENGLISH)}#${this.value.toLowerCase(Locale.ENGLISH)}"
+	}
+
+	/**
 	 * @return Boolean
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
@@ -104,12 +113,12 @@ class MIdentityKey extends Serializable {
 	}
 
 	/**
-	 * @return String
+	 * @return 
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def getId():String ={
-		s"${this.key.toLowerCase(Locale.ENGLISH)}#${this.value.toLowerCase(Locale.ENGLISH)}"
+	def sanitize(){
+		Option(this.key).foreach{k=> this.key = org.apache.commons.lang.StringUtils.lowerCase(k,Locale.ENGLISH)}
 	}
 
 	/**
@@ -130,15 +139,6 @@ class MIdentityKey extends Serializable {
 		this.key = key
 		this.value = value
 		sanitize()
-	}
-
-	/**
-	 * @return 
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def sanitize(){
-		Option(this.key).foreach{k=> this.key = org.apache.commons.lang.StringUtils.lowerCase(k,Locale.ENGLISH)}
 	}
 
 }

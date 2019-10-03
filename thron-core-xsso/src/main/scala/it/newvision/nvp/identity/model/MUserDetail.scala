@@ -17,16 +17,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """Basic User Detail class.""")
 class MUserDetail extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var firstname: String =_
-	def withfirstname(p:String):this.type ={ 	this.firstname = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var lastname: String =_
-	def withlastname(p:String):this.type ={ 	this.lastname = p; 	this }
-
 	/**
 	 * A valid e-mail address
 	 * Constraints:
@@ -43,13 +33,23 @@ class MUserDetail extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var phoneNumber: String =_
-	def withphoneNumber(p:String):this.type ={ 	this.phoneNumber = p; 	this }
+	var firstname: String =_
+	def withfirstname(p:String):this.type ={ 	this.firstname = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var image: MImage =_
 	def withimage(p:MImage):this.type ={ 	this.image = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var lastname: String =_
+	def withlastname(p:String):this.type ={ 	this.lastname = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var phoneNumber: String =_
+	def withphoneNumber(p:String):this.type ={ 	this.phoneNumber = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")

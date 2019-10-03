@@ -4,8 +4,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xcontents.model.MEObjClass
 import it.newvision.nvp.xcontents.model.MAclRuleInverse
+import it.newvision.nvp.xcontents.model.MEObjClass
 
 /* ************************
 *  GENERATED CLASS
@@ -19,8 +19,8 @@ class MAclRuleInverseItem extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var targetObjId: String =_
-	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
+	var sourceAcl: MAclRuleInverse =_
+	def withsourceAcl(p:MAclRuleInverse):this.type ={ 	this.sourceAcl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
@@ -29,7 +29,7 @@ class MAclRuleInverseItem extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var sourceAcl: MAclRuleInverse =_
-	def withsourceAcl(p:MAclRuleInverse):this.type ={ 	this.sourceAcl = p; 	this }
+	var targetObjId: String =_
+	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
 
 }

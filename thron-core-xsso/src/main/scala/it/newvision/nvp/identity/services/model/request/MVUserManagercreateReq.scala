@@ -4,11 +4,11 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.identity.model.MCredentialFull
 import it.newvision.nvp.identity.model.MVUserDetail
+import it.newvision.nvp.identity.model.MCredentialFull
+import it.newvision.nvp.identity.model.MUserCapability
 import it.newvision.nvp.identity.services.model.vusers.MVUserParams
 import it.newvision.nvp.identity.model.MEUserType
-import it.newvision.nvp.identity.model.MUserCapability
 
 /* ************************
 *  GENERATED CLASS
@@ -28,6 +28,14 @@ class MVUserManagercreateReq extends Serializable {
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
+	 * Optional. user information
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. user information""", required = true)
+	@BeanProperty
+	var detail: MVUserDetail =_
+	def withdetail(p:MVUserDetail):this.type ={ 	this.detail = p; 	this }
+
+	/**
 	 * Optional. To be defined only for platform users.
 	 * Check the username constraints in the MCredentialFull.username field
 	 */
@@ -38,25 +46,17 @@ class MVUserManagercreateReq extends Serializable {
 	def withnewUser(p:MCredentialFull):this.type ={ 	this.newUser = p; 	this }
 
 	/**
-	 * Optional. user information
+	 * if true the service send to the new user an email with the link to 1st access
+	 * page.
+	 * The new user can complete the profile setup and change his password.
+	 * Default is false
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. user information""", required = true)
+	//#SWG#@ApiModelProperty(value = """if true the service send to the new user an email with the link to 1st access page.
+	//#SWGNL#The new user can complete the profile setup and change his password.
+	//#SWGNL#Default is false""", required = true)
 	@BeanProperty
-	var detail: MVUserDetail =_
-	def withdetail(p:MVUserDetail):this.type ={ 	this.detail = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var userParams: MVUserParams =_
-	def withuserParams(p:MVUserParams):this.type ={ 	this.userParams = p; 	this }
-
-	/**
-	 * Required
-	 */
-	//#SWG#@ApiModelProperty(value = """Required""", required = true)
-	@BeanProperty
-	var userType: MEUserType =_
-	def withuserType(p:MEUserType):this.type ={ 	this.userType = p; 	this }
+	var sendFirstAccessNotification: Boolean =_
+	def withsendFirstAccessNotification(p:Boolean):this.type ={ 	this.sendFirstAccessNotification = p; 	this }
 
 	/**
 	 * Optional. user roles 
@@ -65,15 +65,6 @@ class MVUserManagercreateReq extends Serializable {
 	@BeanProperty
 	var userCapabilities: MUserCapability =_
 	def withuserCapabilities(p:MUserCapability):this.type ={ 	this.userCapabilities = p; 	this }
-
-	/**
-	 * Optional. the total amount of quota reserved to the user (in MB). If zero the
-	 * user have no quota restrictions
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. the total amount of quota reserved to the user (in MB). If zero the user have no quota restrictions""", required = true)
-	@BeanProperty
-	var userQuota: Long =_
-	def withuserQuota(p:Long):this.type ={ 	this.userQuota = p; 	this }
 
 	/**
 	 * Optional.
@@ -91,17 +82,26 @@ class MVUserManagercreateReq extends Serializable {
 	var userLockTemplate: String =_
 	def withuserLockTemplate(p:String):this.type ={ 	this.userLockTemplate = p; 	this }
 
-	/**
-	 * if true the service send to the new user an email with the link to 1st access
-	 * page.
-	 * The new user can complete the profile setup and change his password.
-	 * Default is false
-	 */
-	//#SWG#@ApiModelProperty(value = """if true the service send to the new user an email with the link to 1st access page.
-	//#SWGNL#The new user can complete the profile setup and change his password.
-	//#SWGNL#Default is false""", required = true)
+	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var sendFirstAccessNotification: Boolean =_
-	def withsendFirstAccessNotification(p:Boolean):this.type ={ 	this.sendFirstAccessNotification = p; 	this }
+	var userParams: MVUserParams =_
+	def withuserParams(p:MVUserParams):this.type ={ 	this.userParams = p; 	this }
+
+	/**
+	 * Optional. the total amount of quota reserved to the user (in MB). If zero the
+	 * user have no quota restrictions
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. the total amount of quota reserved to the user (in MB). If zero the user have no quota restrictions""", required = true)
+	@BeanProperty
+	var userQuota: Long =_
+	def withuserQuota(p:Long):this.type ={ 	this.userQuota = p; 	this }
+
+	/**
+	 * Required
+	 */
+	//#SWG#@ApiModelProperty(value = """Required""", required = true)
+	@BeanProperty
+	var userType: MEUserType =_
+	def withuserType(p:MEUserType):this.type ={ 	this.userType = p; 	this }
 
 }

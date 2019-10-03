@@ -22,6 +22,11 @@ class MDevicedisconnectReq extends Serializable {
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var contactId: String =_
+	def withcontactId(p:String):this.type ={ 	this.contactId = p; 	this }
+
 	/**
 	 * Optional
 	 */
@@ -29,10 +34,5 @@ class MDevicedisconnectReq extends Serializable {
 	@BeanProperty
 	var deviceId: String =_
 	def withdeviceId(p:String):this.type ={ 	this.deviceId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var contactId: String =_
-	def withcontactId(p:String):this.type ={ 	this.contactId = p; 	this }
 
 }

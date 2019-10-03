@@ -16,13 +16,8 @@ class MServerStreamInfo extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var name: String =_
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var isRecording: Boolean =_
-	def withisRecording(p:Boolean):this.type ={ 	this.isRecording = p; 	this }
+	var beingPublished: Boolean =_
+	def withbeingPublished(p:Boolean):this.type ={ 	this.beingPublished = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
@@ -31,7 +26,12 @@ class MServerStreamInfo extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var beingPublished: Boolean =_
-	def withbeingPublished(p:Boolean):this.type ={ 	this.beingPublished = p; 	this }
+	var isRecording: Boolean =_
+	def withisRecording(p:Boolean):this.type ={ 	this.isRecording = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var name: String =_
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 }

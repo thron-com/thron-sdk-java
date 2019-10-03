@@ -10,8 +10,8 @@ import it.newvision.nvp.identity.services.model.user.MResponseUserDetail
 import it.newvision.nvp.identity.services.model.request.MUserManagerdetailReq
 import it.newvision.nvp.identity.services.model.user.MResponseUserFindByProperties
 import it.newvision.nvp.identity.services.model.request.MUserManagerfindByPropertiesReq
-import it.newvision.nvp.identity.services.model.user.MResponseUserNumberOfUsers
 import it.newvision.nvp.identity.services.model.user.MResponseUserAllUsername
+import it.newvision.nvp.identity.services.model.user.MResponseUserNumberOfUsers
 
 /* ************************
 *  GENERATED CLASS
@@ -225,51 +225,6 @@ trait JUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	protected def capability_findByProperties: String
 
 	/**
-	 * Return the total number of users registered in the platform
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @return MResponseUserNumberOfUsers
-	*/
-	@GET
-	@Path("/numberOfUsers")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/numberOfUsers", notes = """Return the total number of users registered in the platform""", response = classOf[MResponseUserNumberOfUsers])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def numberOfUsers(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@QueryParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseUserNumberOfUsers*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("numberOfUsers") 
-		try{	
-			val resp = this.__numberOfUsers(PRestHelper.getTokenId(tokenId_q, tokenId),clientId)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_numberOfUsers)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_numberOfUsers)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __numberOfUsers(tokenId: String, clientId: String) :MResponseUserNumberOfUsers
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_numberOfUsers: String
-
-	/**
 	 * Return the complete list of all users (username only) registered in the platform
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -313,5 +268,50 @@ trait JUserManager extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	 protected def __getAllUsername(tokenId: String, clientId: String) :MResponseUserAllUsername
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_getAllUsername: String
+
+	/**
+	 * Return the total number of users registered in the platform
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @return MResponseUserNumberOfUsers
+	*/
+	@GET
+	@Path("/numberOfUsers")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
+	//#SWG#@ApiOperation(value = "/numberOfUsers", notes = """Return the total number of users registered in the platform""", response = classOf[MResponseUserNumberOfUsers])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def numberOfUsers(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String
+			,
+			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseUserNumberOfUsers*/= { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		//get the cache control specific for this service
+		val cc = this.cachemap("numberOfUsers") 
+		try{	
+			val resp = this.__numberOfUsers(PRestHelper.getTokenId(tokenId_q, tokenId),clientId)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_numberOfUsers)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_numberOfUsers)
+	    }
+	}
+
+	 
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __numberOfUsers(tokenId: String, clientId: String) :MResponseUserNumberOfUsers
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_numberOfUsers: String
 
 }

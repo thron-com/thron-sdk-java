@@ -19,20 +19,20 @@ class MQuery extends Serializable {
 	var fromDate: Date =_
 	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var toDate: Date =_
-	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
+	var groupByCountryCode: Boolean  = false
+	def withgroupByCountryCode(p:Boolean):this.type ={ 	this.groupByCountryCode = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var timeUnit: METimeUnit =_
 	def withtimeUnit(p:METimeUnit):this.type ={ 	this.timeUnit = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var groupByCountryCode: Boolean  = false
-	def withgroupByCountryCode(p:Boolean):this.type ={ 	this.groupByCountryCode = p; 	this }
+	var toDate: Date =_
+	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 	/**
 	 * @return Boolean

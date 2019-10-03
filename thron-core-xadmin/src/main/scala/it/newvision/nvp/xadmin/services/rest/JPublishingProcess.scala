@@ -5,20 +5,20 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
 import it.newvision.nvp.xadmin.services.model.weebo.MResponsePublishContent
-import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessnewContentReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessnewPageletContentReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessupdatePageletContentReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessnewLiveEventContentReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessnewPlayListContentReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishingProcesscreateContentForChannelReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishingProcesspublishChannelReq
 import it.newvision.nvp.xadmin.services.model.request.MPublishingProcesschangeChannelStatusReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessremoveChannelReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessunpublishContentReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessreplaceThumbnailInPublishedContentReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessupdatePublishingPropertiesReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishingProcesscreateContentForChannelReq
 import it.newvision.nvp.xadmin.services.model.weebo.MResponseGetContentTypes
 import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessgetContentTypesReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessnewContentReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessnewLiveEventContentReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessnewPageletContentReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessnewPlayListContentReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishingProcesspublishChannelReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessremoveChannelReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessreplaceThumbnailInPublishedContentReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessunpublishContentReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessupdatePageletContentReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishingProcessupdatePublishingPropertiesReq
 
 /* ************************
 *  GENERATED CLASS
@@ -51,6 +51,179 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	import scala.collection.immutable.Map
 
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
+
+	/**
+	 * Activate/deactivate a published channel. Works only for published channels
+	 * @param tokenId : String
+	 * @param param : MPublishingProcesschangeChannelStatusReq
+	 * @return MResponsePublishContent
+	*/
+	@POST
+	@Path("/changeChannelStatus")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/changeChannelStatus", notes = """Activate/deactivate a published channel. Works only for published channels""", response = classOf[MResponsePublishContent])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def changeChannelStatus(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MPublishingProcesschangeChannelStatusReq):Response /*returnType = MResponsePublishContent*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__changeChannelStatus(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_changeChannelStatus)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_changeChannelStatus)
+	    }
+	} 
+
+	@GET
+	@Path("/changeChannelStatus")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def changeChannelStatus_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublishContent*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("changeChannelStatus",this._getCacheControl) 
+		try{
+			val resp = this.__changeChannelStatus(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MPublishingProcesschangeChannelStatusReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_changeChannelStatus)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_changeChannelStatus)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __changeChannelStatus(tokenId: String, param: MPublishingProcesschangeChannelStatusReq) :MResponsePublishContent
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_changeChannelStatus: String
+
+	/**
+	 * This service activate the ingestion process of the content for a specific channel. Once the content
+	 * is ready (converted in right format),the content can be published using the service
+	 * "publishChannel". This service is <b>ASYNCHRONOUS</b>!
+	 * @param tokenId : String
+	 * @param param : MPublishingProcesscreateContentForChannelReq
+	 * @return MResponsePublishContent
+	*/
+	@POST
+	@Path("/createContentForChannel")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/createContentForChannel", notes = """This service activate the ingestion process of the content for a specific channel. Once the content is ready (converted in right format),the content can be published using the service "publishChannel". This service is <b>ASYNCHRONOUS</b>!""", response = classOf[MResponsePublishContent])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def createContentForChannel(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MPublishingProcesscreateContentForChannelReq):Response /*returnType = MResponsePublishContent*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__createContentForChannel(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_createContentForChannel)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_createContentForChannel)
+	    }
+	} 
+
+	@GET
+	@Path("/createContentForChannel")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def createContentForChannel_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublishContent*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("createContentForChannel",this._getCacheControl) 
+		try{
+			val resp = this.__createContentForChannel(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MPublishingProcesscreateContentForChannelReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_createContentForChannel)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_createContentForChannel)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __createContentForChannel(tokenId: String, param: MPublishingProcesscreateContentForChannelReq) :MResponsePublishContent
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_createContentForChannel: String
+
+	/**
+	 * This service is used to know the possible platform content type available for a given filename. The
+	 * service map the mime type of filename to the corresponding list of content types.
+	 * For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.
+	 * @param tokenId : String
+	 * @param param : MPublishingProcessgetContentTypesReq
+	 * @return MResponseGetContentTypes
+	*/
+	@POST
+	@Path("/getContentTypes")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/getContentTypes", notes = """This service is used to know the possible platform content type available for a given filename. The service map the mime type of filename to the corresponding list of content types.
+	//#SWGNL#For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.""", response = classOf[MResponseGetContentTypes])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def getContentTypes(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MPublishingProcessgetContentTypesReq):Response /*returnType = MResponseGetContentTypes*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__getContentTypes(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_getContentTypes)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_getContentTypes)
+	    }
+	} 
+
+	@GET
+	@Path("/getContentTypes")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def getContentTypes_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseGetContentTypes*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("getContentTypes",this._getCacheControl) 
+		try{
+			val resp = this.__getContentTypes(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MPublishingProcessgetContentTypesReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getContentTypes)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_getContentTypes)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __getContentTypes(tokenId: String, param: MPublishingProcessgetContentTypesReq) :MResponseGetContentTypes
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_getContentTypes: String
 
 	/**
 	 * First step of a publishing process. The service create a new empty content in platform linked to a
@@ -120,127 +293,6 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	protected def capability_newContent: String
 
 	/**
-	 * First step of a publishing process, used to create a new content of type PAGELET (contents without
-	 * source file, but with a body in html or other formats, readable by the player).
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>the service can be invoked only by platform users</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MPublishingProcessnewPageletContentReq
-	 * @return MResponsePublishContent
-	*/
-	@POST
-	@Path("/newPageletContent")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/newPageletContent", notes = """First step of a publishing process, used to create a new content of type PAGELET (contents without source file, but with a body in html or other formats, readable by the player).
-	//#SWGNL#<b>Constraints:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>the service can be invoked only by platform users</li>
-	//#SWGNL#</ul>""", response = classOf[MResponsePublishContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def newPageletContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MPublishingProcessnewPageletContentReq):Response /*returnType = MResponsePublishContent*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__newPageletContent(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_newPageletContent)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_newPageletContent)
-	    }
-	} 
-
-	@GET
-	@Path("/newPageletContent")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def newPageletContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublishContent*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("newPageletContent",this._getCacheControl) 
-		try{
-			val resp = this.__newPageletContent(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MPublishingProcessnewPageletContentReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_newPageletContent)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_newPageletContent)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __newPageletContent(tokenId: String, param: MPublishingProcessnewPageletContentReq) :MResponsePublishContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_newPageletContent: String
-
-	/**
-	 * Used to update the content body of a PAGELET document.
-	 * @param tokenId : String
-	 * @param param : MPublishingProcessupdatePageletContentReq
-	 * @return MResponsePublishContent
-	*/
-	@POST
-	@Path("/updatePageletContent")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updatePageletContent", notes = """Used to update the content body of a PAGELET document.""", response = classOf[MResponsePublishContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updatePageletContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MPublishingProcessupdatePageletContentReq):Response /*returnType = MResponsePublishContent*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__updatePageletContent(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updatePageletContent)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updatePageletContent)
-	    }
-	} 
-
-	@GET
-	@Path("/updatePageletContent")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updatePageletContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublishContent*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("updatePageletContent",this._getCacheControl) 
-		try{
-			val resp = this.__updatePageletContent(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MPublishingProcessupdatePageletContentReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updatePageletContent)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updatePageletContent)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updatePageletContent(tokenId: String, param: MPublishingProcessupdatePageletContentReq) :MResponsePublishContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updatePageletContent: String
-
-	/**
 	 * First step of a publishing process for a LIVE EVENT content. The User create a new Live Event
 	 * Content. The service create a content in xcontents (MContent), a new content in xpublisher
 	 * (MContent) and prepare the environment for the publishing process.
@@ -305,6 +357,71 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	 protected def __newLiveEventContent(tokenId: String, param: MPublishingProcessnewLiveEventContentReq) :MResponsePublishContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_newLiveEventContent: String
+
+	/**
+	 * First step of a publishing process, used to create a new content of type PAGELET (contents without
+	 * source file, but with a body in html or other formats, readable by the player).
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MPublishingProcessnewPageletContentReq
+	 * @return MResponsePublishContent
+	*/
+	@POST
+	@Path("/newPageletContent")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/newPageletContent", notes = """First step of a publishing process, used to create a new content of type PAGELET (contents without source file, but with a body in html or other formats, readable by the player).
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>the service can be invoked only by platform users</li>
+	//#SWGNL#</ul>""", response = classOf[MResponsePublishContent])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def newPageletContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MPublishingProcessnewPageletContentReq):Response /*returnType = MResponsePublishContent*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__newPageletContent(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_newPageletContent)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_newPageletContent)
+	    }
+	} 
+
+	@GET
+	@Path("/newPageletContent")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def newPageletContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublishContent*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("newPageletContent",this._getCacheControl) 
+		try{
+			val resp = this.__newPageletContent(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MPublishingProcessnewPageletContentReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_newPageletContent)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_newPageletContent)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __newPageletContent(tokenId: String, param: MPublishingProcessnewPageletContentReq) :MResponsePublishContent
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_newPageletContent: String
 
 	/**
 	 * First step of the publishing process for a PLAYLIST content. The User create a new PlayList Content,
@@ -373,64 +490,6 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	protected def capability_newPlayListContent: String
 
 	/**
-	 * This service activate the ingestion process of the content for a specific channel. Once the content
-	 * is ready (converted in right format),the content can be published using the service
-	 * "publishChannel". This service is <b>ASYNCHRONOUS</b>!
-	 * @param tokenId : String
-	 * @param param : MPublishingProcesscreateContentForChannelReq
-	 * @return MResponsePublishContent
-	*/
-	@POST
-	@Path("/createContentForChannel")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/createContentForChannel", notes = """This service activate the ingestion process of the content for a specific channel. Once the content is ready (converted in right format),the content can be published using the service "publishChannel". This service is <b>ASYNCHRONOUS</b>!""", response = classOf[MResponsePublishContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def createContentForChannel(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MPublishingProcesscreateContentForChannelReq):Response /*returnType = MResponsePublishContent*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__createContentForChannel(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_createContentForChannel)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_createContentForChannel)
-	    }
-	} 
-
-	@GET
-	@Path("/createContentForChannel")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def createContentForChannel_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublishContent*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("createContentForChannel",this._getCacheControl) 
-		try{
-			val resp = this.__createContentForChannel(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MPublishingProcesscreateContentForChannelReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_createContentForChannel)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_createContentForChannel)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __createContentForChannel(tokenId: String, param: MPublishingProcesscreateContentForChannelReq) :MResponsePublishContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_createContentForChannel: String
-
-	/**
 	 * Publish a content created for a specific channel. Once the content is ready (packaged), it can be
 	 * published in CDN. This function is ASYNCHRONOUS!
 	 * <b>Constraints:</b>
@@ -496,62 +555,6 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	protected def capability_publishChannel: String
 
 	/**
-	 * Activate/deactivate a published channel. Works only for published channels
-	 * @param tokenId : String
-	 * @param param : MPublishingProcesschangeChannelStatusReq
-	 * @return MResponsePublishContent
-	*/
-	@POST
-	@Path("/changeChannelStatus")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/changeChannelStatus", notes = """Activate/deactivate a published channel. Works only for published channels""", response = classOf[MResponsePublishContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def changeChannelStatus(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MPublishingProcesschangeChannelStatusReq):Response /*returnType = MResponsePublishContent*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__changeChannelStatus(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_changeChannelStatus)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_changeChannelStatus)
-	    }
-	} 
-
-	@GET
-	@Path("/changeChannelStatus")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def changeChannelStatus_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublishContent*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("changeChannelStatus",this._getCacheControl) 
-		try{
-			val resp = this.__changeChannelStatus(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MPublishingProcesschangeChannelStatusReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_changeChannelStatus)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_changeChannelStatus)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __changeChannelStatus(tokenId: String, param: MPublishingProcesschangeChannelStatusReq) :MResponsePublishContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_changeChannelStatus: String
-
-	/**
 	 * Remove a specific channel. remove all files and resources published in CDN (only for the specified
 	 * channel). The content is not removed from the platform
 	 * @param tokenId : String
@@ -607,6 +610,62 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	 protected def __removeChannel(tokenId: String, param: MPublishingProcessremoveChannelReq) :MResponsePublishContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_removeChannel: String
+
+	/**
+	 * change the thumbnail for a published content, replacing the thumbnail files in the published folder.
+	 * @param tokenId : String
+	 * @param param : MPublishingProcessreplaceThumbnailInPublishedContentReq
+	 * @return MResponsePublishContent
+	*/
+	@POST
+	@Path("/replaceThumbnailInPublishedContent")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/replaceThumbnailInPublishedContent", notes = """change the thumbnail for a published content, replacing the thumbnail files in the published folder.""", response = classOf[MResponsePublishContent])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def replaceThumbnailInPublishedContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MPublishingProcessreplaceThumbnailInPublishedContentReq):Response /*returnType = MResponsePublishContent*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__replaceThumbnailInPublishedContent(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_replaceThumbnailInPublishedContent)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_replaceThumbnailInPublishedContent)
+	    }
+	} 
+
+	@GET
+	@Path("/replaceThumbnailInPublishedContent")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def replaceThumbnailInPublishedContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublishContent*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("replaceThumbnailInPublishedContent",this._getCacheControl) 
+		try{
+			val resp = this.__replaceThumbnailInPublishedContent(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MPublishingProcessreplaceThumbnailInPublishedContentReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_replaceThumbnailInPublishedContent)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_replaceThumbnailInPublishedContent)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __replaceThumbnailInPublishedContent(tokenId: String, param: MPublishingProcessreplaceThumbnailInPublishedContentReq) :MResponsePublishContent
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_replaceThumbnailInPublishedContent: String
 
 	/**
 	 * Unpublish (Remove) a content from the Platform. Remove the content metadata in xcontent and
@@ -666,60 +725,60 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	protected def capability_unpublishContent: String
 
 	/**
-	 * change the thumbnail for a published content, replacing the thumbnail files in the published folder.
+	 * Used to update the content body of a PAGELET document.
 	 * @param tokenId : String
-	 * @param param : MPublishingProcessreplaceThumbnailInPublishedContentReq
+	 * @param param : MPublishingProcessupdatePageletContentReq
 	 * @return MResponsePublishContent
 	*/
 	@POST
-	@Path("/replaceThumbnailInPublishedContent")
+	@Path("/updatePageletContent")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/replaceThumbnailInPublishedContent", notes = """change the thumbnail for a published content, replacing the thumbnail files in the published folder.""", response = classOf[MResponsePublishContent])
+	//#SWG#@ApiOperation(value = "/updatePageletContent", notes = """Used to update the content body of a PAGELET document.""", response = classOf[MResponsePublishContent])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def replaceThumbnailInPublishedContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def updatePageletContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			param: MPublishingProcessreplaceThumbnailInPublishedContentReq):Response /*returnType = MResponsePublishContent*/ = {
+			param: MPublishingProcessupdatePageletContentReq):Response /*returnType = MResponsePublishContent*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__replaceThumbnailInPublishedContent(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_replaceThumbnailInPublishedContent)    
+			val resp = this.__updatePageletContent(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updatePageletContent)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_replaceThumbnailInPublishedContent)
+	        throw new WebApplicationException(e,this.capability_updatePageletContent)
 	    }
 	} 
 
 	@GET
-	@Path("/replaceThumbnailInPublishedContent")
+	@Path("/updatePageletContent")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def replaceThumbnailInPublishedContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def updatePageletContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			@QueryParam("param") param_q: String,
 			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePublishContent*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("replaceThumbnailInPublishedContent",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("updatePageletContent",this._getCacheControl) 
 		try{
-			val resp = this.__replaceThumbnailInPublishedContent(
+			val resp = this.__updatePageletContent(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MPublishingProcessreplaceThumbnailInPublishedContentReq](param_q)	
+			,PRestHelper.bindRequest[MPublishingProcessupdatePageletContentReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_replaceThumbnailInPublishedContent)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updatePageletContent)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_replaceThumbnailInPublishedContent)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updatePageletContent)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __replaceThumbnailInPublishedContent(tokenId: String, param: MPublishingProcessreplaceThumbnailInPublishedContentReq) :MResponsePublishContent
+	 protected def __updatePageletContent(tokenId: String, param: MPublishingProcessupdatePageletContentReq) :MResponsePublishContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_replaceThumbnailInPublishedContent: String
+	protected def capability_updatePageletContent: String
 
 	/**
 	 * Update the restriction properties for the published content.
@@ -776,64 +835,5 @@ trait JPublishingProcess extends it.newvision.nvp.core.libraries.restserver.Base
 	 protected def __updatePublishingProperties(tokenId: String, param: MPublishingProcessupdatePublishingPropertiesReq) :MResponsePublishContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_updatePublishingProperties: String
-
-	/**
-	 * This service is used to know the possible platform content type available for a given filename. The
-	 * service map the mime type of filename to the corresponding list of content types.
-	 * For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.
-	 * @param tokenId : String
-	 * @param param : MPublishingProcessgetContentTypesReq
-	 * @return MResponseGetContentTypes
-	*/
-	@POST
-	@Path("/getContentTypes")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/getContentTypes", notes = """This service is used to know the possible platform content type available for a given filename. The service map the mime type of filename to the corresponding list of content types.
-	//#SWGNL#For example the file with name "myvideo.mp4" can be published as VIDEO or OTHER content.""", response = classOf[MResponseGetContentTypes])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def getContentTypes(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MPublishingProcessgetContentTypesReq):Response /*returnType = MResponseGetContentTypes*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__getContentTypes(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_getContentTypes)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_getContentTypes)
-	    }
-	} 
-
-	@GET
-	@Path("/getContentTypes")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def getContentTypes_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseGetContentTypes*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("getContentTypes",this._getCacheControl) 
-		try{
-			val resp = this.__getContentTypes(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MPublishingProcessgetContentTypesReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getContentTypes)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_getContentTypes)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getContentTypes(tokenId: String, param: MPublishingProcessgetContentTypesReq) :MResponseGetContentTypes
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_getContentTypes: String
 
 }

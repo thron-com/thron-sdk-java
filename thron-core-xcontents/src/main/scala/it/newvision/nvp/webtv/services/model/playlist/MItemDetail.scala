@@ -17,20 +17,17 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """generic content element inside a playlist""")
 class MItemDetail extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * Defined if divArea parameter is specified on the request.
+	 * Return the thumbnail that best suits to the given area.
+	 * Format: <widht>x<height>
+	 */
+	//#SWG#@ApiModelProperty(value = """Defined if divArea parameter is specified on the request.
+	//#SWGNL#Return the thumbnail that best suits to the given area.
+	//#SWGNL#Format: <widht>x<height>""")
 	@BeanProperty 
-	var position: Integer =_
-	def withposition(p:Integer):this.type ={ 	this.position = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var xpublisherId: String =_
-	def withxpublisherId(p:String):this.type ={ 	this.xpublisherId = p; 	this }
+	var bestThumbUrl: String =_
+	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
 	/**
 	 * match the EContentType in xcontent
@@ -55,8 +52,8 @@ class MItemDetail extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var name: String =_
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
+	var duration: Long =_
+	def withduration(p:Long):this.type ={ 	this.duration = p; 	this }
 
 	/**
 	 * summary of the content
@@ -69,12 +66,32 @@ class MItemDetail extends Serializable {
 	def withexcerpt(p:String):this.type ={ 	this.excerpt = p; 	this }
 
 	/**
-	 * The content url , or descriptor url.
+	 * The list of Content.metadatas (xcontent).
 	 */
-	//#SWG#@ApiModelProperty(value = """The content url , or descriptor url.""")
+	//#SWG#@ApiModelProperty(value = """The list of Content.metadatas (xcontent).""")
 	@BeanProperty 
-	var url: String =_
-	def withurl(p:String):this.type ={ 	this.url = p; 	this }
+	var metadata: List[MMetadataDetail] = new ArrayList[MMetadataDetail]
+	def withmetadata(p:List[MMetadataDetail]):this.type ={ 	this.metadata = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var name: String =_
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var position: Integer =_
+	def withposition(p:Integer):this.type ={ 	this.position = p; 	this }
+
+	/**
+	 * The list of Channel.metadatas (xpublisher). These are the system metadata used
+	 * to define some specific properties of the elements in CDN in the specific
+	 * channel.
+	 */
+	//#SWG#@ApiModelProperty(value = """The list of Channel.metadatas (xpublisher). These are the system metadata used to define some specific properties of the elements in CDN in the specific channel.""")
+	@BeanProperty 
+	var sysMetadata: List[MMetadataDetail] = new ArrayList[MMetadataDetail]
+	def withsysMetadata(p:List[MMetadataDetail]):this.type ={ 	this.sysMetadata = p; 	this }
 
 	/**
 	 * DEPRECATED
@@ -87,38 +104,21 @@ class MItemDetail extends Serializable {
 	def withthumbnails(p:MThumbnailDetail):this.type ={ 	this.thumbnails = p; 	this }
 
 	/**
-	 * Defined if divArea parameter is specified on the request.
-	 * Return the thumbnail that best suits to the given area.
-	 * Format: <widht>x<height>
+	 * The content url , or descriptor url.
 	 */
-	//#SWG#@ApiModelProperty(value = """Defined if divArea parameter is specified on the request.
-	//#SWGNL#Return the thumbnail that best suits to the given area.
-	//#SWGNL#Format: <widht>x<height>""")
+	//#SWG#@ApiModelProperty(value = """The content url , or descriptor url.""")
 	@BeanProperty 
-	var bestThumbUrl: String =_
-	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
+	var url: String =_
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var duration: Long =_
-	def withduration(p:Long):this.type ={ 	this.duration = p; 	this }
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
-	/**
-	 * The list of Content.metadatas (xcontent).
-	 */
-	//#SWG#@ApiModelProperty(value = """The list of Content.metadatas (xcontent).""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var metadata: List[MMetadataDetail] = new ArrayList[MMetadataDetail]
-	def withmetadata(p:List[MMetadataDetail]):this.type ={ 	this.metadata = p; 	this }
-
-	/**
-	 * The list of Channel.metadatas (xpublisher). These are the system metadata used
-	 * to define some specific properties of the elements in CDN in the specific
-	 * channel.
-	 */
-	//#SWG#@ApiModelProperty(value = """The list of Channel.metadatas (xpublisher). These are the system metadata used to define some specific properties of the elements in CDN in the specific channel.""")
-	@BeanProperty 
-	var sysMetadata: List[MMetadataDetail] = new ArrayList[MMetadataDetail]
-	def withsysMetadata(p:List[MMetadataDetail]):this.type ={ 	this.sysMetadata = p; 	this }
+	var xpublisherId: String =_
+	def withxpublisherId(p:String):this.type ={ 	this.xpublisherId = p; 	this }
 
 }

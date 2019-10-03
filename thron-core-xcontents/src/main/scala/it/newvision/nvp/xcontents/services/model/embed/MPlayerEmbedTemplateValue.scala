@@ -17,11 +17,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """A template used to customize the Player layout""")
 class MPlayerEmbedTemplateValue extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var name: String =_
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
-
 	/**
 	 * Optional.
 	 */
@@ -29,6 +24,11 @@ class MPlayerEmbedTemplateValue extends Serializable {
 	@BeanProperty 
 	var description: String =_
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var name: String =_
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * link to the platform template Id (CE1,CE2...) used to set the playerVersion

@@ -18,6 +18,11 @@ import it.newvision.nvp.xcontents.services.model.category.MCategoryCopyOption
 //#SWG#@ApiModel(description = "Request message for service JCategory.copy")
 class MCategorycopyReq extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var options: MCategoryCopyOption =_
+	def withoptions(p:MCategoryCopyOption):this.type ={ 	this.options = p; 	this }
+
 	/**
 	 * Optional.Target categoryId
 	 */
@@ -25,10 +30,5 @@ class MCategorycopyReq extends Serializable {
 	@BeanProperty
 	var targetId: String =_
 	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var options: MCategoryCopyOption =_
-	def withoptions(p:MCategoryCopyOption):this.type ={ 	this.options = p; 	this }
 
 }

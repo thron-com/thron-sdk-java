@@ -18,12 +18,12 @@ import javax.xml.bind.annotation._
 class MContentDescription extends Serializable {
 
 	/**
-	 * Follows the MContent4Locale.description constraints (length < 150)
+	 * not required. 
 	 */
-	//#SWG#@ApiModelProperty(value = """Follows the MContent4Locale.description constraints (length < 150)""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """not required. """)
 	@BeanProperty 
-	var name: String =_
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
+	var categoryId: String =_
+	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
 
 	/**
 	 * Follows the MContent4Locale.description constraints (length < 10000)
@@ -44,6 +44,38 @@ class MContentDescription extends Serializable {
 	def withexcerpt(p:String):this.type ={ 	this.excerpt = p; 	this }
 
 	/**
+	 * Locale code (ISO639-1)
+	 */
+	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1)""" ,required = true)
+	@BeanProperty 
+	var locale: String =_
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	@Deprecated
+	var metadata: List[MContentMetadata] = new ArrayList[MContentMetadata]
+	@Deprecated
+	def withmetadata(p:List[MContentMetadata]):this.type ={ 	this.metadata = p; 	this }
+
+	/**
+	 * Follows the MContent4Locale.description constraints (length < 150)
+	 */
+	//#SWG#@ApiModelProperty(value = """Follows the MContent4Locale.description constraints (length < 150)""" ,required = true)
+	@BeanProperty 
+	var name: String =_
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
+
+	/**
+	 * The display name of the Author. Free text used to show the full name of the
+	 * author. The field is mapped in MContent.owner
+	 */
+	//#SWG#@ApiModelProperty(value = """The display name of the Author. Free text used to show the full name of the author. The field is mapped in MContent.owner""")
+	@BeanProperty 
+	var owner: String =_
+	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
+
+	/**
 	 * desired prettyId for the content and locale. See reference xcontent.MPrettyId
 	 */
 	//#SWG#@ApiModelProperty(value = """desired prettyId for the content and locale. See reference xcontent.MPrettyId""")
@@ -52,20 +84,14 @@ class MContentDescription extends Serializable {
 	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	/**
-	 * Locale code (ISO639-1)
+	 * values belonging to MEContentProperties (xcontent component), like:
+	 * UNLINKABLE, RATINGALLOWED
 	 */
-	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1)""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """values belonging to MEContentProperties (xcontent component), like:
+	//#SWGNL#UNLINKABLE, RATINGALLOWED""")
 	@BeanProperty 
-	var locale: String =_
-	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
-
-	/**
-	 * not required. 
-	 */
-	//#SWG#@ApiModelProperty(value = """not required. """)
-	@BeanProperty 
-	var categoryId: String =_
-	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
+	var properties: List[String] = new ArrayList[String]
+	def withproperties(p:List[String]):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * Optional. List of tags as comma separated values.
@@ -85,31 +111,5 @@ class MContentDescription extends Serializable {
 	var userId: String =_
 	@Deprecated
 	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
-
-	/**
-	 * The display name of the Author. Free text used to show the full name of the
-	 * author. The field is mapped in MContent.owner
-	 */
-	//#SWG#@ApiModelProperty(value = """The display name of the Author. Free text used to show the full name of the author. The field is mapped in MContent.owner""")
-	@BeanProperty 
-	var owner: String =_
-	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	@Deprecated
-	var metadata: List[MContentMetadata] = new ArrayList[MContentMetadata]
-	@Deprecated
-	def withmetadata(p:List[MContentMetadata]):this.type ={ 	this.metadata = p; 	this }
-
-	/**
-	 * values belonging to MEContentProperties (xcontent component), like:
-	 * UNLINKABLE, RATINGALLOWED
-	 */
-	//#SWG#@ApiModelProperty(value = """values belonging to MEContentProperties (xcontent component), like:
-	//#SWGNL#UNLINKABLE, RATINGALLOWED""")
-	@BeanProperty 
-	var properties: List[String] = new ArrayList[String]
-	def withproperties(p:List[String]):this.type ={ 	this.properties = p; 	this }
 
 }

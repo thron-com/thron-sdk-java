@@ -20,14 +20,6 @@ import javax.xml.bind.annotation._
 class MLiveEvent extends MContent with Serializable  {
 
 	/**
-	 * the scheduled start time of the event in the calendar
-	 */
-	//#SWG#@ApiModelProperty(value = """the scheduled start time of the event in the calendar""")
-	@BeanProperty 
-	var startDate: Date =_
-	def withstartDate(p:Date):this.type ={ 	this.startDate = p; 	this }
-
-	/**
 	 * the scheduled finish time of the event.
 	 * The attribute is linked to the MContent.inactiveDate field
 	 */
@@ -38,20 +30,20 @@ class MLiveEvent extends MContent with Serializable  {
 	def withendDate(p:Date):this.type ={ 	this.endDate = p; 	this }
 
 	/**
+	 * the real or scheduled end time of the event
+	 */
+	//#SWG#@ApiModelProperty(value = """the real or scheduled end time of the event""")
+	@BeanProperty 
+	var eventEnded: Date =_
+	def witheventEnded(p:Date):this.type ={ 	this.eventEnded = p; 	this }
+
+	/**
 	 * The scheduled length of the event
 	 */
 	//#SWG#@ApiModelProperty(value = """The scheduled length of the event""")
 	@BeanProperty 
 	var eventLength: Long =_
 	def witheventLength(p:Long):this.type ={ 	this.eventLength = p; 	this }
-
-	/**
-	 * used to distinguish h24 live events by the spot events.
-	 */
-	//#SWG#@ApiModelProperty(value = """used to distinguish h24 live events by the spot events.""" ,required = true)
-	@BeanProperty 
-	var neverEndingLiveEvent: Boolean  = false
-	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
 
 	/**
 	 * the real start time of the event
@@ -62,22 +54,20 @@ class MLiveEvent extends MContent with Serializable  {
 	def witheventStarted(p:Date):this.type ={ 	this.eventStarted = p; 	this }
 
 	/**
-	 * the real or scheduled end time of the event
+	 * used to distinguish h24 live events by the spot events.
 	 */
-	//#SWG#@ApiModelProperty(value = """the real or scheduled end time of the event""")
+	//#SWG#@ApiModelProperty(value = """used to distinguish h24 live events by the spot events.""" ,required = true)
 	@BeanProperty 
-	var eventEnded: Date =_
-	def witheventEnded(p:Date):this.type ={ 	this.eventEnded = p; 	this }
+	var neverEndingLiveEvent: Boolean  = false
+	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
 
 	/**
-	 * @return Boolean
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	override def isValid():Boolean ={
-		getContentType == MEContentType.LIVEEVENT&&
-		Option(endDate).forall(_.after(Option(startDate).getOrElse(new Date(0))))
-	}
+	 * the scheduled start time of the event in the calendar
+	 */
+	//#SWG#@ApiModelProperty(value = """the scheduled start time of the event in the calendar""")
+	@BeanProperty 
+	var startDate: Date =_
+	def withstartDate(p:Date):this.type ={ 	this.startDate = p; 	this }
 
 	/**
 	 * @return MELiveEventStatus
@@ -100,6 +90,16 @@ class MLiveEvent extends MContent with Serializable  {
 		} else{
 		MELiveEventStatus.DRAFT
 		}
+	}
+
+	/**
+	 * @return Boolean
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	override def isValid():Boolean ={
+		getContentType == MEContentType.LIVEEVENT&&
+		Option(endDate).forall(_.after(Option(startDate).getOrElse(new Date(0))))
 	}
 
 }

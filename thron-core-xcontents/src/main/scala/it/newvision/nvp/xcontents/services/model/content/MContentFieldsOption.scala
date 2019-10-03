@@ -33,68 +33,6 @@ import javax.xml.bind.annotation._
 class MContentFieldsOption extends Serializable {
 
 	/**
-	 * Default=false
-	 */
-	//#SWG#@ApiModelProperty(value = """Default=false""")
-	@BeanProperty 
-	var returnLinkedContents: Boolean  = false
-	def withreturnLinkedContents(p:Boolean):this.type ={ 	this.returnLinkedContents = p; 	this }
-
-	/**
-	 * Default=false
-	 */
-	//#SWG#@ApiModelProperty(value = """Default=false""")
-	@BeanProperty 
-	var returnLinkedCategories: Boolean  = false
-	def withreturnLinkedCategories(p:Boolean):this.type ={ 	this.returnLinkedCategories = p; 	this }
-
-	/**
-	 * Default=false
-	 */
-	//#SWG#@ApiModelProperty(value = """Default=false""")
-	@BeanProperty 
-	var returnEmbedCodes: Boolean  = false
-	def withreturnEmbedCodes(p:Boolean):this.type ={ 	this.returnEmbedCodes = p; 	this }
-
-	/**
-	 * Default=false
-	 */
-	//#SWG#@ApiModelProperty(value = """Default=false""")
-	@BeanProperty 
-	var returnThumbnailUrl: Boolean  = false
-	def withreturnThumbnailUrl(p:Boolean):this.type ={ 	this.returnThumbnailUrl = p; 	this }
-
-	/**
-	 * return the list of itags (intelligence tags)
-	 * Default=false
-	 */
-	//#SWG#@ApiModelProperty(value = """return the list of itags (intelligence tags)
-	//#SWGNL#Default=false""")
-	@BeanProperty 
-	var returnItags: Boolean  = false
-	def withreturnItags(p:Boolean):this.type ={ 	this.returnItags = p; 	this }
-
-	/**
-	 * if true, aclInfo will be calculated and included in the response;
-	 * Default value is false.
-	 */
-	//#SWG#@ApiModelProperty(value = """if true, aclInfo will be calculated and included in the response; 
-	//#SWGNL#Default value is false.""")
-	@BeanProperty 
-	var returnAclInfo: Boolean  = false
-	def withreturnAclInfo(p:Boolean):this.type ={ 	this.returnAclInfo = p; 	this }
-
-	/**
-	 * Return the list of custom metadata from intelligence
-	 * Default=false
-	 */
-	//#SWG#@ApiModelProperty(value = """Return the list of custom metadata from intelligence
-	//#SWGNL#Default=false""")
-	@BeanProperty 
-	var returnImetadata: Boolean  = false
-	def withreturnImetadata(p:Boolean):this.type ={ 	this.returnImetadata = p; 	this }
-
-	/**
 	 * Whether or not result itags will ignore any combining.
 	 * Default=false
 	 * <b>
@@ -127,6 +65,68 @@ class MContentFieldsOption extends Serializable {
 	@BeanProperty 
 	var ignoreITagCombining: Boolean  = false
 	def withignoreITagCombining(p:Boolean):this.type ={ 	this.ignoreITagCombining = p; 	this }
+
+	/**
+	 * if true, aclInfo will be calculated and included in the response;
+	 * Default value is false.
+	 */
+	//#SWG#@ApiModelProperty(value = """if true, aclInfo will be calculated and included in the response; 
+	//#SWGNL#Default value is false.""")
+	@BeanProperty 
+	var returnAclInfo: Boolean  = false
+	def withreturnAclInfo(p:Boolean):this.type ={ 	this.returnAclInfo = p; 	this }
+
+	/**
+	 * Default=false
+	 */
+	//#SWG#@ApiModelProperty(value = """Default=false""")
+	@BeanProperty 
+	var returnEmbedCodes: Boolean  = false
+	def withreturnEmbedCodes(p:Boolean):this.type ={ 	this.returnEmbedCodes = p; 	this }
+
+	/**
+	 * Return the list of custom metadata from intelligence
+	 * Default=false
+	 */
+	//#SWG#@ApiModelProperty(value = """Return the list of custom metadata from intelligence
+	//#SWGNL#Default=false""")
+	@BeanProperty 
+	var returnImetadata: Boolean  = false
+	def withreturnImetadata(p:Boolean):this.type ={ 	this.returnImetadata = p; 	this }
+
+	/**
+	 * return the list of itags (intelligence tags)
+	 * Default=false
+	 */
+	//#SWG#@ApiModelProperty(value = """return the list of itags (intelligence tags)
+	//#SWGNL#Default=false""")
+	@BeanProperty 
+	var returnItags: Boolean  = false
+	def withreturnItags(p:Boolean):this.type ={ 	this.returnItags = p; 	this }
+
+	/**
+	 * Default=false
+	 */
+	//#SWG#@ApiModelProperty(value = """Default=false""")
+	@BeanProperty 
+	var returnLinkedCategories: Boolean  = false
+	def withreturnLinkedCategories(p:Boolean):this.type ={ 	this.returnLinkedCategories = p; 	this }
+
+	/**
+	 * Default=false
+	 */
+	//#SWG#@ApiModelProperty(value = """Default=false""")
+	@BeanProperty 
+	var returnLinkedContents: Boolean  = false
+	def withreturnLinkedContents(p:Boolean):this.type ={ 	this.returnLinkedContents = p; 	this }
+
+	/**
+	 * Default=false
+	 */
+	//#SWG#@ApiModelProperty(value = """Default=false""")
+	@BeanProperty 
+	var returnThumbnailUrl: Boolean  = false
+	def withreturnThumbnailUrl(p:Boolean):this.type ={ 	this.returnThumbnailUrl = p; 	this }
 
 	/**
 	 * if true, totalResults will be calculated and included in the response; if false,

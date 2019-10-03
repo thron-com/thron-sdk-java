@@ -4,8 +4,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.identity.model.MCredentialFull
 import it.newvision.nvp.identity.model.MUserDetail
+import it.newvision.nvp.identity.model.MCredentialFull
 
 /* ************************
 *  GENERATED CLASS
@@ -24,11 +24,6 @@ class MSysUserManagercreateReq extends Serializable {
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var newUser: MCredentialFull =_
-	def withnewUser(p:MCredentialFull):this.type ={ 	this.newUser = p; 	this }
-
 	/**
 	 * user information
 	 */
@@ -36,5 +31,10 @@ class MSysUserManagercreateReq extends Serializable {
 	@BeanProperty
 	var detail: MUserDetail =_
 	def withdetail(p:MUserDetail):this.type ={ 	this.detail = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var newUser: MCredentialFull =_
+	def withnewUser(p:MCredentialFull):this.type ={ 	this.newUser = p; 	this }
 
 }

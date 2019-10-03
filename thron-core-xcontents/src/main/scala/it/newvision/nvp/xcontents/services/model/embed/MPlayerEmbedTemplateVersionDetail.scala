@@ -16,14 +16,6 @@ import it.newvision.nvp.xcontents.model.MMetadata
 class MPlayerEmbedTemplateVersionDetail extends Serializable {
 
 	/**
-	 * template version
-	 */
-	//#SWG#@ApiModelProperty(value = """template version""" ,required = true)
-	@BeanProperty 
-	var version: Integer =_
-	def withversion(p:Integer):this.type ={ 	this.version = p; 	this }
-
-	/**
 	 * Optional. The owner of the PlayerEmbedTemplate
 	 */
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
@@ -37,22 +29,12 @@ class MPlayerEmbedTemplateVersionDetail extends Serializable {
 	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
 	/**
-	 * Version notes
+	 * Custom CSS resource URL
 	 */
-	//#SWG#@ApiModelProperty(value = """Version notes""")
+	//#SWG#@ApiModelProperty(value = """Custom CSS resource URL""")
 	@BeanProperty 
-	var note: String =_
-	def withnote(p:String):this.type ={ 	this.note = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var playerVersion: String =_
-	def withplayerVersion(p:String):this.type ={ 	this.playerVersion = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var values: List[MMetadata] = new ArrayList[MMetadata]
-	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
+	var cssUrl: String =_
+	def withcssUrl(p:String):this.type ={ 	this.cssUrl = p; 	this }
 
 	/**
 	 * Custom Javascript resource URL
@@ -63,12 +45,12 @@ class MPlayerEmbedTemplateVersionDetail extends Serializable {
 	def withjsUrl(p:String):this.type ={ 	this.jsUrl = p; 	this }
 
 	/**
-	 * Custom CSS resource URL
+	 * Version notes
 	 */
-	//#SWG#@ApiModelProperty(value = """Custom CSS resource URL""")
+	//#SWG#@ApiModelProperty(value = """Version notes""")
 	@BeanProperty 
-	var cssUrl: String =_
-	def withcssUrl(p:String):this.type ={ 	this.cssUrl = p; 	this }
+	var note: String =_
+	def withnote(p:String):this.type ={ 	this.note = p; 	this }
 
 	/**
 	 * link to the platform template Id (CE1,CE2...) used to set the playerVersion
@@ -85,5 +67,23 @@ class MPlayerEmbedTemplateVersionDetail extends Serializable {
 	@BeanProperty 
 	var platformTemplateVersion: Integer =_
 	def withplatformTemplateVersion(p:Integer):this.type ={ 	this.platformTemplateVersion = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var playerVersion: String =_
+	def withplayerVersion(p:String):this.type ={ 	this.playerVersion = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var values: List[MMetadata] = new ArrayList[MMetadata]
+	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
+
+	/**
+	 * template version
+	 */
+	//#SWG#@ApiModelProperty(value = """template version""" ,required = true)
+	@BeanProperty 
+	var version: Integer =_
+	def withversion(p:Integer):this.type ={ 	this.version = p; 	this }
 
 }

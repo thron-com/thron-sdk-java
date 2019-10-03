@@ -18,15 +18,24 @@ import it.newvision.nvp.xcontents.services.model.category.MCategoryIds
 //#SWG#@ApiModel(description = "Request message for service JSubscriptions.categoriesSubscription")
 class MSubscriptionscategoriesSubscriptionReq extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
+	/**
+	 * Propagate the subscription on the subtrees of the selected categories. Optional,
+	 * default = false
+	 */
+	//#SWG#@ApiModelProperty(value = """Propagate the subscription on the subtrees of the selected categories. Optional, default = false""", required = true)
 	@BeanProperty
-	var clientId: String =_
-	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
+	var cascade: Boolean =_
+	def withcascade(p:Boolean):this.type ={ 	this.cascade = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var categoryList: MCategoryIds =_
 	def withcategoryList(p:MCategoryIds):this.type ={ 	this.categoryList = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var clientId: String =_
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * revoke the subscription to the categories

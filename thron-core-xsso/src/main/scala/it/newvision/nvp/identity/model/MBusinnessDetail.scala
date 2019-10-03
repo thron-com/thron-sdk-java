@@ -14,6 +14,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MBusinnessDetail extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var city: String =_
+	def withcity(p:String):this.type ={ 	this.city = p; 	this }
+
 	/**
 	 * HOME/WORK/...
 	 */
@@ -21,11 +26,6 @@ class MBusinnessDetail extends Serializable {
 	@BeanProperty 
 	var companyName: String =_
 	def withcompanyName(p:String):this.type ={ 	this.companyName = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var city: String =_
-	def withcity(p:String):this.type ={ 	this.city = p; 	this }
 
 	/**
 	 * country / region

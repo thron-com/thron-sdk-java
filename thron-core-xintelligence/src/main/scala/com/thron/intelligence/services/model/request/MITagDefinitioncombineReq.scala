@@ -18,19 +18,19 @@ import javax.xml.bind.annotation._
 class MITagDefinitioncombineReq extends Serializable {
 
 	/**
-	 * Target ITagdefinition id, prettyId or externalId
-	 */
-	//#SWG#@ApiModelProperty(value = """Target ITagdefinition id, prettyId or externalId""", required = true)
-	@BeanProperty
-	var targetId: String =_
-	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }
-
-	/**
 	 * Source ITagdefinition id, prettyId or externalId
 	 */
 	//#SWG#@ApiModelProperty(value = """Source ITagdefinition id, prettyId or externalId""", required = true)
 	@BeanProperty
 	var sourceId: String =_
 	def withsourceId(p:String):this.type ={ 	this.sourceId = p; 	this }
+
+	/**
+	 * Target ITagdefinition id, prettyId or externalId
+	 */
+	//#SWG#@ApiModelProperty(value = """Target ITagdefinition id, prettyId or externalId""", required = true)
+	@BeanProperty
+	var targetId: String =_
+	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }
 
 }

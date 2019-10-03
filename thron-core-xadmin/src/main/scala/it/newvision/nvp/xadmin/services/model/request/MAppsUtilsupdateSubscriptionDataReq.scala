@@ -20,13 +20,13 @@ class MAppsUtilsupdateSubscriptionDataReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var clientId: String =_
-	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
+	var appId: String =_
+	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var appId: String =_
-	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
+	var clientId: String =_
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty

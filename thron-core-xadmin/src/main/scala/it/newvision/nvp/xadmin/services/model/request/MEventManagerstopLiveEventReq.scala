@@ -29,14 +29,6 @@ class MEventManagerstopLiveEventReq extends Serializable {
 	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
-	 * Deprecated
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated""", required = true)
-	@BeanProperty
-	var publishRecordedFiles: Boolean =_
-	def withpublishRecordedFiles(p:Boolean):this.type ={ 	this.publishRecordedFiles = p; 	this }
-
-	/**
 	 * used to publish a new VIDEO Content fom the recorded files of the LIVE EVENT.
 	 */
 	//#SWG#@ApiModelProperty(value = """used to publish a new VIDEO Content fom the recorded files of the LIVE EVENT.
@@ -44,6 +36,14 @@ class MEventManagerstopLiveEventReq extends Serializable {
 	@BeanProperty
 	var postEventAction: MEEventAction =_
 	def withpostEventAction(p:MEEventAction):this.type ={ 	this.postEventAction = p; 	this }
+
+	/**
+	 * Deprecated
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated""", required = true)
+	@BeanProperty
+	var publishRecordedFiles: Boolean =_
+	def withpublishRecordedFiles(p:Boolean):this.type ={ 	this.publishRecordedFiles = p; 	this }
 
 	/**
 	 * remove the instances linked to the event. Set to false only for debug or

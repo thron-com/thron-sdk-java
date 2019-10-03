@@ -45,16 +45,6 @@ class MLiveEventfindByPropertiesReq extends Serializable {
 	var locale: String =_
 	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var orderBy: MELiveEventOrderBy =_
-	def withorderBy(p:MELiveEventOrderBy):this.type ={ 	this.orderBy = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var offset: Integer =_
-	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
-
 	/**
 	 * Default and maximum value is 50 items
 	 */
@@ -62,5 +52,15 @@ class MLiveEventfindByPropertiesReq extends Serializable {
 	@BeanProperty
 	var numberOfResults: Integer =_
 	def withnumberOfResults(p:Integer):this.type ={ 	this.numberOfResults = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var offset: Integer =_
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var orderBy: MELiveEventOrderBy =_
+	def withorderBy(p:MELiveEventOrderBy):this.type ={ 	this.orderBy = p; 	this }
 
 }

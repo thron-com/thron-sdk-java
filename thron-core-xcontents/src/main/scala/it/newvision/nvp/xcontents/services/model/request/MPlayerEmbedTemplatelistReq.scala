@@ -26,8 +26,8 @@ class MPlayerEmbedTemplatelistReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var options: MPlayerEmbedTemplateFieldsOption =_
-	def withoptions(p:MPlayerEmbedTemplateFieldsOption):this.type ={ 	this.options = p; 	this }
+	var limit: Integer =_
+	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
@@ -36,7 +36,7 @@ class MPlayerEmbedTemplatelistReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var limit: Integer =_
-	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
+	var options: MPlayerEmbedTemplateFieldsOption =_
+	def withoptions(p:MPlayerEmbedTemplateFieldsOption):this.type ={ 	this.options = p; 	this }
 
 }

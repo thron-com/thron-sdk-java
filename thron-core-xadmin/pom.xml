@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.thron.sdk</groupId>
         <artifactId>thron-sdk-java</artifactId>
-        <version>6.1.2</version>
+        <version>6.4.4</version>
     </parent>
     <dependencies>
         <dependency>
@@ -20,6 +20,11 @@
             <groupId>com.sun.jersey.contribs</groupId>
             <artifactId>jersey-multipart</artifactId>
             <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>thron-core-xcontents_2.11</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
 </project>

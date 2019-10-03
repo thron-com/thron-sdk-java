@@ -31,7 +31,7 @@ class MPropertyApplication extends Serializable {
 	//#SWG#@ApiModelProperty(value = """available protocols. list of comma separated values.
 	//#SWGNL#"http://,https://"""" ,required = true)
 	@BeanProperty 
-	var webProtocols: String  = "http://"
+	var webProtocols: String  = "https://"
 	def withwebProtocols(p:String):this.type ={ 	this.webProtocols = p; 	this }
 
 	/**

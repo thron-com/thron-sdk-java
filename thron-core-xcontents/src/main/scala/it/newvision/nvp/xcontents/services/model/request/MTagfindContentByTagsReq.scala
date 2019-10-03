@@ -24,11 +24,11 @@ class MTagfindContentByTagsReq extends Serializable {
 	def withcriteria(p:MTagCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	@BeanProperty 
-	var offset: Integer =_
-	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
-
-	@BeanProperty 
 	var numberOfResult: Integer =_
 	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
+
+	@BeanProperty 
+	var offset: Integer =_
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 }

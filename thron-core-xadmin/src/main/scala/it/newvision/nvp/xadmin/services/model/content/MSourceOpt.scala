@@ -18,20 +18,30 @@ import javax.xml.bind.annotation._
 class MSourceOpt extends Serializable {
 
 	/**
-	 * Deprecated. Import from repository
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated. Import from repository""")
-	@BeanProperty 
-	var repo: MSourceRepoOpt =_
-	def withrepo(p:MSourceRepoOpt):this.type ={ 	this.repo = p; 	this }
-
-	/**
 	 * upload from ftp
 	 */
 	//#SWG#@ApiModelProperty(value = """upload from ftp""")
 	@BeanProperty 
 	var ftp: MSourceFtpOpt =_
 	def withftp(p:MSourceFtpOpt):this.type ={ 	this.ftp = p; 	this }
+
+	/**
+	 * upload raw data. Used for Pagelet Contents, or Thumbnail images
+	 */
+	//#SWG#@ApiModelProperty(value = """upload raw data. Used for Pagelet Contents, or Thumbnail images""")
+	@BeanProperty 
+	var raw: MSourceRawOpt =_
+	def withraw(p:MSourceRawOpt):this.type ={ 	this.raw = p; 	this }
+
+	/**
+	 * Deprecated. Import from repository
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated. Import from repository""")
+	@BeanProperty 
+	@Deprecated
+	var repo: MSourceRepoOpt =_
+	@Deprecated
+	def withrepo(p:MSourceRepoOpt):this.type ={ 	this.repo = p; 	this }
 
 	/**
 	 * upload from AWS S3
@@ -41,6 +51,11 @@ class MSourceOpt extends Serializable {
 	var s3: MSourceS3Opt =_
 	def withs3(p:MSourceS3Opt):this.type ={ 	this.s3 = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var thronToken: MSourceThronTokenOpt =_
+	def withthronToken(p:MSourceThronTokenOpt):this.type ={ 	this.thronToken = p; 	this }
+
 	/**
 	 * upload from web resource, basic HTTP/HTTPS authentication can be included in
 	 * the url
@@ -49,14 +64,6 @@ class MSourceOpt extends Serializable {
 	@BeanProperty 
 	var web: MSourceWebOpt =_
 	def withweb(p:MSourceWebOpt):this.type ={ 	this.web = p; 	this }
-
-	/**
-	 * upload raw data. Used for Pagelet Contents, or Thumbnail images
-	 */
-	//#SWG#@ApiModelProperty(value = """upload raw data. Used for Pagelet Contents, or Thumbnail images""")
-	@BeanProperty 
-	var raw: MSourceRawOpt =_
-	def withraw(p:MSourceRawOpt):this.type ={ 	this.raw = p; 	this }
 
 	/**
 	 * @return void
@@ -71,7 +78,8 @@ class MSourceOpt extends Serializable {
 			Option(ftp).isDefined,
 			Option(raw).isDefined,
 			Option(s3).isDefined,
-			Option(web).isDefined
+			Option(web).isDefined,
+			Option(thronToken).isDefined
 		).filter(_.booleanValue)
 	
 		if (existingSources.size != 1) throw new IllegalArgumentException("Exactly one source must be defined")
@@ -81,6 +89,7 @@ class MSourceOpt extends Serializable {
 		Option(s3).foreach(_.validate())
 		Option(web).foreach(_.validate())
 		Option(raw).foreach(_.validate())
+		Option(thronToken).foreach(_.validate())
 	}
 
 }

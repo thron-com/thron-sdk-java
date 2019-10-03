@@ -19,12 +19,16 @@ import javax.xml.bind.annotation._
 class MTag extends Serializable {
 
 	/**
-	 * value can not contains commas (",").
+	 * DEPRECATED.
+	 * used to moderate the insertion of tags. Implemented at client side.
 	 */
-	//#SWG#@ApiModelProperty(value = """value can not contains commas (",").""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.
+	//#SWGNL#used to moderate the insertion of tags. Implemented at client side.""")
 	@BeanProperty 
-	var value: String =_
-	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
+	@Deprecated
+	var status: String =_
+	@Deprecated
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * the userId of the user who inserted the tag linked to the content
@@ -37,16 +41,12 @@ class MTag extends Serializable {
 	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
-	 * DEPRECATED.
-	 * used to moderate the insertion of tags. Implemented at client side.
+	 * value can not contains commas (",").
 	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#used to moderate the insertion of tags. Implemented at client side.""")
+	//#SWG#@ApiModelProperty(value = """value can not contains commas (",").""" ,required = true)
 	@BeanProperty 
-	@Deprecated
-	var status: String =_
-	@Deprecated
-	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
+	var value: String =_
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * @return Boolean

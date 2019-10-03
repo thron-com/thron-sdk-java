@@ -18,23 +18,13 @@ import javax.xml.bind.annotation._
 @Deprecated
 class MAclRuleInverse extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var sourceObjId: String =_
-	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var sourceObjClass: MEObjClass =_
-	def withsourceObjClass(p:MEObjClass):this.type ={ 	this.sourceObjClass = p; 	this }
-
 	/**
-	 * The different type of active rules.
+	 * like: FACEBOOK, EMAIL, TWITTER, SMS,
 	 */
-	//#SWG#@ApiModelProperty(value = """The different type of active rules.""")
+	//#SWG#@ApiModelProperty(value = """like: FACEBOOK, EMAIL, TWITTER, SMS,""")
 	@BeanProperty 
-	var rulesInverse: List[MEAclRuleInverse] = new ArrayList[MEAclRuleInverse]
-	def withrulesInverse(p:List[MEAclRuleInverse]):this.type ={ 	this.rulesInverse = p; 	this }
+	var customMetadata: List[MMetadata] = new ArrayList[MMetadata]
+	def withcustomMetadata(p:List[MMetadata]):this.type ={ 	this.customMetadata = p; 	this }
 
 	/**
 	 * The list of disabled Rules
@@ -45,12 +35,22 @@ class MAclRuleInverse extends Serializable {
 	def withdisabledRulesInverse(p:List[MEAclRuleInverse]):this.type ={ 	this.disabledRulesInverse = p; 	this }
 
 	/**
-	 * like: FACEBOOK, EMAIL, TWITTER, SMS,
+	 * The different type of active rules.
 	 */
-	//#SWG#@ApiModelProperty(value = """like: FACEBOOK, EMAIL, TWITTER, SMS,""")
+	//#SWG#@ApiModelProperty(value = """The different type of active rules.""")
 	@BeanProperty 
-	var customMetadata: List[MMetadata] = new ArrayList[MMetadata]
-	def withcustomMetadata(p:List[MMetadata]):this.type ={ 	this.customMetadata = p; 	this }
+	var rulesInverse: List[MEAclRuleInverse] = new ArrayList[MEAclRuleInverse]
+	def withrulesInverse(p:List[MEAclRuleInverse]):this.type ={ 	this.rulesInverse = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var sourceObjClass: MEObjClass =_
+	def withsourceObjClass(p:MEObjClass):this.type ={ 	this.sourceObjClass = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var sourceObjId: String =_
+	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
 
 	/**
 	 * @return Boolean

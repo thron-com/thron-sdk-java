@@ -47,29 +47,9 @@ public enum MEContentOrderBy {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("ratingCounter_D") ratingCounter_D,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("commentsCounter_A") commentsCounter_A,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("commentsCounter_D") commentsCounter_D,
-	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("lastUpdate_A") lastUpdate_A,
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("lastUpdate_D") lastUpdate_D,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("contentType_A") contentType_A,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("contentType_D") contentType_D,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("lastUpdatedComment_A") lastUpdatedComment_A,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("lastUpdatedComment_D") lastUpdatedComment_D,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("userId_A") userId_A,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("userId_D") userId_D,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("commentsApprovedCounter_A") commentsApprovedCounter_A,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("commentsApprovedCounter_D") commentsApprovedCounter_D,
 	/**
 	 * from contents not read to content read by the user
 	 */
@@ -79,15 +59,5 @@ public enum MEContentOrderBy {
 	 * from contents read to content not read by the user
 	 */
 	//#SWG#@ApiModelProperty(value = """from contents read to content not read by the user""")
-	@XmlEnumValue("contentRead_D") contentRead_D,
-	/**
-	 * used to sort the result set using the MContent.sortingField (ascending)
-	 */
-	//#SWG#@ApiModelProperty(value = """used to sort the result set using the MContent.sortingField (ascending)""")
-	@XmlEnumValue("sortingField_A") sortingField_A,
-	/**
-	 * used to sort the result set using the MContent.sortingField (descending)
-	 */
-	//#SWG#@ApiModelProperty(value = """used to sort the result set using the MContent.sortingField (descending)""")
-	@XmlEnumValue("sortingField_D") sortingField_D
+	@XmlEnumValue("contentRead_D") contentRead_D
 }

@@ -4,16 +4,16 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
+import com.thron.contacts.service.model.contact.MResponseContactDetail
+import com.thron.contacts.service.model.request.MContactaddKeyReq
+import com.thron.contacts.service.model.contact.MResponseContactDeviceDetail
+import com.thron.contacts.service.model.request.MContactinsertReq
 import com.thron.contacts.service.model.contact.MResponseContactList
 import com.thron.contacts.service.model.request.MContactlistReq
-import com.thron.contacts.service.model.contact.MResponseContactDetail
-import com.thron.contacts.service.model.request.MContactinsertReq
-import com.thron.contacts.service.model.request.MContactremoveKeyReq
-import com.thron.contacts.service.model.request.MContactaddKeyReq
-import com.thron.contacts.service.model.request.MContactupdateReq
-import com.thron.contacts.service.model.contact.MResponseContactDeviceDetail
 import com.thron.contacts.service.model.contact.MResponseContactListKey
 import com.thron.contacts.service.model.request.MContactlistKeyReq
+import com.thron.contacts.service.model.request.MContactremoveKeyReq
+import com.thron.contacts.service.model.request.MContactupdateReq
 
 /* ************************
 *  GENERATED CLASS
@@ -24,8 +24,8 @@ import com.thron.contacts.service.model.request.MContactlistKeyReq
  * <b>
  * </b><b>Web Service Endpoints:</b>
  * <ul>
- * 	<li>REST service: https://clientId-view.thron.
- * com/contactunit/xcontact/resources/contact</li>
+ * 	<li>REST service: https://clientId-contact.thron.
+ * com/api/xcontact/resources/contact</li>
  * </ul>
  */
 @Path("/contact")
@@ -33,7 +33,7 @@ import com.thron.contacts.service.model.request.MContactlistKeyReq
 //#SWGNL#<b>
 //#SWGNL#</b><b>Web Service Endpoints:</b> 
 //#SWGNL#<ul>
-//#SWGNL#	<li>REST service: https://clientId-view.thron.com/contactunit/xcontact/resources/contact</li>
+//#SWGNL#	<li>REST service: https://clientId-contact.thron.com/api/xcontact/resources/contact</li>
 //#SWGNL#</ul>""")
 trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 
@@ -46,90 +46,149 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * List of Contacts ordered by accessedDate.
+	 * Used to add the keys to a contact.
 	 * 
-	 * RoleValidation:
+	 * Constraints:
 	 * <ul>
-	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	 * 	<li>Only to IDENTIFIED contacts</li>
+	 * 	<li>Max number of keys for contact = 50</li>
 	 * </ul>
-	 * <ul>
-	 * 	<li>MARKETING_USE_CONTACTS (THRON Content Marketing App in Marketplace)</li>
-	 * </ul>
+	 * 
+	 * <b>ROLE validation:</b>
+	 * THRON_EDIT_CONTACTS
 	 * @param tokenId : String
 	 * @param clientId : String
-	 * @param param : MContactlistReq
-	 * @return MResponseContactList
+	 * @param param : MContactaddKeyReq
+	 * @return MResponseContactDetail
 	*/
 	@POST
-	@Path("/list/{clientId}")
+	@Path("/addKey/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/list", notes = """List of Contacts ordered by accessedDate.
+	//#SWG#@ApiOperation(value = "/addKey", notes = """Used to add the keys to a contact.
 	//#SWGNL#
-	//#SWGNL#RoleValidation:
+	//#SWGNL#Constraints: 
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
+	//#SWGNL#	<li>Only to IDENTIFIED contacts</li>
+	//#SWGNL#	<li>Max number of keys for contact = 50</li>
 	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MARKETING_USE_CONTACTS (THRON Content Marketing App in Marketplace)</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContactList])
+	//#SWGNL#
+	//#SWGNL#<b>ROLE validation:</b>
+	//#SWGNL#THRON_EDIT_CONTACTS""", response = classOf[MResponseContactDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def addKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("clientId")
 	clientId: String, 
-			param: MContactlistReq):Response /*returnType = MResponseContactList*/ = {
+			param: MContactaddKeyReq):Response /*returnType = MResponseContactDetail*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__list(tokenId,clientId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_list)    
+			val resp = this.__addKey(tokenId,clientId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addKey)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_list)
+	        throw new WebApplicationException(e,this.capability_addKey)
 	    }
 	} 
 
 	@GET
-	@Path("/list/{clientId}")
+	@Path("/addKey/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def list_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def addKey_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("clientId")
 	clientId: String,
 			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContactList*/ = { 
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContactDetail*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
 		try{
-			val resp = this.__list(
+			val resp = this.__addKey(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,PRestHelper.bindRequest[MContactlistReq](param_q)	
+			,clientId,PRestHelper.bindRequest[MContactaddKeyReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_list)
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addKey)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_list)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addKey)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __list(tokenId: String, clientId: String, param: MContactlistReq) :MResponseContactList
+	 protected def __addKey(tokenId: String, clientId: String, param: MContactaddKeyReq) :MResponseContactDetail
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_list: String
+	protected def capability_addKey: String
+
+	/**
+	 * Show a specific contact.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
+	 * <b>ROLE validation:</b>
+	 * THRON_USE_CONTACTS
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param contactId : String
+	 * @return MResponseContactDeviceDetail
+	*/
+	@GET
+	@Path("/detail/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
+	//#SWG#@ApiOperation(value = "/detail", notes = """Show a specific contact.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
+	//#SWGNL#
+	//#SWGNL#<b>ROLE validation:</b>
+	//#SWGNL#THRON_USE_CONTACTS""", response = classOf[MResponseContactDeviceDetail])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("contactId")
+	contactId: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String
+			,
+			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseContactDeviceDetail*/= { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		//get the cache control specific for this service
+		val cc = this.cachemap("detail") 
+		try{	
+			val resp = this.__detail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contactId)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_detail)
+	    }
+	}
+
+	 
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __detail(tokenId: String, clientId: String, contactId: String) :MResponseContactDeviceDetail
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_detail: String
 
 	/**
 	 * Used to create new identified contact in platform.
 	 * 
-	 * RoleValidation:
-	 * <ul>
-	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
-	 * </ul>
+	 * <b>ROLE validation:</b>
+	 * THRON_MANAGE_CONTACTS
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MContactinsertReq
@@ -141,10 +200,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/insert", notes = """Used to create new identified contact in platform.
 	//#SWGNL#
-	//#SWGNL#RoleValidation:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContactDetail])
+	//#SWGNL#<b>ROLE validation:</b>
+	//#SWGNL#THRON_MANAGE_CONTACTS""", response = classOf[MResponseContactDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def insert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -198,13 +255,78 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	/**
 	 * List of Contacts ordered by accessedDate.
 	 * 
+	 * <b>ROLE validation:</b>
+	 * THRON_USE_CONTACTS
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MContactlistReq
+	 * @return MResponseContactList
+	*/
+	@POST
+	@Path("/list/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/list", notes = """List of Contacts ordered by accessedDate.
+	//#SWGNL#
+	//#SWGNL#<b>ROLE validation:</b>
+	//#SWGNL#THRON_USE_CONTACTS""", response = classOf[MResponseContactList])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			param: MContactlistReq):Response /*returnType = MResponseContactList*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__list(tokenId,clientId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_list)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_list)
+	    }
+	} 
+
+	@GET
+	@Path("/list/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def list_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContactList*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__list(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,PRestHelper.bindRequest[MContactlistReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_list)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_list)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __list(tokenId: String, clientId: String, param: MContactlistReq) :MResponseContactList
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_list: String
+
+	/**
+	 * List of Contacts ordered by accessedDate.
+	 * 
 	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
-	 * RoleValidation:
-	 * <ul>
-	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
-	 * 	<li>MARKETING_USE_CONTACTS (THRON Content MarketingApp in Marketplace)</li>
-	 * </ul>
+	 * <b>ROLE validation:</b>
+	 * THRON_USE_CONTACTS
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param offset : Integer
@@ -220,11 +342,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#
-	//#SWGNL#RoleValidation:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
-	//#SWGNL#	<li>MARKETING_USE_CONTACTS (THRON Content MarketingApp in Marketplace)</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContactList])
+	//#SWGNL#<b>ROLE validation:</b>
+	//#SWGNL#THRON_USE_CONTACTS""", response = classOf[MResponseContactList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def listGet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -267,17 +386,82 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_listGet: String
 
 	/**
+	 * List of distinct keys (IdentityKey.key) ordered by name
+	 * 
+	 * <b>ROLE validation:</b>
+	 * THRON_USE_CONTACTS
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MContactlistKeyReq
+	 * @return MResponseContactListKey
+	*/
+	@POST
+	@Path("/listKey/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/listKey", notes = """List of distinct keys (IdentityKey.key) ordered by name
+	//#SWGNL#
+	//#SWGNL#<b>ROLE validation:</b>
+	//#SWGNL#THRON_USE_CONTACTS""", response = classOf[MResponseContactListKey])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def listKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			param: MContactlistKeyReq):Response /*returnType = MResponseContactListKey*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__listKey(tokenId,clientId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_listKey)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_listKey)
+	    }
+	} 
+
+	@GET
+	@Path("/listKey/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def listKey_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContactListKey*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		try{
+			val resp = this.__listKey(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,PRestHelper.bindRequest[MContactlistKeyReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_listKey)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_listKey)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __listKey(tokenId: String, clientId: String, param: MContactlistKeyReq) :MResponseContactListKey
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_listKey: String
+
+	/**
 	 * Used to remove an identity key from the given contact.
 	 * Constraints:
 	 * <ul>
 	 * 	<li>it's not possible to remove the "thronuser" key</li>
 	 * </ul>
 	 * 
-	 * RoleValidation:
-	 * <ul>
-	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
-	 * 	<li>SALES_EDIT_CONTACTS</li>
-	 * </ul>
+	 * <b>ROLE validation:</b>
+	 * THRON_EDIT_CONTACTS
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MContactremoveKeyReq
@@ -293,11 +477,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#	<li>it's not possible to remove the "thronuser" key</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#RoleValidation:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
-	//#SWGNL#	<li>SALES_EDIT_CONTACTS</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContactDetail])
+	//#SWGNL#<b>ROLE validation:</b>
+	//#SWGNL#THRON_EDIT_CONTACTS""", response = classOf[MResponseContactDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def removeKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -349,99 +530,10 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_removeKey: String
 
 	/**
-	 * Used to add the keys to a contact.
-	 * 
-	 * Constraints:
-	 * <ul>
-	 * 	<li>Only to IDENTIFIED contacts</li>
-	 * 	<li>Max number of keys for contact = 50</li>
-	 * </ul>
-	 * 
-	 * RoleValidation:
-	 * <ul>
-	 * 	<li>THRON_MANAGE_CONTACTS</li>
-	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param param : MContactaddKeyReq
-	 * @return MResponseContactDetail
-	*/
-	@POST
-	@Path("/addKey/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addKey", notes = """Used to add the keys to a contact.
-	//#SWGNL#
-	//#SWGNL#Constraints: 
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>Only to IDENTIFIED contacts</li>
-	//#SWGNL#	<li>Max number of keys for contact = 50</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#RoleValidation:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>THRON_MANAGE_CONTACTS</li>
-	//#SWGNL#	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContactDetail])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def addKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			param: MContactaddKeyReq):Response /*returnType = MResponseContactDetail*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__addKey(tokenId,clientId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addKey)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_addKey)
-	    }
-	} 
-
-	@GET
-	@Path("/addKey/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def addKey_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContactDetail*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__addKey(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,PRestHelper.bindRequest[MContactaddKeyReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_addKey)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addKey)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __addKey(tokenId: String, clientId: String, param: MContactaddKeyReq) :MResponseContactDetail
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_addKey: String
-
-	/**
 	 * Used to update an identified contact
 	 * 
-	 * RoleValidation:
-	 * <ul>
-	 * 	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
-	 * 	<li>SALES_EDIT_CONTACTS</li>
-	 * </ul>
+	 * <b>ROLE validation:</b>
+	 * THRON_EDIT_CONTACTS
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param param : MContactupdateReq
@@ -453,11 +545,8 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/update", notes = """Used to update an identified contact
 	//#SWGNL#
-	//#SWGNL#RoleValidation:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SALES_MANAGE_CONTACTS (THRON Sales Insight Application in Marketplace)</li>
-	//#SWGNL#	<li>SALES_EDIT_CONTACTS</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContactDetail])
+	//#SWGNL#<b>ROLE validation:</b>
+	//#SWGNL#THRON_EDIT_CONTACTS""", response = classOf[MResponseContactDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -507,152 +596,5 @@ trait JContact extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __update(tokenId: String, clientId: String, param: MContactupdateReq) :MResponseContactDetail
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_update: String
-
-	/**
-	 * Show a specific contact.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * 
-	 * RoleValidation:
-	 * <ul>
-	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>MARKETING_USE_CONTACTS (THRON Content Marketing App in Marketplace)</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param contactId : String
-	 * @return MResponseContactDeviceDetail
-	*/
-	@GET
-	@Path("/detail/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detail", notes = """Show a specific contact.
-	//#SWGNL#
-	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
-	//#SWGNL#
-	//#SWGNL#RoleValidation:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MARKETING_USE_CONTACTS (THRON Content Marketing App in Marketplace)</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContactDeviceDetail])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@QueryParam("contactId")
-	contactId: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseContactDeviceDetail*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("detail") 
-		try{	
-			val resp = this.__detail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,contactId)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_detail)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __detail(tokenId: String, clientId: String, contactId: String) :MResponseContactDeviceDetail
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_detail: String
-
-	/**
-	 * List of distinct keys (IdentityKey.key) ordered by name
-	 * 
-	 * RoleValidation:
-	 * <ul>
-	 * 	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>MARKETING_USE_CONTACTS (THRON Content MarketingApp in Marketplace)</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param param : MContactlistKeyReq
-	 * @return MResponseContactListKey
-	*/
-	@POST
-	@Path("/listKey/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/listKey", notes = """List of distinct keys (IdentityKey.key) ordered by name
-	//#SWGNL#
-	//#SWGNL#RoleValidation:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SALES_USE_CONTACTS (THRON Sales Insight App in Marketplace)</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MARKETING_USE_CONTACTS (THRON Content MarketingApp in Marketplace)</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContactListKey])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def listKey(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			param: MContactlistKeyReq):Response /*returnType = MResponseContactListKey*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__listKey(tokenId,clientId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_listKey)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_listKey)
-	    }
-	} 
-
-	@GET
-	@Path("/listKey/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def listKey_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContactListKey*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		try{
-			val resp = this.__listKey(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,PRestHelper.bindRequest[MContactlistKeyReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, this._getCacheControl, callback_q,this.capability_listKey)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_listKey)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __listKey(tokenId: String, clientId: String, param: MContactlistKeyReq) :MResponseContactListKey
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_listKey: String
 
 }

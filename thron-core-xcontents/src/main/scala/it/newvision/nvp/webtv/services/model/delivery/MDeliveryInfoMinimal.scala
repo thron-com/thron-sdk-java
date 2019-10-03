@@ -20,24 +20,6 @@ import it.newvision.nvp.xcontents.model.MMetadata
 class MDeliveryInfoMinimal extends Serializable {
 
 	/**
-	 * DEPRECATED. Use dynThumbService
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use dynThumbService""")
-	@BeanProperty 
-	@Deprecated
-	var thumbsUrl: List[String] = new ArrayList[String]
-	@Deprecated
-	def withthumbsUrl(p:List[String]):this.type ={ 	this.thumbsUrl = p; 	this }
-
-	/**
-	 * DEPRECATED. Use dynThumbService
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use dynThumbService""")
-	@BeanProperty 
-	var defaultThumbUrl: String =_
-	def withdefaultThumbUrl(p:String):this.type ={ 	this.defaultThumbUrl = p; 	this }
-
-	/**
 	 * Defined if divArea parameter is specified on the request.
 	 * Return the thumbnail that best suits to the given area (DivArea format:
 	 * <widht>x<height>)
@@ -56,6 +38,22 @@ class MDeliveryInfoMinimal extends Serializable {
 	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
 	/**
+	 * used only with downloadable contents or playlist items
+	 */
+	//#SWG#@ApiModelProperty(value = """used only with downloadable contents or playlist items""")
+	@BeanProperty 
+	var contentUrl: String =_
+	def withcontentUrl(p:String):this.type ={ 	this.contentUrl = p; 	this }
+
+	/**
+	 * DEPRECATED. Use dynThumbService
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use dynThumbService""")
+	@BeanProperty 
+	var defaultThumbUrl: String =_
+	def withdefaultThumbUrl(p:String):this.type ={ 	this.defaultThumbUrl = p; 	this }
+
+	/**
 	 * Returns a dynamic link to the best thumbnail for the given content and DivArea
 	 * provided by the service JDelivery.getThumbnail.
 	 * Thumbnail resolution is the closest to fit the given DivArea (DivArea format:
@@ -68,12 +66,12 @@ class MDeliveryInfoMinimal extends Serializable {
 	def withdynThumbService(p:String):this.type ={ 	this.dynThumbService = p; 	this }
 
 	/**
-	 * used only with downloadable contents or playlist items
+	 * Show the status of the content
 	 */
-	//#SWG#@ApiModelProperty(value = """used only with downloadable contents or playlist items""")
+	//#SWG#@ApiModelProperty(value = """Show the status of the content""" ,required = true)
 	@BeanProperty 
-	var contentUrl: String =_
-	def withcontentUrl(p:String):this.type ={ 	this.contentUrl = p; 	this }
+	var status: String =_
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * The list of all system metadata stored in xpublisher channel.sysMetadata. like
@@ -85,11 +83,13 @@ class MDeliveryInfoMinimal extends Serializable {
 	def withsysMetadata(p:List[MMetadata]):this.type ={ 	this.sysMetadata = p; 	this }
 
 	/**
-	 * Show the status of the content
+	 * DEPRECATED. Use dynThumbService
 	 */
-	//#SWG#@ApiModelProperty(value = """Show the status of the content""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use dynThumbService""")
 	@BeanProperty 
-	var status: String =_
-	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
+	@Deprecated
+	var thumbsUrl: List[String] = new ArrayList[String]
+	@Deprecated
+	def withthumbsUrl(p:List[String]):this.type ={ 	this.thumbsUrl = p; 	this }
 
 }

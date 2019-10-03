@@ -1,14 +1,13 @@
 package it.newvision.nvp.xcontents.conversions
 
-import it.newvision.nvp.xcontents.model.{MAclInverseRule, MAclInverseRuleGeneric, MAclInverseRules}
+import it.newvision.nvp.xcontents.model.{MAclInverseRule, MAclInverseRuleGeneric, MAclInverseRules, MEAclInverseRuleStatus}
 import it.newvision.nvp.xcontents.services.model.acl.{MAclInverseRulesGeneric, MAclInverseRulesItem, MAclInverseRulesItem2, MAclInverseRulesValue}
-
 import scala.collection.JavaConversions._
 
 trait AclConversions {
 
   val aclInverseRuleGeneric2aclInverseRule: MAclInverseRuleGeneric => MAclInverseRule =
-    x => new MAclInverseRule().withapplyToSpreadTargets(x.applyToSpreadTargets).withenabled(x.enabled).withrule(x.rule).withmetadata(x.metadata)
+    x => new MAclInverseRule().withapplyToSpreadTargets(x.applyToSpreadTargets).withenabled(x.enabled).withrule(x.rule).withmetadata(x.metadata).withstatus(MEAclInverseRuleStatus.OK)
   val aclInverseRulesGeneric2aclInverseRules: MAclInverseRulesGeneric => MAclInverseRules =
     x => new MAclInverseRules().withrules(x.rules).withsourceObjClass(x.sourceObjClass).withsourceObjId(x.sourceObjId)
   // MAclInverseRulesValue <=> MAclInverseRulesGeneric

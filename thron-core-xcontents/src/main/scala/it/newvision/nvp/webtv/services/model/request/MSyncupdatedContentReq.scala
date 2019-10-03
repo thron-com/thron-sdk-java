@@ -28,15 +28,6 @@ class MSyncupdatedContentReq extends Serializable {
 	def withcriteria(p:MUpdatedContentCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
-	 * Optional. Used to specify if the service should return or not some additional
-	 * information about the content
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Used to specify if the service should return or not some additional information about the content""", required = true)
-	@BeanProperty
-	var options: MSyncOptions =_
-	def withoptions(p:MSyncOptions):this.type ={ 	this.options = p; 	this }
-
-	/**
 	 * Optional.
 	 * The resultset is paginated (max page size is 200 elements), after the 1st call
 	 * the service return a "nextPage" identifier to be used on the next call, to get
@@ -49,6 +40,15 @@ class MSyncupdatedContentReq extends Serializable {
 	@BeanProperty
 	var nextPage: String =_
 	def withnextPage(p:String):this.type ={ 	this.nextPage = p; 	this }
+
+	/**
+	 * Optional. Used to specify if the service should return or not some additional
+	 * information about the content
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Used to specify if the service should return or not some additional information about the content""", required = true)
+	@BeanProperty
+	var options: MSyncOptions =_
+	def withoptions(p:MSyncOptions):this.type ={ 	this.options = p; 	this }
 
 	/**
 	 * Optional. Default and maximum value is  200

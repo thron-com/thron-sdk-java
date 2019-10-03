@@ -20,18 +20,13 @@ class MAppsAdminaddUserAppReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var clientId: String =_
-	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
 	var appId: String =_
 	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
+	var clientId: String =_
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * Optional. Additional roles required by the app
@@ -40,5 +35,10 @@ class MAppsAdminaddUserAppReq extends Serializable {
 	@BeanProperty
 	var userCaps: MAppAddCapability =_
 	def withuserCaps(p:MAppAddCapability):this.type ={ 	this.userCaps = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

@@ -19,16 +19,6 @@ class MClientSearchCriteria extends Serializable {
 	var activeOnly: Boolean  = false
 	def withactiveOnly(p:Boolean):this.type ={ 	this.activeOnly = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var fromDate: Date =_
-	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var toDate: Date =_
-	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
-
 	/**
 	 * Available values:
 	 * <ul>
@@ -44,5 +34,15 @@ class MClientSearchCriteria extends Serializable {
 	@BeanProperty 
 	var domain: String =_
 	def withdomain(p:String):this.type ={ 	this.domain = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var fromDate: Date =_
+	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var toDate: Date =_
+	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 }

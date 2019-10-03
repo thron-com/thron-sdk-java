@@ -28,12 +28,12 @@ class MIMetadataDefinitionlistReq extends Serializable {
 	def withcriteria(p:MIMetadataDefinitionSearchCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
-	 * Optional
+	 * Optional. Default value is 50
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional. Default value is 50""", required = true)
 	@BeanProperty
-	var orderBy: MEMetadataDefinitionOrderBy =_
-	def withorderBy(p:MEMetadataDefinitionOrderBy):this.type ={ 	this.orderBy = p; 	this }
+	var limit: Integer =_
+	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
 
 	/**
 	 * Optional.
@@ -46,11 +46,11 @@ class MIMetadataDefinitionlistReq extends Serializable {
 	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
-	 * Optional. Default value is 50
+	 * Optional
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Default value is 50""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
-	var limit: Integer =_
-	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
+	var orderBy: MEMetadataDefinitionOrderBy =_
+	def withorderBy(p:MEMetadataDefinitionOrderBy):this.type ={ 	this.orderBy = p; 	this }
 
 }

@@ -4,8 +4,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.identity.model.MMetadata
 import it.newvision.nvp.identity.model.MUserCapability
+import it.newvision.nvp.identity.model.MMetadata
 import it.newvision.nvp.identity.services.model.common.MUpdater
 
 /* ************************
@@ -26,24 +26,14 @@ import it.newvision.nvp.identity.services.model.common.MUpdater
 class MUserGroupUpdate extends MUpdater with Serializable  {
 
 	/**
-	 * Deprecated.
-	 * Optional. List of generic custom metadata for the group.
+	 * Specify if the group is enable or not to use the platform.
+	 * Users inherit roles and acl only from active linked groups.
 	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated.
-	//#SWGNL#Optional. List of generic custom metadata for the group.""")
+	//#SWG#@ApiModelProperty(value = """Specify if the group is enable or not to use the platform.
+	//#SWGNL#Users inherit roles and acl only from active linked groups.""")
 	@BeanProperty 
-	@Deprecated
-	var metadata: List[MMetadata] =_
-	@Deprecated
-	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
-
-	/**
-	 * the name of the group
-	 */
-	//#SWG#@ApiModelProperty(value = """the name of the group""")
-	@BeanProperty 
-	var name: String =_
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
+	var active: Boolean =_
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -69,13 +59,23 @@ class MUserGroupUpdate extends MUpdater with Serializable  {
 	def withgroupCapabilities(p:MUserCapability):this.type ={ 	this.groupCapabilities = p; 	this }
 
 	/**
-	 * Specify if the group is enable or not to use the platform.
-	 * Users inherit roles and acl only from active linked groups.
+	 * Deprecated.
+	 * Optional. List of generic custom metadata for the group.
 	 */
-	//#SWG#@ApiModelProperty(value = """Specify if the group is enable or not to use the platform.
-	//#SWGNL#Users inherit roles and acl only from active linked groups.""")
+	//#SWG#@ApiModelProperty(value = """Deprecated.
+	//#SWGNL#Optional. List of generic custom metadata for the group.""")
 	@BeanProperty 
-	var active: Boolean =_
-	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
+	@Deprecated
+	var metadata: List[MMetadata] =_
+	@Deprecated
+	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
+
+	/**
+	 * the name of the group
+	 */
+	//#SWG#@ApiModelProperty(value = """the name of the group""")
+	@BeanProperty 
+	var name: String =_
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 }

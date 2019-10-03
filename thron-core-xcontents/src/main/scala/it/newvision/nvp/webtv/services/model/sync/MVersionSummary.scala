@@ -16,13 +16,13 @@ class MVersionSummary extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
+	var createdDate: Date =_
+	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var createdDate: Date =_
-	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 

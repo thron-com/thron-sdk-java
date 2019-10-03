@@ -29,6 +29,23 @@ class MContentWall extends MContent with Serializable  {
 	var deliveryInfo: List[MDeliveryInfo] = new ArrayList[MDeliveryInfo]
 	def withdeliveryInfo(p:List[MDeliveryInfo]):this.type ={ 	this.deliveryInfo = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var deliverySize: MDeliverySize =_
+	def withdeliverySize(p:MDeliverySize):this.type ={ 	this.deliverySize = p; 	this }
+
+	/**
+	 * Returns a dynamic link to the best thumbnail for the given content and DivArea
+	 * provided by the service JDelivery.getThumbnail.
+	 * Thumbnail resolution is the closest to fit the given DivArea (DivArea format:
+	 * <widht>x<height>)
+	 */
+	//#SWG#@ApiModelProperty(value = """Returns a dynamic link to the best thumbnail for the given content and DivArea provided by the service JDelivery.getThumbnail.
+	//#SWGNL#Thumbnail resolution is the closest to fit the given DivArea (DivArea format: <widht>x<height>)""" ,required = true)
+	@BeanProperty 
+	var dynThumbService: String =_
+	def withdynThumbService(p:String):this.type ={ 	this.dynThumbService = p; 	this }
+
 	/**
 	 * Return the list of linked categories (only categoryId and PUBLIC categories).
 	 */
@@ -46,18 +63,6 @@ class MContentWall extends MContent with Serializable  {
 	var pcontentVersion: Integer  = 0
 	@Deprecated
 	def withpcontentVersion(p:Integer):this.type ={ 	this.pcontentVersion = p; 	this }
-
-	/**
-	 * Returns a dynamic link to the best thumbnail for the given content and DivArea
-	 * provided by the service JDelivery.getThumbnail.
-	 * Thumbnail resolution is the closest to fit the given DivArea (DivArea format:
-	 * <widht>x<height>)
-	 */
-	//#SWG#@ApiModelProperty(value = """Returns a dynamic link to the best thumbnail for the given content and DivArea provided by the service JDelivery.getThumbnail.
-	//#SWGNL#Thumbnail resolution is the closest to fit the given DivArea (DivArea format: <widht>x<height>)""" ,required = true)
-	@BeanProperty 
-	var dynThumbService: String =_
-	def withdynThumbService(p:String):this.type ={ 	this.dynThumbService = p; 	this }
 
 	/**
 	 * Deprecated by attribute scoreFixedRange

@@ -15,12 +15,22 @@ import javax.xml.bind.annotation._
 class MDevice extends Serializable {
 
 	/**
-	 * generated Id for a device.
+	 * The last accessed Date for the device
 	 */
-	//#SWG#@ApiModelProperty(value = """generated Id for a device.""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """The last accessed Date for the device""")
 	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
+	var accessedDate: Date  = new Date
+	def withaccessedDate(p:Date):this.type ={ 	this.accessedDate = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var c1: String =_
+	def withc1(p:String):this.type ={ 	this.c1 = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var c3: String =_
+	def withc3(p:String):this.type ={ 	this.c3 = p; 	this }
 
 	/**
 	 * created Date
@@ -30,13 +40,18 @@ class MDevice extends Serializable {
 	var createdDate: Date  = new Date
 	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
-	/**
-	 * The last accessed Date for the device
-	 */
-	//#SWG#@ApiModelProperty(value = """The last accessed Date for the device""")
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var accessedDate: Date  = new Date
-	def withaccessedDate(p:Date):this.type ={ 	this.accessedDate = p; 	this }
+	var fp: String =_
+	def withfp(p:String):this.type ={ 	this.fp = p; 	this }
+
+	/**
+	 * generated Id for a device.
+	 */
+	//#SWG#@ApiModelProperty(value = """generated Id for a device.""" ,required = true)
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -50,20 +65,5 @@ class MDevice extends Serializable {
 	@BeanProperty 
 	var ua: String =_
 	def withua(p:String):this.type ={ 	this.ua = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var fp: String =_
-	def withfp(p:String):this.type ={ 	this.fp = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var c1: String =_
-	def withc1(p:String):this.type ={ 	this.c1 = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var c3: String =_
-	def withc3(p:String):this.type ={ 	this.c3 = p; 	this }
 
 }

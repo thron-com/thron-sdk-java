@@ -39,9 +39,61 @@ trait JDevice extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
+	 * Called by a client to get a unique contact Id. The service returns the deviceId and the contactId
+	 * used by tracker.
+	 * Authentication token is not required (X-TOKENID).
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param deviceId : String
+	 * Optional
+	 * @return MResponseDeviceConnect
+	*/
+	@GET
+	@Path("/check/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
+	//#SWG#@ApiOperation(value = "/check", notes = """Called by a client to get a unique contact Id. The service returns the deviceId and the contactId used by tracker.
+	//#SWGNL#Authentication token is not required (X-TOKENID).""", response = classOf[MResponseDeviceConnect])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def check(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """Optional""")
+	@QueryParam("deviceId")
+	deviceId: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String
+			,
+			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseDeviceConnect*/= { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		//get the cache control specific for this service
+		val cc = this.cachemap("check") 
+		try{	
+			val resp = this.__check(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,deviceId)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_check)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_check)
+	    }
+	}
+
+	 
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __check(tokenId: String, clientId: String, deviceId: String) :MResponseDeviceConnect
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_check: String
+
+	/**
 	 * Connect a Device to an Identified Contact with the given identityKey.
-	 * If there are no contacts matching the identityKey, a new contact is created (<b>Only with THRON
-	 * Sales Insights application active</b>)
+	 * If there are no contacts matching the identityKey, a new contact is created.
 	 * 
 	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String
@@ -53,7 +105,7 @@ trait JDevice extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	//#SWG#@ApiOperation(value = "/connect", notes = """Connect a Device to an Identified Contact with the given identityKey. 
-	//#SWGNL#If there are no contacts matching the identityKey, a new contact is created (<b>Only with THRON Sales Insights application active</b>)
+	//#SWGNL#If there are no contacts matching the identityKey, a new contact is created.
 	//#SWGNL#
 	//#SWGNL#Authentication token is not required (X-TOKENID).""", response = classOf[MResponseDeviceConnect])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))

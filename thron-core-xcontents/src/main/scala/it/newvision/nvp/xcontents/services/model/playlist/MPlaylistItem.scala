@@ -15,20 +15,20 @@ import javax.xml.bind.annotation._
 class MPlaylistItem extends Serializable {
 
 	/**
-	 * a contentId element
-	 */
-	//#SWG#@ApiModelProperty(value = """a contentId element""" ,required = true)
-	@BeanProperty 
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	/**
 	 * Desired position of the element in playlist. If empty the element is enqueued.
 	 */
 	//#SWG#@ApiModelProperty(value = """Desired position of the element in playlist. If empty the element is enqueued.""")
 	@BeanProperty 
 	var position: Integer =_
 	def withposition(p:Integer):this.type ={ 	this.position = p; 	this }
+
+	/**
+	 * a contentId element
+	 */
+	//#SWG#@ApiModelProperty(value = """a contentId element""" ,required = true)
+	@BeanProperty 
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 	/**
 	 * @return Boolean

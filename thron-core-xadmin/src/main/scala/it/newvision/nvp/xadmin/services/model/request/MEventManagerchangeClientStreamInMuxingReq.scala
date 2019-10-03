@@ -22,11 +22,6 @@ class MEventManagerchangeClientStreamInMuxingReq extends Serializable {
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var mediaContentId: String =_
-	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
-
 	/**
 	 * clientStreamInMuxing can only contain [0-9a-zA-Z-_] characters
 	 * Used to specify the name of the clientStream to push in muxing. It is possible
@@ -39,5 +34,10 @@ class MEventManagerchangeClientStreamInMuxingReq extends Serializable {
 	@BeanProperty
 	var clientStreamInMuxing: String =_
 	def withclientStreamInMuxing(p:String):this.type ={ 	this.clientStreamInMuxing = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var mediaContentId: String =_
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 }

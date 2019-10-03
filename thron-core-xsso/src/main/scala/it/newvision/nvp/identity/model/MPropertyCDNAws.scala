@@ -17,6 +17,19 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """Properties for CDN Acceleration.""")
 class MPropertyCDNAws extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var accountNumber: String =_
+	def withaccountNumber(p:String):this.type ={ 	this.accountNumber = p; 	this }
+
+	/**
+	 * the list of CF distributions.
+	 */
+	//#SWG#@ApiModelProperty(value = """the list of CF distributions.""")
+	@BeanProperty 
+	var awsCfDistributionIds: List[String] = new ArrayList[String]
+	def withawsCfDistributionIds(p:List[String]):this.type ={ 	this.awsCfDistributionIds = p; 	this }
+
 	/**
 	 * enable the CloudFront Acceleration for the live events.
 	 * Live events are accelerated by Akamai (default value)
@@ -26,11 +39,6 @@ class MPropertyCDNAws extends Serializable {
 	@BeanProperty 
 	var cdnAccelerationEnabled: Boolean  = false
 	def withcdnAccelerationEnabled(p:Boolean):this.type ={ 	this.cdnAccelerationEnabled = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var accountNumber: String =_
-	def withaccountNumber(p:String):this.type ={ 	this.accountNumber = p; 	this }
 
 	/**
 	 * CloudFontPriceClass
@@ -45,13 +53,5 @@ class MPropertyCDNAws extends Serializable {
 	@BeanProperty 
 	var cdnPriceClass: String =_
 	def withcdnPriceClass(p:String):this.type ={ 	this.cdnPriceClass = p; 	this }
-
-	/**
-	 * the list of CF distributions.
-	 */
-	//#SWG#@ApiModelProperty(value = """the list of CF distributions.""")
-	@BeanProperty 
-	var awsCfDistributionIds: List[String] = new ArrayList[String]
-	def withawsCfDistributionIds(p:List[String]):this.type ={ 	this.awsCfDistributionIds = p; 	this }
 
 }

@@ -20,15 +20,15 @@ class MResponseAccessLogin extends MResponseIdentity with Serializable  {
 	var tokenId: String =_
 	def withtokenId(p:String):this.type ={ 	this.tokenId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var userFullName: String =_
 	def withuserFullName(p:String):this.type ={ 	this.userFullName = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 

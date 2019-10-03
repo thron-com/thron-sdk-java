@@ -14,11 +14,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MUserQuota extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var userId: String =_
-	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
-
 	/**
 	 * Used in presentation. Can be the user full name
 	 */
@@ -29,13 +24,18 @@ class MUserQuota extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
+	var usedCdnSpace: Long =_
+	def withusedCdnSpace(p:Long):this.type ={ 	this.usedCdnSpace = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
 	var usedRepositorySpace: Long =_
 	def withusedRepositorySpace(p:Long):this.type ={ 	this.usedRepositorySpace = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var usedCdnSpace: Long =_
-	def withusedCdnSpace(p:Long):this.type ={ 	this.usedCdnSpace = p; 	this }
+	var userId: String =_
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * the total amount of quota reserved to the user (in MB). 

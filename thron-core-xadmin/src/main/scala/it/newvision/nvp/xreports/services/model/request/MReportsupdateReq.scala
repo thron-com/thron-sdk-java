@@ -24,12 +24,12 @@ class MReportsupdateReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var reportId: String =_
-	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
+	var description: String =_
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var description: String =_
-	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+	var reportId: String =_
+	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
 
 }

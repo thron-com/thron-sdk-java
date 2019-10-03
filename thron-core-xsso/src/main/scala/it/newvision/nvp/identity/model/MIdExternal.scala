@@ -17,6 +17,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """External IdentityManager ID""")
 class MIdExternal extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var externalType: MEExternalIdType =_
+	def withexternalType(p:MEExternalIdType):this.type ={ 	this.externalType = p; 	this }
+
 	/**
 	 * unique identifier of the user for a clientId.
 	 * 
@@ -34,11 +39,6 @@ class MIdExternal extends Serializable {
 	@BeanProperty 
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var externalType: MEExternalIdType =_
-	def withexternalType(p:MEExternalIdType):this.type ={ 	this.externalType = p; 	this }
 
 	/**
 	 * @return Boolean

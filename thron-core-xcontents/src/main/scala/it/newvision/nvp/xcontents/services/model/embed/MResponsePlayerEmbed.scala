@@ -15,6 +15,11 @@ import it.newvision.nvp.xcontents.services.model.msg.MESSO
 //#SWG#@ApiModel(description = """""")
 class MResponsePlayerEmbed extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var errorDescription: String =_
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MEPlayerEmbed =_
@@ -24,10 +29,5 @@ class MResponsePlayerEmbed extends Serializable {
 	@BeanProperty 
 	var ssoCode: MESSO =_
 	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var errorDescription: String =_
-	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

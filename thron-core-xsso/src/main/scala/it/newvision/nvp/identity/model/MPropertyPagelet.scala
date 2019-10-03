@@ -18,6 +18,16 @@ import javax.xml.bind.annotation._
 class MPropertyPagelet extends MPropertyGenericDocument with Serializable  {
 
 	/**
+	 * @param clientId : String
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def init_test(clientId: String){
+		this.init_gd_test(clientId,"WEB")
+	}
+
+	/**
 	 * @param client : MClient
 	 * @return void
 	*/
@@ -37,16 +47,6 @@ class MPropertyPagelet extends MPropertyGenericDocument with Serializable  {
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
 		this.useForDownload = true
-	}
-
-	/**
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_test(clientId: String){
-		this.init_gd_test(clientId,"WEB")
 	}
 
 }

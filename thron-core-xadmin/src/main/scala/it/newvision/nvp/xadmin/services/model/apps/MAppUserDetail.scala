@@ -17,11 +17,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """user information detail for the App""")
 class MAppUserDetail extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var fullName: String =_
@@ -31,5 +26,10 @@ class MAppUserDetail extends Serializable {
 	@BeanProperty 
 	var userCaps: MAppCapabilities =_
 	def withuserCaps(p:MAppCapabilities):this.type ={ 	this.userCaps = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

@@ -24,16 +24,6 @@ class MContentupdateUserSpecificValuesReq extends Serializable {
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
-	 * Optional: used to specify that a specific username read or not the content.
-	 * The default value if the username of the user that call the service.
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional: used to specify that a specific username read or not the content.
-	//#SWGNL#The default value if the username of the user that call the service.""", required = true)
-	@BeanProperty
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
-
-	/**
 	 * xcontentId or prettyId
 	 */
 	//#SWG#@ApiModelProperty(value = """xcontentId or prettyId""", required = true)
@@ -45,5 +35,15 @@ class MContentupdateUserSpecificValuesReq extends Serializable {
 	@BeanProperty
 	var contentParams: MContentUserSpecificParams =_
 	def withcontentParams(p:MContentUserSpecificParams):this.type ={ 	this.contentParams = p; 	this }
+
+	/**
+	 * Optional: used to specify that a specific username read or not the content.
+	 * The default value if the username of the user that call the service.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional: used to specify that a specific username read or not the content.
+	//#SWGNL#The default value if the username of the user that call the service.""", required = true)
+	@BeanProperty
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

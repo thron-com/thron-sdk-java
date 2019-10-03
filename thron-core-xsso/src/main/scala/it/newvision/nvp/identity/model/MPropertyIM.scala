@@ -14,6 +14,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MPropertyIM extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var conf: List[MMetadata] = new ArrayList[MMetadata]
+	def withconf(p:List[MMetadata]):this.type ={ 	this.conf = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var imType: MEExternalIdType =_
@@ -21,18 +26,13 @@ class MPropertyIM extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var url: String =_
-	def withurl(p:String):this.type ={ 	this.url = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
 	var secure: Boolean  = true
 	def withsecure(p:Boolean):this.type ={ 	this.secure = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var conf: List[MMetadata] = new ArrayList[MMetadata]
-	def withconf(p:List[MMetadata]):this.type ={ 	this.conf = p; 	this }
+	var url: String =_
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	/**
 	 * @return void

@@ -5,8 +5,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xcontents.model.MContent
-import it.newvision.nvp.xcontents.model.MCategory
 import it.newvision.nvp.webtv.services.model.delivery.MDeliveryInfo
+import it.newvision.nvp.xcontents.model.MCategory
 
 /* ************************
 *  GENERATED CLASS
@@ -26,12 +26,13 @@ class MSyncExportResult extends Serializable {
 	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
 
 	/**
-	 * the list of categories linked to the content.
+	 * The delivery information of the content, with the detail where the content is
+	 * published.
 	 */
-	//#SWG#@ApiModelProperty(value = """the list of categories linked to the content.""")
+	//#SWG#@ApiModelProperty(value = """The delivery information of the content, with the detail where the content is published.""")
 	@BeanProperty 
-	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
-	def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
+	var deliveryInfo: List[MDeliveryInfo] = new ArrayList[MDeliveryInfo]
+	def withdeliveryInfo(p:List[MDeliveryInfo]):this.type ={ 	this.deliveryInfo = p; 	this }
 
 	/**
 	 * the list of itags linked to the content.
@@ -42,21 +43,12 @@ class MSyncExportResult extends Serializable {
 	def withitagDefinitions(p:List[MITagDefSummary]):this.type ={ 	this.itagDefinitions = p; 	this }
 
 	/**
-	 * The delivery information of the content, with the detail where the content is
-	 * published.
+	 * the list of categories linked to the content.
 	 */
-	//#SWG#@ApiModelProperty(value = """The delivery information of the content, with the detail where the content is published.""")
+	//#SWG#@ApiModelProperty(value = """the list of categories linked to the content.""")
 	@BeanProperty 
-	var deliveryInfo: List[MDeliveryInfo] = new ArrayList[MDeliveryInfo]
-	def withdeliveryInfo(p:List[MDeliveryInfo]):this.type ={ 	this.deliveryInfo = p; 	this }
-
-	/**
-	 * The summary of last version of the content
-	 */
-	//#SWG#@ApiModelProperty(value = """The summary of last version of the content""")
-	@BeanProperty 
-	var versionInfo: MVersionSummary =_
-	def withversionInfo(p:MVersionSummary):this.type ={ 	this.versionInfo = p; 	this }
+	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
+	def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
 
 	/**
 	 * Returns a dynamic link to the best thumbnail for the given content. (based on
@@ -66,5 +58,13 @@ class MSyncExportResult extends Serializable {
 	@BeanProperty 
 	var thumbUrl: String =_
 	def withthumbUrl(p:String):this.type ={ 	this.thumbUrl = p; 	this }
+
+	/**
+	 * The summary of last version of the content
+	 */
+	//#SWG#@ApiModelProperty(value = """The summary of last version of the content""")
+	@BeanProperty 
+	var versionInfo: MVersionSummary =_
+	def withversionInfo(p:MVersionSummary):this.type ={ 	this.versionInfo = p; 	this }
 
 }

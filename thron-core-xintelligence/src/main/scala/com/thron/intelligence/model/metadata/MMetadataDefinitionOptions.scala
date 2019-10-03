@@ -16,8 +16,8 @@ class MMetadataDefinitionOptions extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var stringOption: MMetadataDefinitionStringOption =_
-	def withstringOption(p:MMetadataDefinitionStringOption):this.type ={ 	this.stringOption = p; 	this }
+	var alternativeMOption: MMetadataDefinitionAlternativeMOption =_
+	def withalternativeMOption(p:MMetadataDefinitionAlternativeMOption):this.type ={ 	this.alternativeMOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -26,23 +26,8 @@ class MMetadataDefinitionOptions extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var alternativeMOption: MMetadataDefinitionAlternativeMOption =_
-	def withalternativeMOption(p:MMetadataDefinitionAlternativeMOption):this.type ={ 	this.alternativeMOption = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var temporalInstantOption: MMetadataDefinitionTemporalInstantOption =_
-	def withtemporalInstantOption(p:MMetadataDefinitionTemporalInstantOption):this.type ={ 	this.temporalInstantOption = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var numericIntegerOption: MMetadataDefinitionNumericIntegerOption =_
-	def withnumericIntegerOption(p:MMetadataDefinitionNumericIntegerOption):this.type ={ 	this.numericIntegerOption = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var numericDoubleOption: MMetadataDefinitionNumericDoubleOption =_
-	def withnumericDoubleOption(p:MMetadataDefinitionNumericDoubleOption):this.type ={ 	this.numericDoubleOption = p; 	this }
+	var booleanOption: MMetadataDefinitionBooleanOption =_
+	def withbooleanOption(p:MMetadataDefinitionBooleanOption):this.type ={ 	this.booleanOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -51,13 +36,28 @@ class MMetadataDefinitionOptions extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var booleanOption: MMetadataDefinitionBooleanOption =_
-	def withbooleanOption(p:MMetadataDefinitionBooleanOption):this.type ={ 	this.booleanOption = p; 	this }
+	var keyOption: MMetadataDefinitionKeyOption =_
+	def withkeyOption(p:MMetadataDefinitionKeyOption):this.type ={ 	this.keyOption = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var keyOption: MMetadataDefinitionKeyOption =_
-	def withkeyOption(p:MMetadataDefinitionKeyOption):this.type ={ 	this.keyOption = p; 	this }
+	var numericDoubleOption: MMetadataDefinitionNumericDoubleOption =_
+	def withnumericDoubleOption(p:MMetadataDefinitionNumericDoubleOption):this.type ={ 	this.numericDoubleOption = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var numericIntegerOption: MMetadataDefinitionNumericIntegerOption =_
+	def withnumericIntegerOption(p:MMetadataDefinitionNumericIntegerOption):this.type ={ 	this.numericIntegerOption = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var stringOption: MMetadataDefinitionStringOption =_
+	def withstringOption(p:MMetadataDefinitionStringOption):this.type ={ 	this.stringOption = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var temporalInstantOption: MMetadataDefinitionTemporalInstantOption =_
+	def withtemporalInstantOption(p:MMetadataDefinitionTemporalInstantOption):this.type ={ 	this.temporalInstantOption = p; 	this }
 
 	/**
 	 * @param metadataType : MEMetadataDefinitionDataType

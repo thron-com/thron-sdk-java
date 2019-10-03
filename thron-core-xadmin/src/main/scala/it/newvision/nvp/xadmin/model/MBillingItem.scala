@@ -14,6 +14,14 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MBillingItem extends Serializable {
 
+	/**
+	 * Business Model Code
+	 */
+	//#SWG#@ApiModelProperty(value = """Business Model Code""" ,required = true)
+	@BeanProperty 
+	var bmCode: String =_
+	def withbmCode(p:String):this.type ={ 	this.bmCode = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var clientId: String =_
@@ -28,112 +36,22 @@ class MBillingItem extends Serializable {
 	def withclientType(p:String):this.type ={ 	this.clientType = p; 	this }
 
 	/**
-	 * Business Model Code
+	 * identified active contacts
 	 */
-	//#SWG#@ApiModelProperty(value = """Business Model Code""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """identified active contacts""" ,required = true)
 	@BeanProperty 
-	var bmCode: String =_
-	def withbmCode(p:String):this.type ={ 	this.bmCode = p; 	this }
+	@Deprecated
+	var identifiedActiveContacts: Long  = 0L
+	@Deprecated
+	def withidentifiedActiveContacts(p:Long):this.type ={ 	this.identifiedActiveContacts = p; 	this }
 
 	/**
-	 * world wide traffic in the time range:
-	 * in Bytes
+	 * identified contacts
 	 */
-	//#SWG#@ApiModelProperty(value = """world wide traffic in the time range:
-	//#SWGNL#in Bytes""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """identified contacts""" ,required = true)
 	@BeanProperty 
-	var totalTraffic: Long  = 0L
-	def withtotalTraffic(p:Long):this.type ={ 	this.totalTraffic = p; 	this }
-
-	/**
-	 * China traffic in the time range:
-	 * in Bytes
-	 */
-	//#SWG#@ApiModelProperty(value = """China traffic in the time range:
-	//#SWGNL#in Bytes""" ,required = true)
-	@BeanProperty 
-	var totalChinaTraffic: Long  = 0L
-	def withtotalChinaTraffic(p:Long):this.type ={ 	this.totalChinaTraffic = p; 	this }
-
-	/**
-	 * from traffic report
-	 */
-	//#SWG#@ApiModelProperty(value = """from traffic report""" ,required = true)
-	@BeanProperty 
-	var totalHits: Long  = 0L
-	def withtotalHits(p:Long):this.type ={ 	this.totalHits = p; 	this }
-
-	/**
-	 * from traffic report
-	 */
-	//#SWG#@ApiModelProperty(value = """from traffic report""" ,required = true)
-	@BeanProperty 
-	var totalChinaHits: Long  = 0L
-	def withtotalChinaHits(p:Long):this.type ={ 	this.totalChinaHits = p; 	this }
-
-	/**
-	 * in Bytes (repository + CDN)
-	 */
-	//#SWG#@ApiModelProperty(value = """in Bytes (repository + CDN)""" ,required = true)
-	@BeanProperty 
-	var maxStorage: Long  = 0L
-	def withmaxStorage(p:Long):this.type ={ 	this.maxStorage = p; 	this }
-
-	/**
-	 * in Bytes (repository + cdn )
-	 */
-	//#SWG#@ApiModelProperty(value = """in Bytes (repository + cdn )""" ,required = true)
-	@BeanProperty 
-	var totalStorage: Long  = 0L
-	def withtotalStorage(p:Long):this.type ={ 	this.totalStorage = p; 	this }
-
-	/**
-	 * Not defined
-	 */
-	//#SWG#@ApiModelProperty(value = """Not defined""" ,required = true)
-	@BeanProperty 
-	var totalLiveTime: Long  = 0L
-	def withtotalLiveTime(p:Long):this.type ={ 	this.totalLiveTime = p; 	this }
-
-	/**
-	 * total users
-	 */
-	//#SWG#@ApiModelProperty(value = """total users""" ,required = true)
-	@BeanProperty 
-	var totalUsers: Long  = 0L
-	def withtotalUsers(p:Long):this.type ={ 	this.totalUsers = p; 	this }
-
-	/**
-	 * total number of Apps
-	 */
-	//#SWG#@ApiModelProperty(value = """total number of Apps""" ,required = true)
-	@BeanProperty 
-	var totalApps: Long  = 0L
-	def withtotalApps(p:Long):this.type ={ 	this.totalApps = p; 	this }
-
-	/**
-	 * total number of users (Guest type)
-	 */
-	//#SWG#@ApiModelProperty(value = """total number of users (Guest type)""" ,required = true)
-	@BeanProperty 
-	var totalGuest: Long  = 0L
-	def withtotalGuest(p:Long):this.type ={ 	this.totalGuest = p; 	this }
-
-	/**
-	 * max number of users in the time range.
-	 */
-	//#SWG#@ApiModelProperty(value = """max number of users in the time range.""" ,required = true)
-	@BeanProperty 
-	var maxNumberOfUsers: Long  = 0L
-	def withmaxNumberOfUsers(p:Long):this.type ={ 	this.maxNumberOfUsers = p; 	this }
-
-	/**
-	 * max number of users (guest) in the time range.
-	 */
-	//#SWG#@ApiModelProperty(value = """max number of users (guest) in the time range.""" ,required = true)
-	@BeanProperty 
-	var maxNumberOfGuests: Long  = 0L
-	def withmaxNumberOfGuests(p:Long):this.type ={ 	this.maxNumberOfGuests = p; 	this }
+	var identifiedContacts: Long  = 0L
+	def withidentifiedContacts(p:Long):this.type ={ 	this.identifiedContacts = p; 	this }
 
 	/**
 	 * max number of apps in the time range.
@@ -146,28 +64,80 @@ class MBillingItem extends Serializable {
 	def withmaxNumberOfApps(p:Long):this.type ={ 	this.maxNumberOfApps = p; 	this }
 
 	/**
+	 * max number of users (guest) in the time range.
+	 */
+	//#SWG#@ApiModelProperty(value = """max number of users (guest) in the time range.""" ,required = true)
+	@BeanProperty 
+	var maxNumberOfGuests: Long  = 0L
+	def withmaxNumberOfGuests(p:Long):this.type ={ 	this.maxNumberOfGuests = p; 	this }
+
+	/**
+	 * max number of users in the time range.
+	 */
+	//#SWG#@ApiModelProperty(value = """max number of users in the time range.""" ,required = true)
+	@BeanProperty 
+	var maxNumberOfUsers: Long  = 0L
+	def withmaxNumberOfUsers(p:Long):this.type ={ 	this.maxNumberOfUsers = p; 	this }
+
+	/**
+	 * in Bytes (repository + CDN)
+	 */
+	//#SWG#@ApiModelProperty(value = """in Bytes (repository + CDN)""" ,required = true)
+	@BeanProperty 
+	var maxStorage: Long  = 0L
+	def withmaxStorage(p:Long):this.type ={ 	this.maxStorage = p; 	this }
+
+	/**
+	 * contents created in the month (based on creation date)
+	 */
+	//#SWG#@ApiModelProperty(value = """contents created in the month (based on creation date)""" ,required = true)
+	@BeanProperty 
+	@Deprecated
+	var newContents: Long  = 0L
+	@Deprecated
+	def withnewContents(p:Long):this.type ={ 	this.newContents = p; 	this }
+
+	/**
+	 * additional info.
+	 */
+	//#SWG#@ApiModelProperty(value = """additional info.""" ,required = true)
+	@BeanProperty 
+	var otherInfo: String =_
+	def withotherInfo(p:String):this.type ={ 	this.otherInfo = p; 	this }
+
+	/**
+	 * total number of Apps
+	 */
+	//#SWG#@ApiModelProperty(value = """total number of Apps""" ,required = true)
+	@BeanProperty 
+	var totalApps: Long  = 0L
+	def withtotalApps(p:Long):this.type ={ 	this.totalApps = p; 	this }
+
+	/**
+	 * from traffic report
+	 */
+	//#SWG#@ApiModelProperty(value = """from traffic report""" ,required = true)
+	@BeanProperty 
+	var totalChinaHits: Long  = 0L
+	def withtotalChinaHits(p:Long):this.type ={ 	this.totalChinaHits = p; 	this }
+
+	/**
+	 * China traffic in the time range:
+	 * in Bytes
+	 */
+	//#SWG#@ApiModelProperty(value = """China traffic in the time range:
+	//#SWGNL#in Bytes""" ,required = true)
+	@BeanProperty 
+	var totalChinaTraffic: Long  = 0L
+	def withtotalChinaTraffic(p:Long):this.type ={ 	this.totalChinaTraffic = p; 	this }
+
+	/**
 	 * total contacts
 	 */
 	//#SWG#@ApiModelProperty(value = """total contacts""" ,required = true)
 	@BeanProperty 
 	var totalContacts: Long  = 0L
 	def withtotalContacts(p:Long):this.type ={ 	this.totalContacts = p; 	this }
-
-	/**
-	 * identified contacts
-	 */
-	//#SWG#@ApiModelProperty(value = """identified contacts""" ,required = true)
-	@BeanProperty 
-	var identifiedContacts: Long  = 0L
-	def withidentifiedContacts(p:Long):this.type ={ 	this.identifiedContacts = p; 	this }
-
-	/**
-	 * total contacts unmerged (number of unique anonymous contacts)
-	 */
-	//#SWG#@ApiModelProperty(value = """total contacts unmerged (number of unique anonymous contacts)""" ,required = true)
-	@BeanProperty 
-	var totalContactsUnmerged: Long  = 0L
-	def withtotalContactsUnmerged(p:Long):this.type ={ 	this.totalContactsUnmerged = p; 	this }
 
 	/**
 	 * number of contacts active in the time range. Used for BM 2017
@@ -178,14 +148,12 @@ class MBillingItem extends Serializable {
 	def withtotalContactsActive(p:Long):this.type ={ 	this.totalContactsActive = p; 	this }
 
 	/**
-	 * identified active contacts
+	 * total contacts unmerged (number of unique anonymous contacts)
 	 */
-	//#SWG#@ApiModelProperty(value = """identified active contacts""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """total contacts unmerged (number of unique anonymous contacts)""" ,required = true)
 	@BeanProperty 
-	@Deprecated
-	var identifiedActiveContacts: Long  = 0L
-	@Deprecated
-	def withidentifiedActiveContacts(p:Long):this.type ={ 	this.identifiedActiveContacts = p; 	this }
+	var totalContactsUnmerged: Long  = 0L
+	def withtotalContactsUnmerged(p:Long):this.type ={ 	this.totalContactsUnmerged = p; 	this }
 
 	/**
 	 * number of device active in the time range
@@ -198,14 +166,6 @@ class MBillingItem extends Serializable {
 	def withtotalContactsUnmergedActive(p:Long):this.type ={ 	this.totalContactsUnmergedActive = p; 	this }
 
 	/**
-	 * additional info.
-	 */
-	//#SWG#@ApiModelProperty(value = """additional info.""" ,required = true)
-	@BeanProperty 
-	var otherInfo: String =_
-	def withotherInfo(p:String):this.type ={ 	this.otherInfo = p; 	this }
-
-	/**
 	 * total number of contents not in trash (creation date based)
 	 */
 	//#SWG#@ApiModelProperty(value = """total number of contents not in trash (creation date based)""" ,required = true)
@@ -216,14 +176,54 @@ class MBillingItem extends Serializable {
 	def withtotalContents(p:Long):this.type ={ 	this.totalContents = p; 	this }
 
 	/**
-	 * contents created in the month (based on creation date)
+	 * total number of users (Guest type)
 	 */
-	//#SWG#@ApiModelProperty(value = """contents created in the month (based on creation date)""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """total number of users (Guest type)""" ,required = true)
 	@BeanProperty 
-	@Deprecated
-	var newContents: Long  = 0L
-	@Deprecated
-	def withnewContents(p:Long):this.type ={ 	this.newContents = p; 	this }
+	var totalGuest: Long  = 0L
+	def withtotalGuest(p:Long):this.type ={ 	this.totalGuest = p; 	this }
+
+	/**
+	 * from traffic report
+	 */
+	//#SWG#@ApiModelProperty(value = """from traffic report""" ,required = true)
+	@BeanProperty 
+	var totalHits: Long  = 0L
+	def withtotalHits(p:Long):this.type ={ 	this.totalHits = p; 	this }
+
+	/**
+	 * Not defined
+	 */
+	//#SWG#@ApiModelProperty(value = """Not defined""" ,required = true)
+	@BeanProperty 
+	var totalLiveTime: Long  = 0L
+	def withtotalLiveTime(p:Long):this.type ={ 	this.totalLiveTime = p; 	this }
+
+	/**
+	 * in Bytes (repository + cdn )
+	 */
+	//#SWG#@ApiModelProperty(value = """in Bytes (repository + cdn )""" ,required = true)
+	@BeanProperty 
+	var totalStorage: Long  = 0L
+	def withtotalStorage(p:Long):this.type ={ 	this.totalStorage = p; 	this }
+
+	/**
+	 * world wide traffic in the time range:
+	 * in Bytes
+	 */
+	//#SWG#@ApiModelProperty(value = """world wide traffic in the time range:
+	//#SWGNL#in Bytes""" ,required = true)
+	@BeanProperty 
+	var totalTraffic: Long  = 0L
+	def withtotalTraffic(p:Long):this.type ={ 	this.totalTraffic = p; 	this }
+
+	/**
+	 * total users
+	 */
+	//#SWG#@ApiModelProperty(value = """total users""" ,required = true)
+	@BeanProperty 
+	var totalUsers: Long  = 0L
+	def withtotalUsers(p:Long):this.type ={ 	this.totalUsers = p; 	this }
 
 	/**
 	 * total number of versions (creation date based). Used with BM2018

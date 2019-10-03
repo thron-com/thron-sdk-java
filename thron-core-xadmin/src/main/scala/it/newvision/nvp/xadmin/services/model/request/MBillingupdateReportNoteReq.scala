@@ -19,12 +19,12 @@ class MBillingupdateReportNoteReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var reportId: String =_
-	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
+	var note: String =_
+	def withnote(p:String):this.type ={ 	this.note = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var note: String =_
-	def withnote(p:String):this.type ={ 	this.note = p; 	this }
+	var reportId: String =_
+	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
 
 }

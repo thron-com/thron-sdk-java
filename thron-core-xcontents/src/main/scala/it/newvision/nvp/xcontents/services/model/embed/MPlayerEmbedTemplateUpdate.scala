@@ -20,12 +20,12 @@ class MPlayerEmbedTemplateUpdate extends MUpdater with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var name: String =_
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
+	var description: String =_
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var description: String =_
-	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+	var name: String =_
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 }

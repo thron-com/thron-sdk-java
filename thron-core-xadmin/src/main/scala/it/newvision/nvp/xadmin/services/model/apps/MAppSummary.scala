@@ -18,26 +18,6 @@ import it.newvision.nvp.xadmin.model.MEAppType
 //#SWG#@ApiModel(description = """Application summary detail""")
 class MAppSummary extends Serializable {
 
-	/**
-	 * APP id.
-	 * Empty if the user has no roles for the App
-	 */
-	//#SWG#@ApiModelProperty(value = """APP id.
-	//#SWGNL#Empty if the user has no roles for the App""")
-	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
-	/**
-	 * App prettyId.
-	 * Empty if the user has no roles for the App
-	 */
-	//#SWG#@ApiModelProperty(value = """App prettyId.
-	//#SWGNL#Empty if the user has no roles for the App""")
-	@BeanProperty 
-	var prettyId: String =_
-	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
@@ -61,6 +41,17 @@ class MAppSummary extends Serializable {
 	var appType: MEAppType =_
 	def withappType(p:MEAppType):this.type ={ 	this.appType = p; 	this }
 
+	/**
+	 * If true the app can invoke the service JApps.su to impersonate a different
+	 * platform user.
+	 * Empty if the user has no roles for the App
+	 */
+	//#SWG#@ApiModelProperty(value = """If true the app can invoke the service JApps.su to impersonate a different platform user.
+	//#SWGNL#Empty if the user has no roles for the App""")
+	@BeanProperty 
+	var canDisguise: Boolean =_
+	def withcanDisguise(p:Boolean):this.type ={ 	this.canDisguise = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var creationDate: Date  = new Date()
@@ -79,10 +70,28 @@ class MAppSummary extends Serializable {
 	var displayName: String =_
 	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
+	/**
+	 * APP id.
+	 * Empty if the user has no roles for the App
+	 */
+	//#SWG#@ApiModelProperty(value = """APP id.
+	//#SWGNL#Empty if the user has no roles for the App""")
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lastUpdate: Date =_
 	def withlastUpdate(p:Date):this.type ={ 	this.lastUpdate = p; 	this }
+
+	/**
+	 * derived
+	 */
+	//#SWG#@ApiModelProperty(value = """derived""" ,required = true)
+	@BeanProperty 
+	var ownerFullName: String =_
+	def withownerFullName(p:String):this.type ={ 	this.ownerFullName = p; 	this }
 
 	/**
 	 * username of the owner.
@@ -95,12 +104,14 @@ class MAppSummary extends Serializable {
 	def withownerUsername(p:String):this.type ={ 	this.ownerUsername = p; 	this }
 
 	/**
-	 * derived
+	 * App prettyId.
+	 * Empty if the user has no roles for the App
 	 */
-	//#SWG#@ApiModelProperty(value = """derived""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """App prettyId.
+	//#SWGNL#Empty if the user has no roles for the App""")
 	@BeanProperty 
-	var ownerFullName: String =_
-	def withownerFullName(p:String):this.type ={ 	this.ownerFullName = p; 	this }
+	var prettyId: String =_
+	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	/**
 	 * the root category Id for the App.
@@ -113,6 +124,11 @@ class MAppSummary extends Serializable {
 	@BeanProperty 
 	var rootCategoryId: String =_
 	def withrootCategoryId(p:String):this.type ={ 	this.rootCategoryId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var snippets: List[MSnippetSummary] = new ArrayList[MSnippetSummary]
+	def withsnippets(p:List[MSnippetSummary]):this.type ={ 	this.snippets = p; 	this }
 
 	/**
 	 * main url of the app
@@ -129,21 +145,5 @@ class MAppSummary extends Serializable {
 	@BeanProperty 
 	var urlThumbnail: String =_
 	def withurlThumbnail(p:String):this.type ={ 	this.urlThumbnail = p; 	this }
-
-	/**
-	 * If true the app can invoke the service JApps.su to impersonate a different
-	 * platform user.
-	 * Empty if the user has no roles for the App
-	 */
-	//#SWG#@ApiModelProperty(value = """If true the app can invoke the service JApps.su to impersonate a different platform user.
-	//#SWGNL#Empty if the user has no roles for the App""")
-	@BeanProperty 
-	var canDisguise: Boolean =_
-	def withcanDisguise(p:Boolean):this.type ={ 	this.canDisguise = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var snippets: List[MSnippetSummary] = new ArrayList[MSnippetSummary]
-	def withsnippets(p:List[MSnippetSummary]):this.type ={ 	this.snippets = p; 	this }
 
 }

@@ -12,7 +12,6 @@ import com.thron.intelligence.services.model.metadata.MResponseMetadataDefinitio
 import com.thron.intelligence.services.model.request.MIMetadataDefinitionlistReq
 import com.thron.intelligence.services.model.metadata.MEMetadataDefinitionOrderBy
 import com.thron.intelligence.services.model.request.MIMetadataDefinitionupdateReq
-import com.thron.intelligence.services.model.request.MIMetadataDefinitionchangeTypeReq
 import com.thron.intelligence.services.model.metadata.MResponseMetadataVerifyIfUsed
 
 /* ************************
@@ -585,66 +584,6 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 					.path(clientId.toString)
 		.path(classificationId.toString)
 		.path(id.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseMetadataDefinitionDetail],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseMetadataDefinitionDetail])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Changes the type of an imetadataDefinition.
-	 * 
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>you can change the type of a imetadataDefinition only if it's not used in the platform</li>
-	 * </ul>
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param param : MIMetadataDefinitionchangeTypeReq
-	 * @return MResponseMetadataDefinitionDetail
-	*/
-	def changeType(tokenId: String, 
-			clientId: String, 
-			classificationId: String, 
-			param: MIMetadataDefinitionchangeTypeReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinitionDetail ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JIMetadataDefinitionClient.client.resource(this.resourceEndpoint)
-			val response : MResponseMetadataDefinitionDetail = if(this.resourceEndpoint == ""){
-			
-				new MResponseMetadataDefinitionDetail()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("imetadatadefinition/changeType")
-					.path(clientId.toString)
-		.path(classificationId.toString)
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)
 					.header("X-TOKENID",tokenId)

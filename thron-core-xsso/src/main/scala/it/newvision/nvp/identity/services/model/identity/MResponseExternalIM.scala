@@ -17,12 +17,12 @@ class MResponseExternalIM extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var status: MEExternalIMResponse =_
-	def withstatus(p:MEExternalIMResponse):this.type ={ 	this.status = p; 	this }
+	var message: String =_
+	def withmessage(p:String):this.type ={ 	this.message = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var message: String =_
-	def withmessage(p:String):this.type ={ 	this.message = p; 	this }
+	var status: MEExternalIMResponse =_
+	def withstatus(p:MEExternalIMResponse):this.type ={ 	this.status = p; 	this }
 
 }

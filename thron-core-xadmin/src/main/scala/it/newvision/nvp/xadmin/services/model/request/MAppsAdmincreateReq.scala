@@ -21,13 +21,13 @@ class MAppsAdmincreateReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var clientId: String =_
-	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
+	var app: MAppInitData =_
+	def withapp(p:MAppInitData):this.type ={ 	this.app = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var app: MAppInitData =_
-	def withapp(p:MAppInitData):this.type ={ 	this.app = p; 	this }
+	var clientId: String =_
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty

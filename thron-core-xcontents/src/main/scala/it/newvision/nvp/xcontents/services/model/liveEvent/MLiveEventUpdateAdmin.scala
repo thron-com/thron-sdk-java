@@ -18,12 +18,12 @@ import javax.xml.bind.annotation._
 class MLiveEventUpdateAdmin extends Serializable {
 
 	/**
-	 * used to distinguish h24 live events by the spot events.
+	 * the scheduled end date of the event in the calendar
 	 */
-	//#SWG#@ApiModelProperty(value = """used to distinguish h24 live events by the spot events.""")
+	//#SWG#@ApiModelProperty(value = """the scheduled end date of the event in the calendar""")
 	@BeanProperty 
-	var neverEndingLiveEvent: Boolean =_
-	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
+	var eventEnded: Date =_
+	def witheventEnded(p:Date):this.type ={ 	this.eventEnded = p; 	this }
 
 	/**
 	 * the scheduled start date of the event in the calendar
@@ -34,11 +34,11 @@ class MLiveEventUpdateAdmin extends Serializable {
 	def witheventStarted(p:Date):this.type ={ 	this.eventStarted = p; 	this }
 
 	/**
-	 * the scheduled end date of the event in the calendar
+	 * used to distinguish h24 live events by the spot events.
 	 */
-	//#SWG#@ApiModelProperty(value = """the scheduled end date of the event in the calendar""")
+	//#SWG#@ApiModelProperty(value = """used to distinguish h24 live events by the spot events.""")
 	@BeanProperty 
-	var eventEnded: Date =_
-	def witheventEnded(p:Date):this.type ={ 	this.eventEnded = p; 	this }
+	var neverEndingLiveEvent: Boolean =_
+	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
 
 }

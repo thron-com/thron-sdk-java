@@ -6,16 +6,16 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.identity.services.model.usersgroup.MResponseCreateUsersGroup
 import it.newvision.nvp.identity.services.model.request.MUsersGroupManagercreateGroupReq
-import it.newvision.nvp.identity.services.model.usersgroup.MResponseUsersGroup
-import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerupdateReq
-import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerupdateExternalIdReq
 import it.newvision.nvp.identity.services.model.usersgroup.MResponseDetailUsersGroup
 import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerdetailGroupReq
-import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerremoveGroupReq
 import it.newvision.nvp.identity.services.model.usersgroup.MResponseFindGroupsByProperties
 import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerfindGroupsByPropertiesReq
+import it.newvision.nvp.identity.services.model.usersgroup.MResponseUsersGroup
 import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerlinkUserToGroupReq
+import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerremoveGroupReq
 import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerunlinkUserToGroupReq
+import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerupdateReq
+import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerupdateExternalIdReq
 
 /* ************************
 *  GENERATED CLASS
@@ -90,106 +90,6 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Updates the detail and capabilities of a group.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param groupId : String
-	 * @param param : MUsersGroupManagerupdateReq
-	 * @return MResponseUsersGroup
-	*/
-	def update(tokenId: String, 
-			clientId: String, 
-			groupId: String, 
-			param: MUsersGroupManagerupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUsersGroup ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JUsersGroupManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseUsersGroup = if(this.resourceEndpoint == ""){
-			
-				new MResponseUsersGroup()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("usersgroupmanager/update")
-					.path(clientId.toString)
-		.path(groupId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseUsersGroup],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseUsersGroup])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Updates an externalId of a group.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param groupId : String
-	 * @param param : MUsersGroupManagerupdateExternalIdReq
-	 * @return MResponseUsersGroup
-	*/
-	def updateExternalId(tokenId: String, 
-			clientId: String, 
-			groupId: String, 
-			param: MUsersGroupManagerupdateExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUsersGroup ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JUsersGroupManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseUsersGroup = if(this.resourceEndpoint == ""){
-			
-				new MResponseUsersGroup()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("usersgroupmanager/updateExternalId")
-					.path(clientId.toString)
-		.path(groupId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseUsersGroup],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseUsersGroup])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * Returns the detail of a group and the list of users linked to it.
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerdetailGroupReq
@@ -225,51 +125,6 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseDetailUsersGroup])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Removes a group.
-	 * @param tokenId : String
-	 * @param param : MUsersGroupManagerremoveGroupReq
-	 * @return MResponseUsersGroup
-	*/
-	def removeGroup(tokenId: String, 
-			param: MUsersGroupManagerremoveGroupReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUsersGroup ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JUsersGroupManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseUsersGroup = if(this.resourceEndpoint == ""){
-			
-				new MResponseUsersGroup()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("usersgroupmanager/removeGroup")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseUsersGroup],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseUsersGroup])
 				}
 				else {
 				  throw e
@@ -385,6 +240,51 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Removes a group.
+	 * @param tokenId : String
+	 * @param param : MUsersGroupManagerremoveGroupReq
+	 * @return MResponseUsersGroup
+	*/
+	def removeGroup(tokenId: String, 
+			param: MUsersGroupManagerremoveGroupReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUsersGroup ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JUsersGroupManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseUsersGroup = if(this.resourceEndpoint == ""){
+			
+				new MResponseUsersGroup()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("usersgroupmanager/removeGroup")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseUsersGroup],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseUsersGroup])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
 	 * Unlinks a set of users from a group.
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerunlinkUserToGroupReq
@@ -405,6 +305,106 @@ class JUsersGroupManagerClient(val resourceEndpoint:String) {
 				var wbuilder = webResource
 					.path("usersgroupmanager/unlinkUserToGroup")
 				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseUsersGroup],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseUsersGroup])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Updates the detail and capabilities of a group.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param groupId : String
+	 * @param param : MUsersGroupManagerupdateReq
+	 * @return MResponseUsersGroup
+	*/
+	def update(tokenId: String, 
+			clientId: String, 
+			groupId: String, 
+			param: MUsersGroupManagerupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUsersGroup ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JUsersGroupManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseUsersGroup = if(this.resourceEndpoint == ""){
+			
+				new MResponseUsersGroup()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("usersgroupmanager/update")
+					.path(clientId.toString)
+		.path(groupId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseUsersGroup],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseUsersGroup])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Updates an externalId of a group.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param groupId : String
+	 * @param param : MUsersGroupManagerupdateExternalIdReq
+	 * @return MResponseUsersGroup
+	*/
+	def updateExternalId(tokenId: String, 
+			clientId: String, 
+			groupId: String, 
+			param: MUsersGroupManagerupdateExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUsersGroup ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JUsersGroupManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseUsersGroup = if(this.resourceEndpoint == ""){
+			
+				new MResponseUsersGroup()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("usersgroupmanager/updateExternalId")
+					.path(clientId.toString)
+		.path(groupId.toString)
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)
 					.header("X-TOKENID",tokenId)

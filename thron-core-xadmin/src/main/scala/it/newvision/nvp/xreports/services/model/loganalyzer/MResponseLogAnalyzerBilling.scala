@@ -14,15 +14,15 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MResponseLogAnalyzerBilling extends MResponseLogAnalyzer with Serializable  {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var items: List[MWeeboResult] = new ArrayList[MWeeboResult]
-	def withitems(p:List[MWeeboResult]):this.type ={ 	this.items = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var fromDate: Date =_
 	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var items: List[MWeeboResult] = new ArrayList[MWeeboResult]
+	def withitems(p:List[MWeeboResult]):this.type ={ 	this.items = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 

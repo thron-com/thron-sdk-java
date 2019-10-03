@@ -15,24 +15,6 @@ import it.newvision.nvp.identity.services.model.msg.MEExternalIMResponse
 //#SWG#@ApiModel(description = """""")
 class MResponseVerifyExternalIM extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var status: MEExternalIMResponse =_
-	def withstatus(p:MEExternalIMResponse):this.type ={ 	this.status = p; 	this }
-
-	/**
-	 * if 0 the password is expired
-	 */
-	//#SWG#@ApiModelProperty(value = """if 0 the password is expired""")
-	@BeanProperty 
-	var passwordLastUpdate: Long =_
-	def withpasswordLastUpdate(p:Long):this.type ={ 	this.passwordLastUpdate = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var passwordExpired: Boolean =_
-	def withpasswordExpired(p:Boolean):this.type ={ 	this.passwordExpired = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var accountActive: Boolean =_
@@ -47,5 +29,23 @@ class MResponseVerifyExternalIM extends Serializable {
 	@BeanProperty 
 	var accountLocked: Boolean =_
 	def withaccountLocked(p:Boolean):this.type ={ 	this.accountLocked = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var passwordExpired: Boolean =_
+	def withpasswordExpired(p:Boolean):this.type ={ 	this.passwordExpired = p; 	this }
+
+	/**
+	 * if 0 the password is expired
+	 */
+	//#SWG#@ApiModelProperty(value = """if 0 the password is expired""")
+	@BeanProperty 
+	var passwordLastUpdate: Long =_
+	def withpasswordLastUpdate(p:Long):this.type ={ 	this.passwordLastUpdate = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var status: MEExternalIMResponse =_
+	def withstatus(p:MEExternalIMResponse):this.type ={ 	this.status = p; 	this }
 
 }

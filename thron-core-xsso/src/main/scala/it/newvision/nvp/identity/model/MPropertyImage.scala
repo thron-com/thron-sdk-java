@@ -17,10 +17,31 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """Properties for the Image ingestion.""")
 class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 
+	/**
+	 * custom image parameter (imagemagic) to add to the ingestion process. 
+	 */
+	//#SWG#@ApiModelProperty(value = """custom image parameter (imagemagic) to add to the ingestion process. """ ,required = true)
+	@BeanProperty 
+	var ingestionParameters: String  = ""
+	def withingestionParameters(p:String):this.type ={ 	this.ingestionParameters = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var jpegQuality: Integer  = 90
 	def withjpegQuality(p:Integer):this.type ={ 	this.jpegQuality = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var keepFileFormat: Boolean  = true
+	def withkeepFileFormat(p:Boolean):this.type ={ 	this.keepFileFormat = p; 	this }
+
+	/**
+	 * default no resize. 0 = keep aspect ration depending on the width size.
+	 */
+	//#SWG#@ApiModelProperty(value = """default no resize. 0 = keep aspect ration depending on the width size.""" ,required = true)
+	@BeanProperty 
+	var resizeHeight: Integer  = 1024
+	def withresizeHeight(p:Integer):this.type ={ 	this.resizeHeight = p; 	this }
 
 	/**
 	 * default. no resize
@@ -31,25 +52,14 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 	def withresizeWidth(p:Integer):this.type ={ 	this.resizeWidth = p; 	this }
 
 	/**
-	 * default no resize. 0 = keep aspect ration depending on the width size.
-	 */
-	//#SWG#@ApiModelProperty(value = """default no resize. 0 = keep aspect ration depending on the width size.""" ,required = true)
-	@BeanProperty 
-	var resizeHeight: Integer  = 1024
-	def withresizeHeight(p:Integer):this.type ={ 	this.resizeHeight = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var keepFileFormat: Boolean  = true
-	def withkeepFileFormat(p:Boolean):this.type ={ 	this.keepFileFormat = p; 	this }
-
-	/**
-	 * custom image parameter (imagemagic) to add to the ingestion process. 
-	 */
-	//#SWG#@ApiModelProperty(value = """custom image parameter (imagemagic) to add to the ingestion process. """ ,required = true)
-	@BeanProperty 
-	var ingestionParameters: String  = ""
-	def withingestionParameters(p:String):this.type ={ 	this.ingestionParameters = p; 	this }
+	 * @param clientId : String
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def init_test(clientId: String){
+		this.init_gd_test(clientId,"WEB")
+	}
 
 	/**
 	 * @param client : MClient
@@ -100,16 +110,6 @@ class MPropertyImage extends MPropertyGenericDocument with Serializable  {
 		this.convertTo="JPG"
 		this.withIngestion=true
 	
-	}
-
-	/**
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_test(clientId: String){
-		this.init_gd_test(clientId,"WEB")
 	}
 
 	/**

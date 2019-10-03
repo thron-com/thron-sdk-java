@@ -8,9 +8,9 @@ import com.thron.intelligence.services.model.classification.MResponseClassificat
 import com.thron.intelligence.services.model.request.MPermissionsinsertReq
 import com.thron.intelligence.services.model.classification.MResponseClassificationPermissionList
 import com.thron.intelligence.services.model.request.MPermissionslistReq
-import com.thron.intelligence.services.model.request.MPermissionsupdateReq
 import com.thron.intelligence.services.model.classification.MResponseClassificationPermissionRemove
 import com.thron.intelligence.services.model.request.MPermissionsremoveReq
+import com.thron.intelligence.services.model.request.MPermissionsupdateReq
 
 /* ************************
 *  GENERATED CLASS
@@ -206,62 +206,6 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Updates classification permissions of a user, group or app.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>(THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
-	 * role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param param : MPermissionsupdateReq
-	 * @return MResponseClassificationPermission
-	*/
-	def update(tokenId: String, 
-			clientId: String, 
-			classificationId: String, 
-			param: MPermissionsupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationPermission ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JPermissionsClient.client.resource(this.resourceEndpoint)
-			val response : MResponseClassificationPermission = if(this.resourceEndpoint == ""){
-			
-				new MResponseClassificationPermission()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("permissions/update")
-					.path(clientId.toString)
-		.path(classificationId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseClassificationPermission],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseClassificationPermission])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * Removes classification permissions from a user, group or app.
 	 * 
 	 * <b>Validation:</b>
@@ -309,6 +253,62 @@ class JPermissionsClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseClassificationPermissionRemove])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Updates classification permissions of a user, group or app.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>(THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
+	 * role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MPermissionsupdateReq
+	 * @return MResponseClassificationPermission
+	*/
+	def update(tokenId: String, 
+			clientId: String, 
+			classificationId: String, 
+			param: MPermissionsupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationPermission ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JPermissionsClient.client.resource(this.resourceEndpoint)
+			val response : MResponseClassificationPermission = if(this.resourceEndpoint == ""){
+			
+				new MResponseClassificationPermission()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("permissions/update")
+					.path(clientId.toString)
+		.path(classificationId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseClassificationPermission],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseClassificationPermission])
 				}
 				else {
 				  throw e

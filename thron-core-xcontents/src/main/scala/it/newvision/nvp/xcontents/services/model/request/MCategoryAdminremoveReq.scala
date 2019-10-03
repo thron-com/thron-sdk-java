@@ -18,6 +18,11 @@ import it.newvision.nvp.xcontents.services.model.category.MCategoryAclInverseRul
 //#SWG#@ApiModel(description = "Request message for service JCategoryAdmin.remove")
 class MCategoryAdminremoveReq extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var aclInverseRules: MCategoryAclInverseRules =_
+	def withaclInverseRules(p:MCategoryAclInverseRules):this.type ={ 	this.aclInverseRules = p; 	this }
+
 	/**
 	 * Serialized user session, for audit and notification purposes.
 	 */
@@ -25,10 +30,5 @@ class MCategoryAdminremoveReq extends Serializable {
 	@BeanProperty
 	var userSession: String =_
 	def withuserSession(p:String):this.type ={ 	this.userSession = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var aclInverseRules: MCategoryAclInverseRules =_
-	def withaclInverseRules(p:MCategoryAclInverseRules):this.type ={ 	this.aclInverseRules = p; 	this }
 
 }

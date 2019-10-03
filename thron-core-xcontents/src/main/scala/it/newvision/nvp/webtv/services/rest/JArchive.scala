@@ -129,188 +129,6 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_download: String
 
 	/**
-	 * Returns a zip file with the published resources of the playlist's elements.
-	 * <b>
-	 * </b><b>Validation:</b>
-	 * <ul>
-	 * 	<li>4ME_USE_CONTENTS role</li>
-	 * </ul>
-	 * 
-	 * <b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser
-	 * may not be able to evaluate. For this reason it is recommended to test this service using an
-	 * external API testing software.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * Domain name used to access THRON
-	 * @param id : String
-	 * The xcontentId of the content.
-	 * 
-
-	 * @param saveAs : String
-	 * Optional. The desired name of the file with no extension
-	 * @param pkey : String
-	 * Optional. The access key for the content. It's not required when session token is provided.
-	 * @param elements : String
-	 * Optional. List of xcontentIds as comma separated value. This allow the use to select the playlist
-	 * items to download, if empty, all items are downloaded.
-	 * @param locale : String
-	 * Optional. Locale of content prettyId used as file name.
-	 * @return java.io.File
-	*/
-	@POST
-	@Path("/downloadPlaylist/{clientId}/{id}")
-	@Produces(Array(MediaType.WILDCARD))
-	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/downloadPlaylist", notes = """Returns a zip file with the published resources of the playlist's elements.
-	//#SWGNL#<b>
-	//#SWGNL#</b><b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser may not be able to evaluate. For this reason it is recommended to test this service using an external API testing software.""", response = classOf[java.io.File])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def downloadPlaylist(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """Domain name used to access THRON""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """The xcontentId of the content. 
-	//#SWGNL#
-	//#SWGNL#""")
-	@PathParam("id")
-	id: String, 
-			//#SWG#@ApiParam(value = """Optional. The desired name of the file with no extension""")
-	@FormParam("saveAs")
-	saveAs: String, 
-			//#SWG#@ApiParam(value = """Optional. The access key for the content. It's not required when session token is provided.""")
-	@FormParam("pkey")
-	pkey: String, 
-			//#SWG#@ApiParam(value = """Optional. List of xcontentIds as comma separated value. This allow the use to select the playlist items to download, if empty, all items are downloaded.""")
-	@FormParam("elements")
-	elements: String, 
-			//#SWG#@ApiParam(value = """Optional. Locale of content prettyId used as file name.""")
-	@FormParam("locale")
-	locale: String):Response /*returnType = java.io.File*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__downloadPlaylist(tokenId,clientId,id,saveAs,pkey,elements,locale)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_downloadPlaylist)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_downloadPlaylist)
-	    }
-	} 
-
-	@GET
-	@Path("/downloadPlaylist/{clientId}/{id}")
-	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
-	def downloadPlaylist_2(@QueryParam("tokenId")tokenId_q: String, 
-			@PathParam("clientId")clientId_q: String, 
-			@PathParam("id")id_q: String, 
-			@QueryParam("saveAs")saveAs_q: String, 
-			@QueryParam("pkey")pkey_q: String, 
-			@QueryParam("elements")elements_q: String, 
-			@QueryParam("locale")locale_q: String,
-			@HeaderParam("X-TOKENID") tokenId_h: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String):Response /*returnType = java.io.File*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("downloadPlaylist",this._getCacheControl) 
-		try{	
-			val resp = this.__downloadPlaylist(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,id_q,saveAs_q,pkey_q,elements_q,locale_q)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_downloadPlaylist)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_downloadPlaylist)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __downloadPlaylist(tokenId: String, clientId: String, id: String, saveAs: String, pkey: String, elements: String, locale: String) :java.io.File
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_downloadPlaylist: String
-
-	/**
-	 * Returns an id used by download service to zip and download a set of content.
-	 * <b>
-	 * </b><b>Validation:</b>
-	 * <ul>
-	 * 	<li>4ME_USE_CONTENTS role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param param : MArchiveprepareReq
-	 * @return MResponsePrepareArchive
-	*/
-	@POST
-	@Path("/prepare/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/prepare", notes = """Returns an id used by download service to zip and download a set of content.
-	//#SWGNL#<b>
-	//#SWGNL#</b><b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
-	//#SWGNL#</ul>""", response = classOf[MResponsePrepareArchive])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def prepare(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			param: MArchiveprepareReq):Response /*returnType = MResponsePrepareArchive*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__prepare(tokenId,clientId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_prepare)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_prepare)
-	    }
-	} 
-
-	@GET
-	@Path("/prepare/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def prepare_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePrepareArchive*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("prepare",this._getCacheControl) 
-		try{
-			val resp = this.__prepare(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,PRestHelper.bindRequest[MArchiveprepareReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_prepare)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_prepare)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __prepare(tokenId: String, clientId: String, param: MArchiveprepareReq) :MResponsePrepareArchive
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_prepare: String
-
-	/**
 	 * Returns a zip file with the resources of a player embed template.
 	 * <b>
 	 * </b><b>Validation:</b>
@@ -393,5 +211,192 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __downloadPlayerEmbedTemplate(tokenId: String, clientId: String, templateId: String, templateVersion: Integer) :java.io.File
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_downloadPlayerEmbedTemplate: String
+
+	/**
+	 * Returns a zip file with the published resources of the playlist's elements.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * </ul>
+	 * 
+	 * <b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser
+	 * may not be able to evaluate. For this reason it is recommended to test this service using an
+	 * external API testing software.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * Domain name used to access THRON
+	 * @param id : String
+	 * The xcontentId of the content.
+	 * 
+
+	 * @param saveAs : String
+	 * Optional. The desired name of the file with no extension
+	 * @param pkey : String
+	 * Optional. The access key for the content. It's not required when session token is provided.
+	 * @param elements : String
+	 * Optional. List of xcontentIds as comma separated value. This allow the use to select the playlist
+	 * items to download, if empty, all items are downloaded.
+	 * @param locale : String
+	 * Optional. Locale of content prettyId used as file name.
+	 * @param contactId : String
+	 * @return java.io.File
+	*/
+	@POST
+	@Path("/downloadPlaylist/{clientId}/{id}")
+	@Produces(Array(MediaType.WILDCARD))
+	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
+	//#SWG#@ApiOperation(value = "/downloadPlaylist", notes = """Returns a zip file with the published resources of the playlist's elements.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>WARNING</b>: invoking this service via the Developer portal provides a result that your browser may not be able to evaluate. For this reason it is recommended to test this service using an external API testing software.""", response = classOf[java.io.File])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def downloadPlaylist(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """Domain name used to access THRON""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """The xcontentId of the content. 
+	//#SWGNL#
+	//#SWGNL#""")
+	@PathParam("id")
+	id: String, 
+			//#SWG#@ApiParam(value = """Optional. The desired name of the file with no extension""")
+	@FormParam("saveAs")
+	saveAs: String, 
+			//#SWG#@ApiParam(value = """Optional. The access key for the content. It's not required when session token is provided.""")
+	@FormParam("pkey")
+	pkey: String, 
+			//#SWG#@ApiParam(value = """Optional. List of xcontentIds as comma separated value. This allow the use to select the playlist items to download, if empty, all items are downloaded.""")
+	@FormParam("elements")
+	elements: String, 
+			//#SWG#@ApiParam(value = """Optional. Locale of content prettyId used as file name.""")
+	@FormParam("locale")
+	locale: String, 
+			//#SWG#@ApiParam(value = """""")
+	@FormParam("contactId")
+	contactId: String):Response /*returnType = java.io.File*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__downloadPlaylist(tokenId,clientId,id,saveAs,pkey,elements,locale,contactId)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_downloadPlaylist)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_downloadPlaylist)
+	    }
+	} 
+
+	@GET
+	@Path("/downloadPlaylist/{clientId}/{id}")
+	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
+	def downloadPlaylist_2(@QueryParam("tokenId")tokenId_q: String, 
+			@PathParam("clientId")clientId_q: String, 
+			@PathParam("id")id_q: String, 
+			@QueryParam("saveAs")saveAs_q: String, 
+			@QueryParam("pkey")pkey_q: String, 
+			@QueryParam("elements")elements_q: String, 
+			@QueryParam("locale")locale_q: String, 
+			@QueryParam("contactId")contactId_q: String,
+			@HeaderParam("X-TOKENID") tokenId_h: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String):Response /*returnType = java.io.File*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("downloadPlaylist",this._getCacheControl) 
+		try{	
+			val resp = this.__downloadPlaylist(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,id_q,saveAs_q,pkey_q,elements_q,locale_q,contactId_q)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_downloadPlaylist)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_downloadPlaylist)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __downloadPlaylist(tokenId: String, clientId: String, id: String, saveAs: String, pkey: String, elements: String, locale: String, contactId: String) :java.io.File
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_downloadPlaylist: String
+
+	/**
+	 * Returns an id used by download service to zip and download a set of content.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>4ME_USE_CONTENTS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MArchiveprepareReq
+	 * @return MResponsePrepareArchive
+	*/
+	@POST
+	@Path("/prepare/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/prepare", notes = """Returns an id used by download service to zip and download a set of content.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>4ME_USE_CONTENTS role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponsePrepareArchive])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def prepare(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			param: MArchiveprepareReq):Response /*returnType = MResponsePrepareArchive*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__prepare(tokenId,clientId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_prepare)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_prepare)
+	    }
+	} 
+
+	@GET
+	@Path("/prepare/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def prepare_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePrepareArchive*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("prepare",this._getCacheControl) 
+		try{
+			val resp = this.__prepare(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,PRestHelper.bindRequest[MArchiveprepareReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_prepare)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_prepare)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __prepare(tokenId: String, clientId: String, param: MArchiveprepareReq) :MResponsePrepareArchive
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_prepare: String
 
 }

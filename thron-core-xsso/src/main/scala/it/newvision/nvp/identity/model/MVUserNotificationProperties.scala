@@ -19,6 +19,15 @@ import javax.xml.bind.annotation._
 class MVUserNotificationProperties extends Serializable {
 
 	/**
+	 * Used to automatically subscribe the user for notification when linked to
+	 * categories
+	 */
+	//#SWG#@ApiModelProperty(value = """Used to automatically subscribe the user for notification when linked to categories""")
+	@BeanProperty 
+	var autoSubscribeToCategories: Boolean  = true
+	def withautoSubscribeToCategories(p:Boolean):this.type ={ 	this.autoSubscribeToCategories = p; 	this }
+
+	/**
 	 * The main email address. The field is mandatory for all Platform users and is
 	 * used to send notifications; moreover, this value will be used to identify the
 	 * email key of the related contact.
@@ -44,6 +53,11 @@ class MVUserNotificationProperties extends Serializable {
 	var email: String =_
 	def withemail(p:String):this.type ={ 	this.email = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var notifyBy: List[MENotificationType] = new ArrayList[MENotificationType]
+	def withnotifyBy(p:List[MENotificationType]):this.type ={ 	this.notifyBy = p; 	this }
+
 	/**
 	 * the default telephone number used for sms notifications.
 	 */
@@ -51,20 +65,6 @@ class MVUserNotificationProperties extends Serializable {
 	@BeanProperty 
 	var phoneNumber: String =_
 	def withphoneNumber(p:String):this.type ={ 	this.phoneNumber = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var notifyBy: List[MENotificationType] = new ArrayList[MENotificationType]
-	def withnotifyBy(p:List[MENotificationType]):this.type ={ 	this.notifyBy = p; 	this }
-
-	/**
-	 * Used to automatically subscribe the user for notification when linked to
-	 * categories
-	 */
-	//#SWG#@ApiModelProperty(value = """Used to automatically subscribe the user for notification when linked to categories""")
-	@BeanProperty 
-	var autoSubscribeToCategories: Boolean  = true
-	def withautoSubscribeToCategories(p:Boolean):this.type ={ 	this.autoSubscribeToCategories = p; 	this }
 
 	/**
 	 * @return Boolean

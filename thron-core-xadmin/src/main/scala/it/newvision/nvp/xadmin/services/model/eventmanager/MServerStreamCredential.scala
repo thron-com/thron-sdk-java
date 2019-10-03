@@ -14,6 +14,14 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MServerStreamCredential extends Serializable {
 
+	/**
+	 * the ingestion URL used to know where connect the input stream
+	 */
+	//#SWG#@ApiModelProperty(value = """the ingestion URL used to know where connect the input stream""" ,required = true)
+	@BeanProperty 
+	var clientStreamUrl: String =_
+	def withclientStreamUrl(p:String):this.type ={ 	this.clientStreamUrl = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var streamId: String =_
@@ -23,13 +31,5 @@ class MServerStreamCredential extends Serializable {
 	@BeanProperty 
 	var streamPassword: String =_
 	def withstreamPassword(p:String):this.type ={ 	this.streamPassword = p; 	this }
-
-	/**
-	 * the ingestion URL used to know where connect the input stream
-	 */
-	//#SWG#@ApiModelProperty(value = """the ingestion URL used to know where connect the input stream""" ,required = true)
-	@BeanProperty 
-	var clientStreamUrl: String =_
-	def withclientStreamUrl(p:String):this.type ={ 	this.clientStreamUrl = p; 	this }
 
 }

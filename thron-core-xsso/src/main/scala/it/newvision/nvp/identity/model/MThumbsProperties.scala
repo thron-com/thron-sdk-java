@@ -19,8 +19,13 @@ class MThumbsProperties extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var thumbsPropertiesVideo: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesVideo(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesVideo = p; 	this }
+	var thumbsPropertiesAudio: MPropertyThumbnail  = new MPropertyThumbnail
+	def withthumbsPropertiesAudio(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesAudio = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var thumbsPropertiesDocument: MPropertyThumbnail  = new MPropertyThumbnail
+	def withthumbsPropertiesDocument(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesDocument = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
@@ -32,21 +37,6 @@ class MThumbsProperties extends Serializable {
 	var thumbsPropertiesLive: MPropertyThumbnail  = new MPropertyThumbnail
 	def withthumbsPropertiesLive(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesLive = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var thumbsPropertiesAudio: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesAudio(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesAudio = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var thumbsPropertiesDocument: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesDocument(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesDocument = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var thumbsPropertiesUrl: MPropertyThumbnail  = new MPropertyThumbnail
-	def withthumbsPropertiesUrl(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesUrl = p; 	this }
-
 	/**
 	 * thumbs properties for pagelet contents
 	 */
@@ -54,6 +44,16 @@ class MThumbsProperties extends Serializable {
 	@BeanProperty 
 	var thumbsPropertiesPagelet: MPropertyThumbnail  = new MPropertyThumbnail
 	def withthumbsPropertiesPagelet(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesPagelet = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var thumbsPropertiesUrl: MPropertyThumbnail  = new MPropertyThumbnail
+	def withthumbsPropertiesUrl(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesUrl = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var thumbsPropertiesVideo: MPropertyThumbnail  = new MPropertyThumbnail
+	def withthumbsPropertiesVideo(p:MPropertyThumbnail):this.type ={ 	this.thumbsPropertiesVideo = p; 	this }
 
 	/**
 	 * ONLY FOR VIDEO: defined in seconds

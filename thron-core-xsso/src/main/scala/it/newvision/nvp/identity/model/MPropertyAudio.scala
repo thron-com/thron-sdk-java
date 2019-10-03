@@ -40,14 +40,6 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 	def withcodec(p:String):this.type ={ 	this.codec = p; 	this }
 
 	/**
-	 * Control the audio sampling frequency in (Hz) for your audio output.
-	 */
-	//#SWG#@ApiModelProperty(value = """Control the audio sampling frequency in (Hz) for your audio output.""" ,required = true)
-	@BeanProperty 
-	var sampleRate: Integer  = 44100
-	def withsampleRate(p:Integer):this.type ={ 	this.sampleRate = p; 	this }
-
-	/**
 	 * range value: [0..100]. Suggested value if present is 85.
 	 * Used to bring the average or peak amplitude to a target level. 
 	 */
@@ -56,6 +48,57 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 	@BeanProperty 
 	var normalization: Integer  = 0
 	def withnormalization(p:Integer):this.type ={ 	this.normalization = p; 	this }
+
+	/**
+	 * Control the audio sampling frequency in (Hz) for your audio output.
+	 */
+	//#SWG#@ApiModelProperty(value = """Control the audio sampling frequency in (Hz) for your audio output.""" ,required = true)
+	@BeanProperty 
+	var sampleRate: Integer  = 44100
+	def withsampleRate(p:Integer):this.type ={ 	this.sampleRate = p; 	this }
+
+	/**
+	 * default init for STREAM iOS channel
+	 * @param client : MClient
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def init_STREAMHTTPIOS(client: MClient){
+		this.init_gd_WEB(client,"STREAMHTTPIOS")
+		this.streamProtocol = "https://"
+		this.bitRate = 96
+		this.sampleRate = 44100
+		this.convertTo = "TS"
+		this.codec = "AAC"
+		this.withIngestion= true
+		this.appName = "ios/"
+		val cd = new MChannelDescription
+		cd.locale = "IT"
+		cd.channelShortName = "Streaming HLS"
+		cd.channelDescription = "HDS, codec aac, bitrate 128kbps"
+		val cd2 = new MChannelDescription
+		cd2.locale = "EN"
+		cd2.channelShortName = "Streaming HLS"
+		cd2.channelDescription = "HDS, codec aac, bitrate 128kbps"
+		this.channelDescriptions.add(cd)
+		this.channelDescriptions.add(cd2)
+	}
+
+	/**
+	 * @param clientId : String
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def init_test(clientId: String){
+		this.init_gd_test(clientId,"STREAM")
+		this.bitRate = 128
+		this.sampleRate = 44100
+		this.convertTo = "FLV"
+		this.codec = "MP3"
+		this.appName = "flash/"
+	}
 
 	/**
 	 * @param client : MClient
@@ -114,34 +157,6 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 	}
 
 	/**
-	 * default init for STREAM iOS channel
-	 * @param client : MClient
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STREAMHTTPIOS(client: MClient){
-		this.init_gd_WEB(client,"STREAMHTTPIOS")
-		this.streamProtocol = "http://"
-		this.bitRate = 96
-		this.sampleRate = 44100
-		this.convertTo = "TS"
-		this.codec = "AAC"
-		this.withIngestion= true
-		this.appName = "ios/"
-		val cd = new MChannelDescription
-		cd.locale = "IT"
-		cd.channelShortName = "Streaming HLS"
-		cd.channelDescription = "HDS, codec aac, bitrate 128kbps"
-		val cd2 = new MChannelDescription
-		cd2.locale = "EN"
-		cd2.channelShortName = "Streaming HLS"
-		cd2.channelDescription = "HDS, codec aac, bitrate 128kbps"
-		this.channelDescriptions.add(cd)
-		this.channelDescriptions.add(cd2)
-	}
-
-	/**
 	 * default init for WEBORIGINAL channel (Progressive Download Original Content)
 	 * @param client : MClient
 	 * @return void
@@ -156,21 +171,6 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 		this.codec = "MP3"
 		this.withIngestion = false
 		this.useForDownload = true
-	}
-
-	/**
-	 * @param clientId : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_test(clientId: String){
-		this.init_gd_test(clientId,"STREAM")
-		this.bitRate = 128
-		this.sampleRate = 44100
-		this.convertTo = "FLV"
-		this.codec = "MP3"
-		this.appName = "flash/"
 	}
 
 }

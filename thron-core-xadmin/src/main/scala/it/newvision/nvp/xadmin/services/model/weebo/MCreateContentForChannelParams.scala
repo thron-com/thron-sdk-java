@@ -16,14 +16,6 @@ import it.newvision.nvp.xadmin.model.MFile
 class MCreateContentForChannelParams extends Serializable {
 
 	/**
-	 * the source File Descriptor. 
-	 */
-	//#SWG#@ApiModelProperty(value = """the source File Descriptor. """)
-	@BeanProperty 
-	var file: List[MFile] = new ArrayList[MFile]
-	def withfile(p:List[MFile]):this.type ={ 	this.file = p; 	this }
-
-	/**
 	 * The channel code where the content should be published.
 	 */
 	//#SWG#@ApiModelProperty(value = """The channel code where the content should be published.""" ,required = true)
@@ -31,17 +23,13 @@ class MCreateContentForChannelParams extends Serializable {
 	var channel: String =_
 	def withchannel(p:String):this.type ={ 	this.channel = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * the source File Descriptor. 
+	 */
+	//#SWG#@ApiModelProperty(value = """the source File Descriptor. """)
 	@BeanProperty 
-	var newFileName: String =_
-	def withnewFileName(p:String):this.type ={ 	this.newFileName = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	@Deprecated
-	var mediaContentId: String =_
-	@Deprecated
-	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
+	var file: List[MFile] = new ArrayList[MFile]
+	def withfile(p:List[MFile]):this.type ={ 	this.file = p; 	this }
 
 	/**
 	 * Optional. Used to publish a new video from the recorded video file of a live
@@ -51,6 +39,18 @@ class MCreateContentForChannelParams extends Serializable {
 	@BeanProperty 
 	var liveEventRec: MLiveEventRecParams =_
 	def withliveEventRec(p:MLiveEventRecParams):this.type ={ 	this.liveEventRec = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	@Deprecated
+	var mediaContentId: String =_
+	@Deprecated
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var newFileName: String =_
+	def withnewFileName(p:String):this.type ={ 	this.newFileName = p; 	this }
 
 	/**
 	 * the content Id.

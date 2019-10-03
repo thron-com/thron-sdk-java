@@ -15,14 +15,14 @@ import com.thron.contacts.service.model.msg.MEContact
 //#SWG#@ApiModel(description = """""")
 class MResponseContact extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var resultCode: MEContact =_
-	def withresultCode(p:MEContact):this.type ={ 	this.resultCode = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var errorDescription: String =_
 	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var resultCode: MEContact =_
+	def withresultCode(p:MEContact):this.type ={ 	this.resultCode = p; 	this }
 
 }

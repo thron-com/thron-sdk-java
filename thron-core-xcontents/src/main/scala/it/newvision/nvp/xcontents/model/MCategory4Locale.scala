@@ -24,14 +24,6 @@ import javax.xml.bind.annotation._
 class MCategory4Locale extends Serializable {
 
 	/**
-	 * Constraints: length <= 150
-	 */
-	//#SWG#@ApiModelProperty(value = """Constraints: length <= 150""" ,required = true)
-	@BeanProperty 
-	var name: String =_
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
-
-	/**
 	 * Constraints: length <= 10000
 	 */
 	//#SWG#@ApiModelProperty(value = """Constraints: length <= 10000""")
@@ -48,17 +40,12 @@ class MCategory4Locale extends Serializable {
 	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
-	 * @return Boolean
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def isValid():Boolean ={
-		Option(name).exists(_.length<=150) && 
-		Option(description).forall(_.length<=10000) && 
-		Option(locale).exists(_.length<=50) && 
-		Option(name).isDefined &&
-		Option(locale).isDefined
-	}
+	 * Constraints: length <= 150
+	 */
+	//#SWG#@ApiModelProperty(value = """Constraints: length <= 150""" ,required = true)
+	@BeanProperty 
+	var name: String =_
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * @return Boolean
@@ -69,6 +56,19 @@ class MCategory4Locale extends Serializable {
 		Option(name).exists(_.length<150) &&
 		Option(name).isDefined &&
 		Option(description).forall(_.length<10000)
+	}
+
+	/**
+	 * @return Boolean
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def isValid():Boolean ={
+		Option(name).exists(_.length<=150) && 
+		Option(description).forall(_.length<=10000) && 
+		Option(locale).exists(_.length<=50) && 
+		Option(name).isDefined &&
+		Option(locale).isDefined
 	}
 
 }

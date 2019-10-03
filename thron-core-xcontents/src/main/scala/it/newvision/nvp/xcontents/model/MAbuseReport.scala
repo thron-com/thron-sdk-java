@@ -20,11 +20,6 @@ import javax.xml.bind.annotation._
 //#SWGNL#The prettyId is basically used for WebTv where the user need a readable url""")
 class MAbuseReport extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var userId: String =_
-	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
-
 	/**
 	 * The userId of the moderator
 	 */
@@ -32,6 +27,11 @@ class MAbuseReport extends Serializable {
 	@BeanProperty 
 	var reportDate: Date  = new Date
 	def withreportDate(p:Date):this.type ={ 	this.reportDate = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var userId: String =_
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
 	 * @param userId : String

@@ -18,6 +18,14 @@ import it.newvision.nvp.xcontents.services.model.content.MContentAvailableSoluti
 //#SWG#@ApiModel(description = "Request message for service JContent.updateAvailableSolutions")
 class MContentupdateAvailableSolutionsReq extends Serializable {
 
+	/**
+	 * Optional. For Acl validation
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
+	@BeanProperty
+	var categoryIdForAcl: String =_
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
@@ -32,13 +40,5 @@ class MContentupdateAvailableSolutionsReq extends Serializable {
 	@BeanProperty
 	var contentValues: MContentAvailableSolutionsUpdate =_
 	def withcontentValues(p:MContentAvailableSolutionsUpdate):this.type ={ 	this.contentValues = p; 	this }
-
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

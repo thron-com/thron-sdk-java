@@ -17,11 +17,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = "Request message for service JCategory.removeCategoryPrettyId")
 class MCategoryremoveCategoryPrettyIdReq extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var clientId: String =_
-	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
-
 	/**
 	 * Id or prettyId
 	 */
@@ -29,6 +24,11 @@ class MCategoryremoveCategoryPrettyIdReq extends Serializable {
 	@BeanProperty
 	var categoryId: String =_
 	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var clientId: String =_
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty

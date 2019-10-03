@@ -19,12 +19,12 @@ class MPlayerEmbedCodeEntity extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
+	var entityType: MEPlayerEmbedEntityType =_
+	def withentityType(p:MEPlayerEmbedEntityType):this.type ={ 	this.entityType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var entityType: MEPlayerEmbedEntityType =_
-	def withentityType(p:MEPlayerEmbedEntityType):this.type ={ 	this.entityType = p; 	this }
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 }

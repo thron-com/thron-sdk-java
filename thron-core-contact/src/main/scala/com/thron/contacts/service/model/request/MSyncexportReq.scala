@@ -26,13 +26,13 @@ class MSyncexportReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var options: MSyncOptions =_
-	def withoptions(p:MSyncOptions):this.type ={ 	this.options = p; 	this }
+	var nextPage: String =_
+	def withnextPage(p:String):this.type ={ 	this.nextPage = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var nextPage: String =_
-	def withnextPage(p:String):this.type ={ 	this.nextPage = p; 	this }
+	var options: MSyncOptions =_
+	def withoptions(p:MSyncOptions):this.type ={ 	this.options = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty

@@ -22,10 +22,17 @@ class MIdentityManagerloginWithDetailReq extends Serializable {
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
+	/**
+	 * Optional.
+	 * csv of group ids used to load the user Roles/capabilities only for the given
+	 * groups. If empty the user session load all roles and capabilities of the user
+	 * and of the linked userGroups
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. 
+	//#SWGNL#csv of group ids used to load the user Roles/capabilities only for the given groups. If empty the user session load all roles and capabilities of the user and of the linked userGroups""", required = true)
 	@BeanProperty
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
+	var groupId: String =_
+	def withgroupId(p:String):this.type ={ 	this.groupId = p; 	this }
 
 	/**
 	 * Optional if tmpTokenId is defined
@@ -45,16 +52,9 @@ class MIdentityManagerloginWithDetailReq extends Serializable {
 	var tmpTokenId: String =_
 	def withtmpTokenId(p:String):this.type ={ 	this.tmpTokenId = p; 	this }
 
-	/**
-	 * Optional.
-	 * csv of group ids used to load the user Roles/capabilities only for the given
-	 * groups. If empty the user session load all roles and capabilities of the user
-	 * and of the linked userGroups
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. 
-	//#SWGNL#csv of group ids used to load the user Roles/capabilities only for the given groups. If empty the user session load all roles and capabilities of the user and of the linked userGroups""", required = true)
+	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var groupId: String =_
-	def withgroupId(p:String):this.type ={ 	this.groupId = p; 	this }
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

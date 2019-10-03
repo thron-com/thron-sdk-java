@@ -4,9 +4,9 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import com.thron.intelligence.services.model.itag.MExternalIdSearchOptions
 import com.thron.intelligence.model.MESourceType
 import com.thron.intelligence.services.model.itag.MTextSearchOptions
-import com.thron.intelligence.services.model.itag.MExternalIdSearchOptions
 
 /* ************************
 *  GENERATED CLASS
@@ -34,12 +34,14 @@ import com.thron.intelligence.services.model.itag.MExternalIdSearchOptions
 class MITagDefinitionSearchCriteria extends Serializable {
 
 	/**
-	 * list of ITagDefinition.id or ITagDefinition.prettyId or externalId 
+	 * Used to split the ITagdefinition in two macro categories (categorized and
+	 * uncategorized tags). Usually the semantic engines creates new ITagDefinition
+	 * with the categorized attribute set to false.
 	 */
-	//#SWG#@ApiModelProperty(value = """list of ITagDefinition.id or ITagDefinition.prettyId or externalId """)
+	//#SWG#@ApiModelProperty(value = """Used to split the ITagdefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new ITagDefinition with the categorized attribute set to false.""")
 	@BeanProperty 
-	var ids: List[String] = new ArrayList[String]
-	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
+	var categorized: Boolean =_
+	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
 
 	/**
 	 * return the tags having as ancestor the given ITagDefinition.id
@@ -59,20 +61,62 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	var excludeLevelHigherThan: Integer =_
 	def withexcludeLevelHigherThan(p:Integer):this.type ={ 	this.excludeLevelHigherThan = p; 	this }
 
+	/**
+	 * Optional. Used to search tagdefinition on the extenalId field.
+	 * Cannot be used along with ids field.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Used to search tagdefinition on the extenalId field.
+	//#SWGNL#Cannot be used along with ids field.""")
+	@BeanProperty 
+	var externalIdSearchOptions: MExternalIdSearchOptions =_
+	def withexternalIdSearchOptions(p:MExternalIdSearchOptions):this.type ={ 	this.externalIdSearchOptions = p; 	this }
+
+	/**
+	 * list of ITagDefinition.id or ITagDefinition.prettyId or externalId 
+	 */
+	//#SWG#@ApiModelProperty(value = """list of ITagDefinition.id or ITagDefinition.prettyId or externalId """)
+	@BeanProperty 
+	var ids: List[String] = new ArrayList[String]
+	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
+
+	/**
+	 * Locale code (ISO639-1).
+	 * used to search the tags having title like "name" for the defined languages.
+	 * Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)
+	 * Example: the user would like to find the tags with label "house" for lang "EN".
+	 * If the "label" is empty the service return all tags defined for the specified
+	 * lang.
+	 */
+	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1).
+	//#SWGNL#used to search the tags having title like "name" for the defined languages. Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)
+	//#SWGNL#Example: the user would like to find the tags with label "house" for lang "EN". If the "label" is empty the service return all tags defined for the specified lang.""")
+	@BeanProperty 
+	var lang: String =_
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
+
+	/**
+	 * Deprecated by metadataDefinitionIds
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated by metadataDefinitionIds""")
+	@BeanProperty 
+	@Deprecated
+	var metadataDefinitionId: String =_
+	@Deprecated
+	def withmetadataDefinitionId(p:String):this.type ={ 	this.metadataDefinitionId = p; 	this }
+
+	/**
+	 * Filter all ITagDefinition linked to one of the metadataDefinition specified in
+	 * the list.
+	 */
+	//#SWG#@ApiModelProperty(value = """Filter all ITagDefinition linked to one of the metadataDefinition specified in the list.""")
+	@BeanProperty 
+	var metadataDefinitionIds: List[String] = new ArrayList[String]
+	def withmetadataDefinitionIds(p:List[String]):this.type ={ 	this.metadataDefinitionIds = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var sourceType: List[MESourceType] = new ArrayList[MESourceType]
 	def withsourceType(p:List[MESourceType]):this.type ={ 	this.sourceType = p; 	this }
-
-	/**
-	 * Used to split the ITagdefinition in two macro categories (categorized and
-	 * uncategorized tags). Usually the semantic engines creates new ITagDefinition
-	 * with the categorized attribute set to false.
-	 */
-	//#SWG#@ApiModelProperty(value = """Used to split the ITagdefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new ITagDefinition with the categorized attribute set to false.""")
-	@BeanProperty 
-	var categorized: Boolean =_
-	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
 
 	/**
 	 * Used as text search on MITagDefinition and works over the specified
@@ -156,50 +200,6 @@ class MITagDefinitionSearchCriteria extends Serializable {
 	@BeanProperty 
 	var textSearchOptions: MTextSearchOptions  = new MTextSearchOptions()
 	def withtextSearchOptions(p:MTextSearchOptions):this.type ={ 	this.textSearchOptions = p; 	this }
-
-	/**
-	 * Locale code (ISO639-1).
-	 * used to search the tags having title like "name" for the defined languages.
-	 * Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)
-	 * Example: the user would like to find the tags with label "house" for lang "EN".
-	 * If the "label" is empty the service return all tags defined for the specified
-	 * lang.
-	 */
-	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1).
-	//#SWGNL#used to search the tags having title like "name" for the defined languages. Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)
-	//#SWGNL#Example: the user would like to find the tags with label "house" for lang "EN". If the "label" is empty the service return all tags defined for the specified lang.""")
-	@BeanProperty 
-	var lang: String =_
-	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
-
-	/**
-	 * Optional. Used to search tagdefinition on the extenalId field.
-	 * Cannot be used along with ids field.
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Used to search tagdefinition on the extenalId field.
-	//#SWGNL#Cannot be used along with ids field.""")
-	@BeanProperty 
-	var externalIdSearchOptions: MExternalIdSearchOptions =_
-	def withexternalIdSearchOptions(p:MExternalIdSearchOptions):this.type ={ 	this.externalIdSearchOptions = p; 	this }
-
-	/**
-	 * Filter all ITagDefinition linked to one of the metadataDefinition specified in
-	 * the list.
-	 */
-	//#SWG#@ApiModelProperty(value = """Filter all ITagDefinition linked to one of the metadataDefinition specified in the list.""")
-	@BeanProperty 
-	var metadataDefinitionIds: List[String] = new ArrayList[String]
-	def withmetadataDefinitionIds(p:List[String]):this.type ={ 	this.metadataDefinitionIds = p; 	this }
-
-	/**
-	 * Deprecated by metadataDefinitionIds
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated by metadataDefinitionIds""")
-	@BeanProperty 
-	@Deprecated
-	var metadataDefinitionId: String =_
-	@Deprecated
-	def withmetadataDefinitionId(p:String):this.type ={ 	this.metadataDefinitionId = p; 	this }
 
 	/**
 	 * @return Boolean

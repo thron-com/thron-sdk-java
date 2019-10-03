@@ -16,6 +16,16 @@ import it.newvision.nvp.xcontents.model.MMetadata
 //#SWG#@ApiModel(description = """""")
 class MPlayerEmbedCodeValue extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var embedTarget: MEEmbedTargets  = MEEmbedTargets.GENERIC
+	def withembedTarget(p:MEEmbedTargets):this.type ={ 	this.embedTarget = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var enabled: Boolean  = true
+	def withenabled(p:Boolean):this.type ={ 	this.enabled = p; 	this }
+
 	/**
 	 * short name or description of the embed code
 	 */
@@ -23,25 +33,6 @@ class MPlayerEmbedCodeValue extends Serializable {
 	@BeanProperty 
 	var name: String =_
 	def withname(p:String):this.type ={ 	this.name = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var template: MPlayerEmbedCodeTemplateValue =_
-	def withtemplate(p:MPlayerEmbedCodeTemplateValue):this.type ={ 	this.template = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var embedTarget: MEEmbedTargets  = MEEmbedTargets.GENERIC
-	def withembedTarget(p:MEEmbedTargets):this.type ={ 	this.embedTarget = p; 	this }
-
-	/**
-	 * Optional. A list of parameters to be used by the player when delivering the
-	 * content (CE version > 1.x)
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. A list of parameters to be used by the player when delivering the content (CE version > 1.x)""")
-	@BeanProperty 
-	var values: List[MMetadata] = new ArrayList[MMetadata]
-	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
 
 	/**
 	 * Optional. specific param to use with RTIE thumbs and images
@@ -51,6 +42,11 @@ class MPlayerEmbedCodeValue extends Serializable {
 	var rtieValues: List[MMetadata] = new ArrayList[MMetadata]
 	def withrtieValues(p:List[MMetadata]):this.type ={ 	this.rtieValues = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var template: MPlayerEmbedCodeTemplateValue =_
+	def withtemplate(p:MPlayerEmbedCodeTemplateValue):this.type ={ 	this.template = p; 	this }
+
 	/**
 	 * The contextId to use for traking.
 	 */
@@ -59,9 +55,13 @@ class MPlayerEmbedCodeValue extends Serializable {
 	var useContextId: String =_
 	def withuseContextId(p:String):this.type ={ 	this.useContextId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * Optional. A list of parameters to be used by the player when delivering the
+	 * content (CE version > 1.x)
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. A list of parameters to be used by the player when delivering the content (CE version > 1.x)""")
 	@BeanProperty 
-	var enabled: Boolean  = true
-	def withenabled(p:Boolean):this.type ={ 	this.enabled = p; 	this }
+	var values: List[MMetadata] = new ArrayList[MMetadata]
+	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
 
 }

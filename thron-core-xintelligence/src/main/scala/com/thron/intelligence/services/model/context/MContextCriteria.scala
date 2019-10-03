@@ -23,17 +23,6 @@ class MContextCriteria extends Serializable {
 	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
 
 	/**
-	 * text search on names by token.
-	 * Example: "red apple" text search match labels like "red ...", "apple ...", "red
-	 * and Apple are..."
-	 */
-	//#SWG#@ApiModelProperty(value = """text search on names by token.
-	//#SWGNL#Example: "red apple" text search match labels like "red ...", "apple ...", "red and Apple are..."""")
-	@BeanProperty 
-	var text: String =_
-	def withtext(p:String):this.type ={ 	this.text = p; 	this }
-
-	/**
 	 * Locale code (ISO639-1).
 	 * used to search the context having title like "name" for the defined languages.
 	 * Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)
@@ -51,5 +40,16 @@ class MContextCriteria extends Serializable {
 	@BeanProperty 
 	var removed: Boolean =_
 	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
+
+	/**
+	 * text search on names by token.
+	 * Example: "red apple" text search match labels like "red ...", "apple ...", "red
+	 * and Apple are..."
+	 */
+	//#SWG#@ApiModelProperty(value = """text search on names by token.
+	//#SWGNL#Example: "red apple" text search match labels like "red ...", "apple ...", "red and Apple are..."""")
+	@BeanProperty 
+	var text: String =_
+	def withtext(p:String):this.type ={ 	this.text = p; 	this }
 
 }

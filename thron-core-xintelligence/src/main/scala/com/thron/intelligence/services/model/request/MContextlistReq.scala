@@ -25,12 +25,12 @@ class MContextlistReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var offset: Integer =_
-	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
+	var limit: Integer =_
+	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var limit: Integer =_
-	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
+	var offset: Integer =_
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 }

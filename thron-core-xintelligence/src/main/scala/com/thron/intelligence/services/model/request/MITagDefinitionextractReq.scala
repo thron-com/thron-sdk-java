@@ -18,19 +18,19 @@ import javax.xml.bind.annotation._
 class MITagDefinitionextractReq extends Serializable {
 
 	/**
-	 * Target ITagdefinition id, prettyId or externalId
-	 */
-	//#SWG#@ApiModelProperty(value = """Target ITagdefinition id, prettyId or externalId""", required = true)
-	@BeanProperty
-	var targetId: String =_
-	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }
-
-	/**
 	 * ITagdefinition Id merged on target (joinedId)
 	 */
 	//#SWG#@ApiModelProperty(value = """ITagdefinition Id merged on target (joinedId)""", required = true)
 	@BeanProperty
 	var mergedId: String =_
 	def withmergedId(p:String):this.type ={ 	this.mergedId = p; 	this }
+
+	/**
+	 * Target ITagdefinition id, prettyId or externalId
+	 */
+	//#SWG#@ApiModelProperty(value = """Target ITagdefinition id, prettyId or externalId""", required = true)
+	@BeanProperty
+	var targetId: String =_
+	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }
 
 }

@@ -22,11 +22,6 @@ class MUsersGroupManagerremoveGroupReq extends Serializable {
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var groupId: String =_
-	def withgroupId(p:String):this.type ={ 	this.groupId = p; 	this }
-
 	/**
 	 * if force equals true, the service remove the group without checking if the
 	 * userGroup is linked to other users
@@ -35,5 +30,10 @@ class MUsersGroupManagerremoveGroupReq extends Serializable {
 	@BeanProperty
 	var force: Boolean =_
 	def withforce(p:Boolean):this.type ={ 	this.force = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var groupId: String =_
+	def withgroupId(p:String):this.type ={ 	this.groupId = p; 	this }
 
 }

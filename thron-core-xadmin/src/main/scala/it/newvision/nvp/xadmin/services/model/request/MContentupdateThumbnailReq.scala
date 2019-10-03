@@ -20,11 +20,6 @@ class MContentupdateThumbnailReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
 	var param: MUpdateThumbnailParams =_
 	def withparam(p:MUpdateThumbnailParams):this.type ={ 	this.param = p; 	this }
 
@@ -35,5 +30,10 @@ class MContentupdateThumbnailReq extends Serializable {
 	@BeanProperty
 	var silentMode: Boolean =_
 	def withsilentMode(p:Boolean):this.type ={ 	this.silentMode = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 }

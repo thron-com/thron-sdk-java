@@ -12,7 +12,6 @@ import com.thron.intelligence.services.model.metadata.MResponseMetadataDefinitio
 import com.thron.intelligence.services.model.request.MIMetadataDefinitionlistReq
 import com.thron.intelligence.services.model.metadata.MEMetadataDefinitionOrderBy
 import com.thron.intelligence.services.model.request.MIMetadataDefinitionupdateReq
-import com.thron.intelligence.services.model.request.MIMetadataDefinitionchangeTypeReq
 import com.thron.intelligence.services.model.metadata.MResponseMetadataVerifyIfUsed
 
 /* ************************
@@ -877,96 +876,6 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	 protected def __update(tokenId: String, clientId: String, classificationId: String, id: String, param: MIMetadataDefinitionupdateReq) :MResponseMetadataDefinitionDetail
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_update: String
-
-	/**
-	 * Changes the type of an imetadataDefinition.
-	 * 
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>you can change the type of a imetadataDefinition only if it's not used in the platform</li>
-	 * </ul>
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param param : MIMetadataDefinitionchangeTypeReq
-	 * @return MResponseMetadataDefinitionDetail
-	*/
-	@POST
-	@Path("/changeType/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/changeType", notes = """Changes the type of an imetadataDefinition.
-	//#SWGNL#
-	//#SWGNL#<b>Constraints:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>you can change the type of a imetadataDefinition only if it's not used in the platform</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>THRON_CLASS_[CLASSID]_MANAGER role</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseMetadataDefinitionDetail])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def changeType(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String, 
-			param: MIMetadataDefinitionchangeTypeReq):Response /*returnType = MResponseMetadataDefinitionDetail*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__changeType(tokenId,clientId,classificationId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_changeType)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_changeType)
-	    }
-	} 
-
-	@GET
-	@Path("/changeType/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def changeType_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseMetadataDefinitionDetail*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("changeType",this._getCacheControl) 
-		try{
-			val resp = this.__changeType(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,classificationId,PRestHelper.bindRequest[MIMetadataDefinitionchangeTypeReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_changeType)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_changeType)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __changeType(tokenId: String, clientId: String, classificationId: String, param: MIMetadataDefinitionchangeTypeReq) :MResponseMetadataDefinitionDetail
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_changeType: String
 
 	/**
 	 * Verifies whether or not the value of an imetadataDefinition is present on any entity.

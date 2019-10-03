@@ -4,8 +4,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import com.thron.intelligence.model.MLocalization
 import com.thron.intelligence.model.classification.MClassificationEntity
+import com.thron.intelligence.model.MLocalization
 import com.thron.intelligence.services.model.common.MUpdater
 
 /* ************************
@@ -25,11 +25,6 @@ import com.thron.intelligence.services.model.common.MUpdater
 //#SWGNL#You cannot update a single element of an array or a complex attribute, all of its elements must be included, otherwise they will be overwritten. To remove a specific attribute instead, you will have to include it within the "patch" parameter, as illustrated in the model description.""")
 class MClassificationUpdate extends MUpdater with Serializable  {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var names: List[MLocalization] =_
-	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
-
 	/**
 	 * v
 	 */
@@ -42,6 +37,11 @@ class MClassificationUpdate extends MUpdater with Serializable  {
 	@BeanProperty 
 	var entities: List[MClassificationEntity] =_
 	def withentities(p:List[MClassificationEntity]):this.type ={ 	this.entities = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var names: List[MLocalization] =_
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * @return Boolean

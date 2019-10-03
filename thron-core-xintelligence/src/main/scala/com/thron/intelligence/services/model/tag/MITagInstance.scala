@@ -26,6 +26,11 @@ class MITagInstance extends Serializable {
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var names: List[MLocalization] = new ArrayList[MLocalization]
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
+
 	/**
 	 * prettyId of the Tag
 	 */
@@ -36,18 +41,13 @@ class MITagInstance extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
+	var source: List[MSourceIdentifier] = new ArrayList[MSourceIdentifier]
+	def withsource(p:List[MSourceIdentifier]):this.type ={ 	this.source = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var status: MEITagStatus =_
 	def withstatus(p:MEITagStatus):this.type ={ 	this.status = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var source: List[MSourceIdentifier] = new ArrayList[MSourceIdentifier]
-	def withsource(p:List[MSourceIdentifier]):this.type ={ 	this.source = p; 	this }
 
 	/**
 	 * @return Boolean

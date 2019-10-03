@@ -22,6 +22,11 @@ class MServerLiveEventDetail extends Serializable {
 	var appInstance: String =_
 	def withappInstance(p:String):this.type ={ 	this.appInstance = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var clientStreamInMuxing: String =_
+	def withclientStreamInMuxing(p:String):this.type ={ 	this.clientStreamInMuxing = p; 	this }
+
 	/**
 	 * the list of cilentStreams and passwords
 	 */
@@ -32,8 +37,13 @@ class MServerLiveEventDetail extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var clientStreamInMuxing: String =_
-	def withclientStreamInMuxing(p:String):this.type ={ 	this.clientStreamInMuxing = p; 	this }
+	var previewStream: String =_
+	def withpreviewStream(p:String):this.type ={ 	this.previewStream = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var recordingFileName: String =_
+	def withrecordingFileName(p:String):this.type ={ 	this.recordingFileName = p; 	this }
 
 	/**
 	 * the name of the main server Stream of the live Event
@@ -45,28 +55,18 @@ class MServerLiveEventDetail extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var serverStreamNeedsToBeRecorded: Boolean =_
-	def withserverStreamNeedsToBeRecorded(p:Boolean):this.type ={ 	this.serverStreamNeedsToBeRecorded = p; 	this }
+	var serverStreamIsBeingPublished: Boolean =_
+	def withserverStreamIsBeingPublished(p:Boolean):this.type ={ 	this.serverStreamIsBeingPublished = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var serverStreamIsRecording: Boolean =_
 	def withserverStreamIsRecording(p:Boolean):this.type ={ 	this.serverStreamIsRecording = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var recordingFileName: String =_
-	def withrecordingFileName(p:String):this.type ={ 	this.recordingFileName = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var previewStream: String =_
-	def withpreviewStream(p:String):this.type ={ 	this.previewStream = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var serverStreamIsBeingPublished: Boolean =_
-	def withserverStreamIsBeingPublished(p:Boolean):this.type ={ 	this.serverStreamIsBeingPublished = p; 	this }
+	var serverStreamNeedsToBeRecorded: Boolean =_
+	def withserverStreamNeedsToBeRecorded(p:Boolean):this.type ={ 	this.serverStreamNeedsToBeRecorded = p; 	this }
 
 	/**
 	 * epoc date in milliseconds

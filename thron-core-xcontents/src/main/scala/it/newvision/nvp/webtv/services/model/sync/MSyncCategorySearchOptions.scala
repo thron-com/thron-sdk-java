@@ -15,6 +15,14 @@ import javax.xml.bind.annotation._
 class MSyncCategorySearchOptions extends Serializable {
 
 	/**
+	 * For all linkedCategoryIds search in sub-categories.
+	 */
+	//#SWG#@ApiModelProperty(value = """For all linkedCategoryIds search in sub-categories.""" ,required = true)
+	@BeanProperty 
+	var cascade: Boolean  = false
+	def withcascade(p:Boolean):this.type ={ 	this.cascade = p; 	this }
+
+	/**
 	 * used to filter the contents linked to the given categories. Commonly used to
 	 * have the list of Contents linked to a category or subcategories.
 	 * Category id or prettyId are supported.
@@ -34,14 +42,6 @@ class MSyncCategorySearchOptions extends Serializable {
 	@BeanProperty 
 	var linkedCategoryIds: List[String] = new ArrayList[String]
 	def withlinkedCategoryIds(p:List[String]):this.type ={ 	this.linkedCategoryIds = p; 	this }
-
-	/**
-	 * For all linkedCategoryIds search in sub-categories.
-	 */
-	//#SWG#@ApiModelProperty(value = """For all linkedCategoryIds search in sub-categories.""" ,required = true)
-	@BeanProperty 
-	var cascade: Boolean  = false
-	def withcascade(p:Boolean):this.type ={ 	this.cascade = p; 	this }
 
 	/**
 	 * @return Boolean

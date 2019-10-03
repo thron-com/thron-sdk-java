@@ -33,9 +33,55 @@ object JDeviceClient {
 class JDeviceClient(val resourceEndpoint:String) {
 
 	/**
+	 * Called by a client to get a unique contact Id. The service returns the deviceId and the contactId
+	 * used by tracker.
+	 * Authentication token is not required (X-TOKENID).
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param deviceId : String
+	 * Optional
+	 * @return MResponseDeviceConnect
+	*/
+	def check(tokenId: String, 
+			clientId: String, 
+			deviceId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeviceConnect ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JDeviceClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(deviceId).foreach(s => params.add("deviceId", s))
+			val response : MResponseDeviceConnect = if(this.resourceEndpoint == ""){
+			
+				new MResponseDeviceConnect()
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("device/check")
+					.path(clientId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[MResponseDeviceConnect])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseDeviceConnect])
+				}
+				else {
+					throw e
+				}
+			
+		  }
+	
+	}
+
+	/**
 	 * Connect a Device to an Identified Contact with the given identityKey.
-	 * If there are no contacts matching the identityKey, a new contact is created (<b>Only with THRON
-	 * Sales Insights application active</b>)
+	 * If there are no contacts matching the identityKey, a new contact is created.
 	 * 
 	 * Authentication token is not required (X-TOKENID).
 	 * @param tokenId : String

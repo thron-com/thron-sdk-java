@@ -18,6 +18,11 @@ import it.newvision.nvp.xcontents.model.MMetadata
 //#SWG#@ApiModel(description = """A template used to customize the Player layout""")
 class MPlayerEmbedTemplateDetail extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var cssUrl: String =_
+	def withcssUrl(p:String):this.type ={ 	this.cssUrl = p; 	this }
+
 	/**
 	 * template Id
 	 */
@@ -26,13 +31,10 @@ class MPlayerEmbedTemplateDetail extends Serializable {
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
-	/**
-	 * template version
-	 */
-	//#SWG#@ApiModelProperty(value = """template version""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var version: Integer =_
-	def withversion(p:Integer):this.type ={ 	this.version = p; 	this }
+	var jsUrl: String =_
+	def withjsUrl(p:String):this.type ={ 	this.jsUrl = p; 	this }
 
 	/**
 	 * Deprecated. Parameter available only for player 4x version.
@@ -43,6 +45,14 @@ class MPlayerEmbedTemplateDetail extends Serializable {
 	var noLogo: Boolean  = false
 	@Deprecated
 	def withnoLogo(p:Boolean):this.type ={ 	this.noLogo = p; 	this }
+
+	/**
+	 * link to the platform template Id (CE1,CE2...) used to set the playerVersion
+	 */
+	//#SWG#@ApiModelProperty(value = """link to the platform template Id (CE1,CE2...) used to set the playerVersion""" ,required = true)
+	@BeanProperty 
+	var platformTemplateId: String =_
+	def withplatformTemplateId(p:String):this.type ={ 	this.platformTemplateId = p; 	this }
 
 	/**
 	 * Define the player version in use
@@ -73,14 +83,6 @@ class MPlayerEmbedTemplateDetail extends Serializable {
 	def withtrackerGA(p:String):this.type ={ 	this.trackerGA = p; 	this }
 
 	/**
-	 * link to the platform template Id (CE1,CE2...) used to set the playerVersion
-	 */
-	//#SWG#@ApiModelProperty(value = """link to the platform template Id (CE1,CE2...) used to set the playerVersion""" ,required = true)
-	@BeanProperty 
-	var platformTemplateId: String =_
-	def withplatformTemplateId(p:String):this.type ={ 	this.platformTemplateId = p; 	this }
-
-	/**
 	 * Custom properties for the template (CEM parameters)
 	 */
 	//#SWG#@ApiModelProperty(value = """Custom properties for the template (CEM parameters)""")
@@ -88,14 +90,12 @@ class MPlayerEmbedTemplateDetail extends Serializable {
 	var values: List[MMetadata] = new ArrayList[MMetadata]
 	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * template version
+	 */
+	//#SWG#@ApiModelProperty(value = """template version""" ,required = true)
 	@BeanProperty 
-	var jsUrl: String =_
-	def withjsUrl(p:String):this.type ={ 	this.jsUrl = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var cssUrl: String =_
-	def withcssUrl(p:String):this.type ={ 	this.cssUrl = p; 	this }
+	var version: Integer =_
+	def withversion(p:Integer):this.type ={ 	this.version = p; 	this }
 
 }

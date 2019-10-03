@@ -4,15 +4,15 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
+import com.thron.intelligence.services.model.itag.MResponseITagBulk
+import com.thron.intelligence.services.model.request.MITagbulkInsertReq
+import com.thron.intelligence.services.model.itag.MResponseITagBulk2
+import com.thron.intelligence.services.model.request.MITagbulkInsertMultiTargetsReq
+import com.thron.intelligence.services.model.request.MITagbulkRemoveReq
+import com.thron.intelligence.services.model.request.MITagbulkRemoveMultiTargetsReq
 import com.thron.intelligence.services.model.tag.MResponseITag
 import com.thron.intelligence.services.model.request.MITaginsertReq
 import com.thron.intelligence.services.model.request.MITagremoveReq
-import com.thron.intelligence.services.model.itag.MResponseITagBulk
-import com.thron.intelligence.services.model.request.MITagbulkInsertReq
-import com.thron.intelligence.services.model.request.MITagbulkRemoveReq
-import com.thron.intelligence.services.model.itag.MResponseITagBulk2
-import com.thron.intelligence.services.model.request.MITagbulkInsertMultiTargetsReq
-import com.thron.intelligence.services.model.request.MITagbulkRemoveMultiTargetsReq
 
 /* ************************
 *  GENERATED CLASS
@@ -41,11 +41,457 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Links an itag to an entity.
+	 * Links a list of itags to an entity.
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
 	 * 	<li>max number of user-generated itags per entity: 50</li>
+	 * 	<li>max number of engine-generated itags per entity : 50</li>
+	 * </ul>
+	 * 
+	 * <b>Validation for user:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS) role
+	 * 
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
+	 * 
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagbulkInsertReq
+	 * @return MResponseITagBulk
+	*/
+	@POST
+	@Path("/bulkInsert/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/bulkInsert", notes = """Links a list of itags to an entity.
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max number of user-generated itags per entity: 50</li>
+	//#SWGNL#	<li>max number of engine-generated itags per entity : 50</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Validation for user:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
+	//#SWGNL#
+	//#SWGNL#<b>Validation for content:</b>
+	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
+	//#SWGNL#
+	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def bulkInsert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MITagbulkInsertReq):Response /*returnType = MResponseITagBulk*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__bulkInsert(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_bulkInsert)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_bulkInsert)
+	    }
+	} 
+
+	@GET
+	@Path("/bulkInsert/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def bulkInsert_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagBulk*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkInsert",this._getCacheControl) 
+		try{
+			val resp = this.__bulkInsert(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkInsertReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkInsert)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_bulkInsert)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __bulkInsert(tokenId: String, clientId: String, classificationId: String, param: MITagbulkInsertReq) :MResponseITagBulk
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_bulkInsert: String
+
+	/**
+	 * Links an itag to multiple entity.
+	 * <b>
+	 * </b><b>Constraints:</b>
+	 * <ul>
+	 * 	<li>max number of user-generated itags per entity: 100</li>
+	 * 	<li>max number of engine-generated itags per entity : 50</li>
+	 * </ul>
+	 * 
+	 * <b>Validation for user:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS) role
+	 * 
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
+	 * 
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagbulkInsertMultiTargetsReq
+	 * @return MResponseITagBulk2
+	*/
+	@POST
+	@Path("/bulkInsertMultiTargets/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/bulkInsertMultiTargets", notes = """Links an itag to multiple entity.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max number of user-generated itags per entity: 100</li>
+	//#SWGNL#	<li>max number of engine-generated itags per entity : 50</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Validation for user:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
+	//#SWGNL#
+	//#SWGNL#<b>Validation for content:</b>
+	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
+	//#SWGNL#
+	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk2])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def bulkInsertMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MITagbulkInsertMultiTargetsReq):Response /*returnType = MResponseITagBulk2*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__bulkInsertMultiTargets(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_bulkInsertMultiTargets)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_bulkInsertMultiTargets)
+	    }
+	} 
+
+	@GET
+	@Path("/bulkInsertMultiTargets/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def bulkInsertMultiTargets_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagBulk2*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkInsertMultiTargets",this._getCacheControl) 
+		try{
+			val resp = this.__bulkInsertMultiTargets(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkInsertMultiTargetsReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkInsertMultiTargets)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_bulkInsertMultiTargets)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __bulkInsertMultiTargets(tokenId: String, clientId: String, classificationId: String, param: MITagbulkInsertMultiTargetsReq) :MResponseITagBulk2
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_bulkInsertMultiTargets: String
+
+	/**
+	 * Removes a list of itags from an entity.
+	 * 
+	 * <b>Removal of combined tags:</b>
+	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	 * 
+	 * <ul>
+	 * 	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service
+	 * will return exception.</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for
+	 * tag "A" and tag "B" because "B" is combined in "A".</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A"
+	 * the service will remove both "A" and "B" tags.</li>
+	 * </ul>
+	 * 
+	 * <b>Validation for user:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS) role
+	 * 
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
+	 * 
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagbulkRemoveReq
+	 * @return MResponseITagBulk
+	*/
+	@POST
+	@Path("/bulkRemove/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/bulkRemove", notes = """Removes a list of itags from an entity.
+	//#SWGNL#
+	//#SWGNL#<b>Removal of combined tags:</b> 
+	//#SWGNL#Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	//#SWGNL#
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service will return exception.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for tag "A" and tag "B" because "B" is combined in "A".</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A" the service will remove both "A" and "B" tags.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Validation for user:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
+	//#SWGNL#
+	//#SWGNL#<b>Validation for content:</b>
+	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
+	//#SWGNL#
+	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def bulkRemove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MITagbulkRemoveReq):Response /*returnType = MResponseITagBulk*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__bulkRemove(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_bulkRemove)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_bulkRemove)
+	    }
+	} 
+
+	@GET
+	@Path("/bulkRemove/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def bulkRemove_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagBulk*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkRemove",this._getCacheControl) 
+		try{
+			val resp = this.__bulkRemove(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkRemoveReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkRemove)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_bulkRemove)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __bulkRemove(tokenId: String, clientId: String, classificationId: String, param: MITagbulkRemoveReq) :MResponseITagBulk
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_bulkRemove: String
+
+	/**
+	 * Removes an itag from multiple entities.
+	 * <b>
+	 * </b><b>Removal of combined tags:</b>
+	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	 * 
+	 * <ul>
+	 * 	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service
+	 * will return exception.</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for
+	 * tag "A" and tag "B" because "B" is combined in "A".</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A"
+	 * the service will remove both "A" and "B" tags.</li>
+	 * </ul>
+	 * 
+	 * <b>Validation for user:</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
+	 * CORE_MANAGE_USERS) role
+	 * 
+	 * <b>Validation for content:</b>
+	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
+	 * 
+	 * <b>Validation for content (only with Sales or Marketing App):</b>
+	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
+	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MITagbulkRemoveMultiTargetsReq
+	 * @return MResponseITagBulk2
+	*/
+	@POST
+	@Path("/bulkRemoveMultiTargets/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/bulkRemoveMultiTargets", notes = """Removes an itag from multiple entities.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Removal of combined tags:</b> 
+	//#SWGNL#Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
+	//#SWGNL#
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service will return exception.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for tag "A" and tag "B" because "B" is combined in "A".</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A" the service will remove both "A" and "B" tags.</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Validation for user:</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
+	//#SWGNL#
+	//#SWGNL#<b>Validation for content:</b>
+	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
+	//#SWGNL#
+	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
+	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
+	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk2])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def bulkRemoveMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MITagbulkRemoveMultiTargetsReq):Response /*returnType = MResponseITagBulk2*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__bulkRemoveMultiTargets(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_bulkRemoveMultiTargets)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_bulkRemoveMultiTargets)
+	    }
+	} 
+
+	@GET
+	@Path("/bulkRemoveMultiTargets/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def bulkRemoveMultiTargets_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagBulk2*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("bulkRemoveMultiTargets",this._getCacheControl) 
+		try{
+			val resp = this.__bulkRemoveMultiTargets(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkRemoveMultiTargetsReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkRemoveMultiTargets)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_bulkRemoveMultiTargets)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __bulkRemoveMultiTargets(tokenId: String, clientId: String, classificationId: String, param: MITagbulkRemoveMultiTargetsReq) :MResponseITagBulk2
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_bulkRemoveMultiTargets: String
+
+	/**
+	 * Links an itag to an entity.
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>max number of user-generated itags per entity: 100</li>
 	 * 	<li>max number of engine-generated itags per entity : 50</li>
 	 * </ul>
 	 * <b>
@@ -76,7 +522,7 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#
 	//#SWGNL#<b>Constraints:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>max number of user-generated itags per entity: 50</li>
+	//#SWGNL#	<li>max number of user-generated itags per entity: 100</li>
 	//#SWGNL#	<li>max number of engine-generated itags per entity : 50</li>
 	//#SWGNL#</ul>
 	//#SWGNL#<b>
@@ -283,451 +729,5 @@ trait JITag extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __remove(tokenId: String, clientId: String, classificationId: String, itagId: String, param: MITagremoveReq) :MResponseITag
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_remove: String
-
-	/**
-	 * Links a list of itags to an entity.
-	 * 
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>max number of user-generated itags per entity: 50</li>
-	 * 	<li>max number of engine-generated itags per entity : 50</li>
-	 * </ul>
-	 * 
-	 * <b>Validation for user:</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS) role
-	 * 
-	 * <b>Validation for content:</b>
-	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
-	 * 
-	 * <b>Validation for content (only with Sales or Marketing App):</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param param : MITagbulkInsertReq
-	 * @return MResponseITagBulk
-	*/
-	@POST
-	@Path("/bulkInsert/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkInsert", notes = """Links a list of itags to an entity.
-	//#SWGNL#
-	//#SWGNL#<b>Constraints:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>max number of user-generated itags per entity: 50</li>
-	//#SWGNL#	<li>max number of engine-generated itags per entity : 50</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>Validation for user:</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
-	//#SWGNL#
-	//#SWGNL#<b>Validation for content:</b>
-	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
-	//#SWGNL#
-	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
-	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def bulkInsert(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String, 
-			param: MITagbulkInsertReq):Response /*returnType = MResponseITagBulk*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__bulkInsert(tokenId,clientId,classificationId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_bulkInsert)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_bulkInsert)
-	    }
-	} 
-
-	@GET
-	@Path("/bulkInsert/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def bulkInsert_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagBulk*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("bulkInsert",this._getCacheControl) 
-		try{
-			val resp = this.__bulkInsert(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkInsertReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkInsert)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_bulkInsert)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __bulkInsert(tokenId: String, clientId: String, classificationId: String, param: MITagbulkInsertReq) :MResponseITagBulk
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_bulkInsert: String
-
-	/**
-	 * Removes a list of itags from an entity.
-	 * 
-	 * <b>Removal of combined tags:</b>
-	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
-	 * 
-	 * <ul>
-	 * 	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service
-	 * will return exception.</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for
-	 * tag "A" and tag "B" because "B" is combined in "A".</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A"
-	 * the service will remove both "A" and "B" tags.</li>
-	 * </ul>
-	 * 
-	 * <b>Validation for user:</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS) role
-	 * 
-	 * <b>Validation for content:</b>
-	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
-	 * 
-	 * <b>Validation for content (only with Sales or Marketing App):</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param param : MITagbulkRemoveReq
-	 * @return MResponseITagBulk
-	*/
-	@POST
-	@Path("/bulkRemove/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkRemove", notes = """Removes a list of itags from an entity.
-	//#SWGNL#
-	//#SWGNL#<b>Removal of combined tags:</b> 
-	//#SWGNL#Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
-	//#SWGNL#
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service will return exception.</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for tag "A" and tag "B" because "B" is combined in "A".</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A" the service will remove both "A" and "B" tags.</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>Validation for user:</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
-	//#SWGNL#
-	//#SWGNL#<b>Validation for content:</b>
-	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
-	//#SWGNL#
-	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
-	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def bulkRemove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String, 
-			param: MITagbulkRemoveReq):Response /*returnType = MResponseITagBulk*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__bulkRemove(tokenId,clientId,classificationId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_bulkRemove)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_bulkRemove)
-	    }
-	} 
-
-	@GET
-	@Path("/bulkRemove/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def bulkRemove_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagBulk*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("bulkRemove",this._getCacheControl) 
-		try{
-			val resp = this.__bulkRemove(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkRemoveReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkRemove)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_bulkRemove)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __bulkRemove(tokenId: String, clientId: String, classificationId: String, param: MITagbulkRemoveReq) :MResponseITagBulk
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_bulkRemove: String
-
-	/**
-	 * Links an itag to multiple entity.
-	 * <b>
-	 * </b><b>Constraints:</b>
-	 * <ul>
-	 * 	<li>max number of user-generated itags per entity: 50</li>
-	 * 	<li>max number of engine-generated itags per entity : 50</li>
-	 * </ul>
-	 * 
-	 * <b>Validation for user:</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS) role
-	 * 
-	 * <b>Validation for content:</b>
-	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
-	 * 
-	 * <b>Validation for content (only with Sales or Marketing App):</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param param : MITagbulkInsertMultiTargetsReq
-	 * @return MResponseITagBulk2
-	*/
-	@POST
-	@Path("/bulkInsertMultiTargets/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkInsertMultiTargets", notes = """Links an itag to multiple entity.
-	//#SWGNL#<b>
-	//#SWGNL#</b><b>Constraints:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>max number of user-generated itags per entity: 50</li>
-	//#SWGNL#	<li>max number of engine-generated itags per entity : 50</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>Validation for user:</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
-	//#SWGNL#
-	//#SWGNL#<b>Validation for content:</b>
-	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
-	//#SWGNL#
-	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
-	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk2])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def bulkInsertMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String, 
-			param: MITagbulkInsertMultiTargetsReq):Response /*returnType = MResponseITagBulk2*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__bulkInsertMultiTargets(tokenId,clientId,classificationId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_bulkInsertMultiTargets)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_bulkInsertMultiTargets)
-	    }
-	} 
-
-	@GET
-	@Path("/bulkInsertMultiTargets/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def bulkInsertMultiTargets_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagBulk2*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("bulkInsertMultiTargets",this._getCacheControl) 
-		try{
-			val resp = this.__bulkInsertMultiTargets(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkInsertMultiTargetsReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkInsertMultiTargets)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_bulkInsertMultiTargets)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __bulkInsertMultiTargets(tokenId: String, clientId: String, classificationId: String, param: MITagbulkInsertMultiTargetsReq) :MResponseITagBulk2
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_bulkInsertMultiTargets: String
-
-	/**
-	 * Removes an itag from multiple entities.
-	 * <b>
-	 * </b><b>Removal of combined tags:</b>
-	 * Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
-	 * 
-	 * <ul>
-	 * 	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service
-	 * will return exception.</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for
-	 * tag "A" and tag "B" because "B" is combined in "A".</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A"
-	 * the service will remove both "A" and "B" tags.</li>
-	 * </ul>
-	 * 
-	 * <b>Validation for user:</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and
-	 * CORE_MANAGE_USERS) role
-	 * 
-	 * <b>Validation for content:</b>
-	 * MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
-	 * 
-	 * <b>Validation for content (only with Sales or Marketing App):</b>
-	 * (THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or
-	 * (THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param param : MITagbulkRemoveMultiTargetsReq
-	 * @return MResponseITagBulk2
-	*/
-	@POST
-	@Path("/bulkRemoveMultiTargets/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/bulkRemoveMultiTargets", notes = """Removes an itag from multiple entities.
-	//#SWGNL#<b>
-	//#SWGNL#</b><b>Removal of combined tags:</b> 
-	//#SWGNL#Let's suppose we have two tags: "A" and "B". "B" has been combined within "A"
-	//#SWGNL#
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>Case scenario 1: A content tagged with  tag "A" --> If remove is invoked for "B", the service will return exception.</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>Case scenario 2: A content tagged with tag "B" --> remove web service will return 200 both for tag "A" and tag "B" because "B" is combined in "A".</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>Case scenario 3: A content tagged with both "A" and "B" tags --> If remove is invoked on "A" the service will remove both "A" and "B" tags.</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>Validation for user:</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and CORE_MANAGE_USERS) or (THRON_CLASS_[CLASSID]_TAGGER and CORE_MANAGE_USERS) role
-	//#SWGNL#
-	//#SWGNL#<b>Validation for content:</b>
-	//#SWGNL#MODIFY ACL on the content and (THRON_CLASS_[CLASSID]_MANAGER  or THRON_CLASS_[CLASSID]_TAGGER role
-	//#SWGNL#
-	//#SWGNL#<b>Validation for content (only with Sales or Marketing App):</b>
-	//#SWGNL#(THRON_CLASS_[CLASSID]_MANAGER and THRON_EDIT_CONTACTS) or 
-	//#SWGNL#(THRON_CLASS_[CLASSID]_TAGGER and THRON_EDIT_CONTACTS) role""", response = classOf[MResponseITagBulk2])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def bulkRemoveMultiTargets(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String, 
-			param: MITagbulkRemoveMultiTargetsReq):Response /*returnType = MResponseITagBulk2*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__bulkRemoveMultiTargets(tokenId,clientId,classificationId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_bulkRemoveMultiTargets)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_bulkRemoveMultiTargets)
-	    }
-	} 
-
-	@GET
-	@Path("/bulkRemoveMultiTargets/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def bulkRemoveMultiTargets_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseITagBulk2*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("bulkRemoveMultiTargets",this._getCacheControl) 
-		try{
-			val resp = this.__bulkRemoveMultiTargets(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,classificationId,PRestHelper.bindRequest[MITagbulkRemoveMultiTargetsReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_bulkRemoveMultiTargets)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_bulkRemoveMultiTargets)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __bulkRemoveMultiTargets(tokenId: String, clientId: String, classificationId: String, param: MITagbulkRemoveMultiTargetsReq) :MResponseITagBulk2
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_bulkRemoveMultiTargets: String
 
 }

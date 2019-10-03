@@ -20,10 +20,13 @@ import javax.xml.bind.annotation._
 //#SWGNL#The prettyId is basically used for WebTv where the user need a readable url""")
 class MModeration extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * Date of the last moderation update
+	 */
+	//#SWG#@ApiModelProperty(value = """Date of the last moderation update""")
 	@BeanProperty 
-	var status: MEModerationStatus  = MEModerationStatus.PENDING
-	def withstatus(p:MEModerationStatus):this.type ={ 	this.status = p; 	this }
+	var lastUpdate: Date =_
+	def withlastUpdate(p:Date):this.type ={ 	this.lastUpdate = p; 	this }
 
 	/**
 	 * The userId of the moderator
@@ -32,14 +35,6 @@ class MModeration extends Serializable {
 	@BeanProperty 
 	var moderatorId: String =_
 	def withmoderatorId(p:String):this.type ={ 	this.moderatorId = p; 	this }
-
-	/**
-	 * Date of the last moderation update
-	 */
-	//#SWG#@ApiModelProperty(value = """Date of the last moderation update""")
-	@BeanProperty 
-	var lastUpdate: Date =_
-	def withlastUpdate(p:Date):this.type ={ 	this.lastUpdate = p; 	this }
 
 	/**
 	 * Some notes reported by the moderator
@@ -64,6 +59,11 @@ class MModeration extends Serializable {
 	@BeanProperty 
 	var starred: Boolean  = false
 	def withstarred(p:Boolean):this.type ={ 	this.starred = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var status: MEModerationStatus  = MEModerationStatus.PENDING
+	def withstatus(p:MEModerationStatus):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * @param status : MEModerationStatus

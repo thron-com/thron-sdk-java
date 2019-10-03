@@ -30,16 +30,6 @@ class MUserCapability extends Serializable {
 	def withcapabilities(p:List[String]):this.type ={ 	this.capabilities = p; 	this }
 
 	/**
-	 * The userRoles are derived from the list of groupRoles where the user are linked,
-	 * only if the userRoles list is empty. The role CORE_NO_ROLES is used to specify
-	 * no Roles
-	 */
-	//#SWG#@ApiModelProperty(value = """The userRoles are derived from the list of groupRoles where the user are linked, only if the userRoles list is empty. The role CORE_NO_ROLES is used to specify no Roles""")
-	@BeanProperty 
-	var userRoles: List[String] = new ArrayList[String]
-	def withuserRoles(p:List[String]):this.type ={ 	this.userRoles = p; 	this }
-
-	/**
 	 * List of enabled Apps
 	 */
 	//#SWG#@ApiModelProperty(value = """List of enabled Apps""")
@@ -48,6 +38,16 @@ class MUserCapability extends Serializable {
 	var enabledSolutions: List[String] = new ArrayList[String]
 	@Deprecated
 	def withenabledSolutions(p:List[String]):this.type ={ 	this.enabledSolutions = p; 	this }
+
+	/**
+	 * The userRoles are derived from the list of groupRoles where the user are linked,
+	 * only if the userRoles list is empty. The role CORE_NO_ROLES is used to specify
+	 * no Roles
+	 */
+	//#SWG#@ApiModelProperty(value = """The userRoles are derived from the list of groupRoles where the user are linked, only if the userRoles list is empty. The role CORE_NO_ROLES is used to specify no Roles""")
+	@BeanProperty 
+	var userRoles: List[String] = new ArrayList[String]
+	def withuserRoles(p:List[String]):this.type ={ 	this.userRoles = p; 	this }
 
 	/**
 	 * Check if the give capability is active or not in the current UserCapability object

@@ -16,12 +16,43 @@ class MITagCriteria extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
+	var classificationId: String =_
+	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
+
+	/**
+	 * If true, the service exclude from the search the contact tagged with a subtree
+	 * of the give tag.
+	 * Example:
+	 * Tagdefinitions:
+	 * - tag1
+	 *  - tag1.1
+	 * Contact:
+	 * - contact1 tagged with tag1.1
+	 * 
+	 * Request 1) {id:tag1, excludeSubNodes:true}
+	 *    resultSet = empty
+	 * Request 2) {id:tag1, excludeSubNodes:false}
+	 *    resultSet = contact1
+	 */
+	//#SWG#@ApiModelProperty(value = """If true, the service exclude from the search the contact tagged with a subtree of the give tag.
+	//#SWGNL#Example: 
+	//#SWGNL#Tagdefinitions:
+	//#SWGNL#- tag1
+	//#SWGNL#  - tag1.1
+	//#SWGNL#Contact:
+	//#SWGNL#- contact1 tagged with tag1.1
+	//#SWGNL#
+	//#SWGNL#Request 1) {id:tag1, excludeSubNodes:true} 
+	//#SWGNL#    resultSet = empty
+	//#SWGNL#Request 2) {id:tag1, excludeSubNodes:false}
+	//#SWGNL#    resultSet = contact1""" ,required = true)
+	@BeanProperty 
+	var excludeSubTree: Boolean  = false
+	def withexcludeSubTree(p:Boolean):this.type ={ 	this.excludeSubTree = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var classificationId: String =_
-	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 }

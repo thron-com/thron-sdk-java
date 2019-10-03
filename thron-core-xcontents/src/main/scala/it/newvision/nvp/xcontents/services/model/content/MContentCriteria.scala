@@ -4,12 +4,12 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import it.newvision.nvp.xcontents.services.model.acl.MAclCriteria
+import it.newvision.nvp.xcontents.services.model.msg.MEContentReadValue
 import it.newvision.nvp.xcontents.model.MEContentType
+import it.newvision.nvp.xcontents.model.MMetadata
 import it.newvision.nvp.xcontents.model.MEContentPropertiesCriteria
 import it.newvision.nvp.xcontents.model.MEWeeboProviderStatus
-import it.newvision.nvp.xcontents.services.model.acl.MAclCriteria
-import it.newvision.nvp.xcontents.model.MMetadata
-import it.newvision.nvp.xcontents.services.model.msg.MEContentReadValue
 
 /* ************************
 *  GENERATED CLASS
@@ -36,6 +36,24 @@ import it.newvision.nvp.xcontents.services.model.msg.MEContentReadValue
 class MContentCriteria extends Serializable {
 
 	/**
+	 * used to find only the contents shared with specific policies
+	 */
+	//#SWG#@ApiModelProperty(value = """used to find only the contents shared with specific policies""")
+	@BeanProperty 
+	var acl: MAclCriteria =_
+	def withacl(p:MAclCriteria):this.type ={ 	this.acl = p; 	this }
+
+	/**
+	 * DEPRECATED.
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.""")
+	@BeanProperty 
+	@Deprecated
+	var availableInSolutions: List[String] = new ArrayList[String]
+	@Deprecated
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
+
+	/**
 	 * Filter all contents in the contentsIds list.
 	 * list of content ids or contents prettyIds
 	 */
@@ -46,14 +64,121 @@ class MContentCriteria extends Serializable {
 	def withcontentIds(p:List[String]):this.type ={ 	this.contentIds = p; 	this }
 
 	/**
-	 * Used to search the content published in Weebo having
-	 * id == Content.weebo.pContentId
+	 * Deprecated.
 	 */
-	//#SWG#@ApiModelProperty(value = """Used to search the content published in Weebo having
-	//#SWGNL#id == Content.weebo.pContentId""")
+	//#SWG#@ApiModelProperty(value = """Deprecated.""")
 	@BeanProperty 
-	var xpublisherId: String =_
-	def withxpublisherId(p:String):this.type ={ 	this.xpublisherId = p; 	this }
+	@Deprecated
+	var contentReadValue: List[MEContentReadValue] = new ArrayList[MEContentReadValue]
+	@Deprecated
+	def withcontentReadValue(p:List[MEContentReadValue]):this.type ={ 	this.contentReadValue = p; 	this }
+
+	/**
+	 * Filter all contents having contentType in the specified list.
+	 */
+	//#SWG#@ApiModelProperty(value = """Filter all contents having contentType in the specified list.""")
+	@BeanProperty 
+	var contentType: List[MEContentType] = new ArrayList[MEContentType]
+	def withcontentType(p:List[MEContentType]):this.type ={ 	this.contentType = p; 	this }
+
+	/**
+	 * used to find only the contents created after the fromDate value.
+	 * Epoc timestamp in milliseconds or human readable format (yyyy-MM-ddTHH:mm:ss.
+	 * SSSZ).
+	 * 
+	 * Example:
+	 * <ul>
+	 * 	<li>(epoc) 1401961689000</li>
+	 * 	<li>(human readable) "2014-06-05T09:48:09.000Z"</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """used to find only the contents created after the fromDate value.
+	//#SWGNL#Epoc timestamp in milliseconds or human readable format (yyyy-MM-ddTHH:mm:ss.SSSZ). 
+	//#SWGNL#
+	//#SWGNL#Example: 
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>(epoc) 1401961689000</li>
+	//#SWGNL#	<li>(human readable) "2014-06-05T09:48:09.000Z"</li>
+	//#SWGNL#</ul>""")
+	@BeanProperty 
+	var fromDate: Date =_
+	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
+
+	/**
+	 * Search contents with specific intelligence imetadata key and value (only for
+	 * metadata definition of type KEY).
+	 * The list of elements use the OR operator.
+	 * 
+	 * Constraints:
+	 * <ul>
+	 * 	<li>max length 5</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """Search contents with specific intelligence imetadata key and value (only for metadata definition of type KEY). 
+	//#SWGNL#The list of elements use the OR operator.
+	//#SWGNL#
+	//#SWGNL#Constraints:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max length 5</li>
+	//#SWGNL#</ul>""")
+	@BeanProperty 
+	var imetadataKeyOp: MIMetadataKeyCriteriaOption =_
+	def withimetadataKeyOp(p:MIMetadataKeyCriteriaOption):this.type ={ 	this.imetadataKeyOp = p; 	this }
+
+	/**
+	 * search contents with specific intelligence tags. The list of elements use the
+	 * AND/OR operator.
+	 * 
+	 * Constraints:
+	 * <ul>
+	 * 	<li>max length 5</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """search contents with specific intelligence tags. The list of elements use the AND/OR operator.
+	//#SWGNL#
+	//#SWGNL#Constraints:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max length 5</li>
+	//#SWGNL#</ul>""")
+	@BeanProperty 
+	var itagOp: MITagCriteriaOption =_
+	def withitagOp(p:MITagCriteriaOption):this.type ={ 	this.itagOp = p; 	this }
+
+	/**
+	 * Deprecated.
+	 * Use the linkedCategoryOp field
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated.
+	//#SWGNL#Use the linkedCategoryOp field""")
+	@BeanProperty 
+	@Deprecated
+	var linkedCategories: List[String] = new ArrayList[String]
+	@Deprecated
+	def withlinkedCategories(p:List[String]):this.type ={ 	this.linkedCategories = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var linkedCategoryOp: MLinkedCategorySearchOptions =_
+	def withlinkedCategoryOp(p:MLinkedCategorySearchOptions):this.type ={ 	this.linkedCategoryOp = p; 	this }
+
+	/**
+	 * DEPRECATED
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
+	@BeanProperty 
+	@Deprecated
+	var linkedCategoryTypes: List[String] = new ArrayList[String]
+	@Deprecated
+	def withlinkedCategoryTypes(p:List[String]):this.type ={ 	this.linkedCategoryTypes = p; 	this }
+
+	/**
+	 * used to filter the contents that links the given contentId. Commonly used to
+	 * know where the content is linked
+	 */
+	//#SWG#@ApiModelProperty(value = """used to filter the contents that links the given contentId. Commonly used to know where the content is linked""")
+	@BeanProperty 
+	var linkedContentId: String =_
+	def withlinkedContentId(p:String):this.type ={ 	this.linkedContentId = p; 	this }
 
 	/**
 	 * Locale code (ISO639-1).
@@ -74,6 +199,133 @@ class MContentCriteria extends Serializable {
 	@BeanProperty 
 	var locale: String =_
 	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
+
+	/**
+	 * search contents with specific custom metadata.
+	 * 
+	 * metadatas.name: exact match (case sensitive)
+	 * metadatas.value: search text as Regex (case insensitive)
+	 * <ul>
+	 * 	<li>use ^<quoted text>$ to exactly match the quoted text in the field.
+	 * (example: ^\Qmyvalue\E$).  <b>Optimized for key-value search</b>.</li>
+	 * 	<li>use ^<text to search> to search the text at start of the string. (example:
+	 * ^myvalue).  <b>Optimized for key-value search</b>.</li>
+	 * 	<li>use \Q<text to search>\E for simple text search (quoted text) </li>
+	 * 	<li>use regex to search inside the value field. (example: \d*$ match values
+	 * with only digits).</li>
+	 * </ul>
+	 * 
+	 * 
+	 * metadatas.locale: search as text match (case sensitive)
+	 * 
+	 * <b>Queries with AND operators:</b>
+	 * It's possible to search all contents matching the full list of metadata (AND
+	 * operation) adding to the list an object with metadatas.name == #AND_OPERATOR#
+	 * json example: {"name":"#AND_OPERATOR#"}
+	 * xml example:
+	 * <metadatas>
+	 * <name>#AND_OPERATOR#</name>
+	 * </metadatas>
+	 * 
+	 * This special metadata is used to drive the search engine,  specifying that all
+	 * elements inside the ContentCriteria.metadatas collection should be searched
+	 * using the AND instead of the default OR operator.
+	 */
+	//#SWG#@ApiModelProperty(value = """search contents with specific custom metadata.
+	//#SWGNL#
+	//#SWGNL#metadatas.name: exact match (case sensitive)
+	//#SWGNL#metadatas.value: search text as Regex (case insensitive)
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>use ^<quoted text>$ to exactly match the quoted text in the field. (example: ^\Qmyvalue\E$).  <b>Optimized for key-value search</b>.</li>
+	//#SWGNL#	<li>use ^<text to search> to search the text at start of the string. (example: ^myvalue).  <b>Optimized for key-value search</b>.</li>
+	//#SWGNL#	<li>use \Q<text to search>\E for simple text search (quoted text) </li>
+	//#SWGNL#	<li>use regex to search inside the value field. (example: \d*$ match values with only digits).</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#
+	//#SWGNL#metadatas.locale: search as text match (case sensitive)
+	//#SWGNL#
+	//#SWGNL#<b>Queries with AND operators:</b>
+	//#SWGNL#It's possible to search all contents matching the full list of metadata (AND operation) adding to the list an object with metadatas.name == #AND_OPERATOR# 
+	//#SWGNL#json example: {"name":"#AND_OPERATOR#"}
+	//#SWGNL#xml example: 
+	//#SWGNL#<metadatas>
+	//#SWGNL#<name>#AND_OPERATOR#</name>
+	//#SWGNL#</metadatas>
+	//#SWGNL#
+	//#SWGNL#This special metadata is used to drive the search engine,  specifying that all elements inside the ContentCriteria.metadatas collection should be searched using the AND instead of the default OR operator.""")
+	@BeanProperty 
+	var metadatas: List[MMetadata] = new ArrayList[MMetadata]
+	def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
+
+	/**
+	 * DEPRECATED. Use the textSearch field.
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED. Use the textSearch field.""")
+	@BeanProperty 
+	@Deprecated
+	var name: String =_
+	@Deprecated
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
+
+	/**
+	 * Used to filter the contents published in some channels on MContent.webo.
+	 * weeboChannels
+	 * If true, return
+	 * <ul>
+	 * 	<li>Only the contentes published in some channels (MContent.weebo.
+	 * weeboChannel[*].status == PUBLISHED if MContentCriteria.weeboChannels is empty)
+	 *     </li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>Only the contents with published in the given channels (MContent.weebo.
+	 * channel[x].status == PUBLISHED if MContentCriteria.weeboChannels is defined).
+	 *   </li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """Used to filter the contents published in some channels on MContent.webo.weeboChannels
+	//#SWGNL#If true, return 
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Only the contentes published in some channels (MContent.weebo.weeboChannel[*].status == PUBLISHED if MContentCriteria.weeboChannels is empty)      </li>
+	//#SWGNL#</ul>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Only the contents with published in the given channels (MContent.weebo.channel[x].status == PUBLISHED if MContentCriteria.weeboChannels is defined).      </li>
+	//#SWGNL#</ul>""")
+	@BeanProperty 
+	@Deprecated
+	var onlyPublishedInWeebo: Boolean =_
+	@Deprecated
+	def withonlyPublishedInWeebo(p:Boolean):this.type ={ 	this.onlyPublishedInWeebo = p; 	this }
+
+	/**
+	 * Filter contents having one of the specified properties
+	 */
+	//#SWG#@ApiModelProperty(value = """Filter contents having one of the specified properties""")
+	@BeanProperty 
+	var properties: List[MEContentPropertiesCriteria] = new ArrayList[MEContentPropertiesCriteria]
+	def withproperties(p:List[MEContentPropertiesCriteria]):this.type ={ 	this.properties = p; 	this }
+
+	/**
+	 * DEPRECATED.
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.""")
+	@BeanProperty 
+	@Deprecated
+	var solution: String =_
+	@Deprecated
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
+
+	/**
+	 * DEPRECATED.
+	 * Only the contents having one of listed tags
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.
+	//#SWGNL#Only the contents having one of listed tags""")
+	@BeanProperty 
+	@Deprecated
+	var tags: List[String] = new ArrayList[String]
+	@Deprecated
+	def withtags(p:List[String]):this.type ={ 	this.tags = p; 	this }
 
 	/**
 	 * used as text search on Content metadata and details and works over the
@@ -141,45 +393,6 @@ class MContentCriteria extends Serializable {
 	def withtextSearch(p:MTextSearchOptions):this.type ={ 	this.textSearch = p; 	this }
 
 	/**
-	 * Filter all contents having contentType in the specified list.
-	 */
-	//#SWG#@ApiModelProperty(value = """Filter all contents having contentType in the specified list.""")
-	@BeanProperty 
-	var contentType: List[MEContentType] = new ArrayList[MEContentType]
-	def withcontentType(p:List[MEContentType]):this.type ={ 	this.contentType = p; 	this }
-
-	/**
-	 * Filter contents having one of the specified properties
-	 */
-	//#SWG#@ApiModelProperty(value = """Filter contents having one of the specified properties""")
-	@BeanProperty 
-	var properties: List[MEContentPropertiesCriteria] = new ArrayList[MEContentPropertiesCriteria]
-	def withproperties(p:List[MEContentPropertiesCriteria]):this.type ={ 	this.properties = p; 	this }
-
-	/**
-	 * used to find only the contents created after the fromDate value.
-	 * Epoc timestamp in milliseconds or human readable format (yyyy-MM-ddTHH:mm:ss.
-	 * SSSZ).
-	 * 
-	 * Example:
-	 * <ul>
-	 * 	<li>(epoc) 1401961689000</li>
-	 * 	<li>(human readable) "2014-06-05T09:48:09.000Z"</li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """used to find only the contents created after the fromDate value.
-	//#SWGNL#Epoc timestamp in milliseconds or human readable format (yyyy-MM-ddTHH:mm:ss.SSSZ). 
-	//#SWGNL#
-	//#SWGNL#Example: 
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>(epoc) 1401961689000</li>
-	//#SWGNL#	<li>(human readable) "2014-06-05T09:48:09.000Z"</li>
-	//#SWGNL#</ul>""")
-	@BeanProperty 
-	var fromDate: Date =_
-	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
-
-	/**
 	 * used to find only the contents created before the toDate value.
 	 * Epoc timestamp in milliseconds or human readable format (yyyy-MM-ddTHH:mm:ss.
 	 * SSSZ).
@@ -203,194 +416,14 @@ class MContentCriteria extends Serializable {
 	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 	/**
-	 * Used to filter the contents published in some channels on MContent.webo.
-	 * weeboChannels
-	 * If true, return
-	 * <ul>
-	 * 	<li>Only the contentes published in some channels (MContent.weebo.
-	 * weeboChannel[*].status == PUBLISHED if MContentCriteria.weeboChannels is empty)
-	 *     </li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>Only the contents with published in the given channels (MContent.weebo.
-	 * channel[x].status == PUBLISHED if MContentCriteria.weeboChannels is defined).
-	 *   </li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """Used to filter the contents published in some channels on MContent.webo.weeboChannels
-	//#SWGNL#If true, return 
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>Only the contentes published in some channels (MContent.weebo.weeboChannel[*].status == PUBLISHED if MContentCriteria.weeboChannels is empty)      </li>
-	//#SWGNL#</ul>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>Only the contents with published in the given channels (MContent.weebo.channel[x].status == PUBLISHED if MContentCriteria.weeboChannels is defined).      </li>
-	//#SWGNL#</ul>""")
-	@BeanProperty 
-	@Deprecated
-	var onlyPublishedInWeebo: Boolean =_
-	@Deprecated
-	def withonlyPublishedInWeebo(p:Boolean):this.type ={ 	this.onlyPublishedInWeebo = p; 	this }
-
-	/**
-	 * Deprecated.
-	 * Use the linkedCategoryOp field
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated.
-	//#SWGNL#Use the linkedCategoryOp field""")
-	@BeanProperty 
-	@Deprecated
-	var linkedCategories: List[String] = new ArrayList[String]
-	@Deprecated
-	def withlinkedCategories(p:List[String]):this.type ={ 	this.linkedCategories = p; 	this }
-
-	/**
-	 * used to filter the contents that links the given contentId. Commonly used to
-	 * know where the content is linked
-	 */
-	//#SWG#@ApiModelProperty(value = """used to filter the contents that links the given contentId. Commonly used to know where the content is linked""")
-	@BeanProperty 
-	var linkedContentId: String =_
-	def withlinkedContentId(p:String):this.type ={ 	this.linkedContentId = p; 	this }
-
-	/**
-	 * filter the contents based on the GLOBAL status (Content.weebo.status):
-	 * PUBLISHED, INGESTION_INPROGRESS...
-	 */
-	//#SWG#@ApiModelProperty(value = """filter the contents based on the GLOBAL status (Content.weebo.status): PUBLISHED, INGESTION_INPROGRESS...""")
-	@BeanProperty 
-	var weeboStatus: MEWeeboProviderStatus =_
-	def withweeboStatus(p:MEWeeboProviderStatus):this.type ={ 	this.weeboStatus = p; 	this }
-
-	/**
 	 * DEPRECATED.
-	 * Only the contents having one of listed tags
 	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#Only the contents having one of listed tags""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.""")
 	@BeanProperty 
 	@Deprecated
-	var tags: List[String] = new ArrayList[String]
+	var ugc: Boolean =_
 	@Deprecated
-	def withtags(p:List[String]):this.type ={ 	this.tags = p; 	this }
-
-	/**
-	 * used to find only the contents shared with specific policies
-	 */
-	//#SWG#@ApiModelProperty(value = """used to find only the contents shared with specific policies""")
-	@BeanProperty 
-	var acl: MAclCriteria =_
-	def withacl(p:MAclCriteria):this.type ={ 	this.acl = p; 	this }
-
-	/**
-	 * search contents with specific custom metadata.
-	 * 
-	 * metadatas.name: exact match (case sensitive)
-	 * metadatas.value: search text as Regex (case insensitive)
-	 * <ul>
-	 * 	<li>use ^<quoted text>$ to exactly match the quoted text in the field.
-	 * (example: ^\Qmyvalue\E$).  <b>Optimized for key-value search</b>.</li>
-	 * 	<li>use ^<text to search> to search the text at start of the string. (example:
-	 * ^myvalue).  <b>Optimized for key-value search</b>.</li>
-	 * 	<li>use \Q<text to search>\E for simple text search (quoted text) </li>
-	 * 	<li>use regex to search inside the value field. (example: \d*$ match values
-	 * with only digits).</li>
-	 * </ul>
-	 * 
-	 * 
-	 * metadatas.locale: search as text match (case sensitive)
-	 * 
-	 * <b>Queries with AND operators:</b>
-	 * It's possible to search all contents matching the full list of metadata (AND
-	 * operation) adding to the list an object with metadatas.name == #AND_OPERATOR#
-	 * json example: {"name":"#AND_OPERATOR#"}
-	 * xml example:
-	 * <metadatas>
-	 * <name>#AND_OPERATOR#</name>
-	 * </metadatas>
-	 * 
-	 * This special metadata is used to drive the search engine,  specifying that all
-	 * elements inside the ContentCriteria.metadatas collection should be searched
-	 * using the AND instead of the default OR operator.
-	 */
-	//#SWG#@ApiModelProperty(value = """search contents with specific custom metadata.
-	//#SWGNL#
-	//#SWGNL#metadatas.name: exact match (case sensitive)
-	//#SWGNL#metadatas.value: search text as Regex (case insensitive)
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>use ^<quoted text>$ to exactly match the quoted text in the field. (example: ^\Qmyvalue\E$).  <b>Optimized for key-value search</b>.</li>
-	//#SWGNL#	<li>use ^<text to search> to search the text at start of the string. (example: ^myvalue).  <b>Optimized for key-value search</b>.</li>
-	//#SWGNL#	<li>use \Q<text to search>\E for simple text search (quoted text) </li>
-	//#SWGNL#	<li>use regex to search inside the value field. (example: \d*$ match values with only digits).</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#
-	//#SWGNL#metadatas.locale: search as text match (case sensitive)
-	//#SWGNL#
-	//#SWGNL#<b>Queries with AND operators:</b>
-	//#SWGNL#It's possible to search all contents matching the full list of metadata (AND operation) adding to the list an object with metadatas.name == #AND_OPERATOR# 
-	//#SWGNL#json example: {"name":"#AND_OPERATOR#"}
-	//#SWGNL#xml example: 
-	//#SWGNL#<metadatas>
-	//#SWGNL#<name>#AND_OPERATOR#</name>
-	//#SWGNL#</metadatas>
-	//#SWGNL#
-	//#SWGNL#This special metadata is used to drive the search engine,  specifying that all elements inside the ContentCriteria.metadatas collection should be searched using the AND instead of the default OR operator.""")
-	@BeanProperty 
-	var metadatas: List[MMetadata] = new ArrayList[MMetadata]
-	def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
-
-	/**
-	 * search contents with specific intelligence tags. The list of elements use the
-	 * AND/OR operator.
-	 * 
-	 * Constraints:
-	 * <ul>
-	 * 	<li>max length 5</li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """search contents with specific intelligence tags. The list of elements use the AND/OR operator.
-	//#SWGNL#
-	//#SWGNL#Constraints:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>max length 5</li>
-	//#SWGNL#</ul>""")
-	@BeanProperty 
-	var itagOp: MITagCriteriaOption =_
-	def withitagOp(p:MITagCriteriaOption):this.type ={ 	this.itagOp = p; 	this }
-
-	/**
-	 * Search contents with specific intelligence imetadata key and value (only for
-	 * metadata definition of type KEY).
-	 * The list of elements use the OR operator.
-	 * 
-	 * Constraints:
-	 * <ul>
-	 * 	<li>max length 5</li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """Search contents with specific intelligence imetadata key and value (only for metadata definition of type KEY). 
-	//#SWGNL#The list of elements use the OR operator.
-	//#SWGNL#
-	//#SWGNL#Constraints:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>max length 5</li>
-	//#SWGNL#</ul>""")
-	@BeanProperty 
-	var imetadataKeyOp: MIMetadataKeyCriteriaOption =_
-	def withimetadataKeyOp(p:MIMetadataKeyCriteriaOption):this.type ={ 	this.imetadataKeyOp = p; 	this }
-
-	/**
-	 * Deprecated.
-	 * only the contents having a specific read value for the user that call the
-	 * service
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated.
-	//#SWGNL#only the contents having a specific read value for the user that call the service""")
-	@BeanProperty 
-	@Deprecated
-	var contentReadValue: List[MEContentReadValue] = new ArrayList[MEContentReadValue]
-	@Deprecated
-	def withcontentReadValue(p:List[MEContentReadValue]):this.type ={ 	this.contentReadValue = p; 	this }
+	def withugc(p:Boolean):this.type ={ 	this.ugc = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -398,34 +431,9 @@ class MContentCriteria extends Serializable {
 	//#SWG#@ApiModelProperty(value = """DEPRECATED.""")
 	@BeanProperty 
 	@Deprecated
-	var availableInSolutions: List[String] = new ArrayList[String]
-	@Deprecated
-	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
-
-	/**
-	 * DEPRECATED.
-	 * filter contents on MContent.userId
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#filter contents on MContent.userId""")
-	@BeanProperty 
-	@Deprecated
 	var userId: String =_
 	@Deprecated
 	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
-
-	/**
-	 * DEPRECATED.
-	 * Use this properties to filter the contents created by solution (VIEW,PLAY,MOVE.
-	 * TALK)
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#Use this properties to filter the contents created by solution (VIEW,PLAY,MOVE.TALK)""")
-	@BeanProperty 
-	@Deprecated
-	var solution: String =_
-	@Deprecated
-	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -445,68 +453,23 @@ class MContentCriteria extends Serializable {
 	def withweeboChannel(p:String):this.type ={ 	this.weeboChannel = p; 	this }
 
 	/**
-	 * DEPRECATED.
-	 * used to find only the contents with inactiveDate after the toInactiveDate value.
+	 * filter the contents based on the GLOBAL status (Content.weebo.status):
+	 * PUBLISHED, INGESTION_INPROGRESS...
 	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#used to find only the contents with inactiveDate after the toInactiveDate value.""")
+	//#SWG#@ApiModelProperty(value = """filter the contents based on the GLOBAL status (Content.weebo.status): PUBLISHED, INGESTION_INPROGRESS...""")
 	@BeanProperty 
-	@Deprecated
-	var fromInactiveDate: Date =_
-	@Deprecated
-	def withfromInactiveDate(p:Date):this.type ={ 	this.fromInactiveDate = p; 	this }
+	var weeboStatus: MEWeeboProviderStatus =_
+	def withweeboStatus(p:MEWeeboProviderStatus):this.type ={ 	this.weeboStatus = p; 	this }
 
 	/**
-	 * DEPRECATED.
-	 * used to find only the contents with inactiveDate before the toInactiveDate
-	 * value.
+	 * Used to search the content published in Weebo having
+	 * id == Content.weebo.pContentId
 	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#used to find only the contents with inactiveDate before the toInactiveDate value.""")
+	//#SWG#@ApiModelProperty(value = """Used to search the content published in Weebo having
+	//#SWGNL#id == Content.weebo.pContentId""")
 	@BeanProperty 
-	@Deprecated
-	var toInactiveDate: Date =_
-	@Deprecated
-	def withtoInactiveDate(p:Date):this.type ={ 	this.toInactiveDate = p; 	this }
-
-	/**
-	 * DEPRECATED
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
-	@BeanProperty 
-	@Deprecated
-	var linkedCategoryTypes: List[String] = new ArrayList[String]
-	@Deprecated
-	def withlinkedCategoryTypes(p:List[String]):this.type ={ 	this.linkedCategoryTypes = p; 	this }
-
-	/**
-	 * DEPRECATED.
-	 * Use the textSearch field.
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#Use the textSearch field.""")
-	@BeanProperty 
-	@Deprecated
-	var name: String =_
-	@Deprecated
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
-
-	/**
-	 * DEPRECATED.
-	 * true: returns only User Generated Contents
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#true: returns only User Generated Contents""")
-	@BeanProperty 
-	@Deprecated
-	var ugc: Boolean =_
-	@Deprecated
-	def withugc(p:Boolean):this.type ={ 	this.ugc = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var linkedCategoryOp: MLinkedCategorySearchOptions =_
-	def withlinkedCategoryOp(p:MLinkedCategorySearchOptions):this.type ={ 	this.linkedCategoryOp = p; 	this }
+	var xpublisherId: String =_
+	def withxpublisherId(p:String):this.type ={ 	this.xpublisherId = p; 	this }
 
 	/**
 	 * @return void

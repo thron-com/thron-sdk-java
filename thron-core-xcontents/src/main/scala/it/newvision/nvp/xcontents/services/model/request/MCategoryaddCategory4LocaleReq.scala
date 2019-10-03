@@ -4,8 +4,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xcontents.services.model.common.MCredential
 import it.newvision.nvp.xcontents.model.MCategory4Locale
+import it.newvision.nvp.xcontents.services.model.common.MCredential
 
 /* ************************
 *  GENERATED CLASS
@@ -19,11 +19,6 @@ import it.newvision.nvp.xcontents.model.MCategory4Locale
 //#SWG#@ApiModel(description = "Request message for service JCategory.addCategory4Locale")
 class MCategoryaddCategory4LocaleReq extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var client: MCredential =_
-	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
-
 	/**
 	 * Id or prettyId
 	 */
@@ -36,5 +31,10 @@ class MCategoryaddCategory4LocaleReq extends Serializable {
 	@BeanProperty
 	var catLocale: MCategory4Locale =_
 	def withcatLocale(p:MCategory4Locale):this.type ={ 	this.catLocale = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var client: MCredential =_
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 }

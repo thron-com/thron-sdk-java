@@ -18,6 +18,14 @@ import it.newvision.nvp.xcontents.model.MCuePoint
 //#SWG#@ApiModel(description = "Request message for service JCuePoint.updateCuePoint")
 class MCuePointupdateCuePointReq extends Serializable {
 
+	/**
+	 * Optional. For Acl validation
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
+	@BeanProperty
+	var categoryIdForAcl: String =_
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
@@ -35,13 +43,5 @@ class MCuePointupdateCuePointReq extends Serializable {
 	@BeanProperty
 	var cuepoint: MCuePoint =_
 	def withcuepoint(p:MCuePoint):this.type ={ 	this.cuepoint = p; 	this }
-
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

@@ -31,19 +31,6 @@ import it.newvision.nvp.xcontents.model.MMetadata
 class MCuePointCriteria extends Serializable {
 
 	/**
-	 * list of Cue Point Ids
-	 */
-	//#SWG#@ApiModelProperty(value = """list of Cue Point Ids""")
-	@BeanProperty 
-	var cuePointIds: List[String] = new ArrayList[String]
-	def withcuePointIds(p:List[String]):this.type ={ 	this.cuePointIds = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var cuePointTypes: List[MECuePointType] = new ArrayList[MECuePointType]
-	def withcuePointTypes(p:List[MECuePointType]):this.type ={ 	this.cuePointTypes = p; 	this }
-
-	/**
 	 * the cue point action key.
 	 * Available action keys used with GENERIC Cue Points are:
 	 * <ul>
@@ -76,22 +63,6 @@ class MCuePointCriteria extends Serializable {
 	def withactions(p:List[String]):this.type ={ 	this.actions = p; 	this }
 
 	/**
-	 * time in milliseconds.
-	 */
-	//#SWG#@ApiModelProperty(value = """time in milliseconds.""")
-	@BeanProperty 
-	var startTime: Integer =_
-	def withstartTime(p:Integer):this.type ={ 	this.startTime = p; 	this }
-
-	/**
-	 * time in milliseconds
-	 */
-	//#SWG#@ApiModelProperty(value = """time in milliseconds""")
-	@BeanProperty 
-	var endTime: Integer =_
-	def withendTime(p:Integer):this.type ={ 	this.endTime = p; 	this }
-
-	/**
 	 * used to group the cue point in different classes. Optional
 	 */
 	//#SWG#@ApiModelProperty(value = """used to group the cue point in different classes. Optional""")
@@ -100,12 +71,17 @@ class MCuePointCriteria extends Serializable {
 	def withcuePointGroup(p:String):this.type ={ 	this.cuePointGroup = p; 	this }
 
 	/**
-	 * used to mark a Cue Point for a specific user
+	 * list of Cue Point Ids
 	 */
-	//#SWG#@ApiModelProperty(value = """used to mark a Cue Point for a specific user""")
+	//#SWG#@ApiModelProperty(value = """list of Cue Point Ids""")
 	@BeanProperty 
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
+	var cuePointIds: List[String] = new ArrayList[String]
+	def withcuePointIds(p:List[String]):this.type ={ 	this.cuePointIds = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var cuePointTypes: List[MECuePointType] = new ArrayList[MECuePointType]
+	def withcuePointTypes(p:List[MECuePointType]):this.type ={ 	this.cuePointTypes = p; 	this }
 
 	/**
 	 * used to mark a cue point as draft. Draft cue point could not be used in
@@ -115,6 +91,14 @@ class MCuePointCriteria extends Serializable {
 	@BeanProperty 
 	var draft: Boolean =_
 	def withdraft(p:Boolean):this.type ={ 	this.draft = p; 	this }
+
+	/**
+	 * time in milliseconds
+	 */
+	//#SWG#@ApiModelProperty(value = """time in milliseconds""")
+	@BeanProperty 
+	var endTime: Integer =_
+	def withendTime(p:Integer):this.type ={ 	this.endTime = p; 	this }
 
 	/**
 	 * search cuepoints with specific custom metadatas.
@@ -146,5 +130,21 @@ class MCuePointCriteria extends Serializable {
 	@BeanProperty 
 	var metadata: List[MMetadata] = new ArrayList[MMetadata]
 	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
+
+	/**
+	 * time in milliseconds.
+	 */
+	//#SWG#@ApiModelProperty(value = """time in milliseconds.""")
+	@BeanProperty 
+	var startTime: Integer =_
+	def withstartTime(p:Integer):this.type ={ 	this.startTime = p; 	this }
+
+	/**
+	 * used to mark a Cue Point for a specific user
+	 */
+	//#SWG#@ApiModelProperty(value = """used to mark a Cue Point for a specific user""")
+	@BeanProperty 
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

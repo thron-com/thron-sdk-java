@@ -16,33 +16,28 @@ import com.thron.intelligence.model.classification.MEClassificationType
 class MClassificationSearchCriteria extends Serializable {
 
 	/**
-	 * list of Classification.id
-	 */
-	//#SWG#@ApiModelProperty(value = """list of Classification.id""")
-	@BeanProperty 
-	var ids: List[String] = new ArrayList[String]
-	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
-
-	/**
-	 * search text in label or description fields.
-	 * Search all words separated by spaces and in exact order (by token)
-	 * Example: "red apple" text search match labels like "red", "apple", "red and
-	 * Apple are..."
-	 */
-	//#SWG#@ApiModelProperty(value = """search text in label or description fields.
-	//#SWGNL#Search all words separated by spaces and in exact order (by token)
-	//#SWGNL#Example: "red apple" text search match labels like "red", "apple", "red and Apple are..."""")
-	@BeanProperty 
-	var text: String =_
-	def withtext(p:String):this.type ={ 	this.text = p; 	this }
-
-	/**
 	 * visibile in Reports
 	 */
 	//#SWG#@ApiModelProperty(value = """visibile in Reports""")
 	@BeanProperty 
 	var active: Boolean =_
 	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
+
+	/**
+	 * can be TARGET/TOPIC/CUSTOM
+	 */
+	//#SWG#@ApiModelProperty(value = """can be TARGET/TOPIC/CUSTOM""")
+	@BeanProperty 
+	var classificationType: List[MEClassificationType] = new ArrayList[MEClassificationType]
+	def withclassificationType(p:List[MEClassificationType]):this.type ={ 	this.classificationType = p; 	this }
+
+	/**
+	 * list of Classification.id
+	 */
+	//#SWG#@ApiModelProperty(value = """list of Classification.id""")
+	@BeanProperty 
+	var ids: List[String] = new ArrayList[String]
+	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
 
 	/**
 	 * used to search the classification having label like "text" for the defined
@@ -66,12 +61,17 @@ class MClassificationSearchCriteria extends Serializable {
 	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
 
 	/**
-	 * can be TARGET/TOPIC/CUSTOM
+	 * search text in label or description fields.
+	 * Search all words separated by spaces and in exact order (by token)
+	 * Example: "red apple" text search match labels like "red", "apple", "red and
+	 * Apple are..."
 	 */
-	//#SWG#@ApiModelProperty(value = """can be TARGET/TOPIC/CUSTOM""")
+	//#SWG#@ApiModelProperty(value = """search text in label or description fields.
+	//#SWGNL#Search all words separated by spaces and in exact order (by token)
+	//#SWGNL#Example: "red apple" text search match labels like "red", "apple", "red and Apple are..."""")
 	@BeanProperty 
-	var classificationType: List[MEClassificationType] = new ArrayList[MEClassificationType]
-	def withclassificationType(p:List[MEClassificationType]):this.type ={ 	this.classificationType = p; 	this }
+	var text: String =_
+	def withtext(p:String):this.type ={ 	this.text = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -16,6 +16,11 @@ import it.newvision.nvp.xadmin.services.model.msg.MESSO
 //#SWG#@ApiModel(description = """""")
 class MResponseApp extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var errorDescription: String =_
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var resultCode: MEAppsResponse =_
@@ -25,10 +30,5 @@ class MResponseApp extends Serializable {
 	@BeanProperty 
 	var ssoCode: MESSO =_
 	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var errorDescription: String =_
-	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

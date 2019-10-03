@@ -18,6 +18,14 @@ import it.newvision.nvp.xcontents.services.model.metadata.MMetadataUpdate
 //#SWG#@ApiModel(description = "Request message for service JMetadata.updateMetadata")
 class MMetadataupdateMetadataReq extends Serializable {
 
+	/**
+	 * Optional. For Acl validation
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
+	@BeanProperty
+	var categoryIdForAcl: String =_
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
@@ -32,13 +40,5 @@ class MMetadataupdateMetadataReq extends Serializable {
 	@BeanProperty
 	var metadata: MMetadataUpdate =_
 	def withmetadata(p:MMetadataUpdate):this.type ={ 	this.metadata = p; 	this }
-
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

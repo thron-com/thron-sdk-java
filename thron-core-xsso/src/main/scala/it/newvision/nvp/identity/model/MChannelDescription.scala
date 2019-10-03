@@ -19,12 +19,12 @@ import javax.xml.bind.annotation._
 class MChannelDescription extends Serializable {
 
 	/**
-	 * en/it/ ....
+	 * The channel description, used in the administration console. 
 	 */
-	//#SWG#@ApiModelProperty(value = """en/it/ ....""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """The channel description, used in the administration console. """ ,required = true)
 	@BeanProperty 
-	var locale: String =_
-	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
+	var channelDescription: String  = ""
+	def withchannelDescription(p:String):this.type ={ 	this.channelDescription = p; 	this }
 
 	/**
 	 * The channel fancy name used in the administration console, to show as label
@@ -35,11 +35,11 @@ class MChannelDescription extends Serializable {
 	def withchannelShortName(p:String):this.type ={ 	this.channelShortName = p; 	this }
 
 	/**
-	 * The channel description, used in the administration console. 
+	 * en/it/ ....
 	 */
-	//#SWG#@ApiModelProperty(value = """The channel description, used in the administration console. """ ,required = true)
+	//#SWG#@ApiModelProperty(value = """en/it/ ....""" ,required = true)
 	@BeanProperty 
-	var channelDescription: String  = ""
-	def withchannelDescription(p:String):this.type ={ 	this.channelDescription = p; 	this }
+	var locale: String =_
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 }

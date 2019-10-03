@@ -23,11 +23,6 @@ class MVUserManagerupdateSettingsReq extends Serializable {
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
-
 	/**
 	 * restricted params of the user
 	 */
@@ -35,5 +30,10 @@ class MVUserManagerupdateSettingsReq extends Serializable {
 	@BeanProperty
 	var settings: MVUserSettings =_
 	def withsettings(p:MVUserSettings):this.type ={ 	this.settings = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

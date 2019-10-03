@@ -27,16 +27,6 @@ class MSyncOptions extends Serializable {
 
 	/**
 	 * Default= false
-	 * if true the service fill the linkedCategories attribute.
-	 */
-	//#SWG#@ApiModelProperty(value = """Default= false
-	//#SWGNL#if true the service fill the linkedCategories attribute.""" ,required = true)
-	@BeanProperty 
-	var returnLinkedCategories: Boolean  = false
-	def withreturnLinkedCategories(p:Boolean):this.type ={ 	this.returnLinkedCategories = p; 	this }
-
-	/**
-	 * Default= false
 	 * if true the service fill the deliveryIfo attribute.
 	 */
 	//#SWG#@ApiModelProperty(value = """Default= false
@@ -44,6 +34,16 @@ class MSyncOptions extends Serializable {
 	@BeanProperty 
 	var returnDeliveryInfo: Boolean  = false
 	def withreturnDeliveryInfo(p:Boolean):this.type ={ 	this.returnDeliveryInfo = p; 	this }
+
+	/**
+	 * Default= false
+	 * if true the service fill the content.imetadata attribute.
+	 */
+	//#SWG#@ApiModelProperty(value = """Default= false
+	//#SWGNL#if true the service fill the content.imetadata attribute.""" ,required = true)
+	@BeanProperty 
+	var returnImetadata: Boolean  = false
+	def withreturnImetadata(p:Boolean):this.type ={ 	this.returnImetadata = p; 	this }
 
 	/**
 	 * Default= false
@@ -57,13 +57,13 @@ class MSyncOptions extends Serializable {
 
 	/**
 	 * Default= false
-	 * if true the service fill the content.imetadata attribute.
+	 * if true the service fill the linkedCategories attribute.
 	 */
 	//#SWG#@ApiModelProperty(value = """Default= false
-	//#SWGNL#if true the service fill the content.imetadata attribute.""" ,required = true)
+	//#SWGNL#if true the service fill the linkedCategories attribute.""" ,required = true)
 	@BeanProperty 
-	var returnImetadata: Boolean  = false
-	def withreturnImetadata(p:Boolean):this.type ={ 	this.returnImetadata = p; 	this }
+	var returnLinkedCategories: Boolean  = false
+	def withreturnLinkedCategories(p:Boolean):this.type ={ 	this.returnLinkedCategories = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 

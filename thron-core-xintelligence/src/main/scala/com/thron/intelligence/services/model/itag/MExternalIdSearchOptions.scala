@@ -23,26 +23,6 @@ import javax.xml.bind.annotation._
 class MExternalIdSearchOptions extends Serializable {
 
 	/**
-	 * search on  externalId.value.
-	 * 
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>max length = 100</li>
-	 * 	<li>min length = 3</li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """search on  externalId.value.
-	//#SWGNL#
-	//#SWGNL#<b>Constraints:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>max length = 100</li>
-	//#SWGNL#	<li>min length = 3</li>
-	//#SWGNL#</ul>""" ,required = true)
-	@BeanProperty 
-	var value: String =_
-	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
-
-	/**
 	 * Optional. externalId.key, if empty search on the value in all keys
 	 * 
 	 * <b>Constraints:</b>
@@ -73,6 +53,26 @@ class MExternalIdSearchOptions extends Serializable {
 	@BeanProperty 
 	var searchOption: MEIdSearchOption  = MEIdSearchOption.START_WITH
 	def withsearchOption(p:MEIdSearchOption):this.type ={ 	this.searchOption = p; 	this }
+
+	/**
+	 * search on  externalId.value.
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>max length = 100</li>
+	 * 	<li>min length = 3</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """search on  externalId.value.
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max length = 100</li>
+	//#SWGNL#	<li>min length = 3</li>
+	//#SWGNL#</ul>""" ,required = true)
+	@BeanProperty 
+	var value: String =_
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 	/**
 	 * @return Boolean

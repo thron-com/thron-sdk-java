@@ -27,6 +27,14 @@ class MPermissionslistReq extends Serializable {
 	def withcriteria(p:MPermissionSearchCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
+	 * Optional. Default value is 50
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Default value is 50""", required = true)
+	@BeanProperty
+	var limit: Integer =_
+	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
+
+	/**
 	 * Optional.
 	 * Default value is 0
 	 */
@@ -35,13 +43,5 @@ class MPermissionslistReq extends Serializable {
 	@BeanProperty
 	var offset: Integer =_
 	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
-
-	/**
-	 * Optional. Default value is 50
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Default value is 50""", required = true)
-	@BeanProperty
-	var limit: Integer =_
-	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
 
 }

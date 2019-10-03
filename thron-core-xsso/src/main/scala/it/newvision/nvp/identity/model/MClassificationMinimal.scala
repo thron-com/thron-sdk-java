@@ -16,11 +16,6 @@ class MClassificationMinimal extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
 	var active: Boolean =_
 	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
@@ -28,5 +23,10 @@ class MClassificationMinimal extends Serializable {
 	@BeanProperty 
 	var entities: List[MClassificationEntityMinimal] = new ArrayList[MClassificationEntityMinimal]
 	def withentities(p:List[MClassificationEntityMinimal]):this.type ={ 	this.entities = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 }

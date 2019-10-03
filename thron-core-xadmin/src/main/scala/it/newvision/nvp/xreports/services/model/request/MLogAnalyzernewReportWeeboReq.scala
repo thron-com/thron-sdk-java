@@ -25,12 +25,12 @@ class MLogAnalyzernewReportWeeboReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var reportId: String =_
-	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
+	var query: MQueryWeebo =_
+	def withquery(p:MQueryWeebo):this.type ={ 	this.query = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var query: MQueryWeebo =_
-	def withquery(p:MQueryWeebo):this.type ={ 	this.query = p; 	this }
+	var reportId: String =_
+	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
 
 }

@@ -19,19 +19,19 @@ import javax.xml.bind.annotation._
 class MCustomMetadataValueLabel extends MCustomMetadataKeyLabel with Serializable  {
 
 	/**
-	 * Metadata Value, as keyword
-	 */
-	//#SWG#@ApiModelProperty(value = """Metadata Value, as keyword""" ,required = true)
-	@BeanProperty 
-	var value: String =_
-	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
-
-	/**
 	 * used to identify the default value in the list
 	 */
 	//#SWG#@ApiModelProperty(value = """used to identify the default value in the list""" ,required = true)
 	@BeanProperty 
 	var markedAsDefaultValue: Boolean  = false
 	def withmarkedAsDefaultValue(p:Boolean):this.type ={ 	this.markedAsDefaultValue = p; 	this }
+
+	/**
+	 * Metadata Value, as keyword
+	 */
+	//#SWG#@ApiModelProperty(value = """Metadata Value, as keyword""" ,required = true)
+	@BeanProperty 
+	var value: String =_
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 }

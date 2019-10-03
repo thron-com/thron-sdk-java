@@ -23,4 +23,12 @@ class MAclInverseRulesremoveReq extends Serializable {
 	var rules: MAclInverseRulesItems =_
 	def withrules(p:MAclInverseRulesItems):this.type ={ 	this.rules = p; 	this }
 
+	/**
+	 * Optional. Do not send any notification to the users
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Do not send any notification to the users""", required = true)
+	@BeanProperty
+	var silentMode: Boolean =_
+	def withsilentMode(p:Boolean):this.type ={ 	this.silentMode = p; 	this }
+
 }

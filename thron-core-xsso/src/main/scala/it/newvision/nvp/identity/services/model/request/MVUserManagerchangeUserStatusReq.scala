@@ -25,12 +25,12 @@ class MVUserManagerchangeUserStatusReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
+	var properties: MVUserProperties =_
+	def withproperties(p:MVUserProperties):this.type ={ 	this.properties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var properties: MVUserProperties =_
-	def withproperties(p:MVUserProperties):this.type ={ 	this.properties = p; 	this }
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

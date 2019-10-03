@@ -21,6 +21,14 @@ import javax.xml.bind.annotation._
 class MContentMetadata extends Serializable {
 
 	/**
+	 * Locale code (ISO639-1)
+	 */
+	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1)""")
+	@BeanProperty 
+	var locale: String =_
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
+
+	/**
 	 * Constraints: length < 50
 	 */
 	//#SWG#@ApiModelProperty(value = """Constraints: length < 50""" ,required = true)
@@ -35,14 +43,6 @@ class MContentMetadata extends Serializable {
 	@BeanProperty 
 	var value: String =_
 	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
-
-	/**
-	 * Locale code (ISO639-1)
-	 */
-	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1)""")
-	@BeanProperty 
-	var locale: String =_
-	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * @param other : MContentMetadata

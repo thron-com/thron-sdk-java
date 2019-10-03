@@ -6,14 +6,14 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xadmin.services.model.weebo.MResponsePublishContent
 import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishAudioReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishImageReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishPlayListReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishLiveEventReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishVideoReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishDocumentReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishPageletReq
-import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishProgramReq
 import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishContentInChannelsReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishDocumentReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishImageReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishLiveEventReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishPageletReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishPlayListReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishProgramReq
+import it.newvision.nvp.xadmin.services.model.request.MPublishInWeeboExpresspublishVideoReq
 
 /* ************************
 *  GENERATED CLASS
@@ -94,17 +94,21 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Create a new image content
+	 * This service is used to publish a content in different channels or using a specific profile (The
+	 * profile define a collection of channes for a given content type).
+	 * The service return an error if the specified channels are not available for the selected content,
+	 * but  can be used to adjust a content to a specific profile, publishing the content on the missing
+	 * channels
 	 * <b>Constraints:</b>
 	 * <ul>
 	 * 	<li>the service can be invoked only by platform users</li>
 	 * </ul>
 	 * @param tokenId : String
-	 * @param param : MPublishInWeeboExpresspublishImageReq
+	 * @param param : MPublishInWeeboExpresspublishContentInChannelsReq
 	 * @return MResponsePublishContent
 	*/
-	def publishImage(tokenId: String, 
-			param: MPublishInWeeboExpresspublishImageReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublishContent ={
+	def publishContentInChannels(tokenId: String, 
+			param: MPublishInWeeboExpresspublishContentInChannelsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublishContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -116,153 +120,7 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 			}else{	
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
-					.path("publishinweeboexpress/publishImage")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponsePublishContent],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponsePublishContent])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Create a new playlist content
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>the service can be invoked only by platform users</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MPublishInWeeboExpresspublishPlayListReq
-	 * @return MResponsePublishContent
-	*/
-	def publishPlayList(tokenId: String, 
-			param: MPublishInWeeboExpresspublishPlayListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublishContent ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JPublishInWeeboExpressClient.client.resource(this.resourceEndpoint)
-			val response : MResponsePublishContent = if(this.resourceEndpoint == ""){
-			
-				new MResponsePublishContent()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("publishinweeboexpress/publishPlayList")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponsePublishContent],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponsePublishContent])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>the service can be invoked only by platform users</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MPublishInWeeboExpresspublishLiveEventReq
-	 * @return MResponsePublishContent
-	*/
-	def publishLiveEvent(tokenId: String, 
-			param: MPublishInWeeboExpresspublishLiveEventReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublishContent ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JPublishInWeeboExpressClient.client.resource(this.resourceEndpoint)
-			val response : MResponsePublishContent = if(this.resourceEndpoint == ""){
-			
-				new MResponsePublishContent()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("publishinweeboexpress/publishLiveEvent")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponsePublishContent],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponsePublishContent])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Create a new video content
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>the service can be invoked only by platform users</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MPublishInWeeboExpresspublishVideoReq
-	 * @return MResponsePublishContent
-	*/
-	def publishVideo(tokenId: String, 
-			param: MPublishInWeeboExpresspublishVideoReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublishContent ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JPublishInWeeboExpressClient.client.resource(this.resourceEndpoint)
-			val response : MResponsePublishContent = if(this.resourceEndpoint == ""){
-			
-				new MResponsePublishContent()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("publishinweeboexpress/publishVideo")
+					.path("publishinweeboexpress/publishContentInChannels")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)
@@ -338,6 +196,103 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Create a new image content
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MPublishInWeeboExpresspublishImageReq
+	 * @return MResponsePublishContent
+	*/
+	def publishImage(tokenId: String, 
+			param: MPublishInWeeboExpresspublishImageReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublishContent ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JPublishInWeeboExpressClient.client.resource(this.resourceEndpoint)
+			val response : MResponsePublishContent = if(this.resourceEndpoint == ""){
+			
+				new MResponsePublishContent()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("publishinweeboexpress/publishImage")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponsePublishContent],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponsePublishContent])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MPublishInWeeboExpresspublishLiveEventReq
+	 * @return MResponsePublishContent
+	*/
+	def publishLiveEvent(tokenId: String, 
+			param: MPublishInWeeboExpresspublishLiveEventReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublishContent ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JPublishInWeeboExpressClient.client.resource(this.resourceEndpoint)
+			val response : MResponsePublishContent = if(this.resourceEndpoint == ""){
+			
+				new MResponsePublishContent()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("publishinweeboexpress/publishLiveEvent")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponsePublishContent],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponsePublishContent])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
 	 * Create a new pagelet content
 	 * <b>Constraints:</b>
 	 * <ul>
@@ -361,6 +316,55 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
 					.path("publishinweeboexpress/publishPagelet")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponsePublishContent],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponsePublishContent])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Create a new playlist content
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>the service can be invoked only by platform users</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MPublishInWeeboExpresspublishPlayListReq
+	 * @return MResponsePublishContent
+	*/
+	def publishPlayList(tokenId: String, 
+			param: MPublishInWeeboExpresspublishPlayListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublishContent ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JPublishInWeeboExpressClient.client.resource(this.resourceEndpoint)
+			val response : MResponsePublishContent = if(this.resourceEndpoint == ""){
+			
+				new MResponsePublishContent()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("publishinweeboexpress/publishPlayList")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)
@@ -432,21 +436,17 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * This service is used to publish a content in different channels or using a specific profile (The
-	 * profile define a collection of channes for a given content type).
-	 * The service return an error if the specified channels are not available for the selected content,
-	 * but  can be used to adjust a content to a specific profile, publishing the content on the missing
-	 * channels
+	 * Create a new video content
 	 * <b>Constraints:</b>
 	 * <ul>
 	 * 	<li>the service can be invoked only by platform users</li>
 	 * </ul>
 	 * @param tokenId : String
-	 * @param param : MPublishInWeeboExpresspublishContentInChannelsReq
+	 * @param param : MPublishInWeeboExpresspublishVideoReq
 	 * @return MResponsePublishContent
 	*/
-	def publishContentInChannels(tokenId: String, 
-			param: MPublishInWeeboExpresspublishContentInChannelsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublishContent ={
+	def publishVideo(tokenId: String, 
+			param: MPublishInWeeboExpresspublishVideoReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePublishContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -458,7 +458,7 @@ class JPublishInWeeboExpressClient(val resourceEndpoint:String) {
 			}else{	
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
-					.path("publishinweeboexpress/publishContentInChannels")
+					.path("publishinweeboexpress/publishVideo")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)

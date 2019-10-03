@@ -16,8 +16,18 @@ class MPlayerEmbedCodeCriteria extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
+	var enabled: Boolean =_
+	def withenabled(p:Boolean):this.type ={ 	this.enabled = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
 	var ids: List[String] = new ArrayList[String]
 	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var templateOp: MTemplateSearchOption =_
+	def withtemplateOp(p:MTemplateSearchOption):this.type ={ 	this.templateOp = p; 	this }
 
 	/**
 	 * text search on names by token.
@@ -29,16 +39,6 @@ class MPlayerEmbedCodeCriteria extends Serializable {
 	@BeanProperty 
 	var text: String =_
 	def withtext(p:String):this.type ={ 	this.text = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var enabled: Boolean =_
-	def withenabled(p:Boolean):this.type ={ 	this.enabled = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var templateOp: MTemplateSearchOption =_
-	def withtemplateOp(p:MTemplateSearchOption):this.type ={ 	this.templateOp = p; 	this }
 
 	/**
 	 * ContextId to use for tracking

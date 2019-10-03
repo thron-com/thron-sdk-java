@@ -16,21 +16,6 @@ import com.thron.contacts.service.model.contact.MEContactType
 class MContact extends Serializable {
 
 	/**
-	 * The contact Id.
-	 * An anonimous contanct has empty oldContactIds and the same id of the device.
-	 */
-	//#SWG#@ApiModelProperty(value = """The contact Id.
-	//#SWGNL#An anonimous contanct has empty oldContactIds and the same id of the device.""" ,required = true)
-	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var createdDate: Date  = new Date
-	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
-
-	/**
 	 * The last accessed Date for the device
 	 */
 	//#SWG#@ApiModelProperty(value = """The last accessed Date for the device""")
@@ -39,23 +24,27 @@ class MContact extends Serializable {
 	def withaccessedDate(p:Date):this.type ={ 	this.accessedDate = p; 	this }
 
 	/**
-	 * Old anonimous contactId coming from merge operation.
-	 * When two contacts are merged the source (anonymous) contact id is saved in the
-	 * oldIds attribute of the target contact.
-	 */
-	//#SWG#@ApiModelProperty(value = """Old anonimous contactId coming from merge operation. 
-	//#SWGNL#When two contacts are merged the source (anonymous) contact id is saved in the oldIds attribute of the target contact.""")
-	@BeanProperty 
-	var oldIds: List[String] = new ArrayList[String]
-	def witholdIds(p:List[String]):this.type ={ 	this.oldIds = p; 	this }
-
-	/**
 	 * contact type
 	 */
 	//#SWG#@ApiModelProperty(value = """contact type""" ,required = true)
 	@BeanProperty 
 	var contactType: MEContactType  = MEContactType.ANONYMOUS
 	def withcontactType(p:MEContactType):this.type ={ 	this.contactType = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var createdDate: Date  = new Date
+	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
+
+	/**
+	 * The contact Id.
+	 * An anonimous contanct has empty oldContactIds and the same id of the device.
+	 */
+	//#SWG#@ApiModelProperty(value = """The contact Id.
+	//#SWGNL#An anonimous contanct has empty oldContactIds and the same id of the device.""" ,required = true)
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * A custom label for the contact
@@ -74,6 +63,17 @@ class MContact extends Serializable {
 	@BeanProperty 
 	var name: String =_
 	def withname(p:String):this.type ={ 	this.name = p; 	this }
+
+	/**
+	 * Old anonimous contactId coming from merge operation.
+	 * When two contacts are merged the source (anonymous) contact id is saved in the
+	 * oldIds attribute of the target contact.
+	 */
+	//#SWG#@ApiModelProperty(value = """Old anonimous contactId coming from merge operation. 
+	//#SWGNL#When two contacts are merged the source (anonymous) contact id is saved in the oldIds attribute of the target contact.""")
+	@BeanProperty 
+	var oldIds: List[String] = new ArrayList[String]
+	def witholdIds(p:List[String]):this.type ={ 	this.oldIds = p; 	this }
 
 	/**
 	 * @param id : String

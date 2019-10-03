@@ -4,8 +4,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xadmin.services.model.apps.MSnippetInitData
 import it.newvision.nvp.xadmin.services.model.apps.MAppAddCapability
+import it.newvision.nvp.xadmin.services.model.apps.MSnippetInitData
 
 /* ************************
 *  GENERATED CLASS
@@ -21,18 +21,8 @@ class MAppsAdminaddSnippetReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var clientId: String =_
-	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
 	var appId: String =_
 	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var snippet: MSnippetInitData =_
-	def withsnippet(p:MSnippetInitData):this.type ={ 	this.snippet = p; 	this }
 
 	/**
 	 * Optional. Additional capabilities required by the snippet
@@ -41,5 +31,15 @@ class MAppsAdminaddSnippetReq extends Serializable {
 	@BeanProperty
 	var caps: MAppAddCapability =_
 	def withcaps(p:MAppAddCapability):this.type ={ 	this.caps = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var clientId: String =_
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var snippet: MSnippetInitData =_
+	def withsnippet(p:MSnippetInitData):this.type ={ 	this.snippet = p; 	this }
 
 }

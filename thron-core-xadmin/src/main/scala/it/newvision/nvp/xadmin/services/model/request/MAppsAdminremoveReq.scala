@@ -17,11 +17,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = "Request message for service JAppsAdmin.remove")
 class MAppsAdminremoveReq extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var clientId: String =_
-	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
-
 	/**
 	 * the application Id
 	 */
@@ -29,5 +24,10 @@ class MAppsAdminremoveReq extends Serializable {
 	@BeanProperty
 	var appId: String =_
 	def withappId(p:String):this.type ={ 	this.appId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var clientId: String =_
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 }

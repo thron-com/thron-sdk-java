@@ -24,11 +24,6 @@ class MCategoryfindByPropertiesReq extends Serializable {
 	var client: MCredential =_
 	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var properties: MCategoryCriteria =_
-	def withproperties(p:MCategoryCriteria):this.type ={ 	this.properties = p; 	this }
-
 	/**
 	 * Optional.If the client desires to have the category description for a specific
 	 * locale. If empty the service return all available locales for each categories.
@@ -37,11 +32,6 @@ class MCategoryfindByPropertiesReq extends Serializable {
 	@BeanProperty
 	var locale: String =_
 	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var offset: Integer =_
-	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Default is 50 items.
@@ -52,5 +42,15 @@ class MCategoryfindByPropertiesReq extends Serializable {
 	@BeanProperty
 	var numberOfResult: Integer =_
 	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var offset: Integer =_
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var properties: MCategoryCriteria =_
+	def withproperties(p:MCategoryCriteria):this.type ={ 	this.properties = p; 	this }
 
 }

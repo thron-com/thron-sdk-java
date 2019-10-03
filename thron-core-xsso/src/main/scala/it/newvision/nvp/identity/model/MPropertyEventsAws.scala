@@ -19,12 +19,18 @@ import javax.xml.bind.annotation._
 class MPropertyEventsAws extends Serializable {
 
 	/**
-	 * the default region where the should be active the live instances.
+	 * CloudFontPriceClass
+	 * 1) US and Eurore
+	 * 2) US, Europe and Asia
+	 * 3) World (best Performance)
 	 */
-	//#SWG#@ApiModelProperty(value = """the default region where the should be active the live instances.""")
+	//#SWG#@ApiModelProperty(value = """CloudFontPriceClass
+	//#SWGNL#1) US and Eurore
+	//#SWGNL#2) US, Europe and Asia
+	//#SWGNL#3) World (best Performance)""")
 	@BeanProperty 
-	var defaultRegion: String =_
-	def withdefaultRegion(p:String):this.type ={ 	this.defaultRegion = p; 	this }
+	var cdnPriceClass: String =_
+	def withcdnPriceClass(p:String):this.type ={ 	this.cdnPriceClass = p; 	this }
 
 	/**
 	 * Syntax: formUrlEncoded, with ; separator.
@@ -45,17 +51,11 @@ class MPropertyEventsAws extends Serializable {
 	def withcustomParameters(p:String):this.type ={ 	this.customParameters = p; 	this }
 
 	/**
-	 * CloudFontPriceClass
-	 * 1) US and Eurore
-	 * 2) US, Europe and Asia
-	 * 3) World (best Performance)
+	 * the default region where the should be active the live instances.
 	 */
-	//#SWG#@ApiModelProperty(value = """CloudFontPriceClass
-	//#SWGNL#1) US and Eurore
-	//#SWGNL#2) US, Europe and Asia
-	//#SWGNL#3) World (best Performance)""")
+	//#SWG#@ApiModelProperty(value = """the default region where the should be active the live instances.""")
 	@BeanProperty 
-	var cdnPriceClass: String =_
-	def withcdnPriceClass(p:String):this.type ={ 	this.cdnPriceClass = p; 	this }
+	var defaultRegion: String =_
+	def withdefaultRegion(p:String):this.type ={ 	this.defaultRegion = p; 	this }
 
 }

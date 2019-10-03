@@ -31,12 +31,30 @@ import javax.xml.bind.annotation._
 class MCategoryFieldsOption extends Serializable {
 
 	/**
+	 * if true, aclInfo will be calculated and included in the response;
+	 * Default value is false.
+	 */
+	//#SWG#@ApiModelProperty(value = """if true, aclInfo will be calculated and included in the response; 
+	//#SWGNL#Default value is false.""")
+	@BeanProperty 
+	var returnAclInfo: Boolean  = false
+	def withreturnAclInfo(p:Boolean):this.type ={ 	this.returnAclInfo = p; 	this }
+
+	/**
 	 * Default = true
 	 */
 	//#SWG#@ApiModelProperty(value = """Default = true""")
 	@BeanProperty 
 	var returnNumberOfContents: Boolean  = true
 	def withreturnNumberOfContents(p:Boolean):this.type ={ 	this.returnNumberOfContents = p; 	this }
+
+	/**
+	 * Default = true
+	 */
+	//#SWG#@ApiModelProperty(value = """Default = true""")
+	@BeanProperty 
+	var returnNumberOfSubCategories: Boolean  = true
+	def withreturnNumberOfSubCategories(p:Boolean):this.type ={ 	this.returnNumberOfSubCategories = p; 	this }
 
 	/**
 	 * Default = true
@@ -59,14 +77,6 @@ class MCategoryFieldsOption extends Serializable {
 	def withreturnNumberOfUnreadContentsInSubCategories(p:Boolean):this.type ={ 	this.returnNumberOfUnreadContentsInSubCategories = p; 	this }
 
 	/**
-	 * Default = true
-	 */
-	//#SWG#@ApiModelProperty(value = """Default = true""")
-	@BeanProperty 
-	var returnNumberOfSubCategories: Boolean  = true
-	def withreturnNumberOfSubCategories(p:Boolean):this.type ={ 	this.returnNumberOfSubCategories = p; 	this }
-
-	/**
 	 * if true, totalResults will be calculated and included in the response; if false,
 	 * totalResults will not be calculated and the service performs better.
 	 */
@@ -74,16 +84,6 @@ class MCategoryFieldsOption extends Serializable {
 	@BeanProperty 
 	var returnTotalResults: Boolean  = true
 	def withreturnTotalResults(p:Boolean):this.type ={ 	this.returnTotalResults = p; 	this }
-
-	/**
-	 * if true, aclInfo will be calculated and included in the response;
-	 * Default value is false.
-	 */
-	//#SWG#@ApiModelProperty(value = """if true, aclInfo will be calculated and included in the response; 
-	//#SWGNL#Default value is false.""")
-	@BeanProperty 
-	var returnAclInfo: Boolean  = false
-	def withreturnAclInfo(p:Boolean):this.type ={ 	this.returnAclInfo = p; 	this }
 
 	/**
 	 * @return MCategoryFieldsOption

@@ -18,15 +18,23 @@ import it.newvision.nvp.xcontents.services.model.common.MCredential
 //#SWG#@ApiModel(description = "Request message for service JRating.insertRating")
 class MRatinginsertRatingReq extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
+	/**
+	 * Optional. For Acl validation
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
 	@BeanProperty
-	var credential: MCredential =_
-	def withcredential(p:MCredential):this.type ={ 	this.credential = p; 	this }
+	var categoryIdForAcl: String =_
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var contentId: String =_
 	def withcontentId(p:String):this.type ={ 	this.contentId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var credential: MCredential =_
+	def withcredential(p:MCredential):this.type ={ 	this.credential = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
@@ -40,13 +48,5 @@ class MRatinginsertRatingReq extends Serializable {
 	@BeanProperty
 	var userId: String =_
 	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
-
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

@@ -17,6 +17,14 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = "Request message for service JSubscriptions.contentSubscription")
 class MSubscriptionscontentSubscriptionReq extends Serializable {
 
+	/**
+	 * Optional. For Acl validation
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
+	@BeanProperty
+	var categoryIdForAcl: String =_
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
@@ -34,13 +42,5 @@ class MSubscriptionscontentSubscriptionReq extends Serializable {
 	@BeanProperty
 	var revokeSubscription: Boolean =_
 	def withrevokeSubscription(p:Boolean):this.type ={ 	this.revokeSubscription = p; 	this }
-
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

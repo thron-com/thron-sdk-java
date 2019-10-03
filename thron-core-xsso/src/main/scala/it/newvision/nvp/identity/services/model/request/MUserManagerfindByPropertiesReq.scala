@@ -30,12 +30,12 @@ class MUserManagerfindByPropertiesReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var offset: Integer =_
-	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
+	var numberOfResult: Integer =_
+	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var numberOfResult: Integer =_
-	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
+	var offset: Integer =_
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 }

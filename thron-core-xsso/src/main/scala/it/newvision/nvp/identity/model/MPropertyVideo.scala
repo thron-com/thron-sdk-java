@@ -21,6 +21,11 @@ import javax.xml.bind.annotation._
 //#SWGNL#The client can have the properties to convert video in MP4 with codec h264 or in MP4 with codec vp6. This is used for single video ingestion published as Progressive Download in WEB Channel""")
 class MPropertyVideo extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var audioBitRate: Integer  = 96
+	def withaudioBitRate(p:Integer):this.type ={ 	this.audioBitRate = p; 	this }
+
 	/**
 	 * it's the profile identifier. it can be:
 	 * <ul>
@@ -38,14 +43,6 @@ class MPropertyVideo extends Serializable {
 	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	/**
-	 * FLV o MP4 per il multibitrate
-	 */
-	//#SWG#@ApiModelProperty(value = """FLV o MP4 per il multibitrate""" ,required = true)
-	@BeanProperty 
-	var convertTo: String  = "MP4"
-	def withconvertTo(p:String):this.type ={ 	this.convertTo = p; 	this }
-
-	/**
 	 * vp6, h264
 	 */
 	//#SWG#@ApiModelProperty(value = """vp6, h264""" ,required = true)
@@ -54,22 +51,17 @@ class MPropertyVideo extends Serializable {
 	def withcodec(p:String):this.type ={ 	this.codec = p; 	this }
 
 	/**
-	 * converti il video al bitrate approssimato più simile a videoBitrate
+	 * FLV o MP4 per il multibitrate
 	 */
-	//#SWG#@ApiModelProperty(value = """converti il video al bitrate approssimato più simile a videoBitrate""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """FLV o MP4 per il multibitrate""" ,required = true)
 	@BeanProperty 
-	var videoBitRate: Integer  = 700
-	def withvideoBitRate(p:Integer):this.type ={ 	this.videoBitRate = p; 	this }
+	var convertTo: String  = "MP4"
+	def withconvertTo(p:String):this.type ={ 	this.convertTo = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var audioBitRate: Integer  = 96
-	def withaudioBitRate(p:Integer):this.type ={ 	this.audioBitRate = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var totalBitRate: Integer  = 800
-	def withtotalBitRate(p:Integer):this.type ={ 	this.totalBitRate = p; 	this }
+	var defaultThumbnailFormat: String  = "L"
+	def withdefaultThumbnailFormat(p:String):this.type ={ 	this.defaultThumbnailFormat = p; 	this }
 
 	/**
 	 * the audio hertz rates
@@ -86,8 +78,16 @@ class MPropertyVideo extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var defaultThumbnailFormat: String  = "L"
-	def withdefaultThumbnailFormat(p:String):this.type ={ 	this.defaultThumbnailFormat = p; 	this }
+	var totalBitRate: Integer  = 800
+	def withtotalBitRate(p:Integer):this.type ={ 	this.totalBitRate = p; 	this }
+
+	/**
+	 * converti il video al bitrate approssimato più simile a videoBitrate
+	 */
+	//#SWG#@ApiModelProperty(value = """converti il video al bitrate approssimato più simile a videoBitrate""" ,required = true)
+	@BeanProperty 
+	var videoBitRate: Integer  = 700
+	def withvideoBitRate(p:Integer):this.type ={ 	this.videoBitRate = p; 	this }
 
 	/**
 	 * @return void

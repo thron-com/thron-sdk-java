@@ -4,6 +4,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import it.newvision.nvp.xadmin.services.model.content.MSourceRawOpt
 
 /* ************************
 *  GENERATED CLASS
@@ -14,35 +15,15 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MVersion extends Serializable {
 
-	/**
-	 * The version Id
-	 */
-	//#SWG#@ApiModelProperty(value = """The version Id""" ,required = true)
-	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = true
 	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
-	/**
-	 * external reference
-	 */
-	//#SWG#@ApiModelProperty(value = """external reference""")
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var ref: MRef =_
-	def withref(p:MRef):this.type ={ 	this.ref = p; 	this }
-
-	/**
-	 * Optional. Used to describe the version (available only for users with MODIFY
-	 * Acl on the Content)
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Used to describe the version (available only for users with MODIFY Acl on the Content)""")
-	@BeanProperty 
-	var note: MVersionNote =_
-	def withnote(p:MVersionNote):this.type ={ 	this.note = p; 	this }
+	var body: MSourceRawOpt =_
+	def withbody(p:MSourceRawOpt):this.type ={ 	this.body = p; 	this }
 
 	/**
 	 * userId of the owner or engineId
@@ -61,6 +42,14 @@ class MVersion extends Serializable {
 	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
 	/**
+	 * The version Id
+	 */
+	//#SWG#@ApiModelProperty(value = """The version Id""" ,required = true)
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
+	/**
 	 * userId of the owner or engineId
 	 */
 	//#SWG#@ApiModelProperty(value = """""")
@@ -75,5 +64,22 @@ class MVersion extends Serializable {
 	@BeanProperty 
 	var modifiedDate: Date =_
 	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
+
+	/**
+	 * Optional. Used to describe the version (available only for users with MODIFY
+	 * Acl on the Content)
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Used to describe the version (available only for users with MODIFY Acl on the Content)""")
+	@BeanProperty 
+	var note: MVersionNote =_
+	def withnote(p:MVersionNote):this.type ={ 	this.note = p; 	this }
+
+	/**
+	 * external reference
+	 */
+	//#SWG#@ApiModelProperty(value = """external reference""")
+	@BeanProperty 
+	var ref: MRef =_
+	def withref(p:MRef):this.type ={ 	this.ref = p; 	this }
 
 }

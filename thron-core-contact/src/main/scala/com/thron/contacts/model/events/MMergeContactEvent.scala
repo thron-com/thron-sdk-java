@@ -27,6 +27,11 @@ import com.thron.contacts.service.model.contact.MContactDetail
 //#SWGNL#</ul>""")
 class MMergeContactEvent extends MContactEvent with Serializable  {
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var oldContact: MContactDetail =_
+	def witholdContact(p:MContactDetail):this.type ={ 	this.oldContact = p; 	this }
+
 	/**
 	 * source contact id (contact to remove)
 	 */
@@ -34,10 +39,5 @@ class MMergeContactEvent extends MContactEvent with Serializable  {
 	@BeanProperty 
 	var oldId: String =_
 	def witholdId(p:String):this.type ={ 	this.oldId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var oldContact: MContactDetail =_
-	def witholdContact(p:MContactDetail):this.type ={ 	this.oldContact = p; 	this }
 
 }

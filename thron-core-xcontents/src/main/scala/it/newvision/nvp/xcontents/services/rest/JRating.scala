@@ -4,11 +4,11 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
-import it.newvision.nvp.xcontents.services.model.rating.MResponseRating
-import it.newvision.nvp.xcontents.services.model.request.MRatinginsertRatingReq
-import it.newvision.nvp.xcontents.services.model.rating.MResponseGetContentScore
 import it.newvision.nvp.xcontents.services.model.rating.MResponseGetRatingByProperties
 import it.newvision.nvp.xcontents.services.model.request.MRatingfindRatingByPropertiesReq
+import it.newvision.nvp.xcontents.services.model.rating.MResponseGetContentScore
+import it.newvision.nvp.xcontents.services.model.rating.MResponseRating
+import it.newvision.nvp.xcontents.services.model.request.MRatinginsertRatingReq
 import it.newvision.nvp.xcontents.services.model.request.MRatingremoveRatingsReq
 
 /* ************************
@@ -35,60 +35,59 @@ trait JRating extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Deprecated
 	 * @param tokenId : String
-	 * @param param : MRatinginsertRatingReq
-	 * @return MResponseRating
+	 * @param param : MRatingfindRatingByPropertiesReq
+	 * @return MResponseGetRatingByProperties
 	*/
 	@POST
-	@Path("/insertRating")
+	@Path("/findRatingByProperties")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/insertRating", notes = """Deprecated""", response = classOf[MResponseRating])
+	//#SWG#@ApiOperation(value = "/findRatingByProperties", notes = """""", response = classOf[MResponseGetRatingByProperties])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def insertRating(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def findRatingByProperties(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			param: MRatinginsertRatingReq):Response /*returnType = MResponseRating*/ = {
+			param: MRatingfindRatingByPropertiesReq):Response /*returnType = MResponseGetRatingByProperties*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__insertRating(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_insertRating)    
+			val resp = this.__findRatingByProperties(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_findRatingByProperties)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_insertRating)
+	        throw new WebApplicationException(e,this.capability_findRatingByProperties)
 	    }
 	} 
 
 	@GET
-	@Path("/insertRating")
+	@Path("/findRatingByProperties")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def insertRating_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def findRatingByProperties_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseRating*/ = { 
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseGetRatingByProperties*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("insertRating",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("findRatingByProperties",this._getCacheControl) 
 		try{
-			val resp = this.__insertRating(
+			val resp = this.__findRatingByProperties(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MRatinginsertRatingReq](param_q)	
+			,PRestHelper.bindRequest[MRatingfindRatingByPropertiesReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_insertRating)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findRatingByProperties)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_insertRating)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_findRatingByProperties)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __insertRating(tokenId: String, param: MRatinginsertRatingReq) :MResponseRating
+	 protected def __findRatingByProperties(tokenId: String, param: MRatingfindRatingByPropertiesReq) :MResponseGetRatingByProperties
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_insertRating: String
+	protected def capability_findRatingByProperties: String
 
 	/**
 	 * Return the "score" of a specific content. The content score is the average of the total sum of
@@ -157,59 +156,60 @@ trait JRating extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_getContentScore: String
 
 	/**
+	 * Deprecated
 	 * @param tokenId : String
-	 * @param param : MRatingfindRatingByPropertiesReq
-	 * @return MResponseGetRatingByProperties
+	 * @param param : MRatinginsertRatingReq
+	 * @return MResponseRating
 	*/
 	@POST
-	@Path("/findRatingByProperties")
+	@Path("/insertRating")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/findRatingByProperties", notes = """""", response = classOf[MResponseGetRatingByProperties])
+	//#SWG#@ApiOperation(value = "/insertRating", notes = """Deprecated""", response = classOf[MResponseRating])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def findRatingByProperties(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def insertRating(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			param: MRatingfindRatingByPropertiesReq):Response /*returnType = MResponseGetRatingByProperties*/ = {
+			param: MRatinginsertRatingReq):Response /*returnType = MResponseRating*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__findRatingByProperties(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_findRatingByProperties)    
+			val resp = this.__insertRating(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_insertRating)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_findRatingByProperties)
+	        throw new WebApplicationException(e,this.capability_insertRating)
 	    }
 	} 
 
 	@GET
-	@Path("/findRatingByProperties")
+	@Path("/insertRating")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def findRatingByProperties_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def insertRating_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseGetRatingByProperties*/ = { 
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseRating*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("findRatingByProperties",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("insertRating",this._getCacheControl) 
 		try{
-			val resp = this.__findRatingByProperties(
+			val resp = this.__insertRating(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MRatingfindRatingByPropertiesReq](param_q)	
+			,PRestHelper.bindRequest[MRatinginsertRatingReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findRatingByProperties)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_insertRating)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_findRatingByProperties)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_insertRating)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __findRatingByProperties(tokenId: String, param: MRatingfindRatingByPropertiesReq) :MResponseGetRatingByProperties
+	 protected def __insertRating(tokenId: String, param: MRatinginsertRatingReq) :MResponseRating
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_findRatingByProperties: String
+	protected def capability_insertRating: String
 
 	/**
 	 * Remote all ratings for a given contentId using the specified search criteria. It's possible to

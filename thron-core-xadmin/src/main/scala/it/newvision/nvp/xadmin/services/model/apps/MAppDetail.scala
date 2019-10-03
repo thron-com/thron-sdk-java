@@ -24,19 +24,19 @@ class MAppDetail extends MApp with Serializable  {
 	def withappUserDetail(p:MAppUserDetail):this.type ={ 	this.appUserDetail = p; 	this }
 
 	/**
-	 * all app user managers and owner.
-	 */
-	//#SWG#@ApiModelProperty(value = """all app user managers and owner.""")
-	@BeanProperty 
-	var otherUsersDetail: List[MAppUserDetail] = new ArrayList[MAppUserDetail]
-	def withotherUsersDetail(p:List[MAppUserDetail]):this.type ={ 	this.otherUsersDetail = p; 	this }
-
-	/**
 	 * all app group managers.
 	 */
 	//#SWG#@ApiModelProperty(value = """all app group managers.""")
 	@BeanProperty 
 	var groupsDetail: List[MAppGroupDetail] = new ArrayList[MAppGroupDetail]
 	def withgroupsDetail(p:List[MAppGroupDetail]):this.type ={ 	this.groupsDetail = p; 	this }
+
+	/**
+	 * all app user managers and owner.
+	 */
+	//#SWG#@ApiModelProperty(value = """all app user managers and owner.""")
+	@BeanProperty 
+	var otherUsersDetail: List[MAppUserDetail] = new ArrayList[MAppUserDetail]
+	def withotherUsersDetail(p:List[MAppUserDetail]):this.type ={ 	this.otherUsersDetail = p; 	this }
 
 }

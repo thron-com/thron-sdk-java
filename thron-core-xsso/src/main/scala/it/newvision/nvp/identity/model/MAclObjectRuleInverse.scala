@@ -28,20 +28,20 @@ import javax.xml.bind.annotation._
 class MAclObjectRuleInverse extends Serializable {
 
 	/**
-	 * the identifier of the object where the ACL should be applied
-	 */
-	//#SWG#@ApiModelProperty(value = """the identifier of the object where the ACL should be applied""" ,required = true)
-	@BeanProperty 
-	var targetObjId: String =_
-	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
-
-	/**
 	 * the target class
 	 */
 	//#SWG#@ApiModelProperty(value = """the target class""" ,required = true)
 	@BeanProperty 
 	var targetObjClass: MEObjClass =_
 	def withtargetObjClass(p:MEObjClass):this.type ={ 	this.targetObjClass = p; 	this }
+
+	/**
+	 * the identifier of the object where the ACL should be applied
+	 */
+	//#SWG#@ApiModelProperty(value = """the identifier of the object where the ACL should be applied""" ,required = true)
+	@BeanProperty 
+	var targetObjId: String =_
+	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")

@@ -4,12 +4,9 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xcontents.services.model.client.MResponseUpdateClient
-import it.newvision.nvp.xcontents.services.model.request.MClientupdateAuditDurationDaysReq
-import it.newvision.nvp.xcontents.services.model.request.MClientupdateSecureConnectionEnabledReq
-import it.newvision.nvp.xcontents.services.model.request.MClientupdateTrashPropertiesReq
 import it.newvision.nvp.xcontents.services.model.client.MResponseDetailClient
-import it.newvision.nvp.xcontents.services.model.request.MClientupdateTrackingPreferencesReq
+import it.newvision.nvp.xcontents.services.model.client.MResponseClient
+import it.newvision.nvp.xcontents.services.model.request.MClientupdateSecuritySettingsReq
 
 /* ************************
 *  GENERATED CLASS
@@ -34,141 +31,6 @@ object JClientClient {
  * </ul>
  */
 class JClientClient(val resourceEndpoint:String) {
-
-	/**
-	 * Updates audit duration value.
-	 * @param tokenId : String
-	 * @param param : MClientupdateAuditDurationDaysReq
-	 * @return MResponseUpdateClient
-	*/
-	def updateAuditDurationDays(tokenId: String, 
-			param: MClientupdateAuditDurationDaysReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUpdateClient ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JClientClient.client.resource(this.resourceEndpoint)
-			val response : MResponseUpdateClient = if(this.resourceEndpoint == ""){
-			
-				new MResponseUpdateClient()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("client/updateAuditDurationDays")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseUpdateClient],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseUpdateClient])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Updates secure connection enabled value.
-	 * @param tokenId : String
-	 * @param param : MClientupdateSecureConnectionEnabledReq
-	 * @return MResponseUpdateClient
-	*/
-	def updateSecureConnectionEnabled(tokenId: String, 
-			param: MClientupdateSecureConnectionEnabledReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUpdateClient ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JClientClient.client.resource(this.resourceEndpoint)
-			val response : MResponseUpdateClient = if(this.resourceEndpoint == ""){
-			
-				new MResponseUpdateClient()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("client/updateSecureConnectionEnabled")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseUpdateClient],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseUpdateClient])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Updates trash properties value.
-	 * @param tokenId : String
-	 * @param param : MClientupdateTrashPropertiesReq
-	 * @return MResponseUpdateClient
-	*/
-	def updateTrashProperties(tokenId: String, 
-			param: MClientupdateTrashPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUpdateClient ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JClientClient.client.resource(this.resourceEndpoint)
-			val response : MResponseUpdateClient = if(this.resourceEndpoint == ""){
-			
-				new MResponseUpdateClient()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("client/updateTrashProperties")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseUpdateClient],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseUpdateClient])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
 
 	/**
 	 * Returns client properties.
@@ -215,32 +77,31 @@ class JClientClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Updates secure connection enabled value.
 	 * @param tokenId : String
-	 * @param param : MClientupdateTrackingPreferencesReq
-	 * @return MResponseUpdateClient
+	 * @param param : MClientupdateSecuritySettingsReq
+	 * @return MResponseClient
 	*/
-	def updateTrackingPreferences(tokenId: String, 
-			param: MClientupdateTrackingPreferencesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUpdateClient ={
+	def updateSecuritySettings(tokenId: String, 
+			param: MClientupdateSecuritySettingsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClient ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
 			val webResource = JClientClient.client.resource(this.resourceEndpoint)
-			val response : MResponseUpdateClient = if(this.resourceEndpoint == ""){
+			val response : MResponseClient = if(this.resourceEndpoint == ""){
 			
-				new MResponseUpdateClient()
+				new MResponseClient()
 			
 			}else{	
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
-					.path("client/updateTrackingPreferences")
+					.path("client/updateSecuritySettings")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)
 					.header("X-TOKENID",tokenId)
 				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
 			
-				wbuilder.post(classOf[MResponseUpdateClient],param)
+				wbuilder.post(classOf[MResponseClient],param)
 			
 			
 			}
@@ -249,7 +110,7 @@ class JClientClient(val resourceEndpoint:String) {
 			case e : com.sun.jersey.api.client.UniformInterfaceException =>
 				val response = e.getResponse
 				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseUpdateClient])
+				  response.getEntity(classOf[MResponseClient])
 				}
 				else {
 				  throw e

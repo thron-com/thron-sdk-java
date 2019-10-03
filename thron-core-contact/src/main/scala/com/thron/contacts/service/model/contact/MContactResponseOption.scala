@@ -15,27 +15,6 @@ import javax.xml.bind.annotation._
 class MContactResponseOption extends Serializable {
 
 	/**
-	 * return list of itags for each contact
-	 */
-	//#SWG#@ApiModelProperty(value = """return list of itags for each contact""" ,required = true)
-	@BeanProperty 
-	var itags: Boolean  = false
-	def withitags(p:Boolean):this.type ={ 	this.itags = p; 	this }
-
-	/**
-	 * return the key information for each contact
-	 */
-	//#SWG#@ApiModelProperty(value = """return the key information for each contact""" ,required = true)
-	@BeanProperty 
-	var keys: Boolean  = false
-	def withkeys(p:Boolean):this.type ={ 	this.keys = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var oldIds: Boolean  = false
-	def witholdIds(p:Boolean):this.type ={ 	this.oldIds = p; 	this }
-
-	/**
 	 * Whether or not result itags will ignore any combining.
 	 * <b>
 	 * </b><b>Example 1:</b>
@@ -66,5 +45,26 @@ class MContactResponseOption extends Serializable {
 	@BeanProperty 
 	var ignoreITagCombining: Boolean  = false
 	def withignoreITagCombining(p:Boolean):this.type ={ 	this.ignoreITagCombining = p; 	this }
+
+	/**
+	 * return list of itags for each contact
+	 */
+	//#SWG#@ApiModelProperty(value = """return list of itags for each contact""" ,required = true)
+	@BeanProperty 
+	var itags: Boolean  = false
+	def withitags(p:Boolean):this.type ={ 	this.itags = p; 	this }
+
+	/**
+	 * return the key information for each contact
+	 */
+	//#SWG#@ApiModelProperty(value = """return the key information for each contact""" ,required = true)
+	@BeanProperty 
+	var keys: Boolean  = false
+	def withkeys(p:Boolean):this.type ={ 	this.keys = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var oldIds: Boolean  = false
+	def witholdIds(p:Boolean):this.type ={ 	this.oldIds = p; 	this }
 
 }

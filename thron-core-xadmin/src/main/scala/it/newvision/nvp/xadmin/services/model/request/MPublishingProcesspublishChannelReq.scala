@@ -19,6 +19,11 @@ class MPublishingProcesspublishChannelReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
+	var channel: String =_
+	def withchannel(p:String):this.type ={ 	this.channel = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
@@ -37,10 +42,5 @@ class MPublishingProcesspublishChannelReq extends Serializable {
 	@BeanProperty
 	var xcontentId: String =_
 	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var channel: String =_
-	def withchannel(p:String):this.type ={ 	this.channel = p; 	this }
 
 }

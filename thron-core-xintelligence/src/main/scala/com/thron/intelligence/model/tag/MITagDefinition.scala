@@ -4,9 +4,9 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import com.thron.intelligence.model.MSourceIdentifier
 import com.thron.intelligence.model.MExternalIdDetail
 import com.thron.intelligence.model.MLocalization
-import com.thron.intelligence.model.MSourceIdentifier
 
 /* ************************
 *  GENERATED CLASS
@@ -41,19 +41,6 @@ import com.thron.intelligence.model.MSourceIdentifier
 //#SWGNL#</ul>""")
 class MITagDefinition extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
-	/**
-	 * The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy
-	 */
-	//#SWG#@ApiModelProperty(value = """The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy""")
-	@BeanProperty 
-	var parentId: String =_
-	def withparentId(p:String):this.type ={ 	this.parentId = p; 	this }
-
 	/**
 	 * ordered list of ancestors ITagDefinition Ids. It's used to quickly create the
 	 * TagDefinition tree structure. The list of tagdefinition follow the
@@ -82,12 +69,85 @@ class MITagDefinition extends Serializable {
 	def withancestorIds(p:List[String]):this.type ={ 	this.ancestorIds = p; 	this }
 
 	/**
+	 * Deprecated.
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated.""")
+	@BeanProperty 
+	@Deprecated
+	var approved: Boolean =_
+	@Deprecated
+	def withapproved(p:Boolean):this.type ={ 	this.approved = p; 	this }
+
+	/**
+	 * Used to split the tagdefinition in two macro categories (categorized and
+	 * uncategorized tags). Usually the semantic engines creates new tagDefinition
+	 * with the categorized attribute to false.
+	 */
+	//#SWG#@ApiModelProperty(value = """Used to split the tagdefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new tagDefinition with the categorized attribute to false.""" ,required = true)
+	@BeanProperty 
+	var categorized: Boolean  = true
+	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
+
+	/**
+	 * userId of the owner or engineId
+	 */
+	//#SWG#@ApiModelProperty(value = """userId of the owner or engineId""")
+	@BeanProperty 
+	var createdBy: MSourceIdentifier =_
+	def withcreatedBy(p:MSourceIdentifier):this.type ={ 	this.createdBy = p; 	this }
+
+	/**
+	 * Optional. The creation date of the Tag
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the Tag""")
+	@BeanProperty 
+	var createdDate: Date  = new Date()
+	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
+
+	/**
 	 * the list of externalIds
 	 */
 	//#SWG#@ApiModelProperty(value = """the list of externalIds""")
 	@BeanProperty 
 	var externalIds: List[MExternalIdDetail] = new ArrayList[MExternalIdDetail]
 	def withexternalIds(p:List[MExternalIdDetail]):this.type ={ 	this.externalIds = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
+	/**
+	 * list of all combined/merged ITagDefinition ids.
+	 */
+	//#SWG#@ApiModelProperty(value = """list of all combined/merged ITagDefinition ids.""")
+	@BeanProperty 
+	var joinedIds: List[MJoinedId] = new ArrayList[MJoinedId]
+	def withjoinedIds(p:List[MJoinedId]):this.type ={ 	this.joinedIds = p; 	this }
+
+	/**
+	 * Last time this Tag was modified by anyone.
+	 */
+	//#SWG#@ApiModelProperty(value = """Last time this Tag was modified by anyone.""")
+	@BeanProperty 
+	var modifiedDate: Date =_
+	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
+
+	/**
+	 * label and description values for the itagDefinition in multilocale
+	 */
+	//#SWG#@ApiModelProperty(value = """label and description values for the itagDefinition in multilocale""")
+	@BeanProperty 
+	var names: List[MLocalization] = new ArrayList[MLocalization]
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
+
+	/**
+	 * The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy
+	 */
+	//#SWG#@ApiModelProperty(value = """The identifier (Tag.id) of the parent Tag. It's used to create a Tag hierarchy""")
+	@BeanProperty 
+	var parentId: String =_
+	def withparentId(p:String):this.type ={ 	this.parentId = p; 	this }
 
 	/**
 	 * prettyId for the itagDefinition
@@ -116,64 +176,15 @@ class MITagDefinition extends Serializable {
 	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
 	/**
-	 * list of all combined/merged ITagDefinition ids.
-	 */
-	//#SWG#@ApiModelProperty(value = """list of all combined/merged ITagDefinition ids.""")
-	@BeanProperty 
-	var joinedIds: List[MJoinedId] = new ArrayList[MJoinedId]
-	def withjoinedIds(p:List[MJoinedId]):this.type ={ 	this.joinedIds = p; 	this }
-
-	/**
-	 * label and description values for the itagDefinition in multilocale
-	 */
-	//#SWG#@ApiModelProperty(value = """label and description values for the itagDefinition in multilocale""")
-	@BeanProperty 
-	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
-
-	/**
-	 * userId of the owner or engineId
-	 */
-	//#SWG#@ApiModelProperty(value = """userId of the owner or engineId""")
-	@BeanProperty 
-	var createdBy: MSourceIdentifier =_
-	def withcreatedBy(p:MSourceIdentifier):this.type ={ 	this.createdBy = p; 	this }
-
-	/**
-	 * Optional. The creation date of the Tag
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the Tag""")
-	@BeanProperty 
-	var createdDate: Date  = new Date()
-	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
-
-	/**
-	 * Last time this Tag was modified by anyone.
-	 */
-	//#SWG#@ApiModelProperty(value = """Last time this Tag was modified by anyone.""")
-	@BeanProperty 
-	var modifiedDate: Date =_
-	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
-
-	/**
-	 * Deprecated.
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated.""")
-	@BeanProperty 
-	@Deprecated
-	var approved: Boolean =_
-	@Deprecated
-	def withapproved(p:Boolean):this.type ={ 	this.approved = p; 	this }
-
-	/**
-	 * Used to split the tagdefinition in two macro categories (categorized and
-	 * uncategorized tags). Usually the semantic engines creates new tagDefinition
-	 * with the categorized attribute to false.
-	 */
-	//#SWG#@ApiModelProperty(value = """Used to split the tagdefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new tagDefinition with the categorized attribute to false.""" ,required = true)
-	@BeanProperty 
-	var categorized: Boolean  = true
-	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
+	 * @return List[String]
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def allIds():List[String] ={
+		import scala.collection.JavaConversions._
+		(this.joinedIds.map(_.id) ++ this.externalIds.map(_.getExtId()) ++ scala.List(this.prettyId, this.id)).filter(_ != null)
+	
+	}
 
 	/**
 	 * @return Boolean
@@ -184,17 +195,6 @@ class MITagDefinition extends Serializable {
 		import org.apache.commons.lang.StringUtils
 		    StringUtils.isNotBlank(id) &&
 		      StringUtils.isNotBlank(prettyId) 
-	}
-
-	/**
-	 * @return List[String]
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def allIds():List[String] ={
-		import scala.collection.JavaConversions._
-		(this.joinedIds.map(_.id) ++ this.externalIds.map(_.getExtId()) ++ scala.List(this.prettyId, this.id)).filter(_ != null)
-	
 	}
 
 }

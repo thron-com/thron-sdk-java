@@ -14,6 +14,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MInternetCall extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var inumber: String =_
+	def withinumber(p:String):this.type ={ 	this.inumber = p; 	this }
+
 	/**
 	 * HOME/WORK/...
 	 */
@@ -21,10 +26,5 @@ class MInternetCall extends Serializable {
 	@BeanProperty 
 	var inumberCategory: String =_
 	def withinumberCategory(p:String):this.type ={ 	this.inumberCategory = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var inumber: String =_
-	def withinumber(p:String):this.type ={ 	this.inumber = p; 	this }
 
 }

@@ -40,5 +40,7 @@ public enum MEAppsResponse {
 	//#SWG#@ApiModelProperty(value = """if the user has not the right permission to access the app category""")
 	@XmlEnumValue("INVALID_CATEGORY") INVALID_CATEGORY,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("KEY_NOT_FOUND") KEY_NOT_FOUND
+	@XmlEnumValue("KEY_NOT_FOUND") KEY_NOT_FOUND,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("OPERATION_LOCKED") OPERATION_LOCKED
 }

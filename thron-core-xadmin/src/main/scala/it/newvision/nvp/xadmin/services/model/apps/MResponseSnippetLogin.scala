@@ -15,11 +15,6 @@ import it.newvision.nvp.xadmin.model.MSnippet
 //#SWG#@ApiModel(description = """""")
 class MResponseSnippetLogin extends MResponseApp with Serializable  {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var snippet: MSnippet =_
-	def withsnippet(p:MSnippet):this.type ={ 	this.snippet = p; 	this }
-
 	/**
 	 * the identifier of the linked App
 	 */
@@ -45,5 +40,10 @@ class MResponseSnippetLogin extends MResponseApp with Serializable  {
 	@BeanProperty 
 	var rootCategoryId: String =_
 	def withrootCategoryId(p:String):this.type ={ 	this.rootCategoryId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var snippet: MSnippet =_
+	def withsnippet(p:MSnippet):this.type ={ 	this.snippet = p; 	this }
 
 }

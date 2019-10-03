@@ -4,10 +4,10 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xcontents.services.model.acl.MResponseAclInverseList
-import it.newvision.nvp.xcontents.services.model.request.MAclInverseRuleslistReq
 import it.newvision.nvp.xcontents.services.model.acl.MResponseAclInverseUpdate
 import it.newvision.nvp.xcontents.services.model.request.MAclInverseRulesinsertReq
+import it.newvision.nvp.xcontents.services.model.acl.MResponseAclInverseList
+import it.newvision.nvp.xcontents.services.model.request.MAclInverseRuleslistReq
 import it.newvision.nvp.xcontents.services.model.request.MAclInverseRulesremoveReq
 import it.newvision.nvp.xcontents.services.model.acl.MResponseAclInverseVerify
 import it.newvision.nvp.xcontents.services.model.request.MAclInverseRulesverifyReq
@@ -35,60 +35,6 @@ object JAclInverseRulesClient {
  * </ul>
  */
 class JAclInverseRulesClient(val resourceEndpoint:String) {
-
-	/**
-	 * return the acl information for a given target object and class.
-	 * The service return a list of AclRuleInfo where is present the displayName of the target Object to
-	 * avoid any lookup.
-	 * 
-	 * The service can be invoked by users with SHARED_BY/MODIFIED_BY acl on the target object.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param targetObjId : String
-	 * @param param : MAclInverseRuleslistReq
-	 * @return MResponseAclInverseList
-	*/
-	def list(tokenId: String, 
-			clientId: String, 
-			targetObjId: String, 
-			param: MAclInverseRuleslistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseAclInverseList ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JAclInverseRulesClient.client.resource(this.resourceEndpoint)
-			val response : MResponseAclInverseList = if(this.resourceEndpoint == ""){
-			
-				new MResponseAclInverseList()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("aclinverserules/list")
-					.path(clientId.toString)
-		.path(targetObjId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseAclInverseList],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseAclInverseList])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
 
 	/**
 	 * Used to add new acl rules (enabled or disabled).
@@ -136,6 +82,60 @@ class JAclInverseRulesClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseAclInverseUpdate])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * return the acl information for a given target object and class.
+	 * The service return a list of AclRuleInfo where is present the displayName of the target Object to
+	 * avoid any lookup.
+	 * 
+	 * The service can be invoked by users with SHARED_BY/MODIFIED_BY acl on the target object.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param targetObjId : String
+	 * @param param : MAclInverseRuleslistReq
+	 * @return MResponseAclInverseList
+	*/
+	def list(tokenId: String, 
+			clientId: String, 
+			targetObjId: String, 
+			param: MAclInverseRuleslistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseAclInverseList ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JAclInverseRulesClient.client.resource(this.resourceEndpoint)
+			val response : MResponseAclInverseList = if(this.resourceEndpoint == ""){
+			
+				new MResponseAclInverseList()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("aclinverserules/list")
+					.path(clientId.toString)
+		.path(targetObjId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseAclInverseList],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseAclInverseList])
 				}
 				else {
 				  throw e

@@ -25,21 +25,6 @@ import javax.xml.bind.annotation._
 //#SWGNL#</ul>""")
 class MVUserFieldsOption extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var returnOwnAcl: Boolean  = false
-	def withreturnOwnAcl(p:Boolean):this.type ={ 	this.returnOwnAcl = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var returnItags: Boolean  = false
-	def withreturnItags(p:Boolean):this.type ={ 	this.returnItags = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var returnImetadata: Boolean  = false
-	def withreturnImetadata(p:Boolean):this.type ={ 	this.returnImetadata = p; 	this }
-
 	/**
 	 * Whether or not result itags will ignore any combining.
 	 * <b>
@@ -71,6 +56,21 @@ class MVUserFieldsOption extends Serializable {
 	@BeanProperty 
 	var ignoreITagCombining: Boolean  = false
 	def withignoreITagCombining(p:Boolean):this.type ={ 	this.ignoreITagCombining = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var returnImetadata: Boolean  = false
+	def withreturnImetadata(p:Boolean):this.type ={ 	this.returnImetadata = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var returnItags: Boolean  = false
+	def withreturnItags(p:Boolean):this.type ={ 	this.returnItags = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var returnOwnAcl: Boolean  = false
+	def withreturnOwnAcl(p:Boolean):this.type ={ 	this.returnOwnAcl = p; 	this }
 
 	/**
 	 * if true, totalResults will be calculated and included in the response; if false,

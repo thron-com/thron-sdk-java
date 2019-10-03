@@ -32,51 +32,6 @@ object JVisitsClient {
 class JVisitsClient(val resourceEndpoint:String) {
 
 	/**
-	 * reset the visit counter for a specific content
-	 * @param tokenId : String
-	 * @param param : MVisitsresetVisitCounterReq
-	 * @return MResponseVisits
-	*/
-	def resetVisitCounter(tokenId: String, 
-			param: MVisitsresetVisitCounterReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVisits ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVisitsClient.client.resource(this.resourceEndpoint)
-			val response : MResponseVisits = if(this.resourceEndpoint == ""){
-			
-				new MResponseVisits()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("visits/resetVisitCounter")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseVisits],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVisits])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * This function increment the Content View counter, and is used to register the number of visits for
 	 * of a content.
 	 * Authentication token is not required (X-TOKENID).
@@ -129,6 +84,51 @@ class JVisitsClient(val resourceEndpoint:String) {
 				  throw e
 				}
 		  }
+	
+	}
+
+	/**
+	 * reset the visit counter for a specific content
+	 * @param tokenId : String
+	 * @param param : MVisitsresetVisitCounterReq
+	 * @return MResponseVisits
+	*/
+	def resetVisitCounter(tokenId: String, 
+			param: MVisitsresetVisitCounterReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVisits ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JVisitsClient.client.resource(this.resourceEndpoint)
+			val response : MResponseVisits = if(this.resourceEndpoint == ""){
+			
+				new MResponseVisits()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("visits/resetVisitCounter")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseVisits],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseVisits])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
 	
 	}
 

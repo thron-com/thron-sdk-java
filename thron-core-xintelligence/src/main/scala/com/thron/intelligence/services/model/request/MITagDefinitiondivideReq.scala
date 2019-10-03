@@ -18,19 +18,19 @@ import javax.xml.bind.annotation._
 class MITagDefinitiondivideReq extends Serializable {
 
 	/**
-	 * Target ITagdefinition id, prettyId or externalId
-	 */
-	//#SWG#@ApiModelProperty(value = """Target ITagdefinition id, prettyId or externalId""", required = true)
-	@BeanProperty
-	var targetId: String =_
-	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }
-
-	/**
 	 * ITagdefinition id, prettyId or externalId to divide
 	 */
 	//#SWG#@ApiModelProperty(value = """ITagdefinition id, prettyId or externalId to divide""", required = true)
 	@BeanProperty
 	var combinedId: String =_
 	def withcombinedId(p:String):this.type ={ 	this.combinedId = p; 	this }
+
+	/**
+	 * Target ITagdefinition id, prettyId or externalId
+	 */
+	//#SWG#@ApiModelProperty(value = """Target ITagdefinition id, prettyId or externalId""", required = true)
+	@BeanProperty
+	var targetId: String =_
+	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }
 
 }

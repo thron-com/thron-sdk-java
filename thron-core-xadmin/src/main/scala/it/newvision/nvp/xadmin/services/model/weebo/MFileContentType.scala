@@ -20,14 +20,6 @@ import it.newvision.nvp.xadmin.model.MEContentType
 class MFileContentType extends Serializable {
 
 	/**
-	 * filename with extension (example myimage.jpg)
-	 */
-	//#SWG#@ApiModelProperty(value = """filename with extension (example myimage.jpg)""" ,required = true)
-	@BeanProperty 
-	var fileName: String =_
-	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
-
-	/**
 	 * The list of possible contentType the specific fileName can be published in
 	 * platform. 
 	 */
@@ -35,5 +27,13 @@ class MFileContentType extends Serializable {
 	@BeanProperty 
 	var contentType: List[MEContentType] = new ArrayList[MEContentType]
 	def withcontentType(p:List[MEContentType]):this.type ={ 	this.contentType = p; 	this }
+
+	/**
+	 * filename with extension (example myimage.jpg)
+	 */
+	//#SWG#@ApiModelProperty(value = """filename with extension (example myimage.jpg)""" ,required = true)
+	@BeanProperty 
+	var fileName: String =_
+	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
 
 }

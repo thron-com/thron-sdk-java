@@ -14,14 +14,14 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MResponseGetQuotaUsage extends MResponseDashboard with Serializable  {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var users: List[MUserQuota] = new ArrayList[MUserQuota]
-	def withusers(p:List[MUserQuota]):this.type ={ 	this.users = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer =_
 	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var users: List[MUserQuota] = new ArrayList[MUserQuota]
+	def withusers(p:List[MUserQuota]):this.type ={ 	this.users = p; 	this }
 
 }

@@ -12,7 +12,10 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 //#SWG#@ApiModel(description = """""")
 public enum MECategoryType {
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * DEPRECATED
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
 	@XmlEnumValue("PRIVATE") PRIVATE,
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("PUBLIC") PUBLIC,

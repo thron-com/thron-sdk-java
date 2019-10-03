@@ -23,12 +23,12 @@ class MPlaylistmoveContentInListReq extends Serializable {
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
-	 * the playlist xcontentId
+	 * the new position in the playlist
 	 */
-	//#SWG#@ApiModelProperty(value = """the playlist xcontentId""", required = true)
+	//#SWG#@ApiModelProperty(value = """the new position in the playlist""", required = true)
 	@BeanProperty
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
+	var newContentPosition: Integer =_
+	def withnewContentPosition(p:Integer):this.type ={ 	this.newContentPosition = p; 	this }
 
 	/**
 	 * the content position in the playlist
@@ -39,11 +39,11 @@ class MPlaylistmoveContentInListReq extends Serializable {
 	def witholdContentPosition(p:Integer):this.type ={ 	this.oldContentPosition = p; 	this }
 
 	/**
-	 * the new position in the playlist
+	 * the playlist xcontentId
 	 */
-	//#SWG#@ApiModelProperty(value = """the new position in the playlist""", required = true)
+	//#SWG#@ApiModelProperty(value = """the playlist xcontentId""", required = true)
 	@BeanProperty
-	var newContentPosition: Integer =_
-	def withnewContentPosition(p:Integer):this.type ={ 	this.newContentPosition = p; 	this }
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 }

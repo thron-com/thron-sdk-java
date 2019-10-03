@@ -16,12 +16,12 @@ class MResponseUpdatedContacts extends MResponseSync with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var nextPage: String =_
-	def withnextPage(p:String):this.type ={ 	this.nextPage = p; 	this }
+	var items: List[MUpdatedContactsResult] = new ArrayList[MUpdatedContactsResult]
+	def withitems(p:List[MUpdatedContactsResult]):this.type ={ 	this.items = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var items: List[MUpdatedContactsResult] = new ArrayList[MUpdatedContactsResult]
-	def withitems(p:List[MUpdatedContactsResult]):this.type ={ 	this.items = p; 	this }
+	var nextPage: String =_
+	def withnextPage(p:String):this.type ={ 	this.nextPage = p; 	this }
 
 }

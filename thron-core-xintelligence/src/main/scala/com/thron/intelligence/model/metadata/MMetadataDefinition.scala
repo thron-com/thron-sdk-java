@@ -4,8 +4,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import com.thron.intelligence.model.MLocalization
 import com.thron.intelligence.model.MSourceIdentifier
+import com.thron.intelligence.model.MLocalization
 
 /* ************************
 *  GENERATED CLASS
@@ -50,8 +50,24 @@ class MMetadataDefinition extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var removed: Boolean  = false
-	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
+	var constraints: MMetadataDefinitionConstraints  = new MMetadataDefinitionConstraints
+	def withconstraints(p:MMetadataDefinitionConstraints):this.type ={ 	this.constraints = p; 	this }
+
+	/**
+	 * userId of the owner or engineId
+	 */
+	//#SWG#@ApiModelProperty(value = """userId of the owner or engineId""" ,required = true)
+	@BeanProperty 
+	var createdBy: MSourceIdentifier =_
+	def withcreatedBy(p:MSourceIdentifier):this.type ={ 	this.createdBy = p; 	this }
+
+	/**
+	 * Optional. The creation date of the category
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the category""")
+	@BeanProperty 
+	var createdDate: Date  = new Date()
+	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
 	/**
 	 * the identifier 
@@ -85,6 +101,16 @@ class MMetadataDefinition extends Serializable {
 	var key: String =_
 	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var metadataType: MEMetadataDefinitionDataType =_
+	def withmetadataType(p:MEMetadataDefinitionDataType):this.type ={ 	this.metadataType = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var modifiedDate: Date =_
+	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
+
 	/**
 	 * label values for the metadata definition in multi locale
 	 */
@@ -110,31 +136,15 @@ class MMetadataDefinition extends Serializable {
 	var note: String =_
 	def withnote(p:String):this.type ={ 	this.note = p; 	this }
 
-	/**
-	 * userId of the owner or engineId
-	 */
-	//#SWG#@ApiModelProperty(value = """userId of the owner or engineId""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var createdBy: MSourceIdentifier =_
-	def withcreatedBy(p:MSourceIdentifier):this.type ={ 	this.createdBy = p; 	this }
+	var options: MMetadataDefinitionOptions  = new MMetadataDefinitionOptions
+	def withoptions(p:MMetadataDefinitionOptions):this.type ={ 	this.options = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var metadataType: MEMetadataDefinitionDataType =_
-	def withmetadataType(p:MEMetadataDefinitionDataType):this.type ={ 	this.metadataType = p; 	this }
-
-	/**
-	 * Optional. The creation date of the category
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the category""")
-	@BeanProperty 
-	var createdDate: Date  = new Date()
-	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var modifiedDate: Date =_
-	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
+	var removed: Boolean  = false
+	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
 
 	/**
 	 * Used to identify metadata can be displayed to users.
@@ -146,25 +156,6 @@ class MMetadataDefinition extends Serializable {
 	@BeanProperty 
 	var visible: Boolean  = true
 	def withvisible(p:Boolean):this.type ={ 	this.visible = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var constraints: MMetadataDefinitionConstraints  = new MMetadataDefinitionConstraints
-	def withconstraints(p:MMetadataDefinitionConstraints):this.type ={ 	this.constraints = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var options: MMetadataDefinitionOptions  = new MMetadataDefinitionOptions
-	def withoptions(p:MMetadataDefinitionOptions):this.type ={ 	this.options = p; 	this }
-
-	/**
-	 * @return Boolean
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def isValid():Boolean ={
-		true
-	}
 
 	/**
 	 * @return MMetadataDefinitionGenericConstraint
@@ -210,6 +201,15 @@ class MMetadataDefinition extends Serializable {
 		} catch {
 			case e: Exception => null
 		}
+	}
+
+	/**
+	 * @return Boolean
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def isValid():Boolean ={
+		true
 	}
 
 }

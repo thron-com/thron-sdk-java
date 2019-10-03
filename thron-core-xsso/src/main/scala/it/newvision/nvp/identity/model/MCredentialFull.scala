@@ -14,6 +14,29 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MCredentialFull extends MCredential with Serializable  {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var lastLogin: Date =_
+	def withlastLogin(p:Date):this.type ={ 	this.lastLogin = p; 	this }
+
+	/**
+	 * Constraints for the password attribute:
+	 * -) max length = 100
+	 */
+	//#SWG#@ApiModelProperty(value = """Constraints for the password attribute:
+	//#SWGNL#-) max length = 100""" ,required = true)
+	@BeanProperty 
+	var password: String =_
+	def withpassword(p:String):this.type ={ 	this.password = p; 	this }
+
+	/**
+	 * Optional. The last time password has been changed
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. The last time password has been changed""")
+	@BeanProperty 
+	var passwordUpdate: Date =_
+	def withpasswordUpdate(p:Date):this.type ={ 	this.passwordUpdate = p; 	this }
+
 	/**
 	 * unique identifier of the user for a clientId. There could not be two users with
 	 * the same username for the same clientId.
@@ -41,30 +64,30 @@ class MCredentialFull extends MCredential with Serializable  {
 	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 	/**
-	 * Constraints for the password attribute:
-	 * -) max length = 100
-	 */
-	//#SWG#@ApiModelProperty(value = """Constraints for the password attribute:
-	//#SWGNL#-) max length = 100""" ,required = true)
-	@BeanProperty 
-	var password: String =_
-	def withpassword(p:String):this.type ={ 	this.password = p; 	this }
-
-	/**
-	 * Optional. The last time password has been changed
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. The last time password has been changed""")
-	@BeanProperty 
-	var passwordUpdate: Date =_
-	def withpasswordUpdate(p:Date):this.type ={ 	this.passwordUpdate = p; 	this }
-
-	/**
-	 * @return Boolean
+	 * Returns a sanitized username, if possible, else null.
+	 * @return String
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def usernameIsValid():Boolean ={
-		Option(sanitize()).contains(username)
+	def sanitize():String ={
+		import org.apache.commons.lang.StringUtils
+	
+		val sysusernames = Seq("wsadmin","wsclient")
+		val charBlackList = Seq(' ','$','§','\\','/',':','*','?','"','<','>','|','#','&').mkString("")
+	
+		Option(username).filter(StringUtils.isNotBlank)
+		// Normalize all kind of spaces to a single space
+		.map(StringUtils.normalizeSpace)
+		// Remove invalid start chars
+		.map(StringUtils.stripStart(_, "!_"))
+		// Replace bad chars
+		.map(StringUtils.replaceChars(_, charBlackList, "_"))
+		// Ensure max length
+		.map(_.take(50))
+		.map{ u =>
+			// Skip sysuser reserved usernames
+			sysusernames.find(_ == u).fold(u)(_ + "_")
+		}.orNull
 	}
 
 	/**
@@ -105,32 +128,12 @@ class MCredentialFull extends MCredential with Serializable  {
 	}
 
 	/**
-	 * Returns a sanitized username, if possible, else null.
-	 * @return String
+	 * @return Boolean
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def sanitize():String ={
-		import org.apache.commons.lang.StringUtils
-	
-		val sysusernames = Seq("wsadmin","wsclient")
-		val charBlackList = Seq(' ','$','§','\\','/',':','*','?','"','<','>','|','#','&').mkString("")
-	
-		Option(username).filter(StringUtils.isNotBlank)
-		// Normalize all kind of spaces to a single space
-		.map(StringUtils.normalizeSpace)
-		// Remove invalid start chars
-		.map(StringUtils.stripStart(_, "!_"))
-		// Replace bad chars
-		.map(StringUtils.replaceChars(_, charBlackList, "_"))
-		// Ensure max length
-		.map(_.take(50))
-		// Ensure lower-case
-		.map(_.toLowerCase(Locale.ENGLISH))
-		.map{ u =>
-			// Skip sysuser reserved usernames
-			sysusernames.find(_ == u).fold(u)(_ + "_")
-		}.orNull
+	def usernameIsValid():Boolean ={
+		Option(sanitize()).contains(username)
 	}
 
 }

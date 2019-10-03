@@ -5,8 +5,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xcontents.model.MEContentType
-import it.newvision.nvp.xcontents.services.model.content.MITagCriteriaOption
 import it.newvision.nvp.xcontents.services.model.content.MIMetadataKeyCriteriaOption
+import it.newvision.nvp.xcontents.services.model.content.MITagCriteriaOption
 
 /* ************************
 *  GENERATED CLASS
@@ -17,11 +17,6 @@ import it.newvision.nvp.xcontents.services.model.content.MIMetadataKeyCriteriaOp
 //#SWG#@ApiModel(description = """""")
 class MArchiveCriteria extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var linkedCategoryOp: MArchiveCategorySearchOption =_
-	def withlinkedCategoryOp(p:MArchiveCategorySearchOption):this.type ={ 	this.linkedCategoryOp = p; 	this }
-
 	/**
 	 * Filter all contents having contentType in the specified list.
 	 */
@@ -29,25 +24,6 @@ class MArchiveCriteria extends Serializable {
 	@BeanProperty 
 	var contentType: List[MEContentType] = new ArrayList[MEContentType]
 	def withcontentType(p:List[MEContentType]):this.type ={ 	this.contentType = p; 	this }
-
-	/**
-	 * search contents with specific intelligence tags. The list of elements use the
-	 * AND/OR operator.
-	 * 
-	 * Constraints:
-	 * <ul>
-	 * 	<li>max length 5</li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """search contents with specific intelligence tags. The list of elements use the AND/OR operator.
-	//#SWGNL#
-	//#SWGNL#Constraints:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>max length 5</li>
-	//#SWGNL#</ul>""")
-	@BeanProperty 
-	var itagOp: MITagCriteriaOption =_
-	def withitagOp(p:MITagCriteriaOption):this.type ={ 	this.itagOp = p; 	this }
 
 	/**
 	 * Search contents with specific intelligence imetadata key and value (only for
@@ -69,6 +45,30 @@ class MArchiveCriteria extends Serializable {
 	@BeanProperty 
 	var imetadataKeyOp: MIMetadataKeyCriteriaOption =_
 	def withimetadataKeyOp(p:MIMetadataKeyCriteriaOption):this.type ={ 	this.imetadataKeyOp = p; 	this }
+
+	/**
+	 * search contents with specific intelligence tags. The list of elements use the
+	 * AND/OR operator.
+	 * 
+	 * Constraints:
+	 * <ul>
+	 * 	<li>max length 5</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """search contents with specific intelligence tags. The list of elements use the AND/OR operator.
+	//#SWGNL#
+	//#SWGNL#Constraints:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max length 5</li>
+	//#SWGNL#</ul>""")
+	@BeanProperty 
+	var itagOp: MITagCriteriaOption =_
+	def withitagOp(p:MITagCriteriaOption):this.type ={ 	this.itagOp = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var linkedCategoryOp: MArchiveCategorySearchOption =_
+	def withlinkedCategoryOp(p:MArchiveCategorySearchOption):this.type ={ 	this.linkedCategoryOp = p; 	this }
 
 	/**
 	 * <b>Constraints: </b>

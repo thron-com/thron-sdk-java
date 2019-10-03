@@ -16,17 +16,18 @@ import it.newvision.nvp.xcontents.model.MMetadata
 class MPlayerEmbedTemplateVersionValue extends Serializable {
 
 	/**
-	 * Optional. Version notes
+	 * Custom CSS code.
+	 * 
+	 * Base64 String encoded with UTF-8 charset.
+	 * Max size: 1MB
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Version notes""")
+	//#SWG#@ApiModelProperty(value = """Custom CSS code.
+	//#SWGNL#
+	//#SWGNL#Base64 String encoded with UTF-8 charset.
+	//#SWGNL#Max size: 1MB""")
 	@BeanProperty 
-	var note: String =_
-	def withnote(p:String):this.type ={ 	this.note = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var values: List[MMetadata] = new ArrayList[MMetadata]
-	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
+	var css: String =_
+	def withcss(p:String):this.type ={ 	this.css = p; 	this }
 
 	/**
 	 * Custom Javascript code.
@@ -43,18 +44,12 @@ class MPlayerEmbedTemplateVersionValue extends Serializable {
 	def withjs(p:String):this.type ={ 	this.js = p; 	this }
 
 	/**
-	 * Custom CSS code.
-	 * 
-	 * Base64 String encoded with UTF-8 charset.
-	 * Max size: 1MB
+	 * Optional. Version notes
 	 */
-	//#SWG#@ApiModelProperty(value = """Custom CSS code.
-	//#SWGNL#
-	//#SWGNL#Base64 String encoded with UTF-8 charset.
-	//#SWGNL#Max size: 1MB""")
+	//#SWG#@ApiModelProperty(value = """Optional. Version notes""")
 	@BeanProperty 
-	var css: String =_
-	def withcss(p:String):this.type ={ 	this.css = p; 	this }
+	var note: String =_
+	def withnote(p:String):this.type ={ 	this.note = p; 	this }
 
 	/**
 	 * Optional. If missing, template latest version will be used.
@@ -63,5 +58,10 @@ class MPlayerEmbedTemplateVersionValue extends Serializable {
 	@BeanProperty 
 	var platformTemplateVersion: Integer =_
 	def withplatformTemplateVersion(p:Integer):this.type ={ 	this.platformTemplateVersion = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var values: List[MMetadata] = new ArrayList[MMetadata]
+	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
 
 }

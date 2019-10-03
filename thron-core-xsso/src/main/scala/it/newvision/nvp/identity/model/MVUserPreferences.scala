@@ -19,6 +19,26 @@ import javax.xml.bind.annotation._
 class MVUserPreferences extends Serializable {
 
 	/**
+	 * The preferred locale to use in the Console or for notifications.
+	 * Like: IT, EN, FR...
+	 */
+	//#SWG#@ApiModelProperty(value = """The preferred locale to use in the Console or for notifications.
+	//#SWGNL#Like: IT, EN, FR...""")
+	@BeanProperty 
+	var locale: String  = "EN"
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var metadata: List[MMetadata] = new ArrayList[MMetadata]
+	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var notificationProperty: MVUserNotificationProperties  = new MVUserNotificationProperties()
+	def withnotificationProperty(p:MVUserNotificationProperties):this.type ={ 	this.notificationProperty = p; 	this }
+
+	/**
 	 * The preferred timezone for the user.
 	 * GMT[+,-][0..13]
 	 * Example:
@@ -35,25 +55,5 @@ class MVUserPreferences extends Serializable {
 	@BeanProperty 
 	var timeZoneId: String  = "GMT+0"
 	def withtimeZoneId(p:String):this.type ={ 	this.timeZoneId = p; 	this }
-
-	/**
-	 * The preferred locale to use in the Console or for notifications.
-	 * Like: IT, EN, FR...
-	 */
-	//#SWG#@ApiModelProperty(value = """The preferred locale to use in the Console or for notifications.
-	//#SWGNL#Like: IT, EN, FR...""")
-	@BeanProperty 
-	var locale: String  = "EN"
-	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var notificationProperty: MVUserNotificationProperties  = new MVUserNotificationProperties()
-	def withnotificationProperty(p:MVUserNotificationProperties):this.type ={ 	this.notificationProperty = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var metadata: List[MMetadata] = new ArrayList[MMetadata]
-	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
 
 }

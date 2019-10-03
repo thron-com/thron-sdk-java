@@ -20,34 +20,6 @@ import it.newvision.nvp.xcontents.model.MMetadata
 class MDeliveryInfo extends Serializable {
 
 	/**
-	 * channel id: WEB, STREAMHTTPIOS, ....
-	 */
-	//#SWG#@ApiModelProperty(value = """channel id: WEB, STREAMHTTPIOS, ....""" ,required = true)
-	@BeanProperty 
-	var channelType: String =_
-	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
-
-	/**
-	 * DEPRECATED
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
-	@BeanProperty 
-	@Deprecated
-	var thumbsUrl: List[String] = new ArrayList[String]
-	@Deprecated
-	def withthumbsUrl(p:List[String]):this.type ={ 	this.thumbsUrl = p; 	this }
-
-	/**
-	 * DEPRECATED
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
-	@BeanProperty 
-	@Deprecated
-	var defaultThumbUrl: String =_
-	@Deprecated
-	def withdefaultThumbUrl(p:String):this.type ={ 	this.defaultThumbUrl = p; 	this }
-
-	/**
 	 * DEPRECATED
 	 */
 	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
@@ -56,6 +28,14 @@ class MDeliveryInfo extends Serializable {
 	var bestThumbUrl: String =_
 	@Deprecated
 	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
+
+	/**
+	 * channel id: WEB, STREAMHTTPIOS, ....
+	 */
+	//#SWG#@ApiModelProperty(value = """channel id: WEB, STREAMHTTPIOS, ....""" ,required = true)
+	@BeanProperty 
+	var channelType: String =_
+	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -68,6 +48,16 @@ class MDeliveryInfo extends Serializable {
 	def withcontentUrl(p:String):this.type ={ 	this.contentUrl = p; 	this }
 
 	/**
+	 * DEPRECATED
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
+	@BeanProperty 
+	@Deprecated
+	var defaultThumbUrl: String =_
+	@Deprecated
+	def withdefaultThumbUrl(p:String):this.type ={ 	this.defaultThumbUrl = p; 	this }
+
+	/**
 	 * The list of all system metadata stored in xpublisher  channel.sysMetadata. The
 	 * list of srtFiles is saved as Metadata information.
 	 */
@@ -75,5 +65,15 @@ class MDeliveryInfo extends Serializable {
 	@BeanProperty 
 	var sysMetadata: List[MMetadata] = new ArrayList[MMetadata]
 	def withsysMetadata(p:List[MMetadata]):this.type ={ 	this.sysMetadata = p; 	this }
+
+	/**
+	 * DEPRECATED
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED""")
+	@BeanProperty 
+	@Deprecated
+	var thumbsUrl: List[String] = new ArrayList[String]
+	@Deprecated
+	def withthumbsUrl(p:List[String]):this.type ={ 	this.thumbsUrl = p; 	this }
 
 }

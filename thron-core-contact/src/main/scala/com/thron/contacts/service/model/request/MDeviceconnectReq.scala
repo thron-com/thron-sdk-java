@@ -23,6 +23,14 @@ class MDeviceconnectReq extends Serializable {
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
+	/**
+	 * Optional
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
+	@BeanProperty
+	var contactName: String =_
+	def withcontactName(p:String):this.type ={ 	this.contactName = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var deviceId: String =_
@@ -35,13 +43,5 @@ class MDeviceconnectReq extends Serializable {
 	@BeanProperty
 	var ik: MIdentityKey =_
 	def withik(p:MIdentityKey):this.type ={ 	this.ik = p; 	this }
-
-	/**
-	 * Optional
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
-	@BeanProperty
-	var contactName: String =_
-	def withcontactName(p:String):this.type ={ 	this.contactName = p; 	this }
 
 }

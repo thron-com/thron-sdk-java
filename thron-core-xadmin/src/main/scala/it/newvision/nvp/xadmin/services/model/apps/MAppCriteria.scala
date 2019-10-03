@@ -18,37 +18,6 @@ import it.newvision.nvp.xadmin.model.MEAppType
 //#SWG#@ApiModel(description = """Minimal search criteria for Apps""")
 class MAppCriteria extends Serializable {
 
-	/**
-	 * used to define the application "class":
-	 * RTIE,CUSTOM...
-	 */
-	//#SWG#@ApiModelProperty(value = """used to define the application "class":
-	//#SWGNL#RTIE,CUSTOM...""")
-	@BeanProperty 
-	var appType: List[MEAppType] = new ArrayList[MEAppType]
-	def withappType(p:List[MEAppType]):this.type ={ 	this.appType = p; 	this }
-
-	/**
-	 * used to define the subtype"class" (only with CUSTOM appType)
-	 */
-	//#SWG#@ApiModelProperty(value = """used to define the subtype"class" (only with CUSTOM appType)""")
-	@BeanProperty 
-	var appSubType: String =_
-	def withappSubType(p:String):this.type ={ 	this.appSubType = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var appIds: List[String] = new ArrayList[String]
-	def withappIds(p:List[String]):this.type ={ 	this.appIds = p; 	this }
-
-	/**
-	 * prettyId for the APP
-	 */
-	//#SWG#@ApiModelProperty(value = """prettyId for the APP""")
-	@BeanProperty 
-	var appPrettyIds: List[String] = new ArrayList[String]
-	def withappPrettyIds(p:List[String]):this.type ={ 	this.appPrettyIds = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var appActive: Boolean =_
@@ -59,6 +28,11 @@ class MAppCriteria extends Serializable {
 	var appDisplayName: String =_
 	def withappDisplayName(p:String):this.type ={ 	this.appDisplayName = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var appIds: List[String] = new ArrayList[String]
+	def withappIds(p:List[String]):this.type ={ 	this.appIds = p; 	this }
+
 	/**
 	 * username of the owner of the App.
 	 * The user who created the app instance
@@ -68,6 +42,32 @@ class MAppCriteria extends Serializable {
 	@BeanProperty 
 	var appOwnerUsername: String =_
 	def withappOwnerUsername(p:String):this.type ={ 	this.appOwnerUsername = p; 	this }
+
+	/**
+	 * prettyId for the APP
+	 */
+	//#SWG#@ApiModelProperty(value = """prettyId for the APP""")
+	@BeanProperty 
+	var appPrettyIds: List[String] = new ArrayList[String]
+	def withappPrettyIds(p:List[String]):this.type ={ 	this.appPrettyIds = p; 	this }
+
+	/**
+	 * used to define the subtype"class" (only with CUSTOM appType)
+	 */
+	//#SWG#@ApiModelProperty(value = """used to define the subtype"class" (only with CUSTOM appType)""")
+	@BeanProperty 
+	var appSubType: String =_
+	def withappSubType(p:String):this.type ={ 	this.appSubType = p; 	this }
+
+	/**
+	 * used to define the application "class":
+	 * RTIE,CUSTOM...
+	 */
+	//#SWG#@ApiModelProperty(value = """used to define the application "class":
+	//#SWGNL#RTIE,CUSTOM...""")
+	@BeanProperty 
+	var appType: List[MEAppType] = new ArrayList[MEAppType]
+	def withappType(p:List[MEAppType]):this.type ={ 	this.appType = p; 	this }
 
 	/**
 	 * If TRUE the service filters apps where the user has no roles

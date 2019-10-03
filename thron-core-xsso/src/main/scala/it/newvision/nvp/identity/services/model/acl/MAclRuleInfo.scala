@@ -15,11 +15,6 @@ import it.newvision.nvp.identity.model.MAclRule
 //#SWG#@ApiModel(description = """""")
 class MAclRuleInfo extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var targetAcl: MAclRule =_
-	def withtargetAcl(p:MAclRule):this.type ={ 	this.targetAcl = p; 	this }
-
 	/**
 	 * used in presentation, Can be the user fullname or groupName
 	 */
@@ -27,5 +22,10 @@ class MAclRuleInfo extends Serializable {
 	@BeanProperty 
 	var displayName: String =_
 	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var targetAcl: MAclRule =_
+	def withtargetAcl(p:MAclRule):this.type ={ 	this.targetAcl = p; 	this }
 
 }

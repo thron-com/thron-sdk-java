@@ -10,8 +10,8 @@ import it.newvision.nvp.identity.services.model.user.MResponseUserDetail
 import it.newvision.nvp.identity.services.model.request.MUserManagerdetailReq
 import it.newvision.nvp.identity.services.model.user.MResponseUserFindByProperties
 import it.newvision.nvp.identity.services.model.request.MUserManagerfindByPropertiesReq
-import it.newvision.nvp.identity.services.model.user.MResponseUserNumberOfUsers
 import it.newvision.nvp.identity.services.model.user.MResponseUserAllUsername
+import it.newvision.nvp.identity.services.model.user.MResponseUserNumberOfUsers
 
 /* ************************
 *  GENERATED CLASS
@@ -180,48 +180,6 @@ class JUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return the total number of users registered in the platform
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @return MResponseUserNumberOfUsers
-	*/
-	def numberOfUsers(tokenId: String, 
-			clientId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUserNumberOfUsers ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JUserManagerClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-			val response : MResponseUserNumberOfUsers = if(this.resourceEndpoint == ""){
-			
-				new MResponseUserNumberOfUsers()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("usermanager/numberOfUsers")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseUserNumberOfUsers])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseUserNumberOfUsers])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
-
-	/**
 	 * Return the complete list of all users (username only) registered in the platform
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -254,6 +212,48 @@ class JUserManagerClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseUserAllUsername])
+				}
+				else {
+					throw e
+				}
+			
+		  }
+	
+	}
+
+	/**
+	 * Return the total number of users registered in the platform
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @return MResponseUserNumberOfUsers
+	*/
+	def numberOfUsers(tokenId: String, 
+			clientId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUserNumberOfUsers ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JUserManagerClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(clientId).foreach(s => params.add("clientId", s))
+			val response : MResponseUserNumberOfUsers = if(this.resourceEndpoint == ""){
+			
+				new MResponseUserNumberOfUsers()
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("usermanager/numberOfUsers")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[MResponseUserNumberOfUsers])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseUserNumberOfUsers])
 				}
 				else {
 					throw e

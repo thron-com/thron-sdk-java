@@ -35,12 +35,14 @@ class MEventManagerforceRestartEventReq extends Serializable {
 	var recordEvent: Boolean =_
 	def withrecordEvent(p:Boolean):this.type ={ 	this.recordEvent = p; 	this }
 
-	/**
-	 * Optional. Used to specify a specific profile for the event
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Used to specify a specific profile for the event""", required = true)
+	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var profileId: String =_
-	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
+	var wowzaLicense: String =_
+	def withwowzaLicense(p:String):this.type ={ 	this.wowzaLicense = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var wowzaProfile: String =_
+	def withwowzaProfile(p:String):this.type ={ 	this.wowzaProfile = p; 	this }
 
 }

@@ -15,14 +15,20 @@ import javax.xml.bind.annotation._
 class MLiveEventParams extends Serializable {
 
 	/**
-	 * the name of the stream in output.
-	 * Only unicode letters or digits are allowed
+	 * Optional.
 	 */
-	//#SWG#@ApiModelProperty(value = """the name of the stream in output. 
-	//#SWGNL#Only unicode letters or digits are allowed""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """Optional.""")
 	@BeanProperty 
-	var streamName: String =_
-	def withstreamName(p:String):this.type ={ 	this.streamName = p; 	this }
+	var endDate: Date =_
+	def withendDate(p:Date):this.type ={ 	this.endDate = p; 	this }
+
+	/**
+	 * used to distinguish h24 live events by the spot events.
+	 */
+	//#SWG#@ApiModelProperty(value = """used to distinguish h24 live events by the spot events.""")
+	@BeanProperty 
+	var neverEndingLiveEvent: Boolean  = false
+	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -39,20 +45,14 @@ class MLiveEventParams extends Serializable {
 	def withstartDate(p:Date):this.type ={ 	this.startDate = p; 	this }
 
 	/**
-	 * Optional.
+	 * the name of the stream in output.
+	 * Only unicode letters or digits are allowed
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional.""")
+	//#SWG#@ApiModelProperty(value = """the name of the stream in output. 
+	//#SWGNL#Only unicode letters or digits are allowed""" ,required = true)
 	@BeanProperty 
-	var endDate: Date =_
-	def withendDate(p:Date):this.type ={ 	this.endDate = p; 	this }
-
-	/**
-	 * used to distinguish h24 live events by the spot events.
-	 */
-	//#SWG#@ApiModelProperty(value = """used to distinguish h24 live events by the spot events.""")
-	@BeanProperty 
-	var neverEndingLiveEvent: Boolean  = false
-	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
+	var streamName: String =_
+	def withstreamName(p:String):this.type ={ 	this.streamName = p; 	this }
 
 	/**
 	 * @return Boolean

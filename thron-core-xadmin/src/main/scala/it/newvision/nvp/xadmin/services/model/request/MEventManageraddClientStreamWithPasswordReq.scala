@@ -24,11 +24,6 @@ class MEventManageraddClientStreamWithPasswordReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var mediaContentId: String =_
-	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
 	var clientStream: String =_
 	def withclientStream(p:String):this.type ={ 	this.clientStream = p; 	this }
 
@@ -36,5 +31,10 @@ class MEventManageraddClientStreamWithPasswordReq extends Serializable {
 	@BeanProperty
 	var clientStreamPassword: String =_
 	def withclientStreamPassword(p:String):this.type ={ 	this.clientStreamPassword = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var mediaContentId: String =_
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 }

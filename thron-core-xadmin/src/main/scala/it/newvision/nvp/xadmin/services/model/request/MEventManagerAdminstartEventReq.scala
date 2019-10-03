@@ -19,8 +19,27 @@ class MEventManagerAdminstartEventReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
+	var awsAccountNumber: String =_
+	def withawsAccountNumber(p:String):this.type ={ 	this.awsAccountNumber = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
+
+	/**
+	 * Syntax: formUrlEncoded, with ; as separator.
+	 * 
+	 * ec2InstanceType=...
+	 * amiId=...
+	 */
+	//#SWG#@ApiModelProperty(value = """Syntax: formUrlEncoded, with ; as separator.
+	//#SWGNL#
+	//#SWGNL#ec2InstanceType=...
+	//#SWGNL#amiId=...""", required = true)
+	@BeanProperty
+	var customParameters: String =_
+	def withcustomParameters(p:String):this.type ={ 	this.customParameters = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
@@ -36,19 +55,6 @@ class MEventManagerAdminstartEventReq extends Serializable {
 	def withrecordEvent(p:Boolean):this.type ={ 	this.recordEvent = p; 	this }
 
 	/**
-	 * Optional. Used to specify a specific profile for the event.
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Used to specify a specific profile for the event.""", required = true)
-	@BeanProperty
-	var profileId: String =_
-	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var awsAccountNumber: String =_
-	def withawsAccountNumber(p:String):this.type ={ 	this.awsAccountNumber = p; 	this }
-
-	/**
 	 * where to deploy the live event instance
 	 */
 	//#SWG#@ApiModelProperty(value = """where to deploy the live event instance""", required = true)
@@ -56,18 +62,14 @@ class MEventManagerAdminstartEventReq extends Serializable {
 	var targetRegion: String =_
 	def withtargetRegion(p:String):this.type ={ 	this.targetRegion = p; 	this }
 
-	/**
-	 * Syntax: formUrlEncoded, with ; as separator.
-	 * 
-	 * ec2InstanceType=...
-	 * amiId=...
-	 */
-	//#SWG#@ApiModelProperty(value = """Syntax: formUrlEncoded, with ; as separator.
-	//#SWGNL#
-	//#SWGNL#ec2InstanceType=...
-	//#SWGNL#amiId=...""", required = true)
+	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var customParameters: String =_
-	def withcustomParameters(p:String):this.type ={ 	this.customParameters = p; 	this }
+	var wowzaLicense: String =_
+	def withwowzaLicense(p:String):this.type ={ 	this.wowzaLicense = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var wowzaProfile: String =_
+	def withwowzaProfile(p:String):this.type ={ 	this.wowzaProfile = p; 	this }
 
 }

@@ -20,6 +20,19 @@ class MCuePointuploadSrtFileReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
+	var buffer: MBuffer =_
+	def withbuffer(p:MBuffer):this.type ={ 	this.buffer = p; 	this }
+
+	/**
+	 * Optional. For Acl validation
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
+	@BeanProperty
+	var categoryIdForAcl: String =_
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
@@ -32,18 +45,5 @@ class MCuePointuploadSrtFileReq extends Serializable {
 	@BeanProperty
 	var locale: String =_
 	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var buffer: MBuffer =_
-	def withbuffer(p:MBuffer):this.type ={ 	this.buffer = p; 	this }
-
-	/**
-	 * Optional. For Acl validation
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. For Acl validation""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

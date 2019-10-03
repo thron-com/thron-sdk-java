@@ -19,7 +19,7 @@ import it.newvision.nvp.xcontents.services.model.msg.MEITagOperation
  * 
  * Constraints:
  * <ul>
- * 	<li>max length 5</li>
+ * 	<li>max length 50</li>
  * </ul>
  */
 @XmlRootElement(name="MITagCriteriaOption") 
@@ -31,21 +31,22 @@ import it.newvision.nvp.xcontents.services.model.msg.MEITagOperation
 //#SWGNL#
 //#SWGNL#Constraints:
 //#SWGNL#<ul>
-//#SWGNL#	<li>max length 5</li>
+//#SWGNL#	<li>max length 50</li>
 //#SWGNL#</ul>""")
 class MITagCriteriaOption extends Serializable {
 
 	/**
 	 * <b>Constraints: </b>
 	 * <ul>
-	 * 	<li>max number of elements 5</li>
-	 * 	<li>search on each itag subtree (children)</li>
+	 * 	<li>max number of elements 50</li>
+	 * 	<li>search on each itag subtree (children): max number of combined itag is
+	 * 5000</li>
 	 * </ul>
 	 */
 	//#SWG#@ApiModelProperty(value = """<b>Constraints: </b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>max number of elements 5</li>
-	//#SWGNL#	<li>search on each itag subtree (children)</li>
+	//#SWGNL#	<li>max number of elements 50</li>
+	//#SWGNL#	<li>search on each itag subtree (children): max number of combined itag is 5000</li>
 	//#SWGNL#</ul>""")
 	@BeanProperty 
 	var itags: List[MITagCriteria] = new ArrayList[MITagCriteria]
@@ -81,7 +82,7 @@ class MITagCriteriaOption extends Serializable {
 		import org.apache.commons.lang.StringUtils
 		Option(operation).isDefined &&
 			itags.forall(i=>StringUtils.isNotEmpty(i.classificationId) && 
-			StringUtils.isNotEmpty(i.id)) && itags.size()<=5 && itags.nonEmpty
+			StringUtils.isNotEmpty(i.id)) && itags.size()<=50 && itags.nonEmpty
 	}
 
 }

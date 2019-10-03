@@ -18,6 +18,30 @@ import javax.xml.bind.annotation._
 class MPropertyGenericDocument extends Serializable {
 
 	/**
+	 * the application name:
+	 * flash, http
+	 */
+	//#SWG#@ApiModelProperty(value = """the application name: 
+	//#SWGNL#flash, http""" ,required = true)
+	@BeanProperty 
+	var appName: String  = ""
+	def withappName(p:String):this.type ={ 	this.appName = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var channelDescriptions: List[MChannelDescription] = new ArrayList[MChannelDescription]
+	def withchannelDescriptions(p:List[MChannelDescription]):this.type ={ 	this.channelDescriptions = p; 	this }
+
+	/**
+	 * define if the channel is enabled or not. Used to keep the channel settings but
+	 * disable the user to publish new contents in the current channel
+	 */
+	//#SWG#@ApiModelProperty(value = """define if the channel is enabled or not. Used to keep the channel settings but disable the user to publish new contents in the current channel""" ,required = true)
+	@BeanProperty 
+	var channelEnabled: Boolean  = true
+	def withchannelEnabled(p:Boolean):this.type ={ 	this.channelEnabled = p; 	this }
+
+	/**
 	 * it's the channel type where the content is published.
 	 * the channel type is an identifier used by xadmin and xpublisher and follows
 	 * this namingconvention
@@ -44,81 +68,6 @@ class MPropertyGenericDocument extends Serializable {
 	var channelType: String  = "WEB"
 	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var channelDescriptions: List[MChannelDescription] = new ArrayList[MChannelDescription]
-	def withchannelDescriptions(p:List[MChannelDescription]):this.type ={ 	this.channelDescriptions = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	@Deprecated
-	var thumbsProperties: MPropertyThumbnail  = new MPropertyThumbnail
-	@Deprecated
-	def withthumbsProperties(p:MPropertyThumbnail):this.type ={ 	this.thumbsProperties = p; 	this }
-
-	/**
-	 * the application name:
-	 * flash, http
-	 */
-	//#SWG#@ApiModelProperty(value = """the application name: 
-	//#SWGNL#flash, http""" ,required = true)
-	@BeanProperty 
-	var appName: String  = ""
-	def withappName(p:String):this.type ={ 	this.appName = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var httpServer: String  = ""
-	def withhttpServer(p:String):this.type ={ 	this.httpServer = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var streamServer: String  = ""
-	def withstreamServer(p:String):this.type ={ 	this.streamServer = p; 	this }
-
-	/**
-	 * premiumvodservice/
-	 */
-	//#SWG#@ApiModelProperty(value = """premiumvodservice/""" ,required = true)
-	@BeanProperty 
-	var streamAppPremium: String  = ""
-	def withstreamAppPremium(p:String):this.type ={ 	this.streamAppPremium = p; 	this }
-
-	/**
-	 * available protocols. list of comma separated values.
-	 * "http://,https://"
-	 */
-	//#SWG#@ApiModelProperty(value = """available protocols. list of comma separated values.
-	//#SWGNL#"http://,https://"""" ,required = true)
-	@BeanProperty 
-	var webProtocols: String  = "https://"
-	def withwebProtocols(p:String):this.type ={ 	this.webProtocols = p; 	this }
-
-	/**
-	 * rtmpe, rtmp, http. Are the different kind of streaming protocols.
-	 */
-	//#SWG#@ApiModelProperty(value = """rtmpe, rtmp, http. Are the different kind of streaming protocols.""" ,required = true)
-	@BeanProperty 
-	var streamProtocol: String  = ""
-	def withstreamProtocol(p:String):this.type ={ 	this.streamProtocol = p; 	this }
-
-	/**
-	 * DEPRECATED
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED""" ,required = true)
-	@BeanProperty 
-	var compliantWithPLAY: Boolean  = false
-	def withcompliantWithPLAY(p:Boolean):this.type ={ 	this.compliantWithPLAY = p; 	this }
-
-	/**
-	 * define if the channel is enabled or not. Used to keep the channel settings but
-	 * disable the user to publish new contents in the current channel
-	 */
-	//#SWG#@ApiModelProperty(value = """define if the channel is enabled or not. Used to keep the channel settings but disable the user to publish new contents in the current channel""" ,required = true)
-	@BeanProperty 
-	var channelEnabled: Boolean  = true
-	def withchannelEnabled(p:Boolean):this.type ={ 	this.channelEnabled = p; 	this }
-
 	/**
 	 * this attribute specify that the channel is compliant with a specific 4me
 	 * solution, so the contents published in this channels can be used by the
@@ -132,19 +81,12 @@ class MPropertyGenericDocument extends Serializable {
 	def withcompliantWith(p:String):this.type ={ 	this.compliantWith = p; 	this }
 
 	/**
-	 * if true the channle type is used for the downloadadble contes. When the user
-	 * linke the content for download the player will use only this specific channel.
-	 * ONLY WEB* channels are availables
+	 * DEPRECATED
 	 */
-	//#SWG#@ApiModelProperty(value = """if true the channle type is used for the downloadadble contes. When the user linke the content for download the player will use only this specific channel. ONLY WEB* channels are availables""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """DEPRECATED""" ,required = true)
 	@BeanProperty 
-	var useForDownload: Boolean  = false
-	def withuseForDownload(p:Boolean):this.type ={ 	this.useForDownload = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var withIngestion: Boolean  = false
-	def withwithIngestion(p:Boolean):this.type ={ 	this.withIngestion = p; 	this }
+	var compliantWithPLAY: Boolean  = false
+	def withcompliantWithPLAY(p:Boolean):this.type ={ 	this.compliantWithPLAY = p; 	this }
 
 	/**
 	 * attualmente la conversione avviene solo in JPG con limitazione per i file di
@@ -155,20 +97,82 @@ class MPropertyGenericDocument extends Serializable {
 	var convertTo: String =_
 	def withconvertTo(p:String):this.type ={ 	this.convertTo = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var httpServer: String  = ""
+	def withhttpServer(p:String):this.type ={ 	this.httpServer = p; 	this }
+
 	/**
-	 * Sets httpServer and streamServer value based on client domain
-	 * @param domain : String
+	 * premiumvodservice/
+	 */
+	//#SWG#@ApiModelProperty(value = """premiumvodservice/""" ,required = true)
+	@BeanProperty 
+	var streamAppPremium: String  = ""
+	def withstreamAppPremium(p:String):this.type ={ 	this.streamAppPremium = p; 	this }
+
+	/**
+	 * rtmpe, rtmp, http. Are the different kind of streaming protocols.
+	 */
+	//#SWG#@ApiModelProperty(value = """rtmpe, rtmp, http. Are the different kind of streaming protocols.""" ,required = true)
+	@BeanProperty 
+	var streamProtocol: String  = ""
+	def withstreamProtocol(p:String):this.type ={ 	this.streamProtocol = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var streamServer: String  = ""
+	def withstreamServer(p:String):this.type ={ 	this.streamServer = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	@Deprecated
+	var thumbsProperties: MPropertyThumbnail  = new MPropertyThumbnail
+	@Deprecated
+	def withthumbsProperties(p:MPropertyThumbnail):this.type ={ 	this.thumbsProperties = p; 	this }
+
+	/**
+	 * if true the channle type is used for the downloadadble contes. When the user
+	 * linke the content for download the player will use only this specific channel.
+	 * ONLY WEB* channels are availables
+	 */
+	//#SWG#@ApiModelProperty(value = """if true the channle type is used for the downloadadble contes. When the user linke the content for download the player will use only this specific channel. ONLY WEB* channels are availables""" ,required = true)
+	@BeanProperty 
+	var useForDownload: Boolean  = false
+	def withuseForDownload(p:Boolean):this.type ={ 	this.useForDownload = p; 	this }
+
+	/**
+	 * available protocols. list of comma separated values.
+	 * "http://,https://"
+	 */
+	//#SWG#@ApiModelProperty(value = """available protocols. list of comma separated values.
+	//#SWGNL#"http://,https://"""" ,required = true)
+	@BeanProperty 
+	var webProtocols: String  = "https://"
+	def withwebProtocols(p:String):this.type ={ 	this.webProtocols = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var withIngestion: Boolean  = false
+	def withwithIngestion(p:Boolean):this.type ={ 	this.withIngestion = p; 	this }
+
+	/**
+	 * @param clientId : String
+	 * @param channeltype : String
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_servers(domain: String){
-		val s = domain match {
-			case "4me.it" => "-4me.weebo.it/"
-			case "thron.com" => "-cdn.thron.com/"
-		}
-		this.httpServer = s+"static/"
-		this.streamServer = s
+	def init_gd_test(clientId: String, 
+			channeltype: String){
+		this.channelType = channeltype
+		//this.thumbsProperties.init
+		this.httpServer = "localhost:8083/"
+		this.streamServer = clientId + this.streamServer
+		val cdesc = new MChannelDescription
+		cdesc.setChannelDescription(this.channelType)
+		cdesc.setChannelShortName(this.channelType)
+		cdesc.setLocale("IT")
+		this.channelDescriptions = new ArrayList[MChannelDescription](Arrays.asList(cdesc))
 	}
 
 	/**
@@ -209,6 +213,22 @@ class MPropertyGenericDocument extends Serializable {
 		cd2.channelDescription = "Download original format"
 		this.channelDescriptions.add(cd)
 		this.channelDescriptions.add(cd2)
+	}
+
+	/**
+	 * Sets httpServer and streamServer value based on client domain
+	 * @param domain : String
+	 * @return void
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def init_servers(domain: String){
+		val s = domain match {
+			case "4me.it" => "-4me.weebo.it/"
+			case "thron.com" => "-cdn.thron.com/"
+		}
+		this.httpServer = s+"static/"
+		this.streamServer = s
 	}
 
 	/**
@@ -268,26 +288,6 @@ class MPropertyGenericDocument extends Serializable {
 		this.useForDownload = true
 		this.convertTo="PDF"
 		this.withIngestion=true
-	}
-
-	/**
-	 * @param clientId : String
-	 * @param channeltype : String
-	 * @return void
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_gd_test(clientId: String, 
-			channeltype: String){
-		this.channelType = channeltype
-		//this.thumbsProperties.init
-		this.httpServer = "localhost:8083/"
-		this.streamServer = clientId + this.streamServer
-		val cdesc = new MChannelDescription
-		cdesc.setChannelDescription(this.channelType)
-		cdesc.setChannelShortName(this.channelType)
-		cdesc.setLocale("IT")
-		this.channelDescriptions = new ArrayList[MChannelDescription](Arrays.asList(cdesc))
 	}
 
 }

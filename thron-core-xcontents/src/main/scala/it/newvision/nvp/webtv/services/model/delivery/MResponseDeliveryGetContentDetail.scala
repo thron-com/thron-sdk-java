@@ -36,6 +36,14 @@ class MResponseDeliveryGetContentDetail extends MResponseDelivery with Serializa
 	def withcontentCategoryFullPath(p:List[String]):this.type ={ 	this.contentCategoryFullPath = p; 	this }
 
 	/**
+	 * The template used to customize Player layout for the content
+	 */
+	//#SWG#@ApiModelProperty(value = """The template used to customize Player layout for the content""")
+	@BeanProperty 
+	var embedTemplate: MPlayerEmbedTemplateDetail =_
+	def withembedTemplate(p:MPlayerEmbedTemplateDetail):this.type ={ 	this.embedTemplate = p; 	this }
+
+	/**
 	 * total number of "downloadable contents" (contents linked by the used as
 	 * "downloadable"). In order to obtain the list of DownloadableContents should be
 	 * used the service JDelivery.getDownloadableContents
@@ -54,14 +62,6 @@ class MResponseDeliveryGetContentDetail extends MResponseDelivery with Serializa
 	@BeanProperty 
 	var totalRecommendedContents: Integer =_
 	def withtotalRecommendedContents(p:Integer):this.type ={ 	this.totalRecommendedContents = p; 	this }
-
-	/**
-	 * The template used to customize Player layout for the content
-	 */
-	//#SWG#@ApiModelProperty(value = """The template used to customize Player layout for the content""")
-	@BeanProperty 
-	var embedTemplate: MPlayerEmbedTemplateDetail =_
-	def withembedTemplate(p:MPlayerEmbedTemplateDetail):this.type ={ 	this.embedTemplate = p; 	this }
 
 	/**
 	 * Used by traker: Can be USER/GUEST/APP or empty value for generic contacs/shares

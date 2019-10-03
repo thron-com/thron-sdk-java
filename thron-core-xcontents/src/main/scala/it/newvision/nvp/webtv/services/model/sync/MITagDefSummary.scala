@@ -30,15 +30,66 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MITagDefSummary extends Serializable {
 
+	/**
+	 * Used to split the TagDefinition in two macro categories (categorized and
+	 * uncategorized tags). Usually the semantic engines creates new TagDefinition
+	 * with the categorized attribute to false.
+	 */
+	//#SWG#@ApiModelProperty(value = """Used to split the TagDefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new TagDefinition with the categorized attribute to false.""" ,required = true)
+	@BeanProperty 
+	var categorized: Boolean  = true
+	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var classificationId: String =_
 	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
 
+	/**
+	 * Optional. The creation date of the TagDefinition
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the TagDefinition""")
+	@BeanProperty 
+	var createdDate: Date  = new Date()
+	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
+
+	/**
+	 * prettyId for the itagDefinition
+	 * 
+	 * Constraints:
+	 * <ul>
+	 * 	<li>max length = 150</li>
+	 * 	<li>only lower case chars and digits</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>no spaces allowed, special characters "-" and"_" are allowed"</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var externalIds: List[String] = new ArrayList[String]
+	def withexternalIds(p:List[String]):this.type ={ 	this.externalIds = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
+	/**
+	 * Last time this TagDefinition was modified by anyone.
+	 */
+	//#SWG#@ApiModelProperty(value = """Last time this TagDefinition was modified by anyone.""")
+	@BeanProperty 
+	var modifiedDate: Date =_
+	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
+
+	/**
+	 * label and description values in multilocale
+	 */
+	//#SWG#@ApiModelProperty(value = """label and description values in multilocale""")
+	@BeanProperty 
+	var names: List[MLoc] = new ArrayList[MLoc]
+	def withnames(p:List[MLoc]):this.type ={ 	this.names = p; 	this }
 
 	/**
 	 * The identifier (TagDefinition.id) of the parent TagDefinition. 
@@ -62,59 +113,8 @@ class MITagDefSummary extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var externalIds: List[String] = new ArrayList[String]
-	def withexternalIds(p:List[String]):this.type ={ 	this.externalIds = p; 	this }
-
-	/**
-	 * label and description values in multilocale
-	 */
-	//#SWG#@ApiModelProperty(value = """label and description values in multilocale""")
-	@BeanProperty 
-	var names: List[MLoc] = new ArrayList[MLoc]
-	def withnames(p:List[MLoc]):this.type ={ 	this.names = p; 	this }
-
-	/**
-	 * prettyId for the itagDefinition
-	 * 
-	 * Constraints:
-	 * <ul>
-	 * 	<li>max length = 150</li>
-	 * 	<li>only lower case chars and digits</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>no spaces allowed, special characters "-" and"_" are allowed"</li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
 	var prettyId: String =_
 	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
-
-	/**
-	 * Optional. The creation date of the TagDefinition
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. The creation date of the TagDefinition""")
-	@BeanProperty 
-	var createdDate: Date  = new Date()
-	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
-
-	/**
-	 * Last time this TagDefinition was modified by anyone.
-	 */
-	//#SWG#@ApiModelProperty(value = """Last time this TagDefinition was modified by anyone.""")
-	@BeanProperty 
-	var modifiedDate: Date =_
-	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
-
-	/**
-	 * Used to split the TagDefinition in two macro categories (categorized and
-	 * uncategorized tags). Usually the semantic engines creates new TagDefinition
-	 * with the categorized attribute to false.
-	 */
-	//#SWG#@ApiModelProperty(value = """Used to split the TagDefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new TagDefinition with the categorized attribute to false.""" ,required = true)
-	@BeanProperty 
-	var categorized: Boolean  = true
-	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -8,9 +8,9 @@ import com.thron.intelligence.services.model.classification.MResponseClassificat
 import com.thron.intelligence.services.model.request.MPermissionsinsertReq
 import com.thron.intelligence.services.model.classification.MResponseClassificationPermissionList
 import com.thron.intelligence.services.model.request.MPermissionslistReq
-import com.thron.intelligence.services.model.request.MPermissionsupdateReq
 import com.thron.intelligence.services.model.classification.MResponseClassificationPermissionRemove
 import com.thron.intelligence.services.model.request.MPermissionsremoveReq
+import com.thron.intelligence.services.model.request.MPermissionsupdateReq
 
 /* ************************
 *  GENERATED CLASS
@@ -275,87 +275,6 @@ trait JPermissions extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	protected def capability_listGet: String
 
 	/**
-	 * Updates classification permissions of a user, group or app.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>(THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
-	 * role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * @param param : MPermissionsupdateReq
-	 * @return MResponseClassificationPermission
-	*/
-	@POST
-	@Path("/update/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/update", notes = """Updates classification permissions of a user, group or app.
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>(THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS role</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseClassificationPermission])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String, 
-			param: MPermissionsupdateReq):Response /*returnType = MResponseClassificationPermission*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__update(tokenId,clientId,classificationId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_update)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_update)
-	    }
-	} 
-
-	@GET
-	@Path("/update/{clientId}/{classificationId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def update_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("classificationId")
-	classificationId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseClassificationPermission*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
-		try{
-			val resp = this.__update(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,classificationId,PRestHelper.bindRequest[MPermissionsupdateReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_update)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __update(tokenId: String, clientId: String, classificationId: String, param: MPermissionsupdateReq) :MResponseClassificationPermission
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_update: String
-
-	/**
 	 * Removes classification permissions from a user, group or app.
 	 * 
 	 * <b>Validation:</b>
@@ -436,5 +355,86 @@ trait JPermissions extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	 protected def __remove(tokenId: String, clientId: String, classificationId: String, param: MPermissionsremoveReq) :MResponseClassificationPermissionRemove
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_remove: String
+
+	/**
+	 * Updates classification permissions of a user, group or app.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>(THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
+	 * role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * @param param : MPermissionsupdateReq
+	 * @return MResponseClassificationPermission
+	*/
+	@POST
+	@Path("/update/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/update", notes = """Updates classification permissions of a user, group or app.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>(THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseClassificationPermission])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String, 
+			param: MPermissionsupdateReq):Response /*returnType = MResponseClassificationPermission*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__update(tokenId,clientId,classificationId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_update)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_update)
+	    }
+	} 
+
+	@GET
+	@Path("/update/{clientId}/{classificationId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def update_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("classificationId")
+	classificationId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseClassificationPermission*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
+		try{
+			val resp = this.__update(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,classificationId,PRestHelper.bindRequest[MPermissionsupdateReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_update)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __update(tokenId: String, clientId: String, classificationId: String, param: MPermissionsupdateReq) :MResponseClassificationPermission
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_update: String
 
 }

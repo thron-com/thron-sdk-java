@@ -24,14 +24,14 @@ class MIMetadata extends Serializable {
 	var key: Integer =_
 	def withkey(p:Integer):this.type ={ 	this.key = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var value: Integer =_
-	def withvalue(p:Integer):this.type ={ 	this.value = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var lang: Integer =_
 	def withlang(p:Integer):this.type ={ 	this.lang = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var value: Integer =_
+	def withvalue(p:Integer):this.type ={ 	this.value = p; 	this }
 
 }

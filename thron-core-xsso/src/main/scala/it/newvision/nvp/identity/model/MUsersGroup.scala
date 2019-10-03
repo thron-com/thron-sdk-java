@@ -21,27 +21,22 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """The UserGroup class is used to organize a set of user in differents groups inside the organisation. The UserGroups are also used to record some common information for a set of users, like Roles within the platform, or  a list of contacts (external users) to use for notification or for collaboration in the platform.""")
 class MUsersGroup extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * Toggle group active state. When a group is not active it will not impact on ACL
+	 * and Permissions.
+	 */
+	//#SWG#@ApiModelProperty(value = """Toggle group active state. When a group is not active it will not impact on ACL and Permissions.""" ,required = true)
 	@BeanProperty 
-	var groupType: MEGroupType  = MEGroupType.PLATFORM
-	def withgroupType(p:MEGroupType):this.type ={ 	this.groupType = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
+	var active: Boolean  = true
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
-	 * the name of the group
-	 * Constraints:
-	 * -) max length = 50
+	 * user creation date
 	 */
-	//#SWG#@ApiModelProperty(value = """the name of the group
-	//#SWGNL#Constraints: 
-	//#SWGNL#-) max length = 50""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """user creation date""" ,required = true)
 	@BeanProperty 
-	var name: String =_
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
+	var creationDate: Date  = new Date()
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * Constraints:
@@ -54,21 +49,12 @@ class MUsersGroup extends Serializable {
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
-	 * user creation date
+	 * external ids of the User Group.
 	 */
-	//#SWG#@ApiModelProperty(value = """user creation date""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """external ids of the User Group.""")
 	@BeanProperty 
-	var creationDate: Date  = new Date()
-	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
-
-	/**
-	 * Toggle group active state. When a group is not active it will not impact on ACL
-	 * and Permissions.
-	 */
-	//#SWG#@ApiModelProperty(value = """Toggle group active state. When a group is not active it will not impact on ACL and Permissions.""" ,required = true)
-	@BeanProperty 
-	var active: Boolean  = true
-	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
+	var externalId: MIdExternal =_
+	def withexternalId(p:MIdExternal):this.type ={ 	this.externalId = p; 	this }
 
 	/**
 	 * Used as roles template. It is possible to define the UserGroup roles that are
@@ -80,24 +66,15 @@ class MUsersGroup extends Serializable {
 	var groupCapabilities: MUserCapability  = new MUserCapability()
 	def withgroupCapabilities(p:MUserCapability):this.type ={ 	this.groupCapabilities = p; 	this }
 
-	/**
-	 * the username of the group owner.
-	 * Only for PLATFORM_BLIND, SHARED_CONTACTS_PRIVATE groups type (not for PLATFORM
-	 * groups type)
-	 */
-	//#SWG#@ApiModelProperty(value = """the username of the group owner. 
-	//#SWGNL#Only for PLATFORM_BLIND, SHARED_CONTACTS_PRIVATE groups type (not for PLATFORM groups type)""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var ownerUsername: String =_
-	def withownerUsername(p:String):this.type ={ 	this.ownerUsername = p; 	this }
+	var groupType: MEGroupType  = MEGroupType.PLATFORM
+	def withgroupType(p:MEGroupType):this.type ={ 	this.groupType = p; 	this }
 
-	/**
-	 * the acl rules  specific of the group
-	 */
-	//#SWG#@ApiModelProperty(value = """the acl rules  specific of the group""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var ownAclRules: List[MAclRule] = new ArrayList[MAclRule]
-	def withownAclRules(p:List[MAclRule]):this.type ={ 	this.ownAclRules = p; 	this }
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * list of imetadata (for intelligence)
@@ -116,12 +93,35 @@ class MUsersGroup extends Serializable {
 	def withitags(p:List[MITag]):this.type ={ 	this.itags = p; 	this }
 
 	/**
-	 * external ids of the User Group.
+	 * the name of the group
+	 * Constraints:
+	 * -) max length = 50
 	 */
-	//#SWG#@ApiModelProperty(value = """external ids of the User Group.""")
+	//#SWG#@ApiModelProperty(value = """the name of the group
+	//#SWGNL#Constraints: 
+	//#SWGNL#-) max length = 50""" ,required = true)
 	@BeanProperty 
-	var externalId: MIdExternal =_
-	def withexternalId(p:MIdExternal):this.type ={ 	this.externalId = p; 	this }
+	var name: String =_
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
+
+	/**
+	 * the acl rules  specific of the group
+	 */
+	//#SWG#@ApiModelProperty(value = """the acl rules  specific of the group""")
+	@BeanProperty 
+	var ownAclRules: List[MAclRule] = new ArrayList[MAclRule]
+	def withownAclRules(p:List[MAclRule]):this.type ={ 	this.ownAclRules = p; 	this }
+
+	/**
+	 * the username of the group owner.
+	 * Only for PLATFORM_BLIND, SHARED_CONTACTS_PRIVATE groups type (not for PLATFORM
+	 * groups type)
+	 */
+	//#SWG#@ApiModelProperty(value = """the username of the group owner. 
+	//#SWGNL#Only for PLATFORM_BLIND, SHARED_CONTACTS_PRIVATE groups type (not for PLATFORM groups type)""")
+	@BeanProperty 
+	var ownerUsername: String =_
+	def withownerUsername(p:String):this.type ={ 	this.ownerUsername = p; 	this }
 
 	/**
 	 * list of metadata

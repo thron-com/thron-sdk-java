@@ -14,16 +14,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MITag extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var classificationId: String =_
-	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
-
 	/**
 	 * The itag status:
 	 * <ul>
@@ -41,6 +31,16 @@ class MITag extends Serializable {
 	@BeanProperty 
 	var approved: Boolean =_
 	def withapproved(p:Boolean):this.type ={ 	this.approved = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var classificationId: String =_
+	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 

@@ -14,6 +14,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MContentToTrash extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var removeOptions: MMoveToTrashOptions =_
+	def withremoveOptions(p:MMoveToTrashOptions):this.type ={ 	this.removeOptions = p; 	this }
+
 	/**
 	 * Required. The xcontent Id to remove
 	 */
@@ -21,10 +26,5 @@ class MContentToTrash extends Serializable {
 	@BeanProperty 
 	var xcontentId: String =_
 	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var removeOptions: MMoveToTrashOptions =_
-	def withremoveOptions(p:MMoveToTrashOptions):this.type ={ 	this.removeOptions = p; 	this }
 
 }

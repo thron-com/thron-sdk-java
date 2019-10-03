@@ -20,10 +20,17 @@ import it.newvision.nvp.xcontents.services.model.playlist.MResponsePlayList
 //#SWGNL#The linked contents have the full description, the locale""")
 class MResponsePlayListDescriptor extends MResponsePlayList with Serializable  {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * Defined if divArea parameter is specified on the request.
+	 * Return the thumbnail that best suits to the given area.
+	 * Format: <widht>x<height>
+	 */
+	//#SWG#@ApiModelProperty(value = """Defined if divArea parameter is specified on the request.
+	//#SWGNL#Return the thumbnail that best suits to the given area.
+	//#SWGNL#Format: <widht>x<height>""")
 	@BeanProperty 
-	var content: MPlayListDetail =_
-	def withcontent(p:MPlayListDetail):this.type ={ 	this.content = p; 	this }
+	var bestThumbUrl: String =_
+	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
 	/**
 	 * The channel code used in xpublisher (WEB, STREAMRTMP, STREAMHTTPFLASH,...)
@@ -32,6 +39,16 @@ class MResponsePlayListDescriptor extends MResponsePlayList with Serializable  {
 	@BeanProperty 
 	var channelType: String =_
 	def withchannelType(p:String):this.type ={ 	this.channelType = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var content: MPlayListDetail =_
+	def withcontent(p:MPlayListDetail):this.type ={ 	this.content = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var elements: List[MItemDetail] = new ArrayList[MItemDetail]
+	def withelements(p:List[MItemDetail]):this.type ={ 	this.elements = p; 	this }
 
 	/**
 	 * the locale code
@@ -55,23 +72,6 @@ class MResponsePlayListDescriptor extends MResponsePlayList with Serializable  {
 	@BeanProperty 
 	var playlistThumbnails: MThumbnailDetail =_
 	def withplaylistThumbnails(p:MThumbnailDetail):this.type ={ 	this.playlistThumbnails = p; 	this }
-
-	/**
-	 * Defined if divArea parameter is specified on the request.
-	 * Return the thumbnail that best suits to the given area.
-	 * Format: <widht>x<height>
-	 */
-	//#SWG#@ApiModelProperty(value = """Defined if divArea parameter is specified on the request.
-	//#SWGNL#Return the thumbnail that best suits to the given area.
-	//#SWGNL#Format: <widht>x<height>""")
-	@BeanProperty 
-	var bestThumbUrl: String =_
-	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var elements: List[MItemDetail] = new ArrayList[MItemDetail]
-	def withelements(p:List[MItemDetail]):this.type ={ 	this.elements = p; 	this }
 
 	/**
 	 * the total number of playlist elements.

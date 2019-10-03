@@ -17,13 +17,13 @@ class MTarget extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
+	var entityType: MEEntityType =_
+	def withentityType(p:MEEntityType):this.type ={ 	this.entityType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var entityType: MEEntityType =_
-	def withentityType(p:MEEntityType):this.type ={ 	this.entityType = p; 	this }
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * @return Boolean

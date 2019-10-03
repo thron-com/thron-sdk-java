@@ -4,9 +4,9 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import com.thron.intelligence.model.MLocalization
-import com.thron.intelligence.model.metadata.MEMetadataDefinitionDataType
 import com.thron.intelligence.model.metadata.MMetadataDefinitionConstraints
+import com.thron.intelligence.model.metadata.MEMetadataDefinitionDataType
+import com.thron.intelligence.model.MLocalization
 import com.thron.intelligence.model.metadata.MMetadataDefinitionOptions
 
 /* ************************
@@ -17,6 +17,11 @@ import com.thron.intelligence.model.metadata.MMetadataDefinitionOptions
 @XmlType(name="MIMetadataDefinitionValue")
 //#SWG#@ApiModel(description = """""")
 class MIMetadataDefinitionValue extends Serializable {
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var constraints: MMetadataDefinitionConstraints  = new MMetadataDefinitionConstraints
+	def withconstraints(p:MMetadataDefinitionConstraints):this.type ={ 	this.constraints = p; 	this }
 
 	/**
 	 * key of the Metadata Schema
@@ -32,6 +37,11 @@ class MIMetadataDefinitionValue extends Serializable {
 	var key: String =_
 	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var metadataType: MEMetadataDefinitionDataType =_
+	def withmetadataType(p:MEMetadataDefinitionDataType):this.type ={ 	this.metadataType = p; 	this }
+
 	/**
 	 * label and description values for the metadata definition in multi locale
 	 */
@@ -39,17 +49,6 @@ class MIMetadataDefinitionValue extends Serializable {
 	@BeanProperty 
 	var names: List[MLocalization] = new ArrayList[MLocalization]
 	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
-
-	/**
-	 * Used to identify metadata can be displayed to users.
-	 * Metadata definition set to invisibles are commonly used to store back end data
-	 * not editable by users.
-	 */
-	//#SWG#@ApiModelProperty(value = """Used to identify metadata can be displayed to users. 
-	//#SWGNL#Metadata definition set to invisibles are commonly used to store back end data not editable by users.""" ,required = true)
-	@BeanProperty 
-	var visible: Boolean  = false
-	def withvisible(p:Boolean):this.type ={ 	this.visible = p; 	this }
 
 	/**
 	 * Optional description, used to define the goal of the Metadata definition
@@ -61,18 +60,19 @@ class MIMetadataDefinitionValue extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var metadataType: MEMetadataDefinitionDataType =_
-	def withmetadataType(p:MEMetadataDefinitionDataType):this.type ={ 	this.metadataType = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var constraints: MMetadataDefinitionConstraints  = new MMetadataDefinitionConstraints
-	def withconstraints(p:MMetadataDefinitionConstraints):this.type ={ 	this.constraints = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
 	var options: MMetadataDefinitionOptions  = new MMetadataDefinitionOptions
 	def withoptions(p:MMetadataDefinitionOptions):this.type ={ 	this.options = p; 	this }
+
+	/**
+	 * Used to identify metadata can be displayed to users.
+	 * Metadata definition set to invisibles are commonly used to store back end data
+	 * not editable by users.
+	 */
+	//#SWG#@ApiModelProperty(value = """Used to identify metadata can be displayed to users. 
+	//#SWGNL#Metadata definition set to invisibles are commonly used to store back end data not editable by users.""" ,required = true)
+	@BeanProperty 
+	var visible: Boolean  = false
+	def withvisible(p:Boolean):this.type ={ 	this.visible = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -37,6 +37,14 @@ class MApp extends Serializable {
 	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
+	 * used to define the subtype"class" (only with CUSTOM appType)
+	 */
+	//#SWG#@ApiModelProperty(value = """used to define the subtype"class" (only with CUSTOM appType)""")
+	@BeanProperty 
+	var appSubType: String =_
+	def withappSubType(p:String):this.type ={ 	this.appSubType = p; 	this }
+
+	/**
 	 * used to define the application "class":
 	 * RTIE,CUSTOM...
 	 */
@@ -47,12 +55,13 @@ class MApp extends Serializable {
 	def withappType(p:MEAppType):this.type ={ 	this.appType = p; 	this }
 
 	/**
-	 * used to define the subtype"class" (only with CUSTOM appType)
+	 * if true the app can invoke the service JApps.su to impersonate a different
+	 * platform user.
 	 */
-	//#SWG#@ApiModelProperty(value = """used to define the subtype"class" (only with CUSTOM appType)""")
+	//#SWG#@ApiModelProperty(value = """if true the app can invoke the service JApps.su to impersonate a different platform user.""")
 	@BeanProperty 
-	var appSubType: String =_
-	def withappSubType(p:String):this.type ={ 	this.appSubType = p; 	this }
+	var canDisguise: Boolean  = false
+	def withcanDisguise(p:Boolean):this.type ={ 	this.canDisguise = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
@@ -71,6 +80,11 @@ class MApp extends Serializable {
 	@BeanProperty 
 	var description: String =_
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var disguiseData: MAppDisguiseData =_
+	def withdisguiseData(p:MAppDisguiseData):this.type ={ 	this.disguiseData = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -103,16 +117,6 @@ class MApp extends Serializable {
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
-	/**
-	 * prettyId for the APP.
-	 * Constraint: length <= 50
-	 */
-	//#SWG#@ApiModelProperty(value = """prettyId for the APP. 
-	//#SWGNL#Constraint: length <= 50""")
-	@BeanProperty 
-	var prettyId: String =_
-	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lastUpdate: Date =_
@@ -137,6 +141,16 @@ class MApp extends Serializable {
 	def withownerUsername(p:String):this.type ={ 	this.ownerUsername = p; 	this }
 
 	/**
+	 * prettyId for the APP.
+	 * Constraint: length <= 50
+	 */
+	//#SWG#@ApiModelProperty(value = """prettyId for the APP. 
+	//#SWGNL#Constraint: length <= 50""")
+	@BeanProperty 
+	var prettyId: String =_
+	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
+
+	/**
 	 * the root category Id of the App.
 	 * Each App should be linked to a category.
 	 * The App will use only the contents linked to the specified category tree.
@@ -147,6 +161,11 @@ class MApp extends Serializable {
 	@BeanProperty 
 	var rootCategoryId: String =_
 	def withrootCategoryId(p:String):this.type ={ 	this.rootCategoryId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var subscriptionData: MAppSubscriptionData =_
+	def withsubscriptionData(p:MAppSubscriptionData):this.type ={ 	this.subscriptionData = p; 	this }
 
 	/**
 	 * main url of the app
@@ -163,25 +182,6 @@ class MApp extends Serializable {
 	@BeanProperty 
 	var urlThumbnail: String =_
 	def withurlThumbnail(p:String):this.type ={ 	this.urlThumbnail = p; 	this }
-
-	/**
-	 * if true the app can invoke the service JApps.su to impersonate a different
-	 * platform user.
-	 */
-	//#SWG#@ApiModelProperty(value = """if true the app can invoke the service JApps.su to impersonate a different platform user.""")
-	@BeanProperty 
-	var canDisguise: Boolean  = false
-	def withcanDisguise(p:Boolean):this.type ={ 	this.canDisguise = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var disguiseData: MAppDisguiseData =_
-	def withdisguiseData(p:MAppDisguiseData):this.type ={ 	this.disguiseData = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var subscriptionData: MAppSubscriptionData =_
-	def withsubscriptionData(p:MAppSubscriptionData):this.type ={ 	this.subscriptionData = p; 	this }
 
 	/**
 	 * linked system user for the application

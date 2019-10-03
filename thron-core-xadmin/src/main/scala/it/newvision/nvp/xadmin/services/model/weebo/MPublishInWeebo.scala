@@ -16,6 +16,36 @@ import it.newvision.nvp.xadmin.model.MFile
 class MPublishInWeebo extends Serializable {
 
 	/**
+	 * Optional.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional.""")
+	@BeanProperty 
+	var channel: String =_
+	def withchannel(p:String):this.type ={ 	this.channel = p; 	this }
+
+	/**
+	 * Optional.
+	 * The content metadata, like name and description in the specified locale. If the
+	 * ContentDescription is empty, the platform create a content description for the
+	 * default locale assigning as content title the source filename.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional.
+	//#SWGNL#The content metadata, like name and description in the specified locale. If the ContentDescription is empty, the platform create a content description for the default locale assigning as content title the source filename.""")
+	@BeanProperty 
+	var content: MContentDescription =_
+	def withcontent(p:MContentDescription):this.type ={ 	this.content = p; 	this }
+
+	/**
+	 * Optional.
+	 * Define if a content is User Generated.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional.
+	//#SWGNL#Define if a content is User Generated.""")
+	@BeanProperty 
+	var contentUGC: Boolean =_
+	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
+
+	/**
 	 * the source File Descriptor. Multiple files is used depending on the publication
 	 * type. PublishVideo/PublishAudio/PublishImage requires only one source file.
 	 * This value should be empty for MPublishPageletParams
@@ -39,57 +69,6 @@ class MPublishInWeebo extends Serializable {
 	def withfileFromFTP(p:Boolean):this.type ={ 	this.fileFromFTP = p; 	this }
 
 	/**
-	 * Optional.
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional.""")
-	@BeanProperty 
-	var channel: String =_
-	def withchannel(p:String):this.type ={ 	this.channel = p; 	this }
-
-	/**
-	 * Optional.
-	 * The content metadata, like name and description in the specified locale. If the
-	 * ContentDescription is empty, the platform create a content description for the
-	 * default locale assigning as content title the source filename.
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional.
-	//#SWGNL#The content metadata, like name and description in the specified locale. If the ContentDescription is empty, the platform create a content description for the default locale assigning as content title the source filename.""")
-	@BeanProperty 
-	var content: MContentDescription =_
-	def withcontent(p:MContentDescription):this.type ={ 	this.content = p; 	this }
-
-	/**
-	 * Deprecated
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated""")
-	@BeanProperty 
-	@Deprecated
-	var solution: String  = "VIEW"
-	@Deprecated
-	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
-
-	/**
-	 * Optional.
-	 * Define if a content is User Generated.
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional.
-	//#SWGNL#Define if a content is User Generated.""")
-	@BeanProperty 
-	var contentUGC: Boolean =_
-	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
-
-	/**
-	 * Optional. The identifier for the publishing profile (used to derive the list of
-	 * channels where the content should be published).
-	 * If empty and channel not specified, will be used the default profile
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. The identifier for the publishing profile (used to derive the list of channels where the content should be published).
-	//#SWGNL#If empty and channel not specified, will be used the default profile""")
-	@BeanProperty 
-	var profileId: String =_
-	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
-
-	/**
 	 * Optional.Used to specify if the publishing process should define a value for
 	 * all available content locales.
 	 * If false the service apply to the content only the locale specified in
@@ -103,6 +82,27 @@ class MPublishInWeebo extends Serializable {
 	@BeanProperty 
 	var initAllLocales: Boolean  = true
 	def withinitAllLocales(p:Boolean):this.type ={ 	this.initAllLocales = p; 	this }
+
+	/**
+	 * Optional. The identifier for the publishing profile (used to derive the list of
+	 * channels where the content should be published).
+	 * If empty and channel not specified, will be used the default profile
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. The identifier for the publishing profile (used to derive the list of channels where the content should be published).
+	//#SWGNL#If empty and channel not specified, will be used the default profile""")
+	@BeanProperty 
+	var profileId: String =_
+	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
+
+	/**
+	 * Deprecated
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated""")
+	@BeanProperty 
+	@Deprecated
+	var solution: String  = "VIEW"
+	@Deprecated
+	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
 	 * @return Boolean

@@ -14,29 +14,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MPublishingProfileDetail extends Serializable {
 
-	/**
-	 * like HD,STANDARD,MYSITE...
-	 */
-	//#SWG#@ApiModelProperty(value = """like HD,STANDARD,MYSITE...""" ,required = true)
-	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var name: String =_
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var default: Boolean  = false
-	def withdefault(p:Boolean):this.type ={ 	this.default = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var description: String =_
-	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var active: Boolean  = false
@@ -49,6 +26,29 @@ class MPublishingProfileDetail extends Serializable {
 	@BeanProperty 
 	var channels: List[String] = new ArrayList[String]
 	def withchannels(p:List[String]):this.type ={ 	this.channels = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var default: Boolean  = false
+	def withdefault(p:Boolean):this.type ={ 	this.default = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var description: String =_
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+
+	/**
+	 * like HD,STANDARD,MYSITE...
+	 */
+	//#SWG#@ApiModelProperty(value = """like HD,STANDARD,MYSITE...""" ,required = true)
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var name: String =_
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * used to override the default properties of the platform profile.
@@ -89,9 +89,9 @@ class MPublishingProfileDetail extends Serializable {
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STANDARD_IDP(){
+	def init_STANDARD_AV(){
 		this.id = "STANDARD"
-		this.name = "STANDARD Profile"
+		this.name = "Standard Profile"
 		this.overridePlatformProfile = true
 		this.active = true
 		this.default = true
@@ -102,9 +102,9 @@ class MPublishingProfileDetail extends Serializable {
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init_STANDARD_AV(){
+	def init_STANDARD_IDP(){
 		this.id = "STANDARD"
-		this.name = "Standard Profile"
+		this.name = "STANDARD Profile"
 		this.overridePlatformProfile = true
 		this.active = true
 		this.default = true

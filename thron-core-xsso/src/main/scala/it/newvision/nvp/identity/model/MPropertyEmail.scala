@@ -16,23 +16,13 @@ class MPropertyEmail extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var destinationErrorEmails: String  = "support@thron.com"
-	def withdestinationErrorEmails(p:String):this.type ={ 	this.destinationErrorEmails = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
 	var defaultEmail: String  = ""
 	def withdefaultEmail(p:String):this.type ={ 	this.defaultEmail = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var emailFW: String  = "support@thron.com"
-	def withemailFW(p:String):this.type ={ 	this.emailFW = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var senderEmailFW: String  = "support@thron.com"
-	def withsenderEmailFW(p:String):this.type ={ 	this.senderEmailFW = p; 	this }
+	var destinationErrorEmails: String  = "support@thron.com"
+	def withdestinationErrorEmails(p:String):this.type ={ 	this.destinationErrorEmails = p; 	this }
 
 	/**
 	 * mydomain.it
@@ -44,6 +34,11 @@ class MPropertyEmail extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
+	var emailFW: String  = "support@thron.com"
+	def withemailFW(p:String):this.type ={ 	this.emailFW = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
 	var packagedNotificationEmail: String =_
 	def withpackagedNotificationEmail(p:String):this.type ={ 	this.packagedNotificationEmail = p; 	this }
 
@@ -51,6 +46,11 @@ class MPropertyEmail extends Serializable {
 	@BeanProperty 
 	var publishedNotificationEmail: String =_
 	def withpublishedNotificationEmail(p:String):this.type ={ 	this.publishedNotificationEmail = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var senderEmailFW: String  = "support@thron.com"
+	def withsenderEmailFW(p:String):this.type ={ 	this.senderEmailFW = p; 	this }
 
 	/**
 	 * @return void

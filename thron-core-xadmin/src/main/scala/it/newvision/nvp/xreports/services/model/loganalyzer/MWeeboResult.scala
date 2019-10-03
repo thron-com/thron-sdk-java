@@ -21,6 +21,11 @@ class MWeeboResult extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
+	var hits: Long =_
+	def withhits(p:Long):this.type ={ 	this.hits = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
 	var originCountryId: Integer =_
 	def withoriginCountryId(p:Integer):this.type ={ 	this.originCountryId = p; 	this }
 
@@ -31,10 +36,5 @@ class MWeeboResult extends Serializable {
 	@BeanProperty 
 	var traffic: Long =_
 	def withtraffic(p:Long):this.type ={ 	this.traffic = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var hits: Long =_
-	def withhits(p:Long):this.type ={ 	this.hits = p; 	this }
 
 }

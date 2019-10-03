@@ -17,10 +17,14 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = "Request message for service JSubscriptions.categorySubscription")
 class MSubscriptionscategorySubscriptionReq extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
+	/**
+	 * Propagate the subscription on the whole category subtree. Optional, default =
+	 * false
+	 */
+	//#SWG#@ApiModelProperty(value = """Propagate the subscription on the whole category subtree. Optional, default = false""", required = true)
 	@BeanProperty
-	var clientId: String =_
-	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
+	var cascade: Boolean =_
+	def withcascade(p:Boolean):this.type ={ 	this.cascade = p; 	this }
 
 	/**
 	 * Id or prettyId
@@ -29,6 +33,11 @@ class MSubscriptionscategorySubscriptionReq extends Serializable {
 	@BeanProperty
 	var categoryId: String =_
 	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var clientId: String =_
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
 	 * revoke the subscription to the given category

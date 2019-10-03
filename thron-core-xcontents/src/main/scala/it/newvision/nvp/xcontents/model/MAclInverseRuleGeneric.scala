@@ -18,19 +18,6 @@ import javax.xml.bind.annotation._
 class MAclInverseRuleGeneric extends Serializable {
 
 	/**
-	 * The different type of active rules.
-	 */
-	//#SWG#@ApiModelProperty(value = """The different type of active rules.""" ,required = true)
-	@BeanProperty 
-	var rule: MEAclRuleInverse =_
-	def withrule(p:MEAclRuleInverse):this.type ={ 	this.rule = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var enabled: Boolean  = true
-	def withenabled(p:Boolean):this.type ={ 	this.enabled = p; 	this }
-
-	/**
 	 * Only for Categories.
 	 * Categories SPREAD_TO Contents (when a content is linked to a category)
 	 */
@@ -39,6 +26,11 @@ class MAclInverseRuleGeneric extends Serializable {
 	@BeanProperty 
 	var applyToSpreadTargets: Boolean =_
 	def withapplyToSpreadTargets(p:Boolean):this.type ={ 	this.applyToSpreadTargets = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var enabled: Boolean  = true
+	def withenabled(p:Boolean):this.type ={ 	this.enabled = p; 	this }
 
 	/**
 	 * like: FACEBOOK, EMAIL, TWITTER, SMS,
@@ -57,6 +49,14 @@ class MAclInverseRuleGeneric extends Serializable {
 	@BeanProperty 
 	var metadata: List[MMetadata] = new ArrayList[MMetadata]
 	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
+
+	/**
+	 * The different type of active rules.
+	 */
+	//#SWG#@ApiModelProperty(value = """The different type of active rules.""" ,required = true)
+	@BeanProperty 
+	var rule: MEAclRuleInverse =_
+	def withrule(p:MEAclRuleInverse):this.type ={ 	this.rule = p; 	this }
 
 	/**
 	 * @return Boolean

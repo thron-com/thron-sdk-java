@@ -19,36 +19,18 @@ import com.thron.intelligence.services.model.tag.MEITagDefinitionOrderBy
 //#SWG#@ApiModel(description = "Request message for service JITagDefinition.listJoined")
 class MITagDefinitionlistJoinedReq extends Serializable {
 
-	/**
-	 * Target ITagDefinition Id
-	 */
-	//#SWG#@ApiModelProperty(value = """Target ITagDefinition Id""", required = true)
-	@BeanProperty
-	var targetId: String =_
-	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var criteria: MITagDefinitionJoinedSearchCriteria =_
 	def withcriteria(p:MITagDefinitionJoinedSearchCriteria):this.type ={ 	this.criteria = p; 	this }
 
 	/**
-	 * Optional. default is false
-	 * Fill the list of linked metadata definition in items.linkedMetadataDefinition
+	 * Optional. Default value is 50
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. default is false
-	//#SWGNL#Fill the list of linked metadata definition in items.linkedMetadataDefinition""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional. Default value is 50""", required = true)
 	@BeanProperty
-	var showLinkedMetadata: Boolean =_
-	def withshowLinkedMetadata(p:Boolean):this.type ={ 	this.showLinkedMetadata = p; 	this }
-
-	/**
-	 * Optional
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
-	@BeanProperty
-	var orderBy: MEITagDefinitionOrderBy =_
-	def withorderBy(p:MEITagDefinitionOrderBy):this.type ={ 	this.orderBy = p; 	this }
+	var limit: Integer =_
+	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
 
 	/**
 	 * Optional.
@@ -61,11 +43,29 @@ class MITagDefinitionlistJoinedReq extends Serializable {
 	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
-	 * Optional. Default value is 50
+	 * Optional
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Default value is 50""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
-	var limit: Integer =_
-	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
+	var orderBy: MEITagDefinitionOrderBy =_
+	def withorderBy(p:MEITagDefinitionOrderBy):this.type ={ 	this.orderBy = p; 	this }
+
+	/**
+	 * Optional. default is false
+	 * Fill the list of linked metadata definition in items.linkedMetadataDefinition
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. default is false
+	//#SWGNL#Fill the list of linked metadata definition in items.linkedMetadataDefinition""", required = true)
+	@BeanProperty
+	var showLinkedMetadata: Boolean =_
+	def withshowLinkedMetadata(p:Boolean):this.type ={ 	this.showLinkedMetadata = p; 	this }
+
+	/**
+	 * Target ITagDefinition Id
+	 */
+	//#SWG#@ApiModelProperty(value = """Target ITagDefinition Id""", required = true)
+	@BeanProperty
+	var targetId: String =_
+	def withtargetId(p:String):this.type ={ 	this.targetId = p; 	this }
 
 }

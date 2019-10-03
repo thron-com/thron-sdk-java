@@ -16,8 +16,31 @@ class MClient extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
+	var clientCapabilities: MCapabilities  = new MCapabilities()
+	def withclientCapabilities(p:MCapabilities):this.type ={ 	this.clientCapabilities = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var clientPolicies: MPolicies  = new MPolicies()
+	def withclientPolicies(p:MPolicies):this.type ={ 	this.clientPolicies = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var clientStatus: MEClientStatus =_
+	def withclientStatus(p:MEClientStatus):this.type ={ 	this.clientStatus = p; 	this }
+
+	/**
+	 * client creation date
+	 */
+	//#SWG#@ApiModelProperty(value = """client creation date""" ,required = true)
+	@BeanProperty 
+	var creationDate: Date  = new Date()
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
 	 * the specific Credential used to interact with the OS
@@ -29,21 +52,25 @@ class MClient extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var clientPolicies: MPolicies  = new MPolicies()
-	def withclientPolicies(p:MPolicies):this.type ={ 	this.clientPolicies = p; 	this }
+	var domain: String  = "4me.it"
+	def withdomain(p:String):this.type ={ 	this.domain = p; 	this }
 
 	/**
-	 * client creation date
+	 * The end date of the service. This is the end of the paid contract with the
+	 * customer
 	 */
-	//#SWG#@ApiModelProperty(value = """client creation date""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """The end date of the service. This is the end of the paid contract with the customer""")
 	@BeanProperty 
-	var creationDate: Date  = new Date()
-	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
+	var endOfService: Date =_
+	def withendOfService(p:Date):this.type ={ 	this.endOfService = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * the possible date of expiry of the contract
+	 */
+	//#SWG#@ApiModelProperty(value = """the possible date of expiry of the contract""")
 	@BeanProperty 
-	var clientCapabilities: MCapabilities  = new MCapabilities()
-	def withclientCapabilities(p:MCapabilities):this.type ={ 	this.clientCapabilities = p; 	this }
+	var expiryDate: Date =_
+	def withexpiryDate(p:Date):this.type ={ 	this.expiryDate = p; 	this }
 
 	/**
 	 * date from which the client has passed to the inactive state.
@@ -55,32 +82,10 @@ class MClient extends Serializable {
 	var inactiveFrom: Date =_
 	def withinactiveFrom(p:Date):this.type ={ 	this.inactiveFrom = p; 	this }
 
-	/**
-	 * the possible date of expiry of the contract
-	 */
-	//#SWG#@ApiModelProperty(value = """the possible date of expiry of the contract""")
-	@BeanProperty 
-	var expiryDate: Date =_
-	def withexpiryDate(p:Date):this.type ={ 	this.expiryDate = p; 	this }
-
-	/**
-	 * The end date of the service. This is the end of the paid contract with the
-	 * customer
-	 */
-	//#SWG#@ApiModelProperty(value = """The end date of the service. This is the end of the paid contract with the customer""")
-	@BeanProperty 
-	var endOfService: Date =_
-	def withendOfService(p:Date):this.type ={ 	this.endOfService = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var clientStatus: MEClientStatus =_
-	def withclientStatus(p:MEClientStatus):this.type ={ 	this.clientStatus = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var domain: String  = "4me.it"
-	def withdomain(p:String):this.type ={ 	this.domain = p; 	this }
+	var securitySettings: MSecuritySettings =_
+	def withsecuritySettings(p:MSecuritySettings):this.type ={ 	this.securitySettings = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")
@@ -91,15 +96,6 @@ class MClient extends Serializable {
 	//#SWG#@ApiModelProperty(value = """""")
 	var credentials: List[MUserCredential] = new ArrayList[MUserCredential]
 	  def withcredentials(p:List[MUserCredential]):this.type ={ 	this.credentials = p; 	this }
-
-	/**
-	 * @return Boolean
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def isValid():Boolean ={
-		Option(clientId).isDefined && Option(this.getCredentialOS).isDefined && Option(properties).exists(_.isValid)
-	}
 
 	/**
 	 * @return MEClientStatus
@@ -120,6 +116,15 @@ class MClient extends Serializable {
 										case None => Option(this.clientStatus).getOrElse(MEClientStatus.ACTIVE)
 									}
 						}
+	}
+
+	/**
+	 * @return Boolean
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def isValid():Boolean ={
+		Option(clientId).isDefined && Option(this.getCredentialOS).isDefined && Option(properties).exists(_.isValid)
 	}
 
 }

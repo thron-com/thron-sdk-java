@@ -28,6 +28,30 @@ import javax.xml.bind.annotation._
 class MSemanticThresholdConfiguration extends Serializable {
 
 	/**
+	 * The minimum percentage value for approval.
+	 * Example: approval = 40 means ]40..100] range with lower bound limit excluded
+	 * 
+	 * Constraints:
+	 * <ul>
+	 * 	<li>>= suggest</li>
+	 * 	<li><=100</li>
+	 * 	<li>threshold.value excluded</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """The minimum percentage value for approval.
+	//#SWGNL#Example: approval = 40 means ]40..100] range with lower bound limit excluded
+	//#SWGNL#
+	//#SWGNL#Constraints:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>>= suggest</li>
+	//#SWGNL#	<li><=100</li>
+	//#SWGNL#	<li>threshold.value excluded</li>
+	//#SWGNL#</ul>""" ,required = true)
+	@BeanProperty 
+	var approval: MThresholdValue =_
+	def withapproval(p:MThresholdValue):this.type ={ 	this.approval = p; 	this }
+
+	/**
 	 * The minimum percentage value for suggestion.
 	 * Example: suggest= 40 means [ 40..approval ]  range with upper bound limit
 	 * included
@@ -51,30 +75,6 @@ class MSemanticThresholdConfiguration extends Serializable {
 	@BeanProperty 
 	var suggest: MThresholdValue =_
 	def withsuggest(p:MThresholdValue):this.type ={ 	this.suggest = p; 	this }
-
-	/**
-	 * The minimum percentage value for approval.
-	 * Example: approval = 40 means ]40..100] range with lower bound limit excluded
-	 * 
-	 * Constraints:
-	 * <ul>
-	 * 	<li>>= suggest</li>
-	 * 	<li><=100</li>
-	 * 	<li>threshold.value excluded</li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """The minimum percentage value for approval.
-	//#SWGNL#Example: approval = 40 means ]40..100] range with lower bound limit excluded
-	//#SWGNL#
-	//#SWGNL#Constraints:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>>= suggest</li>
-	//#SWGNL#	<li><=100</li>
-	//#SWGNL#	<li>threshold.value excluded</li>
-	//#SWGNL#</ul>""" ,required = true)
-	@BeanProperty 
-	var approval: MThresholdValue =_
-	def withapproval(p:MThresholdValue):this.type ={ 	this.approval = p; 	this }
 
 	/**
 	 * @return Boolean

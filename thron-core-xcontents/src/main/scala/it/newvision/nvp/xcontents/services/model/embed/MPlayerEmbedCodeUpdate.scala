@@ -16,6 +16,11 @@ import it.newvision.nvp.xcontents.services.model.common.MUpdater
 //#SWG#@ApiModel(description = """""")
 class MPlayerEmbedCodeUpdate extends MUpdater with Serializable  {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var enabled: Boolean =_
+	def withenabled(p:Boolean):this.type ={ 	this.enabled = p; 	this }
+
 	/**
 	 * short name or description of the embed code
 	 */
@@ -23,20 +28,6 @@ class MPlayerEmbedCodeUpdate extends MUpdater with Serializable  {
 	@BeanProperty 
 	var name: String =_
 	def withname(p:String):this.type ={ 	this.name = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var template: MPlayerEmbedCodeTemplateValue =_
-	def withtemplate(p:MPlayerEmbedCodeTemplateValue):this.type ={ 	this.template = p; 	this }
-
-	/**
-	 * Optional. A list of parameters to be used by the player when delivering the
-	 * content (CE version > 1.x)
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. A list of parameters to be used by the player when delivering the content (CE version > 1.x)""")
-	@BeanProperty 
-	var values: List[MMetadata] =_
-	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
 
 	/**
 	 * Optional. specific param to use with RTIE thumbs and images
@@ -46,6 +37,11 @@ class MPlayerEmbedCodeUpdate extends MUpdater with Serializable  {
 	var rtieValues: List[MMetadata] =_
 	def withrtieValues(p:List[MMetadata]):this.type ={ 	this.rtieValues = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var template: MPlayerEmbedCodeTemplateValue =_
+	def withtemplate(p:MPlayerEmbedCodeTemplateValue):this.type ={ 	this.template = p; 	this }
+
 	/**
 	 * The contextId to use for traking.
 	 */
@@ -54,9 +50,13 @@ class MPlayerEmbedCodeUpdate extends MUpdater with Serializable  {
 	var useContextId: String =_
 	def withuseContextId(p:String):this.type ={ 	this.useContextId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Optional. A list of parameters to be used by the player when delivering the
+	 * content (CE version > 1.x)
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. A list of parameters to be used by the player when delivering the content (CE version > 1.x)""")
 	@BeanProperty 
-	var enabled: Boolean =_
-	def withenabled(p:Boolean):this.type ={ 	this.enabled = p; 	this }
+	var values: List[MMetadata] =_
+	def withvalues(p:List[MMetadata]):this.type ={ 	this.values = p; 	this }
 
 }

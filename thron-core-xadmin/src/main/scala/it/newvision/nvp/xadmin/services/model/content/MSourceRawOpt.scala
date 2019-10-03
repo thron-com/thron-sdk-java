@@ -19,10 +19,10 @@ class MSourceRawOpt extends Serializable {
 
 	/**
 	 * Base64 String encoded with UTF-8 charset.
-	 * Max size: 2MB
+	 * Max size: 30MB
 	 */
 	//#SWG#@ApiModelProperty(value = """Base64 String encoded with UTF-8 charset.
-	//#SWGNL#Max size: 2MB""" ,required = true)
+	//#SWGNL#Max size: 30MB""" ,required = true)
 	@BeanProperty 
 	var buffer: String =_
 	def withbuffer(p:String):this.type ={ 	this.buffer = p; 	this }

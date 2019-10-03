@@ -17,8 +17,8 @@ class MAclInverseRulesItem extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var targetObjId: String =_
-	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
+	var acl: MAclInverseRulesGeneric =_
+	def withacl(p:MAclInverseRulesGeneric):this.type ={ 	this.acl = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
@@ -27,7 +27,7 @@ class MAclInverseRulesItem extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var acl: MAclInverseRulesGeneric =_
-	def withacl(p:MAclInverseRulesGeneric):this.type ={ 	this.acl = p; 	this }
+	var targetObjId: String =_
+	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
 
 }

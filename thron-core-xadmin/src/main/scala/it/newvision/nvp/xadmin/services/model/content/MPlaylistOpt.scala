@@ -4,7 +4,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xadmin.model.MEContentType
+import it.newvision.nvp.xcontents.services.model.playlist.MEPlaylistTemplate
 
 /* ************************
 *  GENERATED CLASS
@@ -21,8 +21,8 @@ class MPlaylistOpt extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """used to define the content template for the new Playlist. The content template is used to create audio or video playlist, or slideshow (image playlist).""" ,required = true)
 	@BeanProperty 
-	var template: MEContentType =_
-	def withtemplate(p:MEContentType):this.type ={ 	this.template = p; 	this }
+	var template: MEPlaylistTemplate =_
+	def withtemplate(p:MEPlaylistTemplate):this.type ={ 	this.template = p; 	this }
 
 	/**
 	 * list of xcontent ids of the playlist elements.
@@ -40,7 +40,6 @@ class MPlaylistOpt extends Serializable {
 	def validate(){
 		import scala.collection.JavaConversions._
 		if(Option(template).isEmpty) throw new IllegalArgumentException("missing playlistOpt.template parameter")
-		if(!Seq(MEContentType.IMAGE,MEContentType.AUDIO,MEContentType.VIDEO).contains(template)) throw new IllegalArgumentException("playlistOpt.template not allowed")
 		Option(xcontentIds).foreach{xc=> 
 		  if(xc.size()>500)throw new IllegalArgumentException("playlistOpt.xcontentIds has more than 500 elements") 
 		}

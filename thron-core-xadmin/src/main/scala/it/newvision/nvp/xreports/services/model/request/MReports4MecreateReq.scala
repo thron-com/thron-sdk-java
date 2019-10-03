@@ -25,6 +25,11 @@ class MReports4MecreateReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
+	var description: String =_
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
 	var query: MQuery4ME =_
 	def withquery(p:MQuery4ME):this.type ={ 	this.query = p; 	this }
 
@@ -32,10 +37,5 @@ class MReports4MecreateReq extends Serializable {
 	@BeanProperty
 	var templateName: String =_
 	def withtemplateName(p:String):this.type ={ 	this.templateName = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var description: String =_
-	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 }

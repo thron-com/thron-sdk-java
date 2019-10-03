@@ -20,15 +20,18 @@ import it.newvision.nvp.xcontents.services.model.content.MContentCriteria
 //#SWG#@ApiModel(description = """LowerBoundDate and upperBoundDate are used to filter all live events that are SCHEDULED inside the date range.""")
 class MLiveEventCriteria extends MContentCriteria with Serializable  {
 
+	/**
+	 * the current status of the event
+	 */
+	//#SWG#@ApiModelProperty(value = """the current status of the event""")
+	@BeanProperty 
+	var eventStatus: MELiveEventStatus =_
+	def witheventStatus(p:MELiveEventStatus):this.type ={ 	this.eventStatus = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var lowerBoundDate: Date =_
 	def withlowerBoundDate(p:Date):this.type ={ 	this.lowerBoundDate = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var upperBoundDate: Date =_
-	def withupperBoundDate(p:Date):this.type ={ 	this.upperBoundDate = p; 	this }
 
 	/**
 	 * used to distinguish h24 live events by the spot events.
@@ -38,12 +41,9 @@ class MLiveEventCriteria extends MContentCriteria with Serializable  {
 	var neverEndingLiveEvent: Boolean =_
 	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
 
-	/**
-	 * the current status of the event
-	 */
-	//#SWG#@ApiModelProperty(value = """the current status of the event""")
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var eventStatus: MELiveEventStatus =_
-	def witheventStatus(p:MELiveEventStatus):this.type ={ 	this.eventStatus = p; 	this }
+	var upperBoundDate: Date =_
+	def withupperBoundDate(p:Date):this.type ={ 	this.upperBoundDate = p; 	this }
 
 }

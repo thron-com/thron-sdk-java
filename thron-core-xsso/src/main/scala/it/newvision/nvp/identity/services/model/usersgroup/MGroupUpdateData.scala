@@ -16,12 +16,13 @@ import it.newvision.nvp.identity.model.MUserCapability
 class MGroupUpdateData extends Serializable {
 
 	/**
-	 * the name of the group
+	 * Toggle group active state. When a group is not active it will not impact on ACL
+	 * and Permissions.
 	 */
-	//#SWG#@ApiModelProperty(value = """the name of the group""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """Toggle group active state. When a group is not active it will not impact on ACL and Permissions.""")
 	@BeanProperty 
-	var name: String =_
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
+	var active: Boolean  = true
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * short description
@@ -30,15 +31,6 @@ class MGroupUpdateData extends Serializable {
 	@BeanProperty 
 	var description: String =_
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
-
-	/**
-	 * Toggle group active state. When a group is not active it will not impact on ACL
-	 * and Permissions.
-	 */
-	//#SWG#@ApiModelProperty(value = """Toggle group active state. When a group is not active it will not impact on ACL and Permissions.""")
-	@BeanProperty 
-	var active: Boolean  = true
-	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * Used as roles template. It is possible to define the UserGroup roles that HAVE
@@ -60,6 +52,14 @@ class MGroupUpdateData extends Serializable {
 	@BeanProperty 
 	var groupCapabilities: MUserCapability  = new MUserCapability()
 	def withgroupCapabilities(p:MUserCapability):this.type ={ 	this.groupCapabilities = p; 	this }
+
+	/**
+	 * the name of the group
+	 */
+	//#SWG#@ApiModelProperty(value = """the name of the group""" ,required = true)
+	@BeanProperty 
+	var name: String =_
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * @return Boolean

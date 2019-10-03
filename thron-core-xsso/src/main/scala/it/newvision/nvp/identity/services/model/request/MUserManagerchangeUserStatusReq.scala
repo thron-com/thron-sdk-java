@@ -24,8 +24,8 @@ class MUserManagerchangeUserStatusReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
+	var expiryDate: Date =_
+	def withexpiryDate(p:Date):this.type ={ 	this.expiryDate = p; 	this }
 
 	/**
 	 * true = the user is active
@@ -39,7 +39,7 @@ class MUserManagerchangeUserStatusReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var expiryDate: Date =_
-	def withexpiryDate(p:Date):this.type ={ 	this.expiryDate = p; 	this }
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

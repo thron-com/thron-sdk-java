@@ -15,6 +15,24 @@ import javax.xml.bind.annotation._
 class MContentPageletParams extends Serializable {
 
 	/**
+	 * raw body source (html or other formats).
+	 * constraints: length < 2000000 chars (2.000.000 bytes)
+	 */
+	//#SWG#@ApiModelProperty(value = """raw body source (html or other formats).
+	//#SWGNL#constraints: length < 2000000 chars (2.000.000 bytes)""" ,required = true)
+	@BeanProperty 
+	var body: String =_
+	def withbody(p:String):this.type ={ 	this.body = p; 	this }
+
+	/**
+	 * Used to specify the mime type of the body value.
+	 */
+	//#SWG#@ApiModelProperty(value = """Used to specify the mime type of the body value.""" ,required = true)
+	@BeanProperty 
+	var mimeType: String =_
+	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
+
+	/**
 	 * -> MContent.owner
 	 */
 	//#SWG#@ApiModelProperty(value = """-> MContent.owner""")
@@ -32,24 +50,6 @@ class MContentPageletParams extends Serializable {
 	var userId: String =_
 	@Deprecated
 	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
-
-	/**
-	 * raw body source (html or other formats).
-	 * constraints: length < 2000000 chars (2.000.000 bytes)
-	 */
-	//#SWG#@ApiModelProperty(value = """raw body source (html or other formats).
-	//#SWGNL#constraints: length < 2000000 chars (2.000.000 bytes)""" ,required = true)
-	@BeanProperty 
-	var body: String =_
-	def withbody(p:String):this.type ={ 	this.body = p; 	this }
-
-	/**
-	 * Used to specify the mime type of the body value.
-	 */
-	//#SWG#@ApiModelProperty(value = """Used to specify the mime type of the body value.""" ,required = true)
-	@BeanProperty 
-	var mimeType: String =_
-	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
 
 	/**
 	 * @return Boolean

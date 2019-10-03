@@ -21,10 +21,13 @@ import it.newvision.nvp.xcontents.model.MEModerationStatus
 //#SWGNL#The prettyId is basically used for WebTv where the user need a readable url""")
 class MModerationPub extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * the abuse report notified by a user.
+	 */
+	//#SWG#@ApiModelProperty(value = """the abuse report notified by a user.""")
 	@BeanProperty 
-	var status: MEModerationStatus =_
-	def withstatus(p:MEModerationStatus):this.type ={ 	this.status = p; 	this }
+	var acceptReportAbuse: Boolean =_
+	def withacceptReportAbuse(p:Boolean):this.type ={ 	this.acceptReportAbuse = p; 	this }
 
 	/**
 	 * The userId of the moderator
@@ -42,12 +45,9 @@ class MModerationPub extends Serializable {
 	var moderatorNotes: String =_
 	def withmoderatorNotes(p:String):this.type ={ 	this.moderatorNotes = p; 	this }
 
-	/**
-	 * the abuse report notified by a user.
-	 */
-	//#SWG#@ApiModelProperty(value = """the abuse report notified by a user.""")
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var acceptReportAbuse: Boolean =_
-	def withacceptReportAbuse(p:Boolean):this.type ={ 	this.acceptReportAbuse = p; 	this }
+	var status: MEModerationStatus =_
+	def withstatus(p:MEModerationStatus):this.type ={ 	this.status = p; 	this }
 
 }

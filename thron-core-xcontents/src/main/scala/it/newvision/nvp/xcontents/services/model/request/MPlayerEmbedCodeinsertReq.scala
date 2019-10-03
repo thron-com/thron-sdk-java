@@ -20,6 +20,17 @@ import it.newvision.nvp.xcontents.services.model.embed.MPlayerEmbedCodeValue
 class MPlayerEmbedCodeinsertReq extends Serializable {
 
 	/**
+	 * Optional. Whether or not service should skip pkey creation for this Player
+	 * Embed Code.
+	 * Default is false.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Whether or not service should skip pkey creation for this Player Embed Code.
+	//#SWGNL#Default is false.""", required = true)
+	@BeanProperty
+	var skipPkeyCreation: Boolean =_
+	def withskipPkeyCreation(p:Boolean):this.type ={ 	this.skipPkeyCreation = p; 	this }
+
+	/**
 	 * xcontentId or prettyId
 	 */
 	//#SWG#@ApiModelProperty(value = """xcontentId or prettyId""", required = true)
@@ -31,16 +42,5 @@ class MPlayerEmbedCodeinsertReq extends Serializable {
 	@BeanProperty
 	var value: MPlayerEmbedCodeValue =_
 	def withvalue(p:MPlayerEmbedCodeValue):this.type ={ 	this.value = p; 	this }
-
-	/**
-	 * Optional. Whether or not service should skip pkey creation for this Player
-	 * Embed Code.
-	 * Default is false.
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Whether or not service should skip pkey creation for this Player Embed Code.
-	//#SWGNL#Default is false.""", required = true)
-	@BeanProperty
-	var skipPkeyCreation: Boolean =_
-	def withskipPkeyCreation(p:Boolean):this.type ={ 	this.skipPkeyCreation = p; 	this }
 
 }

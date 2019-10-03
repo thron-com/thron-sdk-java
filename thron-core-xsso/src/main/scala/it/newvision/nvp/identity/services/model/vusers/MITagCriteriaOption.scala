@@ -50,7 +50,7 @@ class MITagCriteriaOption extends Serializable {
 		import org.apache.commons.lang.StringUtils
 		Option(operation).isDefined &&
 			itags.forall(i=>StringUtils.isNotEmpty(i.classificationId) && 
-			StringUtils.isNotEmpty(i.id)) && itags.size()<=5 && itags.nonEmpty
+			StringUtils.isNotEmpty(i.id)) && itags.size()<=50 && itags.nonEmpty
 	}
 
 }

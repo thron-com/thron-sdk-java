@@ -21,6 +21,11 @@ class MLiveEventAdminupdateReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
+	var categoryIdForAcl: String =_
+	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
 	var client: MCredential =_
 	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
@@ -33,10 +38,5 @@ class MLiveEventAdminupdateReq extends Serializable {
 	@BeanProperty
 	var contentValues: MLiveEventUpdateAdmin =_
 	def withcontentValues(p:MLiveEventUpdateAdmin):this.type ={ 	this.contentValues = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var categoryIdForAcl: String =_
-	def withcategoryIdForAcl(p:String):this.type ={ 	this.categoryIdForAcl = p; 	this }
 
 }

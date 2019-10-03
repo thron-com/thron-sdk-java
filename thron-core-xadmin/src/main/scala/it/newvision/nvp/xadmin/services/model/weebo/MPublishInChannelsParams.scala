@@ -15,12 +15,12 @@ import javax.xml.bind.annotation._
 class MPublishInChannelsParams extends Serializable {
 
 	/**
-	 * the content Id.
+	 * List of Channels where the content should be published.
 	 */
-	//#SWG#@ApiModelProperty(value = """the content Id.""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """List of Channels where the content should be published.""")
 	@BeanProperty 
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
+	var channels: List[String] = new ArrayList[String]
+	def withchannels(p:List[String]):this.type ={ 	this.channels = p; 	this }
 
 	/**
 	 * Deprecated. use xcontentId parameter
@@ -31,14 +31,6 @@ class MPublishInChannelsParams extends Serializable {
 	var mediaContentId: String =_
 	@Deprecated
 	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
-
-	/**
-	 * List of Channels where the content should be published.
-	 */
-	//#SWG#@ApiModelProperty(value = """List of Channels where the content should be published.""")
-	@BeanProperty 
-	var channels: List[String] = new ArrayList[String]
-	def withchannels(p:List[String]):this.type ={ 	this.channels = p; 	this }
 
 	/**
 	 * Optional. The identifier for the publishing profile (used to derive the list of
@@ -52,6 +44,14 @@ class MPublishInChannelsParams extends Serializable {
 	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
 
 	/**
+	 * Optional. Default false.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Default false.""")
+	@BeanProperty 
+	var silentMode: Boolean  = false
+	def withsilentMode(p:Boolean):this.type ={ 	this.silentMode = p; 	this }
+
+	/**
 	 * Deprecated.
 	 */
 	//#SWG#@ApiModelProperty(value = """Deprecated.""" ,required = true)
@@ -62,11 +62,11 @@ class MPublishInChannelsParams extends Serializable {
 	def withstopForPreview(p:Boolean):this.type ={ 	this.stopForPreview = p; 	this }
 
 	/**
-	 * Optional. Default false.
+	 * the content Id.
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Default false.""")
+	//#SWG#@ApiModelProperty(value = """the content Id.""" ,required = true)
 	@BeanProperty 
-	var silentMode: Boolean  = false
-	def withsilentMode(p:Boolean):this.type ={ 	this.silentMode = p; 	this }
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 }

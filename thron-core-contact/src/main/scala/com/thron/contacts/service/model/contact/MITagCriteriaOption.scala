@@ -16,9 +16,9 @@ import com.thron.contacts.service.model.msg.MEOperation
 class MITagCriteriaOption extends Serializable {
 
 	/**
-	 * constraints: max size 5
+	 * constraints: max size 50
 	 */
-	//#SWG#@ApiModelProperty(value = """constraints: max size 5""")
+	//#SWG#@ApiModelProperty(value = """constraints: max size 50""")
 	@BeanProperty 
 	var itags: List[MITagCriteria] = new ArrayList[MITagCriteria]
 	def withitags(p:List[MITagCriteria]):this.type ={ 	this.itags = p; 	this }
@@ -47,7 +47,7 @@ class MITagCriteriaOption extends Serializable {
 		import org.apache.commons.lang.StringUtils
 		Option(operation).isDefined &&
 			itags.forall(i=>StringUtils.isNotEmpty(i.classificationId) && 
-			StringUtils.isNotEmpty(i.id)) && itags.size()<=5 && itags.nonEmpty
+			StringUtils.isNotEmpty(i.id)) && itags.size()<=50 && itags.nonEmpty
 	}
 
 }

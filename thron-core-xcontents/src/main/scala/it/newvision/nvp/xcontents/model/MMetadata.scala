@@ -21,6 +21,16 @@ import javax.xml.bind.annotation._
 class MMetadata extends Serializable {
 
 	/**
+	 * Locale code (ISO639-1)
+	 * Case sensitive value
+	 */
+	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1)
+	//#SWGNL#Case sensitive value""")
+	@BeanProperty 
+	var locale: String =_
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
+
+	/**
 	 * Case sensitive value
 	 * Constraints: max length = 50
 	 */
@@ -37,16 +47,6 @@ class MMetadata extends Serializable {
 	@BeanProperty 
 	var value: String =_
 	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
-
-	/**
-	 * Locale code (ISO639-1)
-	 * Case sensitive value
-	 */
-	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1)
-	//#SWGNL#Case sensitive value""")
-	@BeanProperty 
-	var locale: String =_
-	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * @param other : MMetadata

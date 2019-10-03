@@ -25,39 +25,31 @@ import javax.xml.bind.annotation._
 class MMediaContent extends Serializable {
 
 	/**
-	 * it's the unique reference ID for a given MediaContent object. It's the
-	 * mediacontentId
-	 */
-	//#SWG#@ApiModelProperty(value = """it's the unique reference ID for a given MediaContent object. It's the mediacontentId""" ,required = true)
-	@BeanProperty 
-	var id: String  = java.util.UUID.randomUUID.toString
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
-	/**
-	 * It is the content reference id of the xcontent component.
-	 */
-	//#SWG#@ApiModelProperty(value = """It is the content reference id of the xcontent component.""")
-	@BeanProperty 
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	/**
 	 * DEPRECATED.
+	 * The attribute shows the solutions that can  use the content. This information
+	 * is used to filter the contents by solution. Each solution shows only the
+	 * contents available for that solution.
 	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.
+	//#SWGNL#The attribute shows the solutions that can  use the content. This information is used to filter the contents by solution. Each solution shows only the contents available for that solution.""")
 	@BeanProperty 
 	@Deprecated
-	var packagedId: List[String] = new ArrayList[String]
+	var availableInSolutions: List[String] = new ArrayList[String]
 	@Deprecated
-	def withpackagedId(p:List[String]):this.type ={ 	this.packagedId = p; 	this }
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var contentType: MEContentType  = MEContentType.OTHER
+	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
 
 	/**
-	 * It is the content reference id of the xpublisher component.
+	 * used to flag the User Generated Contents.
 	 */
-	//#SWG#@ApiModelProperty(value = """It is the content reference id of the xpublisher component.""")
+	//#SWG#@ApiModelProperty(value = """used to flag the User Generated Contents.""")
 	@BeanProperty 
-	var xpublishedId: String =_
-	def withxpublishedId(p:String):this.type ={ 	this.xpublishedId = p; 	this }
+	var contentUGC: Boolean =_
+	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
@@ -65,18 +57,13 @@ class MMediaContent extends Serializable {
 	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 	/**
-	 * The userId of the user who created the content. Can be an internal userId or
-	 * external depending where the user component is handled.
+	 * it's the unique reference ID for a given MediaContent object. It's the
+	 * mediacontentId
 	 */
-	//#SWG#@ApiModelProperty(value = """The userId of the user who created the content. Can be an internal userId or external depending where the user component is handled.""")
+	//#SWG#@ApiModelProperty(value = """it's the unique reference ID for a given MediaContent object. It's the mediacontentId""" ,required = true)
 	@BeanProperty 
-	var userId: String =_
-	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var contentType: MEContentType  = MEContentType.OTHER
-	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
+	var id: String  = java.util.UUID.randomUUID.toString
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	/**
 	 * The display name of the Author.
@@ -92,6 +79,16 @@ class MMediaContent extends Serializable {
 
 	/**
 	 * DEPRECATED.
+	 */
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.""")
+	@BeanProperty 
+	@Deprecated
+	var packagedId: List[String] = new ArrayList[String]
+	@Deprecated
+	def withpackagedId(p:List[String]):this.type ={ 	this.packagedId = p; 	this }
+
+	/**
+	 * DEPRECATED.
 	 * The attribute shows from which solution the content has been created. This
 	 * information is used to filter the contents by solution.
 	 */
@@ -104,31 +101,29 @@ class MMediaContent extends Serializable {
 	def withsolution(p:String):this.type ={ 	this.solution = p; 	this }
 
 	/**
-	 * DEPRECATED.
-	 * The attribute shows the solutions that can  use the content. This information
-	 * is used to filter the contents by solution. Each solution shows only the
-	 * contents available for that solution.
+	 * The userId of the user who created the content. Can be an internal userId or
+	 * external depending where the user component is handled.
 	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#The attribute shows the solutions that can  use the content. This information is used to filter the contents by solution. Each solution shows only the contents available for that solution.""")
+	//#SWG#@ApiModelProperty(value = """The userId of the user who created the content. Can be an internal userId or external depending where the user component is handled.""")
 	@BeanProperty 
-	@Deprecated
-	var availableInSolutions: List[String] = new ArrayList[String]
-	@Deprecated
-	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
+	var userId: String =_
+	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
 
 	/**
-	 * used to flag the User Generated Contents.
+	 * It is the content reference id of the xcontent component.
 	 */
-	//#SWG#@ApiModelProperty(value = """used to flag the User Generated Contents.""")
+	//#SWG#@ApiModelProperty(value = """It is the content reference id of the xcontent component.""")
 	@BeanProperty 
-	var contentUGC: Boolean =_
-	def withcontentUGC(p:Boolean):this.type ={ 	this.contentUGC = p; 	this }
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
-	@BeanProperty
-	//#SWG#@ApiModelProperty(value = """""")
-	var channels: List[MChannel] = new ArrayList[MChannel]
-	  def withchannels(p:List[MChannel]):this.type ={ 	this.channels = p; 	this }
+	/**
+	 * It is the content reference id of the xpublisher component.
+	 */
+	//#SWG#@ApiModelProperty(value = """It is the content reference id of the xpublisher component.""")
+	@BeanProperty 
+	var xpublishedId: String =_
+	def withxpublishedId(p:String):this.type ={ 	this.xpublishedId = p; 	this }
 
 	/**
 	 * The specific channel for the thumbnails.
@@ -155,6 +150,21 @@ class MMediaContent extends Serializable {
 	//#SWG#@ApiModelProperty(value = """the original uploaded file properties. calculated using the Repository services.""")
 	var sourceFiles: List[MFile] = new ArrayList[MFile]
 	  def withsourceFiles(p:List[MFile]):this.type ={ 	this.sourceFiles = p; 	this }
+
+	@BeanProperty
+	//#SWG#@ApiModelProperty(value = """""")
+	var channels: List[MChannel] = new ArrayList[MChannel]
+	  def withchannels(p:List[MChannel]):this.type ={ 	this.channels = p; 	this }
+
+	/**
+	 * @return MChannel
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	def getAllChannels():List[MChannel] ={
+		import scala.collection.JavaConversions._
+		this.channels ++ Option(this.thumbChannel)
+	}
 
 	/**
 	 * @return MEContentStatus
@@ -226,16 +236,6 @@ class MMediaContent extends Serializable {
 		  else None
 		)
 		result.getOrElse(MEContentStatus.DRAFT)
-	}
-
-	/**
-	 * @return MChannel
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	def getAllChannels():List[MChannel] ={
-		import scala.collection.JavaConversions._
-		this.channels ++ Option(this.thumbChannel)
 	}
 
 }

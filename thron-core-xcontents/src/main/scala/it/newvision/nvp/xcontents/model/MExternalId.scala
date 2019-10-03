@@ -37,6 +37,24 @@ import javax.xml.bind.annotation._
 class MExternalId extends Serializable {
 
 	/**
+	 * Optional. Short description
+	 * <b>
+	 * </b><b>Constraints:</b>
+	 * <ul>
+	 * 	<li>max length = 10000</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Short description
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max length = 10000</li>
+	//#SWGNL#</ul>""")
+	@BeanProperty 
+	var description: String =_
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+
+	/**
 	 * 
 	 * <b>Constraints:</b>
 	 * <ul>
@@ -79,24 +97,6 @@ class MExternalId extends Serializable {
 	@BeanProperty 
 	var value: String =_
 	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
-
-	/**
-	 * Optional. Short description
-	 * <b>
-	 * </b><b>Constraints:</b>
-	 * <ul>
-	 * 	<li>max length = 10000</li>
-	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Short description
-	//#SWGNL#<b>
-	//#SWGNL#</b><b>Constraints:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>max length = 10000</li>
-	//#SWGNL#</ul>""")
-	@BeanProperty 
-	var description: String =_
-	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * @return String

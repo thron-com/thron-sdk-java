@@ -17,6 +17,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """The Semantic Engine works only on contents""")
 class MSemanticEngineConfiguration extends MIEngineConfiguration with Serializable  {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var contentConfiguration: MContentConf =_
+	def withcontentConfiguration(p:MContentConf):this.type ={ 	this.contentConfiguration = p; 	this }
+
 	/**
 	 * position inside the tree level. Used to define a custom order
 	 */
@@ -24,11 +29,6 @@ class MSemanticEngineConfiguration extends MIEngineConfiguration with Serializab
 	@BeanProperty 
 	var thresholds: MSemanticThresholdConfiguration =_
 	def withthresholds(p:MSemanticThresholdConfiguration):this.type ={ 	this.thresholds = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var contentConfiguration: MContentConf =_
-	def withcontentConfiguration(p:MContentConf):this.type ={ 	this.contentConfiguration = p; 	this }
 
 	/**
 	 * @return Boolean

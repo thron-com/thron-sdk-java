@@ -39,6 +39,34 @@ class MMetadataDefinitionSearchCriteria extends Serializable {
 	def withkeys(p:List[String]):this.type ={ 	this.keys = p; 	this }
 
 	/**
+	 * Locale code (ISO639-1).
+	 * used to search the metadata definition having label like "name" for the defined
+	 * languages. Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)
+	 * Example: the user would like to find the metadata definition with label "house"
+	 * for lang "EN". If the "label" is empty the service return all metadata
+	 * definition defined for the specified lang.
+	 */
+	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1).
+	//#SWGNL#used to search the metadata definition having label like "name" for the defined languages. Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)
+	//#SWGNL#Example: the user would like to find the metadata definition with label "house" for lang "EN". If the "label" is empty the service return all metadata definition defined for the specified lang.""")
+	@BeanProperty 
+	var lang: String =_
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var metadataType: List[MEMetadataDefinitionDataType] = new ArrayList[MEMetadataDefinitionDataType]
+	def withmetadataType(p:List[MEMetadataDefinitionDataType]):this.type ={ 	this.metadataType = p; 	this }
+
+	/**
+	 * used to search all MetadataDefinition in Trash
+	 */
+	//#SWG#@ApiModelProperty(value = """used to search all MetadataDefinition in Trash""")
+	@BeanProperty 
+	var removed: Boolean =_
+	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
+
+	/**
 	 * Search text in label, description, key and note fields of MetadataDefinition.
 	 * Search all words separated by spaces and in exact order (by token)
 	 * 
@@ -65,34 +93,6 @@ class MMetadataDefinitionSearchCriteria extends Serializable {
 	@BeanProperty 
 	var text: String =_
 	def withtext(p:String):this.type ={ 	this.text = p; 	this }
-
-	/**
-	 * Locale code (ISO639-1).
-	 * used to search the metadata definition having label like "name" for the defined
-	 * languages. Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)
-	 * Example: the user would like to find the metadata definition with label "house"
-	 * for lang "EN". If the "label" is empty the service return all metadata
-	 * definition defined for the specified lang.
-	 */
-	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1).
-	//#SWGNL#used to search the metadata definition having label like "name" for the defined languages. Could be a comma separated list of ISO639-1 like ("IT,EN,FR"...)
-	//#SWGNL#Example: the user would like to find the metadata definition with label "house" for lang "EN". If the "label" is empty the service return all metadata definition defined for the specified lang.""")
-	@BeanProperty 
-	var lang: String =_
-	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
-
-	/**
-	 * used to search all MetadataDefinition in Trash
-	 */
-	//#SWG#@ApiModelProperty(value = """used to search all MetadataDefinition in Trash""")
-	@BeanProperty 
-	var removed: Boolean =_
-	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var metadataType: List[MEMetadataDefinitionDataType] = new ArrayList[MEMetadataDefinitionDataType]
-	def withmetadataType(p:List[MEMetadataDefinitionDataType]):this.type ={ 	this.metadataType = p; 	this }
 
 	/**
 	 * @return Boolean

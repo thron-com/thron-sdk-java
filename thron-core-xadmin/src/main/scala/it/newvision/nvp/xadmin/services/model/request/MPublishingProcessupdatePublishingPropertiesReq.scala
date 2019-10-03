@@ -28,6 +28,11 @@ class MPublishingProcessupdatePublishingPropertiesReq extends Serializable {
 	var mediaContentId: String =_
 	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var properties: MPublishedContentProperties =_
+	def withproperties(p:MPublishedContentProperties):this.type ={ 	this.properties = p; 	this }
+
 	/**
 	 * mediaContentId or xcontentId are required
 	 */
@@ -35,10 +40,5 @@ class MPublishingProcessupdatePublishingPropertiesReq extends Serializable {
 	@BeanProperty
 	var xcontentId: String =_
 	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var properties: MPublishedContentProperties =_
-	def withproperties(p:MPublishedContentProperties):this.type ={ 	this.properties = p; 	this }
 
 }

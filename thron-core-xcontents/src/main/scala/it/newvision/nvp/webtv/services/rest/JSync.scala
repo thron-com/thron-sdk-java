@@ -6,11 +6,11 @@ import javax.ws.rs._
 import javax.ws.rs.core._ 
 import it.newvision.nvp.webtv.services.model.sync.MResponseContentLastUpdated
 import it.newvision.nvp.webtv.services.model.request.MSynccontentsReq
+import it.newvision.nvp.webtv.services.model.sync.MResponseExport
+import it.newvision.nvp.webtv.services.model.request.MSyncexportReq
 import it.newvision.nvp.webtv.services.model.request.MSynclastUpdatedContentsReq
 import it.newvision.nvp.webtv.services.model.sync.MResponseUpdatedContent
 import it.newvision.nvp.webtv.services.model.request.MSyncupdatedContentReq
-import it.newvision.nvp.webtv.services.model.sync.MResponseExport
-import it.newvision.nvp.webtv.services.model.request.MSyncexportReq
 
 /* ************************
 *  GENERATED CLASS
@@ -127,6 +127,88 @@ trait JSync extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __contents(tokenId: String, param: MSynccontentsReq) :MResponseContentLastUpdated
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_contents: String
+
+	/**
+	 * Used to export all content matching the given exportCriteria.
+	 * The service can return for each content the deliveryInfo (with the content urls and thumbnail), the
+	 * linked categories and the itagDefinitions.
+	 * The resultset is paginated (max page size is 200 elements), after the 1st call the service return a
+	 * "nextPage" identifier to be used on the next call, to get the following elements. If  the
+	 * "nextPage" value is empty it means that you are on the last page of the result set.
+	 * The Service avoids ACL restrictions.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_SYNC_CONTENTS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MSyncexportReq
+	 * @return MResponseExport
+	*/
+	@POST
+	@Path("/export/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/export", notes = """Used to export all content matching the given exportCriteria.
+	//#SWGNL#The service can return for each content the deliveryInfo (with the content urls and thumbnail), the linked categories and the itagDefinitions.
+	//#SWGNL#The resultset is paginated (max page size is 200 elements), after the 1st call the service return a "nextPage" identifier to be used on the next call, to get the following elements. If  the "nextPage" value is empty it means that you are on the last page of the result set.
+	//#SWGNL#The Service avoids ACL restrictions.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>CORE_SYNC_CONTENTS role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseExport])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def export(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			param: MSyncexportReq):Response /*returnType = MResponseExport*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__export(tokenId,clientId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_export)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_export)
+	    }
+	} 
+
+	@GET
+	@Path("/export/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def export_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseExport*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("export",this._getCacheControl) 
+		try{
+			val resp = this.__export(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,PRestHelper.bindRequest[MSyncexportReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_export)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_export)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __export(tokenId: String, clientId: String, param: MSyncexportReq) :MResponseExport
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_export: String
 
 	/**
 	 * Deprecated by JSync.updatedContents
@@ -283,87 +365,5 @@ trait JSync extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __updatedContent(tokenId: String, clientId: String, param: MSyncupdatedContentReq) :MResponseUpdatedContent
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_updatedContent: String
-
-	/**
-	 * Used to export all content matching the given exportCriteria.
-	 * The service can return for each content the deliveryInfo (with the content urls and thumbnail), the
-	 * linked categories and the itagDefinitions.
-	 * The resultset is paginated (max page size is 200 elements), after the 1st call the service return a
-	 * "nextPage" identifier to be used on the next call, to get the following elements. If  the
-	 * "nextPage" value is empty it means that you are on the last page of the result set.
-	 * The Service avoids ACL restrictions.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>CORE_SYNC_CONTENTS role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param param : MSyncexportReq
-	 * @return MResponseExport
-	*/
-	@POST
-	@Path("/export/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/export", notes = """Used to export all content matching the given exportCriteria.
-	//#SWGNL#The service can return for each content the deliveryInfo (with the content urls and thumbnail), the linked categories and the itagDefinitions.
-	//#SWGNL#The resultset is paginated (max page size is 200 elements), after the 1st call the service return a "nextPage" identifier to be used on the next call, to get the following elements. If  the "nextPage" value is empty it means that you are on the last page of the result set.
-	//#SWGNL#The Service avoids ACL restrictions.
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>CORE_SYNC_CONTENTS role</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseExport])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def export(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			param: MSyncexportReq):Response /*returnType = MResponseExport*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__export(tokenId,clientId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_export)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_export)
-	    }
-	} 
-
-	@GET
-	@Path("/export/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def export_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseExport*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("export",this._getCacheControl) 
-		try{
-			val resp = this.__export(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,PRestHelper.bindRequest[MSyncexportReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_export)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_export)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __export(tokenId: String, clientId: String, param: MSyncexportReq) :MResponseExport
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_export: String
 
 }

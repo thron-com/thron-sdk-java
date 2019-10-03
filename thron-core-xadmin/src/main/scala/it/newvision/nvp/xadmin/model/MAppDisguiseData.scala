@@ -19,20 +19,12 @@ import javax.xml.bind.annotation._
 class MAppDisguiseData extends Serializable {
 
 	/**
-	 * use "*" to enable all users. Empty list means no one.
+	 * use "*" to disable all groups. Empty list means no one (is in blacklist).
 	 */
-	//#SWG#@ApiModelProperty(value = """use "*" to enable all users. Empty list means no one.""")
+	//#SWG#@ApiModelProperty(value = """use "*" to disable all groups. Empty list means no one (is in blacklist).""")
 	@BeanProperty 
-	var usersWhiteList: List[String] = new ArrayList[String]
-	def withusersWhiteList(p:List[String]):this.type ={ 	this.usersWhiteList = p; 	this }
-
-	/**
-	 * use "*" to disable all users. Empty list means no one (is in blacklist).
-	 */
-	//#SWG#@ApiModelProperty(value = """use "*" to disable all users. Empty list means no one (is in blacklist).""")
-	@BeanProperty 
-	var usersBlackList: List[String] = new ArrayList[String]
-	def withusersBlackList(p:List[String]):this.type ={ 	this.usersBlackList = p; 	this }
+	var groupsBlackList: List[String] = new ArrayList[String]
+	def withgroupsBlackList(p:List[String]):this.type ={ 	this.groupsBlackList = p; 	this }
 
 	/**
 	 * use "*" to enable all groups. Empty list means no groups in whitelist.
@@ -43,11 +35,19 @@ class MAppDisguiseData extends Serializable {
 	def withgroupsWhiteList(p:List[String]):this.type ={ 	this.groupsWhiteList = p; 	this }
 
 	/**
-	 * use "*" to disable all groups. Empty list means no one (is in blacklist).
+	 * use "*" to disable all users. Empty list means no one (is in blacklist).
 	 */
-	//#SWG#@ApiModelProperty(value = """use "*" to disable all groups. Empty list means no one (is in blacklist).""")
+	//#SWG#@ApiModelProperty(value = """use "*" to disable all users. Empty list means no one (is in blacklist).""")
 	@BeanProperty 
-	var groupsBlackList: List[String] = new ArrayList[String]
-	def withgroupsBlackList(p:List[String]):this.type ={ 	this.groupsBlackList = p; 	this }
+	var usersBlackList: List[String] = new ArrayList[String]
+	def withusersBlackList(p:List[String]):this.type ={ 	this.usersBlackList = p; 	this }
+
+	/**
+	 * use "*" to enable all users. Empty list means no one.
+	 */
+	//#SWG#@ApiModelProperty(value = """use "*" to enable all users. Empty list means no one.""")
+	@BeanProperty 
+	var usersWhiteList: List[String] = new ArrayList[String]
+	def withusersWhiteList(p:List[String]):this.type ={ 	this.usersWhiteList = p; 	this }
 
 }

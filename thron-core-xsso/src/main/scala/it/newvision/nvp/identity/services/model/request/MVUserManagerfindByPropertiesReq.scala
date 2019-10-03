@@ -5,8 +5,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.identity.services.model.vusers.MVUserCriteria
-import it.newvision.nvp.identity.services.model.msg.MEVuserOrderBy
 import it.newvision.nvp.identity.services.model.vusers.MVUserFieldsOption
+import it.newvision.nvp.identity.services.model.msg.MEVuserOrderBy
 
 /* ************************
 *  GENERATED CLASS
@@ -35,21 +35,8 @@ class MVUserManagerfindByPropertiesReq extends Serializable {
 	 */
 	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
-	var orderBy: MEVuserOrderBy =_
-	def withorderBy(p:MEVuserOrderBy):this.type ={ 	this.orderBy = p; 	this }
-
-	/**
-	 * Optional
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
-	@BeanProperty
 	var fieldOptions: MVUserFieldsOption =_
 	def withfieldOptions(p:MVUserFieldsOption):this.type ={ 	this.fieldOptions = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var offset: Integer =_
-	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
 	 * Default and maximum value is 50 items
@@ -58,5 +45,18 @@ class MVUserManagerfindByPropertiesReq extends Serializable {
 	@BeanProperty
 	var numberOfResult: Integer =_
 	def withnumberOfResult(p:Integer):this.type ={ 	this.numberOfResult = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var offset: Integer =_
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
+
+	/**
+	 * Optional
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
+	@BeanProperty
+	var orderBy: MEVuserOrderBy =_
+	def withorderBy(p:MEVuserOrderBy):this.type ={ 	this.orderBy = p; 	this }
 
 }

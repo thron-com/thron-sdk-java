@@ -44,12 +44,12 @@ import javax.xml.bind.annotation._
 class MAclObjectRule extends Serializable {
 
 	/**
-	 * the identifier of the object where the ACL should be applied
+	 * like: FACEBOOK, EMAIL, TWITTER, SMS,
 	 */
-	//#SWG#@ApiModelProperty(value = """the identifier of the object where the ACL should be applied""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """like: FACEBOOK, EMAIL, TWITTER, SMS,""")
 	@BeanProperty 
-	var sourceObjId: String =_
-	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
+	var customMetadata: List[MMetadata] = new ArrayList[MMetadata]
+	def withcustomMetadata(p:List[MMetadata]):this.type ={ 	this.customMetadata = p; 	this }
 
 	/**
 	 * the object class
@@ -60,12 +60,12 @@ class MAclObjectRule extends Serializable {
 	def withsourceObjClass(p:MEObjClass):this.type ={ 	this.sourceObjClass = p; 	this }
 
 	/**
-	 * like: FACEBOOK, EMAIL, TWITTER, SMS,
+	 * the identifier of the object where the ACL should be applied
 	 */
-	//#SWG#@ApiModelProperty(value = """like: FACEBOOK, EMAIL, TWITTER, SMS,""")
+	//#SWG#@ApiModelProperty(value = """the identifier of the object where the ACL should be applied""" ,required = true)
 	@BeanProperty 
-	var customMetadata: List[MMetadata] = new ArrayList[MMetadata]
-	def withcustomMetadata(p:List[MMetadata]):this.type ={ 	this.customMetadata = p; 	this }
+	var sourceObjId: String =_
+	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
 
 	/**
 	 * the acl rules defined for each target object

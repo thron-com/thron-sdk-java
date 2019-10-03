@@ -25,12 +25,12 @@ class MSysUserManagerupdateCapabilitiesAndRolesReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
+	var userCapabilities: MUserCapability =_
+	def withuserCapabilities(p:MUserCapability):this.type ={ 	this.userCapabilities = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var userCapabilities: MUserCapability =_
-	def withuserCapabilities(p:MUserCapability):this.type ={ 	this.userCapabilities = p; 	this }
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

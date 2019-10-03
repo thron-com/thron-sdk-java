@@ -19,16 +19,16 @@ class MMetadataDefinitionStringOption extends MMetadataDefinitionOptionClass wit
 	 */
 	//#SWG#@ApiModelProperty(value = """Used as layout directive, not for validation""")
 	@BeanProperty 
-	var fieldType: MEStringType =_
-	def withfieldType(p:MEStringType):this.type ={ 	this.fieldType = p; 	this }
+	var defaultValue: String =_
+	def withdefaultValue(p:String):this.type ={ 	this.defaultValue = p; 	this }
 
 	/**
 	 * Used as layout directive, not for validation
 	 */
 	//#SWG#@ApiModelProperty(value = """Used as layout directive, not for validation""")
 	@BeanProperty 
-	var defaultValue: String =_
-	def withdefaultValue(p:String):this.type ={ 	this.defaultValue = p; 	this }
+	var fieldType: MEStringType =_
+	def withfieldType(p:MEStringType):this.type ={ 	this.fieldType = p; 	this }
 
 	/**
 	 * Used for validation.

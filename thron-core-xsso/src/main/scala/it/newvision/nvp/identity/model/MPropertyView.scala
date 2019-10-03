@@ -15,6 +15,14 @@ import javax.xml.bind.annotation._
 class MPropertyView extends Serializable {
 
 	/**
+	 * used to enable or disable the comunity services like comments and ratings.
+	 */
+	//#SWG#@ApiModelProperty(value = """used to enable or disable the comunity services like comments and ratings.""" ,required = true)
+	@BeanProperty 
+	var comunityServiceEnabled: Boolean  = false
+	def withcomunityServiceEnabled(p:Boolean):this.type ={ 	this.comunityServiceEnabled = p; 	this }
+
+	/**
 	 * custom pages enabled in the admin console.
 	 * 
 	 * VIEW
@@ -29,13 +37,5 @@ class MPropertyView extends Serializable {
 	@BeanProperty 
 	var customAdminPages: String  = ""
 	def withcustomAdminPages(p:String):this.type ={ 	this.customAdminPages = p; 	this }
-
-	/**
-	 * used to enable or disable the comunity services like comments and ratings.
-	 */
-	//#SWG#@ApiModelProperty(value = """used to enable or disable the comunity services like comments and ratings.""" ,required = true)
-	@BeanProperty 
-	var comunityServiceEnabled: Boolean  = false
-	def withcomunityServiceEnabled(p:Boolean):this.type ={ 	this.comunityServiceEnabled = p; 	this }
 
 }

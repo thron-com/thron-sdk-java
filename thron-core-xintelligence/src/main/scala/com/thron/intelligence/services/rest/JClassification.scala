@@ -9,8 +9,8 @@ import com.thron.intelligence.services.model.request.MClassificationinsertReq
 import com.thron.intelligence.services.model.classification.MResponseClassificationList
 import com.thron.intelligence.services.model.request.MClassificationlistReq
 import com.thron.intelligence.services.model.classification.MEClassificationOrderBy
-import com.thron.intelligence.services.model.request.MClassificationupdateReq
 import com.thron.intelligence.services.model.classification.MResponseClassification
+import com.thron.intelligence.services.model.request.MClassificationupdateReq
 
 /* ************************
 *  GENERATED CLASS
@@ -41,6 +41,60 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	import scala.collection.immutable.Map
 
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
+
+	/**
+	 * Returns the detail of a classification.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param id : String
+	 * classification Id
+	 * @return MResponseClassificationDetail
+	*/
+	@GET
+	@Path("/detail/{clientId}/{id}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
+	//#SWG#@ApiOperation(value = "/detail", notes = """Returns the detail of a classification.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseClassificationDetail])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """classification Id""")
+	@PathParam("id")
+	id: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String
+			,
+			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseClassificationDetail*/= { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		//get the cache control specific for this service
+		val cc = this.cachemap("detail") 
+		try{	
+			val resp = this.__detail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,id)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_detail)
+	    }
+	}
+
+	 
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __detail(tokenId: String, clientId: String, id: String) :MResponseClassificationDetail
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_detail: String
 
 	/**
 	 * Creates a classification.
@@ -272,145 +326,6 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	protected def capability_listGet: String
 
 	/**
-	 * Returns the detail of a classification.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param id : String
-	 * classification Id
-	 * @return MResponseClassificationDetail
-	*/
-	@GET
-	@Path("/detail/{clientId}/{id}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detail", notes = """Returns the detail of a classification.
-	//#SWGNL#
-	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseClassificationDetail])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """classification Id""")
-	@PathParam("id")
-	id: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseClassificationDetail*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("detail") 
-		try{	
-			val resp = this.__detail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,id)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_detail)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __detail(tokenId: String, clientId: String, id: String) :MResponseClassificationDetail
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_detail: String
-
-	/**
-	 * Updates a classification in patch mode.
-	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
-	 * the "update" attributes you want to change must be included in the body of the request, those not
-	 * included will not be updated.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param id : String
-	 * classification id
-	 * @param param : MClassificationupdateReq
-	 * @return MResponseClassificationDetail
-	*/
-	@POST
-	@Path("/update/{clientId}/{id}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/update", notes = """Updates a classification in patch mode.
-	//#SWGNL#The "update" field of this web service works in “patch" mode: it means that each and everyone of the "update" attributes you want to change must be included in the body of the request, those not included will not be updated.
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseClassificationDetail])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """classification id""")
-	@PathParam("id")
-	id: String, 
-			param: MClassificationupdateReq):Response /*returnType = MResponseClassificationDetail*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__update(tokenId,clientId,id,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_update)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_update)
-	    }
-	} 
-
-	@GET
-	@Path("/update/{clientId}/{id}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def update_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """classification id""")
-	@PathParam("id")
-	id: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseClassificationDetail*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
-		try{
-			val resp = this.__update(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,id,PRestHelper.bindRequest[MClassificationupdateReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_update)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __update(tokenId: String, clientId: String, id: String, param: MClassificationupdateReq) :MResponseClassificationDetail
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_update: String
-
-	/**
 	 * Removes a classification.
 	 * 
 	 * <b>Constraints:</b>
@@ -497,5 +412,90 @@ trait JClassification extends it.newvision.nvp.core.libraries.restserver.BaseRes
 	 protected def __remove(tokenId: String, clientId: String, id: String) :MResponseClassification
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_remove: String
+
+	/**
+	 * Updates a classification in patch mode.
+	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
+	 * the "update" attributes you want to change must be included in the body of the request, those not
+	 * included will not be updated.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param id : String
+	 * classification id
+	 * @param param : MClassificationupdateReq
+	 * @return MResponseClassificationDetail
+	*/
+	@POST
+	@Path("/update/{clientId}/{id}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/update", notes = """Updates a classification in patch mode.
+	//#SWGNL#The "update" field of this web service works in “patch" mode: it means that each and everyone of the "update" attributes you want to change must be included in the body of the request, those not included will not be updated.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseClassificationDetail])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """classification id""")
+	@PathParam("id")
+	id: String, 
+			param: MClassificationupdateReq):Response /*returnType = MResponseClassificationDetail*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__update(tokenId,clientId,id,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_update)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_update)
+	    }
+	} 
+
+	@GET
+	@Path("/update/{clientId}/{id}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def update_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """classification id""")
+	@PathParam("id")
+	id: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseClassificationDetail*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
+		try{
+			val resp = this.__update(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,id,PRestHelper.bindRequest[MClassificationupdateReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_update)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __update(tokenId: String, clientId: String, id: String, param: MClassificationupdateReq) :MResponseClassificationDetail
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_update: String
 
 }

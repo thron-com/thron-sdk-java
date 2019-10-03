@@ -22,11 +22,6 @@ class MSysUserManagerdetailReq extends Serializable {
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
-
 	/**
 	 * used to filer the user capabilities by solution (PLAY,VIEW,TALK,MOVE)
 	 */
@@ -34,5 +29,10 @@ class MSysUserManagerdetailReq extends Serializable {
 	@BeanProperty
 	var solutionId: String =_
 	def withsolutionId(p:String):this.type ={ 	this.solutionId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

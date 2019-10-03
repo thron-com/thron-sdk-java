@@ -20,11 +20,6 @@ class MContentupdateSourceReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
 	var param: MUpdateParams =_
 	def withparam(p:MUpdateParams):this.type ={ 	this.param = p; 	this }
 
@@ -35,5 +30,10 @@ class MContentupdateSourceReq extends Serializable {
 	@BeanProperty
 	var silentMode: Boolean =_
 	def withsilentMode(p:Boolean):this.type ={ 	this.silentMode = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 }

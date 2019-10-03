@@ -16,19 +16,19 @@ import com.thron.intelligence.model.classification.MClassificationPermission
 class MResponseClassificationPermission extends MResponseClassification with Serializable  {
 
 	/**
-	 * permission inserted or updated correctly
-	 */
-	//#SWG#@ApiModelProperty(value = """permission inserted or updated correctly""")
-	@BeanProperty 
-	var items: List[MClassificationPermissionDetail] = new ArrayList[MClassificationPermissionDetail]
-	def withitems(p:List[MClassificationPermissionDetail]):this.type ={ 	this.items = p; 	this }
-
-	/**
 	 * permission in issues
 	 */
 	//#SWG#@ApiModelProperty(value = """permission in issues""")
 	@BeanProperty 
 	var issues: List[MClassificationPermission] = new ArrayList[MClassificationPermission]
 	def withissues(p:List[MClassificationPermission]):this.type ={ 	this.issues = p; 	this }
+
+	/**
+	 * permission inserted or updated correctly
+	 */
+	//#SWG#@ApiModelProperty(value = """permission inserted or updated correctly""")
+	@BeanProperty 
+	var items: List[MClassificationPermissionDetail] = new ArrayList[MClassificationPermissionDetail]
+	def withitems(p:List[MClassificationPermissionDetail]):this.type ={ 	this.items = p; 	this }
 
 }

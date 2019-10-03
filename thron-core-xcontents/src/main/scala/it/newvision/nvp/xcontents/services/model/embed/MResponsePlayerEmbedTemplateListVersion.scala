@@ -19,6 +19,11 @@ class MResponsePlayerEmbedTemplateListVersion extends MResponsePlayerEmbed with 
 	var items: List[MPlayerEmbedTemplateVersionDetail] = new ArrayList[MPlayerEmbedTemplateVersionDetail]
 	def withitems(p:List[MPlayerEmbedTemplateVersionDetail]):this.type ={ 	this.items = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var nextPage: String =_
+	def withnextPage(p:String):this.type ={ 	this.nextPage = p; 	this }
+
 	/**
 	 * Optional. Defined only for the 1st page
 	 */
@@ -26,10 +31,5 @@ class MResponsePlayerEmbedTemplateListVersion extends MResponsePlayerEmbed with 
 	@BeanProperty 
 	var totalResults: Integer =_
 	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var nextPage: String =_
-	def withnextPage(p:String):this.type ={ 	this.nextPage = p; 	this }
 
 }

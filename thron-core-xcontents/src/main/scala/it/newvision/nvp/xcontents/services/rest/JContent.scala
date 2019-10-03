@@ -6,28 +6,29 @@ import javax.ws.rs._
 import javax.ws.rs.core._ 
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentAddLocale
 import it.newvision.nvp.xcontents.services.model.request.MContentaddContent4LocaleReq
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentDetail
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentFindByProperties
-import it.newvision.nvp.xcontents.services.model.request.MContentfindByPropertiesReq
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentRemoveLocale
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdate
-import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentReq
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdateLocale
-import it.newvision.nvp.xcontents.services.model.request.MContentupdateContent4LocaleReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentPrettyId
-import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentPrettyIdReq
-import it.newvision.nvp.xcontents.services.model.request.MContentremoveContentPrettyIdReq
 import it.newvision.nvp.xcontents.services.model.request.MContentaddContentPrettyIdReq
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentVerifyPrettyId
-import it.newvision.nvp.xcontents.services.model.request.MContentverifyContentPrettyIdReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdate
+import it.newvision.nvp.xcontents.services.model.request.MContentaddExternalIdReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContent
 import it.newvision.nvp.xcontents.services.model.request.MContentaddLinkedContentReq
 import it.newvision.nvp.xcontents.services.model.request.MContentaddLinkedContentsReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentDetail
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentFindByProperties
+import it.newvision.nvp.xcontents.services.model.request.MContentfindByPropertiesReq
 import it.newvision.nvp.xcontents.services.model.request.MContentmoveLinkedContentReq
-import it.newvision.nvp.xcontents.services.model.request.MContentremoveLinkedContentsReq
-import it.newvision.nvp.xcontents.services.model.request.MContentupdateUserSpecificValuesReq
-import it.newvision.nvp.xcontents.services.model.request.MContentaddExternalIdReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentRemoveLocale
+import it.newvision.nvp.xcontents.services.model.request.MContentremoveContentPrettyIdReq
 import it.newvision.nvp.xcontents.services.model.request.MContentremoveExternalIdReq
+import it.newvision.nvp.xcontents.services.model.request.MContentremoveLinkedContentsReq
+import it.newvision.nvp.xcontents.services.model.content.search.MContentSearchResult
+import it.newvision.nvp.xcontents.services.model.request.MContentsearchReq
+import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdateLocale
+import it.newvision.nvp.xcontents.services.model.request.MContentupdateContent4LocaleReq
+import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentPrettyIdReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentVerifyPrettyId
+import it.newvision.nvp.xcontents.services.model.request.MContentverifyContentPrettyIdReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentVerifyExternalId
 import it.newvision.nvp.xcontents.services.model.request.MContentverifyExternalIdReq
 
@@ -130,6 +131,321 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __addContent4Locale(tokenId: String, param: MContentaddContent4LocaleReq) :MResponseContentAddLocale
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_addContent4Locale: String
+
+	/**
+	 * Adds a localized prettyId to a content.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentaddContentPrettyIdReq
+	 * @return MResponseContentPrettyId
+	*/
+	@POST
+	@Path("/addContentPrettyId")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/addContentPrettyId", notes = """Adds a localized prettyId to a content.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentPrettyId])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def addContentPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MContentaddContentPrettyIdReq):Response /*returnType = MResponseContentPrettyId*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__addContentPrettyId(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addContentPrettyId)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_addContentPrettyId)
+	    }
+	} 
+
+	@GET
+	@Path("/addContentPrettyId")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def addContentPrettyId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentPrettyId*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addContentPrettyId",this._getCacheControl) 
+		try{
+			val resp = this.__addContentPrettyId(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MContentaddContentPrettyIdReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addContentPrettyId)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addContentPrettyId)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __addContentPrettyId(tokenId: String, param: MContentaddContentPrettyIdReq) :MResponseContentPrettyId
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_addContentPrettyId: String
+
+	/**
+	 * Adds an externalId to a content.
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>max number of externalIds on a content: 100</li>
+	 * </ul>
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param contentId : String
+	 * @param param : MContentaddExternalIdReq
+	 * @return MResponseContentUpdate
+	*/
+	@POST
+	@Path("/addExternalId/{clientId}/{contentId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/addExternalId", notes = """Adds an externalId to a content.
+	//#SWGNL#
+	//#SWGNL#<b>Constraints:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max number of externalIds on a content: 100</li>
+	//#SWGNL#</ul>
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def addExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("contentId")
+	contentId: String, 
+			param: MContentaddExternalIdReq):Response /*returnType = MResponseContentUpdate*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__addExternalId(tokenId,clientId,contentId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addExternalId)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_addExternalId)
+	    }
+	} 
+
+	@GET
+	@Path("/addExternalId/{clientId}/{contentId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def addExternalId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("contentId")
+	contentId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentUpdate*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addExternalId",this._getCacheControl) 
+		try{
+			val resp = this.__addExternalId(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,contentId,PRestHelper.bindRequest[MContentaddExternalIdReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addExternalId)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addExternalId)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __addExternalId(tokenId: String, clientId: String, contentId: String, param: MContentaddExternalIdReq) :MResponseContentUpdate
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_addExternalId: String
+
+	/**
+	 * Adds a content to the linkedContents list of a content.
+	 * The linkedContens list is used to store the full list of links between content (like playlist items,
+	 * recommended content or downloadable content). For this reason it is necessary to specify the
+	 * relation linkType.
+	 * Constraints on linkType and contentType.
+	 * 
+	 * <ul>
+	 * 	<li>RECOMMENDED link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
+	 * content.</li>
+	 * 	<li>DOWNLOADABLE link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
+	 * contents</li>
+	 * 	<li>Only linkable content can be added to another content (i.e., content without UNLINKABLE
+	 * property)</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentaddLinkedContentReq
+	 * @return MResponseContent
+	*/
+	@POST
+	@Path("/addLinkedContent")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/addLinkedContent", notes = """Adds a content to the linkedContents list of a content.
+	//#SWGNL#The linkedContens list is used to store the full list of links between content (like playlist items, recommended content or downloadable content). For this reason it is necessary to specify the relation linkType.
+	//#SWGNL#Constraints on linkType and contentType.
+	//#SWGNL#
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>RECOMMENDED link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO content.</li>
+	//#SWGNL#	<li>DOWNLOADABLE link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO contents</li>
+	//#SWGNL#	<li>Only linkable content can be added to another content (i.e., content without UNLINKABLE property)</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContent])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def addLinkedContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MContentaddLinkedContentReq):Response /*returnType = MResponseContent*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__addLinkedContent(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addLinkedContent)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_addLinkedContent)
+	    }
+	} 
+
+	@GET
+	@Path("/addLinkedContent")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def addLinkedContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContent*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addLinkedContent",this._getCacheControl) 
+		try{
+			val resp = this.__addLinkedContent(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MContentaddLinkedContentReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addLinkedContent)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addLinkedContent)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __addLinkedContent(tokenId: String, param: MContentaddLinkedContentReq) :MResponseContent
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_addLinkedContent: String
+
+	/**
+	 * Adds a set of content to the linkedContents list of a content.
+	 * The linkedContens list is used to store the full list of links between content (like playlist items,
+	 * recommended content or downloadable content). For this reason it is necessary to specify the
+	 * relation linkType.
+	 * Only linkable content can be added to another content (i.e., content without UNLINKABLE property)
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentaddLinkedContentsReq
+	 * @return MResponseContent
+	*/
+	@POST
+	@Path("/addLinkedContents")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/addLinkedContents", notes = """Adds a set of content to the linkedContents list of a content.
+	//#SWGNL#The linkedContens list is used to store the full list of links between content (like playlist items, recommended content or downloadable content). For this reason it is necessary to specify the relation linkType.
+	//#SWGNL#Only linkable content can be added to another content (i.e., content without UNLINKABLE property)
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContent])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def addLinkedContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MContentaddLinkedContentsReq):Response /*returnType = MResponseContent*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__addLinkedContents(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addLinkedContents)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_addLinkedContents)
+	    }
+	} 
+
+	@GET
+	@Path("/addLinkedContents")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def addLinkedContents_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContent*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("addLinkedContents",this._getCacheControl) 
+		try{
+			val resp = this.__addLinkedContents(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MContentaddLinkedContentsReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addLinkedContents)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addLinkedContents)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __addLinkedContents(tokenId: String, param: MContentaddLinkedContentsReq) :MResponseContent
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_addLinkedContents: String
 
 	/**
 	 * Returns content information:
@@ -243,7 +559,7 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_detail: String
 
 	/**
-	 * Returns a list of contents matching provided criteria.
+	 * deprecated by search service.
 	 * @param tokenId : String
 	 * @param param : MContentfindByPropertiesReq
 	 * @return MResponseContentFindByProperties
@@ -252,7 +568,7 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	@Path("/findByProperties")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/findByProperties", notes = """Returns a list of contents matching provided criteria.""", response = classOf[MResponseContentFindByProperties])
+	//#SWG#@ApiOperation(value = "/findByProperties", notes = """deprecated by search service.""", response = classOf[MResponseContentFindByProperties])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
 	def findByProperties(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
@@ -297,6 +613,72 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __findByProperties(tokenId: String, param: MContentfindByPropertiesReq) :MResponseContentFindByProperties
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_findByProperties: String
+
+	/**
+	 * Moves a content among the linkedContents list of a content.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentmoveLinkedContentReq
+	 * @return MResponseContent
+	*/
+	@POST
+	@Path("/moveLinkedContent")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/moveLinkedContent", notes = """Moves a content among the linkedContents list of a content.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContent])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def moveLinkedContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MContentmoveLinkedContentReq):Response /*returnType = MResponseContent*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__moveLinkedContent(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_moveLinkedContent)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_moveLinkedContent)
+	    }
+	} 
+
+	@GET
+	@Path("/moveLinkedContent")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def moveLinkedContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContent*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("moveLinkedContent",this._getCacheControl) 
+		try{
+			val resp = this.__moveLinkedContent(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MContentmoveLinkedContentReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_moveLinkedContent)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_moveLinkedContent)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __moveLinkedContent(tokenId: String, param: MContentmoveLinkedContentReq) :MResponseContent
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_moveLinkedContent: String
 
 	/**
 	 * Removes localized name and description from a content.
@@ -375,6 +757,281 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __removeContent4Locale(tokenId: String, clientId: String, contentId: String, locale: String) :MResponseContentRemoveLocale
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_removeContent4Locale: String
+
+	/**
+	 * Removes a localized prettyId from a content.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentremoveContentPrettyIdReq
+	 * @return MResponseContentPrettyId
+	*/
+	@POST
+	@Path("/removeContentPrettyId")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/removeContentPrettyId", notes = """Removes a localized prettyId from a content.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentPrettyId])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def removeContentPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MContentremoveContentPrettyIdReq):Response /*returnType = MResponseContentPrettyId*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__removeContentPrettyId(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeContentPrettyId)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_removeContentPrettyId)
+	    }
+	} 
+
+	@GET
+	@Path("/removeContentPrettyId")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def removeContentPrettyId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentPrettyId*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeContentPrettyId",this._getCacheControl) 
+		try{
+			val resp = this.__removeContentPrettyId(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MContentremoveContentPrettyIdReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeContentPrettyId)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeContentPrettyId)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __removeContentPrettyId(tokenId: String, param: MContentremoveContentPrettyIdReq) :MResponseContentPrettyId
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_removeContentPrettyId: String
+
+	/**
+	 * Removes an externalId from a content.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param contentId : String
+	 * @param param : MContentremoveExternalIdReq
+	 * @return MResponseContentUpdate
+	*/
+	@POST
+	@Path("/removeExternalId/{clientId}/{contentId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/removeExternalId", notes = """Removes an externalId from a content.
+	//#SWGNL#<b>
+	//#SWGNL#</b><b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def removeExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("contentId")
+	contentId: String, 
+			param: MContentremoveExternalIdReq):Response /*returnType = MResponseContentUpdate*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__removeExternalId(tokenId,clientId,contentId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeExternalId)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_removeExternalId)
+	    }
+	} 
+
+	@GET
+	@Path("/removeExternalId/{clientId}/{contentId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def removeExternalId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("contentId")
+	contentId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentUpdate*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeExternalId",this._getCacheControl) 
+		try{
+			val resp = this.__removeExternalId(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,contentId,PRestHelper.bindRequest[MContentremoveExternalIdReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeExternalId)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeExternalId)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __removeExternalId(tokenId: String, clientId: String, contentId: String, param: MContentremoveExternalIdReq) :MResponseContentUpdate
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_removeExternalId: String
+
+	/**
+	 * Removes content matching provided criteria from the list linkedContents of a content.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentremoveLinkedContentsReq
+	 * @return MResponseContent
+	*/
+	@POST
+	@Path("/removeLinkedContents")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/removeLinkedContents", notes = """Removes content matching provided criteria from the list linkedContents of a content.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the content</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseContent])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def removeLinkedContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MContentremoveLinkedContentsReq):Response /*returnType = MResponseContent*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__removeLinkedContents(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeLinkedContents)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_removeLinkedContents)
+	    }
+	} 
+
+	@GET
+	@Path("/removeLinkedContents")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def removeLinkedContents_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContent*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeLinkedContents",this._getCacheControl) 
+		try{
+			val resp = this.__removeLinkedContents(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MContentremoveLinkedContentsReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeLinkedContents)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeLinkedContents)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __removeLinkedContents(tokenId: String, param: MContentremoveLinkedContentsReq) :MResponseContent
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_removeLinkedContents: String
+
+	/**
+	 * Search the user's content in platform.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MContentsearchReq
+	 * @return MContentSearchResult
+	*/
+	@POST
+	@Path("/search/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/search", notes = """Search the user's content in platform.""", response = classOf[MContentSearchResult])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def search(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			param: MContentsearchReq):Response /*returnType = MContentSearchResult*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__search(tokenId,clientId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_search)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_search)
+	    }
+	} 
+
+	@GET
+	@Path("/search/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def search_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MContentSearchResult*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("search",this._getCacheControl) 
+		try{
+			val resp = this.__search(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,PRestHelper.bindRequest[MContentsearchReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_search)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_search)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __search(tokenId: String, clientId: String, param: MContentsearchReq) :MContentSearchResult
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_search: String
 
 	/**
 	 * Updates a content.
@@ -579,138 +1236,6 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_updateContentPrettyId: String
 
 	/**
-	 * Removes a localized prettyId from a content.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentremoveContentPrettyIdReq
-	 * @return MResponseContentPrettyId
-	*/
-	@POST
-	@Path("/removeContentPrettyId")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeContentPrettyId", notes = """Removes a localized prettyId from a content.
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContentPrettyId])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def removeContentPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentremoveContentPrettyIdReq):Response /*returnType = MResponseContentPrettyId*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__removeContentPrettyId(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeContentPrettyId)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_removeContentPrettyId)
-	    }
-	} 
-
-	@GET
-	@Path("/removeContentPrettyId")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def removeContentPrettyId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentPrettyId*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("removeContentPrettyId",this._getCacheControl) 
-		try{
-			val resp = this.__removeContentPrettyId(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentremoveContentPrettyIdReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeContentPrettyId)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeContentPrettyId)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __removeContentPrettyId(tokenId: String, param: MContentremoveContentPrettyIdReq) :MResponseContentPrettyId
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_removeContentPrettyId: String
-
-	/**
-	 * Adds a localized prettyId to a content.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentaddContentPrettyIdReq
-	 * @return MResponseContentPrettyId
-	*/
-	@POST
-	@Path("/addContentPrettyId")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addContentPrettyId", notes = """Adds a localized prettyId to a content.
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContentPrettyId])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def addContentPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentaddContentPrettyIdReq):Response /*returnType = MResponseContentPrettyId*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__addContentPrettyId(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addContentPrettyId)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_addContentPrettyId)
-	    }
-	} 
-
-	@GET
-	@Path("/addContentPrettyId")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def addContentPrettyId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentPrettyId*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("addContentPrettyId",this._getCacheControl) 
-		try{
-			val resp = this.__addContentPrettyId(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentaddContentPrettyIdReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addContentPrettyId)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addContentPrettyId)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __addContentPrettyId(tokenId: String, param: MContentaddContentPrettyIdReq) :MResponseContentPrettyId
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_addContentPrettyId: String
-
-	/**
 	 * Verify whether a content prettyId is valid for a specific locale or not, and eventually suggest an
 	 * alternative.
 	 * @param tokenId : String
@@ -773,533 +1298,6 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __verifyContentPrettyId(tokenId: String, clientId: String, param: MContentverifyContentPrettyIdReq) :MResponseContentVerifyPrettyId
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_verifyContentPrettyId: String
-
-	/**
-	 * Adds a content to the linkedContents list of a content.
-	 * The linkedContens list is used to store the full list of links between content (like playlist items,
-	 * recommended content or downloadable content). For this reason it is necessary to specify the
-	 * relation linkType.
-	 * Constraints on linkType and contentType.
-	 * 
-	 * <ul>
-	 * 	<li>RECOMMENDED link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
-	 * content.</li>
-	 * 	<li>DOWNLOADABLE link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
-	 * contents</li>
-	 * 	<li>Only linkable content can be added to another content (i.e., content without UNLINKABLE
-	 * property)</li>
-	 * </ul>
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentaddLinkedContentReq
-	 * @return MResponseContent
-	*/
-	@POST
-	@Path("/addLinkedContent")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addLinkedContent", notes = """Adds a content to the linkedContents list of a content.
-	//#SWGNL#The linkedContens list is used to store the full list of links between content (like playlist items, recommended content or downloadable content). For this reason it is necessary to specify the relation linkType.
-	//#SWGNL#Constraints on linkType and contentType.
-	//#SWGNL#
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>RECOMMENDED link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO content.</li>
-	//#SWGNL#	<li>DOWNLOADABLE link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO contents</li>
-	//#SWGNL#	<li>Only linkable content can be added to another content (i.e., content without UNLINKABLE property)</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def addLinkedContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentaddLinkedContentReq):Response /*returnType = MResponseContent*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__addLinkedContent(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addLinkedContent)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_addLinkedContent)
-	    }
-	} 
-
-	@GET
-	@Path("/addLinkedContent")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def addLinkedContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContent*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("addLinkedContent",this._getCacheControl) 
-		try{
-			val resp = this.__addLinkedContent(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentaddLinkedContentReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addLinkedContent)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addLinkedContent)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __addLinkedContent(tokenId: String, param: MContentaddLinkedContentReq) :MResponseContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_addLinkedContent: String
-
-	/**
-	 * Adds a set of content to the linkedContents list of a content.
-	 * The linkedContens list is used to store the full list of links between content (like playlist items,
-	 * recommended content or downloadable content). For this reason it is necessary to specify the
-	 * relation linkType.
-	 * Only linkable content can be added to another content (i.e., content without UNLINKABLE property)
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentaddLinkedContentsReq
-	 * @return MResponseContent
-	*/
-	@POST
-	@Path("/addLinkedContents")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addLinkedContents", notes = """Adds a set of content to the linkedContents list of a content.
-	//#SWGNL#The linkedContens list is used to store the full list of links between content (like playlist items, recommended content or downloadable content). For this reason it is necessary to specify the relation linkType.
-	//#SWGNL#Only linkable content can be added to another content (i.e., content without UNLINKABLE property)
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def addLinkedContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentaddLinkedContentsReq):Response /*returnType = MResponseContent*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__addLinkedContents(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addLinkedContents)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_addLinkedContents)
-	    }
-	} 
-
-	@GET
-	@Path("/addLinkedContents")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def addLinkedContents_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContent*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("addLinkedContents",this._getCacheControl) 
-		try{
-			val resp = this.__addLinkedContents(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentaddLinkedContentsReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addLinkedContents)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addLinkedContents)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __addLinkedContents(tokenId: String, param: MContentaddLinkedContentsReq) :MResponseContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_addLinkedContents: String
-
-	/**
-	 * Moves a content among the linkedContents list of a content.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentmoveLinkedContentReq
-	 * @return MResponseContent
-	*/
-	@POST
-	@Path("/moveLinkedContent")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/moveLinkedContent", notes = """Moves a content among the linkedContents list of a content.
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def moveLinkedContent(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentmoveLinkedContentReq):Response /*returnType = MResponseContent*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__moveLinkedContent(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_moveLinkedContent)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_moveLinkedContent)
-	    }
-	} 
-
-	@GET
-	@Path("/moveLinkedContent")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def moveLinkedContent_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContent*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("moveLinkedContent",this._getCacheControl) 
-		try{
-			val resp = this.__moveLinkedContent(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentmoveLinkedContentReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_moveLinkedContent)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_moveLinkedContent)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __moveLinkedContent(tokenId: String, param: MContentmoveLinkedContentReq) :MResponseContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_moveLinkedContent: String
-
-	/**
-	 * Removes content matching provided criteria from the list linkedContents of a content.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentremoveLinkedContentsReq
-	 * @return MResponseContent
-	*/
-	@POST
-	@Path("/removeLinkedContents")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeLinkedContents", notes = """Removes content matching provided criteria from the list linkedContents of a content.
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def removeLinkedContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentremoveLinkedContentsReq):Response /*returnType = MResponseContent*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__removeLinkedContents(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeLinkedContents)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_removeLinkedContents)
-	    }
-	} 
-
-	@GET
-	@Path("/removeLinkedContents")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def removeLinkedContents_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContent*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("removeLinkedContents",this._getCacheControl) 
-		try{
-			val resp = this.__removeLinkedContents(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentremoveLinkedContentsReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeLinkedContents)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeLinkedContents)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __removeLinkedContents(tokenId: String, param: MContentremoveLinkedContentsReq) :MResponseContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_removeLinkedContents: String
-
-	/**
-	 * Marks whether or not a content has been read by a user (the service invoker)
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>SEE ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentupdateUserSpecificValuesReq
-	 * @return MResponseContent
-	*/
-	@POST
-	@Path("/updateUserSpecificValues")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateUserSpecificValues", notes = """Marks whether or not a content has been read by a user (the service invoker)
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>SEE ACL on the content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContent])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updateUserSpecificValues(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MContentupdateUserSpecificValuesReq):Response /*returnType = MResponseContent*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__updateUserSpecificValues(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateUserSpecificValues)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateUserSpecificValues)
-	    }
-	} 
-
-	@GET
-	@Path("/updateUserSpecificValues")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updateUserSpecificValues_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContent*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("updateUserSpecificValues",this._getCacheControl) 
-		try{
-			val resp = this.__updateUserSpecificValues(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MContentupdateUserSpecificValuesReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateUserSpecificValues)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateUserSpecificValues)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateUserSpecificValues(tokenId: String, param: MContentupdateUserSpecificValuesReq) :MResponseContent
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateUserSpecificValues: String
-
-	/**
-	 * Adds an externalId to a content.
-	 * 
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>max number of externalIds on a content: 100</li>
-	 * </ul>
-	 * <b>
-	 * </b><b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param contentId : String
-	 * @param param : MContentaddExternalIdReq
-	 * @return MResponseContentUpdate
-	*/
-	@POST
-	@Path("/addExternalId/{clientId}/{contentId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addExternalId", notes = """Adds an externalId to a content.
-	//#SWGNL#
-	//#SWGNL#<b>Constraints:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>max number of externalIds on a content: 100</li>
-	//#SWGNL#</ul>
-	//#SWGNL#<b>
-	//#SWGNL#</b><b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def addExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("contentId")
-	contentId: String, 
-			param: MContentaddExternalIdReq):Response /*returnType = MResponseContentUpdate*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__addExternalId(tokenId,clientId,contentId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addExternalId)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_addExternalId)
-	    }
-	} 
-
-	@GET
-	@Path("/addExternalId/{clientId}/{contentId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def addExternalId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("contentId")
-	contentId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentUpdate*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("addExternalId",this._getCacheControl) 
-		try{
-			val resp = this.__addExternalId(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,contentId,PRestHelper.bindRequest[MContentaddExternalIdReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addExternalId)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addExternalId)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __addExternalId(tokenId: String, clientId: String, contentId: String, param: MContentaddExternalIdReq) :MResponseContentUpdate
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_addExternalId: String
-
-	/**
-	 * Removes an externalId from a content.
-	 * <b>
-	 * </b><b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param contentId : String
-	 * @param param : MContentremoveExternalIdReq
-	 * @return MResponseContentUpdate
-	*/
-	@POST
-	@Path("/removeExternalId/{clientId}/{contentId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeExternalId", notes = """Removes an externalId from a content.
-	//#SWGNL#<b>
-	//#SWGNL#</b><b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the content</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseContentUpdate])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def removeExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("contentId")
-	contentId: String, 
-			param: MContentremoveExternalIdReq):Response /*returnType = MResponseContentUpdate*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__removeExternalId(tokenId,clientId,contentId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeExternalId)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_removeExternalId)
-	    }
-	} 
-
-	@GET
-	@Path("/removeExternalId/{clientId}/{contentId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def removeExternalId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("contentId")
-	contentId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContentUpdate*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("removeExternalId",this._getCacheControl) 
-		try{
-			val resp = this.__removeExternalId(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,contentId,PRestHelper.bindRequest[MContentremoveExternalIdReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeExternalId)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeExternalId)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __removeExternalId(tokenId: String, clientId: String, contentId: String, param: MContentremoveExternalIdReq) :MResponseContentUpdate
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_removeExternalId: String
 
 	/**
 	 * Verifies whether or not a content externalId is used in the platform.

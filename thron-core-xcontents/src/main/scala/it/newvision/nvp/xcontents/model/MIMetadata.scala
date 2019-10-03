@@ -26,11 +26,6 @@ class MIMetadata extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var value: String =_
-	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
 	var lang: String =_
 	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
@@ -38,5 +33,10 @@ class MIMetadata extends Serializable {
 	@BeanProperty 
 	var metadataDefinitionId: String =_
 	def withmetadataDefinitionId(p:String):this.type ={ 	this.metadataDefinitionId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var value: String =_
+	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
 
 }

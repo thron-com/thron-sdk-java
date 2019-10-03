@@ -16,15 +16,18 @@ import it.newvision.nvp.xcontents.model.MCategoryUserSpecificProperties
 //#SWG#@ApiModel(description = """""")
 class MCategoryResult extends Serializable {
 
+	/**
+	 * acl information for the category and user in session
+	 */
+	//#SWG#@ApiModelProperty(value = """acl information for the category and user in session""")
+	@BeanProperty 
+	var aclInfo: MCategoryAclInverseRules =_
+	def withaclInfo(p:MCategoryAclInverseRules):this.type ={ 	this.aclInfo = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var category: MCategory =_
 	def withcategory(p:MCategory):this.type ={ 	this.category = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var userSpecificValues: MCategoryUserSpecificProperties =_
-	def withuserSpecificValues(p:MCategoryUserSpecificProperties):this.type ={ 	this.userSpecificValues = p; 	this }
 
 	/**
 	 * total number of contents linked to the category (based on ACL rules)
@@ -33,6 +36,14 @@ class MCategoryResult extends Serializable {
 	@BeanProperty 
 	var numberOfContents: Integer =_
 	def withnumberOfContents(p:Integer):this.type ={ 	this.numberOfContents = p; 	this }
+
+	/**
+	 * number of child Categories
+	 */
+	//#SWG#@ApiModelProperty(value = """number of child Categories""")
+	@BeanProperty 
+	var numberOfSubCategories: Integer =_
+	def withnumberOfSubCategories(p:Integer):this.type ={ 	this.numberOfSubCategories = p; 	this }
 
 	/**
 	 * number of contents not read by the user in the category
@@ -55,14 +66,6 @@ class MCategoryResult extends Serializable {
 	def withnumberOfUnreadContentsInSubCategories(p:Integer):this.type ={ 	this.numberOfUnreadContentsInSubCategories = p; 	this }
 
 	/**
-	 * number of child Categories
-	 */
-	//#SWG#@ApiModelProperty(value = """number of child Categories""")
-	@BeanProperty 
-	var numberOfSubCategories: Integer =_
-	def withnumberOfSubCategories(p:Integer):this.type ={ 	this.numberOfSubCategories = p; 	this }
-
-	/**
 	 * the fullname of the category's owner (based on acl)
 	 */
 	//#SWG#@ApiModelProperty(value = """the fullname of the category's owner (based on acl)""")
@@ -70,12 +73,9 @@ class MCategoryResult extends Serializable {
 	var ownerFullname: String =_
 	def withownerFullname(p:String):this.type ={ 	this.ownerFullname = p; 	this }
 
-	/**
-	 * acl information for the category and user in session
-	 */
-	//#SWG#@ApiModelProperty(value = """acl information for the category and user in session""")
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var aclInfo: MCategoryAclInverseRules =_
-	def withaclInfo(p:MCategoryAclInverseRules):this.type ={ 	this.aclInfo = p; 	this }
+	var userSpecificValues: MCategoryUserSpecificProperties =_
+	def withuserSpecificValues(p:MCategoryUserSpecificProperties):this.type ={ 	this.userSpecificValues = p; 	this }
 
 }

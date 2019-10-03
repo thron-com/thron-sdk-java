@@ -4,14 +4,14 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
+import it.newvision.nvp.xcontents.services.model.playlist.MResponsePlayList
+import it.newvision.nvp.xcontents.services.model.request.MPlaylistaddContentsReq
+import it.newvision.nvp.xcontents.services.model.request.MPlaylistaddContentsInQueueReq
 import it.newvision.nvp.xcontents.services.model.playlist.MResponsePlayListDetail
 import it.newvision.nvp.xcontents.services.model.request.MPlaylistdetailReq
-import it.newvision.nvp.xcontents.services.model.playlist.MResponsePlayList
-import it.newvision.nvp.xcontents.services.model.request.MPlaylistupdateReq
-import it.newvision.nvp.xcontents.services.model.request.MPlaylistaddContentsInQueueReq
-import it.newvision.nvp.xcontents.services.model.request.MPlaylistaddContentsReq
 import it.newvision.nvp.xcontents.services.model.request.MPlaylistmoveContentInListReq
 import it.newvision.nvp.xcontents.services.model.request.MPlaylistremoveContentFromListReq
+import it.newvision.nvp.xcontents.services.model.request.MPlaylistupdateReq
 
 /* ************************
 *  GENERATED CLASS
@@ -52,116 +52,60 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Returns a playlist content detail, complete with the list of linkedContents.
+	 * Adds a list of content to the linkedContents of a playlist content.
 	 * @param tokenId : String
-	 * @param param : MPlaylistdetailReq
-	 * @return MResponsePlayListDetail
-	*/
-	@POST
-	@Path("/detail")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/detail", notes = """Returns a playlist content detail, complete with the list of linkedContents.""", response = classOf[MResponsePlayListDetail])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MPlaylistdetailReq):Response /*returnType = MResponsePlayListDetail*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__detail(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_detail)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_detail)
-	    }
-	} 
-
-	@GET
-	@Path("/detail")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def detail_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePlayListDetail*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("detail",this._getCacheControl) 
-		try{
-			val resp = this.__detail(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MPlaylistdetailReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_detail)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __detail(tokenId: String, param: MPlaylistdetailReq) :MResponsePlayListDetail
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_detail: String
-
-	/**
-	 * Updates the linkedContents value of a playlist content.
-	 * @param tokenId : String
-	 * @param param : MPlaylistupdateReq
+	 * @param param : MPlaylistaddContentsReq
 	 * @return MResponsePlayList
 	*/
 	@POST
-	@Path("/update")
+	@Path("/addContents")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/update", notes = """Updates the linkedContents value of a playlist content.""", response = classOf[MResponsePlayList])
+	//#SWG#@ApiOperation(value = "/addContents", notes = """Adds a list of content to the linkedContents of a playlist content.""", response = classOf[MResponsePlayList])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def addContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			param: MPlaylistupdateReq):Response /*returnType = MResponsePlayList*/ = {
+			param: MPlaylistaddContentsReq):Response /*returnType = MResponsePlayList*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__update(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_update)    
+			val resp = this.__addContents(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addContents)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_update)
+	        throw new WebApplicationException(e,this.capability_addContents)
 	    }
 	} 
 
 	@GET
-	@Path("/update")
+	@Path("/addContents")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def update_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def addContents_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			@QueryParam("param") param_q: String,
 			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePlayList*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("addContents",this._getCacheControl) 
 		try{
-			val resp = this.__update(
+			val resp = this.__addContents(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MPlaylistupdateReq](param_q)	
+			,PRestHelper.bindRequest[MPlaylistaddContentsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addContents)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_update)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addContents)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __update(tokenId: String, param: MPlaylistupdateReq) :MResponsePlayList
+	 protected def __addContents(tokenId: String, param: MPlaylistaddContentsReq) :MResponsePlayList
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_update: String
+	protected def capability_addContents: String
 
 	/**
 	 * Adds a content to the linkedContents of a playlist content.
@@ -220,60 +164,60 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_addContentsInQueue: String
 
 	/**
-	 * Adds a list of content to the linkedContents of a playlist content.
+	 * Returns a playlist content detail, complete with the list of linkedContents.
 	 * @param tokenId : String
-	 * @param param : MPlaylistaddContentsReq
-	 * @return MResponsePlayList
+	 * @param param : MPlaylistdetailReq
+	 * @return MResponsePlayListDetail
 	*/
 	@POST
-	@Path("/addContents")
+	@Path("/detail")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addContents", notes = """Adds a list of content to the linkedContents of a playlist content.""", response = classOf[MResponsePlayList])
+	//#SWG#@ApiOperation(value = "/detail", notes = """Returns a playlist content detail, complete with the list of linkedContents.""", response = classOf[MResponsePlayListDetail])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def addContents(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			param: MPlaylistaddContentsReq):Response /*returnType = MResponsePlayList*/ = {
+			param: MPlaylistdetailReq):Response /*returnType = MResponsePlayListDetail*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__addContents(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addContents)    
+			val resp = this.__detail(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_detail)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_addContents)
+	        throw new WebApplicationException(e,this.capability_detail)
 	    }
 	} 
 
 	@GET
-	@Path("/addContents")
+	@Path("/detail")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def addContents_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def detail_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePlayList*/ = { 
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePlayListDetail*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("addContents",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("detail",this._getCacheControl) 
 		try{
-			val resp = this.__addContents(
+			val resp = this.__detail(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MPlaylistaddContentsReq](param_q)	
+			,PRestHelper.bindRequest[MPlaylistdetailReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addContents)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addContents)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_detail)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __addContents(tokenId: String, param: MPlaylistaddContentsReq) :MResponsePlayList
+	 protected def __detail(tokenId: String, param: MPlaylistdetailReq) :MResponsePlayListDetail
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_addContents: String
+	protected def capability_detail: String
 
 	/**
 	 * Moves a content among the linkedContents of a playlist content.
@@ -386,5 +330,61 @@ trait JPlaylist extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 protected def __removeContentFromList(tokenId: String, param: MPlaylistremoveContentFromListReq) :MResponsePlayList
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_removeContentFromList: String
+
+	/**
+	 * Updates the linkedContents value of a playlist content.
+	 * @param tokenId : String
+	 * @param param : MPlaylistupdateReq
+	 * @return MResponsePlayList
+	*/
+	@POST
+	@Path("/update")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/update", notes = """Updates the linkedContents value of a playlist content.""", response = classOf[MResponsePlayList])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MPlaylistupdateReq):Response /*returnType = MResponsePlayList*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__update(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_update)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_update)
+	    }
+	} 
+
+	@GET
+	@Path("/update")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def update_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePlayList*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
+		try{
+			val resp = this.__update(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MPlaylistupdateReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_update)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __update(tokenId: String, param: MPlaylistupdateReq) :MResponsePlayList
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_update: String
 
 }

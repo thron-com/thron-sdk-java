@@ -4,10 +4,10 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
-import it.newvision.nvp.xcontents.services.model.acl.MResponseAclInverseList
-import it.newvision.nvp.xcontents.services.model.request.MAclInverseRuleslistReq
 import it.newvision.nvp.xcontents.services.model.acl.MResponseAclInverseUpdate
 import it.newvision.nvp.xcontents.services.model.request.MAclInverseRulesinsertReq
+import it.newvision.nvp.xcontents.services.model.acl.MResponseAclInverseList
+import it.newvision.nvp.xcontents.services.model.request.MAclInverseRuleslistReq
 import it.newvision.nvp.xcontents.services.model.request.MAclInverseRulesremoveReq
 import it.newvision.nvp.xcontents.services.model.acl.MResponseAclInverseVerify
 import it.newvision.nvp.xcontents.services.model.request.MAclInverseRulesverifyReq
@@ -41,83 +41,6 @@ trait JAclInverseRules extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	import scala.collection.immutable.Map
 
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
-
-	/**
-	 * return the acl information for a given target object and class.
-	 * The service return a list of AclRuleInfo where is present the displayName of the target Object to
-	 * avoid any lookup.
-	 * 
-	 * The service can be invoked by users with SHARED_BY/MODIFIED_BY acl on the target object.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param targetObjId : String
-	 * @param param : MAclInverseRuleslistReq
-	 * @return MResponseAclInverseList
-	*/
-	@POST
-	@Path("/list/{clientId}/{targetObjId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/list", notes = """return the acl information for a given target object and class.
-	//#SWGNL#The service return a list of AclRuleInfo where is present the displayName of the target Object to avoid any lookup.
-	//#SWGNL#
-	//#SWGNL#The service can be invoked by users with SHARED_BY/MODIFIED_BY acl on the target object.""", response = classOf[MResponseAclInverseList])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("targetObjId")
-	targetObjId: String, 
-			param: MAclInverseRuleslistReq):Response /*returnType = MResponseAclInverseList*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__list(tokenId,clientId,targetObjId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_list)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_list)
-	    }
-	} 
-
-	@GET
-	@Path("/list/{clientId}/{targetObjId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def list_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("targetObjId")
-	targetObjId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseAclInverseList*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("list",this._getCacheControl) 
-		try{
-			val resp = this.__list(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,targetObjId,PRestHelper.bindRequest[MAclInverseRuleslistReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_list)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_list)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __list(tokenId: String, clientId: String, targetObjId: String, param: MAclInverseRuleslistReq) :MResponseAclInverseList
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_list: String
 
 	/**
 	 * Used to add new acl rules (enabled or disabled).
@@ -195,6 +118,83 @@ trait JAclInverseRules extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	 protected def __insert(tokenId: String, clientId: String, param: MAclInverseRulesinsertReq) :MResponseAclInverseUpdate
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_insert: String
+
+	/**
+	 * return the acl information for a given target object and class.
+	 * The service return a list of AclRuleInfo where is present the displayName of the target Object to
+	 * avoid any lookup.
+	 * 
+	 * The service can be invoked by users with SHARED_BY/MODIFIED_BY acl on the target object.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param targetObjId : String
+	 * @param param : MAclInverseRuleslistReq
+	 * @return MResponseAclInverseList
+	*/
+	@POST
+	@Path("/list/{clientId}/{targetObjId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/list", notes = """return the acl information for a given target object and class.
+	//#SWGNL#The service return a list of AclRuleInfo where is present the displayName of the target Object to avoid any lookup.
+	//#SWGNL#
+	//#SWGNL#The service can be invoked by users with SHARED_BY/MODIFIED_BY acl on the target object.""", response = classOf[MResponseAclInverseList])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("targetObjId")
+	targetObjId: String, 
+			param: MAclInverseRuleslistReq):Response /*returnType = MResponseAclInverseList*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__list(tokenId,clientId,targetObjId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_list)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_list)
+	    }
+	} 
+
+	@GET
+	@Path("/list/{clientId}/{targetObjId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def list_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("targetObjId")
+	targetObjId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseAclInverseList*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("list",this._getCacheControl) 
+		try{
+			val resp = this.__list(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,targetObjId,PRestHelper.bindRequest[MAclInverseRuleslistReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_list)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_list)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __list(tokenId: String, clientId: String, targetObjId: String, param: MAclInverseRuleslistReq) :MResponseAclInverseList
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_list: String
 
 	/**
 	 * Used to remove acl rules from the target object.

@@ -23,6 +23,14 @@ import javax.xml.bind.annotation._
 //#SWGNL#The attributes with [0..*] cardinality are in OR clause.""")
 class MCommentCriteria extends Serializable {
 
+	/**
+	 * list of comments Id
+	 */
+	//#SWG#@ApiModelProperty(value = """list of comments Id""")
+	@BeanProperty 
+	var commentIds: List[String] = new ArrayList[String]
+	def withcommentIds(p:List[String]):this.type ={ 	this.commentIds = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var keyword: String =_
@@ -37,13 +45,5 @@ class MCommentCriteria extends Serializable {
 	@BeanProperty 
 	var userId: String =_
 	def withuserId(p:String):this.type ={ 	this.userId = p; 	this }
-
-	/**
-	 * list of comments Id
-	 */
-	//#SWG#@ApiModelProperty(value = """list of comments Id""")
-	@BeanProperty 
-	var commentIds: List[String] = new ArrayList[String]
-	def withcommentIds(p:List[String]):this.type ={ 	this.commentIds = p; 	this }
 
 }

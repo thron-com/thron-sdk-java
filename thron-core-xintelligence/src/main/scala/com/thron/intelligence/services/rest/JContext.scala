@@ -6,10 +6,10 @@ import javax.ws.rs._
 import javax.ws.rs.core._ 
 import com.thron.intelligence.services.model.context.MResponseContextDetail
 import com.thron.intelligence.services.model.request.MContextinsertReq
-import com.thron.intelligence.services.model.context.MResponseContext
-import com.thron.intelligence.services.model.request.MContextupdateReq
 import com.thron.intelligence.services.model.context.MResponseContextList
 import com.thron.intelligence.services.model.request.MContextlistReq
+import com.thron.intelligence.services.model.context.MResponseContext
+import com.thron.intelligence.services.model.request.MContextupdateReq
 
 /* ************************
 *  GENERATED CLASS
@@ -109,6 +109,69 @@ trait JContext extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __insert(tokenId: String, clientId: String, param: MContextinsertReq) :MResponseContextDetail
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_insert: String
+
+	/**
+	 * Returns the list of contexts matching provided criteria sorted by createdDate.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MContextlistReq
+	 * @return MResponseContextList
+	*/
+	@POST
+	@Path("/list/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/list", notes = """Returns the list of contexts matching provided criteria sorted by createdDate.""", response = classOf[MResponseContextList])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			param: MContextlistReq):Response /*returnType = MResponseContextList*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__list(tokenId,clientId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_list)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_list)
+	    }
+	} 
+
+	@GET
+	@Path("/list/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def list_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContextList*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("list",this._getCacheControl) 
+		try{
+			val resp = this.__list(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,PRestHelper.bindRequest[MContextlistReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_list)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_list)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __list(tokenId: String, clientId: String, param: MContextlistReq) :MResponseContextList
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_list: String
 
 	/**
 	 * Marks a context as removed.
@@ -270,68 +333,5 @@ trait JContext extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __update(tokenId: String, clientId: String, id: String, param: MContextupdateReq) :MResponseContext
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_update: String
-
-	/**
-	 * Returns the list of contexts matching provided criteria sorted by createdDate.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param param : MContextlistReq
-	 * @return MResponseContextList
-	*/
-	@POST
-	@Path("/list/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/list", notes = """Returns the list of contexts matching provided criteria sorted by createdDate.""", response = classOf[MResponseContextList])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			param: MContextlistReq):Response /*returnType = MResponseContextList*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__list(tokenId,clientId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_list)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_list)
-	    }
-	} 
-
-	@GET
-	@Path("/list/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def list_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseContextList*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("list",this._getCacheControl) 
-		try{
-			val resp = this.__list(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,PRestHelper.bindRequest[MContextlistReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_list)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_list)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __list(tokenId: String, clientId: String, param: MContextlistReq) :MResponseContextList
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_list: String
 
 }

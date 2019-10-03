@@ -16,32 +16,6 @@ import it.newvision.nvp.xadmin.model.version.MVersionNote
 class MUpdateParams extends Serializable {
 
 	/**
-	 * Optional. The identifier for the publishing profile (used to derive the list of
-	 * channels where the content should be published).
-	 * If empty and channel not specified, will be used the default profile
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. The identifier for the publishing profile (used to derive the list of channels where the content should be published).
-	//#SWGNL#If empty and channel not specified, will be used the default profile""")
-	@BeanProperty 
-	var profileId: String =_
-	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var sources: List[MUpdateSourceOpt] = new ArrayList[MUpdateSourceOpt]
-	def withsources(p:List[MUpdateSourceOpt]):this.type ={ 	this.sources = p; 	this }
-
-	/**
-	 * Optional. Default=false. Always false for IMAGE contents.
-	 * if true, the service preserve the thumbnail channel.
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Default=false. Always false for IMAGE contents.
-	//#SWGNL#if true, the service preserve the thumbnail channel.""")
-	@BeanProperty 
-	var preserveThumb: Boolean  = false
-	def withpreserveThumb(p:Boolean):this.type ={ 	this.preserveThumb = p; 	this }
-
-	/**
 	 * Optional.
 	 * Used to specify the additional channels to be used for publishing the content.
 	 * If empty the list of channels is derived from the profileId parameter.
@@ -56,6 +30,32 @@ class MUpdateParams extends Serializable {
 	@BeanProperty 
 	var note: MVersionNote =_
 	def withnote(p:MVersionNote):this.type ={ 	this.note = p; 	this }
+
+	/**
+	 * Optional. Default=false. Always false for IMAGE contents.
+	 * if true, the service preserve the thumbnail channel.
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Default=false. Always false for IMAGE contents.
+	//#SWGNL#if true, the service preserve the thumbnail channel.""")
+	@BeanProperty 
+	var preserveThumb: Boolean  = false
+	def withpreserveThumb(p:Boolean):this.type ={ 	this.preserveThumb = p; 	this }
+
+	/**
+	 * Optional. The identifier for the publishing profile (used to derive the list of
+	 * channels where the content should be published).
+	 * If empty and channel not specified, will be used the default profile
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. The identifier for the publishing profile (used to derive the list of channels where the content should be published).
+	//#SWGNL#If empty and channel not specified, will be used the default profile""")
+	@BeanProperty 
+	var profileId: String =_
+	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var sources: List[MUpdateSourceOpt] = new ArrayList[MUpdateSourceOpt]
+	def withsources(p:List[MUpdateSourceOpt]):this.type ={ 	this.sources = p; 	this }
 
 	/**
 	 * @return void

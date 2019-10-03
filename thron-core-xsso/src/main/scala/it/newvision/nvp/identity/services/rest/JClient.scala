@@ -5,17 +5,17 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
 import it.newvision.nvp.identity.services.model.client.MResponseDetailClient
-import it.newvision.nvp.identity.services.model.request.MClientregisterReq
-import it.newvision.nvp.identity.services.model.request.MClientupdateReq
-import it.newvision.nvp.identity.services.model.client.MResponseClient
-import it.newvision.nvp.identity.services.model.request.MClientremoveReq
 import it.newvision.nvp.identity.services.model.request.MClientdetailReq
 import it.newvision.nvp.identity.services.model.client.MResponseClientFindByProperties
 import it.newvision.nvp.identity.services.model.request.MClientfindByPropertiesReq
 import it.newvision.nvp.identity.services.model.client.MResponseGetAllClientsId
-import it.newvision.nvp.identity.services.model.request.MClientupdateClientStatusReq
-import it.newvision.nvp.identity.services.model.client.MResponseSiteAccelerationList
 import it.newvision.nvp.identity.services.model.client.MResponseGetPlayerInfo
+import it.newvision.nvp.identity.services.model.client.MResponseSiteAccelerationList
+import it.newvision.nvp.identity.services.model.request.MClientregisterReq
+import it.newvision.nvp.identity.services.model.client.MResponseClient
+import it.newvision.nvp.identity.services.model.request.MClientremoveReq
+import it.newvision.nvp.identity.services.model.request.MClientupdateReq
+import it.newvision.nvp.identity.services.model.request.MClientupdateClientStatusReq
 
 /* ************************
 *  GENERATED CLASS
@@ -47,173 +47,6 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	import scala.collection.immutable.Map
 
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
-
-	/**
-	 * Create a new client (service code) in the platform.
-	 * @param tokenId : String
-	 * @param param : MClientregisterReq
-	 * @return MResponseDetailClient
-	*/
-	@POST
-	@Path("/register")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/register", notes = """Create a new client (service code) in the platform.""", response = classOf[MResponseDetailClient])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def register(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MClientregisterReq):Response /*returnType = MResponseDetailClient*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__register(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_register)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_register)
-	    }
-	} 
-
-	@GET
-	@Path("/register")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def register_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseDetailClient*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("register",this._getCacheControl) 
-		try{
-			val resp = this.__register(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MClientregisterReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_register)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_register)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __register(tokenId: String, param: MClientregisterReq) :MResponseDetailClient
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_register: String
-
-	/**
-	 * update the client information and properties for an existing client.
-	 * @param tokenId : String
-	 * @param param : MClientupdateReq
-	 * @return MResponseDetailClient
-	*/
-	@POST
-	@Path("/update")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/update", notes = """update the client information and properties for an existing client.""", response = classOf[MResponseDetailClient])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MClientupdateReq):Response /*returnType = MResponseDetailClient*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__update(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_update)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_update)
-	    }
-	} 
-
-	@GET
-	@Path("/update")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def update_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseDetailClient*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
-		try{
-			val resp = this.__update(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MClientupdateReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_update)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __update(tokenId: String, param: MClientupdateReq) :MResponseDetailClient
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_update: String
-
-	/**
-	 * @param tokenId : String
-	 * @param param : MClientremoveReq
-	 * @return MResponseClient
-	*/
-	@POST
-	@Path("/remove")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/remove", notes = """""", response = classOf[MResponseClient])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MClientremoveReq):Response /*returnType = MResponseClient*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__remove(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_remove)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_remove)
-	    }
-	} 
-
-	@GET
-	@Path("/remove")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def remove_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseClient*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("remove",this._getCacheControl) 
-		try{
-			val resp = this.__remove(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MClientremoveReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_remove)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_remove)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __remove(tokenId: String, param: MClientremoveReq) :MResponseClient
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_remove: String
 
 	/**
 	 * @param tokenId : String
@@ -381,60 +214,58 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_getAllClientsId: String
 
 	/**
-	 * set the client status to active or inactive.
+	 * Return the list of clientIs and player info for customer with a specific fix version. Clients
+	 * without fixedPlayerVersion are filtered by the service.
 	 * @param tokenId : String
-	 * @param param : MClientupdateClientStatusReq
-	 * @return MResponseClient
+	 * @return MResponseGetPlayerInfo
 	*/
 	@POST
-	@Path("/updateClientStatus")
+	@Path("/getPlayerInfo")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateClientStatus", notes = """set the client status to active or inactive.""", response = classOf[MResponseClient])
+	//#SWG#@ApiOperation(value = "/getPlayerInfo", notes = """Return the list of clientIs and player info for customer with a specific fix version. Clients without fixedPlayerVersion are filtered by the service.""", response = classOf[MResponseGetPlayerInfo])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updateClientStatus(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def getPlayerInfo(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MClientupdateClientStatusReq):Response /*returnType = MResponseClient*/ = {
+	tokenId: String):Response /*returnType = MResponseGetPlayerInfo*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__updateClientStatus(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateClientStatus)    
+			val resp = this.__getPlayerInfo(tokenId)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_getPlayerInfo)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateClientStatus)
+	        throw new WebApplicationException(e,this.capability_getPlayerInfo)
 	    }
 	} 
 
 	@GET
-	@Path("/updateClientStatus")
+	@Path("/getPlayerInfo")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updateClientStatus_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def getPlayerInfo_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseClient*/ = { 
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseGetPlayerInfo*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("updateClientStatus",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("getPlayerInfo",this._getCacheControl) 
 		try{
-			val resp = this.__updateClientStatus(
+			val resp = this.__getPlayerInfo(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MClientupdateClientStatusReq](param_q)	
+				
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateClientStatus)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getPlayerInfo)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateClientStatus)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_getPlayerInfo)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateClientStatus(tokenId: String, param: MClientupdateClientStatusReq) :MResponseClient
+	 protected def __getPlayerInfo(tokenId: String) :MResponseGetPlayerInfo
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateClientStatus: String
+	protected def capability_getPlayerInfo: String
 
 	/**
 	 * Return le list of hostname that the client has paid as in site acceleration. (Weebo service)
@@ -490,57 +321,226 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_getSiteAccelerationList: String
 
 	/**
-	 * Return the list of clientIs and player info for customer with a specific fix version. Clients
-	 * without fixedPlayerVersion are filtered by the service.
+	 * Create a new client (service code) in the platform.
 	 * @param tokenId : String
-	 * @return MResponseGetPlayerInfo
+	 * @param param : MClientregisterReq
+	 * @return MResponseDetailClient
 	*/
 	@POST
-	@Path("/getPlayerInfo")
+	@Path("/register")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/getPlayerInfo", notes = """Return the list of clientIs and player info for customer with a specific fix version. Clients without fixedPlayerVersion are filtered by the service.""", response = classOf[MResponseGetPlayerInfo])
+	//#SWG#@ApiOperation(value = "/register", notes = """Create a new client (service code) in the platform.""", response = classOf[MResponseDetailClient])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def getPlayerInfo(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def register(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
-	tokenId: String):Response /*returnType = MResponseGetPlayerInfo*/ = {
+	tokenId: String, 
+			param: MClientregisterReq):Response /*returnType = MResponseDetailClient*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__getPlayerInfo(tokenId)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_getPlayerInfo)    
+			val resp = this.__register(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_register)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_getPlayerInfo)
+	        throw new WebApplicationException(e,this.capability_register)
 	    }
 	} 
 
 	@GET
-	@Path("/getPlayerInfo")
+	@Path("/register")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def getPlayerInfo_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def register_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseGetPlayerInfo*/ = { 
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseDetailClient*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("getPlayerInfo",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("register",this._getCacheControl) 
 		try{
-			val resp = this.__getPlayerInfo(
+			val resp = this.__register(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-				
+			,PRestHelper.bindRequest[MClientregisterReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getPlayerInfo)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_register)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_getPlayerInfo)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_register)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getPlayerInfo(tokenId: String) :MResponseGetPlayerInfo
+	 protected def __register(tokenId: String, param: MClientregisterReq) :MResponseDetailClient
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_getPlayerInfo: String
+	protected def capability_register: String
+
+	/**
+	 * @param tokenId : String
+	 * @param param : MClientremoveReq
+	 * @return MResponseClient
+	*/
+	@POST
+	@Path("/remove")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/remove", notes = """""", response = classOf[MResponseClient])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def remove(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MClientremoveReq):Response /*returnType = MResponseClient*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__remove(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_remove)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_remove)
+	    }
+	} 
+
+	@GET
+	@Path("/remove")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def remove_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseClient*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("remove",this._getCacheControl) 
+		try{
+			val resp = this.__remove(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MClientremoveReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_remove)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_remove)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __remove(tokenId: String, param: MClientremoveReq) :MResponseClient
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_remove: String
+
+	/**
+	 * update the client information and properties for an existing client.
+	 * @param tokenId : String
+	 * @param param : MClientupdateReq
+	 * @return MResponseDetailClient
+	*/
+	@POST
+	@Path("/update")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/update", notes = """update the client information and properties for an existing client.""", response = classOf[MResponseDetailClient])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MClientupdateReq):Response /*returnType = MResponseDetailClient*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__update(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_update)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_update)
+	    }
+	} 
+
+	@GET
+	@Path("/update")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def update_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseDetailClient*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
+		try{
+			val resp = this.__update(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MClientupdateReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_update)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __update(tokenId: String, param: MClientupdateReq) :MResponseDetailClient
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_update: String
+
+	/**
+	 * set the client status to active or inactive.
+	 * @param tokenId : String
+	 * @param param : MClientupdateClientStatusReq
+	 * @return MResponseClient
+	*/
+	@POST
+	@Path("/updateClientStatus")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/updateClientStatus", notes = """set the client status to active or inactive.""", response = classOf[MResponseClient])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def updateClientStatus(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MClientupdateClientStatusReq):Response /*returnType = MResponseClient*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__updateClientStatus(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateClientStatus)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_updateClientStatus)
+	    }
+	} 
+
+	@GET
+	@Path("/updateClientStatus")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def updateClientStatus_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseClient*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateClientStatus",this._getCacheControl) 
+		try{
+			val resp = this.__updateClientStatus(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MClientupdateClientStatusReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateClientStatus)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateClientStatus)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __updateClientStatus(tokenId: String, param: MClientupdateClientStatusReq) :MResponseClient
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_updateClientStatus: String
 
 }

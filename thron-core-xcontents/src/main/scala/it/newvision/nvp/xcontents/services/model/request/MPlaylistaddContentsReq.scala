@@ -24,19 +24,19 @@ class MPlaylistaddContentsReq extends Serializable {
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
-	 * xcontentId of Playlist content
-	 */
-	//#SWG#@ApiModelProperty(value = """xcontentId of Playlist content""", required = true)
-	@BeanProperty
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	/**
 	 * the playlist elements to add
 	 */
 	//#SWG#@ApiModelProperty(value = """the playlist elements to add""", required = true)
 	@BeanProperty
 	var contentList: MPlaylistItems =_
 	def withcontentList(p:MPlaylistItems):this.type ={ 	this.contentList = p; 	this }
+
+	/**
+	 * xcontentId of Playlist content
+	 */
+	//#SWG#@ApiModelProperty(value = """xcontentId of Playlist content""", required = true)
+	@BeanProperty
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 }

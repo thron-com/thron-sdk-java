@@ -54,5 +54,11 @@ public enum MECategory {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("PRETTYID_ALREADY_EXISTS") PRETTYID_ALREADY_EXISTS,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("PRIVATE_CATEGORY_EXCEPTION") PRIVATE_CATEGORY_EXCEPTION
+	@XmlEnumValue("PRIVATE_CATEGORY_EXCEPTION") PRIVATE_CATEGORY_EXCEPTION,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("MAX_TREE_NODES_EXCEEDED") MAX_TREE_NODES_EXCEEDED,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("OPERATION_LOCKED") OPERATION_LOCKED,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("MAX_DEPTH_EXCEEDED") MAX_DEPTH_EXCEEDED
 }

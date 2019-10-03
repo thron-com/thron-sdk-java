@@ -6,28 +6,29 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentAddLocale
 import it.newvision.nvp.xcontents.services.model.request.MContentaddContent4LocaleReq
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentDetail
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentFindByProperties
-import it.newvision.nvp.xcontents.services.model.request.MContentfindByPropertiesReq
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentRemoveLocale
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdate
-import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentReq
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdateLocale
-import it.newvision.nvp.xcontents.services.model.request.MContentupdateContent4LocaleReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentPrettyId
-import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentPrettyIdReq
-import it.newvision.nvp.xcontents.services.model.request.MContentremoveContentPrettyIdReq
 import it.newvision.nvp.xcontents.services.model.request.MContentaddContentPrettyIdReq
-import it.newvision.nvp.xcontents.services.model.content.MResponseContentVerifyPrettyId
-import it.newvision.nvp.xcontents.services.model.request.MContentverifyContentPrettyIdReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdate
+import it.newvision.nvp.xcontents.services.model.request.MContentaddExternalIdReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContent
 import it.newvision.nvp.xcontents.services.model.request.MContentaddLinkedContentReq
 import it.newvision.nvp.xcontents.services.model.request.MContentaddLinkedContentsReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentDetail
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentFindByProperties
+import it.newvision.nvp.xcontents.services.model.request.MContentfindByPropertiesReq
 import it.newvision.nvp.xcontents.services.model.request.MContentmoveLinkedContentReq
-import it.newvision.nvp.xcontents.services.model.request.MContentremoveLinkedContentsReq
-import it.newvision.nvp.xcontents.services.model.request.MContentupdateUserSpecificValuesReq
-import it.newvision.nvp.xcontents.services.model.request.MContentaddExternalIdReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentRemoveLocale
+import it.newvision.nvp.xcontents.services.model.request.MContentremoveContentPrettyIdReq
 import it.newvision.nvp.xcontents.services.model.request.MContentremoveExternalIdReq
+import it.newvision.nvp.xcontents.services.model.request.MContentremoveLinkedContentsReq
+import it.newvision.nvp.xcontents.services.model.content.search.MContentSearchResult
+import it.newvision.nvp.xcontents.services.model.request.MContentsearchReq
+import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentUpdateLocale
+import it.newvision.nvp.xcontents.services.model.request.MContentupdateContent4LocaleReq
+import it.newvision.nvp.xcontents.services.model.request.MContentupdateContentPrettyIdReq
+import it.newvision.nvp.xcontents.services.model.content.MResponseContentVerifyPrettyId
+import it.newvision.nvp.xcontents.services.model.request.MContentverifyContentPrettyIdReq
 import it.newvision.nvp.xcontents.services.model.content.MResponseContentVerifyExternalId
 import it.newvision.nvp.xcontents.services.model.request.MContentverifyExternalIdReq
 
@@ -100,6 +101,233 @@ class JContentClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseContentAddLocale])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Adds a localized prettyId to a content.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentaddContentPrettyIdReq
+	 * @return MResponseContentPrettyId
+	*/
+	def addContentPrettyId(tokenId: String, 
+			param: MContentaddContentPrettyIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentPrettyId ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseContentPrettyId = if(this.resourceEndpoint == ""){
+			
+				new MResponseContentPrettyId()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/addContentPrettyId")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseContentPrettyId],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseContentPrettyId])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Adds an externalId to a content.
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>max number of externalIds on a content: 100</li>
+	 * </ul>
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param contentId : String
+	 * @param param : MContentaddExternalIdReq
+	 * @return MResponseContentUpdate
+	*/
+	def addExternalId(tokenId: String, 
+			clientId: String, 
+			contentId: String, 
+			param: MContentaddExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentUpdate ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseContentUpdate = if(this.resourceEndpoint == ""){
+			
+				new MResponseContentUpdate()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/addExternalId")
+					.path(clientId.toString)
+		.path(contentId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseContentUpdate],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseContentUpdate])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Adds a content to the linkedContents list of a content.
+	 * The linkedContens list is used to store the full list of links between content (like playlist items,
+	 * recommended content or downloadable content). For this reason it is necessary to specify the
+	 * relation linkType.
+	 * Constraints on linkType and contentType.
+	 * 
+	 * <ul>
+	 * 	<li>RECOMMENDED link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
+	 * content.</li>
+	 * 	<li>DOWNLOADABLE link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
+	 * contents</li>
+	 * 	<li>Only linkable content can be added to another content (i.e., content without UNLINKABLE
+	 * property)</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentaddLinkedContentReq
+	 * @return MResponseContent
+	*/
+	def addLinkedContent(tokenId: String, 
+			param: MContentaddLinkedContentReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContent ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseContent = if(this.resourceEndpoint == ""){
+			
+				new MResponseContent()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/addLinkedContent")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseContent],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseContent])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Adds a set of content to the linkedContents list of a content.
+	 * The linkedContens list is used to store the full list of links between content (like playlist items,
+	 * recommended content or downloadable content). For this reason it is necessary to specify the
+	 * relation linkType.
+	 * Only linkable content can be added to another content (i.e., content without UNLINKABLE property)
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentaddLinkedContentsReq
+	 * @return MResponseContent
+	*/
+	def addLinkedContents(tokenId: String, 
+			param: MContentaddLinkedContentsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContent ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseContent = if(this.resourceEndpoint == ""){
+			
+				new MResponseContent()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/addLinkedContents")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseContent],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseContent])
 				}
 				else {
 				  throw e
@@ -198,7 +426,7 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Returns a list of contents matching provided criteria.
+	 * deprecated by search service.
 	 * @param tokenId : String
 	 * @param param : MContentfindByPropertiesReq
 	 * @return MResponseContentFindByProperties
@@ -233,6 +461,56 @@ class JContentClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseContentFindByProperties])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Moves a content among the linkedContents list of a content.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentmoveLinkedContentReq
+	 * @return MResponseContent
+	*/
+	def moveLinkedContent(tokenId: String, 
+			param: MContentmoveLinkedContentReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContent ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseContent = if(this.resourceEndpoint == ""){
+			
+				new MResponseContent()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/moveLinkedContent")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseContent],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseContent])
 				}
 				else {
 				  throw e
@@ -294,6 +572,208 @@ class JContentClient(val resourceEndpoint:String) {
 				  throw e
 				}
 		  }
+	
+	}
+
+	/**
+	 * Removes a localized prettyId from a content.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentremoveContentPrettyIdReq
+	 * @return MResponseContentPrettyId
+	*/
+	def removeContentPrettyId(tokenId: String, 
+			param: MContentremoveContentPrettyIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentPrettyId ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseContentPrettyId = if(this.resourceEndpoint == ""){
+			
+				new MResponseContentPrettyId()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/removeContentPrettyId")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseContentPrettyId],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseContentPrettyId])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Removes an externalId from a content.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param contentId : String
+	 * @param param : MContentremoveExternalIdReq
+	 * @return MResponseContentUpdate
+	*/
+	def removeExternalId(tokenId: String, 
+			clientId: String, 
+			contentId: String, 
+			param: MContentremoveExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentUpdate ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseContentUpdate = if(this.resourceEndpoint == ""){
+			
+				new MResponseContentUpdate()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/removeExternalId")
+					.path(clientId.toString)
+		.path(contentId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseContentUpdate],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseContentUpdate])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Removes content matching provided criteria from the list linkedContents of a content.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the content</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MContentremoveLinkedContentsReq
+	 * @return MResponseContent
+	*/
+	def removeLinkedContents(tokenId: String, 
+			param: MContentremoveLinkedContentsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContent ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MResponseContent = if(this.resourceEndpoint == ""){
+			
+				new MResponseContent()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/removeLinkedContents")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseContent],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseContent])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Search the user's content in platform.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MContentsearchReq
+	 * @return MContentSearchResult
+	*/
+	def search(tokenId: String, 
+			clientId: String, 
+			param: MContentsearchReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MContentSearchResult ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentClient.client.resource(this.resourceEndpoint)
+			val response : MContentSearchResult = if(this.resourceEndpoint == ""){
+			
+				new MContentSearchResult()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("content/search")
+					.path(clientId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MContentSearchResult],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MContentSearchResult])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
 	
 	}
 
@@ -451,106 +931,6 @@ class JContentClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Removes a localized prettyId from a content.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentremoveContentPrettyIdReq
-	 * @return MResponseContentPrettyId
-	*/
-	def removeContentPrettyId(tokenId: String, 
-			param: MContentremoveContentPrettyIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentPrettyId ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContentPrettyId = if(this.resourceEndpoint == ""){
-			
-				new MResponseContentPrettyId()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/removeContentPrettyId")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContentPrettyId],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContentPrettyId])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Adds a localized prettyId to a content.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentaddContentPrettyIdReq
-	 * @return MResponseContentPrettyId
-	*/
-	def addContentPrettyId(tokenId: String, 
-			param: MContentaddContentPrettyIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentPrettyId ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContentPrettyId = if(this.resourceEndpoint == ""){
-			
-				new MResponseContentPrettyId()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/addContentPrettyId")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContentPrettyId],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContentPrettyId])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * Verify whether a content prettyId is valid for a specific locale or not, and eventually suggest an
 	 * alternative.
 	 * @param tokenId : String
@@ -589,388 +969,6 @@ class JContentClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseContentVerifyPrettyId])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Adds a content to the linkedContents list of a content.
-	 * The linkedContens list is used to store the full list of links between content (like playlist items,
-	 * recommended content or downloadable content). For this reason it is necessary to specify the
-	 * relation linkType.
-	 * Constraints on linkType and contentType.
-	 * 
-	 * <ul>
-	 * 	<li>RECOMMENDED link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
-	 * content.</li>
-	 * 	<li>DOWNLOADABLE link is available only for AUDIO, IMAGE, OTHER, PAGELET, PLAYLIST, URL, or VIDEO
-	 * contents</li>
-	 * 	<li>Only linkable content can be added to another content (i.e., content without UNLINKABLE
-	 * property)</li>
-	 * </ul>
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentaddLinkedContentReq
-	 * @return MResponseContent
-	*/
-	def addLinkedContent(tokenId: String, 
-			param: MContentaddLinkedContentReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContent ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContent = if(this.resourceEndpoint == ""){
-			
-				new MResponseContent()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/addLinkedContent")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContent],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContent])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Adds a set of content to the linkedContents list of a content.
-	 * The linkedContens list is used to store the full list of links between content (like playlist items,
-	 * recommended content or downloadable content). For this reason it is necessary to specify the
-	 * relation linkType.
-	 * Only linkable content can be added to another content (i.e., content without UNLINKABLE property)
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentaddLinkedContentsReq
-	 * @return MResponseContent
-	*/
-	def addLinkedContents(tokenId: String, 
-			param: MContentaddLinkedContentsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContent ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContent = if(this.resourceEndpoint == ""){
-			
-				new MResponseContent()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/addLinkedContents")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContent],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContent])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Moves a content among the linkedContents list of a content.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentmoveLinkedContentReq
-	 * @return MResponseContent
-	*/
-	def moveLinkedContent(tokenId: String, 
-			param: MContentmoveLinkedContentReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContent ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContent = if(this.resourceEndpoint == ""){
-			
-				new MResponseContent()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/moveLinkedContent")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContent],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContent])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Removes content matching provided criteria from the list linkedContents of a content.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentremoveLinkedContentsReq
-	 * @return MResponseContent
-	*/
-	def removeLinkedContents(tokenId: String, 
-			param: MContentremoveLinkedContentsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContent ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContent = if(this.resourceEndpoint == ""){
-			
-				new MResponseContent()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/removeLinkedContents")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContent],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContent])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Marks whether or not a content has been read by a user (the service invoker)
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>SEE ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MContentupdateUserSpecificValuesReq
-	 * @return MResponseContent
-	*/
-	def updateUserSpecificValues(tokenId: String, 
-			param: MContentupdateUserSpecificValuesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContent ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContent = if(this.resourceEndpoint == ""){
-			
-				new MResponseContent()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/updateUserSpecificValues")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContent],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContent])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Adds an externalId to a content.
-	 * 
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>max number of externalIds on a content: 100</li>
-	 * </ul>
-	 * <b>
-	 * </b><b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param contentId : String
-	 * @param param : MContentaddExternalIdReq
-	 * @return MResponseContentUpdate
-	*/
-	def addExternalId(tokenId: String, 
-			clientId: String, 
-			contentId: String, 
-			param: MContentaddExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentUpdate ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContentUpdate = if(this.resourceEndpoint == ""){
-			
-				new MResponseContentUpdate()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/addExternalId")
-					.path(clientId.toString)
-		.path(contentId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContentUpdate],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContentUpdate])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Removes an externalId from a content.
-	 * <b>
-	 * </b><b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the content</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param contentId : String
-	 * @param param : MContentremoveExternalIdReq
-	 * @return MResponseContentUpdate
-	*/
-	def removeExternalId(tokenId: String, 
-			clientId: String, 
-			contentId: String, 
-			param: MContentremoveExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentUpdate ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentClient.client.resource(this.resourceEndpoint)
-			val response : MResponseContentUpdate = if(this.resourceEndpoint == ""){
-			
-				new MResponseContentUpdate()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("content/removeExternalId")
-					.path(clientId.toString)
-		.path(contentId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseContentUpdate],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseContentUpdate])
 				}
 				else {
 				  throw e

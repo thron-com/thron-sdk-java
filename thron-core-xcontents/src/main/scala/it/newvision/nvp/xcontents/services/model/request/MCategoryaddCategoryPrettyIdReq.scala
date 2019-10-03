@@ -18,11 +18,6 @@ import it.newvision.nvp.xcontents.model.MPrettyId
 //#SWG#@ApiModel(description = "Request message for service JCategory.addCategoryPrettyId")
 class MCategoryaddCategoryPrettyIdReq extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var clientId: String =_
-	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
-
 	/**
 	 * Id or prettyId
 	 */
@@ -30,6 +25,11 @@ class MCategoryaddCategoryPrettyIdReq extends Serializable {
 	@BeanProperty
 	var categoryId: String =_
 	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var clientId: String =_
+	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty

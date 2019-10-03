@@ -25,12 +25,12 @@ class MUsersGroupManagerunlinkUserToGroupReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var userList: MUserList =_
-	def withuserList(p:MUserList):this.type ={ 	this.userList = p; 	this }
+	var groupId: String =_
+	def withgroupId(p:String):this.type ={ 	this.groupId = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var groupId: String =_
-	def withgroupId(p:String):this.type ={ 	this.groupId = p; 	this }
+	var userList: MUserList =_
+	def withuserList(p:MUserList):this.type ={ 	this.userList = p; 	this }
 
 }

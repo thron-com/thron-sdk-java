@@ -22,26 +22,6 @@ class MAddress extends Serializable {
 	var addressCategory: String =_
 	def withaddressCategory(p:String):this.type ={ 	this.addressCategory = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var street: String =_
-	def withstreet(p:String):this.type ={ 	this.street = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var pobox: String =_
-	def withpobox(p:String):this.type ={ 	this.pobox = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var localArea: String =_
-	def withlocalArea(p:String):this.type ={ 	this.localArea = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var city: String =_
-	def withcity(p:String):this.type ={ 	this.city = p; 	this }
-
 	/**
 	 * County / Area
 	 */
@@ -52,8 +32,8 @@ class MAddress extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var postcode: String =_
-	def withpostcode(p:String):this.type ={ 	this.postcode = p; 	this }
+	var city: String =_
+	def withcity(p:String):this.type ={ 	this.city = p; 	this }
 
 	/**
 	 * country / region
@@ -63,6 +43,21 @@ class MAddress extends Serializable {
 	var country: String =_
 	def withcountry(p:String):this.type ={ 	this.country = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var localArea: String =_
+	def withlocalArea(p:String):this.type ={ 	this.localArea = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var pobox: String =_
+	def withpobox(p:String):this.type ={ 	this.pobox = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var postcode: String =_
+	def withpostcode(p:String):this.type ={ 	this.postcode = p; 	this }
+
 	/**
 	 * used to identify the primary address
 	 */
@@ -70,5 +65,10 @@ class MAddress extends Serializable {
 	@BeanProperty 
 	var primary: Boolean  = false
 	def withprimary(p:Boolean):this.type ={ 	this.primary = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var street: String =_
+	def withstreet(p:String):this.type ={ 	this.street = p; 	this }
 
 }

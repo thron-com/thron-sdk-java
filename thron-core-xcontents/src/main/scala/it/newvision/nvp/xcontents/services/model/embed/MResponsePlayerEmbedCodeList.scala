@@ -19,6 +19,11 @@ class MResponsePlayerEmbedCodeList extends MResponsePlayerEmbed with Serializabl
 	var items: List[MPlayerEmbedCodeDetail] = new ArrayList[MPlayerEmbedCodeDetail]
 	def withitems(p:List[MPlayerEmbedCodeDetail]):this.type ={ 	this.items = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var nextPage: String =_
+	def withnextPage(p:String):this.type ={ 	this.nextPage = p; 	this }
+
 	/**
 	 * Optional. Defined only for the 1st page
 	 */
@@ -26,10 +31,5 @@ class MResponsePlayerEmbedCodeList extends MResponsePlayerEmbed with Serializabl
 	@BeanProperty 
 	var totalResults: Integer =_
 	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var nextPage: String =_
-	def withnextPage(p:String):this.type ={ 	this.nextPage = p; 	this }
 
 }

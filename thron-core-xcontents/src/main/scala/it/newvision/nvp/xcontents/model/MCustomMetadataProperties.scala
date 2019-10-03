@@ -14,6 +14,14 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MCustomMetadataProperties extends Serializable {
 
+	/**
+	 * Only active custom metadata are used in the publication process.
+	 */
+	//#SWG#@ApiModelProperty(value = """Only active custom metadata are used in the publication process.""" ,required = true)
+	@BeanProperty 
+	var active: Boolean  = false
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var dataType: MECustomMetadataDataType =_
@@ -27,14 +35,6 @@ class MCustomMetadataProperties extends Serializable {
 	@BeanProperty 
 	var multilocale: Boolean  = false
 	def withmultilocale(p:Boolean):this.type ={ 	this.multilocale = p; 	this }
-
-	/**
-	 * if empty the user can insert free text (string Values)
-	 */
-	//#SWG#@ApiModelProperty(value = """if empty the user can insert free text (string Values)""")
-	@BeanProperty 
-	var possibileValues: List[MCustomMetadataValueLabel] = new ArrayList[MCustomMetadataValueLabel]
-	def withpossibileValues(p:List[MCustomMetadataValueLabel]):this.type ={ 	this.possibileValues = p; 	this }
 
 	/**
 	 * if empty means for all contentTypes
@@ -54,19 +54,19 @@ class MCustomMetadataProperties extends Serializable {
 	def withonlyForSolutions(p:List[String]):this.type ={ 	this.onlyForSolutions = p; 	this }
 
 	/**
+	 * if empty the user can insert free text (string Values)
+	 */
+	//#SWG#@ApiModelProperty(value = """if empty the user can insert free text (string Values)""")
+	@BeanProperty 
+	var possibileValues: List[MCustomMetadataValueLabel] = new ArrayList[MCustomMetadataValueLabel]
+	def withpossibileValues(p:List[MCustomMetadataValueLabel]):this.type ={ 	this.possibileValues = p; 	this }
+
+	/**
 	 * used to specify that the metadata is required or not, and can not be empty
 	 */
 	//#SWG#@ApiModelProperty(value = """used to specify that the metadata is required or not, and can not be empty""" ,required = true)
 	@BeanProperty 
 	var required: Boolean  = false
 	def withrequired(p:Boolean):this.type ={ 	this.required = p; 	this }
-
-	/**
-	 * Only active custom metadata are used in the publication process.
-	 */
-	//#SWG#@ApiModelProperty(value = """Only active custom metadata are used in the publication process.""" ,required = true)
-	@BeanProperty 
-	var active: Boolean  = false
-	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 }

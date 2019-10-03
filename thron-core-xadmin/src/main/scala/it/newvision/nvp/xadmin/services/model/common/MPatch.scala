@@ -26,16 +26,6 @@ import javax.xml.bind.annotation._
 class MPatch extends Serializable {
 
 	/**
-	 * operation type. Possible values are:
-	 * remove
-	 */
-	//#SWG#@ApiModelProperty(value = """operation type. Possible values are: 
-	//#SWGNL#remove""")
-	@BeanProperty 
-	var op: String =_
-	def withop(p:String):this.type ={ 	this.op = p; 	this }
-
-	/**
 	 * field path
 	 * example: "attribute1"
 	 */
@@ -44,5 +34,15 @@ class MPatch extends Serializable {
 	@BeanProperty 
 	var field: String =_
 	def withfield(p:String):this.type ={ 	this.field = p; 	this }
+
+	/**
+	 * operation type. Possible values are:
+	 * remove
+	 */
+	//#SWG#@ApiModelProperty(value = """operation type. Possible values are: 
+	//#SWGNL#remove""")
+	@BeanProperty 
+	var op: String =_
+	def withop(p:String):this.type ={ 	this.op = p; 	this }
 
 }

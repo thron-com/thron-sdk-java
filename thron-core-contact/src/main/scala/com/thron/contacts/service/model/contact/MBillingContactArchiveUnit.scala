@@ -30,13 +30,8 @@ class MBillingContactArchiveUnit extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var timeRange: MDateRange =_
-	def withtimeRange(p:MDateRange):this.type ={ 	this.timeRange = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var totalContacts: Long  = 0L
-	def withtotalContacts(p:Long):this.type ={ 	this.totalContacts = p; 	this }
+	var identifiedActiveContacts: Long  = 0L
+	def withidentifiedActiveContacts(p:Long):this.type ={ 	this.identifiedActiveContacts = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
@@ -45,8 +40,8 @@ class MBillingContactArchiveUnit extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var totalContactsUnmerged: Long  = 0L
-	def withtotalContactsUnmerged(p:Long):this.type ={ 	this.totalContactsUnmerged = p; 	this }
+	var timeRange: MDateRange =_
+	def withtimeRange(p:MDateRange):this.type ={ 	this.timeRange = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
@@ -55,12 +50,17 @@ class MBillingContactArchiveUnit extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var identifiedActiveContacts: Long  = 0L
-	def withidentifiedActiveContacts(p:Long):this.type ={ 	this.identifiedActiveContacts = p; 	this }
+	var totalActiveContactsUnmerged: Long  = 0L
+	def withtotalActiveContactsUnmerged(p:Long):this.type ={ 	this.totalActiveContactsUnmerged = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var totalActiveContactsUnmerged: Long  = 0L
-	def withtotalActiveContactsUnmerged(p:Long):this.type ={ 	this.totalActiveContactsUnmerged = p; 	this }
+	var totalContacts: Long  = 0L
+	def withtotalContacts(p:Long):this.type ={ 	this.totalContacts = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var totalContactsUnmerged: Long  = 0L
+	def withtotalContactsUnmerged(p:Long):this.type ={ 	this.totalContactsUnmerged = p; 	this }
 
 }

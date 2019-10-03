@@ -18,6 +18,14 @@ import javax.xml.bind.annotation._
 class MContentBasicInfo extends Serializable {
 
 	/**
+	 * Follows the MContent4Locale.description constraints (length < 10000)
+	 */
+	//#SWG#@ApiModelProperty(value = """Follows the MContent4Locale.description constraints (length < 10000)""")
+	@BeanProperty 
+	var description: String =_
+	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
+
+	/**
 	 * Locale code (ISO639-1)
 	 */
 	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1)""" ,required = true)
@@ -32,14 +40,6 @@ class MContentBasicInfo extends Serializable {
 	@BeanProperty 
 	var name: String =_
 	def withname(p:String):this.type ={ 	this.name = p; 	this }
-
-	/**
-	 * Follows the MContent4Locale.description constraints (length < 10000)
-	 */
-	//#SWG#@ApiModelProperty(value = """Follows the MContent4Locale.description constraints (length < 10000)""")
-	@BeanProperty 
-	var description: String =_
-	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
 	/**
 	 * desired prettyId for the content and locale. See reference xcontent.MPrettyId

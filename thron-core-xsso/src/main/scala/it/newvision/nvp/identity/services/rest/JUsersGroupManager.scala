@@ -6,16 +6,16 @@ import javax.ws.rs._
 import javax.ws.rs.core._ 
 import it.newvision.nvp.identity.services.model.usersgroup.MResponseCreateUsersGroup
 import it.newvision.nvp.identity.services.model.request.MUsersGroupManagercreateGroupReq
-import it.newvision.nvp.identity.services.model.usersgroup.MResponseUsersGroup
-import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerupdateReq
-import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerupdateExternalIdReq
 import it.newvision.nvp.identity.services.model.usersgroup.MResponseDetailUsersGroup
 import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerdetailGroupReq
-import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerremoveGroupReq
 import it.newvision.nvp.identity.services.model.usersgroup.MResponseFindGroupsByProperties
 import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerfindGroupsByPropertiesReq
+import it.newvision.nvp.identity.services.model.usersgroup.MResponseUsersGroup
 import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerlinkUserToGroupReq
+import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerremoveGroupReq
 import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerunlinkUserToGroupReq
+import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerupdateReq
+import it.newvision.nvp.identity.services.model.request.MUsersGroupManagerupdateExternalIdReq
 
 /* ************************
 *  GENERATED CLASS
@@ -107,146 +107,6 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 	protected def capability_createGroup: String
 
 	/**
-	 * Updates the detail and capabilities of a group.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param groupId : String
-	 * @param param : MUsersGroupManagerupdateReq
-	 * @return MResponseUsersGroup
-	*/
-	@POST
-	@Path("/update/{clientId}/{groupId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/update", notes = """Updates the detail and capabilities of a group.""", response = classOf[MResponseUsersGroup])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("groupId")
-	groupId: String, 
-			param: MUsersGroupManagerupdateReq):Response /*returnType = MResponseUsersGroup*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__update(tokenId,clientId,groupId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_update)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_update)
-	    }
-	} 
-
-	@GET
-	@Path("/update/{clientId}/{groupId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def update_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("groupId")
-	groupId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUsersGroup*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
-		try{
-			val resp = this.__update(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,groupId,PRestHelper.bindRequest[MUsersGroupManagerupdateReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_update)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __update(tokenId: String, clientId: String, groupId: String, param: MUsersGroupManagerupdateReq) :MResponseUsersGroup
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_update: String
-
-	/**
-	 * Updates an externalId of a group.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param groupId : String
-	 * @param param : MUsersGroupManagerupdateExternalIdReq
-	 * @return MResponseUsersGroup
-	*/
-	@POST
-	@Path("/updateExternalId/{clientId}/{groupId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateExternalId", notes = """Updates an externalId of a group.""", response = classOf[MResponseUsersGroup])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updateExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("groupId")
-	groupId: String, 
-			param: MUsersGroupManagerupdateExternalIdReq):Response /*returnType = MResponseUsersGroup*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__updateExternalId(tokenId,clientId,groupId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateExternalId)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateExternalId)
-	    }
-	} 
-
-	@GET
-	@Path("/updateExternalId/{clientId}/{groupId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updateExternalId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("groupId")
-	groupId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUsersGroup*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("updateExternalId",this._getCacheControl) 
-		try{
-			val resp = this.__updateExternalId(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,groupId,PRestHelper.bindRequest[MUsersGroupManagerupdateExternalIdReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateExternalId)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateExternalId)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateExternalId(tokenId: String, clientId: String, groupId: String, param: MUsersGroupManagerupdateExternalIdReq) :MResponseUsersGroup
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateExternalId: String
-
-	/**
 	 * Returns the detail of a group and the list of users linked to it.
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerdetailGroupReq
@@ -301,62 +161,6 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 	 protected def __detailGroup(tokenId: String, param: MUsersGroupManagerdetailGroupReq) :MResponseDetailUsersGroup
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_detailGroup: String
-
-	/**
-	 * Removes a group.
-	 * @param tokenId : String
-	 * @param param : MUsersGroupManagerremoveGroupReq
-	 * @return MResponseUsersGroup
-	*/
-	@POST
-	@Path("/removeGroup")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeGroup", notes = """Removes a group.""", response = classOf[MResponseUsersGroup])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def removeGroup(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MUsersGroupManagerremoveGroupReq):Response /*returnType = MResponseUsersGroup*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__removeGroup(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeGroup)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_removeGroup)
-	    }
-	} 
-
-	@GET
-	@Path("/removeGroup")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def removeGroup_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUsersGroup*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("removeGroup",this._getCacheControl) 
-		try{
-			val resp = this.__removeGroup(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MUsersGroupManagerremoveGroupReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeGroup)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeGroup)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __removeGroup(tokenId: String, param: MUsersGroupManagerremoveGroupReq) :MResponseUsersGroup
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_removeGroup: String
 
 	/**
 	 * Returns the list of groups matching provided criteria.
@@ -501,6 +305,62 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 	protected def capability_linkUserToGroup: String
 
 	/**
+	 * Removes a group.
+	 * @param tokenId : String
+	 * @param param : MUsersGroupManagerremoveGroupReq
+	 * @return MResponseUsersGroup
+	*/
+	@POST
+	@Path("/removeGroup")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/removeGroup", notes = """Removes a group.""", response = classOf[MResponseUsersGroup])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def removeGroup(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MUsersGroupManagerremoveGroupReq):Response /*returnType = MResponseUsersGroup*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__removeGroup(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeGroup)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_removeGroup)
+	    }
+	} 
+
+	@GET
+	@Path("/removeGroup")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def removeGroup_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUsersGroup*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeGroup",this._getCacheControl) 
+		try{
+			val resp = this.__removeGroup(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MUsersGroupManagerremoveGroupReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeGroup)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeGroup)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __removeGroup(tokenId: String, param: MUsersGroupManagerremoveGroupReq) :MResponseUsersGroup
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_removeGroup: String
+
+	/**
 	 * Unlinks a set of users from a group.
 	 * @param tokenId : String
 	 * @param param : MUsersGroupManagerunlinkUserToGroupReq
@@ -555,5 +415,145 @@ trait JUsersGroupManager extends it.newvision.nvp.core.libraries.restserver.Base
 	 protected def __unlinkUserToGroup(tokenId: String, param: MUsersGroupManagerunlinkUserToGroupReq) :MResponseUsersGroup
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_unlinkUserToGroup: String
+
+	/**
+	 * Updates the detail and capabilities of a group.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param groupId : String
+	 * @param param : MUsersGroupManagerupdateReq
+	 * @return MResponseUsersGroup
+	*/
+	@POST
+	@Path("/update/{clientId}/{groupId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/update", notes = """Updates the detail and capabilities of a group.""", response = classOf[MResponseUsersGroup])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def update(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("groupId")
+	groupId: String, 
+			param: MUsersGroupManagerupdateReq):Response /*returnType = MResponseUsersGroup*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__update(tokenId,clientId,groupId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_update)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_update)
+	    }
+	} 
+
+	@GET
+	@Path("/update/{clientId}/{groupId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def update_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("groupId")
+	groupId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUsersGroup*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("update",this._getCacheControl) 
+		try{
+			val resp = this.__update(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,groupId,PRestHelper.bindRequest[MUsersGroupManagerupdateReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_update)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_update)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __update(tokenId: String, clientId: String, groupId: String, param: MUsersGroupManagerupdateReq) :MResponseUsersGroup
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_update: String
+
+	/**
+	 * Updates an externalId of a group.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param groupId : String
+	 * @param param : MUsersGroupManagerupdateExternalIdReq
+	 * @return MResponseUsersGroup
+	*/
+	@POST
+	@Path("/updateExternalId/{clientId}/{groupId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/updateExternalId", notes = """Updates an externalId of a group.""", response = classOf[MResponseUsersGroup])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def updateExternalId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("groupId")
+	groupId: String, 
+			param: MUsersGroupManagerupdateExternalIdReq):Response /*returnType = MResponseUsersGroup*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__updateExternalId(tokenId,clientId,groupId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateExternalId)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_updateExternalId)
+	    }
+	} 
+
+	@GET
+	@Path("/updateExternalId/{clientId}/{groupId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def updateExternalId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("groupId")
+	groupId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUsersGroup*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateExternalId",this._getCacheControl) 
+		try{
+			val resp = this.__updateExternalId(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,groupId,PRestHelper.bindRequest[MUsersGroupManagerupdateExternalIdReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateExternalId)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateExternalId)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __updateExternalId(tokenId: String, clientId: String, groupId: String, param: MUsersGroupManagerupdateExternalIdReq) :MResponseUsersGroup
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_updateExternalId: String
 
 }

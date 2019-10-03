@@ -26,32 +26,12 @@ import it.newvision.nvp.xcontents.services.model.common.MUpdater
 class MContentUpdate extends MUpdater with Serializable  {
 
 	/**
-	 * DEPRECATED.
-	 * Update MContent.status
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#Update MContent.status""")
-	@BeanProperty 
-	@Deprecated
-	var status: String =_
-	@Deprecated
-	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
-
-	/**
 	 * -> MContent.creationDate
 	 */
 	//#SWG#@ApiModelProperty(value = """-> MContent.creationDate""")
 	@BeanProperty 
 	var creationDate: Date =_
 	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
-
-	/**
-	 * -> MContent.properties
-	 */
-	//#SWG#@ApiModelProperty(value = """-> MContent.properties""")
-	@BeanProperty 
-	var properties: List[MEContentProperties] =_
-	def withproperties(p:List[MEContentProperties]):this.type ={ 	this.properties = p; 	this }
 
 	/**
 	 * The display name of the Author.
@@ -64,30 +44,24 @@ class MContentUpdate extends MUpdater with Serializable  {
 	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
 
 	/**
-	 * date time when the content becomes inactive.
-	 * -> MContent.inactiveDate
+	 * -> MContent.properties
 	 */
-	//#SWG#@ApiModelProperty(value = """date time when the content becomes inactive.
-	//#SWGNL#-> MContent.inactiveDate""")
+	//#SWG#@ApiModelProperty(value = """-> MContent.properties""")
 	@BeanProperty 
-	@Deprecated
-	var inactiveDate: Date =_
-	@Deprecated
-	def withinactiveDate(p:Date):this.type ={ 	this.inactiveDate = p; 	this }
+	var properties: List[MEContentProperties] =_
+	def withproperties(p:List[MEContentProperties]):this.type ={ 	this.properties = p; 	this }
 
 	/**
-	 * used for custom lexicographical order of contents. The field is used in
-	 * JContent.findByProperties (MEContentOrderBy.sortingField_A/D) to sort the
-	 * result set.
-	 * -> MContent.sortingField
+	 * DEPRECATED.
+	 * Update MContent.status
 	 */
-	//#SWG#@ApiModelProperty(value = """used for custom lexicographical order of contents. The field is used in JContent.findByProperties (MEContentOrderBy.sortingField_A/D) to sort the result set.
-	//#SWGNL#-> MContent.sortingField""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.
+	//#SWGNL#Update MContent.status""")
 	@BeanProperty 
 	@Deprecated
-	var sortingField: String =_
+	var status: String =_
 	@Deprecated
-	def withsortingField(p:String):this.type ={ 	this.sortingField = p; 	this }
+	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
 
 	/**
 	 * @return void
@@ -112,20 +86,17 @@ class MContentUpdate extends MUpdater with Serializable  {
 	 * @param creationDate : Date
 	 * @param status : String
 	 * @param owner : String
-	 * @param inactiveDate : Date
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
 	def this(creationDate: Date, 
 			status: String, 
-			owner: String, 
-			inactiveDate: Date){
+			owner: String){
 		this()
 		Option(creationDate)foreach (this.creationDate=_)
 		Option(owner)foreach (this.owner=_)
 		Option(status)foreach (this.status=_)
-		Option(inactiveDate)foreach (this.inactiveDate=_)
 	}
 
 	/**
@@ -139,8 +110,6 @@ class MContentUpdate extends MUpdater with Serializable  {
 		Option(c.creationDate)foreach (this.creationDate=_)
 		Option(c.owner)foreach (this.owner=_)
 		Option(c.status)foreach (this.status=_)
-		Option(c.inactiveDate)foreach (this.inactiveDate=_)
-		Option(c.sortingField)foreach (this.sortingField=_)
 		Option(c.properties)foreach (this.properties=_)
 	}
 

@@ -25,12 +25,12 @@ class MAclgetAclDetailReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var sourceObjId: String =_
-	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
+	var sourceObjClass: MEObjClass =_
+	def withsourceObjClass(p:MEObjClass):this.type ={ 	this.sourceObjClass = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var sourceObjClass: MEObjClass =_
-	def withsourceObjClass(p:MEObjClass):this.type ={ 	this.sourceObjClass = p; 	this }
+	var sourceObjId: String =_
+	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
 
 }

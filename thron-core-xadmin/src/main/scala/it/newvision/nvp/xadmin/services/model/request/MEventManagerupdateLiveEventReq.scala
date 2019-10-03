@@ -25,12 +25,12 @@ class MEventManagerupdateLiveEventReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var mediaContentId: String =_
-	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
+	var eventParam: MUpdateLiveEventParams =_
+	def witheventParam(p:MUpdateLiveEventParams):this.type ={ 	this.eventParam = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var eventParam: MUpdateLiveEventParams =_
-	def witheventParam(p:MUpdateLiveEventParams):this.type ={ 	this.eventParam = p; 	this }
+	var mediaContentId: String =_
+	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 }

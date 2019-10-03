@@ -4,8 +4,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import com.thron.intelligence.model.MESourceType
 import com.thron.intelligence.model.tag.MEStatus
+import com.thron.intelligence.model.MESourceType
 
 /* ************************
 *  GENERATED CLASS
@@ -17,6 +17,16 @@ import com.thron.intelligence.model.tag.MEStatus
 class MITagDefinitionJoinedSearchCriteria extends Serializable {
 
 	/**
+	 * Used to split the ITagdefinition in two macro categories (categorized and
+	 * uncategorized tags). Usually the semantic engines creates new ITagDefinition
+	 * with the categorized attribute set to false.
+	 */
+	//#SWG#@ApiModelProperty(value = """Used to split the ITagdefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new ITagDefinition with the categorized attribute set to false.""")
+	@BeanProperty 
+	var categorized: Boolean =_
+	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
+
+	/**
 	 * list of ITagDefinition.id (old ITagDefinition ids merged in other tags)
 	 */
 	//#SWG#@ApiModelProperty(value = """list of ITagDefinition.id (old ITagDefinition ids merged in other tags)""")
@@ -26,18 +36,8 @@ class MITagDefinitionJoinedSearchCriteria extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var sourceType: List[MESourceType] = new ArrayList[MESourceType]
-	def withsourceType(p:List[MESourceType]):this.type ={ 	this.sourceType = p; 	this }
-
-	/**
-	 * Used to split the ITagdefinition in two macro categories (categorized and
-	 * uncategorized tags). Usually the semantic engines creates new ITagDefinition
-	 * with the categorized attribute set to false.
-	 */
-	//#SWG#@ApiModelProperty(value = """Used to split the ITagdefinition in two macro categories (categorized and uncategorized tags). Usually the semantic engines creates new ITagDefinition with the categorized attribute set to false.""")
-	@BeanProperty 
-	var categorized: Boolean =_
-	def withcategorized(p:Boolean):this.type ={ 	this.categorized = p; 	this }
+	var joinedStatus: List[MEStatus] = new ArrayList[MEStatus]
+	def withjoinedStatus(p:List[MEStatus]):this.type ={ 	this.joinedStatus = p; 	this }
 
 	/**
 	 * Locale code (ISO639-1).
@@ -53,6 +53,11 @@ class MITagDefinitionJoinedSearchCriteria extends Serializable {
 	@BeanProperty 
 	var lang: String =_
 	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var sourceType: List[MESourceType] = new ArrayList[MESourceType]
+	def withsourceType(p:List[MESourceType]):this.type ={ 	this.sourceType = p; 	this }
 
 	/**
 	 * Used as text search on ITagDefinition and works over the specified
@@ -72,11 +77,6 @@ class MITagDefinitionJoinedSearchCriteria extends Serializable {
 	@BeanProperty 
 	var textSearchOptions: MTextSearchOptions  = new MTextSearchOptions()
 	def withtextSearchOptions(p:MTextSearchOptions):this.type ={ 	this.textSearchOptions = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var joinedStatus: List[MEStatus] = new ArrayList[MEStatus]
-	def withjoinedStatus(p:List[MEStatus]):this.type ={ 	this.joinedStatus = p; 	this }
 
 	/**
 	 * @return Boolean

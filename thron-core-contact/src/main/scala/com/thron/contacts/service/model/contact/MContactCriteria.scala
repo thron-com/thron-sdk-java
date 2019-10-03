@@ -24,6 +24,11 @@ class MContactCriteria extends Serializable {
 	var accessedDateRange: MDateRange =_
 	def withaccessedDateRange(p:MDateRange):this.type ={ 	this.accessedDateRange = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var contactType: MEContactType =_
+	def withcontactType(p:MEContactType):this.type ={ 	this.contactType = p; 	this }
+
 	/**
 	 * contact Ids or contact oldIds
 	 */
@@ -62,10 +67,5 @@ class MContactCriteria extends Serializable {
 	@BeanProperty 
 	var itagOp: MITagCriteriaOption =_
 	def withitagOp(p:MITagCriteriaOption):this.type ={ 	this.itagOp = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var contactType: MEContactType =_
-	def withcontactType(p:MEContactType):this.type ={ 	this.contactType = p; 	this }
 
 }

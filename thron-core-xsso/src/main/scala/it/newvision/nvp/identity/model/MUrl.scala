@@ -14,6 +14,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MUrl extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var url: String =_
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
+
 	/**
 	 * Uppercase values.
 	 * 
@@ -35,10 +40,5 @@ class MUrl extends Serializable {
 	@BeanProperty 
 	var urlCategory: String =_
 	def withurlCategory(p:String):this.type ={ 	this.urlCategory = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var url: String =_
-	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 }

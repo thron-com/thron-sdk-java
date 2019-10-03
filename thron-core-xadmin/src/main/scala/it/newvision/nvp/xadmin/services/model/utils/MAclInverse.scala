@@ -16,24 +16,6 @@ import it.newvision.nvp.xadmin.model.MMetadata
 //#SWG#@ApiModel(description = """""")
 class MAclInverse extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var sourceObjId: String =_
-	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var sourceObjClass: String =_
-	def withsourceObjClass(p:String):this.type ={ 	this.sourceObjClass = p; 	this }
-
-	/**
-	 * List of inverse rules. Available values are 
-	 */
-	//#SWG#@ApiModelProperty(value = """List of inverse rules. Available values are """)
-	@BeanProperty 
-	var rulesInverse: List[String] = new ArrayList[String]
-	def withrulesInverse(p:List[String]):this.type ={ 	this.rulesInverse = p; 	this }
-
 	/**
 	 * ADD: used to add the list of "rulesInverse" to the category for the given
 	 * subjectId
@@ -50,5 +32,23 @@ class MAclInverse extends Serializable {
 	@BeanProperty 
 	var customMetadata: List[MMetadata] = new ArrayList[MMetadata]
 	def withcustomMetadata(p:List[MMetadata]):this.type ={ 	this.customMetadata = p; 	this }
+
+	/**
+	 * List of inverse rules. Available values are 
+	 */
+	//#SWG#@ApiModelProperty(value = """List of inverse rules. Available values are """)
+	@BeanProperty 
+	var rulesInverse: List[String] = new ArrayList[String]
+	def withrulesInverse(p:List[String]):this.type ={ 	this.rulesInverse = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var sourceObjClass: String =_
+	def withsourceObjClass(p:String):this.type ={ 	this.sourceObjClass = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var sourceObjId: String =_
+	def withsourceObjId(p:String):this.type ={ 	this.sourceObjId = p; 	this }
 
 }

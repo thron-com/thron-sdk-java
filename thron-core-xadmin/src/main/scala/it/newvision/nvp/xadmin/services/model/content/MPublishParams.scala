@@ -17,12 +17,15 @@ import it.newvision.nvp.xadmin.model.version.MVersionNote
 class MPublishParams extends Serializable {
 
 	/**
-	 * VIDEO, AUDIO, IMAGE, OTHER, PLAYLIST, PAGELET, URL
+	 * Optional.
+	 * Used to specify the additional channels to be used for publishing the content.
+	 * If empty the list of channels is derived from the profileId parameter.
 	 */
-	//#SWG#@ApiModelProperty(value = """VIDEO, AUDIO, IMAGE, OTHER, PLAYLIST, PAGELET, URL""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """Optional. 
+	//#SWGNL#Used to specify the additional channels to be used for publishing the content. If empty the list of channels is derived from the profileId parameter.""")
 	@BeanProperty 
-	var contentType: MEContentType =_
-	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
+	var additionalChannels: List[String] = new ArrayList[String]
+	def withadditionalChannels(p:List[String]):this.type ={ 	this.additionalChannels = p; 	this }
 
 	/**
 	 * Content basic information such as name and description in a specific locale. If
@@ -35,6 +38,19 @@ class MPublishParams extends Serializable {
 	def withcontentOpt(p:MContentOpt):this.type ={ 	this.contentOpt = p; 	this }
 
 	/**
+	 * VIDEO, AUDIO, IMAGE, OTHER, PLAYLIST, PAGELET, URL
+	 */
+	//#SWG#@ApiModelProperty(value = """VIDEO, AUDIO, IMAGE, OTHER, PLAYLIST, PAGELET, URL""" ,required = true)
+	@BeanProperty 
+	var contentType: MEContentType =_
+	def withcontentType(p:MEContentType):this.type ={ 	this.contentType = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var note: MVersionNote =_
+	def withnote(p:MVersionNote):this.type ={ 	this.note = p; 	this }
+
+	/**
 	 * Optional.
 	 * Used to drive the playlist ingestion
 	 */
@@ -43,14 +59,6 @@ class MPublishParams extends Serializable {
 	@BeanProperty 
 	var playlistOpt: MPlaylistOpt =_
 	def withplaylistOpt(p:MPlaylistOpt):this.type ={ 	this.playlistOpt = p; 	this }
-
-	/**
-	 * content source.
-	 */
-	//#SWG#@ApiModelProperty(value = """content source.""")
-	@BeanProperty 
-	var sources: List[MSourceOpt] = new ArrayList[MSourceOpt]
-	def withsources(p:List[MSourceOpt]):this.type ={ 	this.sources = p; 	this }
 
 	/**
 	 * Optional.
@@ -64,20 +72,12 @@ class MPublishParams extends Serializable {
 	def withprofileId(p:String):this.type ={ 	this.profileId = p; 	this }
 
 	/**
-	 * Optional.
-	 * Used to specify the additional channels to be used for publishing the content.
-	 * If empty the list of channels is derived from the profileId parameter.
+	 * content source.
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. 
-	//#SWGNL#Used to specify the additional channels to be used for publishing the content. If empty the list of channels is derived from the profileId parameter.""")
+	//#SWG#@ApiModelProperty(value = """content source.""")
 	@BeanProperty 
-	var additionalChannels: List[String] = new ArrayList[String]
-	def withadditionalChannels(p:List[String]):this.type ={ 	this.additionalChannels = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var note: MVersionNote =_
-	def withnote(p:MVersionNote):this.type ={ 	this.note = p; 	this }
+	var sources: List[MSourceOpt] = new ArrayList[MSourceOpt]
+	def withsources(p:List[MSourceOpt]):this.type ={ 	this.sources = p; 	this }
 
 	/**
 	 * @return void

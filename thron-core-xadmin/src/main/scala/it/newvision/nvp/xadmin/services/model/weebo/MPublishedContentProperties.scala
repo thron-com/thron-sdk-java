@@ -18,6 +18,22 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """restriction properties of the published content: geo-blocking, authentication services...""")
 class MPublishedContentProperties extends Serializable {
 
+	/**
+	 * if true the countries list is used as blacklist otherwise is used as white list.
+	 */
+	//#SWG#@ApiModelProperty(value = """if true the countries list is used as blacklist otherwise is used as white list.""" ,required = true)
+	@BeanProperty 
+	var asBlackList: Boolean  = true
+	def withasBlackList(p:Boolean):this.type ={ 	this.asBlackList = p; 	this }
+
+	/**
+	 * the list of countries code for geo blocking
+	 */
+	//#SWG#@ApiModelProperty(value = """the list of countries code for geo blocking""")
+	@BeanProperty 
+	var countries: List[String] = new ArrayList[String]
+	def withcountries(p:List[String]):this.type ={ 	this.countries = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var enableGeoBlocking: Boolean  = false
@@ -40,21 +56,5 @@ class MPublishedContentProperties extends Serializable {
 	@BeanProperty 
 	var useAuthenticationWebService: Boolean  = false
 	def withuseAuthenticationWebService(p:Boolean):this.type ={ 	this.useAuthenticationWebService = p; 	this }
-
-	/**
-	 * the list of countries code for geo blocking
-	 */
-	//#SWG#@ApiModelProperty(value = """the list of countries code for geo blocking""")
-	@BeanProperty 
-	var countries: List[String] = new ArrayList[String]
-	def withcountries(p:List[String]):this.type ={ 	this.countries = p; 	this }
-
-	/**
-	 * if true the countries list is used as blacklist otherwise is used as white list.
-	 */
-	//#SWG#@ApiModelProperty(value = """if true the countries list is used as blacklist otherwise is used as white list.""" ,required = true)
-	@BeanProperty 
-	var asBlackList: Boolean  = true
-	def withasBlackList(p:Boolean):this.type ={ 	this.asBlackList = p; 	this }
 
 }

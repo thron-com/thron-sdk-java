@@ -38,200 +38,6 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * Returns an access token used by users to invoke API services.
-	 * Lifespan of a token is 1 hour.
-	 * 
-	 * <b>Note: the service is protected by  account lockout policy.</b>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param username : String
-	 * @param password : String
-	 * @return MResponseAccessLogin
-	*/
-	@POST
-	@Path("/login/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/login", notes = """Returns an access token used by users to invoke API services.
-	//#SWGNL#Lifespan of a token is 1 hour.
-	//#SWGNL#
-	//#SWGNL#<b>Note: the service is protected by  account lockout policy.</b>""", response = classOf[MResponseAccessLogin])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def login(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@FormParam("username")
-	username: String, 
-			//#SWG#@ApiParam(value = """""")
-	@FormParam("password")
-	password: String):Response /*returnType = MResponseAccessLogin*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__login(tokenId,clientId,username,password)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_login)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_login)
-	    }
-	} 
-
-	@GET
-	@Path("/login/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def login_2(@QueryParam("tokenId")tokenId_q: String, 
-			@PathParam("clientId")clientId_q: String, 
-			@QueryParam("username")username_q: String, 
-			@QueryParam("password")password_q: String,
-			@HeaderParam("X-TOKENID") tokenId_h: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseAccessLogin*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("login",this._getCacheControl) 
-		try{	
-			val resp = this.__login(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,username_q,password_q)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_login)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_login)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __login(tokenId: String, clientId: String, username: String, password: String) :MResponseAccessLogin
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_login: String
-
-	/**
-	 * Expires an access token.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @return String
-	*/
-	@POST
-	@Path("/logout/{clientId}")
-	@Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD))
-	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/logout", notes = """Expires an access token.""", response = classOf[String])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def logout(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String):Response /*returnType = String*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__logout(tokenId,clientId)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_logout)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_logout)
-	    }
-	} 
-
-	@GET
-	@Path("/logout/{clientId}")
-	@Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD,"application/x-javascript"))
-	def logout_2(@QueryParam("tokenId")tokenId_q: String, 
-			@PathParam("clientId")clientId_q: String,
-			@HeaderParam("X-TOKENID") tokenId_h: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String):Response /*returnType = String*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("logout",this._getCacheControl) 
-		try{	
-			val resp = this.__logout(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_logout)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_logout)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __logout(tokenId: String, clientId: String) :String
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_logout: String
-
-	/**
-	 * Returns HTTP code 403 if access token has expired, 200 OK otherwise.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param username : String
-	 * optional parameter. The service can validate the token and verify that the session token belongs to
-	 * the given username
-	 * @return MResponseAccessLogin
-	*/
-	@POST
-	@Path("/validateToken/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/validateToken", notes = """Returns HTTP code 403 if access token has expired, 200 OK otherwise.""", response = classOf[MResponseAccessLogin])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def validateToken(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """optional parameter. The service can validate the token and verify that the session token belongs to the given username""")
-	@FormParam("username")
-	username: String):Response /*returnType = MResponseAccessLogin*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__validateToken(tokenId,clientId,username)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_validateToken)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_validateToken)
-	    }
-	} 
-
-	@GET
-	@Path("/validateToken/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def validateToken_2(@QueryParam("tokenId")tokenId_q: String, 
-			@PathParam("clientId")clientId_q: String, 
-			@QueryParam("username")username_q: String,
-			@HeaderParam("X-TOKENID") tokenId_h: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseAccessLogin*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("validateToken",this._getCacheControl) 
-		try{	
-			val resp = this.__validateToken(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,username_q)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_validateToken)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_validateToken)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __validateToken(tokenId: String, clientId: String, username: String) :MResponseAccessLogin
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_validateToken: String
-
-	/**
 	 * Returns HTTP code 403 if a set of comma-separated capabilities are invalid for a session token, 200
 	 * OK otherwise.
 	 * @param tokenId : String
@@ -373,5 +179,69 @@ trait JAccessManager extends it.newvision.nvp.core.libraries.restserver.BaseReso
 	 protected def __validateRole(tokenId: String, clientId: String, role: String) :String
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_validateRole: String
+
+	/**
+	 * Returns HTTP code 403 if access token has expired, 200 OK otherwise.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param username : String
+	 * optional parameter. The service can validate the token and verify that the session token belongs to
+	 * the given username
+	 * @return MResponseAccessLogin
+	*/
+	@POST
+	@Path("/validateToken/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
+	//#SWG#@ApiOperation(value = "/validateToken", notes = """Returns HTTP code 403 if access token has expired, 200 OK otherwise.""", response = classOf[MResponseAccessLogin])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def validateToken(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """optional parameter. The service can validate the token and verify that the session token belongs to the given username""")
+	@FormParam("username")
+	username: String):Response /*returnType = MResponseAccessLogin*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__validateToken(tokenId,clientId,username)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_validateToken)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_validateToken)
+	    }
+	} 
+
+	@GET
+	@Path("/validateToken/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def validateToken_2(@QueryParam("tokenId")tokenId_q: String, 
+			@PathParam("clientId")clientId_q: String, 
+			@QueryParam("username")username_q: String,
+			@HeaderParam("X-TOKENID") tokenId_h: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseAccessLogin*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("validateToken",this._getCacheControl) 
+		try{	
+			val resp = this.__validateToken(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,username_q)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_validateToken)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_validateToken)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __validateToken(tokenId: String, clientId: String, username: String) :MResponseAccessLogin
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_validateToken: String
 
 }

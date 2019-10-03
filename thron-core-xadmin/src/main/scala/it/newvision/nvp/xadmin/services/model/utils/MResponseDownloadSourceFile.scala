@@ -22,11 +22,6 @@ class MResponseDownloadSourceFile extends MResponseDashboard with Serializable  
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var source: String =_
-	def withsource(p:String):this.type ={ 	this.source = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
 	var mimeType: String =_
 	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
 
@@ -34,5 +29,10 @@ class MResponseDownloadSourceFile extends MResponseDashboard with Serializable  
 	@BeanProperty 
 	var saveAs: String =_
 	def withsaveAs(p:String):this.type ={ 	this.saveAs = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var source: String =_
+	def withsource(p:String):this.type ={ 	this.source = p; 	this }
 
 }

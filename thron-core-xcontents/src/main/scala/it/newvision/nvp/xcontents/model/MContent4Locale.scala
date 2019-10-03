@@ -18,28 +18,12 @@ import javax.xml.bind.annotation._
 class MContent4Locale extends Serializable {
 
 	/**
-	 * Constraints: length <= 150
-	 */
-	//#SWG#@ApiModelProperty(value = """Constraints: length <= 150""" ,required = true)
-	@BeanProperty 
-	var name: String =_
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
-
-	/**
 	 * Constraints: length <= 10000
 	 */
 	//#SWG#@ApiModelProperty(value = """Constraints: length <= 10000""")
 	@BeanProperty 
 	var description: String =_
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
-
-	/**
-	 * Locale code (ISO639-1)
-	 */
-	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1)""" ,required = true)
-	@BeanProperty 
-	var locale: String =_
-	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
 
 	/**
 	 * DEPRECATED.
@@ -52,6 +36,22 @@ class MContent4Locale extends Serializable {
 	var excerpt: String =_
 	@Deprecated
 	def withexcerpt(p:String):this.type ={ 	this.excerpt = p; 	this }
+
+	/**
+	 * Locale code (ISO639-1)
+	 */
+	//#SWG#@ApiModelProperty(value = """Locale code (ISO639-1)""" ,required = true)
+	@BeanProperty 
+	var locale: String =_
+	def withlocale(p:String):this.type ={ 	this.locale = p; 	this }
+
+	/**
+	 * Constraints: length <= 150
+	 */
+	//#SWG#@ApiModelProperty(value = """Constraints: length <= 150""" ,required = true)
+	@BeanProperty 
+	var name: String =_
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * @return Boolean

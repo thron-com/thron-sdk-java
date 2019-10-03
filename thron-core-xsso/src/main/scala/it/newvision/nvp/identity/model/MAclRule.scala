@@ -31,15 +31,13 @@ import javax.xml.bind.annotation._
 //#SWGNL#user1 INHERIT group1""")
 class MAclRule extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * The list of not active rules
+	 */
+	//#SWG#@ApiModelProperty(value = """The list of not active rules""")
 	@BeanProperty 
-	var targetObjId: String =_
-	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var targetObjClass: MEObjClass =_
-	def withtargetObjClass(p:MEObjClass):this.type ={ 	this.targetObjClass = p; 	this }
+	var disabledRules: List[MEAclRule] = new ArrayList[MEAclRule]
+	def withdisabledRules(p:List[MEAclRule]):this.type ={ 	this.disabledRules = p; 	this }
 
 	/**
 	 * The different type of active rules.
@@ -49,13 +47,15 @@ class MAclRule extends Serializable {
 	var rules: List[MEAclRule] = new ArrayList[MEAclRule]
 	def withrules(p:List[MEAclRule]):this.type ={ 	this.rules = p; 	this }
 
-	/**
-	 * The list of not active rules
-	 */
-	//#SWG#@ApiModelProperty(value = """The list of not active rules""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var disabledRules: List[MEAclRule] = new ArrayList[MEAclRule]
-	def withdisabledRules(p:List[MEAclRule]):this.type ={ 	this.disabledRules = p; 	this }
+	var targetObjClass: MEObjClass =_
+	def withtargetObjClass(p:MEObjClass):this.type ={ 	this.targetObjClass = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var targetObjId: String =_
+	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
 
 	/**
 	 * @return Boolean

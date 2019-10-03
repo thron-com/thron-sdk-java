@@ -4,12 +4,9 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
-import it.newvision.nvp.xcontents.services.model.client.MResponseUpdateClient
-import it.newvision.nvp.xcontents.services.model.request.MClientupdateAuditDurationDaysReq
-import it.newvision.nvp.xcontents.services.model.request.MClientupdateSecureConnectionEnabledReq
-import it.newvision.nvp.xcontents.services.model.request.MClientupdateTrashPropertiesReq
 import it.newvision.nvp.xcontents.services.model.client.MResponseDetailClient
-import it.newvision.nvp.xcontents.services.model.request.MClientupdateTrackingPreferencesReq
+import it.newvision.nvp.xcontents.services.model.client.MResponseClient
+import it.newvision.nvp.xcontents.services.model.request.MClientupdateSecuritySettingsReq
 
 /* ************************
 *  GENERATED CLASS
@@ -40,174 +37,6 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	import scala.collection.immutable.Map
 
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
-
-	/**
-	 * Updates audit duration value.
-	 * @param tokenId : String
-	 * @param param : MClientupdateAuditDurationDaysReq
-	 * @return MResponseUpdateClient
-	*/
-	@POST
-	@Path("/updateAuditDurationDays")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateAuditDurationDays", notes = """Updates audit duration value.""", response = classOf[MResponseUpdateClient])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updateAuditDurationDays(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MClientupdateAuditDurationDaysReq):Response /*returnType = MResponseUpdateClient*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__updateAuditDurationDays(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateAuditDurationDays)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateAuditDurationDays)
-	    }
-	} 
-
-	@GET
-	@Path("/updateAuditDurationDays")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updateAuditDurationDays_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateClient*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("updateAuditDurationDays",this._getCacheControl) 
-		try{
-			val resp = this.__updateAuditDurationDays(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MClientupdateAuditDurationDaysReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateAuditDurationDays)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateAuditDurationDays)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateAuditDurationDays(tokenId: String, param: MClientupdateAuditDurationDaysReq) :MResponseUpdateClient
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateAuditDurationDays: String
-
-	/**
-	 * Updates secure connection enabled value.
-	 * @param tokenId : String
-	 * @param param : MClientupdateSecureConnectionEnabledReq
-	 * @return MResponseUpdateClient
-	*/
-	@POST
-	@Path("/updateSecureConnectionEnabled")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateSecureConnectionEnabled", notes = """Updates secure connection enabled value.""", response = classOf[MResponseUpdateClient])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updateSecureConnectionEnabled(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MClientupdateSecureConnectionEnabledReq):Response /*returnType = MResponseUpdateClient*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__updateSecureConnectionEnabled(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateSecureConnectionEnabled)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateSecureConnectionEnabled)
-	    }
-	} 
-
-	@GET
-	@Path("/updateSecureConnectionEnabled")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updateSecureConnectionEnabled_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateClient*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("updateSecureConnectionEnabled",this._getCacheControl) 
-		try{
-			val resp = this.__updateSecureConnectionEnabled(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MClientupdateSecureConnectionEnabledReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateSecureConnectionEnabled)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateSecureConnectionEnabled)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateSecureConnectionEnabled(tokenId: String, param: MClientupdateSecureConnectionEnabledReq) :MResponseUpdateClient
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateSecureConnectionEnabled: String
-
-	/**
-	 * Updates trash properties value.
-	 * @param tokenId : String
-	 * @param param : MClientupdateTrashPropertiesReq
-	 * @return MResponseUpdateClient
-	*/
-	@POST
-	@Path("/updateTrashProperties")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateTrashProperties", notes = """Updates trash properties value.""", response = classOf[MResponseUpdateClient])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updateTrashProperties(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MClientupdateTrashPropertiesReq):Response /*returnType = MResponseUpdateClient*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__updateTrashProperties(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateTrashProperties)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateTrashProperties)
-	    }
-	} 
-
-	@GET
-	@Path("/updateTrashProperties")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updateTrashProperties_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateClient*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("updateTrashProperties",this._getCacheControl) 
-		try{
-			val resp = this.__updateTrashProperties(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MClientupdateTrashPropertiesReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateTrashProperties)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateTrashProperties)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateTrashProperties(tokenId: String, param: MClientupdateTrashPropertiesReq) :MResponseUpdateClient
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateTrashProperties: String
 
 	/**
 	 * Returns client properties.
@@ -259,59 +88,58 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_detailClient: String
 
 	/**
-	 * Updates secure connection enabled value.
 	 * @param tokenId : String
-	 * @param param : MClientupdateTrackingPreferencesReq
-	 * @return MResponseUpdateClient
+	 * @param param : MClientupdateSecuritySettingsReq
+	 * @return MResponseClient
 	*/
 	@POST
-	@Path("/updateTrackingPreferences")
+	@Path("/updateSecuritySettings")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateTrackingPreferences", notes = """Updates secure connection enabled value.""", response = classOf[MResponseUpdateClient])
+	//#SWG#@ApiOperation(value = "/updateSecuritySettings", notes = """""", response = classOf[MResponseClient])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updateTrackingPreferences(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def updateSecuritySettings(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			param: MClientupdateTrackingPreferencesReq):Response /*returnType = MResponseUpdateClient*/ = {
+			param: MClientupdateSecuritySettingsReq):Response /*returnType = MResponseClient*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__updateTrackingPreferences(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateTrackingPreferences)    
+			val resp = this.__updateSecuritySettings(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateSecuritySettings)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateTrackingPreferences)
+	        throw new WebApplicationException(e,this.capability_updateSecuritySettings)
 	    }
 	} 
 
 	@GET
-	@Path("/updateTrackingPreferences")
+	@Path("/updateSecuritySettings")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updateTrackingPreferences_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def updateSecuritySettings_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateClient*/ = { 
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseClient*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("updateTrackingPreferences",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("updateSecuritySettings",this._getCacheControl) 
 		try{
-			val resp = this.__updateTrackingPreferences(
+			val resp = this.__updateSecuritySettings(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MClientupdateTrackingPreferencesReq](param_q)	
+			,PRestHelper.bindRequest[MClientupdateSecuritySettingsReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateTrackingPreferences)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateSecuritySettings)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateTrackingPreferences)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateSecuritySettings)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateTrackingPreferences(tokenId: String, param: MClientupdateTrackingPreferencesReq) :MResponseUpdateClient
+	 protected def __updateSecuritySettings(tokenId: String, param: MClientupdateSecuritySettingsReq) :MResponseClient
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateTrackingPreferences: String
+	protected def capability_updateSecuritySettings: String
 
 }

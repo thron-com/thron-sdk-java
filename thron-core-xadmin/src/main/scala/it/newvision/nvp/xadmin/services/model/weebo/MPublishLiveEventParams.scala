@@ -15,16 +15,6 @@ import javax.xml.bind.annotation._
 class MPublishLiveEventParams extends Serializable {
 
 	/**
-	 * the name of the stream in output.
-	 * Only unicode letters or digits are allowed
-	 */
-	//#SWG#@ApiModelProperty(value = """the name of the stream in output. 
-	//#SWGNL#Only unicode letters or digits are allowed""" ,required = true)
-	@BeanProperty 
-	var streamName: String =_
-	def withstreamName(p:String):this.type ={ 	this.streamName = p; 	this }
-
-	/**
 	 * the content metadata, like name and description in the specified locale. If the
 	 * ContentDescription is null, the platform create a content description for the
 	 * default locale assigning as content title the source filename.
@@ -33,15 +23,6 @@ class MPublishLiveEventParams extends Serializable {
 	@BeanProperty 
 	var content: MContentDescription =_
 	def withcontent(p:MContentDescription):this.type ={ 	this.content = p; 	this }
-
-	/**
-	 * Optional. If start date could be set to "Now" or the event could not be
-	 * scheduled
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. If start date could be set to "Now" or the event could not be scheduled""")
-	@BeanProperty 
-	var startDate: Date =_
-	def withstartDate(p:Date):this.type ={ 	this.startDate = p; 	this }
 
 	/**
 	 * Optional.
@@ -59,15 +40,34 @@ class MPublishLiveEventParams extends Serializable {
 	var neverEndingLiveEvent: Boolean  = false
 	def withneverEndingLiveEvent(p:Boolean):this.type ={ 	this.neverEndingLiveEvent = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var recordEvent: Boolean =_
+	def withrecordEvent(p:Boolean):this.type ={ 	this.recordEvent = p; 	this }
+
+	/**
+	 * Optional. If start date could be set to "Now" or the event could not be
+	 * scheduled
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. If start date could be set to "Now" or the event could not be scheduled""")
+	@BeanProperty 
+	var startDate: Date =_
+	def withstartDate(p:Date):this.type ={ 	this.startDate = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var startNow: Boolean  = false
 	def withstartNow(p:Boolean):this.type ={ 	this.startNow = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * the name of the stream in output.
+	 * Only unicode letters or digits are allowed
+	 */
+	//#SWG#@ApiModelProperty(value = """the name of the stream in output. 
+	//#SWGNL#Only unicode letters or digits are allowed""" ,required = true)
 	@BeanProperty 
-	var recordEvent: Boolean =_
-	def withrecordEvent(p:Boolean):this.type ={ 	this.recordEvent = p; 	this }
+	var streamName: String =_
+	def withstreamName(p:String):this.type ={ 	this.streamName = p; 	this }
 
 	/**
 	 * @return Boolean

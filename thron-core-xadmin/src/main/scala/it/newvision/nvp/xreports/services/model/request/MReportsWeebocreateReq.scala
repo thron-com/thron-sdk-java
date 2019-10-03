@@ -25,16 +25,6 @@ class MReportsWeebocreateReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var query: MQueryWeebo =_
-	def withquery(p:MQueryWeebo):this.type ={ 	this.query = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var templateName: String =_
-	def withtemplateName(p:String):this.type ={ 	this.templateName = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
 	var description: String =_
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
@@ -45,5 +35,15 @@ class MReportsWeebocreateReq extends Serializable {
 	@BeanProperty
 	var owner: String =_
 	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var query: MQueryWeebo =_
+	def withquery(p:MQueryWeebo):this.type ={ 	this.query = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var templateName: String =_
+	def withtemplateName(p:String):this.type ={ 	this.templateName = p; 	this }
 
 }

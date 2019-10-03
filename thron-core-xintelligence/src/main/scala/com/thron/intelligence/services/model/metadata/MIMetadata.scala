@@ -25,6 +25,11 @@ class MIMetadata extends Serializable {
 	var key: String =_
 	def withkey(p:String):this.type ={ 	this.key = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var lang: String =_
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
+
 	/**
 	 * Optional for bulkRemove service.
 	 * 
@@ -50,11 +55,6 @@ class MIMetadata extends Serializable {
 	@BeanProperty 
 	var value: String =_
 	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var lang: String =_
-	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
 	 * @param forRemove : Boolean

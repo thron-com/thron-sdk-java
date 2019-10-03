@@ -6,14 +6,14 @@ import javax.ws.rs._
 import javax.ws.rs.core._ 
 import it.newvision.nvp.xcontents.services.model.embed.MResponsePlayerEmbedCodeDetail
 import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodeinsertReq
-import it.newvision.nvp.xcontents.services.model.embed.MResponsePlayerEmbed
-import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCoderemoveReq
 import it.newvision.nvp.xcontents.services.model.embed.MResponsePlayerEmbedCodeList
 import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodelistReq
+import it.newvision.nvp.xcontents.services.model.embed.MResponsePlayerEmbed
+import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCoderemoveReq
+import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodesyncReq
 import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodeupdateReq
 import it.newvision.nvp.xcontents.services.model.embed.MResponsePlayerEmbedCodeUpdateTemplate
 import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodeupdateTemplateReq
-import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodesyncReq
 
 /* ************************
 *  GENERATED CLASS
@@ -121,6 +121,81 @@ trait JPlayerEmbedCode extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	protected def capability_insert: String
 
 	/**
+	 * Returns a list of Player Embed Codes matching provided criteria, sorted by creation date.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>SHARE ACL on the content or category, if entity is defined</li>
+	 * 	<li>4ME_USE_CONTENTS if entity is not defined or else 4ME_MANAGE_PLAYER_EMBED_VERSIONS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MPlayerEmbedCodelistReq
+	 * @return MResponsePlayerEmbedCodeList
+	*/
+	@POST
+	@Path("/list/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/list", notes = """Returns a list of Player Embed Codes matching provided criteria, sorted by creation date.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>SHARE ACL on the content or category, if entity is defined</li>
+	//#SWGNL#	<li>4ME_USE_CONTENTS if entity is not defined or else 4ME_MANAGE_PLAYER_EMBED_VERSIONS role</li>
+	//#SWGNL#</ul>""", response = classOf[MResponsePlayerEmbedCodeList])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			param: MPlayerEmbedCodelistReq):Response /*returnType = MResponsePlayerEmbedCodeList*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__list(tokenId,clientId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_list)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_list)
+	    }
+	} 
+
+	@GET
+	@Path("/list/{clientId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def list_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePlayerEmbedCodeList*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("list",this._getCacheControl) 
+		try{
+			val resp = this.__list(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,clientId,PRestHelper.bindRequest[MPlayerEmbedCodelistReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_list)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_list)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __list(tokenId: String, clientId: String, param: MPlayerEmbedCodelistReq) :MResponsePlayerEmbedCodeList
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_list: String
+
+	/**
 	 * Removes a custom Player Embed Code.
 	 * 
 	 * <b>Validation:</b>
@@ -196,79 +271,78 @@ trait JPlayerEmbedCode extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	protected def capability_remove: String
 
 	/**
-	 * Returns a list of Player Embed Codes matching provided criteria, sorted by creation date.
+	 * Updates Player Embed Codes bumping template version to the latest value.
 	 * 
 	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>SHARE ACL on the content or category, if entity is defined</li>
-	 * 	<li>4ME_USE_CONTENTS if entity is not defined or else 4ME_MANAGE_PLAYER_EMBED_VERSIONS role</li>
+	 * 	<li>4ME_MANAGE_PLAYER_EMBED_VERSIONS role or (4ME_MANAGE_PLAYER_EMBED_TEMPLATES role and user is
+	 * template's manager or editor)</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
-	 * @param param : MPlayerEmbedCodelistReq
-	 * @return MResponsePlayerEmbedCodeList
+	 * @param param : MPlayerEmbedCodesyncReq
+	 * @return MResponsePlayerEmbed
 	*/
 	@POST
-	@Path("/list/{clientId}")
+	@Path("/sync/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/list", notes = """Returns a list of Player Embed Codes matching provided criteria, sorted by creation date.
+	//#SWG#@ApiOperation(value = "/sync", notes = """Updates Player Embed Codes bumping template version to the latest value.
 	//#SWGNL#
 	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>SHARE ACL on the content or category, if entity is defined</li>
-	//#SWGNL#	<li>4ME_USE_CONTENTS if entity is not defined or else 4ME_MANAGE_PLAYER_EMBED_VERSIONS role</li>
-	//#SWGNL#</ul>""", response = classOf[MResponsePlayerEmbedCodeList])
+	//#SWGNL#	<li>4ME_MANAGE_PLAYER_EMBED_VERSIONS role or (4ME_MANAGE_PLAYER_EMBED_TEMPLATES role and user is template's manager or editor)</li>
+	//#SWGNL#</ul>""", response = classOf[MResponsePlayerEmbed])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def list(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def sync(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("clientId")
 	clientId: String, 
-			param: MPlayerEmbedCodelistReq):Response /*returnType = MResponsePlayerEmbedCodeList*/ = {
+			param: MPlayerEmbedCodesyncReq):Response /*returnType = MResponsePlayerEmbed*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__list(tokenId,clientId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_list)    
+			val resp = this.__sync(tokenId,clientId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_sync)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_list)
+	        throw new WebApplicationException(e,this.capability_sync)
 	    }
 	} 
 
 	@GET
-	@Path("/list/{clientId}")
+	@Path("/sync/{clientId}")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def list_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def sync_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			//#SWG#@ApiParam(value = """""")
 	@PathParam("clientId")
 	clientId: String,
 			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePlayerEmbedCodeList*/ = { 
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePlayerEmbed*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("list",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("sync",this._getCacheControl) 
 		try{
-			val resp = this.__list(
+			val resp = this.__sync(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,PRestHelper.bindRequest[MPlayerEmbedCodelistReq](param_q)	
+			,clientId,PRestHelper.bindRequest[MPlayerEmbedCodesyncReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_list)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_sync)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_list)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_sync)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __list(tokenId: String, clientId: String, param: MPlayerEmbedCodelistReq) :MResponsePlayerEmbedCodeList
+	 protected def __sync(tokenId: String, clientId: String, param: MPlayerEmbedCodesyncReq) :MResponsePlayerEmbed
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_list: String
+	protected def capability_sync: String
 
 	/**
 	 * Updates a custom Player Embed Code for a content or category. These information are used by the
@@ -418,79 +492,5 @@ trait JPlayerEmbedCode extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	 protected def __updateTemplate(tokenId: String, clientId: String, param: MPlayerEmbedCodeupdateTemplateReq) :MResponsePlayerEmbedCodeUpdateTemplate
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_updateTemplate: String
-
-	/**
-	 * Updates Player Embed Codes bumping template version to the latest value.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>4ME_MANAGE_PLAYER_EMBED_VERSIONS role or (4ME_MANAGE_PLAYER_EMBED_TEMPLATES role and user is
-	 * template's manager or editor)</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param param : MPlayerEmbedCodesyncReq
-	 * @return MResponsePlayerEmbed
-	*/
-	@POST
-	@Path("/sync/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/sync", notes = """Updates Player Embed Codes bumping template version to the latest value.
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>4ME_MANAGE_PLAYER_EMBED_VERSIONS role or (4ME_MANAGE_PLAYER_EMBED_TEMPLATES role and user is template's manager or editor)</li>
-	//#SWGNL#</ul>""", response = classOf[MResponsePlayerEmbed])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def sync(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			param: MPlayerEmbedCodesyncReq):Response /*returnType = MResponsePlayerEmbed*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__sync(tokenId,clientId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_sync)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_sync)
-	    }
-	} 
-
-	@GET
-	@Path("/sync/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def sync_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponsePlayerEmbed*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("sync",this._getCacheControl) 
-		try{
-			val resp = this.__sync(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,PRestHelper.bindRequest[MPlayerEmbedCodesyncReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_sync)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_sync)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __sync(tokenId: String, clientId: String, param: MPlayerEmbedCodesyncReq) :MResponsePlayerEmbed
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_sync: String
 
 }

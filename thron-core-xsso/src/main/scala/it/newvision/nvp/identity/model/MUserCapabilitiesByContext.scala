@@ -14,14 +14,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MUserCapabilitiesByContext extends Serializable {
 
-	/**
-	 * the groupId or "owned"
-	 */
-	//#SWG#@ApiModelProperty(value = """the groupId or "owned"""" ,required = true)
-	@BeanProperty 
-	var context: String  = "owned"
-	def withcontext(p:String):this.type ={ 	this.context = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var capability: MUserCapability =_
@@ -31,5 +23,13 @@ class MUserCapabilitiesByContext extends Serializable {
 	@BeanProperty 
 	var classificationIds: List[String] = new ArrayList[String]
 	def withclassificationIds(p:List[String]):this.type ={ 	this.classificationIds = p; 	this }
+
+	/**
+	 * the groupId or "owned"
+	 */
+	//#SWG#@ApiModelProperty(value = """the groupId or "owned"""" ,required = true)
+	@BeanProperty 
+	var context: String  = "owned"
+	def withcontext(p:String):this.type ={ 	this.context = p; 	this }
 
 }

@@ -18,6 +18,14 @@ import javax.xml.bind.annotation._
 class MServiceUrl extends Serializable {
 
 	/**
+	 * the query params are as AND clause
+	 */
+	//#SWG#@ApiModelProperty(value = """the query params are as AND clause""")
+	@BeanProperty 
+	var queryParams: List[String] = new ArrayList[String]
+	def withqueryParams(p:List[String]):this.type ={ 	this.queryParams = p; 	this }
+
+	/**
 	 * only the service name not the full url:
 	 * example:
 	 * getContentDescriptor
@@ -30,13 +38,5 @@ class MServiceUrl extends Serializable {
 	@BeanProperty 
 	var serviceUrl: String =_
 	def withserviceUrl(p:String):this.type ={ 	this.serviceUrl = p; 	this }
-
-	/**
-	 * the query params are as AND clause
-	 */
-	//#SWG#@ApiModelProperty(value = """the query params are as AND clause""")
-	@BeanProperty 
-	var queryParams: List[String] = new ArrayList[String]
-	def withqueryParams(p:List[String]):this.type ={ 	this.queryParams = p; 	this }
 
 }

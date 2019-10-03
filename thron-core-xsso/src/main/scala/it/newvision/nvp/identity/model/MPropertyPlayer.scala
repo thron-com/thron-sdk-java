@@ -18,14 +18,6 @@ import javax.xml.bind.annotation._
 class MPropertyPlayer extends Serializable {
 
 	/**
-	 * the player url.
-	 */
-	//#SWG#@ApiModelProperty(value = """the player url.""" ,required = true)
-	@BeanProperty 
-	var playerUrl: String  = "-4me.weebo.it/static/player/swf/player.swf"
-	def withplayerUrl(p:String):this.type ={ 	this.playerUrl = p; 	this }
-
-	/**
 	 * used to override the default player versions
 	 * Define all versions the client should be used. It's possible to override only
 	 * major versions (4.x, 5.x ...)
@@ -45,13 +37,20 @@ class MPropertyPlayer extends Serializable {
 	def withnoLogo(p:Boolean):this.type ={ 	this.noLogo = p; 	this }
 
 	/**
+	 * the player url.
+	 */
+	//#SWG#@ApiModelProperty(value = """the player url.""" ,required = true)
+	@BeanProperty 
+	var playerUrl: String  = "-4me.weebo.it/static/player/swf/player.swf"
+	def withplayerUrl(p:String):this.type ={ 	this.playerUrl = p; 	this }
+
+	/**
 	 * @param clientId : String
 	 * @return void
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def this(clientId: String){
-		this()
+	def init(clientId: String){
 		this.playerUrl = "http://"+clientId + this.playerUrl
 	
 	}
@@ -62,7 +61,8 @@ class MPropertyPlayer extends Serializable {
 	*/
 	//#SWG#@ApiModelProperty(hidden = true)
 	@org.codehaus.jackson.annotate.JsonIgnore
-	def init(clientId: String){
+	def this(clientId: String){
+		this()
 		this.playerUrl = "http://"+clientId + this.playerUrl
 	
 	}

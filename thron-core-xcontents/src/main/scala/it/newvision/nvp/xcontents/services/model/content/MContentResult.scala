@@ -17,52 +17,13 @@ import it.newvision.nvp.xcontents.model.MContentUserSpecificProperties
 //#SWG#@ApiModel(description = """""")
 class MContentResult extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var content: MContent =_
-	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
-	def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var userSpecificValues: MContentUserSpecificProperties =_
-	def withuserSpecificValues(p:MContentUserSpecificProperties):this.type ={ 	this.userSpecificValues = p; 	this }
-
 	/**
-	 * total number of "downloadable contents" (contents linked by the used as
-	 * "downloadable"). In order to obtain the list of DownloadableContents should be
-	 * used the service JDelivery.getDownloadableContents
+	 * acl information for the content and user in session
 	 */
-	//#SWG#@ApiModelProperty(value = """total number of "downloadable contents" (contents linked by the used as "downloadable"). In order to obtain the list of DownloadableContents should be used the service JDelivery.getDownloadableContents""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """acl information for the content and user in session""")
 	@BeanProperty 
-	var totalDownloadableContents: Integer =_
-	def withtotalDownloadableContents(p:Integer):this.type ={ 	this.totalDownloadableContents = p; 	this }
-
-	/**
-	 * total number of "suggested contents" (contents linked by the user). In order to
-	 * obtain the list of Recommended Contents should be used the service JDelivery.
-	 * getRecommendedContents
-	 */
-	//#SWG#@ApiModelProperty(value = """total number of "suggested contents" (contents linked by the user). In order to obtain the list of Recommended Contents should be used the service JDelivery.getRecommendedContents""" ,required = true)
-	@BeanProperty 
-	var totalRecommendedContents: Integer =_
-	def withtotalRecommendedContents(p:Integer):this.type ={ 	this.totalRecommendedContents = p; 	this }
-
-	/**
-	 * Deprecated by dynThumbService
-	 * The list of all available thumbnail URLs. 
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated by dynThumbService 
-	//#SWGNL#The list of all available thumbnail URLs. """)
-	@BeanProperty 
-	@Deprecated
-	var thumbUrls: List[String] = new ArrayList[String]
-	@Deprecated
-	def withthumbUrls(p:List[String]):this.type ={ 	this.thumbUrls = p; 	this }
+	var aclInfo: MContentAclInverseRules =_
+	def withaclInfo(p:MContentAclInverseRules):this.type ={ 	this.aclInfo = p; 	this }
 
 	/**
 	 * Deprecated by dynThumbService parameter.
@@ -84,6 +45,11 @@ class MContentResult extends Serializable {
 	@Deprecated
 	def withbestThumbUrl(p:String):this.type ={ 	this.bestThumbUrl = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var content: MContent =_
+	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
+
 	/**
 	 * Returns a persistent link to the thumbnail for the given content and DivArea
 	 * provided by the service JDelivery.getThumbnail.
@@ -96,6 +62,11 @@ class MContentResult extends Serializable {
 	var dynThumbService: String =_
 	def withdynThumbService(p:String):this.type ={ 	this.dynThumbService = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
+	def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
+
 	/**
 	 * the fullname of the content's owner (based on acl)
 	 */
@@ -105,11 +76,40 @@ class MContentResult extends Serializable {
 	def withownerFullname(p:String):this.type ={ 	this.ownerFullname = p; 	this }
 
 	/**
-	 * acl information for the content and user in session
+	 * Deprecated by dynThumbService
+	 * The list of all available thumbnail URLs. 
 	 */
-	//#SWG#@ApiModelProperty(value = """acl information for the content and user in session""")
+	//#SWG#@ApiModelProperty(value = """Deprecated by dynThumbService 
+	//#SWGNL#The list of all available thumbnail URLs. """)
 	@BeanProperty 
-	var aclInfo: MContentAclInverseRules =_
-	def withaclInfo(p:MContentAclInverseRules):this.type ={ 	this.aclInfo = p; 	this }
+	@Deprecated
+	var thumbUrls: List[String] = new ArrayList[String]
+	@Deprecated
+	def withthumbUrls(p:List[String]):this.type ={ 	this.thumbUrls = p; 	this }
+
+	/**
+	 * total number of "downloadable contents" (contents linked by the used as
+	 * "downloadable"). In order to obtain the list of DownloadableContents should be
+	 * used the service JDelivery.getDownloadableContents
+	 */
+	//#SWG#@ApiModelProperty(value = """total number of "downloadable contents" (contents linked by the used as "downloadable"). In order to obtain the list of DownloadableContents should be used the service JDelivery.getDownloadableContents""" ,required = true)
+	@BeanProperty 
+	var totalDownloadableContents: Integer =_
+	def withtotalDownloadableContents(p:Integer):this.type ={ 	this.totalDownloadableContents = p; 	this }
+
+	/**
+	 * total number of "suggested contents" (contents linked by the user). In order to
+	 * obtain the list of Recommended Contents should be used the service JDelivery.
+	 * getRecommendedContents
+	 */
+	//#SWG#@ApiModelProperty(value = """total number of "suggested contents" (contents linked by the user). In order to obtain the list of Recommended Contents should be used the service JDelivery.getRecommendedContents""" ,required = true)
+	@BeanProperty 
+	var totalRecommendedContents: Integer =_
+	def withtotalRecommendedContents(p:Integer):this.type ={ 	this.totalRecommendedContents = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var userSpecificValues: MContentUserSpecificProperties =_
+	def withuserSpecificValues(p:MContentUserSpecificProperties):this.type ={ 	this.userSpecificValues = p; 	this }
 
 }

@@ -14,11 +14,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MUserSummary extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
-
 	/**
 	 * user firstname and surname. Used in presentation
 	 */
@@ -26,5 +21,10 @@ class MUserSummary extends Serializable {
 	@BeanProperty 
 	var fullname: String =_
 	def withfullname(p:String):this.type ={ 	this.fullname = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

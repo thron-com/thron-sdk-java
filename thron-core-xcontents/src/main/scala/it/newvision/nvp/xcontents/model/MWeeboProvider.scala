@@ -15,14 +15,6 @@ import javax.xml.bind.annotation._
 class MWeeboProvider extends MProvider with Serializable  {
 
 	/**
-	 * the published Id of the content published in Weebo
-	 */
-	//#SWG#@ApiModelProperty(value = """the published Id of the content published in Weebo""" ,required = true)
-	@BeanProperty @org.codehaus.jackson.annotate.JsonProperty("PContentId") 
-	var pContentId: String =_
-	def withpContentId(p:String):this.type ={ 	this.pContentId = p; 	this }
-
-	/**
 	 * DEPRECATED.
 	 * available channels in xpublisher. List of comma separated values.
 	 * To know the list of channels is defined in weeboChannels attribute (the channes
@@ -36,6 +28,24 @@ class MWeeboProvider extends MProvider with Serializable  {
 	var channels: String =_
 	@Deprecated
 	def withchannels(p:String):this.type ={ 	this.channels = p; 	this }
+
+	/**
+	 * the published Id of the content published in Weebo
+	 */
+	//#SWG#@ApiModelProperty(value = """the published Id of the content published in Weebo""" ,required = true)
+	@BeanProperty @org.codehaus.jackson.annotate.JsonProperty("PContentId") 
+	var pContentId: String =_
+	def withpContentId(p:String):this.type ={ 	this.pContentId = p; 	this }
+
+	/**
+	 * The total number of versions for the content.
+	 * Each version corresponds to a replacement of the  source file
+	 */
+	//#SWG#@ApiModelProperty(value = """The total number of versions for the content. 
+	//#SWGNL#Each version corresponds to a replacement of the  source file""")
+	@BeanProperty 
+	var totalVersions: Integer =_
+	def withtotalVersions(p:Integer):this.type ={ 	this.totalVersions = p; 	this }
 
 	/**
 	 * the list of channels where the content is published
@@ -52,16 +62,6 @@ class MWeeboProvider extends MProvider with Serializable  {
 	@BeanProperty 
 	var weeboThumbChannel: MWeeboChannel =_
 	def withweeboThumbChannel(p:MWeeboChannel):this.type ={ 	this.weeboThumbChannel = p; 	this }
-
-	/**
-	 * The total number of versions for the content.
-	 * Each version corresponds to a replacement of the  source file
-	 */
-	//#SWG#@ApiModelProperty(value = """The total number of versions for the content. 
-	//#SWGNL#Each version corresponds to a replacement of the  source file""")
-	@BeanProperty 
-	var totalVersions: Integer =_
-	def withtotalVersions(p:Integer):this.type ={ 	this.totalVersions = p; 	this }
 
 	/**
 	 * @return Boolean

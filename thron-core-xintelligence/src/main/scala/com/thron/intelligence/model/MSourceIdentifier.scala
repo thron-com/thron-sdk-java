@@ -19,6 +19,11 @@ import javax.xml.bind.annotation._
 //#SWGNL#Some object can be created/modified by different source like users, or engines.""")
 class MSourceIdentifier extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var displayName: String =_
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
+
 	/**
 	 * username or appId or engineId
 	 */
@@ -31,11 +36,6 @@ class MSourceIdentifier extends Serializable {
 	@BeanProperty 
 	var sourceType: MESourceType =_
 	def withsourceType(p:MESourceType):this.type ={ 	this.sourceType = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var displayName: String =_
-	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
 	/**
 	 * @return Boolean

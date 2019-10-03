@@ -16,23 +16,8 @@ class MBillingReport extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var reportId: String =_
-	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
 	var creationDate: Date =_
 	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var reportFromDate: Date =_
-	def withreportFromDate(p:Date):this.type ={ 	this.reportFromDate = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var reportToDate: Date =_
-	def withreportToDate(p:Date):this.type ={ 	this.reportToDate = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -46,5 +31,20 @@ class MBillingReport extends Serializable {
 	@BeanProperty 
 	var note: String =_
 	def withnote(p:String):this.type ={ 	this.note = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var reportFromDate: Date =_
+	def withreportFromDate(p:Date):this.type ={ 	this.reportFromDate = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var reportId: String =_
+	def withreportId(p:String):this.type ={ 	this.reportId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var reportToDate: Date =_
+	def withreportToDate(p:Date):this.type ={ 	this.reportToDate = p; 	this }
 
 }

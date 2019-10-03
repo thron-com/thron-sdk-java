@@ -17,25 +17,25 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """Visitor User Full Name class""")
 class MFullName extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var prefix: String =_
-	def withprefix(p:String):this.type ={ 	this.prefix = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var firstName: String =_
 	def withfirstName(p:String):this.type ={ 	this.firstName = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var lastName: String =_
+	def withlastName(p:String):this.type ={ 	this.lastName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var middleName: String =_
 	def withmiddleName(p:String):this.type ={ 	this.middleName = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var lastName: String =_
-	def withlastName(p:String):this.type ={ 	this.lastName = p; 	this }
+	var prefix: String =_
+	def withprefix(p:String):this.type ={ 	this.prefix = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 

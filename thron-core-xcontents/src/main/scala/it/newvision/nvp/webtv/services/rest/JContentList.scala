@@ -97,28 +97,13 @@ trait JContentList extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	 * Optional. Used as optional search criteria to filter the contents with the given tags (list of tags
 	 * as comma separated value).
 	 * @param metadata : String
-	 * Optional json representation of MMetadata object used to filter contents by metadata
-	 * Example:
-	 * {"name":"key1", "value":"metadata-value", "locale":"EN"}
-	 * {"name":"key1", "value":"metadata-value"}
-	 * {"name":"key1"}
+	 * Optional. Deprecated
 	 * @param availableInSolution : String
-	 * Optional. Used as optional search criteria to filter the contents available for a specific solution.
-	 * VIEW,PLAY,TALK,MOVE...
-	 * @param onlyActiveContents : Boolean
-	 * Optional.Used to filter the contents with inactiveDate not set or set in the future. If a content
-	 * has inactiveDate in the past means that the content is not active.
+	 * Optional. Deprecated
 	 * @param ugc : Boolean
-	 * Optional. used to filter the ugc contents.
-	 * TRUE = only ugc contents
-	 * FALSE = no ugc contents
-	 * NULL = all contents
+	 * Optional. Deprecated
 	 * @param userAgent : String
-	 * Optional. Used to filter the contents compliant with a specific userAgent.The attribute is optional.
-	 * 
-	 * The userAgent value is converted to a set of compliant channelTypes
-	 * Possible values are: mobile/desktop/other
-
+	 * Optional.Deprecated
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
@@ -130,6 +115,10 @@ trait JContentList extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	 * @param numberOfResult : Integer
 	 * Optional. Used for pagination.
 	 * Default and maximum value is 50 items
+	 * @param returnTotalResults : Boolean
+	 * Optional. Default value true
+	 * if false, totalResults will not be calculated and the service performs better.
+
 	 * @return MResponseContentListResult
 	*/
 	@GET
@@ -193,29 +182,16 @@ trait JContentList extends it.newvision.nvp.core.libraries.restserver.BaseResour
 			//#SWG#@ApiParam(value = """Optional. Used as optional search criteria to filter the contents with the given tags (list of tags as comma separated value).""")
 	@QueryParam("tags")
 	tags: String, 
-			//#SWG#@ApiParam(value = """Optional json representation of MMetadata object used to filter contents by metadata
-	//#SWGNL#Example:
-	//#SWGNL#{"name":"key1", "value":"metadata-value", "locale":"EN"}
-	//#SWGNL#{"name":"key1", "value":"metadata-value"}
-	//#SWGNL#{"name":"key1"}""")
+			//#SWG#@ApiParam(value = """Optional. Deprecated""")
 	@QueryParam("metadata")
 	metadata: String, 
-			//#SWG#@ApiParam(value = """Optional. Used as optional search criteria to filter the contents available for a specific solution.VIEW,PLAY,TALK,MOVE...""")
+			//#SWG#@ApiParam(value = """Optional. Deprecated""")
 	@QueryParam("availableInSolution")
 	availableInSolution: String, 
-			//#SWG#@ApiParam(value = """Optional.Used to filter the contents with inactiveDate not set or set in the future. If a content has inactiveDate in the past means that the content is not active.""")
-	@QueryParam("onlyActiveContents")
-	onlyActiveContents: Boolean, 
-			//#SWG#@ApiParam(value = """Optional. used to filter the ugc contents.
-	//#SWGNL#TRUE = only ugc contents
-	//#SWGNL#FALSE = no ugc contents
-	//#SWGNL#NULL = all contents""")
+			//#SWG#@ApiParam(value = """Optional. Deprecated""")
 	@QueryParam("ugc")
 	ugc: Boolean, 
-			//#SWG#@ApiParam(value = """Optional. Used to filter the contents compliant with a specific userAgent.The attribute is optional.
-	//#SWGNL#The userAgent value is converted to a set of compliant channelTypes
-	//#SWGNL#Possible values are: mobile/desktop/other
-	//#SWGNL#""")
+			//#SWG#@ApiParam(value = """Optional.Deprecated""")
 	@QueryParam("userAgent")
 	userAgent: String, 
 			//#SWG#@ApiParam(value = """Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail that best suits.
@@ -230,7 +206,12 @@ trait JContentList extends it.newvision.nvp.core.libraries.restserver.BaseResour
 			//#SWG#@ApiParam(value = """Optional. Used for pagination.
 	//#SWGNL#Default and maximum value is 50 items""")
 	@QueryParam("numberOfResult")
-	numberOfResult: Integer,
+	numberOfResult: Integer, 
+			//#SWG#@ApiParam(value = """Optional. Default value true
+	//#SWGNL#if false, totalResults will not be calculated and the service performs better.
+	//#SWGNL#""")
+	@QueryParam("returnTotalResults")
+	returnTotalResults: Boolean,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String
 			,
@@ -242,7 +223,7 @@ trait JContentList extends it.newvision.nvp.core.libraries.restserver.BaseResour
 		//get the cache control specific for this service
 		val cc = this.cachemap("showContents") 
 		try{	
-			val resp = this.__showContents(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,locale,categoryId,searchOnSubCategories,xcontentIds,contentType,channelType,searchKey,orderBy,tags,metadata,availableInSolution,onlyActiveContents,ugc,userAgent,divArea,offset,numberOfResult)
+			val resp = this.__showContents(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,locale,categoryId,searchOnSubCategories,xcontentIds,contentType,channelType,searchKey,orderBy,tags,metadata,availableInSolution,ugc,userAgent,divArea,offset,numberOfResult,returnTotalResults)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_showContents)
 	    }catch{
@@ -255,7 +236,7 @@ trait JContentList extends it.newvision.nvp.core.libraries.restserver.BaseResour
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __showContents(tokenId: String, clientId: String, locale: String, categoryId: String, searchOnSubCategories: Boolean, xcontentIds: String, contentType: MEContentType, channelType: String, searchKey: String, orderBy: MEContentOrderBy, tags: String, metadata: String, availableInSolution: String, onlyActiveContents: Boolean, ugc: Boolean, userAgent: String, divArea: String, offset: Integer, numberOfResult: Integer) :MResponseContentListResult
+	 protected def __showContents(tokenId: String, clientId: String, locale: String, categoryId: String, searchOnSubCategories: Boolean, xcontentIds: String, contentType: MEContentType, channelType: String, searchKey: String, orderBy: MEContentOrderBy, tags: String, metadata: String, availableInSolution: String, ugc: Boolean, userAgent: String, divArea: String, offset: Integer, numberOfResult: Integer, returnTotalResults: Boolean) :MResponseContentListResult
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_showContents: String
 

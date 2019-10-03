@@ -25,12 +25,12 @@ class MPlayerEmbedTemplateRole extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var subjectType: MESubjectType =_
-	def withsubjectType(p:MESubjectType):this.type ={ 	this.subjectType = p; 	this }
+	var role: MEPlayerEmbedTemplateRole =_
+	def withrole(p:MEPlayerEmbedTemplateRole):this.type ={ 	this.role = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var role: MEPlayerEmbedTemplateRole =_
-	def withrole(p:MEPlayerEmbedTemplateRole):this.type ={ 	this.role = p; 	this }
+	var subjectType: MESubjectType =_
+	def withsubjectType(p:MESubjectType):this.type ={ 	this.subjectType = p; 	this }
 
 }

@@ -16,11 +16,6 @@ import it.newvision.nvp.xcontents.model.MAclRuleInverse
 @Deprecated
 class MAclRuleInfoInverse extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var targetAcl: MAclRuleInverse =_
-	def withtargetAcl(p:MAclRuleInverse):this.type ={ 	this.targetAcl = p; 	this }
-
 	/**
 	 * used in presentation, Can be the user full name or group Name
 	 */
@@ -28,5 +23,10 @@ class MAclRuleInfoInverse extends Serializable {
 	@BeanProperty 
 	var displayName: String =_
 	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var targetAcl: MAclRuleInverse =_
+	def withtargetAcl(p:MAclRuleInverse):this.type ={ 	this.targetAcl = p; 	this }
 
 }

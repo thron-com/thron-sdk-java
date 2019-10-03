@@ -19,11 +19,6 @@ import it.newvision.nvp.xcontents.services.model.category.MCategoryUpdate
 //#SWG#@ApiModel(description = "Request message for service JCategory.updateCategory")
 class MCategoryupdateCategoryReq extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var client: MCredential =_
-	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
-
 	/**
 	 * Id or prettyId
 	 */
@@ -31,6 +26,11 @@ class MCategoryupdateCategoryReq extends Serializable {
 	@BeanProperty
 	var categoryId: String =_
 	def withcategoryId(p:String):this.type ={ 	this.categoryId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var client: MCredential =_
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty

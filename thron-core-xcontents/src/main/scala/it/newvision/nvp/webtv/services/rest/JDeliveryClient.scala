@@ -5,11 +5,11 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetContentDetail
-import it.newvision.nvp.webtv.services.model.playlist.MResponsePlayListDescriptor
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetCuePoints
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetDownloadableContents
-import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetRecommendedContents
 import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetPlaylistContents
+import it.newvision.nvp.webtv.services.model.playlist.MResponsePlayListDescriptor
+import it.newvision.nvp.webtv.services.model.delivery.MResponseDeliveryGetRecommendedContents
 
 /* ************************
 *  GENERATED CLASS
@@ -158,6 +158,338 @@ class JDeliveryClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Returns cuepoints of a public content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
+	 * <b>Limits:</b>
+	 * <ul>
+	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
+	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
+	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param xcontentId : String
+	 * Optional
+	 * @param xpublisherId : String
+	 * Optional
+	 * @param cuePointTypes : String
+	 * Optional. List of comma separated values
+	 * @param actions : String
+	 * Optional. List of commaseparated values
+	 * @param startTime : Integer
+	 * Optional
+	 * @param endTime : Integer
+	 * Optional
+	 * @param draft : Boolean
+	 * Optional
+	 * @param username : String
+	 * Optional
+	 * @param cuePointGroup : String
+	 * Optional
+	 * @param offset : Integer
+	 * Optional.
+	 * @param numberOfResult : Integer
+	 * Optional. Default and maximum value is 50 items
+	 * @param pkey : String
+	 * Optional, the access key for the content. It's not required when session token is provided.
+	 * @param lcid : String
+	 * Optional. the xcontentId of the main linked content
+	 * This parameter is used to have the cuepoints of a linked/recommended content. The ACL of a
+	 * recommended content are validated on the context of the main content.
+	 * @return MResponseDeliveryGetCuePoints
+	*/
+	def getCuePoints(tokenId: String, 
+			clientId: String, 
+			xcontentId: String, 
+			xpublisherId: String, 
+			cuePointTypes: String, 
+			actions: String, 
+			startTime: Integer, 
+			endTime: Integer, 
+			draft: Boolean, 
+			username: String, 
+			cuePointGroup: String, 
+			offset: Integer, 
+			numberOfResult: Integer, 
+			pkey: String, 
+			lcid: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetCuePoints ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(clientId).foreach(s => params.add("clientId", s))
+		Option(xcontentId).foreach(s => params.add("xcontentId", s))
+		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
+		Option(cuePointTypes).foreach(s => params.add("cuePointTypes", s))
+		Option(actions).foreach(s => params.add("actions", s))
+		Option(startTime).foreach(s => params.add("startTime", s))
+		Option(endTime).foreach(s => params.add("endTime", s))
+		Option(draft).foreach(s => params.add("draft", s))
+		Option(username).foreach(s => params.add("username", s))
+		Option(cuePointGroup).foreach(s => params.add("cuePointGroup", s))
+		Option(offset).foreach(s => params.add("offset", s))
+		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))
+		Option(pkey).foreach(s => params.add("pkey", s))
+		Option(lcid).foreach(s => params.add("lcid", s))
+			val response : MResponseDeliveryGetCuePoints = if(this.resourceEndpoint == ""){
+			
+				new MResponseDeliveryGetCuePoints()
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("delivery/getCuePoints")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[MResponseDeliveryGetCuePoints])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseDeliveryGetCuePoints])
+				}
+				else {
+					throw e
+				}
+			
+		  }
+	
+	}
+
+	/**
+	 * Returns the list of downloadable content of a content without "UNLINKABLE" property.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
+	 * <b>Limits:</b>
+	 * <ul>
+	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
+	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
+	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param xcontentId : String
+	 * Optional
+	 * @param xpublisherId : String
+	 * Optional
+	 * @param locale : String
+	 * Optional. Used as preferred locale for the content results. 
+	 * @param pkey : String
+	 * Optional, the access key for the content. It's not required when session token is provided.
+	 * @param admin : Boolean
+	 * Optional. disable the intrinsic filtering of the service, and return all linked contents:
+	 * * downloadable
+	 * * published or not in cdn2
+	 * * with property NOT_LINKABLE or not
+	 * 
+	 * Enabling this parameter, the service can be used in the admin console to show all contents linked
+	 * even those unmatching the filters.
+	 * @param lcid : String
+	 * Optional. the xcontentId of the parent linked content
+	 * This parameter is used to have the list of downloadable contents. The ACL of a downloadable
+	 * contents are validated on the context of the parent content.
+	 * example:
+	 * A -> has A1, A2 as recommended contents
+	 * A1 -> has D1,D2 as downloadable contents
+	 * 
+	 * To show the list of downloadable contents of A1 (on the context fo A):
+	 * xcontentId = A1
+	 * lcid = A
+	 * pkey = pkey/token of A
+	 * @param divArea : String
+	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
+	 * that best suits.
+	 * Format: <widht>x<height>
+	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
+	 * @param offset : Integer
+	 * Optional
+	 * @param numberOfResult : Integer
+	 * Optional. Default and maximum value is 50 items
+	 * @return MResponseDeliveryGetDownloadableContents
+	*/
+	def getDownloadableContents(tokenId: String, 
+			clientId: String, 
+			xcontentId: String, 
+			xpublisherId: String, 
+			locale: String, 
+			pkey: String, 
+			admin: Boolean, 
+			lcid: String, 
+			divArea: String, 
+			offset: Integer, 
+			numberOfResult: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetDownloadableContents ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(clientId).foreach(s => params.add("clientId", s))
+		Option(xcontentId).foreach(s => params.add("xcontentId", s))
+		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
+		Option(locale).foreach(s => params.add("locale", s))
+		Option(pkey).foreach(s => params.add("pkey", s))
+		Option(admin).foreach(s => params.add("admin", s))
+		Option(lcid).foreach(s => params.add("lcid", s))
+		Option(divArea).foreach(s => params.add("divArea", s))
+		Option(offset).foreach(s => params.add("offset", s))
+		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))
+			val response : MResponseDeliveryGetDownloadableContents = if(this.resourceEndpoint == ""){
+			
+				new MResponseDeliveryGetDownloadableContents()
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("delivery/getDownloadableContents")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[MResponseDeliveryGetDownloadableContents])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseDeliveryGetDownloadableContents])
+				}
+				else {
+					throw e
+				}
+			
+		  }
+	
+	}
+
+	/**
+	 * Returns the list of content linked to a playlist content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
+	 * <b>Limits:</b>
+	 * <ul>
+	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
+	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
+	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param xcontentId : String
+	 * Optional
+	 * @param xpublisherId : String
+	 * Optional
+	 * @param locale : String
+	 * Optional. Used as preferred local for the content results. 
+	 * @param linkedChannelType : String
+	 * Optional. Used to filter the linekdcontents available on some channels.The list of values is
+	 * represented as comma separated value, and the attribute is optional.
+	 * Example: linkedChannelTypes = WEB,STREAMHTTPFLASH,STREAMHTTPIOS
+	 * @param linkedUserAgent : String
+	 * Optional. Used to filter the linekdcontents available/compliant with a specific userAgent.The
+	 * attribute is optional.
+	 * Possible values are: mobile/desktop/other
+	 * @param pkey : String
+	 * Optional, the access key for the content. It's not required when session token is provided.
+	 * @param admin : Boolean
+	 * Optional. disable the intrinsic filtering of the service, and return all linked contents:
+	 * * recommended
+	 * * published or not in cdn2
+	 * * with property NOT_LINKABLE or not
+	 * 
+	 * Enabling this parameter, the service can be used in the admin console to show all contents linked
+	 * even those unmatching the filters.
+	 * @param lcid : String
+	 * Optional. the xcontentId of the parent linked content
+	 * This parameter is used to have the list of playlist contents. The ACL of a playlist content are
+	 * validated on the context of the parent content.
+	 * example:
+	 * A -> has A1, A2 as recommended contents
+	 * A1 -> has C1,C2 as playlist contents
+	 * 
+	 * To show the list of playlist contents of A1 (on the context fo A):
+	 * xcontentId = A1
+	 * lcid = A
+	 * pkey = pkey/token of A
+	 * @param divArea : String
+	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
+	 * that best suits.
+	 * Format: <widht>x<height>
+	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
+	 * @param offset : Integer
+	 * Optional
+	 * @param numberOfResult : Integer
+	 * Optional. Default and maximum value is 50 items
+	 * @return MResponseDeliveryGetPlaylistContents
+	*/
+	def getPlaylistContents(tokenId: String, 
+			clientId: String, 
+			xcontentId: String, 
+			xpublisherId: String, 
+			locale: String, 
+			linkedChannelType: String, 
+			linkedUserAgent: String, 
+			pkey: String, 
+			admin: Boolean, 
+			lcid: String, 
+			divArea: String, 
+			offset: Integer, 
+			numberOfResult: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetPlaylistContents ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(clientId).foreach(s => params.add("clientId", s))
+		Option(xcontentId).foreach(s => params.add("xcontentId", s))
+		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
+		Option(locale).foreach(s => params.add("locale", s))
+		Option(linkedChannelType).foreach(s => params.add("linkedChannelType", s))
+		Option(linkedUserAgent).foreach(s => params.add("linkedUserAgent", s))
+		Option(pkey).foreach(s => params.add("pkey", s))
+		Option(admin).foreach(s => params.add("admin", s))
+		Option(lcid).foreach(s => params.add("lcid", s))
+		Option(divArea).foreach(s => params.add("divArea", s))
+		Option(offset).foreach(s => params.add("offset", s))
+		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))
+			val response : MResponseDeliveryGetPlaylistContents = if(this.resourceEndpoint == ""){
+			
+				new MResponseDeliveryGetPlaylistContents()
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("delivery/getPlaylistContents")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[MResponseDeliveryGetPlaylistContents])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseDeliveryGetPlaylistContents])
+				}
+				else {
+					throw e
+				}
+			
+		  }
+	
+	}
+
+	/**
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param xpublisherId : String
@@ -215,6 +547,186 @@ class JDeliveryClient(val resourceEndpoint:String) {
 						  throw e
 						}
 				  }
+	}
+
+	/**
+	 * Returns the list of recommended content of a content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * <b>
+	 * </b><b>Limits:</b>
+	 * <ul>
+	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
+	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
+	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param xcontentId : String
+	 * Optional
+	 * @param xpublisherId : String
+	 * Optional
+	 * @param locale : String
+	 * Optional. Used as preferred local for the content results.
+
+	 * @param linkedChannelType : String
+	 * Used to filter the linekdcontents available on some channels.The list of values is represented as
+	 * comma separated value, and the attribute is optional.
+	 * Example: linkedChannelTypes = WEB,STREAMHTTPFLASH,STREAMHTTPIOS
+	 * @param linkedUserAgent : String
+	 * Used to filter the linekdcontents available/compliant with a specific userAgent.The attribute is
+	 * optional.
+	 * Possible values are: mobile/desktop/other
+	 * @param pkey : String
+	 * Optional, the access key for the content. It's not required when session token is provided.
+	 * @param admin : Boolean
+	 * disable the intrinsic filtering of the service, and return all linked contents:
+	 * * recommended
+	 * * published or not in cdn2
+	 * * with property NOT_LINKABLE or not
+	 * 
+	 * Enabling this parameter, the service can be used in the admin console to show all contents linked
+	 * even those unmatching the filters.
+	 * @param divArea : String
+	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
+	 * that best suits.
+	 * Format: <widht>x<height>
+	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
+	 * @param offset : Integer
+	 * Optional
+	 * @param numberOfResult : Integer
+	 * Default and maximum value is 50 items
+	 * @return MResponseDeliveryGetRecommendedContents
+	*/
+	def getRecommendedContents(tokenId: String, 
+			clientId: String, 
+			xcontentId: String, 
+			xpublisherId: String, 
+			locale: String, 
+			linkedChannelType: String, 
+			linkedUserAgent: String, 
+			pkey: String, 
+			admin: Boolean, 
+			divArea: String, 
+			offset: Integer, 
+			numberOfResult: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetRecommendedContents ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(clientId).foreach(s => params.add("clientId", s))
+		Option(xcontentId).foreach(s => params.add("xcontentId", s))
+		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
+		Option(locale).foreach(s => params.add("locale", s))
+		Option(linkedChannelType).foreach(s => params.add("linkedChannelType", s))
+		Option(linkedUserAgent).foreach(s => params.add("linkedUserAgent", s))
+		Option(pkey).foreach(s => params.add("pkey", s))
+		Option(admin).foreach(s => params.add("admin", s))
+		Option(divArea).foreach(s => params.add("divArea", s))
+		Option(offset).foreach(s => params.add("offset", s))
+		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))
+			val response : MResponseDeliveryGetRecommendedContents = if(this.resourceEndpoint == ""){
+			
+				new MResponseDeliveryGetRecommendedContents()
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("delivery/getRecommendedContents")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[MResponseDeliveryGetRecommendedContents])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseDeliveryGetRecommendedContents])
+				}
+				else {
+					throw e
+				}
+			
+		  }
+	
+	}
+
+	/**
+	 * Returns localized subtitles for a public content.
+	 * JSONP is supported via the callback queryparam.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
+	 * <b>Limits:</b>
+	 * <ul>
+	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
+	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
+	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param xcontentId : String
+	 * Optional
+	 * @param xpublisherId : String
+	 * Optional
+	 * @param locale : String
+	 * Optional. the subtitles locale
+	 * @param pkey : String
+	 * Optional, the access key for the content. It's not required when session token is provided.
+	 * @param lcid : String
+	 * Optional. the xcontentId of the main linked content
+	 * This parameter is used to have the subtitles of a linked/recommended content. The ACL of a
+	 * recommended content are validated on the context of the main content.
+	 * @return String
+	*/
+	def getSubTitles(tokenId: String, 
+			clientId: String, 
+			xcontentId: String, 
+			xpublisherId: String, 
+			locale: String, 
+			pkey: String, 
+			lcid: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(clientId).foreach(s => params.add("clientId", s))
+		Option(xcontentId).foreach(s => params.add("xcontentId", s))
+		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
+		Option(locale).foreach(s => params.add("locale", s))
+		Option(pkey).foreach(s => params.add("pkey", s))
+		Option(lcid).foreach(s => params.add("lcid", s))
+			val response : String = if(this.resourceEndpoint == ""){
+			
+				null
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("delivery/getSubTitles")
+				
+					.accept(javax.ws.rs.core.MediaType.TEXT_PLAIN)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[String])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[String])
+				}
+				else {
+					throw e
+				}
+			
+		  }
+	
 	}
 
 	/**
@@ -350,518 +862,6 @@ class JDeliveryClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[java.io.File])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
-
-	/**
-	 * Returns cuepoints of a public content.
-	 * JSONP is supported via the callback queryparam.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * 
-	 * <b>Limits:</b>
-	 * <ul>
-	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
-	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
-	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param xcontentId : String
-	 * Optional
-	 * @param xpublisherId : String
-	 * Optional
-	 * @param cuePointTypes : String
-	 * Optional. List of comma separated values
-	 * @param actions : String
-	 * Optional. List of commaseparated values
-	 * @param startTime : Integer
-	 * Optional
-	 * @param endTime : Integer
-	 * Optional
-	 * @param draft : Boolean
-	 * Optional
-	 * @param username : String
-	 * Optional
-	 * @param cuePointGroup : String
-	 * Optional
-	 * @param offset : Integer
-	 * Optional.
-	 * @param numberOfResult : Integer
-	 * Optional. Default and maximum value is 50 items
-	 * @param pkey : String
-	 * Optional, the access key for the content. It's not required when session token is provided.
-	 * @param lcid : String
-	 * Optional. the xcontentId of the main linked content
-	 * This parameter is used to have the cuepoints of a linked/recommended content. The ACL of a
-	 * recommended content are validated on the context of the main content.
-	 * @return MResponseDeliveryGetCuePoints
-	*/
-	def getCuePoints(tokenId: String, 
-			clientId: String, 
-			xcontentId: String, 
-			xpublisherId: String, 
-			cuePointTypes: String, 
-			actions: String, 
-			startTime: Integer, 
-			endTime: Integer, 
-			draft: Boolean, 
-			username: String, 
-			cuePointGroup: String, 
-			offset: Integer, 
-			numberOfResult: Integer, 
-			pkey: String, 
-			lcid: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetCuePoints ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(xcontentId).foreach(s => params.add("xcontentId", s))
-		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
-		Option(cuePointTypes).foreach(s => params.add("cuePointTypes", s))
-		Option(actions).foreach(s => params.add("actions", s))
-		Option(startTime).foreach(s => params.add("startTime", s))
-		Option(endTime).foreach(s => params.add("endTime", s))
-		Option(draft).foreach(s => params.add("draft", s))
-		Option(username).foreach(s => params.add("username", s))
-		Option(cuePointGroup).foreach(s => params.add("cuePointGroup", s))
-		Option(offset).foreach(s => params.add("offset", s))
-		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))
-		Option(pkey).foreach(s => params.add("pkey", s))
-		Option(lcid).foreach(s => params.add("lcid", s))
-			val response : MResponseDeliveryGetCuePoints = if(this.resourceEndpoint == ""){
-			
-				new MResponseDeliveryGetCuePoints()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("delivery/getCuePoints")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseDeliveryGetCuePoints])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseDeliveryGetCuePoints])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
-
-	/**
-	 * Returns localized subtitles for a public content.
-	 * JSONP is supported via the callback queryparam.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * 
-	 * <b>Limits:</b>
-	 * <ul>
-	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
-	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
-	 * valid the service return an error response like CONTENT_NOT_FOUND</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param xcontentId : String
-	 * Optional
-	 * @param xpublisherId : String
-	 * Optional
-	 * @param locale : String
-	 * Optional. the subtitles locale
-	 * @param pkey : String
-	 * Optional, the access key for the content. It's not required when session token is provided.
-	 * @param lcid : String
-	 * Optional. the xcontentId of the main linked content
-	 * This parameter is used to have the subtitles of a linked/recommended content. The ACL of a
-	 * recommended content are validated on the context of the main content.
-	 * @return String
-	*/
-	def getSubTitles(tokenId: String, 
-			clientId: String, 
-			xcontentId: String, 
-			xpublisherId: String, 
-			locale: String, 
-			pkey: String, 
-			lcid: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(xcontentId).foreach(s => params.add("xcontentId", s))
-		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
-		Option(locale).foreach(s => params.add("locale", s))
-		Option(pkey).foreach(s => params.add("pkey", s))
-		Option(lcid).foreach(s => params.add("lcid", s))
-			val response : String = if(this.resourceEndpoint == ""){
-			
-				null
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("delivery/getSubTitles")
-				
-					.accept(javax.ws.rs.core.MediaType.TEXT_PLAIN)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[String])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[String])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
-
-	/**
-	 * Returns the list of downloadable content of a content without "UNLINKABLE" property.
-	 * JSONP is supported via the callback queryparam.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * 
-	 * <b>Limits:</b>
-	 * <ul>
-	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
-	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
-	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param xcontentId : String
-	 * Optional
-	 * @param xpublisherId : String
-	 * Optional
-	 * @param locale : String
-	 * Optional. Used as preferred locale for the content results. 
-	 * @param pkey : String
-	 * Optional, the access key for the content. It's not required when session token is provided.
-	 * @param admin : Boolean
-	 * Optional. disable the intrinsic filtering of the service, and return all linked contents:
-	 * * downloadable
-	 * * published or not in cdn2
-	 * * with property NOT_LINKABLE or not
-	 * 
-	 * Enabling this parameter, the service can be used in the admin console to show all contents linked
-	 * even those unmatching the filters.
-	 * @param lcid : String
-	 * Optional. the xcontentId of the parent linked content
-	 * This parameter is used to have the list of downloadable contents. The ACL of a downloadable
-	 * contents are validated on the context of the parent content.
-	 * example:
-	 * A -> has A1, A2 as recommended contents
-	 * A1 -> has D1,D2 as downloadable contents
-	 * 
-	 * To show the list of downloadable contents of A1 (on the context fo A):
-	 * xcontentId = A1
-	 * lcid = A
-	 * pkey = pkey/token of A
-	 * @param divArea : String
-	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
-	 * that best suits.
-	 * Format: <widht>x<height>
-	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
-	 * @param offset : Integer
-	 * Optional
-	 * @param numberOfResult : Integer
-	 * Optional. Default and maximum value is 50 items
-	 * @return MResponseDeliveryGetDownloadableContents
-	*/
-	def getDownloadableContents(tokenId: String, 
-			clientId: String, 
-			xcontentId: String, 
-			xpublisherId: String, 
-			locale: String, 
-			pkey: String, 
-			admin: Boolean, 
-			lcid: String, 
-			divArea: String, 
-			offset: Integer, 
-			numberOfResult: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetDownloadableContents ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(xcontentId).foreach(s => params.add("xcontentId", s))
-		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
-		Option(locale).foreach(s => params.add("locale", s))
-		Option(pkey).foreach(s => params.add("pkey", s))
-		Option(admin).foreach(s => params.add("admin", s))
-		Option(lcid).foreach(s => params.add("lcid", s))
-		Option(divArea).foreach(s => params.add("divArea", s))
-		Option(offset).foreach(s => params.add("offset", s))
-		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))
-			val response : MResponseDeliveryGetDownloadableContents = if(this.resourceEndpoint == ""){
-			
-				new MResponseDeliveryGetDownloadableContents()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("delivery/getDownloadableContents")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseDeliveryGetDownloadableContents])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseDeliveryGetDownloadableContents])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
-
-	/**
-	 * Returns the list of recommended content of a content.
-	 * JSONP is supported via the callback queryparam.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * <b>
-	 * </b><b>Limits:</b>
-	 * <ul>
-	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
-	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
-	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param xcontentId : String
-	 * Optional
-	 * @param xpublisherId : String
-	 * Optional
-	 * @param locale : String
-	 * Optional. Used as preferred local for the content results.
-
-	 * @param linkedChannelType : String
-	 * Used to filter the linekdcontents available on some channels.The list of values is represented as
-	 * comma separated value, and the attribute is optional.
-	 * Example: linkedChannelTypes = WEB,STREAMHTTPFLASH,STREAMHTTPIOS
-	 * @param linkedUserAgent : String
-	 * Used to filter the linekdcontents available/compliant with a specific userAgent.The attribute is
-	 * optional.
-	 * Possible values are: mobile/desktop/other
-	 * @param pkey : String
-	 * Optional, the access key for the content. It's not required when session token is provided.
-	 * @param admin : Boolean
-	 * disable the intrinsic filtering of the service, and return all linked contents:
-	 * * recommended
-	 * * published or not in cdn2
-	 * * with property NOT_LINKABLE or not
-	 * 
-	 * Enabling this parameter, the service can be used in the admin console to show all contents linked
-	 * even those unmatching the filters.
-	 * @param divArea : String
-	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
-	 * that best suits.
-	 * Format: <widht>x<height>
-	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
-	 * @param offset : Integer
-	 * Optional
-	 * @param numberOfResult : Integer
-	 * Default and maximum value is 50 items
-	 * @return MResponseDeliveryGetRecommendedContents
-	*/
-	def getRecommendedContents(tokenId: String, 
-			clientId: String, 
-			xcontentId: String, 
-			xpublisherId: String, 
-			locale: String, 
-			linkedChannelType: String, 
-			linkedUserAgent: String, 
-			pkey: String, 
-			admin: Boolean, 
-			divArea: String, 
-			offset: Integer, 
-			numberOfResult: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetRecommendedContents ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(xcontentId).foreach(s => params.add("xcontentId", s))
-		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
-		Option(locale).foreach(s => params.add("locale", s))
-		Option(linkedChannelType).foreach(s => params.add("linkedChannelType", s))
-		Option(linkedUserAgent).foreach(s => params.add("linkedUserAgent", s))
-		Option(pkey).foreach(s => params.add("pkey", s))
-		Option(admin).foreach(s => params.add("admin", s))
-		Option(divArea).foreach(s => params.add("divArea", s))
-		Option(offset).foreach(s => params.add("offset", s))
-		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))
-			val response : MResponseDeliveryGetRecommendedContents = if(this.resourceEndpoint == ""){
-			
-				new MResponseDeliveryGetRecommendedContents()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("delivery/getRecommendedContents")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseDeliveryGetRecommendedContents])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseDeliveryGetRecommendedContents])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
-
-	/**
-	 * Returns the list of content linked to a playlist content.
-	 * JSONP is supported via the callback queryparam.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * 
-	 * <b>Limits:</b>
-	 * <ul>
-	 * 	<li>For clientId working on 4.x mode, the pkey parameter is required because it's used to validate
-	 * the user session or specific keys used to share the content (shareboard feature).if the pkey is not
-	 * valid the service return an error response like CONTENT_NOT_FOUND.</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param xcontentId : String
-	 * Optional
-	 * @param xpublisherId : String
-	 * Optional
-	 * @param locale : String
-	 * Optional. Used as preferred local for the content results. 
-	 * @param linkedChannelType : String
-	 * Optional. Used to filter the linekdcontents available on some channels.The list of values is
-	 * represented as comma separated value, and the attribute is optional.
-	 * Example: linkedChannelTypes = WEB,STREAMHTTPFLASH,STREAMHTTPIOS
-	 * @param linkedUserAgent : String
-	 * Optional. Used to filter the linekdcontents available/compliant with a specific userAgent.The
-	 * attribute is optional.
-	 * Possible values are: mobile/desktop/other
-	 * @param pkey : String
-	 * Optional, the access key for the content. It's not required when session token is provided.
-	 * @param admin : Boolean
-	 * Optional. disable the intrinsic filtering of the service, and return all linked contents:
-	 * * recommended
-	 * * published or not in cdn2
-	 * * with property NOT_LINKABLE or not
-	 * 
-	 * Enabling this parameter, the service can be used in the admin console to show all contents linked
-	 * even those unmatching the filters.
-	 * @param lcid : String
-	 * Optional. the xcontentId of the parent linked content
-	 * This parameter is used to have the list of playlist contents. The ACL of a playlist content are
-	 * validated on the context of the parent content.
-	 * example:
-	 * A -> has A1, A2 as recommended contents
-	 * A1 -> has C1,C2 as playlist contents
-	 * 
-	 * To show the list of playlist contents of A1 (on the context fo A):
-	 * xcontentId = A1
-	 * lcid = A
-	 * pkey = pkey/token of A
-	 * @param divArea : String
-	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
-	 * that best suits.
-	 * Format: <widht>x<height>
-	 * Example: 1280x1024, 768x0 (zero means no coinstraints)
-	 * @param offset : Integer
-	 * Optional
-	 * @param numberOfResult : Integer
-	 * Optional. Default and maximum value is 50 items
-	 * @return MResponseDeliveryGetPlaylistContents
-	*/
-	def getPlaylistContents(tokenId: String, 
-			clientId: String, 
-			xcontentId: String, 
-			xpublisherId: String, 
-			locale: String, 
-			linkedChannelType: String, 
-			linkedUserAgent: String, 
-			pkey: String, 
-			admin: Boolean, 
-			lcid: String, 
-			divArea: String, 
-			offset: Integer, 
-			numberOfResult: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeliveryGetPlaylistContents ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JDeliveryClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(xcontentId).foreach(s => params.add("xcontentId", s))
-		Option(xpublisherId).foreach(s => params.add("xpublisherId", s))
-		Option(locale).foreach(s => params.add("locale", s))
-		Option(linkedChannelType).foreach(s => params.add("linkedChannelType", s))
-		Option(linkedUserAgent).foreach(s => params.add("linkedUserAgent", s))
-		Option(pkey).foreach(s => params.add("pkey", s))
-		Option(admin).foreach(s => params.add("admin", s))
-		Option(lcid).foreach(s => params.add("lcid", s))
-		Option(divArea).foreach(s => params.add("divArea", s))
-		Option(offset).foreach(s => params.add("offset", s))
-		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))
-			val response : MResponseDeliveryGetPlaylistContents = if(this.resourceEndpoint == ""){
-			
-				new MResponseDeliveryGetPlaylistContents()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("delivery/getPlaylistContents")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseDeliveryGetPlaylistContents])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseDeliveryGetPlaylistContents])
 				}
 				else {
 					throw e

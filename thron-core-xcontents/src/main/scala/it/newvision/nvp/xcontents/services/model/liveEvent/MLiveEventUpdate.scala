@@ -18,14 +18,6 @@ import javax.xml.bind.annotation._
 class MLiveEventUpdate extends Serializable {
 
 	/**
-	 * the scheduled start date of the event in the calendar
-	 */
-	//#SWG#@ApiModelProperty(value = """the scheduled start date of the event in the calendar""")
-	@BeanProperty 
-	var startDate: Date =_
-	def withstartDate(p:Date):this.type ={ 	this.startDate = p; 	this }
-
-	/**
 	 * the scheduled end date of the event in the calendar
 	 */
 	//#SWG#@ApiModelProperty(value = """the scheduled end date of the event in the calendar""")
@@ -40,6 +32,14 @@ class MLiveEventUpdate extends Serializable {
 	@BeanProperty 
 	var length: Long =_
 	def withlength(p:Long):this.type ={ 	this.length = p; 	this }
+
+	/**
+	 * the scheduled start date of the event in the calendar
+	 */
+	//#SWG#@ApiModelProperty(value = """the scheduled start date of the event in the calendar""")
+	@BeanProperty 
+	var startDate: Date =_
+	def withstartDate(p:Date):this.type ={ 	this.startDate = p; 	this }
 
 	/**
 	 * @return Boolean

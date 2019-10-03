@@ -30,12 +30,12 @@ class MReports4MefindByPropertiesReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var offset: Integer =_
-	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
+	var numberOfResults: Integer =_
+	def withnumberOfResults(p:Integer):this.type ={ 	this.numberOfResults = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
-	var numberOfResults: Integer =_
-	def withnumberOfResults(p:Integer):this.type ={ 	this.numberOfResults = p; 	this }
+	var offset: Integer =_
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 }

@@ -18,6 +18,11 @@ class MResponseBilling extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
+	var errorDescription: String  = ""
+	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
 	var resultCode: MEBilling  = MEBilling.OK
 	def withresultCode(p:MEBilling):this.type ={ 	this.resultCode = p; 	this }
 
@@ -25,10 +30,5 @@ class MResponseBilling extends Serializable {
 	@BeanProperty 
 	var ssoCode: MESSO  = MESSO.OK
 	def withssoCode(p:MESSO):this.type ={ 	this.ssoCode = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var errorDescription: String  = ""
-	def witherrorDescription(p:String):this.type ={ 	this.errorDescription = p; 	this }
 
 }

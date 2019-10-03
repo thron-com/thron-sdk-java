@@ -14,30 +14,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MPlayerEmbedTemplateCriteria extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var ids: List[String] = new ArrayList[String]
-	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
-
-	/**
-	 * text search on names and description by token.
-	 * Example: "red apple" text search match labels like "red ...", "apple ...", "red
-	 * and Apple are..."
-	 */
-	//#SWG#@ApiModelProperty(value = """text search on names and description by token.
-	//#SWGNL#Example: "red apple" text search match labels like "red ...", "apple ...", "red and Apple are..."""")
-	@BeanProperty 
-	var text: String =_
-	def withtext(p:String):this.type ={ 	this.text = p; 	this }
-
-	/**
-	 * filter removed templates. Default value false
-	 */
-	//#SWG#@ApiModelProperty(value = """filter removed templates. Default value false""")
-	@BeanProperty 
-	var removed: Boolean  = false
-	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
-
 	/**
 	 * filter playerEmbedTemplates where I have Manage roles
 	 */
@@ -50,5 +26,29 @@ class MPlayerEmbedTemplateCriteria extends Serializable {
 	@BeanProperty 
 	var createdBy: String =_
 	def withcreatedBy(p:String):this.type ={ 	this.createdBy = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var ids: List[String] = new ArrayList[String]
+	def withids(p:List[String]):this.type ={ 	this.ids = p; 	this }
+
+	/**
+	 * filter removed templates. Default value false
+	 */
+	//#SWG#@ApiModelProperty(value = """filter removed templates. Default value false""")
+	@BeanProperty 
+	var removed: Boolean  = false
+	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
+
+	/**
+	 * text search on names and description by token.
+	 * Example: "red apple" text search match labels like "red ...", "apple ...", "red
+	 * and Apple are..."
+	 */
+	//#SWG#@ApiModelProperty(value = """text search on names and description by token.
+	//#SWGNL#Example: "red apple" text search match labels like "red ...", "apple ...", "red and Apple are..."""")
+	@BeanProperty 
+	var text: String =_
+	def withtext(p:String):this.type ={ 	this.text = p; 	this }
 
 }

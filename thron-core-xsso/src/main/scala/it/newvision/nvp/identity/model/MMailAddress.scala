@@ -15,14 +15,6 @@ import javax.xml.bind.annotation._
 class MMailAddress extends Serializable {
 
 	/**
-	 * HOME/WORK/PRIVATE...
-	 */
-	//#SWG#@ApiModelProperty(value = """HOME/WORK/PRIVATE...""")
-	@BeanProperty 
-	var emailCategory: String =_
-	def withemailCategory(p:String):this.type ={ 	this.emailCategory = p; 	this }
-
-	/**
 	 * A valid e-mail address
 	 * Constraints:
 	 * -) max lenght = 1000
@@ -35,6 +27,14 @@ class MMailAddress extends Serializable {
 	@BeanProperty 
 	var email: String =_
 	def withemail(p:String):this.type ={ 	this.email = p; 	this }
+
+	/**
+	 * HOME/WORK/PRIVATE...
+	 */
+	//#SWG#@ApiModelProperty(value = """HOME/WORK/PRIVATE...""")
+	@BeanProperty 
+	var emailCategory: String =_
+	def withemailCategory(p:String):this.type ={ 	this.emailCategory = p; 	this }
 
 	/**
 	 * @return Boolean

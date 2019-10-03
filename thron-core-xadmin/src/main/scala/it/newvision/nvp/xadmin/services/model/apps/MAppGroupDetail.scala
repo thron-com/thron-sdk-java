@@ -17,6 +17,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """group information detail for the App""")
 class MAppGroupDetail extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var groupCaps: MAppCapabilities =_
+	def withgroupCaps(p:MAppCapabilities):this.type ={ 	this.groupCaps = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var groupId: String =_
@@ -26,10 +31,5 @@ class MAppGroupDetail extends Serializable {
 	@BeanProperty 
 	var groupName: String =_
 	def withgroupName(p:String):this.type ={ 	this.groupName = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var groupCaps: MAppCapabilities =_
-	def withgroupCaps(p:MAppCapabilities):this.type ={ 	this.groupCaps = p; 	this }
 
 }

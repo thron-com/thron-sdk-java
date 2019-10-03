@@ -24,16 +24,6 @@ class MContactlistReq extends Serializable {
 	var criteria: MContactCriteria =_
 	def withcriteria(p:MContactCriteria):this.type ={ 	this.criteria = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var option: MContactResponseOption =_
-	def withoption(p:MContactResponseOption):this.type ={ 	this.option = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var offset: Integer =_
-	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
-
 	/**
 	 * Max and default value is 50
 	 */
@@ -41,5 +31,15 @@ class MContactlistReq extends Serializable {
 	@BeanProperty
 	var limit: Integer =_
 	def withlimit(p:Integer):this.type ={ 	this.limit = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var offset: Integer =_
+	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var option: MContactResponseOption =_
+	def withoption(p:MContactResponseOption):this.type ={ 	this.option = p; 	this }
 
 }

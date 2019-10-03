@@ -9,5 +9,8 @@ public class ContactAlreadyExistsException extends Exception {
         super(s);
     }
 
+    public ContactAlreadyExistsException(String s, Throwable t) {
+        super(s, t);
+    }
 
 }

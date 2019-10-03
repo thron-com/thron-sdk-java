@@ -15,11 +15,6 @@ import com.thron.contacts.model.MDevice
 //#SWG#@ApiModel(description = """""")
 class MResponseContactDeviceDetail extends MResponseContact with Serializable  {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var item: MContactDetail =_
-	def withitem(p:MContactDetail):this.type ={ 	this.item = p; 	this }
-
 	/**
 	 * only the 1st 50 devices linked to the contact.
 	 */
@@ -27,5 +22,10 @@ class MResponseContactDeviceDetail extends MResponseContact with Serializable  {
 	@BeanProperty 
 	var devices: List[MDevice] = new ArrayList[MDevice]
 	def withdevices(p:List[MDevice]):this.type ={ 	this.devices = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var item: MContactDetail =_
+	def withitem(p:MContactDetail):this.type ={ 	this.item = p; 	this }
 
 }

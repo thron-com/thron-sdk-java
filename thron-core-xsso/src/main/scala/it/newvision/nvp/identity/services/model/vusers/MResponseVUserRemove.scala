@@ -16,8 +16,8 @@ class MResponseVUserRemove extends MResponseVUser with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var totalUsersRemoved: Integer  = 0
-	def withtotalUsersRemoved(p:Integer):this.type ={ 	this.totalUsersRemoved = p; 	this }
+	var totalGuestUsersRemoved: Integer  = 0
+	def withtotalGuestUsersRemoved(p:Integer):this.type ={ 	this.totalGuestUsersRemoved = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
@@ -26,7 +26,7 @@ class MResponseVUserRemove extends MResponseVUser with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var totalGuestUsersRemoved: Integer  = 0
-	def withtotalGuestUsersRemoved(p:Integer):this.type ={ 	this.totalGuestUsersRemoved = p; 	this }
+	var totalUsersRemoved: Integer  = 0
+	def withtotalUsersRemoved(p:Integer):this.type ={ 	this.totalUsersRemoved = p; 	this }
 
 }

@@ -43,6 +43,64 @@ trait JIdentityManager extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
+	 * Validate a specific capability for the give username liked to the tokenId
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param capability : String
+	 * @return String
+	*/
+	@POST
+	                @Path("capabilitiesValidation")
+	                @Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD))
+	                @Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
+	def capabilitiesValidation(@FormParam("tokenId")
+	tokenId: String, 
+			@FormParam("clientId")
+	clientId: String, 
+			@FormParam("capability")
+	capability: String):Response /*returnType = String*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__capabilitiesValidation(tokenId,clientId,capability)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_capabilitiesValidation)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_capabilitiesValidation)
+	    }
+	} 
+
+	@GET
+	@Path("capabilitiesValidation")
+	@Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD,"application/x-javascript"))
+	@Consumes(Array(MediaType.APPLICATION_JSON))
+	def capabilitiesValidation_2(@QueryParam("tokenId")tokenId_q: String, 
+			@QueryParam("clientId")clientId_q: String, 
+			@QueryParam("capability")capability_q: String,
+			@HeaderParam("X-TOKENID") tokenId_h: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String):Response /*returnType = String*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("capabilitiesValidation",this._getCacheControl) 
+		try{	
+			val resp = this.__capabilitiesValidation(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,capability_q)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_capabilitiesValidation)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_capabilitiesValidation)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __capabilitiesValidation(tokenId: String, clientId: String, capability: String) :String
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_capabilitiesValidation: String
+
+	/**
 	 * Verify the authentication for a given clientId, using the username and password of a registered
 	 * user (only for PLATFORM_USER and PLATFORM_USER_GUEST).
 	 * The function create a new user session in platform and return a <b>tokenId </b>key to use as
@@ -212,118 +270,6 @@ trait JIdentityManager extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	protected def capability_logout: String
 
 	/**
-	 * the service return an exception if the token is expired otherwise no data
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @return String
-	*/
-	@POST
-	                @Path("validateToken")
-	                @Produces(Array(MediaType.TEXT_PLAIN))
-	                @Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	def validateToken(@FormParam("tokenId")
-	tokenId: String, 
-			@FormParam("clientId")
-	clientId: String):Response /*returnType = String*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__validateToken(tokenId,clientId)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_validateToken)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_validateToken)
-	    }
-	} 
-
-	@GET
-	@Path("validateToken")
-	@Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD,"application/x-javascript"))
-	@Consumes(Array(MediaType.APPLICATION_JSON))
-	def validateToken_2(@QueryParam("tokenId")tokenId_q: String, 
-			@QueryParam("clientId")clientId_q: String,
-			@HeaderParam("X-TOKENID") tokenId_h: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String):Response /*returnType = String*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("validateToken",this._getCacheControl) 
-		try{	
-			val resp = this.__validateToken(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_validateToken)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_validateToken)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __validateToken(tokenId: String, clientId: String) :String
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_validateToken: String
-
-	/**
-	 * Validate a specific capability for the give username liked to the tokenId
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param capability : String
-	 * @return String
-	*/
-	@POST
-	                @Path("capabilitiesValidation")
-	                @Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD))
-	                @Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	def capabilitiesValidation(@FormParam("tokenId")
-	tokenId: String, 
-			@FormParam("clientId")
-	clientId: String, 
-			@FormParam("capability")
-	capability: String):Response /*returnType = String*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__capabilitiesValidation(tokenId,clientId,capability)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_capabilitiesValidation)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_capabilitiesValidation)
-	    }
-	} 
-
-	@GET
-	@Path("capabilitiesValidation")
-	@Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD,"application/x-javascript"))
-	@Consumes(Array(MediaType.APPLICATION_JSON))
-	def capabilitiesValidation_2(@QueryParam("tokenId")tokenId_q: String, 
-			@QueryParam("clientId")clientId_q: String, 
-			@QueryParam("capability")capability_q: String,
-			@HeaderParam("X-TOKENID") tokenId_h: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String):Response /*returnType = String*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("capabilitiesValidation",this._getCacheControl) 
-		try{	
-			val resp = this.__capabilitiesValidation(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,capability_q)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_capabilitiesValidation)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_capabilitiesValidation)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __capabilitiesValidation(tokenId: String, clientId: String, capability: String) :String
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_capabilitiesValidation: String
-
-	/**
 	 * Validate a specific role for the give username linked to the tokenId
 	 * @param tokenId : String
 	 * @param clientId : String
@@ -380,5 +326,59 @@ trait JIdentityManager extends it.newvision.nvp.core.libraries.restserver.BaseRe
 	 protected def __roleValidation(tokenId: String, clientId: String, role: String) :String
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_roleValidation: String
+
+	/**
+	 * the service return an exception if the token is expired otherwise no data
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @return String
+	*/
+	@POST
+	                @Path("validateToken")
+	                @Produces(Array(MediaType.TEXT_PLAIN))
+	                @Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
+	def validateToken(@FormParam("tokenId")
+	tokenId: String, 
+			@FormParam("clientId")
+	clientId: String):Response /*returnType = String*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__validateToken(tokenId,clientId)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_validateToken)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_validateToken)
+	    }
+	} 
+
+	@GET
+	@Path("validateToken")
+	@Produces(Array(MediaType.TEXT_PLAIN,MediaType.WILDCARD,"application/x-javascript"))
+	@Consumes(Array(MediaType.APPLICATION_JSON))
+	def validateToken_2(@QueryParam("tokenId")tokenId_q: String, 
+			@QueryParam("clientId")clientId_q: String,
+			@HeaderParam("X-TOKENID") tokenId_h: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String):Response /*returnType = String*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("validateToken",this._getCacheControl) 
+		try{	
+			val resp = this.__validateToken(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_validateToken)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_validateToken)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __validateToken(tokenId: String, clientId: String) :String
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_validateToken: String
 
 }

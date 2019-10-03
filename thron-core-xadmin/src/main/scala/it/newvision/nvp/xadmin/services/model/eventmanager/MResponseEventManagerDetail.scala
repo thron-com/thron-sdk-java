@@ -15,11 +15,6 @@ import it.newvision.nvp.xadmin.model.MEContentStatus
 //#SWG#@ApiModel(description = """""")
 class MResponseEventManagerDetail extends MResponseEventManager with Serializable  {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var detail: MServerLiveEventDetail =_
-	def withdetail(p:MServerLiveEventDetail):this.type ={ 	this.detail = p; 	this }
-
 	/**
 	 * used to show if the live event resources are published or not. When the the
 	 * live event has status PUBLISHED the event can be ON AIR
@@ -28,5 +23,10 @@ class MResponseEventManagerDetail extends MResponseEventManager with Serializabl
 	@BeanProperty 
 	var contentStatus: MEContentStatus =_
 	def withcontentStatus(p:MEContentStatus):this.type ={ 	this.contentStatus = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var detail: MServerLiveEventDetail =_
+	def withdetail(p:MServerLiveEventDetail):this.type ={ 	this.detail = p; 	this }
 
 }

@@ -18,15 +18,13 @@ import javax.xml.bind.annotation._
 @Deprecated
 class MAclRule extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * The list of disabled Rules. Disabled rules are not used for validation
+	 */
+	//#SWG#@ApiModelProperty(value = """The list of disabled Rules. Disabled rules are not used for validation""")
 	@BeanProperty 
-	var targetObjId: String =_
-	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var targetObjClass: MEObjClass =_
-	def withtargetObjClass(p:MEObjClass):this.type ={ 	this.targetObjClass = p; 	this }
+	var disabledRules: List[MEAclRule] = new ArrayList[MEAclRule]
+	def withdisabledRules(p:List[MEAclRule]):this.type ={ 	this.disabledRules = p; 	this }
 
 	/**
 	 * The different type of rules.
@@ -36,12 +34,14 @@ class MAclRule extends Serializable {
 	var rules: List[MEAclRule] = new ArrayList[MEAclRule]
 	def withrules(p:List[MEAclRule]):this.type ={ 	this.rules = p; 	this }
 
-	/**
-	 * The list of disabled Rules. Disabled rules are not used for validation
-	 */
-	//#SWG#@ApiModelProperty(value = """The list of disabled Rules. Disabled rules are not used for validation""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var disabledRules: List[MEAclRule] = new ArrayList[MEAclRule]
-	def withdisabledRules(p:List[MEAclRule]):this.type ={ 	this.disabledRules = p; 	this }
+	var targetObjClass: MEObjClass =_
+	def withtargetObjClass(p:MEObjClass):this.type ={ 	this.targetObjClass = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var targetObjId: String =_
+	def withtargetObjId(p:String):this.type ={ 	this.targetObjId = p; 	this }
 
 }

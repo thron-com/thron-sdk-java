@@ -17,6 +17,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """Used to identify a specific source""")
 class MVersionSourceIdentifier extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var displayName: String =_
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
+
 	/**
 	 * username
 	 */
@@ -24,11 +29,6 @@ class MVersionSourceIdentifier extends Serializable {
 	@BeanProperty 
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var displayName: String =_
-	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
 
 	/**
 	 * @return Boolean

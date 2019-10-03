@@ -17,10 +17,14 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """This is the thumbnail properties used globally by the client during a ingestion """)
 class MPropertyThumbnail extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * attualmente la conversione avviene solo in JPG con limitazione per i file di
+	 * input non superiori a 2048x2048
+	 */
+	//#SWG#@ApiModelProperty(value = """attualmente la conversione avviene solo in JPG con limitazione per i file di input non superiori a 2048x2048""" ,required = true)
 	@BeanProperty 
-	var quality: Integer  = 95
-	def withquality(p:Integer):this.type ={ 	this.quality = p; 	this }
+	var convertTo: String  = "JPG"
+	def withconvertTo(p:String):this.type ={ 	this.convertTo = p; 	this }
 
 	/**
 	 * default thumbs format
@@ -35,14 +39,10 @@ class MPropertyThumbnail extends Serializable {
 	var keepFileFormat: Boolean  = true
 	def withkeepFileFormat(p:Boolean):this.type ={ 	this.keepFileFormat = p; 	this }
 
-	/**
-	 * attualmente la conversione avviene solo in JPG con limitazione per i file di
-	 * input non superiori a 2048x2048
-	 */
-	//#SWG#@ApiModelProperty(value = """attualmente la conversione avviene solo in JPG con limitazione per i file di input non superiori a 2048x2048""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var convertTo: String  = "JPG"
-	def withconvertTo(p:String):this.type ={ 	this.convertTo = p; 	this }
+	var quality: Integer  = 95
+	def withquality(p:Integer):this.type ={ 	this.quality = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")

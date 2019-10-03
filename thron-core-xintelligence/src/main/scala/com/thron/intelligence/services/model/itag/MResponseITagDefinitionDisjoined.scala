@@ -17,19 +17,19 @@ import com.thron.intelligence.services.model.tag.MResponseITag
 class MResponseITagDefinitionDisjoined extends MResponseITag with Serializable  {
 
 	/**
-	 * target ITagdefinition
-	 */
-	//#SWG#@ApiModelProperty(value = """target ITagdefinition""")
-	@BeanProperty 
-	var targetItem: MITagDefinitionDetail =_
-	def withtargetItem(p:MITagDefinitionDetail):this.type ={ 	this.targetItem = p; 	this }
-
-	/**
 	 * the detail of the divided or extracted ITagDefinition
 	 */
 	//#SWG#@ApiModelProperty(value = """the detail of the divided or extracted ITagDefinition""")
 	@BeanProperty 
 	var disjoinedItem: MITagDefinitionDetail =_
 	def withdisjoinedItem(p:MITagDefinitionDetail):this.type ={ 	this.disjoinedItem = p; 	this }
+
+	/**
+	 * target ITagdefinition
+	 */
+	//#SWG#@ApiModelProperty(value = """target ITagdefinition""")
+	@BeanProperty 
+	var targetItem: MITagDefinitionDetail =_
+	def withtargetItem(p:MITagDefinitionDetail):this.type ={ 	this.targetItem = p; 	this }
 
 }

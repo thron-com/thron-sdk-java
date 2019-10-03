@@ -14,6 +14,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MContentOpt extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var basicInfoByLocale: List[MContentBasicInfo] = new ArrayList[MContentBasicInfo]
+	def withbasicInfoByLocale(p:List[MContentBasicInfo]):this.type ={ 	this.basicInfoByLocale = p; 	this }
+
 	/**
 	 * Optional. Default=true
 	 * Used to specify if the publishing process should define a value for all
@@ -39,10 +44,15 @@ class MContentOpt extends Serializable {
 	var initAllLocales: Boolean  = true
 	def withinitAllLocales(p:Boolean):this.type ={ 	this.initAllLocales = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Optional.
+	 * Used to link the new content to the specified categories
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. 
+	//#SWGNL#Used to link the new content to the specified categories""")
 	@BeanProperty 
-	var basicInfoByLocale: List[MContentBasicInfo] = new ArrayList[MContentBasicInfo]
-	def withbasicInfoByLocale(p:List[MContentBasicInfo]):this.type ={ 	this.basicInfoByLocale = p; 	this }
+	var linkedCategoryIds: List[String] = new ArrayList[String]
+	def withlinkedCategoryIds(p:List[String]):this.type ={ 	this.linkedCategoryIds = p; 	this }
 
 	/**
 	 * Optional. If empty it will be the full name of the user related to the token in
@@ -68,16 +78,6 @@ class MContentOpt extends Serializable {
 	@BeanProperty 
 	var properties: List[String] = new ArrayList[String]
 	def withproperties(p:List[String]):this.type ={ 	this.properties = p; 	this }
-
-	/**
-	 * Optional.
-	 * Used to link the new content to the specified categories
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. 
-	//#SWGNL#Used to link the new content to the specified categories""")
-	@BeanProperty 
-	var linkedCategoryIds: List[String] = new ArrayList[String]
-	def withlinkedCategoryIds(p:List[String]):this.type ={ 	this.linkedCategoryIds = p; 	this }
 
 	/**
 	 * @return void

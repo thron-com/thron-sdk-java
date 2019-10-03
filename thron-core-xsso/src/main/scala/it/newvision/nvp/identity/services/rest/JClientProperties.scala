@@ -4,9 +4,9 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
+import it.newvision.nvp.identity.services.model.client.MResponseDetailClientProperty
 import it.newvision.nvp.identity.services.model.client.MResponseRoleHierarchy
 import it.newvision.nvp.identity.services.model.client.MResponseRoleList
-import it.newvision.nvp.identity.services.model.client.MResponseDetailClientProperty
 
 /* ************************
 *  GENERATED CLASS
@@ -40,6 +40,50 @@ trait JClientProperties extends it.newvision.nvp.core.libraries.restserver.BaseR
 	import scala.collection.immutable.Map
 
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
+
+	/**
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @return MResponseDetailClientProperty
+	*/
+	@GET
+	@Path("/detail")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
+	//#SWG#@ApiOperation(value = "/detail", notes = """""", response = classOf[MResponseDetailClientProperty])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("clientId")
+	clientId: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String
+			,
+			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseDetailClientProperty*/= { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		//get the cache control specific for this service
+		val cc = this.cachemap("detail") 
+		try{	
+			val resp = this.__detail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_detail)
+	    }
+	}
+
+	 
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __detail(tokenId: String, clientId: String) :MResponseDetailClientProperty
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_detail: String
 
 	/**
 	 * The service return the role hierarchy list for the given role. This service is used when an admin
@@ -129,49 +173,5 @@ trait JClientProperties extends it.newvision.nvp.core.libraries.restserver.BaseR
 	 protected def __roleList(tokenId: String) :MResponseRoleList
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_roleList: String
-
-	/**
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @return MResponseDetailClientProperty
-	*/
-	@GET
-	@Path("/detail")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/detail", notes = """""", response = classOf[MResponseDetailClientProperty])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def detail(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@QueryParam("clientId")
-	clientId: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseDetailClientProperty*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("detail") 
-		try{	
-			val resp = this.__detail(PRestHelper.getTokenId(tokenId_q, tokenId),clientId)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_detail)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_detail)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __detail(tokenId: String, clientId: String) :MResponseDetailClientProperty
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_detail: String
 
 }

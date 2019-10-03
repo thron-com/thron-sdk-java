@@ -4,8 +4,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import com.thron.intelligence.model.MLocalization
 import com.thron.intelligence.model.MSourceIdentifier
+import com.thron.intelligence.model.MLocalization
 
 /* ************************
 *  GENERATED CLASS
@@ -44,12 +44,12 @@ import com.thron.intelligence.model.MSourceIdentifier
 class MClassification extends Serializable {
 
 	/**
-	 * Automatically generated
+	 * visibile in Reports
 	 */
-	//#SWG#@ApiModelProperty(value = """Automatically generated""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
+	var active: Boolean  = true
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * can be TARGET/TOPIC/CUSTOM
@@ -58,22 +58,6 @@ class MClassification extends Serializable {
 	@BeanProperty 
 	var classificationType: MEClassificationType =_
 	def withclassificationType(p:MEClassificationType):this.type ={ 	this.classificationType = p; 	this }
-
-	/**
-	 * label and description values for the classification in multilocale
-	 */
-	//#SWG#@ApiModelProperty(value = """label and description values for the classification in multilocale""")
-	@BeanProperty 
-	var names: List[MLocalization] = new ArrayList[MLocalization]
-	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
-
-	/**
-	 * visibile in Reports
-	 */
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var active: Boolean  = true
-	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * userId of the owner
@@ -88,15 +72,31 @@ class MClassification extends Serializable {
 	var createdDate: Date  = new Date()
 	def withcreatedDate(p:Date):this.type ={ 	this.createdDate = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	/**
+	 * Automatically generated
+	 */
+	//#SWG#@ApiModelProperty(value = """Automatically generated""" ,required = true)
 	@BeanProperty 
-	var removed: Boolean  = false
-	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
 	var modifiedDate: Date =_
 	def withmodifiedDate(p:Date):this.type ={ 	this.modifiedDate = p; 	this }
+
+	/**
+	 * label and description values for the classification in multilocale
+	 */
+	//#SWG#@ApiModelProperty(value = """label and description values for the classification in multilocale""")
+	@BeanProperty 
+	var names: List[MLocalization] = new ArrayList[MLocalization]
+	def withnames(p:List[MLocalization]):this.type ={ 	this.names = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var removed: Boolean  = false
+	def withremoved(p:Boolean):this.type ={ 	this.removed = p; 	this }
 
 	@BeanProperty
 	//#SWG#@ApiModelProperty(value = """""")

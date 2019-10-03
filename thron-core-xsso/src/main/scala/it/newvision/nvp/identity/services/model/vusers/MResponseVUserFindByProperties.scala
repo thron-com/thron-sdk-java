@@ -15,19 +15,19 @@ import javax.xml.bind.annotation._
 class MResponseVUserFindByProperties extends MResponseVUser with Serializable  {
 
 	/**
-	 * return the vuser detail without the password information, for security reason.
-	 */
-	//#SWG#@ApiModelProperty(value = """return the vuser detail without the password information, for security reason.""")
-	@BeanProperty 
-	var users: List[MVUserExt] = new ArrayList[MVUserExt]
-	def withusers(p:List[MVUserExt]):this.type ={ 	this.users = p; 	this }
-
-	/**
 	 * total number of users.
 	 */
 	//#SWG#@ApiModelProperty(value = """total number of users.""" ,required = true)
 	@BeanProperty 
 	var totalResults: Integer  = 0
 	def withtotalResults(p:Integer):this.type ={ 	this.totalResults = p; 	this }
+
+	/**
+	 * return the vuser detail without the password information, for security reason.
+	 */
+	//#SWG#@ApiModelProperty(value = """return the vuser detail without the password information, for security reason.""")
+	@BeanProperty 
+	var users: List[MVUserExt] = new ArrayList[MVUserExt]
+	def withusers(p:List[MVUserExt]):this.type ={ 	this.users = p; 	this }
 
 }

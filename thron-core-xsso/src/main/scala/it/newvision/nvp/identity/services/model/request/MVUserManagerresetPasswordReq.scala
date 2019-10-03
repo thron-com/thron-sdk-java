@@ -23,12 +23,13 @@ class MVUserManagerresetPasswordReq extends Serializable {
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
-	 * Optional. the username
+	 * Optional. Whether or not service should skip sending email to the user. Default
+	 * is false
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. the username""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional. Whether or not service should skip sending email to the user. Default is false""", required = true)
 	@BeanProperty
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
+	var skipEmailSending: Boolean =_
+	def withskipEmailSending(p:Boolean):this.type ={ 	this.skipEmailSending = p; 	this }
 
 	/**
 	 * Optional. Min 36 characters
@@ -39,12 +40,11 @@ class MVUserManagerresetPasswordReq extends Serializable {
 	def withtmpToken(p:String):this.type ={ 	this.tmpToken = p; 	this }
 
 	/**
-	 * Optional. Whether or not service should skip sending email to the user. Default
-	 * is false
+	 * Optional. the username
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Whether or not service should skip sending email to the user. Default is false""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional. the username""", required = true)
 	@BeanProperty
-	var skipEmailSending: Boolean =_
-	def withskipEmailSending(p:Boolean):this.type ={ 	this.skipEmailSending = p; 	this }
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

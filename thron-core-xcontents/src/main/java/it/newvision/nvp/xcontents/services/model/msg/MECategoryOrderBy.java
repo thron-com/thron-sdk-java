@@ -29,10 +29,6 @@ public enum MECategoryOrderBy {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("categoryName_D") categoryName_D,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("categoryType_A") categoryType_A,
-	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("categoryType_D") categoryType_D,
-	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("creationDate_D") creationDate_D,
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("creationDate_A") creationDate_A,

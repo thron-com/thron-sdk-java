@@ -18,6 +18,16 @@ import com.thron.intelligence.model.MEEntityType
 //#SWG#@ApiModel(description = """Define all possible constraints for a specific MetadataDefinition instance.""")
 class MMetadataDefinitionConstraints extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var alternativeMConstraint: MMetadataDefinitionGenericConstraint =_
+	def withalternativeMConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.alternativeMConstraint = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var alternativeSConstraint: MMetadataDefinitionGenericConstraint =_
+	def withalternativeSConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.alternativeSConstraint = p; 	this }
+
 	/**
 	 * This attribute is used to define where the metadata can be used (for which
 	 * entity). The visibility of metadata is given by the association or not to a
@@ -41,8 +51,13 @@ class MMetadataDefinitionConstraints extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var stringConstraint: MMetadataDefinitionStringConstraint =_
-	def withstringConstraint(p:MMetadataDefinitionStringConstraint):this.type ={ 	this.stringConstraint = p; 	this }
+	var booleanConstraint: MMetadataDefinitionGenericConstraint =_
+	def withbooleanConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.booleanConstraint = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var colorConstraint: MMetadataDefinitionGenericConstraint =_
+	def withcolorConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.colorConstraint = p; 	this }
 
 	/**
 	 * Constraints:
@@ -76,23 +91,8 @@ class MMetadataDefinitionConstraints extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var booleanConstraint: MMetadataDefinitionGenericConstraint =_
-	def withbooleanConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.booleanConstraint = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var colorConstraint: MMetadataDefinitionGenericConstraint =_
-	def withcolorConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.colorConstraint = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var alternativeSConstraint: MMetadataDefinitionGenericConstraint =_
-	def withalternativeSConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.alternativeSConstraint = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var alternativeMConstraint: MMetadataDefinitionGenericConstraint =_
-	def withalternativeMConstraint(p:MMetadataDefinitionGenericConstraint):this.type ={ 	this.alternativeMConstraint = p; 	this }
+	var stringConstraint: MMetadataDefinitionStringConstraint =_
+	def withstringConstraint(p:MMetadataDefinitionStringConstraint):this.type ={ 	this.stringConstraint = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 

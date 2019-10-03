@@ -17,6 +17,16 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = "Request message for service JPublishingProcess.updatePageletContent")
 class MPublishingProcessupdatePageletContentReq extends Serializable {
 
+	/**
+	 * raw body source (html or other formats).
+	 * constraints: length < 10000000 chars (10.000.000 bytes)
+	 */
+	//#SWG#@ApiModelProperty(value = """raw body source (html or other formats).
+	//#SWGNL#constraints: length < 10000000 chars (10.000.000 bytes)""", required = true)
+	@BeanProperty
+	var body: String =_
+	def withbody(p:String):this.type ={ 	this.body = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
 	var clientId: String =_
@@ -31,24 +41,6 @@ class MPublishingProcessupdatePageletContentReq extends Serializable {
 	def withmediaContentId(p:String):this.type ={ 	this.mediaContentId = p; 	this }
 
 	/**
-	 * mediaContentId or xcontentId are required
-	 */
-	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
-	@BeanProperty
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	/**
-	 * raw body source (html or other formats).
-	 * constraints: length < 10000000 chars (10.000.000 bytes)
-	 */
-	//#SWG#@ApiModelProperty(value = """raw body source (html or other formats).
-	//#SWGNL#constraints: length < 10000000 chars (10.000.000 bytes)""", required = true)
-	@BeanProperty
-	var body: String =_
-	def withbody(p:String):this.type ={ 	this.body = p; 	this }
-
-	/**
 	 * Optional. Used to specify the mime type of the body value.
 	 * If empty the content mimeType doesn't change.
 	 */
@@ -58,5 +50,13 @@ class MPublishingProcessupdatePageletContentReq extends Serializable {
 	@BeanProperty
 	var mimeType: String =_
 	def withmimeType(p:String):this.type ={ 	this.mimeType = p; 	this }
+
+	/**
+	 * mediaContentId or xcontentId are required
+	 */
+	//#SWG#@ApiModelProperty(value = """mediaContentId or xcontentId are required""", required = true)
+	@BeanProperty
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 }

@@ -20,6 +20,11 @@ class MVUserManagerupdateImageReq extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
+	var buffer: MSource =_
+	def withbuffer(p:MSource):this.type ={ 	this.buffer = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
 	var clientId: String =_
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
@@ -27,10 +32,5 @@ class MVUserManagerupdateImageReq extends Serializable {
 	@BeanProperty
 	var username: String =_
 	def withusername(p:String):this.type ={ 	this.username = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var buffer: MSource =_
-	def withbuffer(p:MSource):this.type ={ 	this.buffer = p; 	this }
 
 }

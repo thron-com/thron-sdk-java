@@ -21,6 +21,11 @@ class MIMetadataDetail extends MIMetadata with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
+	var classificationId: String =_
+	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
 	var metadataDefinitionId: String =_
 	def withmetadataDefinitionId(p:String):this.type ={ 	this.metadataDefinitionId = p; 	this }
 
@@ -28,10 +33,5 @@ class MIMetadataDetail extends MIMetadata with Serializable  {
 	@BeanProperty 
 	var target: MTarget =_
 	def withtarget(p:MTarget):this.type ={ 	this.target = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var classificationId: String =_
-	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
 
 }

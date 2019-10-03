@@ -4,9 +4,9 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.identity.model.MEUserType
-import it.newvision.nvp.identity.services.model.msg.MERoleContext
 import it.newvision.nvp.identity.services.model.acl.MAclUsersGroupCriteria
+import it.newvision.nvp.identity.services.model.msg.MERoleContext
+import it.newvision.nvp.identity.model.MEUserType
 
 /* ************************
 *  GENERATED CLASS
@@ -27,70 +27,89 @@ import it.newvision.nvp.identity.services.model.acl.MAclUsersGroupCriteria
 class MVUserCriteria extends Serializable {
 
 	/**
-	 * used to filter the users with one of the given usernames. Commonly used to have
-	 * the list of users with a username or WITHOUT a username.
-	 * The list of usernames is partitioned in two set:
-	 * <ul>
-	 * 	<li>uns = the list of username</li>
-	 * 	<li>nuns = the list of !_<username></li>
-	 * </ul>
-	 * The users are filtered matching the condition:
-	 * <ul>
-	 * 	<li>(users WITH uns) AND (users WITHOUT nuns)</li>
-	 * </ul>
-	 * 
-	 * Examples using json format:
-	 * 
-	 * <ul>
-	 * 	<li>filter users with one of the usernames a,b</li>
-	 * </ul>
-	 * 	"usernames": ["a","b"]
-	 * <ul>
-	 * 	<li>filter users WITHOUT any of the usernames a,b</li>
-	 * </ul>
-	 * 	"usernames": ["!_a","!_b"]
-	 * <ul>
-	 * 	<li>filter users with one of the usernames a,b AND WITHOUT any of the
-	 * usernames c,d</li>
-	 * </ul>
-	 * 	"usernames": ["a","b","!_c","!_d"]
+	 * used to find only the users shared with specific rules
 	 */
-	//#SWG#@ApiModelProperty(value = """used to filter the users with one of the given usernames. Commonly used to have the list of users with a username or WITHOUT a username.
-	//#SWGNL#The list of usernames is partitioned in two set:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>uns = the list of username</li>
-	//#SWGNL#	<li>nuns = the list of !_<username></li>
-	//#SWGNL#</ul>
-	//#SWGNL#The users are filtered matching the condition:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>(users WITH uns) AND (users WITHOUT nuns)</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#Examples using json format:
-	//#SWGNL#
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>filter users with one of the usernames a,b</li>
-	//#SWGNL#</ul>
-	//#SWGNL#	"usernames": ["a","b"]
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>filter users WITHOUT any of the usernames a,b</li>
-	//#SWGNL#</ul>
-	//#SWGNL#	"usernames": ["!_a","!_b"]
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>filter users with one of the usernames a,b AND WITHOUT any of the usernames c,d</li>
-	//#SWGNL#</ul>
-	//#SWGNL#	"usernames": ["a","b","!_c","!_d"]""")
+	//#SWG#@ApiModelProperty(value = """used to find only the users shared with specific rules""")
 	@BeanProperty 
-	var usernames: List[String] = new ArrayList[String]
-	def withusernames(p:List[String]):this.type ={ 	this.usernames = p; 	this }
+	var acl: MAclUsersGroupCriteria =_
+	def withacl(p:MAclUsersGroupCriteria):this.type ={ 	this.acl = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var active: Boolean =_
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
-	 * search by userType
+	 * search by usernames of who created the user (the owner)
 	 */
-	//#SWG#@ApiModelProperty(value = """search by userType""")
+	//#SWG#@ApiModelProperty(value = """search by usernames of who created the user (the owner)""")
 	@BeanProperty 
-	var userTypes: List[MEUserType] = new ArrayList[MEUserType]
-	def withuserTypes(p:List[MEUserType]):this.type ={ 	this.userTypes = p; 	this }
+	var createdBy: List[String] = new ArrayList[String]
+	def withcreatedBy(p:List[String]):this.type ={ 	this.createdBy = p; 	this }
+
+	/**
+	 * filter the users matching the email address (as regex). Search email on fields
+	 * userPreferences.notificationProperty.email or detail.emails.email
+	 * 
+	 * Regexp example:
+	 * <ul>
+	 * 	<li>\Q<text to search>\E for simple text search</li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """filter the users matching the email address (as regex). Search email on fields
+	//#SWGNL#userPreferences.notificationProperty.email or detail.emails.email
+	//#SWGNL#
+	//#SWGNL#Regexp example:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>\Q<text to search>\E for simple text search</li>
+	//#SWGNL#</ul>""")
+	@BeanProperty 
+	var email: String =_
+	def withemail(p:String):this.type ={ 	this.email = p; 	this }
+
+	/**
+	 * external ids of the user
+	 */
+	//#SWG#@ApiModelProperty(value = """external ids of the user""")
+	@BeanProperty 
+	var externalId: String =_
+	def withexternalId(p:String):this.type ={ 	this.externalId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var firstname: String =_
+	def withfirstname(p:String):this.type ={ 	this.firstname = p; 	this }
+
+	/**
+	 * used to search on a specific intelligence tag
+	 * 
+	 * Constraint:
+	 * <ul>
+	 * 	<li>max length 10  </li>
+	 * </ul>
+	 */
+	//#SWG#@ApiModelProperty(value = """used to search on a specific intelligence tag
+	//#SWGNL#
+	//#SWGNL#Constraint:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>max length 10  </li>
+	//#SWGNL#</ul>""")
+	@BeanProperty 
+	var itagOp: MITagCriteriaOption =_
+	def withitagOp(p:MITagCriteriaOption):this.type ={ 	this.itagOp = p; 	this }
+
+	/**
+	 * filter user with the lastLogin date defined before a given date.
+	 */
+	//#SWG#@ApiModelProperty(value = """filter user with the lastLogin date defined before a given date.""")
+	@BeanProperty 
+	var lastLoginToDate: Date =_
+	def withlastLoginToDate(p:Date):this.type ={ 	this.lastLoginToDate = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var lastname: String =_
+	def withlastname(p:String):this.type ={ 	this.lastname = p; 	this }
 
 	/**
 	 * used to filter the users linked to the given groups. Commonly used to have the
@@ -151,27 +170,23 @@ class MVUserCriteria extends Serializable {
 	def withlinkedGroupsIds(p:List[String]):this.type ={ 	this.linkedGroupsIds = p; 	this }
 
 	/**
-	 * Deprecated
+	 * filter the users matching the phone number. Search phone number on field detail.
+	 * phoneNumbers.phoneNumber
+	 * 
+	 * Regexp example:
+	 * <ul>
+	 * 	<li>\Q<text to search>\E for simple text search</li>
+	 * </ul>
 	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated""")
+	//#SWG#@ApiModelProperty(value = """filter the users matching the phone number. Search phone number on field detail.phoneNumbers.phoneNumber
+	//#SWGNL#
+	//#SWGNL#Regexp example:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>\Q<text to search>\E for simple text search</li>
+	//#SWGNL#</ul>""")
 	@BeanProperty 
-	@Deprecated
-	var solutions: List[String] = new ArrayList[String]
-	@Deprecated
-	def withsolutions(p:List[String]):this.type ={ 	this.solutions = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var active: Boolean =_
-	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
-
-	/**
-	 * filter the users matching one of the specified roles
-	 */
-	//#SWG#@ApiModelProperty(value = """filter the users matching one of the specified roles""")
-	@BeanProperty 
-	var userRoles: List[String] = new ArrayList[String]
-	def withuserRoles(p:List[String]):this.type ={ 	this.userRoles = p; 	this }
+	var phoneNumber: String =_
+	def withphoneNumber(p:String):this.type ={ 	this.phoneNumber = p; 	this }
 
 	/**
 	 * Used in combination with userRoles to filter users matching one of the
@@ -181,6 +196,16 @@ class MVUserCriteria extends Serializable {
 	@BeanProperty 
 	var roleContext: MERoleContext  = MERoleContext.OWN
 	def withroleContext(p:MERoleContext):this.type ={ 	this.roleContext = p; 	this }
+
+	/**
+	 * Deprecated
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated""")
+	@BeanProperty 
+	@Deprecated
+	var solutions: List[String] = new ArrayList[String]
+	@Deprecated
+	def withsolutions(p:List[String]):this.type ={ 	this.solutions = p; 	this }
 
 	/**
 	 * text search over fields :
@@ -207,95 +232,78 @@ class MVUserCriteria extends Serializable {
 	var textSearch: String =_
 	def withtextSearch(p:String):this.type ={ 	this.textSearch = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var lastname: String =_
-	def withlastname(p:String):this.type ={ 	this.lastname = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var firstname: String =_
-	def withfirstname(p:String):this.type ={ 	this.firstname = p; 	this }
-
 	/**
-	 * used to find only the users shared with specific rules
-	 */
-	//#SWG#@ApiModelProperty(value = """used to find only the users shared with specific rules""")
-	@BeanProperty 
-	var acl: MAclUsersGroupCriteria =_
-	def withacl(p:MAclUsersGroupCriteria):this.type ={ 	this.acl = p; 	this }
-
-	/**
-	 * used to search on a specific intelligence tag
-	 * 
-	 * Constraint:
+	 * used to filter the users with one of the given usernames. Commonly used to have
+	 * the list of users with a username or WITHOUT a username.
+	 * The list of usernames is partitioned in two set:
 	 * <ul>
-	 * 	<li>max length 10  </li>
+	 * 	<li>uns = the list of username</li>
+	 * 	<li>nuns = the list of !_<username></li>
 	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """used to search on a specific intelligence tag
-	//#SWGNL#
-	//#SWGNL#Constraint:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>max length 10  </li>
-	//#SWGNL#</ul>""")
-	@BeanProperty 
-	var itagOp: MITagCriteriaOption =_
-	def withitagOp(p:MITagCriteriaOption):this.type ={ 	this.itagOp = p; 	this }
-
-	/**
-	 * filter the users matching the phone number. Search phone number on field detail.
-	 * phoneNumbers.phoneNumber
-	 * 
-	 * Regexp example:
+	 * The users are filtered matching the condition:
 	 * <ul>
-	 * 	<li>\Q<text to search>\E for simple text search</li>
+	 * 	<li>(users WITH uns) AND (users WITHOUT nuns)</li>
 	 * </ul>
-	 */
-	//#SWG#@ApiModelProperty(value = """filter the users matching the phone number. Search phone number on field detail.phoneNumbers.phoneNumber
-	//#SWGNL#
-	//#SWGNL#Regexp example:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>\Q<text to search>\E for simple text search</li>
-	//#SWGNL#</ul>""")
-	@BeanProperty 
-	var phoneNumber: String =_
-	def withphoneNumber(p:String):this.type ={ 	this.phoneNumber = p; 	this }
-
-	/**
-	 * filter the users matching the email address (as regex). Search email on fields
-	 * userPreferences.notificationProperty.email or detail.emails.email
 	 * 
-	 * Regexp example:
+	 * Examples using json format:
+	 * 
 	 * <ul>
-	 * 	<li>\Q<text to search>\E for simple text search</li>
+	 * 	<li>filter users with one of the usernames a,b</li>
 	 * </ul>
+	 * 	"usernames": ["a","b"]
+	 * <ul>
+	 * 	<li>filter users WITHOUT any of the usernames a,b</li>
+	 * </ul>
+	 * 	"usernames": ["!_a","!_b"]
+	 * <ul>
+	 * 	<li>filter users with one of the usernames a,b AND WITHOUT any of the
+	 * usernames c,d</li>
+	 * </ul>
+	 * 	"usernames": ["a","b","!_c","!_d"]
 	 */
-	//#SWG#@ApiModelProperty(value = """filter the users matching the email address (as regex). Search email on fields
-	//#SWGNL#userPreferences.notificationProperty.email or detail.emails.email
-	//#SWGNL#
-	//#SWGNL#Regexp example:
+	//#SWG#@ApiModelProperty(value = """used to filter the users with one of the given usernames. Commonly used to have the list of users with a username or WITHOUT a username.
+	//#SWGNL#The list of usernames is partitioned in two set:
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>\Q<text to search>\E for simple text search</li>
-	//#SWGNL#</ul>""")
+	//#SWGNL#	<li>uns = the list of username</li>
+	//#SWGNL#	<li>nuns = the list of !_<username></li>
+	//#SWGNL#</ul>
+	//#SWGNL#The users are filtered matching the condition:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>(users WITH uns) AND (users WITHOUT nuns)</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#Examples using json format:
+	//#SWGNL#
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>filter users with one of the usernames a,b</li>
+	//#SWGNL#</ul>
+	//#SWGNL#	"usernames": ["a","b"]
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>filter users WITHOUT any of the usernames a,b</li>
+	//#SWGNL#</ul>
+	//#SWGNL#	"usernames": ["!_a","!_b"]
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>filter users with one of the usernames a,b AND WITHOUT any of the usernames c,d</li>
+	//#SWGNL#</ul>
+	//#SWGNL#	"usernames": ["a","b","!_c","!_d"]""")
 	@BeanProperty 
-	var email: String =_
-	def withemail(p:String):this.type ={ 	this.email = p; 	this }
+	var usernames: List[String] = new ArrayList[String]
+	def withusernames(p:List[String]):this.type ={ 	this.usernames = p; 	this }
 
 	/**
-	 * search by usernames of who created the user (the owner)
+	 * filter the users matching one of the specified roles
 	 */
-	//#SWG#@ApiModelProperty(value = """search by usernames of who created the user (the owner)""")
+	//#SWG#@ApiModelProperty(value = """filter the users matching one of the specified roles""")
 	@BeanProperty 
-	var createdBy: List[String] = new ArrayList[String]
-	def withcreatedBy(p:List[String]):this.type ={ 	this.createdBy = p; 	this }
+	var userRoles: List[String] = new ArrayList[String]
+	def withuserRoles(p:List[String]):this.type ={ 	this.userRoles = p; 	this }
 
 	/**
-	 * external ids of the user
+	 * search by userType
 	 */
-	//#SWG#@ApiModelProperty(value = """external ids of the user""")
+	//#SWG#@ApiModelProperty(value = """search by userType""")
 	@BeanProperty 
-	var externalId: String =_
-	def withexternalId(p:String):this.type ={ 	this.externalId = p; 	this }
+	var userTypes: List[MEUserType] = new ArrayList[MEUserType]
+	def withuserTypes(p:List[MEUserType]):this.type ={ 	this.userTypes = p; 	this }
 
 }

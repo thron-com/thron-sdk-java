@@ -1,4 +1,4 @@
-package com.thron.contacts.service.model.contact
+package com.thron.contacts.service.model.activityworker
 import _root_.java.util._ 
 import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}  
 //#SWG#import com.wordnik.swagger.annotations._ 
@@ -9,14 +9,14 @@ import javax.xml.bind.annotation._
 *  GENERATED CLASS
 *  DO NOT APPLY ANY CHANGES
 ****************************/
-@XmlRootElement(name="MResponseBillingInfo") 
-@XmlType(name="MResponseBillingInfo")
+@XmlRootElement(name="MResponseActivityWorkerNewJobs") 
+@XmlType(name="MResponseActivityWorkerNewJobs")
 //#SWG#@ApiModel(description = """""")
-class MResponseBillingInfo extends MResponseContact with Serializable  {
+class MResponseActivityWorkerNewJobs extends MResponseActivityWorker with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var items: List[MBillingContactArchiveUnit] = new ArrayList[MBillingContactArchiveUnit]
-	def withitems(p:List[MBillingContactArchiveUnit]):this.type ={ 	this.items = p; 	this }
+	var jobIds: List[String] = new ArrayList[String]
+	def withjobIds(p:List[String]):this.type ={ 	this.jobIds = p; 	this }
 
 }

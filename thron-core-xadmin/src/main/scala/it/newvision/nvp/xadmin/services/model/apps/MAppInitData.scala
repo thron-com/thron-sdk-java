@@ -5,8 +5,8 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xadmin.model.MEAppType
-import it.newvision.nvp.xadmin.model.MMetadata
 import it.newvision.nvp.xadmin.model.MAppDisguiseData
+import it.newvision.nvp.xadmin.model.MMetadata
 
 /* ************************
 *  GENERATED CLASS
@@ -17,18 +17,10 @@ import it.newvision.nvp.xadmin.model.MAppDisguiseData
 //#SWG#@ApiModel(description = """""")
 class MAppInitData extends Serializable {
 
-	/**
-	 * prettyId for the APP
-	 */
-	//#SWG#@ApiModelProperty(value = """prettyId for the APP""")
-	@BeanProperty 
-	var prettyId: String =_
-	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var appType: MEAppType =_
-	def withappType(p:MEAppType):this.type ={ 	this.appType = p; 	this }
+	var active: Boolean  = true
+	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
 
 	/**
 	 * used to define the subtype"class" (only with CUSTOM appType)
@@ -40,21 +32,13 @@ class MAppInitData extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var active: Boolean  = true
-	def withactive(p:Boolean):this.type ={ 	this.active = p; 	this }
-
-	/**
-	 * main url of the app
-	 */
-	//#SWG#@ApiModelProperty(value = """main url of the app""")
-	@BeanProperty 
-	var urlThumbnail: String =_
-	def withurlThumbnail(p:String):this.type ={ 	this.urlThumbnail = p; 	this }
+	var appType: MEAppType =_
+	def withappType(p:MEAppType):this.type ={ 	this.appType = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var displayName: String =_
-	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
+	var canDisguise: Boolean  = false
+	def withcanDisguise(p:Boolean):this.type ={ 	this.canDisguise = p; 	this }
 
 	/**
 	 * custom description of the app
@@ -64,6 +48,16 @@ class MAppInitData extends Serializable {
 	var description: String =_
 	def withdescription(p:String):this.type ={ 	this.description = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var disguiseData: MAppDisguiseData =_
+	def withdisguiseData(p:MAppDisguiseData):this.type ={ 	this.disguiseData = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var displayName: String =_
+	def withdisplayName(p:String):this.type ={ 	this.displayName = p; 	this }
+
 	/**
 	 * custom metadata of the app
 	 */
@@ -71,14 +65,6 @@ class MAppInitData extends Serializable {
 	@BeanProperty 
 	var metadata: List[MMetadata] = new ArrayList[MMetadata]
 	def withmetadata(p:List[MMetadata]):this.type ={ 	this.metadata = p; 	this }
-
-	/**
-	 * main url of the app
-	 */
-	//#SWG#@ApiModelProperty(value = """main url of the app""")
-	@BeanProperty 
-	var url: String =_
-	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
 	/**
 	 * username of the owner.
@@ -90,22 +76,29 @@ class MAppInitData extends Serializable {
 	var ownerUsername: String =_
 	def withownerUsername(p:String):this.type ={ 	this.ownerUsername = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * prettyId for the APP
+	 */
+	//#SWG#@ApiModelProperty(value = """prettyId for the APP""")
 	@BeanProperty 
-	var canDisguise: Boolean  = false
-	def withcanDisguise(p:Boolean):this.type ={ 	this.canDisguise = p; 	this }
+	var prettyId: String =_
+	def withprettyId(p:String):this.type ={ 	this.prettyId = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * main url of the app
+	 */
+	//#SWG#@ApiModelProperty(value = """main url of the app""")
 	@BeanProperty 
-	var disguiseData: MAppDisguiseData =_
-	def withdisguiseData(p:MAppDisguiseData):this.type ={ 	this.disguiseData = p; 	this }
+	var url: String =_
+	def withurl(p:String):this.type ={ 	this.url = p; 	this }
 
-	{
-		if (Option(this.disguiseData).isEmpty) {
-		  this.setDisguiseData(new MAppDisguiseData)
-		  this.disguiseData.usersWhiteList.add("*")
-		}
-	}
+	/**
+	 * main url of the app
+	 */
+	//#SWG#@ApiModelProperty(value = """main url of the app""")
+	@BeanProperty 
+	var urlThumbnail: String =_
+	def withurlThumbnail(p:String):this.type ={ 	this.urlThumbnail = p; 	this }
 
 	/**
 	 * @return Boolean
@@ -115,6 +108,13 @@ class MAppInitData extends Serializable {
 	def isValid():Boolean ={
 		Option(appType).isDefined &&
 		Option(prettyId).forall(s => s.length<=50 && s.matches("""^[\w\-]*$"""))
+	}
+
+	{
+		if (Option(this.disguiseData).isEmpty) {
+		  this.setDisguiseData(new MAppDisguiseData)
+		  this.disguiseData.usersWhiteList.add("*")
+		}
 	}
 
 }

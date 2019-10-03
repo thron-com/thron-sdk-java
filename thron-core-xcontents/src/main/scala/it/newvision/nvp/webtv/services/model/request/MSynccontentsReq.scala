@@ -24,6 +24,14 @@ class MSynccontentsReq extends Serializable {
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
+	 * filter options
+	 */
+	//#SWG#@ApiModelProperty(value = """filter options""", required = true)
+	@BeanProperty
+	var criteria: MSyncCriteria =_
+	def withcriteria(p:MSyncCriteria):this.type ={ 	this.criteria = p; 	this }
+
+	/**
 	 * Required
 	 */
 	//#SWG#@ApiModelProperty(value = """Required""", required = true)
@@ -32,20 +40,12 @@ class MSynccontentsReq extends Serializable {
 	def withfromDate(p:Date):this.type ={ 	this.fromDate = p; 	this }
 
 	/**
-	 * Optional
+	 * Default and maximum value is 50 items
 	 */
-	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
+	//#SWG#@ApiModelProperty(value = """Default and maximum value is 50 items""", required = true)
 	@BeanProperty
-	var toDate: Date =_
-	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
-
-	/**
-	 * filter options
-	 */
-	//#SWG#@ApiModelProperty(value = """filter options""", required = true)
-	@BeanProperty
-	var criteria: MSyncCriteria =_
-	def withcriteria(p:MSyncCriteria):this.type ={ 	this.criteria = p; 	this }
+	var numberOfResults: Integer =_
+	def withnumberOfResults(p:Integer):this.type ={ 	this.numberOfResults = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty
@@ -53,11 +53,11 @@ class MSynccontentsReq extends Serializable {
 	def withoffset(p:Integer):this.type ={ 	this.offset = p; 	this }
 
 	/**
-	 * Default and maximum value is 50 items
+	 * Optional
 	 */
-	//#SWG#@ApiModelProperty(value = """Default and maximum value is 50 items""", required = true)
+	//#SWG#@ApiModelProperty(value = """Optional""", required = true)
 	@BeanProperty
-	var numberOfResults: Integer =_
-	def withnumberOfResults(p:Integer):this.type ={ 	this.numberOfResults = p; 	this }
+	var toDate: Date =_
+	def withtoDate(p:Date):this.type ={ 	this.toDate = p; 	this }
 
 }

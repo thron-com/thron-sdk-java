@@ -15,16 +15,6 @@ import javax.xml.bind.annotation._
 class MVUserSettings extends Serializable {
 
 	/**
-	 * Deprecated.
-	 */
-	//#SWG#@ApiModelProperty(value = """Deprecated.""")
-	@BeanProperty 
-	@Deprecated
-	var userQuota: Long =_
-	@Deprecated
-	def withuserQuota(p:Long):this.type ={ 	this.userQuota = p; 	this }
-
-	/**
 	 * Define the lock template id applied to the user.
 	 * Locking templates ares used to restrict the user to change some specific fields
 	 * of the VUserDetail, like password, email address, user fullname or other
@@ -39,5 +29,15 @@ class MVUserSettings extends Serializable {
 	@BeanProperty 
 	var userLockTemplate: String =_
 	def withuserLockTemplate(p:String):this.type ={ 	this.userLockTemplate = p; 	this }
+
+	/**
+	 * Deprecated.
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated.""")
+	@BeanProperty 
+	@Deprecated
+	var userQuota: Long =_
+	@Deprecated
+	def withuserQuota(p:Long):this.type ={ 	this.userQuota = p; 	this }
 
 }

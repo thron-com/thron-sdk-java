@@ -21,6 +21,15 @@ import it.newvision.nvp.xcontents.model.MContent
 class MResponsePlayListDetail extends MResponsePlayList with Serializable  {
 
 	/**
+	 * The playlist content information, with locale description, metadata and
+	 * linkedcontents (playlist elements).
+	 */
+	//#SWG#@ApiModelProperty(value = """The playlist content information, with locale description, metadata and linkedcontents (playlist elements).""" ,required = true)
+	@BeanProperty 
+	var content: MContent =_
+	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
+
+	/**
 	 * specifies that the following playlist is based on a specific content type (all
 	 * elements of the playlist have the same content type). match the EContentType in
 	 * xcontents
@@ -29,14 +38,5 @@ class MResponsePlayListDetail extends MResponsePlayList with Serializable  {
 	@BeanProperty 
 	var playlistTemplate: String =_
 	def withplaylistTemplate(p:String):this.type ={ 	this.playlistTemplate = p; 	this }
-
-	/**
-	 * The playlist content information, with locale description, metadata and
-	 * linkedcontents (playlist elements).
-	 */
-	//#SWG#@ApiModelProperty(value = """The playlist content information, with locale description, metadata and linkedcontents (playlist elements).""" ,required = true)
-	@BeanProperty 
-	var content: MContent =_
-	def withcontent(p:MContent):this.type ={ 	this.content = p; 	this }
 
 }

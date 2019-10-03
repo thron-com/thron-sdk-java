@@ -18,11 +18,6 @@ import it.newvision.nvp.xcontents.services.model.common.MCredential
 //#SWG#@ApiModel(description = "Request message for service JCategory.removeCategory4Locale")
 class MCategoryremoveCategory4LocaleReq extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""", required = true)
-	@BeanProperty
-	var client: MCredential =_
-	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
-
 	/**
 	 * Id or prettyId
 	 */
@@ -30,6 +25,11 @@ class MCategoryremoveCategory4LocaleReq extends Serializable {
 	@BeanProperty
 	var catId: String =_
 	def withcatId(p:String):this.type ={ 	this.catId = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""", required = true)
+	@BeanProperty
+	var client: MCredential =_
+	def withclient(p:MCredential):this.type ={ 	this.client = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""", required = true)
 	@BeanProperty

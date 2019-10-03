@@ -91,28 +91,13 @@ class JContentListClient(val resourceEndpoint:String) {
 	 * Optional. Used as optional search criteria to filter the contents with the given tags (list of tags
 	 * as comma separated value).
 	 * @param metadata : String
-	 * Optional json representation of MMetadata object used to filter contents by metadata
-	 * Example:
-	 * {"name":"key1", "value":"metadata-value", "locale":"EN"}
-	 * {"name":"key1", "value":"metadata-value"}
-	 * {"name":"key1"}
+	 * Optional. Deprecated
 	 * @param availableInSolution : String
-	 * Optional. Used as optional search criteria to filter the contents available for a specific solution.
-	 * VIEW,PLAY,TALK,MOVE...
-	 * @param onlyActiveContents : Boolean
-	 * Optional.Used to filter the contents with inactiveDate not set or set in the future. If a content
-	 * has inactiveDate in the past means that the content is not active.
+	 * Optional. Deprecated
 	 * @param ugc : Boolean
-	 * Optional. used to filter the ugc contents.
-	 * TRUE = only ugc contents
-	 * FALSE = no ugc contents
-	 * NULL = all contents
+	 * Optional. Deprecated
 	 * @param userAgent : String
-	 * Optional. Used to filter the contents compliant with a specific userAgent.The attribute is optional.
-	 * 
-	 * The userAgent value is converted to a set of compliant channelTypes
-	 * Possible values are: mobile/desktop/other
-
+	 * Optional.Deprecated
 	 * @param divArea : String
 	 * Optional. Define the area where the thumbnail should be displayed. Used to return the thumbnail
 	 * that best suits.
@@ -124,6 +109,10 @@ class JContentListClient(val resourceEndpoint:String) {
 	 * @param numberOfResult : Integer
 	 * Optional. Used for pagination.
 	 * Default and maximum value is 50 items
+	 * @param returnTotalResults : Boolean
+	 * Optional. Default value true
+	 * if false, totalResults will not be calculated and the service performs better.
+
 	 * @return MResponseContentListResult
 	*/
 	def showContents(tokenId: String, 
@@ -139,12 +128,12 @@ class JContentListClient(val resourceEndpoint:String) {
 			tags: String, 
 			metadata: String, 
 			availableInSolution: String, 
-			onlyActiveContents: Boolean, 
 			ugc: Boolean, 
 			userAgent: String, 
 			divArea: String, 
 			offset: Integer, 
-			numberOfResult: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentListResult ={
+			numberOfResult: Integer, 
+			returnTotalResults: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentListResult ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -162,12 +151,12 @@ class JContentListClient(val resourceEndpoint:String) {
 		Option(tags).foreach(s => params.add("tags", s))
 		Option(metadata).foreach(s => params.add("metadata", s))
 		Option(availableInSolution).foreach(s => params.add("availableInSolution", s))
-		Option(onlyActiveContents).foreach(s => params.add("onlyActiveContents", s))
 		Option(ugc).foreach(s => params.add("ugc", s))
 		Option(userAgent).foreach(s => params.add("userAgent", s))
 		Option(divArea).foreach(s => params.add("divArea", s))
 		Option(offset).foreach(s => params.add("offset", s))
 		Option(numberOfResult).foreach(s => params.add("numberOfResult", s))
+		Option(returnTotalResults).foreach(s => params.add("returnTotalResults", s))
 			val response : MResponseContentListResult = if(this.resourceEndpoint == ""){
 			
 				new MResponseContentListResult()

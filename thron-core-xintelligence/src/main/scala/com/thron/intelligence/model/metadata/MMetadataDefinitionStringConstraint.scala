@@ -14,11 +14,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MMetadataDefinitionStringConstraint extends MMetadataDefinitionGenericConstraint with Serializable  {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var regexp: String =_
-	def withregexp(p:String):this.type ={ 	this.regexp = p; 	this }
-
 	/**
 	 * Constraints:
 	 * <ul>
@@ -35,6 +30,20 @@ class MMetadataDefinitionStringConstraint extends MMetadataDefinitionGenericCons
 	var maxSize: Integer  = 2000000
 	def withmaxSize(p:Integer):this.type ={ 	this.maxSize = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var regexp: String =_
+	def withregexp(p:String):this.type ={ 	this.regexp = p; 	this }
+
+	/**
+	 * @return Boolean
+	*/
+	//#SWG#@ApiModelProperty(hidden = true)
+	@org.codehaus.jackson.annotate.JsonIgnore
+	override def isValid():Boolean ={
+		Option(maxSize).forall(x=>  x<=2000000)
+	}
+
 	/**
 	 * @param value : String
 	 * @return Boolean
@@ -44,15 +53,6 @@ class MMetadataDefinitionStringConstraint extends MMetadataDefinitionGenericCons
 	override def validateData(value: String):Boolean ={
 		if (!mandatory && org.apache.commons.lang.StringUtils.isEmpty(value)) true
 		else value.length <= maxSize && Option(regexp).forall(_.r.pattern.matcher(value).matches)
-	}
-
-	/**
-	 * @return Boolean
-	*/
-	//#SWG#@ApiModelProperty(hidden = true)
-	@org.codehaus.jackson.annotate.JsonIgnore
-	override def isValid():Boolean ={
-		Option(maxSize).forall(x=>  x<=2000000)
 	}
 
 }

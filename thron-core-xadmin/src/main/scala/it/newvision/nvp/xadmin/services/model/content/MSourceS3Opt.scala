@@ -19,6 +19,14 @@ import javax.xml.bind.annotation._
 class MSourceS3Opt extends Serializable {
 
 	/**
+	 * Optional. Not required for THRON S3 bucket
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. Not required for THRON S3 bucket""")
+	@BeanProperty 
+	var accessKey: String =_
+	def withaccessKey(p:String):this.type ={ 	this.accessKey = p; 	this }
+
+	/**
 	 * the s3 bucket name.
 	 */
 	//#SWG#@ApiModelProperty(value = """the s3 bucket name.""" ,required = true)
@@ -54,14 +62,6 @@ class MSourceS3Opt extends Serializable {
 	@BeanProperty 
 	var removeSourceFile: Boolean  = false
 	def withremoveSourceFile(p:Boolean):this.type ={ 	this.removeSourceFile = p; 	this }
-
-	/**
-	 * Optional. Not required for THRON S3 bucket
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. Not required for THRON S3 bucket""")
-	@BeanProperty 
-	var accessKey: String =_
-	def withaccessKey(p:String):this.type ={ 	this.accessKey = p; 	this }
 
 	/**
 	 * Optional. Not required for THRON S3 bucket

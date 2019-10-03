@@ -23,19 +23,19 @@ class MPlaylistremoveContentFromListReq extends Serializable {
 	def withclientId(p:String):this.type ={ 	this.clientId = p; 	this }
 
 	/**
-	 * xcontentId of playlist
-	 */
-	//#SWG#@ApiModelProperty(value = """ xcontentId of playlist""", required = true)
-	@BeanProperty
-	var xcontentId: String =_
-	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
-
-	/**
 	 * remove the element in the given position
 	 */
 	//#SWG#@ApiModelProperty(value = """remove the element in the given position""", required = true)
 	@BeanProperty
 	var contentPosition: Integer =_
 	def withcontentPosition(p:Integer):this.type ={ 	this.contentPosition = p; 	this }
+
+	/**
+	 * xcontentId of playlist
+	 */
+	//#SWG#@ApiModelProperty(value = """ xcontentId of playlist""", required = true)
+	@BeanProperty
+	var xcontentId: String =_
+	def withxcontentId(p:String):this.type ={ 	this.xcontentId = p; 	this }
 
 }

@@ -35,312 +35,6 @@ trait JPublic extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
 
 	/**
-	 * This service redirect to the content URL.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * 
-	 * HTTP status codes:
-	 * <ul>
-	 * 	<li>400: invalid arguments,</li>
-	 * 	<li>404: content not found,</li>
-	 * 	<li>500: generic error,</li>
-	 * 	<li>307: redirects to resulting content,</li>
-	 * 	<li>200: ok.</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * Domain name used to access THRON
-	 * @param id : String
-	 * The xcontentId,  prettyId or externalId of the content
-
-	 * @param pkey : String
-	 * The access key for the content
-	 * @param prettyName : String
-	 * a pretty short name of the content with the file extension (for seo optimisation).
-	 * Like:
-	 * * product-detail.html
-	 * * post-review.html
-
-	 * @param lcid : String
-	 * Optional. the xcontentId of the main linked content
-	 * This parameter is used to have the descriptor of a linked/recommended content. The ACL of a
-	 * recommended content are validated on the context of the main content.
-	 * @return java.io.File
-	*/
-	@GET
-	@Path("/url/{clientId}/{id}/{pkey}/{prettyName}")
-	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/url", notes = """This service redirect to the content URL.
-	//#SWGNL#
-	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
-	//#SWGNL#
-	//#SWGNL#HTTP status codes: 
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>400: invalid arguments,</li>
-	//#SWGNL#	<li>404: content not found,</li>
-	//#SWGNL#	<li>500: generic error,</li>
-	//#SWGNL#	<li>307: redirects to resulting content,</li>
-	//#SWGNL#	<li>200: ok.</li>
-	//#SWGNL#</ul>""", response = classOf[java.io.File])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def url(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """Domain name used to access THRON""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """The xcontentId,  prettyId or externalId of the content
-	//#SWGNL#""")
-	@PathParam("id")
-	id: String, 
-			//#SWG#@ApiParam(value = """The access key for the content""")
-	@PathParam("pkey")
-	pkey: String, 
-			//#SWG#@ApiParam(value = """a pretty short name of the content with the file extension (for seo optimisation).
-	//#SWGNL#Like: 
-	//#SWGNL#* product-detail.html
-	//#SWGNL#* post-review.html
-	//#SWGNL#""")
-	@PathParam("prettyName")
-	prettyName: String, 
-			//#SWG#@ApiParam(value = """Optional. the xcontentId of the main linked content
-	//#SWGNL#This parameter is used to have the descriptor of a linked/recommended content. The ACL of a recommended content are validated on the context of the main content.""")
-	@QueryParam("lcid")
-	lcid: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = java.io.File*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("url") 
-		try{	
-			val resp = this.__url(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,id,pkey,prettyName,lcid)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_url)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_url)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __url(tokenId: String, clientId: String, id: String, pkey: String, prettyName: String, lcid: String) :java.io.File
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_url: String
-
-	/**
-	 * This service provides the HTML source of a PAGELET content.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * 
-	 * HTTP status codes:
-	 * <ul>
-	 * 	<li>400: invalid arguments,</li>
-	 * 	<li>404: content not found,</li>
-	 * 	<li>500: generic error,</li>
-	 * 	<li>307: redirects to resulting content,</li>
-	 * 	<li>200: ok.</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * Domain name used to access THRON
-	 * @param id : String
-	 * The xcontentId,  prettyId or externalId of the content
-
-	 * @param pkey : String
-	 * The access key for the content
-	 * @param prettyName : String
-	 * a pretty short name of the content with the file extension (for seo optimisation).
-	 * Like:
-	 * * product-detail.html
-	 * * post-review.html
-
-	 * @param lcid : String
-	 * Optional. the xcontentId of the main linked content
-	 * This parameter is used to have the descriptor of a linked/recommended content. The ACL of a
-	 * recommended content are validated on the context of the main content.
-	 * @return java.io.File
-	*/
-	@GET
-	@Path("/pagelet/{clientId}/{id}/{pkey}/{prettyName}")
-	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/pagelet", notes = """This service provides the HTML source of a PAGELET content.
-	//#SWGNL#
-	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
-	//#SWGNL#
-	//#SWGNL#HTTP status codes: 
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>400: invalid arguments,</li>
-	//#SWGNL#	<li>404: content not found,</li>
-	//#SWGNL#	<li>500: generic error,</li>
-	//#SWGNL#	<li>307: redirects to resulting content,</li>
-	//#SWGNL#	<li>200: ok.</li>
-	//#SWGNL#</ul>""", response = classOf[java.io.File])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def pagelet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """Domain name used to access THRON""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """The xcontentId,  prettyId or externalId of the content
-	//#SWGNL#""")
-	@PathParam("id")
-	id: String, 
-			//#SWG#@ApiParam(value = """The access key for the content""")
-	@PathParam("pkey")
-	pkey: String, 
-			//#SWG#@ApiParam(value = """a pretty short name of the content with the file extension (for seo optimisation).
-	//#SWGNL#Like: 
-	//#SWGNL#* product-detail.html
-	//#SWGNL#* post-review.html
-	//#SWGNL#""")
-	@PathParam("prettyName")
-	prettyName: String, 
-			//#SWG#@ApiParam(value = """Optional. the xcontentId of the main linked content
-	//#SWGNL#This parameter is used to have the descriptor of a linked/recommended content. The ACL of a recommended content are validated on the context of the main content.""")
-	@QueryParam("lcid")
-	lcid: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = java.io.File*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("pagelet") 
-		try{	
-			val resp = this.__pagelet(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,id,pkey,prettyName,lcid)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_pagelet)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_pagelet)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __pagelet(tokenId: String, clientId: String, id: String, pkey: String, prettyName: String, lcid: String) :java.io.File
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_pagelet: String
-
-	/**
-	 * This service provides the resource of a DOCUMENT content, based on the selected channel.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * 
-	 * HTTP status codes:
-	 * <ul>
-	 * 	<li>400: invalid arguments,</li>
-	 * 	<li>404: content not found,</li>
-	 * 	<li>500: generic error,</li>
-	 * 	<li>307: redirects to resulting content,</li>
-	 * 	<li>200: ok.</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * Domain name used to access THRON
-	 * @param id : String
-	 * The xcontentId,  prettyId or externalId of the content
-
-	 * @param pkey : String
-	 * The access key for the content
-	 * @param channelType : String
-	 * The specific channel code (WEB,WEBHD...)
-	 * @param prettyName : String
-	 * a pretty short name of the content with the file extension (seo optimisation).
-	 * Like:
-	 * * mountain-collection.zip
-
-	 * @param lcid : String
-	 * Optional. the xcontentId of the main linked content
-	 * This parameter is used to have the descriptor of a linked/recommended content. The ACL of a
-	 * recommended content are validated on the context of the main content.
-	 * @return java.io.File
-	*/
-	@GET
-	@Path("/document/{clientId}/{id}/{pkey}/{channelType}/{prettyName}")
-	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/document", notes = """This service provides the resource of a DOCUMENT content, based on the selected channel.
-	//#SWGNL#
-	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
-	//#SWGNL#
-	//#SWGNL#HTTP status codes: 
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>400: invalid arguments,</li>
-	//#SWGNL#	<li>404: content not found,</li>
-	//#SWGNL#	<li>500: generic error,</li>
-	//#SWGNL#	<li>307: redirects to resulting content,</li>
-	//#SWGNL#	<li>200: ok.</li>
-	//#SWGNL#</ul>""", response = classOf[java.io.File])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def document(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """Domain name used to access THRON""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """The xcontentId,  prettyId or externalId of the content
-	//#SWGNL#""")
-	@PathParam("id")
-	id: String, 
-			//#SWG#@ApiParam(value = """The access key for the content""")
-	@PathParam("pkey")
-	pkey: String, 
-			//#SWG#@ApiParam(value = """The specific channel code (WEB,WEBHD...)""")
-	@PathParam("channelType")
-	channelType: String, 
-			//#SWG#@ApiParam(value = """a pretty short name of the content with the file extension (seo optimisation).
-	//#SWGNL#Like: 
-	//#SWGNL#* mountain-collection.zip
-	//#SWGNL#""")
-	@PathParam("prettyName")
-	prettyName: String, 
-			//#SWG#@ApiParam(value = """Optional. the xcontentId of the main linked content
-	//#SWGNL#This parameter is used to have the descriptor of a linked/recommended content. The ACL of a recommended content are validated on the context of the main content.""")
-	@QueryParam("lcid")
-	lcid: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = java.io.File*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("document") 
-		try{	
-			val resp = this.__document(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,id,pkey,channelType,prettyName,lcid)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_document)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_document)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __document(tokenId: String, clientId: String, id: String, pkey: String, channelType: String, prettyName: String, lcid: String) :java.io.File
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_document: String
-
-	/**
 	 * This service provides the resource of an AUDIO content.
 	 * 
 	 * Attention: this service makes use of cache control to ensure best performance.
@@ -445,7 +139,7 @@ trait JPublic extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_audio: String
 
 	/**
-	 * This service provides the resource of a VIDEO content.
+	 * This service provides the resource of a DOCUMENT content, based on the selected channel.
 	 * 
 	 * Attention: this service makes use of cache control to ensure best performance.
 	 * 
@@ -461,7 +155,7 @@ trait JPublic extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * @param clientId : String
 	 * Domain name used to access THRON
 	 * @param id : String
-	 * The xcontentId, prettyId or externalId of the content
+	 * The xcontentId,  prettyId or externalId of the content
 
 	 * @param pkey : String
 	 * The access key for the content
@@ -470,7 +164,7 @@ trait JPublic extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * @param prettyName : String
 	 * a pretty short name of the content with the file extension (seo optimisation).
 	 * Like:
-	 * * video-wall.mp4
+	 * * mountain-collection.zip
 
 	 * @param lcid : String
 	 * Optional. the xcontentId of the main linked content
@@ -479,9 +173,9 @@ trait JPublic extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * @return java.io.File
 	*/
 	@GET
-	@Path("/video/{clientId}/{id}/{pkey}/{channelType}/{prettyName}")
+	@Path("/document/{clientId}/{id}/{pkey}/{channelType}/{prettyName}")
 	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/video", notes = """This service provides the resource of a VIDEO content.
+	//#SWG#@ApiOperation(value = "/document", notes = """This service provides the resource of a DOCUMENT content, based on the selected channel.
 	//#SWGNL#
 	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
 	//#SWGNL#
@@ -494,13 +188,13 @@ trait JPublic extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	//#SWGNL#	<li>200: ok.</li>
 	//#SWGNL#</ul>""", response = classOf[java.io.File])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def video(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def document(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
 			//#SWG#@ApiParam(value = """Domain name used to access THRON""")
 	@PathParam("clientId")
 	clientId: String, 
-			//#SWG#@ApiParam(value = """The xcontentId, prettyId or externalId of the content
+			//#SWG#@ApiParam(value = """The xcontentId,  prettyId or externalId of the content
 	//#SWGNL#""")
 	@PathParam("id")
 	id: String, 
@@ -512,7 +206,7 @@ trait JPublic extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	channelType: String, 
 			//#SWG#@ApiParam(value = """a pretty short name of the content with the file extension (seo optimisation).
 	//#SWGNL#Like: 
-	//#SWGNL#* video-wall.mp4
+	//#SWGNL#* mountain-collection.zip
 	//#SWGNL#""")
 	@PathParam("prettyName")
 	prettyName: String, 
@@ -529,24 +223,24 @@ trait JPublic extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
 		//get the cache control specific for this service
-		val cc = this.cachemap("video") 
+		val cc = this.cachemap("document") 
 		try{	
-			val resp = this.__video(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,id,pkey,channelType,prettyName,lcid)
+			val resp = this.__document(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,id,pkey,channelType,prettyName,lcid)
 		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_video)
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_document)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_video)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_document)
 	    }
 	}
 
 	 
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __video(tokenId: String, clientId: String, id: String, pkey: String, channelType: String, prettyName: String, lcid: String) :java.io.File
+	 protected def __document(tokenId: String, clientId: String, id: String, pkey: String, channelType: String, prettyName: String, lcid: String) :java.io.File
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_video: String
+	protected def capability_document: String
 
 	/**
 	 * This service provides the thumbnail of an IMAGE content with the desired resolution and quality:
@@ -771,6 +465,107 @@ trait JPublic extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_image: String
 
 	/**
+	 * This service provides the HTML source of a PAGELET content.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
+	 * HTTP status codes:
+	 * <ul>
+	 * 	<li>400: invalid arguments,</li>
+	 * 	<li>404: content not found,</li>
+	 * 	<li>500: generic error,</li>
+	 * 	<li>307: redirects to resulting content,</li>
+	 * 	<li>200: ok.</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * Domain name used to access THRON
+	 * @param id : String
+	 * The xcontentId,  prettyId or externalId of the content
+
+	 * @param pkey : String
+	 * The access key for the content
+	 * @param prettyName : String
+	 * a pretty short name of the content with the file extension (for seo optimisation).
+	 * Like:
+	 * * product-detail.html
+	 * * post-review.html
+
+	 * @param lcid : String
+	 * Optional. the xcontentId of the main linked content
+	 * This parameter is used to have the descriptor of a linked/recommended content. The ACL of a
+	 * recommended content are validated on the context of the main content.
+	 * @return java.io.File
+	*/
+	@GET
+	@Path("/pagelet/{clientId}/{id}/{pkey}/{prettyName}")
+	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
+	//#SWG#@ApiOperation(value = "/pagelet", notes = """This service provides the HTML source of a PAGELET content.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
+	//#SWGNL#
+	//#SWGNL#HTTP status codes: 
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>400: invalid arguments,</li>
+	//#SWGNL#	<li>404: content not found,</li>
+	//#SWGNL#	<li>500: generic error,</li>
+	//#SWGNL#	<li>307: redirects to resulting content,</li>
+	//#SWGNL#	<li>200: ok.</li>
+	//#SWGNL#</ul>""", response = classOf[java.io.File])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def pagelet(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """Domain name used to access THRON""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """The xcontentId,  prettyId or externalId of the content
+	//#SWGNL#""")
+	@PathParam("id")
+	id: String, 
+			//#SWG#@ApiParam(value = """The access key for the content""")
+	@PathParam("pkey")
+	pkey: String, 
+			//#SWG#@ApiParam(value = """a pretty short name of the content with the file extension (for seo optimisation).
+	//#SWGNL#Like: 
+	//#SWGNL#* product-detail.html
+	//#SWGNL#* post-review.html
+	//#SWGNL#""")
+	@PathParam("prettyName")
+	prettyName: String, 
+			//#SWG#@ApiParam(value = """Optional. the xcontentId of the main linked content
+	//#SWGNL#This parameter is used to have the descriptor of a linked/recommended content. The ACL of a recommended content are validated on the context of the main content.""")
+	@QueryParam("lcid")
+	lcid: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String
+			,
+			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = java.io.File*/= { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		//get the cache control specific for this service
+		val cc = this.cachemap("pagelet") 
+		try{	
+			val resp = this.__pagelet(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,id,pkey,prettyName,lcid)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_pagelet)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_pagelet)
+	    }
+	}
+
+	 
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __pagelet(tokenId: String, clientId: String, id: String, pkey: String, prettyName: String, lcid: String) :java.io.File
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_pagelet: String
+
+	/**
 	 * This service provides the thumbnail of a content with the desired resolution and quality: THRON
 	 * will automatically process the highest available quality image to apply cropping and resize
 	 * algorithms that match your request, as specified by URL parameters expressed after ContentId.
@@ -991,5 +786,210 @@ trait JPublic extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __thumbnail(tokenId: String, clientId: String, id: String, pkey: String, preset: String, divArea: String, prettyName: String, lcid: String, scalemode: String, quality: Integer, cropmode: String, cropx: Double, cropy: Double, cropw: Double, croph: Double, adjustcrop: String, fill: String, fillcolor: String, format: String, enhance: String, dpr: Integer) :java.io.File
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_thumbnail: String
+
+	/**
+	 * This service redirect to the content URL.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
+	 * HTTP status codes:
+	 * <ul>
+	 * 	<li>400: invalid arguments,</li>
+	 * 	<li>404: content not found,</li>
+	 * 	<li>500: generic error,</li>
+	 * 	<li>307: redirects to resulting content,</li>
+	 * 	<li>200: ok.</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * Domain name used to access THRON
+	 * @param id : String
+	 * The xcontentId,  prettyId or externalId of the content
+
+	 * @param pkey : String
+	 * The access key for the content
+	 * @param prettyName : String
+	 * a pretty short name of the content with the file extension (for seo optimisation).
+	 * Like:
+	 * * product-detail.html
+	 * * post-review.html
+
+	 * @param lcid : String
+	 * Optional. the xcontentId of the main linked content
+	 * This parameter is used to have the descriptor of a linked/recommended content. The ACL of a
+	 * recommended content are validated on the context of the main content.
+	 * @return java.io.File
+	*/
+	@GET
+	@Path("/url/{clientId}/{id}/{pkey}/{prettyName}")
+	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
+	//#SWG#@ApiOperation(value = "/url", notes = """This service redirect to the content URL.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
+	//#SWGNL#
+	//#SWGNL#HTTP status codes: 
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>400: invalid arguments,</li>
+	//#SWGNL#	<li>404: content not found,</li>
+	//#SWGNL#	<li>500: generic error,</li>
+	//#SWGNL#	<li>307: redirects to resulting content,</li>
+	//#SWGNL#	<li>200: ok.</li>
+	//#SWGNL#</ul>""", response = classOf[java.io.File])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def url(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """Domain name used to access THRON""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """The xcontentId,  prettyId or externalId of the content
+	//#SWGNL#""")
+	@PathParam("id")
+	id: String, 
+			//#SWG#@ApiParam(value = """The access key for the content""")
+	@PathParam("pkey")
+	pkey: String, 
+			//#SWG#@ApiParam(value = """a pretty short name of the content with the file extension (for seo optimisation).
+	//#SWGNL#Like: 
+	//#SWGNL#* product-detail.html
+	//#SWGNL#* post-review.html
+	//#SWGNL#""")
+	@PathParam("prettyName")
+	prettyName: String, 
+			//#SWG#@ApiParam(value = """Optional. the xcontentId of the main linked content
+	//#SWGNL#This parameter is used to have the descriptor of a linked/recommended content. The ACL of a recommended content are validated on the context of the main content.""")
+	@QueryParam("lcid")
+	lcid: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String
+			,
+			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = java.io.File*/= { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		//get the cache control specific for this service
+		val cc = this.cachemap("url") 
+		try{	
+			val resp = this.__url(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,id,pkey,prettyName,lcid)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_url)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_url)
+	    }
+	}
+
+	 
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __url(tokenId: String, clientId: String, id: String, pkey: String, prettyName: String, lcid: String) :java.io.File
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_url: String
+
+	/**
+	 * This service provides the resource of a VIDEO content.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * 
+	 * HTTP status codes:
+	 * <ul>
+	 * 	<li>400: invalid arguments,</li>
+	 * 	<li>404: content not found,</li>
+	 * 	<li>500: generic error,</li>
+	 * 	<li>307: redirects to resulting content,</li>
+	 * 	<li>200: ok.</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * Domain name used to access THRON
+	 * @param id : String
+	 * The xcontentId, prettyId or externalId of the content
+
+	 * @param pkey : String
+	 * The access key for the content
+	 * @param channelType : String
+	 * The specific channel code (WEB,WEBHD...)
+	 * @param prettyName : String
+	 * a pretty short name of the content with the file extension (seo optimisation).
+	 * Like:
+	 * * video-wall.mp4
+
+	 * @param lcid : String
+	 * Optional. the xcontentId of the main linked content
+	 * This parameter is used to have the descriptor of a linked/recommended content. The ACL of a
+	 * recommended content are validated on the context of the main content.
+	 * @return java.io.File
+	*/
+	@GET
+	@Path("/video/{clientId}/{id}/{pkey}/{channelType}/{prettyName}")
+	@Produces(Array(MediaType.WILDCARD,"application/x-javascript"))
+	//#SWG#@ApiOperation(value = "/video", notes = """This service provides the resource of a VIDEO content.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.
+	//#SWGNL#
+	//#SWGNL#HTTP status codes: 
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>400: invalid arguments,</li>
+	//#SWGNL#	<li>404: content not found,</li>
+	//#SWGNL#	<li>500: generic error,</li>
+	//#SWGNL#	<li>307: redirects to resulting content,</li>
+	//#SWGNL#	<li>200: ok.</li>
+	//#SWGNL#</ul>""", response = classOf[java.io.File])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def video(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """Domain name used to access THRON""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """The xcontentId, prettyId or externalId of the content
+	//#SWGNL#""")
+	@PathParam("id")
+	id: String, 
+			//#SWG#@ApiParam(value = """The access key for the content""")
+	@PathParam("pkey")
+	pkey: String, 
+			//#SWG#@ApiParam(value = """The specific channel code (WEB,WEBHD...)""")
+	@PathParam("channelType")
+	channelType: String, 
+			//#SWG#@ApiParam(value = """a pretty short name of the content with the file extension (seo optimisation).
+	//#SWGNL#Like: 
+	//#SWGNL#* video-wall.mp4
+	//#SWGNL#""")
+	@PathParam("prettyName")
+	prettyName: String, 
+			//#SWG#@ApiParam(value = """Optional. the xcontentId of the main linked content
+	//#SWGNL#This parameter is used to have the descriptor of a linked/recommended content. The ACL of a recommended content are validated on the context of the main content.""")
+	@QueryParam("lcid")
+	lcid: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String
+			,
+			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = java.io.File*/= { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		//get the cache control specific for this service
+		val cc = this.cachemap("video") 
+		try{	
+			val resp = this.__video(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,id,pkey,channelType,prettyName,lcid)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_video)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_video)
+	    }
+	}
+
+	 
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __video(tokenId: String, clientId: String, id: String, pkey: String, channelType: String, prettyName: String, lcid: String) :java.io.File
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_video: String
 
 }
