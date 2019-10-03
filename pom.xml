@@ -46,7 +46,7 @@
 
         <!--  SCALA VERSIONS -->
         <scala.version>2.11</scala.version>
-        <scala.version.full>2.11.7</scala.version.full>
+        <scala.version.full>2.11.12</scala.version.full>
 
         <!--  LIBRARIES VERSIONS -->
         <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
