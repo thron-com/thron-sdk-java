@@ -41,12 +41,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
         <maven-resources-plugin.version>2.6</maven-resources-plugin.version>
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <jvm-target.version>1.6</jvm-target.version>
 
         <!--  SCALA VERSIONS -->
         <scala.version>2.11</scala.version>
-        <scala.version.full>2.11.7</scala.version.full>
+        <scala.version.full>2.11.12</scala.version.full>
 
         <!--  LIBRARIES VERSIONS -->
         <maven-scala-plugin.version>2.15.2</maven-scala-plugin.version>
@@ -134,6 +134,15 @@
                     </args>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${jvm-target.version}</source>
+                    <target>${jvm-target.version}</target>
+                </configuration>
+            </plugin>
         </plugins>
         <!--  -->
         <pluginManagement>
@@ -170,7 +179,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
+                        <version>1.6</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
