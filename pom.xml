@@ -44,6 +44,7 @@
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <jvm-target.version>1.6</jvm-target.version>
 
+        
         <!--  SCALA VERSIONS -->
         <scala.version>2.11</scala.version>
         <scala.version.full>2.11.12</scala.version.full>
