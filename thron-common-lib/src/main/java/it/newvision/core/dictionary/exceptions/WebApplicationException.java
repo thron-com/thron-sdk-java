@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+/**
+ * @author daniele.bettella
+ */
 public class WebApplicationException extends javax.ws.rs.WebApplicationException {
 
     public WebApplicationException(int status, String message, CacheControl cc) {
