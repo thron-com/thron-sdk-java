@@ -15,17 +15,17 @@ import javax.xml.bind.annotation._
 class MOwnerSearchCriteria extends Serializable {
 
 	/**
-	 * list of username
+	 * A list of usernames to filter on (in OR)
 	 */
-	//#SWG#@ApiModelProperty(value = """list of username""")
+	//#SWG#@ApiModelProperty(value = """A list of usernames to filter on (in OR)""")
 	@BeanProperty 
 	var haveAtLeastOne: List[String] = new ArrayList[String]
 	def withhaveAtLeastOne(p:List[String]):this.type ={ 	this.haveAtLeastOne = p; 	this }
 
 	/**
-	 * list of username
+	 * A list of usernames that must not match the owner of the contents returned.
 	 */
-	//#SWG#@ApiModelProperty(value = """list of username""")
+	//#SWG#@ApiModelProperty(value = """A list of usernames that must not match the owner of the contents returned.""")
 	@BeanProperty 
 	var haveNot: List[String] = new ArrayList[String]
 	def withhaveNot(p:List[String]):this.type ={ 	this.haveNot = p; 	this }

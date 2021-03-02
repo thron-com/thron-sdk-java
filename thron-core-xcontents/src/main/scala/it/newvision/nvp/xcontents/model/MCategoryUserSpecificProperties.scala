@@ -27,4 +27,12 @@ class MCategoryUserSpecificProperties extends Serializable {
 	var userSubscribedForNotification: Boolean  = false
 	def withuserSubscribedForNotification(p:Boolean):this.type ={ 	this.userSubscribedForNotification = p; 	this }
 
+	/**
+	 * used to mark if the category is starred or not for the user
+	 */
+	//#SWG#@ApiModelProperty(value = """used to mark if the category is starred or not for the user""" ,required = true)
+	@BeanProperty
+	var categoryStarred: Boolean  = false
+	def withcategoryStarred(p:Boolean):this.type ={ 	this.categoryStarred = p; 	this }
+
 }

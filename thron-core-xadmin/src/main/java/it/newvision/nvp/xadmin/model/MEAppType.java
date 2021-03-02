@@ -86,5 +86,20 @@ public enum MEAppType {
 	 * Magic Site App Slave
 	 */
 	//#SWG#@ApiModelProperty(value = """Magic Site App Slave""")
-	@XmlEnumValue("MAGICSITE_SLAVE") MAGICSITE_SLAVE
+	@XmlEnumValue("MAGICSITE_SLAVE") MAGICSITE_SLAVE,
+	/**
+	 * Pim module
+	 */
+	//#SWG#@ApiModelProperty(value = """Pim module""")
+	@XmlEnumValue("PIM") PIM,
+	/**
+	 * Akamai connector app
+	 */
+	//#SWG#@ApiModelProperty(value = """Akamai connector app""")
+	@XmlEnumValue("AKAMAI_CONNECTOR") AKAMAI_CONNECTOR,
+	/**
+	 * System app, this apps can be used only by superuser and must be transparent to others
+	 */
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("SYSTEM") SYSTEM
 }

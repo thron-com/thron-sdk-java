@@ -25,6 +25,14 @@ class MContentUserSpecificProperties extends Serializable {
 	def withcontentReadValue(p:MEContentReadValue):this.type ={ 	this.contentReadValue = p; 	this }
 
 	/**
+	 * used to indicate whether the user is registered or not to content notifications.
+	 */
+	//#SWG#@ApiModelProperty(value = """used to indicate whether the user is registered or not to content notifications.""" ,required = true)
+	@BeanProperty 
+	var userSubscribedForNotification: Boolean  = false
+	def withuserSubscribedForNotification(p:Boolean):this.type ={ 	this.userSubscribedForNotification = p; 	this }
+
+	/**
 	 * used to mark if the content is starred or not for the user
 	 */
 	//#SWG#@ApiModelProperty(value = """used to mark if the content is starred or not for the user""" ,required = true)
@@ -39,13 +47,5 @@ class MContentUserSpecificProperties extends Serializable {
 	@BeanProperty 
 	var readDate: Date =_
 	def withreadDate(p:Date):this.type ={ 	this.readDate = p; 	this }
-
-	/**
-	 * used to indicate whether the user is registered or not to content notifications.
-	 */
-	//#SWG#@ApiModelProperty(value = """used to indicate whether the user is registered or not to content notifications.""" ,required = true)
-	@BeanProperty 
-	var userSubscribedForNotification: Boolean  = false
-	def withuserSubscribedForNotification(p:Boolean):this.type ={ 	this.userSubscribedForNotification = p; 	this }
 
 }

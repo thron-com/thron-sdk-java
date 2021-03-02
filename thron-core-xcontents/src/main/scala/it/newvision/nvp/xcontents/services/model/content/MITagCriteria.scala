@@ -20,6 +20,24 @@ class MITagCriteria extends Serializable {
 	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
 
 	/**
+	 * Search on ITagDefinition.id/prettyId (and children)
+	 * With a ITagDefinition tree structure like this:
+	 * <ul>
+	 * 	<li>A->B->C->D</li>
+	 * </ul>
+	 * Searching contents with itag B returns all contents also tagged with C,D
+	 */
+	//#SWG#@ApiModelProperty(value = """Search on ITagDefinition.id/prettyId (and children)
+	//#SWGNL#With a ITagDefinition tree structure like this:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>A->B->C->D</li>
+	//#SWGNL#</ul>
+	//#SWGNL#Searching contents with itag B returns all contents also tagged with C,D""" ,required = true)
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
+	/**
 	 * Default value FALSE.
 	 * If true, the service exclude from the search the content tagged with a subtree
 	 * of the give tag.
@@ -51,23 +69,5 @@ class MITagCriteria extends Serializable {
 	@BeanProperty 
 	var excludeSubTree: Boolean =_
 	def withexcludeSubTree(p:Boolean):this.type ={ 	this.excludeSubTree = p; 	this }
-
-	/**
-	 * Search on ITagDefinition.id/prettyId (and children)
-	 * With a ITagDefinition tree structure like this:
-	 * <ul>
-	 * 	<li>A->B->C->D</li>
-	 * </ul>
-	 * Searching contents with itag B returns all contents also tagged with C,D
-	 */
-	//#SWG#@ApiModelProperty(value = """Search on ITagDefinition.id/prettyId (and children)
-	//#SWGNL#With a ITagDefinition tree structure like this:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>A->B->C->D</li>
-	//#SWGNL#</ul>
-	//#SWGNL#Searching contents with itag B returns all contents also tagged with C,D""" ,required = true)
-	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 }

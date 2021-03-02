@@ -4,6 +4,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import it.newvision.nvp.xcontents.services.model.client.delivery.MDeliverySettings
 import it.newvision.nvp.xcontents.services.model.client.authsettings.MSecuritySettings
 
 /* ************************
@@ -63,6 +64,11 @@ class MClient extends Serializable {
 	@BeanProperty 
 	var customProperties: List[MMetadata] = new ArrayList[MMetadata]
 	def withcustomProperties(p:List[MMetadata]):this.type ={ 	this.customProperties = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var deliverySettingsProperty: MDeliverySettings =_
+	def withdeliverySettingsProperty(p:MDeliverySettings):this.type ={ 	this.deliverySettingsProperty = p; 	this }
 
 	/**
 	 * disable tracking events

@@ -8,9 +8,9 @@ import com.thron.intelligence.services.model.classification.MResponseClassificat
 import com.thron.intelligence.services.model.request.MPermissionsinsertReq
 import com.thron.intelligence.services.model.classification.MResponseClassificationPermissionList
 import com.thron.intelligence.services.model.request.MPermissionslistReq
+import com.thron.intelligence.services.model.request.MPermissionsupdateReq
 import com.thron.intelligence.services.model.classification.MResponseClassificationPermissionRemove
 import com.thron.intelligence.services.model.request.MPermissionsremoveReq
-import com.thron.intelligence.services.model.request.MPermissionsupdateReq
 
 /* ************************
 *  GENERATED CLASS
@@ -32,7 +32,7 @@ object JPermissionsClient {
  * com/api/xintelligence/resources/permissions</li>
  * </ul>
  */
-class JPermissionsClient(val resourceEndpoint:String) {
+class JPermissionsClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Adds classification permissions to a user, group or app.
@@ -51,7 +51,7 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	def insert(tokenId: String, 
 			clientId: String, 
 			classificationId: String, 
-			param: MPermissionsinsertReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationPermission ={
+			param: MPermissionsinsertReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseClassificationPermission ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -106,7 +106,7 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	def list(tokenId: String, 
 			clientId: String, 
 			classificationId: String, 
-			param: MPermissionslistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationPermissionList ={
+			param: MPermissionslistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseClassificationPermissionList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -168,7 +168,7 @@ class JPermissionsClient(val resourceEndpoint:String) {
 			clientId: String, 
 			classificationId: String, 
 			offset: Integer, 
-			limit: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationPermissionList ={
+			limit: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseClassificationPermissionList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -206,63 +206,6 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Removes classification permissions from a user, group or app.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>(THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
-	 * role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param classificationId : String
-	 * Tag.id or Tag.namespace
-	 * @param param : MPermissionsremoveReq
-	 * @return MResponseClassificationPermissionRemove
-	*/
-	def remove(tokenId: String, 
-			clientId: String, 
-			classificationId: String, 
-			param: MPermissionsremoveReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationPermissionRemove ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JPermissionsClient.client.resource(this.resourceEndpoint)
-			val response : MResponseClassificationPermissionRemove = if(this.resourceEndpoint == ""){
-			
-				new MResponseClassificationPermissionRemove()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("permissions/remove")
-					.path(clientId.toString)
-		.path(classificationId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseClassificationPermissionRemove],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseClassificationPermissionRemove])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * Updates classification permissions of a user, group or app.
 	 * 
 	 * <b>Validation:</b>
@@ -279,7 +222,7 @@ class JPermissionsClient(val resourceEndpoint:String) {
 	def update(tokenId: String, 
 			clientId: String, 
 			classificationId: String, 
-			param: MPermissionsupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationPermission ={
+			param: MPermissionsupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseClassificationPermission ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -309,6 +252,63 @@ class JPermissionsClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseClassificationPermission])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Removes classification permissions from a user, group or app.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>(THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER) and CORE_MANAGE_USERS
+	 * role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param classificationId : String
+	 * Tag.id or Tag.namespace
+	 * @param param : MPermissionsremoveReq
+	 * @return MResponseClassificationPermissionRemove
+	*/
+	def remove(tokenId: String, 
+			clientId: String, 
+			classificationId: String, 
+			param: MPermissionsremoveReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseClassificationPermissionRemove ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JPermissionsClient.client.resource(this.resourceEndpoint)
+			val response : MResponseClassificationPermissionRemove = if(this.resourceEndpoint == ""){
+			
+				new MResponseClassificationPermissionRemove()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("permissions/remove")
+					.path(clientId.toString)
+		.path(classificationId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseClassificationPermissionRemove],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseClassificationPermissionRemove])
 				}
 				else {
 				  throw e

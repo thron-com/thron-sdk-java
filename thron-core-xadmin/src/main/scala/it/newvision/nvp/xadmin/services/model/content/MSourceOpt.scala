@@ -51,11 +51,6 @@ class MSourceOpt extends Serializable {
 	var s3: MSourceS3Opt =_
 	def withs3(p:MSourceS3Opt):this.type ={ 	this.s3 = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var thronToken: MSourceThronTokenOpt =_
-	def withthronToken(p:MSourceThronTokenOpt):this.type ={ 	this.thronToken = p; 	this }
-
 	/**
 	 * upload from web resource, basic HTTP/HTTPS authentication can be included in
 	 * the url
@@ -78,8 +73,7 @@ class MSourceOpt extends Serializable {
 			Option(ftp).isDefined,
 			Option(raw).isDefined,
 			Option(s3).isDefined,
-			Option(web).isDefined,
-			Option(thronToken).isDefined
+			Option(web).isDefined
 		).filter(_.booleanValue)
 	
 		if (existingSources.size != 1) throw new IllegalArgumentException("Exactly one source must be defined")
@@ -89,7 +83,6 @@ class MSourceOpt extends Serializable {
 		Option(s3).foreach(_.validate())
 		Option(web).foreach(_.validate())
 		Option(raw).foreach(_.validate())
-		Option(thronToken).foreach(_.validate())
 	}
 
 }

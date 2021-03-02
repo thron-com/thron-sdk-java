@@ -4,9 +4,9 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.identity.services.model.client.MResponseDetailClientProperty
 import it.newvision.nvp.identity.services.model.client.MResponseRoleHierarchy
 import it.newvision.nvp.identity.services.model.client.MResponseRoleList
+import it.newvision.nvp.identity.services.model.client.MResponseDetailClientProperty
 
 /* ************************
 *  GENERATED CLASS
@@ -33,48 +33,7 @@ object JClientPropertiesClient {
  * com/api/xsso/resources/clientproperties</li>
  * </ul>
  */
-class JClientPropertiesClient(val resourceEndpoint:String) {
-
-	/**
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @return MResponseDetailClientProperty
-	*/
-	def detail(tokenId: String, 
-			clientId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDetailClientProperty ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JClientPropertiesClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-			val response : MResponseDetailClientProperty = if(this.resourceEndpoint == ""){
-			
-				new MResponseDetailClientProperty()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("clientproperties/detail")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseDetailClientProperty])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseDetailClientProperty])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
+class JClientPropertiesClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * The service return the role hierarchy list for the given role. This service is used when an admin
@@ -86,7 +45,7 @@ class JClientPropertiesClient(val resourceEndpoint:String) {
 	 * @return MResponseRoleHierarchy
 	*/
 	def roleHierarchy(tokenId: String, 
-			role: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRoleHierarchy ={
+			role: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseRoleHierarchy ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -126,7 +85,7 @@ class JClientPropertiesClient(val resourceEndpoint:String) {
 	 * @param tokenId : String
 	 * @return MResponseRoleList
 	*/
-	def roleList(tokenId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRoleList ={
+	def roleList(tokenId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseRoleList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -152,6 +111,47 @@ class JClientPropertiesClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseRoleList])
+				}
+				else {
+					throw e
+				}
+			
+		  }
+	
+	}
+
+	/**
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @return MResponseDetailClientProperty
+	*/
+	def detail(tokenId: String, 
+			clientId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseDetailClientProperty ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JClientPropertiesClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(clientId).foreach(s => params.add("clientId", s))
+			val response : MResponseDetailClientProperty = if(this.resourceEndpoint == ""){
+			
+				new MResponseDetailClientProperty()
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("clientproperties/detail")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[MResponseDetailClientProperty])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseDetailClientProperty])
 				}
 				else {
 					throw e

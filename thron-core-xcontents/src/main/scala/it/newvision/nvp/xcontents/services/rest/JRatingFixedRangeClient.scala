@@ -4,11 +4,11 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xcontents.services.model.rating.MResponseGetRatingByProperties
-import it.newvision.nvp.xcontents.services.model.request.MRatingFixedRangefindRatingByPropertiesReq
-import it.newvision.nvp.xcontents.services.model.rating.MResponseGetContentScore
 import it.newvision.nvp.xcontents.services.model.rating.MResponseRating
 import it.newvision.nvp.xcontents.services.model.request.MRatingFixedRangeinsertRatingReq
+import it.newvision.nvp.xcontents.services.model.rating.MResponseGetContentScore
+import it.newvision.nvp.xcontents.services.model.rating.MResponseGetRatingByProperties
+import it.newvision.nvp.xcontents.services.model.request.MRatingFixedRangefindRatingByPropertiesReq
 import it.newvision.nvp.xcontents.services.model.request.MRatingFixedRangeremoveRatingsReq
 
 /* ************************
@@ -34,108 +34,7 @@ object JRatingFixedRangeClient {
  * com/api/xcontents/resources/ratingfixedrange</li>
  * </ul>
  */
-class JRatingFixedRangeClient(val resourceEndpoint:String) {
-
-	/**
-	 * Returns the list of votes of a content matching provided criteria.
-	 * @param tokenId : String
-	 * @param param : MRatingFixedRangefindRatingByPropertiesReq
-	 * @return MResponseGetRatingByProperties
-	*/
-	def findRatingByProperties(tokenId: String, 
-			param: MRatingFixedRangefindRatingByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetRatingByProperties ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JRatingFixedRangeClient.client.resource(this.resourceEndpoint)
-			val response : MResponseGetRatingByProperties = if(this.resourceEndpoint == ""){
-			
-				new MResponseGetRatingByProperties()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("ratingfixedrange/findRatingByProperties")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseGetRatingByProperties],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseGetRatingByProperties])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Returns the score of a content.
-	 * Content score is the votes average of a content for a defined time range.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param contentId : String
-	 * @param fromDate : Date
-	 * Optional
-	 * @param toDate : Date
-	 * Optional
-	 * @return MResponseGetContentScore
-	*/
-	def getContentScore(tokenId: String, 
-			clientId: String, 
-			contentId: String, 
-			fromDate: it.newvision.nvp.core.libraries.rs.DateType, 
-			toDate: it.newvision.nvp.core.libraries.rs.DateType)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetContentScore ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JRatingFixedRangeClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-		Option(contentId).foreach(s => params.add("contentId", s))
-		Option(fromDate).foreach(s => params.add("fromDate", s))
-		Option(toDate).foreach(s => params.add("toDate", s))
-			val response : MResponseGetContentScore = if(this.resourceEndpoint == ""){
-			
-				new MResponseGetContentScore()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("ratingfixedrange/getContentScore")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseGetContentScore])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseGetContentScore])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
+class JRatingFixedRangeClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Inserts a vote for a content with range between 0 and 1.
@@ -150,7 +49,7 @@ class JRatingFixedRangeClient(val resourceEndpoint:String) {
 	 * @return MResponseRating
 	*/
 	def insertRating(tokenId: String, 
-			param: MRatingFixedRangeinsertRatingReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRating ={
+			param: MRatingFixedRangeinsertRatingReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseRating ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -189,6 +88,107 @@ class JRatingFixedRangeClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Returns the score of a content.
+	 * Content score is the votes average of a content for a defined time range.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param contentId : String
+	 * @param fromDate : Date
+	 * Optional
+	 * @param toDate : Date
+	 * Optional
+	 * @return MResponseGetContentScore
+	*/
+	def getContentScore(tokenId: String, 
+			clientId: String, 
+			contentId: String, 
+			fromDate: it.newvision.nvp.core.libraries.rs.DateType, 
+			toDate: it.newvision.nvp.core.libraries.rs.DateType)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseGetContentScore ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JRatingFixedRangeClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(clientId).foreach(s => params.add("clientId", s))
+		Option(contentId).foreach(s => params.add("contentId", s))
+		Option(fromDate).foreach(s => params.add("fromDate", s))
+		Option(toDate).foreach(s => params.add("toDate", s))
+			val response : MResponseGetContentScore = if(this.resourceEndpoint == ""){
+			
+				new MResponseGetContentScore()
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("ratingfixedrange/getContentScore")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[MResponseGetContentScore])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseGetContentScore])
+				}
+				else {
+					throw e
+				}
+			
+		  }
+	
+	}
+
+	/**
+	 * Returns the list of votes of a content matching provided criteria.
+	 * @param tokenId : String
+	 * @param param : MRatingFixedRangefindRatingByPropertiesReq
+	 * @return MResponseGetRatingByProperties
+	*/
+	def findRatingByProperties(tokenId: String, 
+			param: MRatingFixedRangefindRatingByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseGetRatingByProperties ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JRatingFixedRangeClient.client.resource(this.resourceEndpoint)
+			val response : MResponseGetRatingByProperties = if(this.resourceEndpoint == ""){
+			
+				new MResponseGetRatingByProperties()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("ratingfixedrange/findRatingByProperties")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseGetRatingByProperties],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseGetRatingByProperties])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
 	 * Removes votes matching provided criteria from a content.
 	 * 
 	 * <b>Validation:</b>
@@ -203,7 +203,7 @@ class JRatingFixedRangeClient(val resourceEndpoint:String) {
 	 * @return MResponseRating
 	*/
 	def removeRatings(tokenId: String, 
-			param: MRatingFixedRangeremoveRatingsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRating ={
+			param: MRatingFixedRangeremoveRatingsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseRating ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

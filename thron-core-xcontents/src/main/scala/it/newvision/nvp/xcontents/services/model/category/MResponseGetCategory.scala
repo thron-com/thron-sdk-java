@@ -5,6 +5,7 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xcontents.model.MCategory
+import it.newvision.nvp.xcontents.model.MCategoryUserSpecificProperties
 
 /* ************************
 *  GENERATED CLASS
@@ -19,5 +20,10 @@ class MResponseGetCategory extends MResponseCategory with Serializable  {
 	@BeanProperty 
 	var category: MCategory =_
 	def withcategory(p:MCategory):this.type ={ 	this.category = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var userSpecificValues: MCategoryUserSpecificProperties =_
+	def withuserSpecificValues(p:MCategoryUserSpecificProperties):this.type ={ 	this.userSpecificValues = p; 	this }
 
 }

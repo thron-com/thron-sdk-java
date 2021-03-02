@@ -21,13 +21,12 @@ class MContentUserSpecificParams extends Serializable {
 	def withcontentReadValue(p:MEContentReadValue):this.type ={ 	this.contentReadValue = p; 	this }
 
 	/**
-	 * used to mark if the content is starred or not for the user
+	 * Used to mark if the content is starred or not for the user. Each user
+	 * has the limit of 5000 contents starred.
 	 */
-	//#SWG#@ApiModelProperty(value = """used to mark if the content is starred or not for the user""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """Used to mark if the content is starred or not for the user. Each user has the limit of 5000 contents starred.""")
 	@BeanProperty 
-	@Deprecated
-	var contentStarred: Boolean  = false
-	@Deprecated
+	var contentStarred: Boolean  =_
 	def withcontentStarred(p:Boolean):this.type ={ 	this.contentStarred = p; 	this }
 
 }

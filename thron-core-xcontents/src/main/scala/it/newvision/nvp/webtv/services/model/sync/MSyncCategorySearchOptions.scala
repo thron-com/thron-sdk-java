@@ -38,7 +38,7 @@ class MSyncCategorySearchOptions extends Serializable {
 	//#SWGNL#<b>Constraints: </b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>max number of elements 50 (when cascade is true)</li>
-	//#SWGNL#</ul>""")
+	//#SWGNL#</ul>""" ,required = true)
 	@BeanProperty 
 	var linkedCategoryIds: List[String] = new ArrayList[String]
 	def withlinkedCategoryIds(p:List[String]):this.type ={ 	this.linkedCategoryIds = p; 	this }

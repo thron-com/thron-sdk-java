@@ -52,17 +52,16 @@ object JRepositoryClient {
  * com/api/xpackager/resources/repository</li>
  * </ul>
  */
-class JRepositoryClient(val resourceEndpoint:String) {
+class JRepositoryClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
-	 * Adds a list of files from the FTP folder to platform working area.
-	 * Imported files are then deleted from the FTP folder.
+	 * Deprecated by xadmin.JContent.insert service.
 	 * @param tokenId : String
 	 * @param param : MRepositoryaddFilesToPlatformReq
 	 * @return MResponseAddFilesToPlatform
 	*/
 	def addFilesToPlatform(tokenId: String, 
-			param: MRepositoryaddFilesToPlatformReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseAddFilesToPlatform ={
+			param: MRepositoryaddFilesToPlatformReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseAddFilesToPlatform ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -101,17 +100,13 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Adds a file from the Amazon S3 Bucket folder to platform working area.
-	 * S3 bucket must be public or have no read restrictions.
-	 * 
-	 * Use JRepository.getS3UploadCredentials to get temporary credentials and the S3 bucket to upload
-	 * files to.
+	 * Deprecated by xadmin.JContent.insert service.
 	 * @param tokenId : String
 	 * @param param : MRepositoryaddS3ResourceToPlatformReq
 	 * @return MResponseAddFilesToPlatform
 	*/
 	def addS3ResourceToPlatform(tokenId: String, 
-			param: MRepositoryaddS3ResourceToPlatformReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseAddFilesToPlatform ={
+			param: MRepositoryaddS3ResourceToPlatformReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseAddFilesToPlatform ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -150,13 +145,13 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Add a web file to platform working area.
+	 * Deprecated by xadmin.JContent.insert service.
 	 * @param tokenId : String
 	 * @param param : MRepositoryaddWebResourceToPlatformReq
 	 * @return MResponseAddFilesToPlatform
 	*/
 	def addWebResourceToPlatform(tokenId: String, 
-			param: MRepositoryaddWebResourceToPlatformReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseAddFilesToPlatform ={
+			param: MRepositoryaddWebResourceToPlatformReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseAddFilesToPlatform ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -206,7 +201,7 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	def uploadFile(clientId: String, 
 			tokenId: String, 
 			fileName: String, 
-			fileSource: java.io.InputStream)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUploadFile ={
+			fileSource: java.io.InputStream)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseUploadFile ={
 		try{
 			import javax.ws.rs.core.MediaType
 			import com.sun.jersey.multipart.{FormDataMultiPart, FormDataBodyPart}
@@ -248,13 +243,13 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Deletes a file from the FTP folder.
+	 * Deprecated
 	 * @param tokenId : String
 	 * @param param : MRepositorydeleteFtpFileReq
 	 * @return MResponseDeleteUploadedFiles
 	*/
 	def deleteFtpFile(tokenId: String, 
-			param: MRepositorydeleteFtpFileReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDeleteUploadedFiles ={
+			param: MRepositorydeleteFtpFileReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseDeleteUploadedFiles ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -293,19 +288,13 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Returns uploaded files in platform working area matching provide criteria.
-	 * The service return only owned files.
-	 * 
-	 * OrderBy parameter schema: <b>[orderbyFileds]_[A|D]</b>
-	 * Available orderbyFileds are: fileName, siteName,totalSpace,modifiedDate,mimetype
-	 * _A suffix means -> ascendant order
-	 * _D suffix means -> descendant order
+	 * Deprecated by xadmin.JContent.listVersion
 	 * @param tokenId : String
 	 * @param param : MRepositorygetUploadedFileListReq
 	 * @return MResponseGetUploadedFiles
 	*/
 	def getUploadedFileList(tokenId: String, 
-			param: MRepositorygetUploadedFileListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetUploadedFiles ={
+			param: MRepositorygetUploadedFileListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseGetUploadedFiles ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -355,7 +344,7 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	 * @return MResponseGetUploadedFiles
 	*/
 	def getFtpFileList(tokenId: String, 
-			param: MRepositorygetFtpFileListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetUploadedFiles ={
+			param: MRepositorygetFtpFileListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseGetUploadedFiles ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -408,7 +397,7 @@ class JRepositoryClient(val resourceEndpoint:String) {
 	 * @return MResponseGetS3UploadCredentials
 	*/
 	def getS3UploadCredentials(tokenId: String, 
-			clientId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetS3UploadCredentials ={
+			clientId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseGetS3UploadCredentials ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

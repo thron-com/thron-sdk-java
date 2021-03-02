@@ -14,6 +14,29 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MITagContentCriteria extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var classificationId: String =_
+	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
+
+	/**
+	 * Search on ITagDefinition.id/prettyId (and children)
+	 * With a ITagDefinition tree structure like this:
+	 * <ul>
+	 * 	<li>A->B->C->D</li>
+	 * </ul>
+	 * Searching contents with itag B returns all contents also tagged with C,D
+	 */
+	//#SWG#@ApiModelProperty(value = """Search on ITagDefinition.id/prettyId (and children)
+	//#SWGNL#With a ITagDefinition tree structure like this:
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>A->B->C->D</li>
+	//#SWGNL#</ul>
+	//#SWGNL#Searching contents with itag B returns all contents also tagged with C,D""" ,required = true)
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
 	/**
 	 * Default value FALSE.
 	 * If true, the service exclude from the search the content tagged with a subtree
@@ -47,36 +70,13 @@ class MITagContentCriteria extends Serializable {
 	var cascade: Boolean =_
 	def withcascade(p:Boolean):this.type ={ 	this.cascade = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var classificationId: String =_
-	def withclassificationId(p:String):this.type ={ 	this.classificationId = p; 	this }
-
-	/**
-	 * Search on ITagDefinition.id/prettyId (and children)
-	 * With a ITagDefinition tree structure like this:
-	 * <ul>
-	 * 	<li>A->B->C->D</li>
-	 * </ul>
-	 * Searching contents with itag B returns all contents also tagged with C,D
-	 */
-	//#SWG#@ApiModelProperty(value = """Search on ITagDefinition.id/prettyId (and children)
-	//#SWGNL#With a ITagDefinition tree structure like this:
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>A->B->C->D</li>
-	//#SWGNL#</ul>
-	//#SWGNL#Searching contents with itag B returns all contents also tagged with C,D""" ,required = true)
-	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
-
 	/**
 	 * Optional.
-	 * The itag source Type: USER/APP/ENGINE.
+	 * The itag source Type: ["USER","APP","ENGINE"].
 	 * This attribute is used to filter tags coming from a specific source.
 	 */
 	//#SWG#@ApiModelProperty(value = """Optional.
-	//#SWGNL#The itag source Type: USER/APP/ENGINE.
+	//#SWGNL#The itag source Type: ["USER","APP","ENGINE"].
 	//#SWGNL#This attribute is used to filter tags coming from a specific source.""")
 	@BeanProperty 
 	var sourceTypes: List[String] =_

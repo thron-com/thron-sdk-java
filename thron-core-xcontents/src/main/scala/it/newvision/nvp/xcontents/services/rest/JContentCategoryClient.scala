@@ -4,9 +4,9 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
+import it.newvision.nvp.xcontents.services.model.contentCategory.MResponseLinkCategoryToContent
 import it.newvision.nvp.xcontents.services.model.contentCategory.MResponseLinkContentCategory
 import it.newvision.nvp.xcontents.services.model.request.MContentCategorylinkReq
-import it.newvision.nvp.xcontents.services.model.contentCategory.MResponseLinkCategoryToContent
 import it.newvision.nvp.xcontents.services.model.request.MContentCategoryunlinkReq
 
 /* ************************
@@ -31,64 +31,7 @@ object JContentCategoryClient {
  * com/api/xcontents/resources/contentcategory</li>
  * </ul>
  */
-class JContentCategoryClient(val resourceEndpoint:String) {
-
-	/**
-	 * Link a content to a category.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>Role: 4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
-	 * 	<li>SHARE ACL on the contents</li>
-	 * 	<li>MODIFY ACL on the category</li>
-	 * </ul>
-	 * 
-	 * The user can not link share ONLY contents on category where the user has permission of MODIFY on
-	 * contents.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param param : MContentCategorylinkReq
-	 * @return MResponseLinkContentCategory
-	*/
-	def link(tokenId: String, 
-			clientId: String, 
-			param: MContentCategorylinkReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseLinkContentCategory ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JContentCategoryClient.client.resource(this.resourceEndpoint)
-			val response : MResponseLinkContentCategory = if(this.resourceEndpoint == ""){
-			
-				new MResponseLinkContentCategory()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("contentcategory/link")
-					.path(clientId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseLinkContentCategory],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseLinkContentCategory])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
+class JContentCategoryClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Deprecated by link service
@@ -105,7 +48,7 @@ class JContentCategoryClient(val resourceEndpoint:String) {
 			clientId: String, 
 			categoryId: String, 
 			contentId: String, 
-			silentMode: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseLinkCategoryToContent ={
+			silentMode: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseLinkCategoryToContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -159,7 +102,7 @@ class JContentCategoryClient(val resourceEndpoint:String) {
 			clientId: String, 
 			categoryId: String, 
 			contentId: String, 
-			silentModel: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseLinkCategoryToContent ={
+			silentModel: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseLinkCategoryToContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -199,6 +142,63 @@ class JContentCategoryClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Link a content to a category.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>Role: 4ME_SHARE_CONTENTS_IN_PUBLIC_CATEGORIES</li>
+	 * 	<li>SHARE ACL on the contents</li>
+	 * 	<li>MODIFY ACL on the category</li>
+	 * </ul>
+	 * 
+	 * The user can not link share ONLY contents on category where the user has permission of MODIFY on
+	 * contents.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MContentCategorylinkReq
+	 * @return MResponseLinkContentCategory
+	*/
+	def link(tokenId: String, 
+			clientId: String, 
+			param: MContentCategorylinkReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseLinkContentCategory ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JContentCategoryClient.client.resource(this.resourceEndpoint)
+			val response : MResponseLinkContentCategory = if(this.resourceEndpoint == ""){
+			
+				new MResponseLinkContentCategory()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("contentcategory/link")
+					.path(clientId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseLinkContentCategory],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseLinkContentCategory])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
 	 * Removes a content from a category.
 	 * 
 	 * <b>Validation:</b>
@@ -216,7 +216,7 @@ class JContentCategoryClient(val resourceEndpoint:String) {
 	*/
 	def unlink(tokenId: String, 
 			clientId: String, 
-			param: MContentCategoryunlinkReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseLinkContentCategory ={
+			param: MContentCategoryunlinkReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseLinkContentCategory ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

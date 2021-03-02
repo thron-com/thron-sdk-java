@@ -24,7 +24,7 @@ object JMediaContentClient {
 /**
  * DEPRECATED by xcontents JContent
  */
-class JMediaContentClient(val resourceEndpoint:String) {
+class JMediaContentClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Deprecated by <b>[xcontents] JContent.detail</b>
@@ -42,7 +42,7 @@ class JMediaContentClient(val resourceEndpoint:String) {
 			clientId: String, 
 			mediaContentId: String, 
 			xcontentId: String, 
-			xpublisherId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDetailMediaContent ={
+			xpublisherId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseDetailMediaContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -87,7 +87,7 @@ class JMediaContentClient(val resourceEndpoint:String) {
 	 * @return MResponseFindContents
 	*/
 	def findContentsByProperties(tokenId: String, 
-			param: MMediaContentfindContentsByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseFindContents ={
+			param: MMediaContentfindContentsByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseFindContents ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

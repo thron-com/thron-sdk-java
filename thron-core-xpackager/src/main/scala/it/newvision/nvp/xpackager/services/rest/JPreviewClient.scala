@@ -28,7 +28,7 @@ object JPreviewClient {
  * com/api/xpackager/resources/preview</li>
  * </ul>
  */
-class JPreviewClient(val resourceEndpoint:String) {
+class JPreviewClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Return the file source. This service works over the Repository Area, and return the source file if
@@ -46,7 +46,7 @@ class JPreviewClient(val resourceEndpoint:String) {
 			fileName: String, 
 			folderPath: String, 
 			siteName: String, 
-			fromFtp: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):javax.ws.rs.core.Response ={
+			fromFtp: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):javax.ws.rs.core.Response ={
 	
 		                  import javax.ws.rs.core.Response
 		                	val webResource = JPreviewClient.client.resource(this.resourceEndpoint)
@@ -82,7 +82,7 @@ class JPreviewClient(val resourceEndpoint:String) {
 			packageId: String, 
 			fileName: String, 
 			folderPath: String, 
-			siteName: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):javax.ws.rs.core.Response ={
+			siteName: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):javax.ws.rs.core.Response ={
 		     import javax.ws.rs.core.Response
 		                	val webResource = JPreviewClient.client.resource(this.resourceEndpoint)
 		                	//val _folderPath = java.net.URLEncoder.encode(folderPath, "UTF-8")

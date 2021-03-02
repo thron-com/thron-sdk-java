@@ -29,7 +29,7 @@ object JIEngineClient {
  * com/api/xintelligence/resources/iengine</li>
  * </ul>
  */
-class JIEngineClient(val resourceEndpoint:String) {
+class JIEngineClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Get the engine configuration for a specific classification
@@ -40,7 +40,7 @@ class JIEngineClient(val resourceEndpoint:String) {
 	*/
 	def detail(tokenId: String, 
 			clientId: String, 
-			classificationId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseEngineDetail ={
+			classificationId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseEngineDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -93,7 +93,7 @@ class JIEngineClient(val resourceEndpoint:String) {
 	def update(tokenId: String, 
 			clientId: String, 
 			classificationId: String, 
-			param: MIEngineupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseEngineDetail ={
+			param: MIEngineupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseEngineDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

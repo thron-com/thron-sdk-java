@@ -16,12 +16,12 @@ class MSourceDetail extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var extension: String =_
-	def withextension(p:String):this.type ={ 	this.extension = p; 	this }
+	var fileName: String =_
+	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var fileName: String =_
-	def withfileName(p:String):this.type ={ 	this.fileName = p; 	this }
+	var extension: String =_
+	def withextension(p:String):this.type ={ 	this.extension = p; 	this }
 
 }

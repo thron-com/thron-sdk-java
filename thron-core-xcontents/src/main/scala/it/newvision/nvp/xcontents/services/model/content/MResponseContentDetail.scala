@@ -27,15 +27,10 @@ class MResponseContentDetail extends MResponseContent with Serializable  {
 	var linkedCategories: List[MCategory] = new ArrayList[MCategory]
 	def withlinkedCategories(p:List[MCategory]):this.type ={ 	this.linkedCategories = p; 	this }
 
-	/**
-	 * Optional. The list of all available thumbnail URLs
-	 */
-	//#SWG#@ApiModelProperty(value = """Optional. The list of all available thumbnail URLs""")
+	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	@Deprecated
-	var thumbUrls: List[String] = new ArrayList[String]
-	@Deprecated
-	def withthumbUrls(p:List[String]):this.type ={ 	this.thumbUrls = p; 	this }
+	var userSpecificValues: MContentUserSpecificProperties =_
+	def withuserSpecificValues(p:MContentUserSpecificProperties):this.type ={ 	this.userSpecificValues = p; 	this }
 
 	/**
 	 * total number of "downloadable contents" (contents linked by the used as
@@ -57,9 +52,14 @@ class MResponseContentDetail extends MResponseContent with Serializable  {
 	var totalRecommendedContents: Integer =_
 	def withtotalRecommendedContents(p:Integer):this.type ={ 	this.totalRecommendedContents = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Optional. The list of all available thumbnail URLs
+	 */
+	//#SWG#@ApiModelProperty(value = """Optional. The list of all available thumbnail URLs""")
 	@BeanProperty 
-	var userSpecificValues: MContentUserSpecificProperties =_
-	def withuserSpecificValues(p:MContentUserSpecificProperties):this.type ={ 	this.userSpecificValues = p; 	this }
+	@Deprecated
+	var thumbUrls: List[String] = new ArrayList[String]
+	@Deprecated
+	def withthumbUrls(p:List[String]):this.type ={ 	this.thumbUrls = p; 	this }
 
 }

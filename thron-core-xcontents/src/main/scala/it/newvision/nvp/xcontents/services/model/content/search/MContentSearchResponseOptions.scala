@@ -14,17 +14,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MContentSearchResponseOptions extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var orderBy: MEContentSearchOrderBy =_
-	def withorderBy(p:MEContentSearchOrderBy):this.type ={ 	this.orderBy = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var resultsPageSize: Integer =_
-	def withresultsPageSize(p:Integer):this.type ={ 	this.resultsPageSize = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Defines which attributes of the details response object need to be filled in
+	 * the answer to the call.
+	 */
+	//#SWG#@ApiModelProperty(value = """Defines which attributes of the details response object need to be filled in the answer to the call.""")
 	@BeanProperty 
 	var returnDetailsFields: List[MEContentFieldOptions] =_
 	def withreturnDetailsFields(p:List[MEContentFieldOptions]):this.type ={ 	this.returnDetailsFields = p; 	this }
@@ -33,6 +27,33 @@ class MContentSearchResponseOptions extends Serializable {
 	@BeanProperty 
 	var thumbsOptions: List[MThumbsUrlOptions] =_
 	def withthumbsOptions(p:List[MThumbsUrlOptions]):this.type ={ 	this.thumbsOptions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var resultsPageSize: Integer =_
+	def withresultsPageSize(p:Integer):this.type ={ 	this.resultsPageSize = p; 	this }
+
+	/**
+	 * Deprecated.
+	 * 
+	 * Content order by, replaced with new field sort.
+	 */
+	//#SWG#@ApiModelProperty(value = """Deprecated.
+	//#SWGNL#
+	//#SWGNL#Content order by, replaced with new field sort.""")
+	@BeanProperty 
+	var orderBy: MEContentSearchOrderBy =_
+	def withorderBy(p:MEContentSearchOrderBy):this.type ={ 	this.orderBy = p; 	this }
+
+	/**
+	 * Content sort.
+	 * Only one order is accepted.
+	 */
+	//#SWG#@ApiModelProperty(value = """Content sort.
+	//#SWGNL#Only one order is accepted.""")
+	@BeanProperty 
+	var sort: List[MContentSort] =_
+	def withsort(p:List[MContentSort]):this.type ={ 	this.sort = p; 	this }
 
 	/**
 	 * @return Boolean

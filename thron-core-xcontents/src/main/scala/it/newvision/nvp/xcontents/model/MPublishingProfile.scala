@@ -23,12 +23,12 @@ class MPublishingProfile extends Serializable {
 	def withaudio(p:List[MPublishingProfileDetail]):this.type ={ 	this.audio = p; 	this }
 
 	/**
-	 * generic document
+	 * video document
 	 */
-	//#SWG#@ApiModelProperty(value = """generic document""")
+	//#SWG#@ApiModelProperty(value = """video document""")
 	@BeanProperty 
-	var genericDocument: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
-	def withgenericDocument(p:List[MPublishingProfileDetail]):this.type ={ 	this.genericDocument = p; 	this }
+	var stream: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
+	def withstream(p:List[MPublishingProfileDetail]):this.type ={ 	this.stream = p; 	this }
 
 	/**
 	 * like 
@@ -39,20 +39,20 @@ class MPublishingProfile extends Serializable {
 	def withimage(p:List[MPublishingProfileDetail]):this.type ={ 	this.image = p; 	this }
 
 	/**
+	 * generic document
+	 */
+	//#SWG#@ApiModelProperty(value = """generic document""")
+	@BeanProperty 
+	var genericDocument: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
+	def withgenericDocument(p:List[MPublishingProfileDetail]):this.type ={ 	this.genericDocument = p; 	this }
+
+	/**
 	 * pagelet document
 	 */
 	//#SWG#@ApiModelProperty(value = """pagelet document""")
 	@BeanProperty 
 	var pagelet: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
 	def withpagelet(p:List[MPublishingProfileDetail]):this.type ={ 	this.pagelet = p; 	this }
-
-	/**
-	 * video document
-	 */
-	//#SWG#@ApiModelProperty(value = """video document""")
-	@BeanProperty 
-	var stream: List[MPublishingProfileDetail] = new ArrayList[MPublishingProfileDetail]
-	def withstream(p:List[MPublishingProfileDetail]):this.type ={ 	this.stream = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 

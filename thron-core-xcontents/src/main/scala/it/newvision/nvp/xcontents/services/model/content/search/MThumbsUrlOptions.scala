@@ -17,13 +17,13 @@ class MThumbsUrlOptions extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var divArea: String =_
-	def withdivArea(p:String):this.type ={ 	this.divArea = p; 	this }
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
+	var divArea: String =_
+	def withdivArea(p:String):this.type ={ 	this.divArea = p; 	this }
 
 	/**
 	 * phrase, exact_match

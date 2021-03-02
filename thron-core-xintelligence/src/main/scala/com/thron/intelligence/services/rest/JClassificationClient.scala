@@ -9,8 +9,8 @@ import com.thron.intelligence.services.model.request.MClassificationinsertReq
 import com.thron.intelligence.services.model.classification.MResponseClassificationList
 import com.thron.intelligence.services.model.request.MClassificationlistReq
 import com.thron.intelligence.services.model.classification.MEClassificationOrderBy
-import com.thron.intelligence.services.model.classification.MResponseClassification
 import com.thron.intelligence.services.model.request.MClassificationupdateReq
+import com.thron.intelligence.services.model.classification.MResponseClassification
 
 /* ************************
 *  GENERATED CLASS
@@ -34,55 +34,7 @@ object JClassificationClient {
  * com/api/xintelligence/resources/classification</li>
  * </ul>
  */
-class JClassificationClient(val resourceEndpoint:String) {
-
-	/**
-	 * Returns the detail of a classification.
-	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param id : String
-	 * classification Id
-	 * @return MResponseClassificationDetail
-	*/
-	def detail(tokenId: String, 
-			clientId: String, 
-			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationDetail ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JClassificationClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-		
-			val response : MResponseClassificationDetail = if(this.resourceEndpoint == ""){
-			
-				new MResponseClassificationDetail()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("classification/detail")
-					.path(clientId.toString)
-		.path(id.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseClassificationDetail])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseClassificationDetail])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
+class JClassificationClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Creates a classification.
@@ -103,7 +55,7 @@ class JClassificationClient(val resourceEndpoint:String) {
 	*/
 	def insert(tokenId: String, 
 			clientId: String, 
-			param: MClassificationinsertReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationDetail ={
+			param: MClassificationinsertReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseClassificationDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -150,7 +102,7 @@ class JClassificationClient(val resourceEndpoint:String) {
 	*/
 	def list(tokenId: String, 
 			clientId: String, 
-			param: MClassificationlistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationList ={
+			param: MClassificationlistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseClassificationList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -217,7 +169,7 @@ class JClassificationClient(val resourceEndpoint:String) {
 			lang: String, 
 			orderBy: MEClassificationOrderBy, 
 			offset: Integer, 
-			limit: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationList ={
+			limit: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseClassificationList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -257,60 +209,50 @@ class JClassificationClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Removes a classification.
+	 * Returns the detail of a classification.
 	 * 
-	 * <b>Constraints:</b>
-	 * <ul>
-	 * 	<li>classification must not be active</li>
-	 * </ul>
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
-	 * </ul>
+	 * Attention: this service makes use of cache control to ensure best performance.
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @param id : String
-	 * classification id
-	 * @return MResponseClassification
+	 * classification Id
+	 * @return MResponseClassificationDetail
 	*/
-	def remove(tokenId: String, 
+	def detail(tokenId: String, 
 			clientId: String, 
-			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassification ={
+			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseClassificationDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
 			val webResource = JClassificationClient.client.resource(this.resourceEndpoint)
-			val response : MResponseClassification = if(this.resourceEndpoint == ""){
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+		
+			val response : MResponseClassificationDetail = if(this.resourceEndpoint == ""){
 			
-				new MResponseClassification()
+				new MResponseClassificationDetail()
 			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("classification/remove")
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("classification/detail")
 					.path(clientId.toString)
 		.path(id.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
 				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseClassification])
-					
+				wbuilder.get(classOf[MResponseClassificationDetail])
 			}
 			response
 		  }catch{
 			case e : com.sun.jersey.api.client.UniformInterfaceException =>
 				val response = e.getResponse
 				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseClassification])
+				  response.getEntity(classOf[MResponseClassificationDetail])
 				}
 				else {
-				  throw e
+					throw e
 				}
+			
 		  }
-		  
 	
 	}
 
@@ -334,7 +276,7 @@ class JClassificationClient(val resourceEndpoint:String) {
 	def update(tokenId: String, 
 			clientId: String, 
 			id: String, 
-			param: MClassificationupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseClassificationDetail ={
+			param: MClassificationupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseClassificationDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -364,6 +306,64 @@ class JClassificationClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseClassificationDetail])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Removes a classification.
+	 * 
+	 * <b>Constraints:</b>
+	 * <ul>
+	 * 	<li>classification must not be active</li>
+	 * </ul>
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>THRON_CLASSIFICATIONS_MANAGER or THRON_CLASS_[CLASSID]_MANAGER role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param id : String
+	 * classification id
+	 * @return MResponseClassification
+	*/
+	def remove(tokenId: String, 
+			clientId: String, 
+			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseClassification ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JClassificationClient.client.resource(this.resourceEndpoint)
+			val response : MResponseClassification = if(this.resourceEndpoint == ""){
+			
+				new MResponseClassification()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("classification/remove")
+					.path(clientId.toString)
+		.path(id.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseClassification])
+					
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseClassification])
 				}
 				else {
 				  throw e

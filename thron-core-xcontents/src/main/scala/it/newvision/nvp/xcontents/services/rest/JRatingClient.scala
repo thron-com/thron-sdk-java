@@ -4,11 +4,11 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xcontents.services.model.rating.MResponseGetRatingByProperties
-import it.newvision.nvp.xcontents.services.model.request.MRatingfindRatingByPropertiesReq
-import it.newvision.nvp.xcontents.services.model.rating.MResponseGetContentScore
 import it.newvision.nvp.xcontents.services.model.rating.MResponseRating
 import it.newvision.nvp.xcontents.services.model.request.MRatinginsertRatingReq
+import it.newvision.nvp.xcontents.services.model.rating.MResponseGetContentScore
+import it.newvision.nvp.xcontents.services.model.rating.MResponseGetRatingByProperties
+import it.newvision.nvp.xcontents.services.model.request.MRatingfindRatingByPropertiesReq
 import it.newvision.nvp.xcontents.services.model.request.MRatingremoveRatingsReq
 
 /* ************************
@@ -29,34 +29,35 @@ object JRatingClient {
  * <b>
  * </b>Use the new service JRatingFixedRange
  */
-class JRatingClient(val resourceEndpoint:String) {
+class JRatingClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
+	 * Deprecated
 	 * @param tokenId : String
-	 * @param param : MRatingfindRatingByPropertiesReq
-	 * @return MResponseGetRatingByProperties
+	 * @param param : MRatinginsertRatingReq
+	 * @return MResponseRating
 	*/
-	def findRatingByProperties(tokenId: String, 
-			param: MRatingfindRatingByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetRatingByProperties ={
+	def insertRating(tokenId: String, 
+			param: MRatinginsertRatingReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseRating ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
 			val webResource = JRatingClient.client.resource(this.resourceEndpoint)
-			val response : MResponseGetRatingByProperties = if(this.resourceEndpoint == ""){
+			val response : MResponseRating = if(this.resourceEndpoint == ""){
 			
-				new MResponseGetRatingByProperties()
+				new MResponseRating()
 			
 			}else{	
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
-					.path("rating/findRatingByProperties")
+					.path("rating/insertRating")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)
 					.header("X-TOKENID",tokenId)
 				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
 			
-				wbuilder.post(classOf[MResponseGetRatingByProperties],param)
+				wbuilder.post(classOf[MResponseRating],param)
 			
 			
 			}
@@ -65,7 +66,7 @@ class JRatingClient(val resourceEndpoint:String) {
 			case e : com.sun.jersey.api.client.UniformInterfaceException =>
 				val response = e.getResponse
 				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseGetRatingByProperties])
+				  response.getEntity(classOf[MResponseRating])
 				}
 				else {
 				  throw e
@@ -95,7 +96,7 @@ class JRatingClient(val resourceEndpoint:String) {
 			contentId: String, 
 			fromDate: it.newvision.nvp.core.libraries.rs.DateType, 
 			toDate: it.newvision.nvp.core.libraries.rs.DateType, 
-			categoryIdForAcl: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseGetContentScore ={
+			categoryIdForAcl: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseGetContentScore ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -135,32 +136,31 @@ class JRatingClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Deprecated
 	 * @param tokenId : String
-	 * @param param : MRatinginsertRatingReq
-	 * @return MResponseRating
+	 * @param param : MRatingfindRatingByPropertiesReq
+	 * @return MResponseGetRatingByProperties
 	*/
-	def insertRating(tokenId: String, 
-			param: MRatinginsertRatingReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRating ={
+	def findRatingByProperties(tokenId: String, 
+			param: MRatingfindRatingByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseGetRatingByProperties ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
 			val webResource = JRatingClient.client.resource(this.resourceEndpoint)
-			val response : MResponseRating = if(this.resourceEndpoint == ""){
+			val response : MResponseGetRatingByProperties = if(this.resourceEndpoint == ""){
 			
-				new MResponseRating()
+				new MResponseGetRatingByProperties()
 			
 			}else{	
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
-					.path("rating/insertRating")
+					.path("rating/findRatingByProperties")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)
 					.header("X-TOKENID",tokenId)
 				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
 			
-				wbuilder.post(classOf[MResponseRating],param)
+				wbuilder.post(classOf[MResponseGetRatingByProperties],param)
 			
 			
 			}
@@ -169,7 +169,7 @@ class JRatingClient(val resourceEndpoint:String) {
 			case e : com.sun.jersey.api.client.UniformInterfaceException =>
 				val response = e.getResponse
 				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseRating])
+				  response.getEntity(classOf[MResponseGetRatingByProperties])
 				}
 				else {
 				  throw e
@@ -187,7 +187,7 @@ class JRatingClient(val resourceEndpoint:String) {
 	 * @return MResponseRating
 	*/
 	def removeRatings(tokenId: String, 
-			param: MRatingremoveRatingsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRating ={
+			param: MRatingremoveRatingsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseRating ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

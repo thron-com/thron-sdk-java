@@ -26,32 +26,6 @@ import it.newvision.nvp.xcontents.services.model.common.MUpdater
 class MContentUpdate extends MUpdater with Serializable  {
 
 	/**
-	 * -> MContent.creationDate
-	 */
-	//#SWG#@ApiModelProperty(value = """-> MContent.creationDate""")
-	@BeanProperty 
-	var creationDate: Date =_
-	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
-
-	/**
-	 * The display name of the Author.
-	 * -> MContent.owner
-	 */
-	//#SWG#@ApiModelProperty(value = """The display name of the Author.
-	//#SWGNL#-> MContent.owner""")
-	@BeanProperty 
-	var owner: String =_
-	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
-
-	/**
-	 * -> MContent.properties
-	 */
-	//#SWG#@ApiModelProperty(value = """-> MContent.properties""")
-	@BeanProperty 
-	var properties: List[MEContentProperties] =_
-	def withproperties(p:List[MEContentProperties]):this.type ={ 	this.properties = p; 	this }
-
-	/**
 	 * DEPRECATED.
 	 * Update MContent.status
 	 */
@@ -62,6 +36,32 @@ class MContentUpdate extends MUpdater with Serializable  {
 	var status: String =_
 	@Deprecated
 	def withstatus(p:String):this.type ={ 	this.status = p; 	this }
+
+	/**
+	 * -> MContent.creationDate
+	 */
+	//#SWG#@ApiModelProperty(value = """-> MContent.creationDate""")
+	@BeanProperty 
+	var creationDate: Date =_
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
+
+	/**
+	 * -> MContent.properties
+	 */
+	//#SWG#@ApiModelProperty(value = """-> MContent.properties""")
+	@BeanProperty 
+	var properties: List[MEContentProperties] =_
+	def withproperties(p:List[MEContentProperties]):this.type ={ 	this.properties = p; 	this }
+
+	/**
+	 * The display name of the Author.
+	 * -> MContent.owner
+	 */
+	//#SWG#@ApiModelProperty(value = """The display name of the Author.
+	//#SWGNL#-> MContent.owner""")
+	@BeanProperty 
+	var owner: String =_
+	def withowner(p:String):this.type ={ 	this.owner = p; 	this }
 
 	/**
 	 * @return void

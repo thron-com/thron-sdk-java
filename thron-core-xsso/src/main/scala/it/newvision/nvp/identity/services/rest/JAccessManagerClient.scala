@@ -29,7 +29,54 @@ object JAccessManagerClient {
  * com/api/xsso/resources/accessmanager</li>
  * </ul>
  */
-class JAccessManagerClient(val resourceEndpoint:String) {
+class JAccessManagerClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
+
+	/**
+	 * Returns HTTP code 403 if access token has expired, 200 OK otherwise.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param username : String
+	 * optional parameter. The service can validate the token and verify that the session token belongs to
+	 * the given username
+	 * @return MResponseAccessLogin
+	*/
+	def validateToken(tokenId: String, 
+			clientId: String, 
+			username: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseAccessLogin ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JAccessManagerClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(username).foreach(s => params.add("username", s))  
+			val response : MResponseAccessLogin = if(this.resourceEndpoint == ""){
+			
+				new MResponseAccessLogin()
+			
+			}else{
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED	
+				var wbuilder = webResource
+					.path("accessmanager/validateToken")
+					.path(clientId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.post(classOf[MResponseAccessLogin],params)
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseAccessLogin])
+				}
+				else {
+				  throw e
+				}
+		  }
+	
+	}
 
 	/**
 	 * Returns HTTP code 403 if a set of comma-separated capabilities are invalid for a session token, 200
@@ -43,7 +90,7 @@ class JAccessManagerClient(val resourceEndpoint:String) {
 	*/
 	def validateCapability(tokenId: String, 
 			clientId: String, 
-			capabilities: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
+			capabilities: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):String ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -98,7 +145,7 @@ class JAccessManagerClient(val resourceEndpoint:String) {
 	*/
 	def validateRole(tokenId: String, 
 			clientId: String, 
-			role: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
+			role: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):String ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -126,53 +173,6 @@ class JAccessManagerClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[String])
-				}
-				else {
-				  throw e
-				}
-		  }
-	
-	}
-
-	/**
-	 * Returns HTTP code 403 if access token has expired, 200 OK otherwise.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param username : String
-	 * optional parameter. The service can validate the token and verify that the session token belongs to
-	 * the given username
-	 * @return MResponseAccessLogin
-	*/
-	def validateToken(tokenId: String, 
-			clientId: String, 
-			username: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseAccessLogin ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JAccessManagerClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(username).foreach(s => params.add("username", s))  
-			val response : MResponseAccessLogin = if(this.resourceEndpoint == ""){
-			
-				new MResponseAccessLogin()
-			
-			}else{
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED	
-				var wbuilder = webResource
-					.path("accessmanager/validateToken")
-					.path(clientId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.post(classOf[MResponseAccessLogin],params)
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseAccessLogin])
 				}
 				else {
 				  throw e

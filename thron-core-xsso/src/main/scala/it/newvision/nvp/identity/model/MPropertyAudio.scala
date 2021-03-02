@@ -137,14 +137,14 @@ class MPropertyAudio extends MPropertyGenericDocument with Serializable  {
 	def init_WEBAUDIO(client: MClient){
 		this.init_gd_WEB(client, "WEB")
 		this.bitRate = 128
-		this.sampleRate = 16000
+		this.sampleRate = 44100
 		this.convertTo = "MP3"
 		this.codec = "MP3"
 		this.withIngestion= true
 		this.compliantWith= "VIEW"
 		val cd = new MChannelDescription
 		cd.locale = "IT"
-		cd.channelShortName = "MP3 (16000 samplerate)"
+		cd.channelShortName = "MP3 (44100 samplerate)"
 		cd.channelDescription = "Download, codec mp3, bitrate 128kbps"
 		val cd2 = new MChannelDescription
 		cd2.locale = "EN"

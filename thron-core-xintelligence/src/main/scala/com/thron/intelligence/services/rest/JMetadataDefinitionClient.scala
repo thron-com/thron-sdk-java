@@ -34,7 +34,7 @@ object JMetadataDefinitionClient {
  * com/api/xintelligence/resources/metadatadefinition</li>
  * </ul>
  */
-class JMetadataDefinitionClient(val resourceEndpoint:String) {
+class JMetadataDefinitionClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Attention: this service makes use of cache control to ensure best performance.
@@ -45,7 +45,7 @@ class JMetadataDefinitionClient(val resourceEndpoint:String) {
 	*/
 	def detail(tokenId: String, 
 			clientId: String, 
-			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinitionDetail ={
+			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinitionDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -90,7 +90,7 @@ class JMetadataDefinitionClient(val resourceEndpoint:String) {
 	*/
 	def insert(tokenId: String, 
 			clientId: String, 
-			param: MMetadataDefinitioninsertReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinitionDetail ={
+			param: MMetadataDefinitioninsertReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinitionDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -138,7 +138,7 @@ class JMetadataDefinitionClient(val resourceEndpoint:String) {
 	*/
 	def list(tokenId: String, 
 			clientId: String, 
-			param: MMetadataDefinitionlistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinitionList ={
+			param: MMetadataDefinitionlistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinitionList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -207,7 +207,7 @@ class JMetadataDefinitionClient(val resourceEndpoint:String) {
 			searchLang: String, 
 			orderBy: MEMetadataDefinitionOrderBy, 
 			offset: Integer, 
-			limit: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinitionList ={
+			limit: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinitionList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -258,7 +258,7 @@ class JMetadataDefinitionClient(val resourceEndpoint:String) {
 	*/
 	def trash(tokenId: String, 
 			clientId: String, 
-			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinition ={
+			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinition ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -305,7 +305,7 @@ class JMetadataDefinitionClient(val resourceEndpoint:String) {
 	*/
 	def untrash(tokenId: String, 
 			clientId: String, 
-			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinition ={
+			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinition ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -369,7 +369,7 @@ class JMetadataDefinitionClient(val resourceEndpoint:String) {
 	def update(tokenId: String, 
 			clientId: String, 
 			id: String, 
-			param: MMetadataDefinitionupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinitionDetail ={
+			param: MMetadataDefinitionupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinitionDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

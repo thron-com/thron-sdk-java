@@ -6,14 +6,14 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xcontents.services.model.embed.MResponsePlayerEmbedCodeDetail
 import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodeinsertReq
-import it.newvision.nvp.xcontents.services.model.embed.MResponsePlayerEmbedCodeList
-import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodelistReq
 import it.newvision.nvp.xcontents.services.model.embed.MResponsePlayerEmbed
 import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCoderemoveReq
-import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodesyncReq
+import it.newvision.nvp.xcontents.services.model.embed.MResponsePlayerEmbedCodeList
+import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodelistReq
 import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodeupdateReq
 import it.newvision.nvp.xcontents.services.model.embed.MResponsePlayerEmbedCodeUpdateTemplate
 import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodeupdateTemplateReq
+import it.newvision.nvp.xcontents.services.model.request.MPlayerEmbedCodesyncReq
 
 /* ************************
 *  GENERATED CLASS
@@ -37,7 +37,7 @@ object JPlayerEmbedCodeClient {
  * com/api/xcontents/resources/playerembedcode</li>
  * </ul>
  */
-class JPlayerEmbedCodeClient(val resourceEndpoint:String) {
+class JPlayerEmbedCodeClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Adds a custom Player Embed Code for a content or category.
@@ -54,7 +54,7 @@ class JPlayerEmbedCodeClient(val resourceEndpoint:String) {
 	*/
 	def insert(tokenId: String, 
 			clientId: String, 
-			param: MPlayerEmbedCodeinsertReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayerEmbedCodeDetail ={
+			param: MPlayerEmbedCodeinsertReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayerEmbedCodeDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -93,59 +93,6 @@ class JPlayerEmbedCodeClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Returns a list of Player Embed Codes matching provided criteria, sorted by creation date.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>SHARE ACL on the content or category, if entity is defined</li>
-	 * 	<li>4ME_USE_CONTENTS if entity is not defined or else 4ME_MANAGE_PLAYER_EMBED_VERSIONS role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param param : MPlayerEmbedCodelistReq
-	 * @return MResponsePlayerEmbedCodeList
-	*/
-	def list(tokenId: String, 
-			clientId: String, 
-			param: MPlayerEmbedCodelistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayerEmbedCodeList ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JPlayerEmbedCodeClient.client.resource(this.resourceEndpoint)
-			val response : MResponsePlayerEmbedCodeList = if(this.resourceEndpoint == ""){
-			
-				new MResponsePlayerEmbedCodeList()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("playerembedcode/list")
-					.path(clientId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponsePlayerEmbedCodeList],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponsePlayerEmbedCodeList])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * Removes a custom Player Embed Code.
 	 * 
 	 * <b>Validation:</b>
@@ -160,7 +107,7 @@ class JPlayerEmbedCodeClient(val resourceEndpoint:String) {
 	*/
 	def remove(tokenId: String, 
 			clientId: String, 
-			param: MPlayerEmbedCoderemoveReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayerEmbed ={
+			param: MPlayerEmbedCoderemoveReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayerEmbed ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -199,40 +146,40 @@ class JPlayerEmbedCodeClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Updates Player Embed Codes bumping template version to the latest value.
+	 * Returns a list of Player Embed Codes matching provided criteria, sorted by creation date.
 	 * 
 	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>4ME_MANAGE_PLAYER_EMBED_VERSIONS role or (4ME_MANAGE_PLAYER_EMBED_TEMPLATES role and user is
-	 * template's manager or editor)</li>
+	 * 	<li>SHARE ACL on the content or category, if entity is defined</li>
+	 * 	<li>4ME_USE_CONTENTS if entity is not defined or else 4ME_MANAGE_PLAYER_EMBED_VERSIONS role</li>
 	 * </ul>
 	 * @param tokenId : String
 	 * @param clientId : String
-	 * @param param : MPlayerEmbedCodesyncReq
-	 * @return MResponsePlayerEmbed
+	 * @param param : MPlayerEmbedCodelistReq
+	 * @return MResponsePlayerEmbedCodeList
 	*/
-	def sync(tokenId: String, 
+	def list(tokenId: String, 
 			clientId: String, 
-			param: MPlayerEmbedCodesyncReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayerEmbed ={
+			param: MPlayerEmbedCodelistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayerEmbedCodeList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
 			val webResource = JPlayerEmbedCodeClient.client.resource(this.resourceEndpoint)
-			val response : MResponsePlayerEmbed = if(this.resourceEndpoint == ""){
+			val response : MResponsePlayerEmbedCodeList = if(this.resourceEndpoint == ""){
 			
-				new MResponsePlayerEmbed()
+				new MResponsePlayerEmbedCodeList()
 			
 			}else{	
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
-					.path("playerembedcode/sync")
+					.path("playerembedcode/list")
 					.path(clientId.toString)
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)
 					.header("X-TOKENID",tokenId)
 				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
 			
-				wbuilder.post(classOf[MResponsePlayerEmbed],param)
+				wbuilder.post(classOf[MResponsePlayerEmbedCodeList],param)
 			
 			
 			}
@@ -241,7 +188,7 @@ class JPlayerEmbedCodeClient(val resourceEndpoint:String) {
 			case e : com.sun.jersey.api.client.UniformInterfaceException =>
 				val response = e.getResponse
 				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponsePlayerEmbed])
+				  response.getEntity(classOf[MResponsePlayerEmbedCodeList])
 				}
 				else {
 				  throw e
@@ -267,7 +214,7 @@ class JPlayerEmbedCodeClient(val resourceEndpoint:String) {
 	*/
 	def update(tokenId: String, 
 			clientId: String, 
-			param: MPlayerEmbedCodeupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayerEmbedCodeDetail ={
+			param: MPlayerEmbedCodeupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayerEmbedCodeDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -319,7 +266,7 @@ class JPlayerEmbedCodeClient(val resourceEndpoint:String) {
 	*/
 	def updateTemplate(tokenId: String, 
 			clientId: String, 
-			param: MPlayerEmbedCodeupdateTemplateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayerEmbedCodeUpdateTemplate ={
+			param: MPlayerEmbedCodeupdateTemplateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayerEmbedCodeUpdateTemplate ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -348,6 +295,59 @@ class JPlayerEmbedCodeClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponsePlayerEmbedCodeUpdateTemplate])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Updates Player Embed Codes bumping template version to the latest value.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>4ME_MANAGE_PLAYER_EMBED_VERSIONS role or (4ME_MANAGE_PLAYER_EMBED_TEMPLATES role and user is
+	 * template's manager or editor)</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MPlayerEmbedCodesyncReq
+	 * @return MResponsePlayerEmbed
+	*/
+	def sync(tokenId: String, 
+			clientId: String, 
+			param: MPlayerEmbedCodesyncReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayerEmbed ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JPlayerEmbedCodeClient.client.resource(this.resourceEndpoint)
+			val response : MResponsePlayerEmbed = if(this.resourceEndpoint == ""){
+			
+				new MResponsePlayerEmbed()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("playerembedcode/sync")
+					.path(clientId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponsePlayerEmbed],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponsePlayerEmbed])
 				}
 				else {
 				  throw e

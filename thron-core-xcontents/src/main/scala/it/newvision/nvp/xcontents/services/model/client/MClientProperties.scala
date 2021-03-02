@@ -6,6 +6,7 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xcontents.model.MCustomMetadata
 import it.newvision.nvp.xcontents.model.MMetadata
+import it.newvision.nvp.xcontents.services.model.client.delivery.MDeliverySettings
 import it.newvision.nvp.xcontents.model.MPlayerEmbedTemplate
 import it.newvision.nvp.xcontents.model.MPublishingProfile
 import it.newvision.nvp.xcontents.model.MRatingProperty
@@ -63,6 +64,11 @@ class MClientProperties extends Serializable {
 	@BeanProperty 
 	var customProperties: List[MMetadata] = new ArrayList[MMetadata]
 	def withcustomProperties(p:List[MMetadata]):this.type ={ 	this.customProperties = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var deliverySettings: MDeliverySettings =_
+	def withdeliverySettings(p:MDeliverySettings):this.type ={ 	this.deliverySettings = p; 	this }
 
 	/**
 	 * disable tracking events
