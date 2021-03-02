@@ -5,8 +5,6 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
 import it.newvision.nvp.xadmin.services.model.content.MResponseDetailSource
-import it.newvision.nvp.xadmin.services.model.content.MResponseGenerateDownloadToken
-import it.newvision.nvp.xadmin.services.model.request.MContentgenerateDownloadTokenReq
 import it.newvision.nvp.xadmin.services.model.weebo.MResponseGetContentTypes
 import it.newvision.nvp.xadmin.services.model.request.MContentgetContentTypesReq
 import it.newvision.nvp.xadmin.services.model.content.MResponsePublishContents
@@ -116,68 +114,6 @@ trait JContent extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __detailSource(tokenId: String, clientId: String, xcontentId: String) :MResponseDetailSource
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_detailSource: String
-
-	/**
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param param : MContentgenerateDownloadTokenReq
-	 * @return MResponseGenerateDownloadToken
-	*/
-	@POST
-	@Path("/generateDownloadToken/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/generateDownloadToken", notes = """""", response = classOf[MResponseGenerateDownloadToken])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def generateDownloadToken(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			param: MContentgenerateDownloadTokenReq):Response /*returnType = MResponseGenerateDownloadToken*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__generateDownloadToken(tokenId,clientId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_generateDownloadToken)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_generateDownloadToken)
-	    }
-	} 
-
-	@GET
-	@Path("/generateDownloadToken/{clientId}")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def generateDownloadToken_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseGenerateDownloadToken*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("generateDownloadToken",this._getCacheControl) 
-		try{
-			val resp = this.__generateDownloadToken(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,clientId,PRestHelper.bindRequest[MContentgenerateDownloadTokenReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_generateDownloadToken)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_generateDownloadToken)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __generateDownloadToken(tokenId: String, clientId: String, param: MContentgenerateDownloadTokenReq) :MResponseGenerateDownloadToken
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_generateDownloadToken: String
 
 	/**
 	 * Returns the list of contentType available for a file based on its name.

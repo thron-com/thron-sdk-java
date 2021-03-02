@@ -312,7 +312,7 @@ class MPropertyStream extends MPropertyGenericDocument with Serializable  {
 		//this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(128))) x mp3
 		this.totalBitRates = new ArrayList[Integer](Arrays.asList(Integer.valueOf(128)))
 		//this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100))) x mp3
-		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(16000)))
+		this.sampleRates =  new ArrayList[Integer](Arrays.asList(Integer.valueOf(44100)))
 		this.defaultBitRate = 128
 		this.streamProtocol = ""
 		this.appName = ""

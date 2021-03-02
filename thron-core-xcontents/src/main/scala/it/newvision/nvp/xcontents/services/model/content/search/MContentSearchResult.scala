@@ -17,11 +17,6 @@ class MContentSearchResult extends MResponseContent with Serializable  {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var estimatedTotalResults: Long =_
-	def withestimatedTotalResults(p:Long):this.type ={ 	this.estimatedTotalResults = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
 	var items: List[MContentItems] = new ArrayList[MContentItems]
 	def withitems(p:List[MContentItems]):this.type ={ 	this.items = p; 	this }
 
@@ -29,5 +24,10 @@ class MContentSearchResult extends MResponseContent with Serializable  {
 	@BeanProperty 
 	var nextPageToken: String =_
 	def withnextPageToken(p:String):this.type ={ 	this.nextPageToken = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var estimatedTotalResults: Long =_
+	def withestimatedTotalResults(p:Long):this.type ={ 	this.estimatedTotalResults = p; 	this }
 
 }

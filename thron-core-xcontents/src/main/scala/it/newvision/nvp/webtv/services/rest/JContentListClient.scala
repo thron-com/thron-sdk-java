@@ -31,7 +31,7 @@ object JContentListClient {
  * com/api/xcontents/resources/contentlist</li>
  * </ul>
  */
-class JContentListClient(val resourceEndpoint:String) {
+class JContentListClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Returns content matching provided criteria.
@@ -133,7 +133,7 @@ class JContentListClient(val resourceEndpoint:String) {
 			divArea: String, 
 			offset: Integer, 
 			numberOfResult: Integer, 
-			returnTotalResults: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentListResult ={
+			returnTotalResults: Boolean)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseContentListResult ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

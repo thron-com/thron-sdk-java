@@ -14,6 +14,11 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MOwnerDetail extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var username: String =_
+	def withusername(p:String):this.type ={ 	this.username = p; 	this }
+
 	/**
 	 * phrase, exact_match
 	 */
@@ -21,10 +26,5 @@ class MOwnerDetail extends Serializable {
 	@BeanProperty 
 	var ownerFullName: String =_
 	def withownerFullName(p:String):this.type ={ 	this.ownerFullName = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
-	@BeanProperty 
-	var username: String =_
-	def withusername(p:String):this.type ={ 	this.username = p; 	this }
 
 }

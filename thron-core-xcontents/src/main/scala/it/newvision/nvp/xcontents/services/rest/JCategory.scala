@@ -4,24 +4,25 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import javax.ws.rs._ 
 import javax.ws.rs.core._ 
-import it.newvision.nvp.xcontents.services.model.category.MResponseUpdateCategory
-import it.newvision.nvp.xcontents.services.model.request.MCategoryaddCategory4LocaleReq
-import it.newvision.nvp.xcontents.services.model.category.MResponseCategoryPrettyId
-import it.newvision.nvp.xcontents.services.model.request.MCategoryaddCategoryPrettyIdReq
 import it.newvision.nvp.xcontents.services.model.category.MResponseNewCategory
 import it.newvision.nvp.xcontents.services.model.request.MCategorycreateCategoryReq
+import it.newvision.nvp.xcontents.services.model.category.MResponseUpdateCategory
+import it.newvision.nvp.xcontents.services.model.request.MCategoryaddCategory4LocaleReq
+import it.newvision.nvp.xcontents.services.model.request.MCategoryremoveCategory4LocaleReq
+import it.newvision.nvp.xcontents.services.model.request.MCategoryupdateCategory4LocaleReq
+import it.newvision.nvp.xcontents.services.model.category.MResponseRemoveCategory
 import it.newvision.nvp.xcontents.services.model.category.MResponseFindCategory2
 import it.newvision.nvp.xcontents.services.model.request.MCategoryfindByProperties2Req
-import it.newvision.nvp.xcontents.services.model.category.MResponseGetCategory
-import it.newvision.nvp.xcontents.services.model.category.MResponseCategory
-import it.newvision.nvp.xcontents.services.model.category.MResponseRemoveCategory
-import it.newvision.nvp.xcontents.services.model.request.MCategoryremoveCategory4LocaleReq
-import it.newvision.nvp.xcontents.services.model.request.MCategoryremoveCategoryPrettyIdReq
 import it.newvision.nvp.xcontents.services.model.request.MCategoryupdateCategoryReq
-import it.newvision.nvp.xcontents.services.model.request.MCategoryupdateCategory4LocaleReq
+import it.newvision.nvp.xcontents.services.model.category.MResponseGetCategory
+import it.newvision.nvp.xcontents.services.model.category.MResponseCategoryPrettyId
+import it.newvision.nvp.xcontents.services.model.request.MCategoryaddCategoryPrettyIdReq
 import it.newvision.nvp.xcontents.services.model.request.MCategoryupdateCategoryPrettyIdReq
+import it.newvision.nvp.xcontents.services.model.request.MCategoryremoveCategoryPrettyIdReq
 import it.newvision.nvp.xcontents.services.model.category.MResponseCategoryVerifyPrettyId
 import it.newvision.nvp.xcontents.services.model.request.MCategoryverifyCategoryPrettyIdReq
+import it.newvision.nvp.xcontents.services.model.category.MResponseCategory
+import it.newvision.nvp.xcontents.services.model.request.MCategoryupdateUserSpecificValuesReq
 
 /* ************************
 *  GENERATED CLASS
@@ -57,138 +58,6 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	import scala.collection.immutable.Map
 
 	protected val cachemap:Map[String,CacheControl] //TO OVERRIDE IN Resource class
-
-	/**
-	 * Adds localized name and description to a category.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the category</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MCategoryaddCategory4LocaleReq
-	 * @return MResponseUpdateCategory
-	*/
-	@POST
-	@Path("/addCategory4Locale")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addCategory4Locale", notes = """Adds localized name and description to a category.
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the category</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseUpdateCategory])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def addCategory4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MCategoryaddCategory4LocaleReq):Response /*returnType = MResponseUpdateCategory*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__addCategory4Locale(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addCategory4Locale)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_addCategory4Locale)
-	    }
-	} 
-
-	@GET
-	@Path("/addCategory4Locale")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def addCategory4Locale_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateCategory*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("addCategory4Locale",this._getCacheControl) 
-		try{
-			val resp = this.__addCategory4Locale(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MCategoryaddCategory4LocaleReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addCategory4Locale)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addCategory4Locale)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __addCategory4Locale(tokenId: String, param: MCategoryaddCategory4LocaleReq) :MResponseUpdateCategory
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_addCategory4Locale: String
-
-	/**
-	 * Adds a localized prettyId to a category.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the category</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MCategoryaddCategoryPrettyIdReq
-	 * @return MResponseCategoryPrettyId
-	*/
-	@POST
-	@Path("/addCategoryPrettyId")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/addCategoryPrettyId", notes = """Adds a localized prettyId to a category.
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the category</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseCategoryPrettyId])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def addCategoryPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MCategoryaddCategoryPrettyIdReq):Response /*returnType = MResponseCategoryPrettyId*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__addCategoryPrettyId(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addCategoryPrettyId)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_addCategoryPrettyId)
-	    }
-	} 
-
-	@GET
-	@Path("/addCategoryPrettyId")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def addCategoryPrettyId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseCategoryPrettyId*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("addCategoryPrettyId",this._getCacheControl) 
-		try{
-			val resp = this.__addCategoryPrettyId(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MCategoryaddCategoryPrettyIdReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addCategoryPrettyId)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addCategoryPrettyId)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __addCategoryPrettyId(tokenId: String, param: MCategoryaddCategoryPrettyIdReq) :MResponseCategoryPrettyId
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_addCategoryPrettyId: String
 
 	/**
 	 * Creates a category.
@@ -263,226 +132,202 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_createCategory: String
 
 	/**
-	 * Returns the list of categories matching provided criteria.
+	 * Adds localized name and description to a category.
 	 * 
-	 * Categories linkedCategories property is not returned.
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the category</li>
+	 * </ul>
 	 * @param tokenId : String
-	 * @param param : MCategoryfindByProperties2Req
-	 * @return MResponseFindCategory2
+	 * @param param : MCategoryaddCategory4LocaleReq
+	 * @return MResponseUpdateCategory
 	*/
 	@POST
-	@Path("/findByProperties2")
+	@Path("/addCategory4Locale")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/findByProperties2", notes = """Returns the list of categories matching provided criteria.
+	//#SWG#@ApiOperation(value = "/addCategory4Locale", notes = """Adds localized name and description to a category.
 	//#SWGNL#
-	//#SWGNL#Categories linkedCategories property is not returned.""", response = classOf[MResponseFindCategory2])
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the category</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseUpdateCategory])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def findByProperties2(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def addCategory4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			param: MCategoryfindByProperties2Req):Response /*returnType = MResponseFindCategory2*/ = {
+			param: MCategoryaddCategory4LocaleReq):Response /*returnType = MResponseUpdateCategory*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__findByProperties2(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_findByProperties2)    
+			val resp = this.__addCategory4Locale(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addCategory4Locale)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_findByProperties2)
+	        throw new WebApplicationException(e,this.capability_addCategory4Locale)
 	    }
 	} 
 
 	@GET
-	@Path("/findByProperties2")
+	@Path("/addCategory4Locale")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def findByProperties2_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def addCategory4Locale_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseFindCategory2*/ = { 
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateCategory*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("findByProperties2",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("addCategory4Locale",this._getCacheControl) 
 		try{
-			val resp = this.__findByProperties2(
+			val resp = this.__addCategory4Locale(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MCategoryfindByProperties2Req](param_q)	
+			,PRestHelper.bindRequest[MCategoryaddCategory4LocaleReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findByProperties2)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addCategory4Locale)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_findByProperties2)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addCategory4Locale)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __findByProperties2(tokenId: String, param: MCategoryfindByProperties2Req) :MResponseFindCategory2
+	 protected def __addCategory4Locale(tokenId: String, param: MCategoryaddCategory4LocaleReq) :MResponseUpdateCategory
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_findByProperties2: String
+	protected def capability_addCategory4Locale: String
 
 	/**
-	 * Returns category detail; if cascade parameter is true, service returns the tree of children
-	 * categories.
+	 * Removes localized name and description from a category.
 	 * 
-	 * Attention: this service makes use of cache control to ensure best performance.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param categoryId : String
-	 * Id or prettyId
-	 * @param cascade : Boolean
-	 * Optional. With cascade equals true, the service return the children sub tree of the given category
-	 * @param locale : String
-	 * Optional.If the client desires to have the category description for a specific locale. The desired
-	 * locale is return as first element of the array (if exists).
-	 * The field is used in conjunction with orderBy field to sort the contents by categoryName (for a
-	 * specific locale)
-	 * The service always return all available locales for each category.
-	 * @return MResponseGetCategory
-	*/
-	@GET
-	@Path("/getCategory")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
-	//#SWG#@ApiOperation(value = "/getCategory", notes = """Returns category detail; if cascade parameter is true, service returns the tree of children categories.
-	//#SWGNL#
-	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseGetCategory])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def getCategory(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@QueryParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """Id or prettyId""")
-	@QueryParam("categoryId")
-	categoryId: String, 
-			//#SWG#@ApiParam(value = """Optional. With cascade equals true, the service return the children sub tree of the given category""")
-	@QueryParam("cascade")
-	cascade: Boolean, 
-			//#SWG#@ApiParam(value = """Optional.If the client desires to have the category description for a specific locale. The desired locale is return as first element of the array (if exists).
-	//#SWGNL#The field is used in conjunction with orderBy field to sort the contents by categoryName (for a specific locale)
-	//#SWGNL#The service always return all available locales for each category.""")
-	@QueryParam("locale")
-	locale: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String
-			,
-			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
-			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseGetCategory*/= { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		//get the cache control specific for this service
-		val cc = this.cachemap("getCategory") 
-		try{	
-			val resp = this.__getCategory(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,categoryId,cascade,locale)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getCategory)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_getCategory)
-	    }
-	}
-
-	 
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __getCategory(tokenId: String, clientId: String, categoryId: String, cascade: Boolean, locale: String) :MResponseGetCategory
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_getCategory: String
-
-	/**
-	 * Used to move a given category. The service keeps the metadata of source category (locale, tree
-	 * structure, acl)
-	 * 
-	 * <b>Validations:</b>
+	 * <b>Validation:</b>
 	 * <ul>
-	 * 	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
-	 * CORE_MANAGE_PUBLIC_CATEGORIES</li>
-	 * 	<li>MODIFY/SHARE Acl on the source category and SHARE on Contents.</li>
-	 * 	<li>MODIFY/SHARE ACL on the target category, access rights set on the target category must match
-	 * that of the source category</li>
+	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
-	 * 
-	 * The user can not move category with share ONLY contents on category where the user has permission
-	 * of MODIFY on contents.
 	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param sourceId : String
-	 * Source categoryId
-	 * @param targetId : String
-	 * target category Id. use "ROOT" value to move the source category at root level.
-	 * @return MResponseCategory
+	 * @param param : MCategoryremoveCategory4LocaleReq
+	 * @return MResponseUpdateCategory
 	*/
 	@POST
-	@Path("/move/{clientId}/{sourceId}")
+	@Path("/removeCategory4Locale")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
-	//#SWG#@ApiOperation(value = "/move", notes = """Used to move a given category. The service keeps the metadata of source category (locale, tree structure, acl)
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/removeCategory4Locale", notes = """Removes localized name and description from a category.
 	//#SWGNL#
-	//#SWGNL#<b>Validations:</b>
+	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
-	//#SWGNL#	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or CORE_MANAGE_PUBLIC_CATEGORIES</li>
-	//#SWGNL#	<li>MODIFY/SHARE Acl on the source category and SHARE on Contents.</li>
-	//#SWGNL#	<li>MODIFY/SHARE ACL on the target category, access rights set on the target category must match that of the source category</li>
-	//#SWGNL#</ul>
-	//#SWGNL#
-	//#SWGNL#The user can not move category with share ONLY contents on category where the user has permission of MODIFY on contents.""", response = classOf[MResponseCategory])
+	//#SWGNL#	<li>MODIFY ACL on the category</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseUpdateCategory])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def move(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def removeCategory4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			//#SWG#@ApiParam(value = """""")
-	@PathParam("clientId")
-	clientId: String, 
-			//#SWG#@ApiParam(value = """Source categoryId""")
-	@PathParam("sourceId")
-	sourceId: String, 
-			//#SWG#@ApiParam(value = """target category Id. use "ROOT" value to move the source category at root level.""")
-	@FormParam("targetId")
-	targetId: String):Response /*returnType = MResponseCategory*/ = {
+			param: MCategoryremoveCategory4LocaleReq):Response /*returnType = MResponseUpdateCategory*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__move(tokenId,clientId,sourceId,targetId)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_move)    
+			val resp = this.__removeCategory4Locale(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeCategory4Locale)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_move)
+	        throw new WebApplicationException(e,this.capability_removeCategory4Locale)
 	    }
 	} 
 
 	@GET
-	@Path("/move/{clientId}/{sourceId}")
+	@Path("/removeCategory4Locale")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def move_2(@QueryParam("tokenId")tokenId_q: String, 
-			@PathParam("clientId")clientId_q: String, 
-			@PathParam("sourceId")sourceId_q: String, 
-			@QueryParam("targetId")targetId_q: String,
-			@HeaderParam("X-TOKENID") tokenId_h: String,
-			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseCategory*/ = { 
+	def removeCategory4Locale_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateCategory*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("move",this._getCacheControl) 
-		try{	
-			val resp = this.__move(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,sourceId_q,targetId_q)
-		
-			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_move)
+		val cc = this.cachemap.getOrElse("removeCategory4Locale",this._getCacheControl) 
+		try{
+			val resp = this.__removeCategory4Locale(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MCategoryremoveCategory4LocaleReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeCategory4Locale)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_move)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeCategory4Locale)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __move(tokenId: String, clientId: String, sourceId: String, targetId: String) :MResponseCategory
+	 protected def __removeCategory4Locale(tokenId: String, param: MCategoryremoveCategory4LocaleReq) :MResponseUpdateCategory
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_move: String
+	protected def capability_removeCategory4Locale: String
+
+	/**
+	 * Updates localized name and description of a category.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the category</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MCategoryupdateCategory4LocaleReq
+	 * @return MResponseUpdateCategory
+	*/
+	@POST
+	@Path("/updateCategory4Locale")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/updateCategory4Locale", notes = """Updates localized name and description of a category.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the category</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseUpdateCategory])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def updateCategory4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MCategoryupdateCategory4LocaleReq):Response /*returnType = MResponseUpdateCategory*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__updateCategory4Locale(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateCategory4Locale)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_updateCategory4Locale)
+	    }
+	} 
+
+	@GET
+	@Path("/updateCategory4Locale")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def updateCategory4Locale_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateCategory*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateCategory4Locale",this._getCacheControl) 
+		try{
+			val resp = this.__updateCategory4Locale(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MCategoryupdateCategory4LocaleReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateCategory4Locale)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateCategory4Locale)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __updateCategory4Locale(tokenId: String, param: MCategoryupdateCategory4LocaleReq) :MResponseUpdateCategory
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_updateCategory4Locale: String
 
 	/**
 	 * The service remove the specified category.
@@ -581,136 +426,64 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_removeCategory: String
 
 	/**
-	 * Removes localized name and description from a category.
+	 * Returns the list of categories matching provided criteria.
 	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the category</li>
-	 * </ul>
+	 * Categories linkedCategories property is not returned.
 	 * @param tokenId : String
-	 * @param param : MCategoryremoveCategory4LocaleReq
-	 * @return MResponseUpdateCategory
+	 * @param param : MCategoryfindByProperties2Req
+	 * @return MResponseFindCategory2
 	*/
 	@POST
-	@Path("/removeCategory4Locale")
+	@Path("/findByProperties2")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeCategory4Locale", notes = """Removes localized name and description from a category.
+	//#SWG#@ApiOperation(value = "/findByProperties2", notes = """Returns the list of categories matching provided criteria.
 	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the category</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseUpdateCategory])
+	//#SWGNL#Categories linkedCategories property is not returned.""", response = classOf[MResponseFindCategory2])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def removeCategory4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def findByProperties2(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			param: MCategoryremoveCategory4LocaleReq):Response /*returnType = MResponseUpdateCategory*/ = {
+			param: MCategoryfindByProperties2Req):Response /*returnType = MResponseFindCategory2*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__removeCategory4Locale(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeCategory4Locale)    
+			val resp = this.__findByProperties2(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_findByProperties2)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_removeCategory4Locale)
+	        throw new WebApplicationException(e,this.capability_findByProperties2)
 	    }
 	} 
 
 	@GET
-	@Path("/removeCategory4Locale")
+	@Path("/findByProperties2")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def removeCategory4Locale_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def findByProperties2_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateCategory*/ = { 
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseFindCategory2*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("removeCategory4Locale",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("findByProperties2",this._getCacheControl) 
 		try{
-			val resp = this.__removeCategory4Locale(
+			val resp = this.__findByProperties2(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MCategoryremoveCategory4LocaleReq](param_q)	
+			,PRestHelper.bindRequest[MCategoryfindByProperties2Req](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeCategory4Locale)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_findByProperties2)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeCategory4Locale)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_findByProperties2)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __removeCategory4Locale(tokenId: String, param: MCategoryremoveCategory4LocaleReq) :MResponseUpdateCategory
+	 protected def __findByProperties2(tokenId: String, param: MCategoryfindByProperties2Req) :MResponseFindCategory2
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_removeCategory4Locale: String
-
-	/**
-	 * Removes localized prettyId from a category.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>MODIFY ACL on the category</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MCategoryremoveCategoryPrettyIdReq
-	 * @return MResponseCategoryPrettyId
-	*/
-	@POST
-	@Path("/removeCategoryPrettyId")
-	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/removeCategoryPrettyId", notes = """Removes localized prettyId from a category.
-	//#SWGNL#
-	//#SWGNL#<b>Validation:</b>
-	//#SWGNL#<ul>
-	//#SWGNL#	<li>MODIFY ACL on the category</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseCategoryPrettyId])
-			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def removeCategoryPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
-	@HeaderParam("X-TOKENID")
-	tokenId: String, 
-			param: MCategoryremoveCategoryPrettyIdReq):Response /*returnType = MResponseCategoryPrettyId*/ = {
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		try{
-			val resp = this.__removeCategoryPrettyId(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeCategoryPrettyId)    
-		}catch{
-	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_removeCategoryPrettyId)
-	    }
-	} 
-
-	@GET
-	@Path("/removeCategoryPrettyId")
-	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def removeCategoryPrettyId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
-			@QueryParam("tokenId") tokenId_q: String,
-			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseCategoryPrettyId*/ = { 
-		import it.newvision.nvp.core.libraries.restserver.PRestHelper
-		import it.newvision.core.dictionary.exceptions.WebApplicationException
-		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("removeCategoryPrettyId",this._getCacheControl) 
-		try{
-			val resp = this.__removeCategoryPrettyId(
-			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MCategoryremoveCategoryPrettyIdReq](param_q)	
-		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeCategoryPrettyId)
-	    }catch{
-	      case e:WebApplicationException=>
-	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeCategoryPrettyId)
-	    }
-	}
-
-	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __removeCategoryPrettyId(tokenId: String, param: MCategoryremoveCategoryPrettyIdReq) :MResponseCategoryPrettyId
-	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_removeCategoryPrettyId: String
+	protected def capability_findByProperties2: String
 
 	/**
 	 * Updates the detail of a category.
@@ -785,70 +558,141 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_updateCategory: String
 
 	/**
-	 * Updates localized name and description of a category.
+	 * Returns category detail; if cascade parameter is true, service returns the tree of children
+	 * categories.
+	 * 
+	 * Attention: this service makes use of cache control to ensure best performance.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param categoryId : String
+	 * Id or prettyId
+	 * @param cascade : Boolean
+	 * Optional. With cascade equals true, the service return the children sub tree of the given category
+	 * @param locale : String
+	 * Optional.If the client desires to have the category description for a specific locale. The desired
+	 * locale is return as first element of the array (if exists).
+	 * The field is used in conjunction with orderBy field to sort the contents by categoryName (for a
+	 * specific locale)
+	 * The service always return all available locales for each category.
+	 * @return MResponseGetCategory
+	*/
+	@GET
+	@Path("/getCategory")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML,"application/x-javascript"))
+	//#SWG#@ApiOperation(value = "/getCategory", notes = """Returns category detail; if cascade parameter is true, service returns the tree of children categories.
+	//#SWGNL#
+	//#SWGNL#Attention: this service makes use of cache control to ensure best performance.""", response = classOf[MResponseGetCategory])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def getCategory(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@QueryParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """Id or prettyId""")
+	@QueryParam("categoryId")
+	categoryId: String, 
+			//#SWG#@ApiParam(value = """Optional. With cascade equals true, the service return the children sub tree of the given category""")
+	@QueryParam("cascade")
+	cascade: Boolean, 
+			//#SWG#@ApiParam(value = """Optional.If the client desires to have the category description for a specific locale. The desired locale is return as first element of the array (if exists).
+	//#SWGNL#The field is used in conjunction with orderBy field to sort the contents by categoryName (for a specific locale)
+	//#SWGNL#The service always return all available locales for each category.""")
+	@QueryParam("locale")
+	locale: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String
+			,
+			//#SWG#@ApiParam(value = "Deprecated. If required, use the X-TOKENID header parameter.",required=false,access="internal")
+			@QueryParam("tokenId") tokenId_q: String):Response /*returnType = MResponseGetCategory*/= { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		//get the cache control specific for this service
+		val cc = this.cachemap("getCategory") 
+		try{	
+			val resp = this.__getCategory(PRestHelper.getTokenId(tokenId_q, tokenId),clientId,categoryId,cascade,locale)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_getCategory)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_getCategory)
+	    }
+	}
+
+	 
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __getCategory(tokenId: String, clientId: String, categoryId: String, cascade: Boolean, locale: String) :MResponseGetCategory
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_getCategory: String
+
+	/**
+	 * Adds a localized prettyId to a category.
 	 * 
 	 * <b>Validation:</b>
 	 * <ul>
 	 * 	<li>MODIFY ACL on the category</li>
 	 * </ul>
 	 * @param tokenId : String
-	 * @param param : MCategoryupdateCategory4LocaleReq
-	 * @return MResponseUpdateCategory
+	 * @param param : MCategoryaddCategoryPrettyIdReq
+	 * @return MResponseCategoryPrettyId
 	*/
 	@POST
-	@Path("/updateCategory4Locale")
+	@Path("/addCategoryPrettyId")
 	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
 	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
-	//#SWG#@ApiOperation(value = "/updateCategory4Locale", notes = """Updates localized name and description of a category.
+	//#SWG#@ApiOperation(value = "/addCategoryPrettyId", notes = """Adds a localized prettyId to a category.
 	//#SWGNL#
 	//#SWGNL#<b>Validation:</b>
 	//#SWGNL#<ul>
 	//#SWGNL#	<li>MODIFY ACL on the category</li>
-	//#SWGNL#</ul>""", response = classOf[MResponseUpdateCategory])
+	//#SWGNL#</ul>""", response = classOf[MResponseCategoryPrettyId])
 			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
-	def updateCategory4Locale(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	def addCategoryPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
 	@HeaderParam("X-TOKENID")
 	tokenId: String, 
-			param: MCategoryupdateCategory4LocaleReq):Response /*returnType = MResponseUpdateCategory*/ = {
+			param: MCategoryaddCategoryPrettyIdReq):Response /*returnType = MResponseCategoryPrettyId*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__updateCategory4Locale(tokenId,param)
-			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateCategory4Locale)    
+			val resp = this.__addCategoryPrettyId(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_addCategoryPrettyId)    
 		}catch{
 	      case e:WebApplicationException =>
-	        throw new WebApplicationException(e,this.capability_updateCategory4Locale)
+	        throw new WebApplicationException(e,this.capability_addCategoryPrettyId)
 	    }
 	} 
 
 	@GET
-	@Path("/updateCategory4Locale")
+	@Path("/addCategoryPrettyId")
 	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
-	def updateCategory4Locale_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+	def addCategoryPrettyId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
 			@QueryParam("tokenId") tokenId_q: String,
 			@QueryParam("param") param_q: String,
-			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseUpdateCategory*/ = { 
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseCategoryPrettyId*/ = { 
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		import org.apache.commons.lang.StringUtils
-		val cc = this.cachemap.getOrElse("updateCategory4Locale",this._getCacheControl) 
+		val cc = this.cachemap.getOrElse("addCategoryPrettyId",this._getCacheControl) 
 		try{
-			val resp = this.__updateCategory4Locale(
+			val resp = this.__addCategoryPrettyId(
 			PRestHelper.getTokenId(tokenId_q, tokenId_h)
-			,PRestHelper.bindRequest[MCategoryupdateCategory4LocaleReq](param_q)	
+			,PRestHelper.bindRequest[MCategoryaddCategoryPrettyIdReq](param_q)	
 		    )
-	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateCategory4Locale)
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_addCategoryPrettyId)
 	    }catch{
 	      case e:WebApplicationException=>
 	        if(StringUtils.isBlank(callback_q)) throw e
-	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateCategory4Locale)
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_addCategoryPrettyId)
 	    }
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __updateCategory4Locale(tokenId: String, param: MCategoryupdateCategory4LocaleReq) :MResponseUpdateCategory
+	 protected def __addCategoryPrettyId(tokenId: String, param: MCategoryaddCategoryPrettyIdReq) :MResponseCategoryPrettyId
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
-	protected def capability_updateCategory4Locale: String
+	protected def capability_addCategoryPrettyId: String
 
 	/**
 	 * Updates a localized prettyId of a category.
@@ -917,6 +761,72 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	protected def capability_updateCategoryPrettyId: String
 
 	/**
+	 * Removes localized prettyId from a category.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>MODIFY ACL on the category</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MCategoryremoveCategoryPrettyIdReq
+	 * @return MResponseCategoryPrettyId
+	*/
+	@POST
+	@Path("/removeCategoryPrettyId")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/removeCategoryPrettyId", notes = """Removes localized prettyId from a category.
+	//#SWGNL#
+	//#SWGNL#<b>Validation:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>MODIFY ACL on the category</li>
+	//#SWGNL#</ul>""", response = classOf[MResponseCategoryPrettyId])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def removeCategoryPrettyId(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MCategoryremoveCategoryPrettyIdReq):Response /*returnType = MResponseCategoryPrettyId*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__removeCategoryPrettyId(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_removeCategoryPrettyId)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_removeCategoryPrettyId)
+	    }
+	} 
+
+	@GET
+	@Path("/removeCategoryPrettyId")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def removeCategoryPrettyId_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseCategoryPrettyId*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("removeCategoryPrettyId",this._getCacheControl) 
+		try{
+			val resp = this.__removeCategoryPrettyId(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MCategoryremoveCategoryPrettyIdReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_removeCategoryPrettyId)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_removeCategoryPrettyId)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __removeCategoryPrettyId(tokenId: String, param: MCategoryremoveCategoryPrettyIdReq) :MResponseCategoryPrettyId
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_removeCategoryPrettyId: String
+
+	/**
 	 * Verify whether a category prettyId is valid for a specific locale or not, and eventually suggest an
 	 * alternative.
 	 * @param tokenId : String
@@ -979,5 +889,151 @@ trait JCategory extends it.newvision.nvp.core.libraries.restserver.BaseResource 
 	 protected def __verifyCategoryPrettyId(tokenId: String, clientId: String, param: MCategoryverifyCategoryPrettyIdReq) :MResponseCategoryVerifyPrettyId
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_verifyCategoryPrettyId: String
+
+	/**
+	 * Used to move a given category. The service keeps the metadata of source category (locale, tree
+	 * structure, acl)
+	 * 
+	 * <b>Validations:</b>
+	 * <ul>
+	 * 	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or
+	 * CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	 * 	<li>MODIFY/SHARE Acl on the source category and SHARE on Contents.</li>
+	 * 	<li>MODIFY/SHARE ACL on the target category, access rights set on the target category must match
+	 * that of the source category</li>
+	 * </ul>
+	 * 
+	 * The user can not move category with share ONLY contents on category where the user has permission
+	 * of MODIFY on contents.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param sourceId : String
+	 * Source categoryId
+	 * @param targetId : String
+	 * target category Id. use "ROOT" value to move the source category at root level.
+	 * @return MResponseCategory
+	*/
+	@POST
+	@Path("/move/{clientId}/{sourceId}")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_FORM_URLENCODED))
+	//#SWG#@ApiOperation(value = "/move", notes = """Used to move a given category. The service keeps the metadata of source category (locale, tree structure, acl)
+	//#SWGNL#
+	//#SWGNL#<b>Validations:</b>
+	//#SWGNL#<ul>
+	//#SWGNL#	<li>Can be invoked only by users with role  4ME_MANAGE_PUBLIC_CATEGORIES or CORE_MANAGE_PUBLIC_CATEGORIES</li>
+	//#SWGNL#	<li>MODIFY/SHARE Acl on the source category and SHARE on Contents.</li>
+	//#SWGNL#	<li>MODIFY/SHARE ACL on the target category, access rights set on the target category must match that of the source category</li>
+	//#SWGNL#</ul>
+	//#SWGNL#
+	//#SWGNL#The user can not move category with share ONLY contents on category where the user has permission of MODIFY on contents.""", response = classOf[MResponseCategory])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def move(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			//#SWG#@ApiParam(value = """""")
+	@PathParam("clientId")
+	clientId: String, 
+			//#SWG#@ApiParam(value = """Source categoryId""")
+	@PathParam("sourceId")
+	sourceId: String, 
+			//#SWG#@ApiParam(value = """target category Id. use "ROOT" value to move the source category at root level.""")
+	@FormParam("targetId")
+	targetId: String):Response /*returnType = MResponseCategory*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__move(tokenId,clientId,sourceId,targetId)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_move)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_move)
+	    }
+	} 
+
+	@GET
+	@Path("/move/{clientId}/{sourceId}")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def move_2(@QueryParam("tokenId")tokenId_q: String, 
+			@PathParam("clientId")clientId_q: String, 
+			@PathParam("sourceId")sourceId_q: String, 
+			@QueryParam("targetId")targetId_q: String,
+			@HeaderParam("X-TOKENID") tokenId_h: String,
+			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseCategory*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("move",this._getCacheControl) 
+		try{	
+			val resp = this.__move(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,sourceId_q,targetId_q)
+		
+			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_move)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_move)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __move(tokenId: String, clientId: String, sourceId: String, targetId: String) :MResponseCategory
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_move: String
+
+	/**
+	 * @param tokenId : String
+	 * @param param : MCategoryupdateUserSpecificValuesReq
+	 * @return MResponseCategory
+	*/
+	@POST
+	@Path("/updateUserSpecificValues")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/updateUserSpecificValues", notes = """""", response = classOf[MResponseCategory])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def updateUserSpecificValues(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MCategoryupdateUserSpecificValuesReq):Response /*returnType = MResponseCategory*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__updateUserSpecificValues(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateUserSpecificValues)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_updateUserSpecificValues)
+	    }
+	} 
+
+	@GET
+	@Path("/updateUserSpecificValues")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def updateUserSpecificValues_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseCategory*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateUserSpecificValues",this._getCacheControl) 
+		try{
+			val resp = this.__updateUserSpecificValues(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MCategoryupdateUserSpecificValuesReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateUserSpecificValues)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateUserSpecificValues)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __updateUserSpecificValues(tokenId: String, param: MCategoryupdateUserSpecificValuesReq) :MResponseCategory
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_updateUserSpecificValues: String
 
 }

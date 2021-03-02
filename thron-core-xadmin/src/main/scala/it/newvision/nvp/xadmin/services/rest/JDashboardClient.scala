@@ -30,7 +30,7 @@ object JDashboardClient {
  * com/api/xadmin/resources/dashboard </li>
  * </ul>
  */
-class JDashboardClient(val resourceEndpoint:String) {
+class JDashboardClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Changes the owner of a set of content.
@@ -39,7 +39,7 @@ class JDashboardClient(val resourceEndpoint:String) {
 	 * @return MResponseDashboard
 	*/
 	def changeContentsOwner(tokenId: String, 
-			param: MDashboardchangeContentsOwnerReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDashboard ={
+			param: MDashboardchangeContentsOwnerReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseDashboard ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -92,7 +92,7 @@ class JDashboardClient(val resourceEndpoint:String) {
 	 * @return MResponseDashboard
 	*/
 	def migrateUserStuff(tokenId: String, 
-			param: MDashboardmigrateUserStuffReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseDashboard ={
+			param: MDashboardmigrateUserStuffReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseDashboard ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

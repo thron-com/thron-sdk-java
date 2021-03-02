@@ -45,5 +45,7 @@ public enum MEContentFieldOptions {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("availableChannels") availableChannels,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("source") source
+	@XmlEnumValue("source") source,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("properties") properties
 }

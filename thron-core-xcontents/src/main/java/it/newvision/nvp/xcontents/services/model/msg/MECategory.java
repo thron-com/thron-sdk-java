@@ -60,5 +60,7 @@ public enum MECategory {
 	//#SWG#@ApiModelProperty(value = """""")
 	@XmlEnumValue("OPERATION_LOCKED") OPERATION_LOCKED,
 	//#SWG#@ApiModelProperty(value = """""")
-	@XmlEnumValue("MAX_DEPTH_EXCEEDED") MAX_DEPTH_EXCEEDED
+	@XmlEnumValue("MAX_DEPTH_EXCEEDED") MAX_DEPTH_EXCEEDED,
+	//#SWG#@ApiModelProperty(value = """""")
+	@XmlEnumValue("MAX_NUMBER_OF_CATEGORIES_STARRED_REACHED") MAX_NUMBER_OF_CATEGORIES_STARRED_REACHED
 }

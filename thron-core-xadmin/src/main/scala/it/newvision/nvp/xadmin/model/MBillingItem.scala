@@ -87,6 +87,46 @@ class MBillingItem extends Serializable {
 	var maxStorage: Long  = 0L
 	def withmaxStorage(p:Long):this.type ={ 	this.maxStorage = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var monthAudioVersions: Long  = 0L
+	def withmonthAudioVersions(p:Long):this.type ={ 	this.monthAudioVersions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var monthImageVersions: Long  = 0L
+	def withmonthImageVersions(p:Long):this.type ={ 	this.monthImageVersions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var monthOtherVersions: Long  = 0L
+	def withmonthOtherVersions(p:Long):this.type ={ 	this.monthOtherVersions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var monthPageletVersions: Long  = 0L
+	def withmonthPageletVersions(p:Long):this.type ={ 	this.monthPageletVersions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var monthPlaylistVersions: Long  = 0L
+	def withmonthPlaylistVersions(p:Long):this.type ={ 	this.monthPlaylistVersions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var monthTotalVersions: Long  = 0L
+	def withmonthTotalVersions(p:Long):this.type ={ 	this.monthTotalVersions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var monthUrlVersions: Long  = 0L
+	def withmonthUrlVersions(p:Long):this.type ={ 	this.monthUrlVersions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var monthVideoVersions: Long  = 0L
+	def withmonthVideoVersions(p:Long):this.type ={ 	this.monthVideoVersions = p; 	this }
+
 	/**
 	 * contents created in the month (based on creation date)
 	 */
@@ -112,6 +152,11 @@ class MBillingItem extends Serializable {
 	@BeanProperty 
 	var totalApps: Long  = 0L
 	def withtotalApps(p:Long):this.type ={ 	this.totalApps = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var totalAudioVersions: Long  = 0L
+	def withtotalAudioVersions(p:Long):this.type ={ 	this.totalAudioVersions = p; 	this }
 
 	/**
 	 * from traffic report
@@ -191,6 +236,11 @@ class MBillingItem extends Serializable {
 	var totalHits: Long  = 0L
 	def withtotalHits(p:Long):this.type ={ 	this.totalHits = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var totalImageVersions: Long  = 0L
+	def withtotalImageVersions(p:Long):this.type ={ 	this.totalImageVersions = p; 	this }
+
 	/**
 	 * Not defined
 	 */
@@ -198,6 +248,21 @@ class MBillingItem extends Serializable {
 	@BeanProperty 
 	var totalLiveTime: Long  = 0L
 	def withtotalLiveTime(p:Long):this.type ={ 	this.totalLiveTime = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var totalOtherVersions: Long  = 0L
+	def withtotalOtherVersions(p:Long):this.type ={ 	this.totalOtherVersions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var totalPageletVersions: Long  = 0L
+	def withtotalPageletVersions(p:Long):this.type ={ 	this.totalPageletVersions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var totalPlaylistVersions: Long  = 0L
+	def withtotalPlaylistVersions(p:Long):this.type ={ 	this.totalPlaylistVersions = p; 	this }
 
 	/**
 	 * in Bytes (repository + cdn )
@@ -217,6 +282,11 @@ class MBillingItem extends Serializable {
 	var totalTraffic: Long  = 0L
 	def withtotalTraffic(p:Long):this.type ={ 	this.totalTraffic = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var totalUrlVersions: Long  = 0L
+	def withtotalUrlVersions(p:Long):this.type ={ 	this.totalUrlVersions = p; 	this }
+
 	/**
 	 * total users
 	 */
@@ -232,6 +302,11 @@ class MBillingItem extends Serializable {
 	@BeanProperty 
 	var totalVersions: Long  = 0L
 	def withtotalVersions(p:Long):this.type ={ 	this.totalVersions = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	@BeanProperty 
+	var totalVideoVersions: Long  = 0L
+	def withtotalVideoVersions(p:Long):this.type ={ 	this.totalVideoVersions = p; 	this }
 
 	/**
 	 * Total number of visits in the time range. BM2018 Intelligence module

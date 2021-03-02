@@ -14,12 +14,19 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MLinkedCategorySearchCriteria extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Specify a list of categories for which at least one must be present in the
+	 * content returned.
+	 */
+	//#SWG#@ApiModelProperty(value = """Specify a list of categories for which at least one must be present in the content returned.""")
 	@BeanProperty 
 	var haveAtLeastOne: List[MLinkedCategoryOp] =_
 	def withhaveAtLeastOne(p:List[MLinkedCategoryOp]):this.type ={ 	this.haveAtLeastOne = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Specify a list of categories that must not be present in the content returned.
+	 */
+	//#SWG#@ApiModelProperty(value = """Specify a list of categories that must not be present in the content returned.""")
 	@BeanProperty 
 	var haveNot: List[MLinkedCategoryOp] =_
 	def withhaveNot(p:List[MLinkedCategoryOp]):this.type ={ 	this.haveNot = p; 	this }

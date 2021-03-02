@@ -16,6 +16,11 @@ import it.newvision.nvp.xcontents.model.MContent4Locale
 //#SWG#@ApiModel(description = """""")
 class MContentInfo extends Serializable {
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentType: MEContentType =_
@@ -23,13 +28,8 @@ class MContentInfo extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var creationDate: Date =_
-	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
+	var locales: List[MContent4Locale] = new ArrayList[MContent4Locale]
+	def withlocales(p:List[MContent4Locale]):this.type ={ 	this.locales = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -38,7 +38,7 @@ class MContentInfo extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var locales: List[MContent4Locale] = new ArrayList[MContent4Locale]
-	def withlocales(p:List[MContent4Locale]):this.type ={ 	this.locales = p; 	this }
+	var creationDate: Date =_
+	def withcreationDate(p:Date):this.type ={ 	this.creationDate = p; 	this }
 
 }

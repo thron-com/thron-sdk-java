@@ -40,7 +40,7 @@ class MMetadataDefinitionAlternativeSOption extends MMetadataDefinitionOptionCla
 	override def isValid():Boolean ={
 		import scala.collection.JavaConversions._
 		val size = values.size
-		values.forall(_.isValid) && size > 0 && size <= 100
+		values.forall(_.isValid) && size > 0 && size <= 500
 	}
 
 	/**

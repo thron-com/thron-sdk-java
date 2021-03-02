@@ -6,11 +6,11 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.webtv.services.model.sync.MResponseContentLastUpdated
 import it.newvision.nvp.webtv.services.model.request.MSynccontentsReq
-import it.newvision.nvp.webtv.services.model.sync.MResponseExport
-import it.newvision.nvp.webtv.services.model.request.MSyncexportReq
 import it.newvision.nvp.webtv.services.model.request.MSynclastUpdatedContentsReq
 import it.newvision.nvp.webtv.services.model.sync.MResponseUpdatedContent
 import it.newvision.nvp.webtv.services.model.request.MSyncupdatedContentReq
+import it.newvision.nvp.webtv.services.model.sync.MResponseExport
+import it.newvision.nvp.webtv.services.model.request.MSyncexportReq
 
 /* ************************
 *  GENERATED CLASS
@@ -37,7 +37,7 @@ object JSyncClient {
  * com/api/xcontents/resources/sync</li>
  * </ul>
  */
-class JSyncClient(val resourceEndpoint:String) {
+class JSyncClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Deprecated by JSync.updatedContents
@@ -59,7 +59,7 @@ class JSyncClient(val resourceEndpoint:String) {
 	 * @return MResponseContentLastUpdated
 	*/
 	def contents(tokenId: String, 
-			param: MSynccontentsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentLastUpdated ={
+			param: MSynccontentsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseContentLastUpdated ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -98,64 +98,6 @@ class JSyncClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Used to export all content matching the given exportCriteria.
-	 * The service can return for each content the deliveryInfo (with the content urls and thumbnail), the
-	 * linked categories and the itagDefinitions.
-	 * The resultset is paginated (max page size is 200 elements), after the 1st call the service return a
-	 * "nextPage" identifier to be used on the next call, to get the following elements. If  the
-	 * "nextPage" value is empty it means that you are on the last page of the result set.
-	 * The Service avoids ACL restrictions.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>CORE_SYNC_CONTENTS role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param param : MSyncexportReq
-	 * @return MResponseExport
-	*/
-	def export(tokenId: String, 
-			clientId: String, 
-			param: MSyncexportReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseExport ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JSyncClient.client.resource(this.resourceEndpoint)
-			val response : MResponseExport = if(this.resourceEndpoint == ""){
-			
-				new MResponseExport()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("sync/export")
-					.path(clientId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseExport],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseExport])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * Deprecated by JSync.updatedContents
 	 * 
 	 * The service returns the list of contents modified inside a specified date range (only for IMAGE,
@@ -170,7 +112,7 @@ class JSyncClient(val resourceEndpoint:String) {
 	*/
 	@Deprecated
 	def lastUpdatedContents(tokenId: String, 
-			param: MSynclastUpdatedContentsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseContentLastUpdated ={
+			param: MSynclastUpdatedContentsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseContentLastUpdated ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -231,7 +173,7 @@ class JSyncClient(val resourceEndpoint:String) {
 	*/
 	def updatedContent(tokenId: String, 
 			clientId: String, 
-			param: MSyncupdatedContentReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUpdatedContent ={
+			param: MSyncupdatedContentReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseUpdatedContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -260,6 +202,64 @@ class JSyncClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseUpdatedContent])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Used to export all content matching the given exportCriteria.
+	 * The service can return for each content the deliveryInfo (with the content urls and thumbnail), the
+	 * linked categories and the itagDefinitions.
+	 * The resultset is paginated (max page size is 200 elements), after the 1st call the service return a
+	 * "nextPage" identifier to be used on the next call, to get the following elements. If  the
+	 * "nextPage" value is empty it means that you are on the last page of the result set.
+	 * The Service avoids ACL restrictions.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_SYNC_CONTENTS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param param : MSyncexportReq
+	 * @return MResponseExport
+	*/
+	def export(tokenId: String, 
+			clientId: String, 
+			param: MSyncexportReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseExport ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JSyncClient.client.resource(this.resourceEndpoint)
+			val response : MResponseExport = if(this.resourceEndpoint == ""){
+			
+				new MResponseExport()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("sync/export")
+					.path(clientId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseExport],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseExport])
 				}
 				else {
 				  throw e

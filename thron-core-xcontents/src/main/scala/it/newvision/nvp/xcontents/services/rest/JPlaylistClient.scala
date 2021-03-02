@@ -4,14 +4,14 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xcontents.services.model.playlist.MResponsePlayList
-import it.newvision.nvp.xcontents.services.model.request.MPlaylistaddContentsReq
-import it.newvision.nvp.xcontents.services.model.request.MPlaylistaddContentsInQueueReq
 import it.newvision.nvp.xcontents.services.model.playlist.MResponsePlayListDetail
 import it.newvision.nvp.xcontents.services.model.request.MPlaylistdetailReq
+import it.newvision.nvp.xcontents.services.model.playlist.MResponsePlayList
+import it.newvision.nvp.xcontents.services.model.request.MPlaylistupdateReq
+import it.newvision.nvp.xcontents.services.model.request.MPlaylistaddContentsInQueueReq
+import it.newvision.nvp.xcontents.services.model.request.MPlaylistaddContentsReq
 import it.newvision.nvp.xcontents.services.model.request.MPlaylistmoveContentInListReq
 import it.newvision.nvp.xcontents.services.model.request.MPlaylistremoveContentFromListReq
-import it.newvision.nvp.xcontents.services.model.request.MPlaylistupdateReq
 
 /* ************************
 *  GENERATED CLASS
@@ -42,97 +42,7 @@ object JPlaylistClient {
  * com/api/xcontents/resources/playlist</li>
  * </ul>
  */
-class JPlaylistClient(val resourceEndpoint:String) {
-
-	/**
-	 * Adds a list of content to the linkedContents of a playlist content.
-	 * @param tokenId : String
-	 * @param param : MPlaylistaddContentsReq
-	 * @return MResponsePlayList
-	*/
-	def addContents(tokenId: String, 
-			param: MPlaylistaddContentsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayList ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JPlaylistClient.client.resource(this.resourceEndpoint)
-			val response : MResponsePlayList = if(this.resourceEndpoint == ""){
-			
-				new MResponsePlayList()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("playlist/addContents")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponsePlayList],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponsePlayList])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Adds a content to the linkedContents of a playlist content.
-	 * @param tokenId : String
-	 * @param param : MPlaylistaddContentsInQueueReq
-	 * @return MResponsePlayList
-	*/
-	def addContentsInQueue(tokenId: String, 
-			param: MPlaylistaddContentsInQueueReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayList ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JPlaylistClient.client.resource(this.resourceEndpoint)
-			val response : MResponsePlayList = if(this.resourceEndpoint == ""){
-			
-				new MResponsePlayList()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("playlist/addContentsInQueue")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponsePlayList],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponsePlayList])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
+class JPlaylistClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Returns a playlist content detail, complete with the list of linkedContents.
@@ -141,7 +51,7 @@ class JPlaylistClient(val resourceEndpoint:String) {
 	 * @return MResponsePlayListDetail
 	*/
 	def detail(tokenId: String, 
-			param: MPlaylistdetailReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayListDetail ={
+			param: MPlaylistdetailReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayListDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -180,13 +90,148 @@ class JPlaylistClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Updates the linkedContents value of a playlist content.
+	 * @param tokenId : String
+	 * @param param : MPlaylistupdateReq
+	 * @return MResponsePlayList
+	*/
+	def update(tokenId: String, 
+			param: MPlaylistupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayList ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JPlaylistClient.client.resource(this.resourceEndpoint)
+			val response : MResponsePlayList = if(this.resourceEndpoint == ""){
+			
+				new MResponsePlayList()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("playlist/update")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponsePlayList],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponsePlayList])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Adds a content to the linkedContents of a playlist content.
+	 * @param tokenId : String
+	 * @param param : MPlaylistaddContentsInQueueReq
+	 * @return MResponsePlayList
+	*/
+	def addContentsInQueue(tokenId: String, 
+			param: MPlaylistaddContentsInQueueReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayList ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JPlaylistClient.client.resource(this.resourceEndpoint)
+			val response : MResponsePlayList = if(this.resourceEndpoint == ""){
+			
+				new MResponsePlayList()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("playlist/addContentsInQueue")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponsePlayList],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponsePlayList])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Adds a list of content to the linkedContents of a playlist content.
+	 * @param tokenId : String
+	 * @param param : MPlaylistaddContentsReq
+	 * @return MResponsePlayList
+	*/
+	def addContents(tokenId: String, 
+			param: MPlaylistaddContentsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayList ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JPlaylistClient.client.resource(this.resourceEndpoint)
+			val response : MResponsePlayList = if(this.resourceEndpoint == ""){
+			
+				new MResponsePlayList()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("playlist/addContents")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponsePlayList],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponsePlayList])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
 	 * Moves a content among the linkedContents of a playlist content.
 	 * @param tokenId : String
 	 * @param param : MPlaylistmoveContentInListReq
 	 * @return MResponsePlayList
 	*/
 	def moveContentInList(tokenId: String, 
-			param: MPlaylistmoveContentInListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayList ={
+			param: MPlaylistmoveContentInListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -231,7 +276,7 @@ class JPlaylistClient(val resourceEndpoint:String) {
 	 * @return MResponsePlayList
 	*/
 	def removeContentFromList(tokenId: String, 
-			param: MPlaylistremoveContentFromListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayList ={
+			param: MPlaylistremoveContentFromListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponsePlayList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -244,51 +289,6 @@ class JPlaylistClient(val resourceEndpoint:String) {
 				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
 					.path("playlist/removeContentFromList")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponsePlayList],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponsePlayList])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Updates the linkedContents value of a playlist content.
-	 * @param tokenId : String
-	 * @param param : MPlaylistupdateReq
-	 * @return MResponsePlayList
-	*/
-	def update(tokenId: String, 
-			param: MPlaylistupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponsePlayList ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JPlaylistClient.client.resource(this.resourceEndpoint)
-			val response : MResponsePlayList = if(this.resourceEndpoint == ""){
-			
-				new MResponsePlayList()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("playlist/update")
 				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)

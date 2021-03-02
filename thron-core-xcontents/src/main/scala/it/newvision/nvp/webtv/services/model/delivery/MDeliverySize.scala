@@ -14,25 +14,36 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MDeliverySize extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
+	/**
+	 * Aspect ratio of content in delivery.
+	 */
+	//#SWG#@ApiModelProperty(value = """Aspect rateo of content in delivery.""")
 	@BeanProperty 
 	var aspectRatio: String =_
 	def withaspectRatio(p:String):this.type ={ 	this.aspectRatio = p; 	this }
 
 	/**
-	 * Used only for IMAGE contents
+	 * Max width in pixel. This field is present only for contents of type IMAGE.
 	 */
-	//#SWG#@ApiModelProperty(value = """Used only for IMAGE contents""")
+	//#SWG#@ApiModelProperty(value = """Max width in pixel. This field is present only for contents of type IMAGE.""")
+	@BeanProperty 
+	var maxWidth: Integer =_
+	def withmaxWidth(p:Integer):this.type ={ 	this.maxWidth = p; 	this }
+
+	/**
+	 * Max height in pixel. This field is present only for contents of type IMAGE.
+	 */
+	//#SWG#@ApiModelProperty(value = """Max height in pixel. This field is present only for contents of type IMAGE.""")
 	@BeanProperty 
 	var maxHeight: Integer =_
 	def withmaxHeight(p:Integer):this.type ={ 	this.maxHeight = p; 	this }
 
 	/**
-	 * Used only for IMAGE contents
+	 * Max size in byte for content in delivery.
 	 */
-	//#SWG#@ApiModelProperty(value = """Used only for IMAGE contents""")
-	@BeanProperty 
-	var maxWidth: Integer =_
-	def withmaxWidth(p:Integer):this.type ={ 	this.maxWidth = p; 	this }
+	//#SWG#@ApiModelProperty(value = """Max size in byte for content in delivery.""")
+	@BeanProperty
+	var maxSize: Long =_
+	def withmaxSize(p:Long):this.type ={ 	this.maxSize = p; 	this }
 
 }

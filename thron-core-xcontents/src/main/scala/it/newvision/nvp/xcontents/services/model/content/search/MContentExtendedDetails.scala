@@ -82,8 +82,8 @@ class MContentExtendedDetails extends Serializable {
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
-	var linkedContent: List[MLinkedContent] =_
-	def withlinkedContent(p:List[MLinkedContent]):this.type ={ 	this.linkedContent = p; 	this }
+	var linkedContent: List[MContentLinked] =_
+	def withlinkedContent(p:List[MContentLinked]):this.type ={ 	this.linkedContent = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 
@@ -107,6 +107,11 @@ class MContentExtendedDetails extends Serializable {
 	@BeanProperty 
 	var prettyIds: List[MPrettyId] =_
 	def withprettyIds(p:List[MPrettyId]):this.type ={ 	this.prettyIds = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var properties: List[MEContentProperty] =_
+	def withproperties(p:List[MEContentProperty]):this.type ={ 	this.properties = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 

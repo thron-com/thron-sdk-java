@@ -769,13 +769,12 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	 * 	<li>names definition</li>
 	 * 	<li>visibility option</li>
 	 * 	<li>constraints, and options</li>
-	 * 	<li>metadataType</li>
 	 * 	<li>metadata key</li>
 	 * </ul>
 	 * 
-	 * Changing the properties of a IMetadataDefinition like options, metadataType and key, does not imply
-	 * any changes on metada added to entities (contents, users or categories). This means that the
-	 * inserted value should be updated by the client.
+	 * Changing the properties of a IMetadataDefinition like options and key, does not imply any changes
+	 * on metada added to entities (contents, users or categories). This means that the inserted value
+	 * should be updated by the client.
 	 * 
 	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
 	 * the "update" attributes you want to change must be included in the body of the request, those not
@@ -802,11 +801,10 @@ trait JIMetadataDefinition extends it.newvision.nvp.core.libraries.restserver.Ba
 	//#SWGNL#	<li>names definition</li>
 	//#SWGNL#	<li>visibility option</li>
 	//#SWGNL#	<li>constraints, and options</li>
-	//#SWGNL#	<li>metadataType</li>
 	//#SWGNL#	<li>metadata key</li>
 	//#SWGNL#</ul>
 	//#SWGNL#
-	//#SWGNL#Changing the properties of a IMetadataDefinition like options, metadataType and key, does not imply any changes on metada added to entities (contents, users or categories). This means that the inserted value should be updated by the client.
+	//#SWGNL#Changing the properties of a IMetadataDefinition like options and key, does not imply any changes on metada added to entities (contents, users or categories). This means that the inserted value should be updated by the client.
 	//#SWGNL#
 	//#SWGNL#The "update" field of this web service works in “patch" mode: it means that each and everyone of the "update" attributes you want to change must be included in the body of the request, those not included will not be updated.
 	//#SWGNL#

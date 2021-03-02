@@ -6,10 +6,10 @@ import _root_.scala.beans.BeanProperty
 import javax.xml.bind.annotation._ 
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppDetail
 import it.newvision.nvp.xadmin.services.model.request.MAppsappDetailReq
-import it.newvision.nvp.xadmin.services.model.apps.MResponseAppSummaryList
-import it.newvision.nvp.xadmin.services.model.request.MAppsappsListReq
 import it.newvision.nvp.xadmin.services.model.apps.MResponseAppList
 import it.newvision.nvp.xadmin.services.model.request.MAppsfindByPropertiesReq
+import it.newvision.nvp.xadmin.services.model.apps.MResponseAppSummaryList
+import it.newvision.nvp.xadmin.services.model.request.MAppsappsListReq
 import it.newvision.nvp.xadmin.services.model.request.MAppssuReq
 
 /* ************************
@@ -34,7 +34,60 @@ object JAppsClient {
  * com/api/xadmin/resources/apps</li>
  * </ul>
  */
-class JAppsClient(val resourceEndpoint:String) {
+class JAppsClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
+
+	/**
+	 * Authenticates an app, returning its detail, rootCategoryId, and a session tokenId.
+	 * 
+	 * Authentication token is not required (X-TOKENID).
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param appId : String
+	 * @param appKey : String
+	 * Optional.
+	 * The personal key used to authenticate the user. Some apps do not need secure authentication wih
+	 * appkey
+	 * @return MResponseAppDetail
+	*/
+	def loginApp(tokenId: String, 
+			clientId: String, 
+			appId: String, 
+			appKey: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseAppDetail ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JAppsClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(appId).foreach(s => params.add("appId", s))
+		Option(appKey).foreach(s => params.add("appKey", s))  
+			val response : MResponseAppDetail = if(this.resourceEndpoint == ""){
+			
+				new MResponseAppDetail()
+			
+			}else{
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED	
+				var wbuilder = webResource
+					.path("apps/loginApp")
+					.path(clientId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.post(classOf[MResponseAppDetail],params)
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseAppDetail])
+				}
+				else {
+				  throw e
+				}
+		  }
+	
+	}
 
 	/**
 	 * Returns the detail of an app.
@@ -48,7 +101,7 @@ class JAppsClient(val resourceEndpoint:String) {
 	 * @return MResponseAppDetail
 	*/
 	def appDetail(tokenId: String, 
-			param: MAppsappDetailReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseAppDetail ={
+			param: MAppsappDetailReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseAppDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -87,56 +140,6 @@ class JAppsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Returns summary details for a list of apps matching provided criteria.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>Can be invoked by any platform users.</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MAppsappsListReq
-	 * @return MResponseAppSummaryList
-	*/
-	def appsList(tokenId: String, 
-			param: MAppsappsListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseAppSummaryList ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JAppsClient.client.resource(this.resourceEndpoint)
-			val response : MResponseAppSummaryList = if(this.resourceEndpoint == ""){
-			
-				new MResponseAppSummaryList()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("apps/appsList")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseAppSummaryList],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseAppSummaryList])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
 	 * Returns the list of apps matching provided criteria.
 	 * 
 	 * <b>Constraints:</b>
@@ -153,7 +156,7 @@ class JAppsClient(val resourceEndpoint:String) {
 	 * @return MResponseAppList
 	*/
 	def findByProperties(tokenId: String, 
-			param: MAppsfindByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseAppList ={
+			param: MAppsfindByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseAppList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -192,55 +195,52 @@ class JAppsClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Authenticates an app, returning its detail, rootCategoryId, and a session tokenId.
+	 * Returns summary details for a list of apps matching provided criteria.
 	 * 
-	 * Authentication token is not required (X-TOKENID).
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>Can be invoked by any platform users.</li>
+	 * </ul>
 	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param appId : String
-	 * @param appKey : String
-	 * Optional.
-	 * The personal key used to authenticate the user. Some apps do not need secure authentication wih
-	 * appkey
-	 * @return MResponseAppDetail
+	 * @param param : MAppsappsListReq
+	 * @return MResponseAppSummaryList
 	*/
-	def loginApp(tokenId: String, 
-			clientId: String, 
-			appId: String, 
-			appKey: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseAppDetail ={
+	def appsList(tokenId: String, 
+			param: MAppsappsListReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseAppSummaryList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
 			val webResource = JAppsClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(appId).foreach(s => params.add("appId", s))
-		Option(appKey).foreach(s => params.add("appKey", s))  
-			val response : MResponseAppDetail = if(this.resourceEndpoint == ""){
+			val response : MResponseAppSummaryList = if(this.resourceEndpoint == ""){
 			
-				new MResponseAppDetail()
+				new MResponseAppSummaryList()
 			
-			}else{
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED	
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
 				var wbuilder = webResource
-					.path("apps/loginApp")
-					.path(clientId.toString)
+					.path("apps/appsList")
+				
 					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
 					.`type`(mediaType)
 					.header("X-TOKENID",tokenId)
 				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.post(classOf[MResponseAppDetail],params)
+			
+				wbuilder.post(classOf[MResponseAppSummaryList],param)
+			
+			
 			}
 			response
 		  }catch{
 			case e : com.sun.jersey.api.client.UniformInterfaceException =>
 				val response = e.getResponse
 				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseAppDetail])
+				  response.getEntity(classOf[MResponseAppSummaryList])
 				}
 				else {
 				  throw e
 				}
 		  }
+		  
 	
 	}
 
@@ -263,7 +263,7 @@ class JAppsClient(val resourceEndpoint:String) {
 	 * @return String
 	*/
 	def su(tokenId: String, 
-			param: MAppssuReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
+			param: MAppssuReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):String ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

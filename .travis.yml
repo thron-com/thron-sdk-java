@@ -3,7 +3,6 @@ jdk: openjdk9
 branches:
   only:
   - master
-  - release/6.4.4
 cache:
   directories:
   - "$HOME/.m2"

@@ -40,7 +40,7 @@ object JIMetadataDefinitionClient {
  * com/api/xintelligence/resources/imetadatadefinition</li>
  * </ul>
  */
-class JIMetadataDefinitionClient(val resourceEndpoint:String) {
+class JIMetadataDefinitionClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Returns the detail of an imetadataDefinition.
@@ -60,7 +60,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	def detail(tokenId: String, 
 			clientId: String, 
 			classificationId: String, 
-			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinitionDetail ={
+			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinitionDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -114,7 +114,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	def insert(tokenId: String, 
 			clientId: String, 
 			classificationId: String, 
-			param: MIMetadataDefinitioninsertReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinitionDetail ={
+			param: MIMetadataDefinitioninsertReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinitionDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -181,7 +181,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 			classificationId: String, 
 			itagId: String, 
 			metadataId: String, 
-			param: MIMetadataDefinitionlinkITagReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinition ={
+			param: MIMetadataDefinitionlinkITagReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinition ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -238,7 +238,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	def list(tokenId: String, 
 			clientId: String, 
 			classificationId: String, 
-			param: MIMetadataDefinitionlistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinitionList ={
+			param: MIMetadataDefinitionlistReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinitionList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -318,7 +318,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 			itagIds: String, 
 			orderBy: MEMetadataDefinitionOrderBy, 
 			offset: Integer, 
-			limit: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinitionList ={
+			limit: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinitionList ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -378,7 +378,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	def trash(tokenId: String, 
 			clientId: String, 
 			classificationId: String, 
-			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinition ={
+			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinition ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -438,7 +438,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 			clientId: String, 
 			classificationId: String, 
 			itagId: String, 
-			metadataId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinition ={
+			metadataId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinition ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -495,7 +495,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	def untrash(tokenId: String, 
 			clientId: String, 
 			classificationId: String, 
-			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinition ={
+			id: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinition ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -540,13 +540,12 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	 * 	<li>names definition</li>
 	 * 	<li>visibility option</li>
 	 * 	<li>constraints, and options</li>
-	 * 	<li>metadataType</li>
 	 * 	<li>metadata key</li>
 	 * </ul>
 	 * 
-	 * Changing the properties of a IMetadataDefinition like options, metadataType and key, does not imply
-	 * any changes on metada added to entities (contents, users or categories). This means that the
-	 * inserted value should be updated by the client.
+	 * Changing the properties of a IMetadataDefinition like options and key, does not imply any changes
+	 * on metada added to entities (contents, users or categories). This means that the inserted value
+	 * should be updated by the client.
 	 * 
 	 * The "update" field of this web service works in “patch" mode: it means that each and everyone of
 	 * the "update" attributes you want to change must be included in the body of the request, those not
@@ -568,7 +567,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 			clientId: String, 
 			classificationId: String, 
 			id: String, 
-			param: MIMetadataDefinitionupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataDefinitionDetail ={
+			param: MIMetadataDefinitionupdateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataDefinitionDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -624,7 +623,7 @@ class JIMetadataDefinitionClient(val resourceEndpoint:String) {
 	def verifyIfUsed(tokenId: String, 
 			clientId: String, 
 			classificationId: String, 
-			key: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseMetadataVerifyIfUsed ={
+			key: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseMetadataVerifyIfUsed ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

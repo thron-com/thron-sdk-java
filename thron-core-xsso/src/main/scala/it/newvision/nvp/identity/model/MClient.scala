@@ -50,6 +50,11 @@ class MClient extends Serializable {
 	var credentialOS: MCredentialFull =_
 	def withcredentialOS(p:MCredentialFull):this.type ={ 	this.credentialOS = p; 	this }
 
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var deliverySettings: MDeliverySettings =_
+	def withdeliverySettings(p:MDeliverySettings):this.type ={ 	this.deliverySettings = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var domain: String  = "4me.it"

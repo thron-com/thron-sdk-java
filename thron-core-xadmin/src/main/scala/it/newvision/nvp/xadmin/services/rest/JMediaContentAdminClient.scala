@@ -27,7 +27,7 @@ object JMediaContentAdminClient {
 /**
  * DEPRECATED
  */
-class JMediaContentAdminClient(val resourceEndpoint:String) {
+class JMediaContentAdminClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * @param tokenId : String
@@ -35,7 +35,7 @@ class JMediaContentAdminClient(val resourceEndpoint:String) {
 	 * @return MResponseCreateMediaContent
 	*/
 	def createMediaContent(tokenId: String, 
-			param: MMediaContentAdmincreateMediaContentReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseCreateMediaContent ={
+			param: MMediaContentAdmincreateMediaContentReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseCreateMediaContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -82,7 +82,7 @@ class JMediaContentAdminClient(val resourceEndpoint:String) {
 	 * @return MResponseFindMediaContent
 	*/
 	def findMediaContentByProperties(tokenId: String, 
-			param: MMediaContentAdminfindMediaContentByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseFindMediaContent ={
+			param: MMediaContentAdminfindMediaContentByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseFindMediaContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -128,7 +128,7 @@ class JMediaContentAdminClient(val resourceEndpoint:String) {
 	 * @return MResponseUpdateMediaContent
 	*/
 	def updateMediaContent(tokenId: String, 
-			param: MMediaContentAdminupdateMediaContentReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUpdateMediaContent ={
+			param: MMediaContentAdminupdateMediaContentReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseUpdateMediaContent ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

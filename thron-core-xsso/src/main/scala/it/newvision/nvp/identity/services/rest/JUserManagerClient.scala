@@ -10,8 +10,8 @@ import it.newvision.nvp.identity.services.model.user.MResponseUserDetail
 import it.newvision.nvp.identity.services.model.request.MUserManagerdetailReq
 import it.newvision.nvp.identity.services.model.user.MResponseUserFindByProperties
 import it.newvision.nvp.identity.services.model.request.MUserManagerfindByPropertiesReq
-import it.newvision.nvp.identity.services.model.user.MResponseUserAllUsername
 import it.newvision.nvp.identity.services.model.user.MResponseUserNumberOfUsers
+import it.newvision.nvp.identity.services.model.user.MResponseUserAllUsername
 
 /* ************************
 *  GENERATED CLASS
@@ -37,7 +37,7 @@ object JUserManagerClient {
  * com/api/xsso/resources/usermanager</li>
  * </ul>
  */
-class JUserManagerClient(val resourceEndpoint:String) {
+class JUserManagerClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * DEPRECATED
@@ -47,7 +47,7 @@ class JUserManagerClient(val resourceEndpoint:String) {
 	*/
 	@Deprecated
 	def create(tokenId: String, 
-			param: MUserManagercreateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUser ={
+			param: MUserManagercreateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseUser ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -95,7 +95,7 @@ class JUserManagerClient(val resourceEndpoint:String) {
 	*/
 	@Deprecated
 	def detail(tokenId: String, 
-			param: MUserManagerdetailReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUserDetail ={
+			param: MUserManagerdetailReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseUserDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -141,7 +141,7 @@ class JUserManagerClient(val resourceEndpoint:String) {
 	*/
 	@Deprecated
 	def findByProperties(tokenId: String, 
-			param: MUserManagerfindByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUserFindByProperties ={
+			param: MUserManagerfindByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseUserFindByProperties ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -180,55 +180,13 @@ class JUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
-	 * Return the complete list of all users (username only) registered in the platform
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @return MResponseUserAllUsername
-	*/
-	def getAllUsername(tokenId: String, 
-			clientId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUserAllUsername ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JUserManagerClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(clientId).foreach(s => params.add("clientId", s))
-			val response : MResponseUserAllUsername = if(this.resourceEndpoint == ""){
-			
-				new MResponseUserAllUsername()
-			
-			}else{
-				var wbuilder = webResource.queryParams(params)
-					.path("usermanager/getAllUsername")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
-					.header("X-TOKENID",tokenId)	
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.get(classOf[MResponseUserAllUsername])
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseUserAllUsername])
-				}
-				else {
-					throw e
-				}
-			
-		  }
-	
-	}
-
-	/**
 	 * Return the total number of users registered in the platform
 	 * @param tokenId : String
 	 * @param clientId : String
 	 * @return MResponseUserNumberOfUsers
 	*/
 	def numberOfUsers(tokenId: String, 
-			clientId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseUserNumberOfUsers ={
+			clientId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseUserNumberOfUsers ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -254,6 +212,48 @@ class JUserManagerClient(val resourceEndpoint:String) {
 				val response = e.getResponse
 				if(response.getStatus == 418) {
 				  response.getEntity(classOf[MResponseUserNumberOfUsers])
+				}
+				else {
+					throw e
+				}
+			
+		  }
+	
+	}
+
+	/**
+	 * Return the complete list of all users (username only) registered in the platform
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @return MResponseUserAllUsername
+	*/
+	def getAllUsername(tokenId: String, 
+			clientId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseUserAllUsername ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JUserManagerClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(clientId).foreach(s => params.add("clientId", s))
+			val response : MResponseUserAllUsername = if(this.resourceEndpoint == ""){
+			
+				new MResponseUserAllUsername()
+			
+			}else{
+				var wbuilder = webResource.queryParams(params)
+					.path("usermanager/getAllUsername")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)
+					.header("X-TOKENID",tokenId)	
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.get(classOf[MResponseUserAllUsername])
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseUserAllUsername])
 				}
 				else {
 					throw e

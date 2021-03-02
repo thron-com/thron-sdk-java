@@ -32,43 +32,7 @@ object JIdentityManagerClient {
  * com/api/xsso/resources/identitymanager/</li>
  * </ul>
  */
-class JIdentityManagerClient(val resourceEndpoint:String) {
-
-	/**
-	 * Validate a specific capability for the give username liked to the tokenId
-	 * @param clientId : String
-	 * @param tokenId : String
-	 * @param capability : String
-	 * @return String
-	*/
-	def capabilitiesValidation(clientId: String, 
-			tokenId: String, 
-			capability: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
-	
-						try{
-							val webResource = JIdentityManagerClient.client.resource(this.resourceEndpoint)
-							val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-							params.add("clientId", clientId)
-							params.add("tokenId", tokenId)
-							params.add("capability", capability)
-							val response : String = webResource
-							.path("identitymanager/capabilitiesValidation")
-							.accept(javax.ws.rs.core.MediaType.TEXT_PLAIN)
-							.`type`(javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED)
-							.post(classOf[String],params)          
-							response
-						}catch{
-							case e : com.sun.jersey.api.client.UniformInterfaceException =>
-								val response = e.getResponse
-								if(response.getStatus == 418) {
-									response.getEntity(classOf[String])
-								}
-								else {						
-									throw e
-								}
-						}
-				     
-	}
+class JIdentityManagerClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * @param clientId : String
@@ -78,7 +42,7 @@ class JIdentityManagerClient(val resourceEndpoint:String) {
 	*/
 	def login(clientId: String, 
 			username: String, 
-			password: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
+			password: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):String ={
 	
 		                  try{
 		                	val webResource = JIdentityManagerClient.client.resource(this.resourceEndpoint)
@@ -119,7 +83,7 @@ class JIdentityManagerClient(val resourceEndpoint:String) {
 	 * @return MResponseLogin
 	*/
 	def loginWithDetail(tokenId: String, 
-			param: MIdentityManagerloginWithDetailReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseLogin ={
+			param: MIdentityManagerloginWithDetailReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseLogin ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -165,7 +129,7 @@ class JIdentityManagerClient(val resourceEndpoint:String) {
 	 * @return String
 	*/
 	def logout(clientId: String, 
-			tokenId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
+			tokenId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):String ={
 	
 		                  try{
 		                	val webResource = JIdentityManagerClient.client.resource(this.resourceEndpoint)
@@ -192,6 +156,74 @@ class JIdentityManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * the service return an exception if the token is expired otherwise no data
+	 * @param clientId : String
+	 * @param tokenId : String
+	 * @return String
+	*/
+	def validateToken(clientId: String, 
+			tokenId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):String ={
+		        try{
+		          val webResource = JIdentityManagerClient.client.resource(this.resourceEndpoint)
+		          val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+		          params.add("clientId", clientId)
+		          params.add("tokenId", tokenId)
+		          val response : String = webResource
+		          .path("identitymanager/validateToken")
+		          .accept(javax.ws.rs.core.MediaType.TEXT_PLAIN)
+		          .`type`(javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED)
+		          .post(classOf[String],params)
+		          response
+		        }catch{
+		          case e : com.sun.jersey.api.client.UniformInterfaceException =>
+		            val response = e.getResponse
+		            if(response.getStatus == 418) {
+		              response.getEntity(classOf[String])
+		            }
+		            else {              
+		              throw e
+		            }
+		        }
+		  
+	}
+
+	/**
+	 * Validate a specific capability for the give username liked to the tokenId
+	 * @param clientId : String
+	 * @param tokenId : String
+	 * @param capability : String
+	 * @return String
+	*/
+	def capabilitiesValidation(clientId: String, 
+			tokenId: String, 
+			capability: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):String ={
+	
+						try{
+							val webResource = JIdentityManagerClient.client.resource(this.resourceEndpoint)
+							val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+							params.add("clientId", clientId)
+							params.add("tokenId", tokenId)
+							params.add("capability", capability)
+							val response : String = webResource
+							.path("identitymanager/capabilitiesValidation")
+							.accept(javax.ws.rs.core.MediaType.TEXT_PLAIN)
+							.`type`(javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED)
+							.post(classOf[String],params)          
+							response
+						}catch{
+							case e : com.sun.jersey.api.client.UniformInterfaceException =>
+								val response = e.getResponse
+								if(response.getStatus == 418) {
+									response.getEntity(classOf[String])
+								}
+								else {						
+									throw e
+								}
+						}
+				     
+	}
+
+	/**
 	 * Validate a specific role for the give username linked to the tokenId
 	 * @param clientId : String
 	 * @param tokenId : String
@@ -200,7 +232,7 @@ class JIdentityManagerClient(val resourceEndpoint:String) {
 	*/
 	def roleValidation(clientId: String, 
 			tokenId: String, 
-			role: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
+			role: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):String ={
 						try{
 		                	val webResource = JIdentityManagerClient.client.resource(this.resourceEndpoint)
 		                	val params = new com.sun.jersey.core.util.MultivaluedMapImpl
@@ -224,38 +256,6 @@ class JIdentityManagerClient(val resourceEndpoint:String) {
 		                		}
 		                  }
 		                
-	}
-
-	/**
-	 * the service return an exception if the token is expired otherwise no data
-	 * @param clientId : String
-	 * @param tokenId : String
-	 * @return String
-	*/
-	def validateToken(clientId: String, 
-			tokenId: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):String ={
-		        try{
-		          val webResource = JIdentityManagerClient.client.resource(this.resourceEndpoint)
-		          val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-		          params.add("clientId", clientId)
-		          params.add("tokenId", tokenId)
-		          val response : String = webResource
-		          .path("identitymanager/validateToken")
-		          .accept(javax.ws.rs.core.MediaType.TEXT_PLAIN)
-		          .`type`(javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED)
-		          .post(classOf[String],params)
-		          response
-		        }catch{
-		          case e : com.sun.jersey.api.client.UniformInterfaceException =>
-		            val response = e.getResponse
-		            if(response.getStatus == 418) {
-		              response.getEntity(classOf[String])
-		            }
-		            else {              
-		              throw e
-		            }
-		        }
-		  
 	}
 
 }

@@ -4,22 +4,22 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.identity.services.model.vusers.MResponseVUser
-import it.newvision.nvp.identity.services.model.request.MVUserManagerchangeUserStatusReq
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUserCreate
 import it.newvision.nvp.identity.services.model.request.MVUserManagercreateReq
+import it.newvision.nvp.identity.services.model.vusers.MResponseVUser
+import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateExternalIdReq
+import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateUserReq
+import it.newvision.nvp.identity.services.model.request.MVUserManagerupgradeUserReq
+import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateSettingsReq
+import it.newvision.nvp.identity.services.model.request.MVUserManagerchangeUserStatusReq
+import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateCapabilitiesAndRolesReq
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUserDetail
 import it.newvision.nvp.identity.services.model.vusers.MResponseVUserFindByProperties
 import it.newvision.nvp.identity.services.model.request.MVUserManagerfindByPropertiesReq
+import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateImageReq
+import it.newvision.nvp.identity.services.model.vusers.MResponseVUserVerifyUsername
 import it.newvision.nvp.identity.services.model.request.MVUserManagerlinkGroupsReq
 import it.newvision.nvp.identity.services.model.request.MVUserManagerunlinkGroupsReq
-import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateCapabilitiesAndRolesReq
-import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateExternalIdReq
-import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateImageReq
-import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateSettingsReq
-import it.newvision.nvp.identity.services.model.request.MVUserManagerupdateUserReq
-import it.newvision.nvp.identity.services.model.request.MVUserManagerupgradeUserReq
-import it.newvision.nvp.identity.services.model.vusers.MResponseVUserVerifyUsername
 
 /* ************************
 *  GENERATED CLASS
@@ -45,60 +45,7 @@ object JVUserManagerClient {
  * com/api/xsso/resources/vusermanager    </li>
  * </ul>
  */
-class JVUserManagerClient(val resourceEndpoint:String) {
-
-	/**
-	 * Modifies the active status of a user.
-	 * 
-	 * An inactive user cannot login or use any service of the platform.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>CORE_MANAGE_USERS role</li>
-	 * 	<li>MODIFY ACL on user</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MVUserManagerchangeUserStatusReq
-	 * @return MResponseVUser
-	*/
-	def changeUserStatus(tokenId: String, 
-			param: MVUserManagerchangeUserStatusReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUser ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseVUser = if(this.resourceEndpoint == ""){
-			
-				new MResponseVUser()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("vusermanager/changeUserStatus")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseVUser],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVUser])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
+class JVUserManagerClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Creates a user.
@@ -124,7 +71,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	 * @return MResponseVUserCreate
 	*/
 	def create(tokenId: String, 
-			param: MVUserManagercreateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUserCreate ={
+			param: MVUserManagercreateReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUserCreate ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -163,6 +110,323 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Updates the externalId of a user.
+	 * <b>
+	 * </b><b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param username : String
+	 * @param param : MVUserManagerupdateExternalIdReq
+	 * @return MResponseVUser
+	*/
+	def updateExternalId(tokenId: String, 
+			clientId: String, 
+			username: String, 
+			param: MVUserManagerupdateExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUser ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseVUser = if(this.resourceEndpoint == ""){
+			
+				new MResponseVUser()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("vusermanager/updateExternalId")
+					.path(clientId.toString)
+		.path(username.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseVUser],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseVUser])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Update the detail of a user.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
+	 * <ul>
+	 * 	<li>MODIFY ACL on user</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param username : String
+	 * @param param : MVUserManagerupdateUserReq
+	 * @return MResponseVUser
+	*/
+	def updateUser(tokenId: String, 
+			clientId: String, 
+			username: String, 
+			param: MVUserManagerupdateUserReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUser ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseVUser = if(this.resourceEndpoint == ""){
+			
+				new MResponseVUser()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("vusermanager/updateUser")
+					.path(clientId.toString)
+		.path(username.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseVUser],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseVUser])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Upgrades a PLATFORM_USER_GUEST type user to PLATFORM_USER type.
+	 * Username cannot be changed.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MVUserManagerupgradeUserReq
+	 * @return MResponseVUserCreate
+	*/
+	def upgradeUser(tokenId: String, 
+			param: MVUserManagerupgradeUserReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUserCreate ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseVUserCreate = if(this.resourceEndpoint == ""){
+			
+				new MResponseVUserCreate()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("vusermanager/upgradeUser")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseVUserCreate],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseVUserCreate])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Updates restricted params of a user (userQuota and userLockTemplate).
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MVUserManagerupdateSettingsReq
+	 * @return MResponseVUser
+	*/
+	def updateSettings(tokenId: String, 
+			param: MVUserManagerupdateSettingsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUser ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseVUser = if(this.resourceEndpoint == ""){
+			
+				new MResponseVUser()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("vusermanager/updateSettings")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseVUser],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseVUser])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Modifies the active status of a user.
+	 * 
+	 * An inactive user cannot login or use any service of the platform.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * 	<li>MODIFY ACL on user</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MVUserManagerchangeUserStatusReq
+	 * @return MResponseVUser
+	*/
+	def changeUserStatus(tokenId: String, 
+			param: MVUserManagerchangeUserStatusReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUser ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseVUser = if(this.resourceEndpoint == ""){
+			
+				new MResponseVUser()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("vusermanager/changeUserStatus")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseVUser],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseVUser])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Updates the capabilities and roles of a user.
+	 * 
+	 * <b>Validation:</b>
+	 * <ul>
+	 * 	<li>CORE_MANAGE_USERS role</li>
+	 * </ul>
+	 * @param tokenId : String
+	 * @param param : MVUserManagerupdateCapabilitiesAndRolesReq
+	 * @return MResponseVUser
+	*/
+	def updateCapabilitiesAndRoles(tokenId: String, 
+			param: MVUserManagerupdateCapabilitiesAndRolesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUser ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseVUser = if(this.resourceEndpoint == ""){
+			
+				new MResponseVUser()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("vusermanager/updateCapabilitiesAndRoles")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseVUser],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseVUser])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
 	 * Returns the detail and capabilities of a user.
 	 * The service return only the first 50 groups linked to the user and no own ACLs.
 	 * 
@@ -188,7 +452,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 			returnItags: Boolean, 
 			returnImetadata: Boolean, 
 			offset: Integer, 
-			numberOfResults: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUserDetail ={
+			numberOfResults: Integer)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUserDetail ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -235,7 +499,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	 * @return MResponseVUserFindByProperties
 	*/
 	def findByProperties(tokenId: String, 
-			param: MVUserManagerfindByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUserFindByProperties ={
+			param: MVUserManagerfindByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUserFindByProperties ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -274,6 +538,97 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	}
 
 	/**
+	 * Updates the profile picture of a user.
+	 * Supported file formats: JPEG, PNG.
+	 * @param tokenId : String
+	 * @param param : MVUserManagerupdateImageReq
+	 * @return MResponseVUser
+	*/
+	def updateImage(tokenId: String, 
+			param: MVUserManagerupdateImageReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUser ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
+			val response : MResponseVUser = if(this.resourceEndpoint == ""){
+			
+				new MResponseVUser()
+			
+			}else{	
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
+				var wbuilder = webResource
+					.path("vusermanager/updateImage")
+				
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+			
+				wbuilder.post(classOf[MResponseVUser],param)
+			
+			
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseVUser])
+				}
+				else {
+				  throw e
+				}
+		  }
+		  
+	
+	}
+
+	/**
+	 * Verifies whether or not a username is valid, and eventually suggest an alternative.
+	 * @param tokenId : String
+	 * @param clientId : String
+	 * @param username : String
+	 * @return MResponseVUserVerifyUsername
+	*/
+	def verifyUsername(tokenId: String, 
+			clientId: String, 
+			username: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUserVerifyUsername ={
+	
+		  import scala.collection.JavaConversions._
+		  try{
+			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
+			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
+			Option(username).foreach(s => params.add("username", s))  
+			val response : MResponseVUserVerifyUsername = if(this.resourceEndpoint == ""){
+			
+				new MResponseVUserVerifyUsername()
+			
+			}else{
+				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED	
+				var wbuilder = webResource
+					.path("vusermanager/verifyUsername")
+					.path(clientId.toString)
+					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
+					.`type`(mediaType)
+					.header("X-TOKENID",tokenId)
+				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
+				wbuilder.post(classOf[MResponseVUserVerifyUsername],params)
+			}
+			response
+		  }catch{
+			case e : com.sun.jersey.api.client.UniformInterfaceException =>
+				val response = e.getResponse
+				if(response.getStatus == 418) {
+				  response.getEntity(classOf[MResponseVUserVerifyUsername])
+				}
+				else {
+				  throw e
+				}
+		  }
+	
+	}
+
+	/**
 	 * Links a user to a group.
 	 * 
 	 * <b>Validation:</b>
@@ -290,7 +645,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	def linkGroups(tokenId: String, 
 			clientId: String, 
 			username: String, 
-			param: MVUserManagerlinkGroupsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUser ={
+			param: MVUserManagerlinkGroupsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUser ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -348,7 +703,7 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 	def unlinkGroups(tokenId: String, 
 			clientId: String, 
 			username: String, 
-			param: MVUserManagerunlinkGroupsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUser ={
+			param: MVUserManagerunlinkGroupsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseVUser ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -384,361 +739,6 @@ class JVUserManagerClient(val resourceEndpoint:String) {
 				}
 		  }
 		  
-	
-	}
-
-	/**
-	 * Updates the capabilities and roles of a user.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>CORE_MANAGE_USERS role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MVUserManagerupdateCapabilitiesAndRolesReq
-	 * @return MResponseVUser
-	*/
-	def updateCapabilitiesAndRoles(tokenId: String, 
-			param: MVUserManagerupdateCapabilitiesAndRolesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUser ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseVUser = if(this.resourceEndpoint == ""){
-			
-				new MResponseVUser()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("vusermanager/updateCapabilitiesAndRoles")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseVUser],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVUser])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Updates the externalId of a user.
-	 * <b>
-	 * </b><b>Validation:</b>
-	 * <ul>
-	 * 	<li>CORE_MANAGE_USERS role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param username : String
-	 * @param param : MVUserManagerupdateExternalIdReq
-	 * @return MResponseVUser
-	*/
-	def updateExternalId(tokenId: String, 
-			clientId: String, 
-			username: String, 
-			param: MVUserManagerupdateExternalIdReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUser ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseVUser = if(this.resourceEndpoint == ""){
-			
-				new MResponseVUser()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("vusermanager/updateExternalId")
-					.path(clientId.toString)
-		.path(username.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseVUser],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVUser])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Updates the profile picture of a user.
-	 * Supported file formats: JPEG, PNG.
-	 * @param tokenId : String
-	 * @param param : MVUserManagerupdateImageReq
-	 * @return MResponseVUser
-	*/
-	def updateImage(tokenId: String, 
-			param: MVUserManagerupdateImageReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUser ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseVUser = if(this.resourceEndpoint == ""){
-			
-				new MResponseVUser()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("vusermanager/updateImage")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseVUser],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVUser])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Updates restricted params of a user (userQuota and userLockTemplate).
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>CORE_MANAGE_USERS role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MVUserManagerupdateSettingsReq
-	 * @return MResponseVUser
-	*/
-	def updateSettings(tokenId: String, 
-			param: MVUserManagerupdateSettingsReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUser ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseVUser = if(this.resourceEndpoint == ""){
-			
-				new MResponseVUser()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("vusermanager/updateSettings")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseVUser],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVUser])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Update the detail of a user.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>CORE_MANAGE_USERS role</li>
-	 * </ul>
-	 * <ul>
-	 * 	<li>MODIFY ACL on user</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param username : String
-	 * @param param : MVUserManagerupdateUserReq
-	 * @return MResponseVUser
-	*/
-	def updateUser(tokenId: String, 
-			clientId: String, 
-			username: String, 
-			param: MVUserManagerupdateUserReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUser ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseVUser = if(this.resourceEndpoint == ""){
-			
-				new MResponseVUser()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("vusermanager/updateUser")
-					.path(clientId.toString)
-		.path(username.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseVUser],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVUser])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Upgrades a PLATFORM_USER_GUEST type user to PLATFORM_USER type.
-	 * Username cannot be changed.
-	 * 
-	 * <b>Validation:</b>
-	 * <ul>
-	 * 	<li>CORE_MANAGE_USERS role</li>
-	 * </ul>
-	 * @param tokenId : String
-	 * @param param : MVUserManagerupgradeUserReq
-	 * @return MResponseVUserCreate
-	*/
-	def upgradeUser(tokenId: String, 
-			param: MVUserManagerupgradeUserReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUserCreate ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
-			val response : MResponseVUserCreate = if(this.resourceEndpoint == ""){
-			
-				new MResponseVUserCreate()
-			
-			}else{	
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_XML	
-				var wbuilder = webResource
-					.path("vusermanager/upgradeUser")
-				
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-			
-				wbuilder.post(classOf[MResponseVUserCreate],param)
-			
-			
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVUserCreate])
-				}
-				else {
-				  throw e
-				}
-		  }
-		  
-	
-	}
-
-	/**
-	 * Verifies whether or not a username is valid, and eventually suggest an alternative.
-	 * @param tokenId : String
-	 * @param clientId : String
-	 * @param username : String
-	 * @return MResponseVUserVerifyUsername
-	*/
-	def verifyUsername(tokenId: String, 
-			clientId: String, 
-			username: String)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseVUserVerifyUsername ={
-	
-		  import scala.collection.JavaConversions._
-		  try{
-			val webResource = JVUserManagerClient.client.resource(this.resourceEndpoint)
-			val params = new com.sun.jersey.core.util.MultivaluedMapImpl
-			Option(username).foreach(s => params.add("username", s))  
-			val response : MResponseVUserVerifyUsername = if(this.resourceEndpoint == ""){
-			
-				new MResponseVUserVerifyUsername()
-			
-			}else{
-				val mediaType = javax.ws.rs.core.MediaType.APPLICATION_FORM_URLENCODED	
-				var wbuilder = webResource
-					.path("vusermanager/verifyUsername")
-					.path(clientId.toString)
-					.accept(javax.ws.rs.core.MediaType.APPLICATION_XML)		
-					.`type`(mediaType)
-					.header("X-TOKENID",tokenId)
-				Option(_fwdHeaders).foreach(_.foreach(_.foreach{x=> wbuilder= wbuilder.header(x._1,x._2)}))
-				wbuilder.post(classOf[MResponseVUserVerifyUsername],params)
-			}
-			response
-		  }catch{
-			case e : com.sun.jersey.api.client.UniformInterfaceException =>
-				val response = e.getResponse
-				if(response.getStatus == 418) {
-				  response.getEntity(classOf[MResponseVUserVerifyUsername])
-				}
-				else {
-				  throw e
-				}
-		  }
 	
 	}
 

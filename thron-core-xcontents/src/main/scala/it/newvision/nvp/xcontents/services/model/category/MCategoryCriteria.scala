@@ -4,9 +4,9 @@ import _root_.java.lang.{Integer,Boolean,Long,Double,Float,Short}
 //#SWG#import com.wordnik.swagger.annotations._ 
 import _root_.scala.beans.BeanProperty 
 import javax.xml.bind.annotation._ 
-import it.newvision.nvp.xcontents.services.model.acl.MAclCriteria
-import it.newvision.nvp.xcontents.model.MECategoryType
 import it.newvision.nvp.xcontents.model.MMetadata
+import it.newvision.nvp.xcontents.model.MECategoryType
+import it.newvision.nvp.xcontents.services.model.acl.MAclCriteria
 
 /* ************************
 *  GENERATED CLASS
@@ -18,26 +18,6 @@ import it.newvision.nvp.xcontents.model.MMetadata
 class MCategoryCriteria extends Serializable {
 
 	/**
-	 * used to find only the categories with specific policies.
-	 * acl.context is not required
-	 */
-	//#SWG#@ApiModelProperty(value = """used to find only the categories with specific policies.
-	//#SWGNL#acl.context is not required""")
-	@BeanProperty 
-	var acl: MAclCriteria =_
-	def withacl(p:MAclCriteria):this.type ={ 	this.acl = p; 	this }
-
-	/**
-	 * filter only categories available in the given "availableInSolutions" list.
-	 */
-	//#SWG#@ApiModelProperty(value = """filter only categories available in the given "availableInSolutions" list.""")
-	@BeanProperty 
-	@Deprecated
-	var availableInSolutions: List[String] = new ArrayList[String]
-	@Deprecated
-	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
-
-	/**
 	 * list of category Ids or prettyIds
 	 */
 	//#SWG#@ApiModelProperty(value = """list of category Ids or prettyIds""")
@@ -46,31 +26,16 @@ class MCategoryCriteria extends Serializable {
 	def withcategoryIds(p:List[String]):this.type ={ 	this.categoryIds = p; 	this }
 
 	/**
-	 * filter the category by type: private, public or system.
+	 * DEPRECATED.
+	 * Use the textSearch field.
 	 */
-	//#SWG#@ApiModelProperty(value = """filter the category by type: private, public or system.""")
+	//#SWG#@ApiModelProperty(value = """DEPRECATED.
+	//#SWGNL#Use the textSearch field.""")
 	@BeanProperty 
-	var categoryTypes: List[MECategoryType] = new ArrayList[MECategoryType]
-	def withcategoryTypes(p:List[MECategoryType]):this.type ={ 	this.categoryTypes = p; 	this }
-
-	/**
-	 * return the categories having as ancestor the given categoryId
-	 */
-	//#SWG#@ApiModelProperty(value = """return the categories having as ancestor the given categoryId""")
-	@BeanProperty 
-	var childOf: String =_
-	def withchildOf(p:String):this.type ={ 	this.childOf = p; 	this }
-
-	/**
-	 * exclude all categories with level position inside the category tree higher than
-	 * ...
-	 * The root level is 1.
-	 */
-	//#SWG#@ApiModelProperty(value = """exclude all categories with level position inside the category tree higher than ...
-	//#SWGNL#The root level is 1.""")
-	@BeanProperty 
-	var excludeLevelHigherThan: Integer =_
-	def withexcludeLevelHigherThan(p:Integer):this.type ={ 	this.excludeLevelHigherThan = p; 	this }
+	@Deprecated
+	var name: String =_
+	@Deprecated
+	def withname(p:String):this.type ={ 	this.name = p; 	this }
 
 	/**
 	 * Locale code (ISO639-1).
@@ -101,18 +66,6 @@ class MCategoryCriteria extends Serializable {
 	def withmetadatas(p:List[MMetadata]):this.type ={ 	this.metadatas = p; 	this }
 
 	/**
-	 * DEPRECATED.
-	 * Use the textSearch field.
-	 */
-	//#SWG#@ApiModelProperty(value = """DEPRECATED.
-	//#SWGNL#Use the textSearch field.""")
-	@BeanProperty 
-	@Deprecated
-	var name: String =_
-	@Deprecated
-	def withname(p:String):this.type ={ 	this.name = p; 	this }
-
-	/**
 	 * Deprecated.
 	 */
 	//#SWG#@ApiModelProperty(value = """Deprecated.""")
@@ -132,6 +85,61 @@ class MCategoryCriteria extends Serializable {
 	@BeanProperty 
 	var textSearch: String =_
 	def withtextSearch(p:String):this.type ={ 	this.textSearch = p; 	this }
+
+	/**
+	 * filter the category by type: private, public or system.
+	 */
+	//#SWG#@ApiModelProperty(value = """filter the category by type: private, public or system.""")
+	@BeanProperty 
+	var categoryTypes: List[MECategoryType] = new ArrayList[MECategoryType]
+	def withcategoryTypes(p:List[MECategoryType]):this.type ={ 	this.categoryTypes = p; 	this }
+
+	/**
+	 * return the categories having as ancestor the given categoryId
+	 */
+	//#SWG#@ApiModelProperty(value = """return the categories having as ancestor the given categoryId""")
+	@BeanProperty 
+	var childOf: String =_
+	def withchildOf(p:String):this.type ={ 	this.childOf = p; 	this }
+
+	/**
+	 * exclude all categories with level position inside the category tree higher than
+	 * ...
+	 * The root level is 1.
+	 */
+	//#SWG#@ApiModelProperty(value = """exclude all categories with level position inside the category tree higher than ...
+	//#SWGNL#The root level is 1.""")
+	@BeanProperty 
+	var excludeLevelHigherThan: Integer =_
+	def withexcludeLevelHigherThan(p:Integer):this.type ={ 	this.excludeLevelHigherThan = p; 	this }
+
+	/**
+	 * filter only categories available in the given "availableInSolutions" list.
+	 */
+	//#SWG#@ApiModelProperty(value = """filter only categories available in the given "availableInSolutions" list.""")
+	@BeanProperty 
+	@Deprecated
+	var availableInSolutions: List[String] = new ArrayList[String]
+	@Deprecated
+	def withavailableInSolutions(p:List[String]):this.type ={ 	this.availableInSolutions = p; 	this }
+
+	/**
+	 * used to find only the categories with specific policies.
+	 * acl.context is not required
+	 */
+	//#SWG#@ApiModelProperty(value = """used to find only the categories with specific policies.
+	//#SWGNL#acl.context is not required""")
+	@BeanProperty 
+	var acl: MAclCriteria =_
+	def withacl(p:MAclCriteria):this.type ={ 	this.acl = p; 	this }
+
+	/**
+	 * If true, it returns only the categories marked as starred by the user
+	 */
+	//#SWG#@ApiModelProperty(value = """If true, it returns only the categories marked as starred by the user""")
+	@BeanProperty 
+	var onlyStarredCategories: Boolean = false
+	def withonlyStarredCategories(p:Boolean):this.type ={ 	this.onlyStarredCategories = p; 	this }
 
 	/**
 	 * @return void

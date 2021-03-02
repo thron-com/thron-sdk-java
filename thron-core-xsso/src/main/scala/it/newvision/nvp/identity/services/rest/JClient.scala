@@ -11,11 +11,14 @@ import it.newvision.nvp.identity.services.model.request.MClientfindByPropertiesR
 import it.newvision.nvp.identity.services.model.client.MResponseGetAllClientsId
 import it.newvision.nvp.identity.services.model.client.MResponseGetPlayerInfo
 import it.newvision.nvp.identity.services.model.client.MResponseSiteAccelerationList
+import it.newvision.nvp.identity.services.model.client.MResponseDelivery
+import it.newvision.nvp.identity.services.model.request.MClientinitializeDeliveryReq
 import it.newvision.nvp.identity.services.model.request.MClientregisterReq
 import it.newvision.nvp.identity.services.model.client.MResponseClient
 import it.newvision.nvp.identity.services.model.request.MClientremoveReq
 import it.newvision.nvp.identity.services.model.request.MClientupdateReq
 import it.newvision.nvp.identity.services.model.request.MClientupdateClientStatusReq
+import it.newvision.nvp.identity.services.model.request.MClientupdateDeliveryReq
 
 /* ************************
 *  GENERATED CLASS
@@ -321,6 +324,61 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	protected def capability_getSiteAccelerationList: String
 
 	/**
+	 * @param tokenId : String
+	 * @param param : MClientinitializeDeliveryReq
+	 * @return MResponseDelivery
+	*/
+	@POST
+	@Path("/initializeDelivery")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/initializeDelivery", notes = """""", response = classOf[MResponseDelivery])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def initializeDelivery(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MClientinitializeDeliveryReq):Response /*returnType = MResponseDelivery*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__initializeDelivery(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_initializeDelivery)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_initializeDelivery)
+	    }
+	} 
+
+	@GET
+	@Path("/initializeDelivery")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def initializeDelivery_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseDelivery*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("initializeDelivery",this._getCacheControl) 
+		try{
+			val resp = this.__initializeDelivery(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MClientinitializeDeliveryReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_initializeDelivery)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_initializeDelivery)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __initializeDelivery(tokenId: String, param: MClientinitializeDeliveryReq) :MResponseDelivery
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_initializeDelivery: String
+
+	/**
 	 * Create a new client (service code) in the platform.
 	 * @param tokenId : String
 	 * @param param : MClientregisterReq
@@ -542,5 +600,60 @@ trait JClient extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 protected def __updateClientStatus(tokenId: String, param: MClientupdateClientStatusReq) :MResponseClient
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_updateClientStatus: String
+
+	/**
+	 * @param tokenId : String
+	 * @param param : MClientupdateDeliveryReq
+	 * @return MResponseDelivery
+	*/
+	@POST
+	@Path("/updateDelivery")
+	@Produces(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	@Consumes(Array(MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML))
+	//#SWG#@ApiOperation(value = "/updateDelivery", notes = """""", response = classOf[MResponseDelivery])
+			//#SWG#@ApiResponses(value=Array(new ApiResponse(code=200, message="OK"),new ApiResponse(code=400, message="Invalid Arguments"),new ApiResponse(code=418, message="Exception"),new ApiResponse(code=403, message="Access Denied/Session Expired"), new ApiResponse(code=404, message="Not Found"), new ApiResponse(code=307, message="Temporary redirect")))
+	def updateDelivery(//#SWG#@ApiParam(name = "X-TOKENID", value = "session token", required=false)
+	@HeaderParam("X-TOKENID")
+	tokenId: String, 
+			param: MClientupdateDeliveryReq):Response /*returnType = MResponseDelivery*/ = {
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		try{
+			val resp = this.__updateDelivery(tokenId,param)
+			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_updateDelivery)    
+		}catch{
+	      case e:WebApplicationException =>
+	        throw new WebApplicationException(e,this.capability_updateDelivery)
+	    }
+	} 
+
+	@GET
+	@Path("/updateDelivery")
+	@Produces(Array(MediaType.APPLICATION_JSON,"application/x-javascript"))
+	def updateDelivery_2(@HeaderParam("X-TOKENID") tokenId_h: String,
+			@QueryParam("tokenId") tokenId_q: String,
+			@QueryParam("param") param_q: String,
+			@QueryParam("callback") callback_q: String):Response /*returnType = MResponseDelivery*/ = { 
+		import it.newvision.nvp.core.libraries.restserver.PRestHelper
+		import it.newvision.core.dictionary.exceptions.WebApplicationException
+		import org.apache.commons.lang.StringUtils
+		val cc = this.cachemap.getOrElse("updateDelivery",this._getCacheControl) 
+		try{
+			val resp = this.__updateDelivery(
+			PRestHelper.getTokenId(tokenId_q, tokenId_h)
+			,PRestHelper.bindRequest[MClientupdateDeliveryReq](param_q)	
+		    )
+	      PRestHelper.responseForGET(resp, cc, callback_q,this.capability_updateDelivery)
+	    }catch{
+	      case e:WebApplicationException=>
+	        if(StringUtils.isBlank(callback_q)) throw e
+	        PRestHelper.responseAsException(e.getResponse, this._getCacheControl, callback_q,this.capability_updateDelivery)
+	    }
+	}
+
+	/** ABSTRACT METHOD TO IMPLEMENT */ 
+	 protected def __updateDelivery(tokenId: String, param: MClientupdateDeliveryReq) :MResponseDelivery
+	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
+	protected def capability_updateDelivery: String
 
 }

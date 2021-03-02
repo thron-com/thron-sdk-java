@@ -15,16 +15,19 @@ import javax.xml.bind.annotation._
 class MLinkedCategoryOp extends Serializable {
 
 	/**
-	 * phrase, exact_match
+	 * The id of the category to filter on
 	 */
-	//#SWG#@ApiModelProperty(value = """phrase, exact_match""")
-	@BeanProperty 
-	var cascade: Boolean  = false
-	def withcascade(p:Boolean):this.type ={ 	this.cascade = p; 	this }
-
-	//#SWG#@ApiModelProperty(value = """""" ,required = true)
+	//#SWG#@ApiModelProperty(value = """The id of the category to filter on""" ,required = true)
 	@BeanProperty 
 	var id: String =_
 	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
+	/**
+	 * Specify whether the filter should be extended to the sub-categories
+	 */
+	//#SWG#@ApiModelProperty(value = """Specify whether the filter should be extended to the sub-categories""")
+	@BeanProperty 
+	var cascade: Boolean  = false
+	def withcascade(p:Boolean):this.type ={ 	this.cascade = p; 	this }
 
 }

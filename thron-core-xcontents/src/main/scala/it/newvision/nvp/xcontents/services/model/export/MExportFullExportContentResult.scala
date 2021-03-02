@@ -46,9 +46,4 @@ class MExportFullExportContentResult extends Serializable {
 	var source: MSourceDetail =_
 	def withsource(p:MSourceDetail):this.type ={ 	this.source = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var version: MVersionDetail =_
-	def withversion(p:MVersionDetail):this.type ={ 	this.version = p; 	this }
-
 }

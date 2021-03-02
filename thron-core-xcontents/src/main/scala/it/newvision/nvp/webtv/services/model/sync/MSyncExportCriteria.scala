@@ -33,7 +33,7 @@ class MSyncExportCriteria extends Serializable {
 	var contentType: List[MEContentType] = new ArrayList[MEContentType]
 	def withcontentType(p:List[MEContentType]):this.type ={ 	this.contentType = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
+	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var linkedCategoryOp: MSyncCategorySearchOptions =_
 	def withlinkedCategoryOp(p:MSyncCategorySearchOptions):this.type ={ 	this.linkedCategoryOp = p; 	this }

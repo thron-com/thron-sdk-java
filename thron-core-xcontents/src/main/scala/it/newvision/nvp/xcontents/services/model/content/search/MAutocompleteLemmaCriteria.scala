@@ -14,11 +14,6 @@ import javax.xml.bind.annotation._
 //#SWG#@ApiModel(description = """""")
 class MAutocompleteLemmaCriteria extends Serializable {
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var lang: String =_
-	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
-
 	/**
 	 * da 0 a 2 ( massimo supportato in ES)
 	 */
@@ -26,6 +21,11 @@ class MAutocompleteLemmaCriteria extends Serializable {
 	@BeanProperty 
 	var text: String =_
 	def withtext(p:String):this.type ={ 	this.text = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var lang: String =_
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 	/**
 	 * @return Boolean

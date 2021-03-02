@@ -56,6 +56,8 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * Optional. The desired name of the file with no extension
 	 * @param contactId : String
 	 * Optional. Used for download analytics. The value comes from the tracking library.
+	 * @param trackEvent : Boolean
+	 * Optional. If False, avoid tracking when downloading content. Default value: True.
 	 * @return java.io.File
 	*/
 	@POST
@@ -85,11 +87,14 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	saveAs: String, 
 			//#SWG#@ApiParam(value = """Optional. Used for download analytics. The value comes from the tracking library.""")
 	@FormParam("contactId")
-	contactId: String):Response /*returnType = java.io.File*/ = {
+	contactId: String, 
+			//#SWG#@ApiParam(value = """Optional. If False, avoid tracking when downloading content. Default value: True.""")
+	@FormParam("trackEvent")
+	trackEvent: Boolean):Response /*returnType = java.io.File*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__download(tokenId,clientId,downloadId,saveAs,contactId)
+			val resp = this.__download(tokenId,clientId,downloadId,saveAs,contactId,trackEvent)
 			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_download)    
 		}catch{
 	      case e:WebApplicationException =>
@@ -104,7 +109,8 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 			@PathParam("clientId")clientId_q: String, 
 			@QueryParam("downloadId")downloadId_q: String, 
 			@QueryParam("saveAs")saveAs_q: String, 
-			@QueryParam("contactId")contactId_q: String,
+			@QueryParam("contactId")contactId_q: String, 
+			@QueryParam("trackEvent")trackEvent_q: Boolean,
 			@HeaderParam("X-TOKENID") tokenId_h: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String):Response /*returnType = java.io.File*/ = { 
@@ -113,7 +119,7 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import org.apache.commons.lang.StringUtils
 		val cc = this.cachemap.getOrElse("download",this._getCacheControl) 
 		try{	
-			val resp = this.__download(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,downloadId_q,saveAs_q,contactId_q)
+			val resp = this.__download(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,downloadId_q,saveAs_q,contactId_q,trackEvent_q)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_download)
 	    }catch{
@@ -124,7 +130,7 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __download(tokenId: String, clientId: String, downloadId: String, saveAs: String, contactId: String) :java.io.File
+	 protected def __download(tokenId: String, clientId: String, downloadId: String, saveAs: String, contactId: String, trackEvent: Boolean) :java.io.File
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_download: String
 
@@ -240,6 +246,8 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	 * @param locale : String
 	 * Optional. Locale of content prettyId used as file name.
 	 * @param contactId : String
+	 * @param trackEvent : Boolean
+	 * Optional. If False, avoid tracking when downloading content. Default value: True.
 	 * @return java.io.File
 	*/
 	@POST
@@ -280,11 +288,14 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	locale: String, 
 			//#SWG#@ApiParam(value = """""")
 	@FormParam("contactId")
-	contactId: String):Response /*returnType = java.io.File*/ = {
+	contactId: String, 
+			//#SWG#@ApiParam(value = """Optional. If False, avoid tracking when downloading content. Default value: True.""")
+	@FormParam("trackEvent")
+	trackEvent: Boolean):Response /*returnType = java.io.File*/ = {
 		import it.newvision.nvp.core.libraries.restserver.PRestHelper
 		import it.newvision.core.dictionary.exceptions.WebApplicationException
 		try{
-			val resp = this.__downloadPlaylist(tokenId,clientId,id,saveAs,pkey,elements,locale,contactId)
+			val resp = this.__downloadPlaylist(tokenId,clientId,id,saveAs,pkey,elements,locale,contactId,trackEvent)
 			PRestHelper.responseForPOST(resp, this._postCacheControl,this.capability_downloadPlaylist)    
 		}catch{
 	      case e:WebApplicationException =>
@@ -302,7 +313,8 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 			@QueryParam("pkey")pkey_q: String, 
 			@QueryParam("elements")elements_q: String, 
 			@QueryParam("locale")locale_q: String, 
-			@QueryParam("contactId")contactId_q: String,
+			@QueryParam("contactId")contactId_q: String, 
+			@QueryParam("trackEvent")trackEvent_q: Boolean,
 			@HeaderParam("X-TOKENID") tokenId_h: String,
 			//#SWG#@ApiParam(value = "Optional",required=false,access="internal")
 			@QueryParam("callback") callback_q: String):Response /*returnType = java.io.File*/ = { 
@@ -311,7 +323,7 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 		import org.apache.commons.lang.StringUtils
 		val cc = this.cachemap.getOrElse("downloadPlaylist",this._getCacheControl) 
 		try{	
-			val resp = this.__downloadPlaylist(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,id_q,saveAs_q,pkey_q,elements_q,locale_q,contactId_q)
+			val resp = this.__downloadPlaylist(PRestHelper.getTokenId(tokenId_q, tokenId_h),clientId_q,id_q,saveAs_q,pkey_q,elements_q,locale_q,contactId_q,trackEvent_q)
 		
 			PRestHelper.responseForGET(resp, cc, callback_q,this.capability_downloadPlaylist)
 	    }catch{
@@ -322,7 +334,7 @@ trait JArchive extends it.newvision.nvp.core.libraries.restserver.BaseResource {
 	}
 
 	/** ABSTRACT METHOD TO IMPLEMENT */ 
-	 protected def __downloadPlaylist(tokenId: String, clientId: String, id: String, saveAs: String, pkey: String, elements: String, locale: String, contactId: String) :java.io.File
+	 protected def __downloadPlaylist(tokenId: String, clientId: String, id: String, saveAs: String, pkey: String, elements: String, locale: String, contactId: String, trackEvent: Boolean) :java.io.File
 	/** ABSTRACT METHOD. IMPLEMENT USING THE RIGHT CAPABILITY NAME */ 
 	protected def capability_downloadPlaylist: String
 

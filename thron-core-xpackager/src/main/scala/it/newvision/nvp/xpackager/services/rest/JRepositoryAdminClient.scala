@@ -40,7 +40,7 @@ object JRepositoryAdminClient {
  * com/api/adxpackager/resources/repositoryadmin</li>
  * </ul>
  */
-class JRepositoryAdminClient(val resourceEndpoint:String) {
+class JRepositoryAdminClient(val resourceEndpoint:String, defaultHeader:Option[scala.collection.Map[String,String]]=None) {
 
 	/**
 	 * Used by bakupscript to update the file status once the backup has been completed. update the status
@@ -51,7 +51,7 @@ class JRepositoryAdminClient(val resourceEndpoint:String) {
 	 * @return MResponseRepository
 	*/
 	def updateFileStatus(tokenId: String, 
-			param: MRepositoryAdminupdateFileStatusReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRepository ={
+			param: MRepositoryAdminupdateFileStatusReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseRepository ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -96,7 +96,7 @@ class JRepositoryAdminClient(val resourceEndpoint:String) {
 	 * @return MResponseFilesToBackup
 	*/
 	def getFilesToBackup(tokenId: String, 
-			param: MRepositoryAdmingetFilesToBackupReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseFilesToBackup ={
+			param: MRepositoryAdmingetFilesToBackupReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseFilesToBackup ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -142,7 +142,7 @@ class JRepositoryAdminClient(val resourceEndpoint:String) {
 	 * @return MResponseFilesToCleanUp
 	*/
 	def getFilesToCleanUp(tokenId: String, 
-			param: MRepositoryAdmingetFilesToCleanUpReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseFilesToCleanUp ={
+			param: MRepositoryAdmingetFilesToCleanUpReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseFilesToCleanUp ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -188,7 +188,7 @@ class JRepositoryAdminClient(val resourceEndpoint:String) {
 	 * @return MResponseFindFilesByProperties
 	*/
 	def getFilesToFix(tokenId: String, 
-			param: MRepositoryAdmingetFilesToFixReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseFindFilesByProperties ={
+			param: MRepositoryAdmingetFilesToFixReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseFindFilesByProperties ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -232,7 +232,7 @@ class JRepositoryAdminClient(val resourceEndpoint:String) {
 	 * @return MResponseRepository
 	*/
 	def cleanupFilesOnSite(tokenId: String, 
-			param: MRepositoryAdmincleanupFilesOnSiteReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRepository ={
+			param: MRepositoryAdmincleanupFilesOnSiteReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseRepository ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -280,7 +280,7 @@ class JRepositoryAdminClient(val resourceEndpoint:String) {
 	 * @return MResponseFilesRestored
 	*/
 	def restoreFiles(tokenId: String, 
-			param: MRepositoryAdminrestoreFilesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseFilesRestored ={
+			param: MRepositoryAdminrestoreFilesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseFilesRestored ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -329,7 +329,7 @@ class JRepositoryAdminClient(val resourceEndpoint:String) {
 	 * @return MResponseFindFilesByProperties
 	*/
 	def findFilesByProperties(tokenId: String, 
-			param: MRepositoryAdminfindFilesByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseFindFilesByProperties ={
+			param: MRepositoryAdminfindFilesByPropertiesReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseFindFilesByProperties ={
 	
 		  import scala.collection.JavaConversions._
 		  try{
@@ -375,7 +375,7 @@ class JRepositoryAdminClient(val resourceEndpoint:String) {
 	 * @return MResponseRepository
 	*/
 	def migrateClientRepository(tokenId: String, 
-			param: MRepositoryAdminmigrateClientRepositoryReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=None):MResponseRepository ={
+			param: MRepositoryAdminmigrateClientRepositoryReq)(implicit _fwdHeaders:Option[scala.collection.Map[String,String]]=defaultHeader):MResponseRepository ={
 	
 		  import scala.collection.JavaConversions._
 		  try{

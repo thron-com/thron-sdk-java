@@ -18,6 +18,14 @@ import it.newvision.nvp.xcontents.model.MEContentType
 //#SWG#@ApiModel(description = """The ContentWall class has all necessary information to fill a webtv wall.""")
 class MContentItems extends Serializable {
 
+	/**
+	 * the content identifier 
+	 */
+	//#SWG#@ApiModelProperty(value = """the content identifier """ ,required = true)
+	@BeanProperty 
+	var id: String =_
+	def withid(p:String):this.type ={ 	this.id = p; 	this }
+
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var contentType: MEContentType =_
@@ -35,14 +43,6 @@ class MContentItems extends Serializable {
 	@BeanProperty 
 	var details: MContentExtendedDetails =_
 	def withdetails(p:MContentExtendedDetails):this.type ={ 	this.details = p; 	this }
-
-	/**
-	 * the content identifier 
-	 */
-	//#SWG#@ApiModelProperty(value = """the content identifier """ ,required = true)
-	@BeanProperty 
-	var id: String =_
-	def withid(p:String):this.type ={ 	this.id = p; 	this }
 
 	//#SWG#@ApiModelProperty(value = """""")
 	@BeanProperty 

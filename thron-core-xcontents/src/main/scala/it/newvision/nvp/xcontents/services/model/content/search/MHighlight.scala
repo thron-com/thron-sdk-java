@@ -19,14 +19,14 @@ class MHighlight extends Serializable {
 	var field: String =_
 	def withfield(p:String):this.type ={ 	this.field = p; 	this }
 
-	//#SWG#@ApiModelProperty(value = """""")
-	@BeanProperty 
-	var lang: String =_
-	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
-
 	//#SWG#@ApiModelProperty(value = """""" ,required = true)
 	@BeanProperty 
 	var value: String =_
 	def withvalue(p:String):this.type ={ 	this.value = p; 	this }
+
+	//#SWG#@ApiModelProperty(value = """""")
+	@BeanProperty 
+	var lang: String =_
+	def withlang(p:String):this.type ={ 	this.lang = p; 	this }
 
 }
